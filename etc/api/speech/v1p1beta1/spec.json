@@ -7,7 +7,7 @@
   "canonicalName": "Speech",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p1beta1",
-  "revision": "20190809",
+  "revision": "20190819",
   "title": "Cloud Speech-to-Text API",
   "description": "Converts audio to text by applying powerful neural network models.",
   "ownerDomain": "google.com",

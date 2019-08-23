@@ -7,7 +7,7 @@
   "canonicalName": "AdExchangeBuyerII",
   "fullyEncodeReservedExpansion": null,
   "version": "v2beta1",
-  "revision": "20190820",
+  "revision": "20190821",
   "title": "Ad Exchange Buyer API II",
   "description": "Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.",
   "ownerDomain": "google.com",

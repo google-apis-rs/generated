@@ -274,40 +274,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatEvent {
-        #[doc = "Unspecified type."]
-        DynamicLinkEventUnspecified,
-        #[doc = "Indicates that an FDL is clicked by users."]
-        Click,
-        #[doc = "Indicates that an FDL redirects users to fallback link."]
-        Redirect,
-        #[doc = "Indicates that an FDL triggers an app install from Play store, currently\nit's impossible to get stats from App store."]
-        AppInstall,
         #[doc = "Indicates that the app is opened for the first time after an install\ntriggered by FDLs"]
         AppFirstOpen,
+        #[doc = "Indicates that an FDL triggers an app install from Play store, currently\nit's impossible to get stats from App store."]
+        AppInstall,
         #[doc = "Indicates that the app is opened via an FDL for non-first time."]
         AppReOpen,
+        #[doc = "Indicates that an FDL is clicked by users."]
+        Click,
+        #[doc = "Unspecified type."]
+        DynamicLinkEventUnspecified,
+        #[doc = "Indicates that an FDL redirects users to fallback link."]
+        Redirect,
     }
     impl DynamicLinkEventStatEvent {
         pub fn as_str(self) -> &'static str {
             match self {
+                DynamicLinkEventStatEvent::AppFirstOpen => "APP_FIRST_OPEN",
+                DynamicLinkEventStatEvent::AppInstall => "APP_INSTALL",
+                DynamicLinkEventStatEvent::AppReOpen => "APP_RE_OPEN",
+                DynamicLinkEventStatEvent::Click => "CLICK",
                 DynamicLinkEventStatEvent::DynamicLinkEventUnspecified => {
                     "DYNAMIC_LINK_EVENT_UNSPECIFIED"
                 }
-                DynamicLinkEventStatEvent::Click => "CLICK",
                 DynamicLinkEventStatEvent::Redirect => "REDIRECT",
-                DynamicLinkEventStatEvent::AppInstall => "APP_INSTALL",
-                DynamicLinkEventStatEvent::AppFirstOpen => "APP_FIRST_OPEN",
-                DynamicLinkEventStatEvent::AppReOpen => "APP_RE_OPEN",
             }
         }
     }
     impl ::std::fmt::Display for DynamicLinkEventStatEvent {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DynamicLinkEventStatEvent {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -315,20 +315,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DynamicLinkEventStatEvent {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "APP_FIRST_OPEN" => DynamicLinkEventStatEvent::AppFirstOpen,
+                "APP_INSTALL" => DynamicLinkEventStatEvent::AppInstall,
+                "APP_RE_OPEN" => DynamicLinkEventStatEvent::AppReOpen,
+                "CLICK" => DynamicLinkEventStatEvent::Click,
                 "DYNAMIC_LINK_EVENT_UNSPECIFIED" => {
                     DynamicLinkEventStatEvent::DynamicLinkEventUnspecified
                 }
-                "CLICK" => DynamicLinkEventStatEvent::Click,
                 "REDIRECT" => DynamicLinkEventStatEvent::Redirect,
-                "APP_INSTALL" => DynamicLinkEventStatEvent::AppInstall,
-                "APP_FIRST_OPEN" => DynamicLinkEventStatEvent::AppFirstOpen,
-                "APP_RE_OPEN" => DynamicLinkEventStatEvent::AppReOpen,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -349,37 +349,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatPlatform {
-        #[doc = "Unspecified platform."]
-        DynamicLinkPlatformUnspecified,
         #[doc = "Represents Android platform.\nAll apps and browsers on Android are classfied in this category."]
         Android,
-        #[doc = "Represents iOS platform.\nAll apps and browsers on iOS are classfied in this category."]
-        Ios,
         #[doc = "Represents desktop."]
         Desktop,
+        #[doc = "Unspecified platform."]
+        DynamicLinkPlatformUnspecified,
+        #[doc = "Represents iOS platform.\nAll apps and browsers on iOS are classfied in this category."]
+        Ios,
         #[doc = "Platforms are not categorized as Android/iOS/Destop fall into here."]
         Other,
     }
     impl DynamicLinkEventStatPlatform {
         pub fn as_str(self) -> &'static str {
             match self {
+                DynamicLinkEventStatPlatform::Android => "ANDROID",
+                DynamicLinkEventStatPlatform::Desktop => "DESKTOP",
                 DynamicLinkEventStatPlatform::DynamicLinkPlatformUnspecified => {
                     "DYNAMIC_LINK_PLATFORM_UNSPECIFIED"
                 }
-                DynamicLinkEventStatPlatform::Android => "ANDROID",
                 DynamicLinkEventStatPlatform::Ios => "IOS",
-                DynamicLinkEventStatPlatform::Desktop => "DESKTOP",
                 DynamicLinkEventStatPlatform::Other => "OTHER",
             }
         }
     }
     impl ::std::fmt::Display for DynamicLinkEventStatPlatform {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DynamicLinkEventStatPlatform {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -387,18 +387,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DynamicLinkEventStatPlatform {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ANDROID" => DynamicLinkEventStatPlatform::Android,
+                "DESKTOP" => DynamicLinkEventStatPlatform::Desktop,
                 "DYNAMIC_LINK_PLATFORM_UNSPECIFIED" => {
                     DynamicLinkEventStatPlatform::DynamicLinkPlatformUnspecified
                 }
-                "ANDROID" => DynamicLinkEventStatPlatform::Android,
                 "IOS" => DynamicLinkEventStatPlatform::Ios,
-                "DESKTOP" => DynamicLinkEventStatPlatform::Desktop,
                 "OTHER" => DynamicLinkEventStatPlatform::Other,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -529,83 +529,87 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkWarningWarningCode {
-        #[doc = "Unknown code."]
-        CodeUnspecified,
-        #[doc = "The Android package does not match any in developer's DevConsole project."]
-        NotInProjectAndroidPackageName,
-        #[doc = "The Android minimum version code has to be a valid integer."]
-        NotIntegerAndroidPackageMinVersion,
-        #[doc = "Android package min version param is not needed, e.g. when\n'apn' is missing."]
-        UnnecessaryAndroidPackageMinVersion,
-        #[doc = "Android link is not a valid URI."]
-        NotUriAndroidLink,
-        #[doc = "Android link param is not needed, e.g. when param 'al' and 'link' have\nthe same value.."]
-        UnnecessaryAndroidLink,
-        #[doc = "Android fallback link is not a valid URI."]
-        NotUriAndroidFallbackLink,
-        #[doc = "Android fallback link has an invalid (non http/https) URI scheme."]
-        BadUriSchemeAndroidFallbackLink,
-        #[doc = "The iOS bundle ID does not match any in developer's DevConsole project."]
-        NotInProjectIosBundleId,
-        #[doc = "The iPad bundle ID does not match any in developer's DevConsole project."]
-        NotInProjectIpadBundleId,
-        #[doc = "iOS URL scheme is not needed, e.g. when 'ibi' are 'ipbi' are all missing."]
-        UnnecessaryIosUrlScheme,
-        #[doc = "iOS app store ID format is incorrect, e.g. not numeric."]
-        NotNumericIosAppStoreId,
-        #[doc = "iOS app store ID is not needed."]
-        UnnecessaryIosAppStoreId,
-        #[doc = "iOS fallback link is not a valid URI."]
-        NotUriIosFallbackLink,
-        #[doc = "iOS fallback link has an invalid (non http/https) URI scheme."]
-        BadUriSchemeIosFallbackLink,
-        #[doc = "iPad fallback link is not a valid URI."]
-        NotUriIpadFallbackLink,
-        #[doc = "iPad fallback link has an invalid (non http/https) URI scheme."]
-        BadUriSchemeIpadFallbackLink,
-        #[doc = "Debug param format is incorrect."]
-        BadDebugParam,
         #[doc = "isAd param format is incorrect."]
         BadAdParam,
-        #[doc = "Indicates a certain param is deprecated."]
-        DeprecatedParam,
-        #[doc = "Indicates certain paramater is not recognized."]
-        UnrecognizedParam,
-        #[doc = "Indicates certain paramater is too long."]
-        TooLongParam,
-        #[doc = "Social meta tag image link is not a valid URI."]
-        NotUriSocialImageLink,
+        #[doc = "Debug param format is incorrect."]
+        BadDebugParam,
+        #[doc = "Android fallback link has an invalid (non http/https) URI scheme."]
+        BadUriSchemeAndroidFallbackLink,
+        #[doc = "iOS fallback link has an invalid (non http/https) URI scheme."]
+        BadUriSchemeIosFallbackLink,
+        #[doc = "iPad fallback link has an invalid (non http/https) URI scheme."]
+        BadUriSchemeIpadFallbackLink,
         #[doc = "Social meta tag image link has an invalid (non http/https) URI scheme."]
         BadUriSchemeSocialImageLink,
-        NotUriSocialUrl,
         BadUriSchemeSocialUrl,
+        #[doc = "Unknown code."]
+        CodeUnspecified,
+        #[doc = "Indicates a certain param is deprecated."]
+        DeprecatedParam,
         #[doc = "Dynamic Link URL length is too long."]
         LinkLengthTooLong,
         #[doc = "Dynamic Link URL contains fragments."]
         LinkWithFragments,
+        #[doc = "The Android package does not match any in developer's DevConsole project."]
+        NotInProjectAndroidPackageName,
+        #[doc = "The iOS bundle ID does not match any in developer's DevConsole project."]
+        NotInProjectIosBundleId,
+        #[doc = "The iPad bundle ID does not match any in developer's DevConsole project."]
+        NotInProjectIpadBundleId,
+        #[doc = "The Android minimum version code has to be a valid integer."]
+        NotIntegerAndroidPackageMinVersion,
         #[doc = "The iOS bundle ID does not match with the given iOS store ID."]
         NotMatchingIosBundleIdAndStoreId,
+        #[doc = "iOS app store ID format is incorrect, e.g. not numeric."]
+        NotNumericIosAppStoreId,
+        #[doc = "Android fallback link is not a valid URI."]
+        NotUriAndroidFallbackLink,
+        #[doc = "Android link is not a valid URI."]
+        NotUriAndroidLink,
+        #[doc = "iOS fallback link is not a valid URI."]
+        NotUriIosFallbackLink,
+        #[doc = "iPad fallback link is not a valid URI."]
+        NotUriIpadFallbackLink,
+        #[doc = "Social meta tag image link is not a valid URI."]
+        NotUriSocialImageLink,
+        NotUriSocialUrl,
+        #[doc = "Indicates certain paramater is too long."]
+        TooLongParam,
+        #[doc = "Android link param is not needed, e.g. when param 'al' and 'link' have\nthe same value.."]
+        UnnecessaryAndroidLink,
+        #[doc = "Android package min version param is not needed, e.g. when\n'apn' is missing."]
+        UnnecessaryAndroidPackageMinVersion,
+        #[doc = "iOS app store ID is not needed."]
+        UnnecessaryIosAppStoreId,
+        #[doc = "iOS URL scheme is not needed, e.g. when 'ibi' are 'ipbi' are all missing."]
+        UnnecessaryIosUrlScheme,
+        #[doc = "Indicates certain paramater is not recognized."]
+        UnrecognizedParam,
     }
     impl DynamicLinkWarningWarningCode {
         pub fn as_str(self) -> &'static str {
             match self {
-                DynamicLinkWarningWarningCode::CodeUnspecified => "CODE_UNSPECIFIED",
-                DynamicLinkWarningWarningCode::NotInProjectAndroidPackageName => {
-                    "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME"
-                }
-                DynamicLinkWarningWarningCode::NotIntegerAndroidPackageMinVersion => {
-                    "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION"
-                }
-                DynamicLinkWarningWarningCode::UnnecessaryAndroidPackageMinVersion => {
-                    "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION"
-                }
-                DynamicLinkWarningWarningCode::NotUriAndroidLink => "NOT_URI_ANDROID_LINK",
-                DynamicLinkWarningWarningCode::UnnecessaryAndroidLink => "UNNECESSARY_ANDROID_LINK",
-                DynamicLinkWarningWarningCode::NotUriAndroidFallbackLink => {
-                    "NOT_URI_ANDROID_FALLBACK_LINK"
-                }
+                DynamicLinkWarningWarningCode::BadAdParam => "BAD_AD_PARAM",
+                DynamicLinkWarningWarningCode::BadDebugParam => "BAD_DEBUG_PARAM",
                 DynamicLinkWarningWarningCode::BadUriSchemeAndroidFallbackLink => {
                     "BAD_URI_SCHEME_ANDROID_FALLBACK_LINK"
+                }
+                DynamicLinkWarningWarningCode::BadUriSchemeIosFallbackLink => {
+                    "BAD_URI_SCHEME_IOS_FALLBACK_LINK"
+                }
+                DynamicLinkWarningWarningCode::BadUriSchemeIpadFallbackLink => {
+                    "BAD_URI_SCHEME_IPAD_FALLBACK_LINK"
+                }
+                DynamicLinkWarningWarningCode::BadUriSchemeSocialImageLink => {
+                    "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK"
+                }
+                DynamicLinkWarningWarningCode::BadUriSchemeSocialUrl => "BAD_URI_SCHEME_SOCIAL_URL",
+                DynamicLinkWarningWarningCode::CodeUnspecified => "CODE_UNSPECIFIED",
+                DynamicLinkWarningWarningCode::DeprecatedParam => "DEPRECATED_PARAM",
+                DynamicLinkWarningWarningCode::LinkLengthTooLong => "LINK_LENGTH_TOO_LONG",
+                DynamicLinkWarningWarningCode::LinkWithFragments => "LINK_WITH_FRAGMENTS",
+                DynamicLinkWarningWarningCode::NotInProjectAndroidPackageName => {
+                    "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME"
                 }
                 DynamicLinkWarningWarningCode::NotInProjectIosBundleId => {
                     "NOT_IN_PROJECT_IOS_BUNDLE_ID"
@@ -613,51 +617,47 @@ pub mod schemas {
                 DynamicLinkWarningWarningCode::NotInProjectIpadBundleId => {
                     "NOT_IN_PROJECT_IPAD_BUNDLE_ID"
                 }
-                DynamicLinkWarningWarningCode::UnnecessaryIosUrlScheme => {
-                    "UNNECESSARY_IOS_URL_SCHEME"
+                DynamicLinkWarningWarningCode::NotIntegerAndroidPackageMinVersion => {
+                    "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION"
+                }
+                DynamicLinkWarningWarningCode::NotMatchingIosBundleIdAndStoreId => {
+                    "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID"
                 }
                 DynamicLinkWarningWarningCode::NotNumericIosAppStoreId => {
                     "NOT_NUMERIC_IOS_APP_STORE_ID"
                 }
-                DynamicLinkWarningWarningCode::UnnecessaryIosAppStoreId => {
-                    "UNNECESSARY_IOS_APP_STORE_ID"
+                DynamicLinkWarningWarningCode::NotUriAndroidFallbackLink => {
+                    "NOT_URI_ANDROID_FALLBACK_LINK"
                 }
+                DynamicLinkWarningWarningCode::NotUriAndroidLink => "NOT_URI_ANDROID_LINK",
                 DynamicLinkWarningWarningCode::NotUriIosFallbackLink => "NOT_URI_IOS_FALLBACK_LINK",
-                DynamicLinkWarningWarningCode::BadUriSchemeIosFallbackLink => {
-                    "BAD_URI_SCHEME_IOS_FALLBACK_LINK"
-                }
                 DynamicLinkWarningWarningCode::NotUriIpadFallbackLink => {
                     "NOT_URI_IPAD_FALLBACK_LINK"
                 }
-                DynamicLinkWarningWarningCode::BadUriSchemeIpadFallbackLink => {
-                    "BAD_URI_SCHEME_IPAD_FALLBACK_LINK"
-                }
-                DynamicLinkWarningWarningCode::BadDebugParam => "BAD_DEBUG_PARAM",
-                DynamicLinkWarningWarningCode::BadAdParam => "BAD_AD_PARAM",
-                DynamicLinkWarningWarningCode::DeprecatedParam => "DEPRECATED_PARAM",
-                DynamicLinkWarningWarningCode::UnrecognizedParam => "UNRECOGNIZED_PARAM",
-                DynamicLinkWarningWarningCode::TooLongParam => "TOO_LONG_PARAM",
                 DynamicLinkWarningWarningCode::NotUriSocialImageLink => "NOT_URI_SOCIAL_IMAGE_LINK",
-                DynamicLinkWarningWarningCode::BadUriSchemeSocialImageLink => {
-                    "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK"
-                }
                 DynamicLinkWarningWarningCode::NotUriSocialUrl => "NOT_URI_SOCIAL_URL",
-                DynamicLinkWarningWarningCode::BadUriSchemeSocialUrl => "BAD_URI_SCHEME_SOCIAL_URL",
-                DynamicLinkWarningWarningCode::LinkLengthTooLong => "LINK_LENGTH_TOO_LONG",
-                DynamicLinkWarningWarningCode::LinkWithFragments => "LINK_WITH_FRAGMENTS",
-                DynamicLinkWarningWarningCode::NotMatchingIosBundleIdAndStoreId => {
-                    "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID"
+                DynamicLinkWarningWarningCode::TooLongParam => "TOO_LONG_PARAM",
+                DynamicLinkWarningWarningCode::UnnecessaryAndroidLink => "UNNECESSARY_ANDROID_LINK",
+                DynamicLinkWarningWarningCode::UnnecessaryAndroidPackageMinVersion => {
+                    "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION"
                 }
+                DynamicLinkWarningWarningCode::UnnecessaryIosAppStoreId => {
+                    "UNNECESSARY_IOS_APP_STORE_ID"
+                }
+                DynamicLinkWarningWarningCode::UnnecessaryIosUrlScheme => {
+                    "UNNECESSARY_IOS_URL_SCHEME"
+                }
+                DynamicLinkWarningWarningCode::UnrecognizedParam => "UNRECOGNIZED_PARAM",
             }
         }
     }
     impl ::std::fmt::Display for DynamicLinkWarningWarningCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DynamicLinkWarningWarningCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -665,29 +665,33 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DynamicLinkWarningWarningCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "CODE_UNSPECIFIED" => DynamicLinkWarningWarningCode::CodeUnspecified,
-                "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME" => {
-                    DynamicLinkWarningWarningCode::NotInProjectAndroidPackageName
-                }
-                "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION" => {
-                    DynamicLinkWarningWarningCode::NotIntegerAndroidPackageMinVersion
-                }
-                "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION" => {
-                    DynamicLinkWarningWarningCode::UnnecessaryAndroidPackageMinVersion
-                }
-                "NOT_URI_ANDROID_LINK" => DynamicLinkWarningWarningCode::NotUriAndroidLink,
-                "UNNECESSARY_ANDROID_LINK" => DynamicLinkWarningWarningCode::UnnecessaryAndroidLink,
-                "NOT_URI_ANDROID_FALLBACK_LINK" => {
-                    DynamicLinkWarningWarningCode::NotUriAndroidFallbackLink
-                }
+                "BAD_AD_PARAM" => DynamicLinkWarningWarningCode::BadAdParam,
+                "BAD_DEBUG_PARAM" => DynamicLinkWarningWarningCode::BadDebugParam,
                 "BAD_URI_SCHEME_ANDROID_FALLBACK_LINK" => {
                     DynamicLinkWarningWarningCode::BadUriSchemeAndroidFallbackLink
+                }
+                "BAD_URI_SCHEME_IOS_FALLBACK_LINK" => {
+                    DynamicLinkWarningWarningCode::BadUriSchemeIosFallbackLink
+                }
+                "BAD_URI_SCHEME_IPAD_FALLBACK_LINK" => {
+                    DynamicLinkWarningWarningCode::BadUriSchemeIpadFallbackLink
+                }
+                "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK" => {
+                    DynamicLinkWarningWarningCode::BadUriSchemeSocialImageLink
+                }
+                "BAD_URI_SCHEME_SOCIAL_URL" => DynamicLinkWarningWarningCode::BadUriSchemeSocialUrl,
+                "CODE_UNSPECIFIED" => DynamicLinkWarningWarningCode::CodeUnspecified,
+                "DEPRECATED_PARAM" => DynamicLinkWarningWarningCode::DeprecatedParam,
+                "LINK_LENGTH_TOO_LONG" => DynamicLinkWarningWarningCode::LinkLengthTooLong,
+                "LINK_WITH_FRAGMENTS" => DynamicLinkWarningWarningCode::LinkWithFragments,
+                "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME" => {
+                    DynamicLinkWarningWarningCode::NotInProjectAndroidPackageName
                 }
                 "NOT_IN_PROJECT_IOS_BUNDLE_ID" => {
                     DynamicLinkWarningWarningCode::NotInProjectIosBundleId
@@ -695,41 +699,37 @@ pub mod schemas {
                 "NOT_IN_PROJECT_IPAD_BUNDLE_ID" => {
                     DynamicLinkWarningWarningCode::NotInProjectIpadBundleId
                 }
-                "UNNECESSARY_IOS_URL_SCHEME" => {
-                    DynamicLinkWarningWarningCode::UnnecessaryIosUrlScheme
+                "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION" => {
+                    DynamicLinkWarningWarningCode::NotIntegerAndroidPackageMinVersion
+                }
+                "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID" => {
+                    DynamicLinkWarningWarningCode::NotMatchingIosBundleIdAndStoreId
                 }
                 "NOT_NUMERIC_IOS_APP_STORE_ID" => {
                     DynamicLinkWarningWarningCode::NotNumericIosAppStoreId
                 }
-                "UNNECESSARY_IOS_APP_STORE_ID" => {
-                    DynamicLinkWarningWarningCode::UnnecessaryIosAppStoreId
+                "NOT_URI_ANDROID_FALLBACK_LINK" => {
+                    DynamicLinkWarningWarningCode::NotUriAndroidFallbackLink
                 }
+                "NOT_URI_ANDROID_LINK" => DynamicLinkWarningWarningCode::NotUriAndroidLink,
                 "NOT_URI_IOS_FALLBACK_LINK" => DynamicLinkWarningWarningCode::NotUriIosFallbackLink,
-                "BAD_URI_SCHEME_IOS_FALLBACK_LINK" => {
-                    DynamicLinkWarningWarningCode::BadUriSchemeIosFallbackLink
-                }
                 "NOT_URI_IPAD_FALLBACK_LINK" => {
                     DynamicLinkWarningWarningCode::NotUriIpadFallbackLink
                 }
-                "BAD_URI_SCHEME_IPAD_FALLBACK_LINK" => {
-                    DynamicLinkWarningWarningCode::BadUriSchemeIpadFallbackLink
-                }
-                "BAD_DEBUG_PARAM" => DynamicLinkWarningWarningCode::BadDebugParam,
-                "BAD_AD_PARAM" => DynamicLinkWarningWarningCode::BadAdParam,
-                "DEPRECATED_PARAM" => DynamicLinkWarningWarningCode::DeprecatedParam,
-                "UNRECOGNIZED_PARAM" => DynamicLinkWarningWarningCode::UnrecognizedParam,
-                "TOO_LONG_PARAM" => DynamicLinkWarningWarningCode::TooLongParam,
                 "NOT_URI_SOCIAL_IMAGE_LINK" => DynamicLinkWarningWarningCode::NotUriSocialImageLink,
-                "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK" => {
-                    DynamicLinkWarningWarningCode::BadUriSchemeSocialImageLink
-                }
                 "NOT_URI_SOCIAL_URL" => DynamicLinkWarningWarningCode::NotUriSocialUrl,
-                "BAD_URI_SCHEME_SOCIAL_URL" => DynamicLinkWarningWarningCode::BadUriSchemeSocialUrl,
-                "LINK_LENGTH_TOO_LONG" => DynamicLinkWarningWarningCode::LinkLengthTooLong,
-                "LINK_WITH_FRAGMENTS" => DynamicLinkWarningWarningCode::LinkWithFragments,
-                "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID" => {
-                    DynamicLinkWarningWarningCode::NotMatchingIosBundleIdAndStoreId
+                "TOO_LONG_PARAM" => DynamicLinkWarningWarningCode::TooLongParam,
+                "UNNECESSARY_ANDROID_LINK" => DynamicLinkWarningWarningCode::UnnecessaryAndroidLink,
+                "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION" => {
+                    DynamicLinkWarningWarningCode::UnnecessaryAndroidPackageMinVersion
                 }
+                "UNNECESSARY_IOS_APP_STORE_ID" => {
+                    DynamicLinkWarningWarningCode::UnnecessaryIosAppStoreId
+                }
+                "UNNECESSARY_IOS_URL_SCHEME" => {
+                    DynamicLinkWarningWarningCode::UnnecessaryIosUrlScheme
+                }
+                "UNRECOGNIZED_PARAM" => DynamicLinkWarningWarningCode::UnrecognizedParam,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -782,27 +782,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionRequestRetrievalMethod {
-        #[doc = "Unknown method."]
-        UnknownPayloadRetrievalMethod,
-        #[doc = "iSDK performs a server lookup by device fingerprint in the background\nwhen app is first-opened; no API called by developer."]
-        ImplicitWeakMatch,
-        #[doc = "iSDK performs a server lookup by device fingerprint upon a dev API call."]
-        ExplicitWeakMatch,
         #[doc = "iSDK performs a strong match only if weak match is found upon a dev\nAPI call."]
         ExplicitStrongAfterWeakMatch,
+        #[doc = "iSDK performs a server lookup by device fingerprint upon a dev API call."]
+        ExplicitWeakMatch,
+        #[doc = "iSDK performs a server lookup by device fingerprint in the background\nwhen app is first-opened; no API called by developer."]
+        ImplicitWeakMatch,
+        #[doc = "Unknown method."]
+        UnknownPayloadRetrievalMethod,
     }
     impl GetIosPostInstallAttributionRequestRetrievalMethod {
         pub fn as_str(self) -> &'static str {
-            match self { GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod => "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" , GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch => "IMPLICIT_WEAK_MATCH" , GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch => "EXPLICIT_WEAK_MATCH" , GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch => "EXPLICIT_STRONG_AFTER_WEAK_MATCH" , }
+            match self { GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch => "EXPLICIT_STRONG_AFTER_WEAK_MATCH" , GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch => "EXPLICIT_WEAK_MATCH" , GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch => "IMPLICIT_WEAK_MATCH" , GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod => "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" , }
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionRequestRetrievalMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GetIosPostInstallAttributionRequestRetrievalMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -810,12 +810,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionRequestRetrievalMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequestRetrievalMethod {
@@ -829,31 +829,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionRequestVisualStyle {
-        #[doc = "Unknown style."]
-        UnknownVisualStyle,
-        #[doc = "Default style."]
-        DefaultStyle,
         #[doc = "Custom style."]
         CustomStyle,
+        #[doc = "Default style."]
+        DefaultStyle,
+        #[doc = "Unknown style."]
+        UnknownVisualStyle,
     }
     impl GetIosPostInstallAttributionRequestVisualStyle {
         pub fn as_str(self) -> &'static str {
             match self {
+                GetIosPostInstallAttributionRequestVisualStyle::CustomStyle => "CUSTOM_STYLE",
+                GetIosPostInstallAttributionRequestVisualStyle::DefaultStyle => "DEFAULT_STYLE",
                 GetIosPostInstallAttributionRequestVisualStyle::UnknownVisualStyle => {
                     "UNKNOWN_VISUAL_STYLE"
                 }
-                GetIosPostInstallAttributionRequestVisualStyle::DefaultStyle => "DEFAULT_STYLE",
-                GetIosPostInstallAttributionRequestVisualStyle::CustomStyle => "CUSTOM_STYLE",
             }
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionRequestVisualStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GetIosPostInstallAttributionRequestVisualStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -861,17 +861,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionRequestVisualStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CUSTOM_STYLE" => GetIosPostInstallAttributionRequestVisualStyle::CustomStyle,
+                "DEFAULT_STYLE" => GetIosPostInstallAttributionRequestVisualStyle::DefaultStyle,
                 "UNKNOWN_VISUAL_STYLE" => {
                     GetIosPostInstallAttributionRequestVisualStyle::UnknownVisualStyle
                 }
-                "DEFAULT_STYLE" => GetIosPostInstallAttributionRequestVisualStyle::DefaultStyle,
-                "CUSTOM_STYLE" => GetIosPostInstallAttributionRequestVisualStyle::CustomStyle,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -943,27 +943,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionResponseAttributionConfidence {
-        #[doc = "Unset."]
-        UnknownAttributionConfidence,
-        #[doc = "Weak confidence, more than one matching link found or link suspected to\nbe false positive"]
-        Weak,
         #[doc = "Default confidence, match based on fingerprint"]
         Default,
         #[doc = "Unique confidence, match based on \"unique match link to check\" or other\nmeans"]
         Unique,
+        #[doc = "Unset."]
+        UnknownAttributionConfidence,
+        #[doc = "Weak confidence, more than one matching link found or link suspected to\nbe false positive"]
+        Weak,
     }
     impl GetIosPostInstallAttributionResponseAttributionConfidence {
         pub fn as_str(self) -> &'static str {
-            match self { GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence => "UNKNOWN_ATTRIBUTION_CONFIDENCE" , GetIosPostInstallAttributionResponseAttributionConfidence :: Weak => "WEAK" , GetIosPostInstallAttributionResponseAttributionConfidence :: Default => "DEFAULT" , GetIosPostInstallAttributionResponseAttributionConfidence :: Unique => "UNIQUE" , }
+            match self { GetIosPostInstallAttributionResponseAttributionConfidence :: Default => "DEFAULT" , GetIosPostInstallAttributionResponseAttributionConfidence :: Unique => "UNIQUE" , GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence => "UNKNOWN_ATTRIBUTION_CONFIDENCE" , GetIosPostInstallAttributionResponseAttributionConfidence :: Weak => "WEAK" , }
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -971,12 +971,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponseAttributionConfidence {
@@ -990,31 +990,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionResponseRequestIpVersion {
-        #[doc = "Unset."]
-        UnknownIpVersion,
         #[doc = "Request made from an IPv4 IP address."]
         IpV4,
         #[doc = "Request made from an IPv6 IP address."]
         IpV6,
+        #[doc = "Unset."]
+        UnknownIpVersion,
     }
     impl GetIosPostInstallAttributionResponseRequestIpVersion {
         pub fn as_str(self) -> &'static str {
             match self {
+                GetIosPostInstallAttributionResponseRequestIpVersion::IpV4 => "IP_V4",
+                GetIosPostInstallAttributionResponseRequestIpVersion::IpV6 => "IP_V6",
                 GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion => {
                     "UNKNOWN_IP_VERSION"
                 }
-                GetIosPostInstallAttributionResponseRequestIpVersion::IpV4 => "IP_V4",
-                GetIosPostInstallAttributionResponseRequestIpVersion::IpV6 => "IP_V6",
             }
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1022,17 +1022,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "IP_V4" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV4,
+                "IP_V6" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV6,
                 "UNKNOWN_IP_VERSION" => {
                     GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion
                 }
-                "IP_V4" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV4,
-                "IP_V6" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV6,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1330,26 +1330,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkFlaggedAttributeItems {
-        UnspecifiedAttribute,
         Spam,
+        UnspecifiedAttribute,
     }
     impl ManagedShortLinkFlaggedAttributeItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                ManagedShortLinkFlaggedAttributeItems::Spam => "SPAM",
                 ManagedShortLinkFlaggedAttributeItems::UnspecifiedAttribute => {
                     "UNSPECIFIED_ATTRIBUTE"
                 }
-                ManagedShortLinkFlaggedAttributeItems::Spam => "SPAM",
             }
         }
     }
     impl ::std::fmt::Display for ManagedShortLinkFlaggedAttributeItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ManagedShortLinkFlaggedAttributeItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1357,16 +1357,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ManagedShortLinkFlaggedAttributeItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "SPAM" => ManagedShortLinkFlaggedAttributeItems::Spam,
                 "UNSPECIFIED_ATTRIBUTE" => {
                     ManagedShortLinkFlaggedAttributeItems::UnspecifiedAttribute
                 }
-                "SPAM" => ManagedShortLinkFlaggedAttributeItems::Spam,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1387,32 +1387,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkVisibility {
-        #[doc = "Visibility of the link is not specified."]
-        UnspecifiedVisibility,
-        #[doc = "Link created in console and should be shown in console."]
-        Unarchived,
         #[doc = "Link created in console and should not be shown in console (but can\nbe shown in the console again if it is unarchived)."]
         Archived,
         #[doc = "Link created outside of console and should never be shown in console."]
         NeverShown,
+        #[doc = "Link created in console and should be shown in console."]
+        Unarchived,
+        #[doc = "Visibility of the link is not specified."]
+        UnspecifiedVisibility,
     }
     impl ManagedShortLinkVisibility {
         pub fn as_str(self) -> &'static str {
             match self {
-                ManagedShortLinkVisibility::UnspecifiedVisibility => "UNSPECIFIED_VISIBILITY",
-                ManagedShortLinkVisibility::Unarchived => "UNARCHIVED",
                 ManagedShortLinkVisibility::Archived => "ARCHIVED",
                 ManagedShortLinkVisibility::NeverShown => "NEVER_SHOWN",
+                ManagedShortLinkVisibility::Unarchived => "UNARCHIVED",
+                ManagedShortLinkVisibility::UnspecifiedVisibility => "UNSPECIFIED_VISIBILITY",
             }
         }
     }
     impl ::std::fmt::Display for ManagedShortLinkVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ManagedShortLinkVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1420,16 +1420,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ManagedShortLinkVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_VISIBILITY" => ManagedShortLinkVisibility::UnspecifiedVisibility,
-                "UNARCHIVED" => ManagedShortLinkVisibility::Unarchived,
                 "ARCHIVED" => ManagedShortLinkVisibility::Archived,
                 "NEVER_SHOWN" => ManagedShortLinkVisibility::NeverShown,
+                "UNARCHIVED" => ManagedShortLinkVisibility::Unarchived,
+                "UNSPECIFIED_VISIBILITY" => ManagedShortLinkVisibility::UnspecifiedVisibility,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1550,32 +1550,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SuffixOption {
-        #[doc = "The suffix option is not specified, performs as UNGUESSABLE ."]
-        OptionUnspecified,
-        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of\na random generated 96 bit random number, which has a length of 17 chars.\nFor example, \"nlAR8U4SlKRZw1cb2\".\nIt prevents other people from guessing and crawling short Dynamic Links\nthat contain personal identifiable information."]
-        Unguessable,
-        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a\nlength of 4 chars. the length will increase when all the space is\noccupied."]
-        Short,
         #[doc = "Custom DDL suffix is a client specified string, for example,\n\"buy2get1free\".\nNOTE: custom suffix should only be available to managed short link\ncreation"]
         Custom,
+        #[doc = "The suffix option is not specified, performs as UNGUESSABLE ."]
+        OptionUnspecified,
+        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a\nlength of 4 chars. the length will increase when all the space is\noccupied."]
+        Short,
+        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of\na random generated 96 bit random number, which has a length of 17 chars.\nFor example, \"nlAR8U4SlKRZw1cb2\".\nIt prevents other people from guessing and crawling short Dynamic Links\nthat contain personal identifiable information."]
+        Unguessable,
     }
     impl SuffixOption {
         pub fn as_str(self) -> &'static str {
             match self {
-                SuffixOption::OptionUnspecified => "OPTION_UNSPECIFIED",
-                SuffixOption::Unguessable => "UNGUESSABLE",
-                SuffixOption::Short => "SHORT",
                 SuffixOption::Custom => "CUSTOM",
+                SuffixOption::OptionUnspecified => "OPTION_UNSPECIFIED",
+                SuffixOption::Short => "SHORT",
+                SuffixOption::Unguessable => "UNGUESSABLE",
             }
         }
     }
     impl ::std::fmt::Display for SuffixOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SuffixOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1583,16 +1583,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SuffixOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPTION_UNSPECIFIED" => SuffixOption::OptionUnspecified,
-                "UNGUESSABLE" => SuffixOption::Unguessable,
-                "SHORT" => SuffixOption::Short,
                 "CUSTOM" => SuffixOption::Custom,
+                "OPTION_UNSPECIFIED" => SuffixOption::OptionUnspecified,
+                "SHORT" => SuffixOption::Short,
+                "UNGUESSABLE" => SuffixOption::Unguessable,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1661,12 +1661,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1674,7 +1674,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1717,12 +1717,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1730,7 +1730,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1792,7 +1792,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod managed_short_links {
         pub mod params {}
         pub struct ManagedShortLinksActions<'a, A> {
@@ -1846,19 +1846,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2038,19 +2028,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2288,19 +2268,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2458,19 +2428,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2623,19 +2583,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3021,7 +2971,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -3030,7 +2983,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -3043,58 +2996,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

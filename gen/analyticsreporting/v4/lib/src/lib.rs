@@ -3,36 +3,36 @@ pub mod schemas {
     pub enum ActivityActivityType {
         #[doc = "ActivityType will never have this value in the response. Using this type in\nthe request will result in an error."]
         ActivityTypeUnspecified,
-        #[doc = "Used when the activity resulted out of a visitor viewing a page."]
-        Pageview,
-        #[doc = "Used when the activity resulted out of a visitor using an application on a\nmobile device."]
-        Screenview,
-        #[doc = "Used to denote that a goal type activity."]
-        Goal,
         #[doc = "An e-commerce transaction was performed by the visitor on the page."]
         Ecommerce,
         #[doc = "Used when the activity is an event."]
         Event,
+        #[doc = "Used to denote that a goal type activity."]
+        Goal,
+        #[doc = "Used when the activity resulted out of a visitor viewing a page."]
+        Pageview,
+        #[doc = "Used when the activity resulted out of a visitor using an application on a\nmobile device."]
+        Screenview,
     }
     impl ActivityActivityType {
         pub fn as_str(self) -> &'static str {
             match self {
                 ActivityActivityType::ActivityTypeUnspecified => "ACTIVITY_TYPE_UNSPECIFIED",
-                ActivityActivityType::Pageview => "PAGEVIEW",
-                ActivityActivityType::Screenview => "SCREENVIEW",
-                ActivityActivityType::Goal => "GOAL",
                 ActivityActivityType::Ecommerce => "ECOMMERCE",
                 ActivityActivityType::Event => "EVENT",
+                ActivityActivityType::Goal => "GOAL",
+                ActivityActivityType::Pageview => "PAGEVIEW",
+                ActivityActivityType::Screenview => "SCREENVIEW",
             }
         }
     }
     impl ::std::fmt::Display for ActivityActivityType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ActivityActivityType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -40,18 +40,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ActivityActivityType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ACTIVITY_TYPE_UNSPECIFIED" => ActivityActivityType::ActivityTypeUnspecified,
-                "PAGEVIEW" => ActivityActivityType::Pageview,
-                "SCREENVIEW" => ActivityActivityType::Screenview,
-                "GOAL" => ActivityActivityType::Goal,
                 "ECOMMERCE" => ActivityActivityType::Ecommerce,
                 "EVENT" => ActivityActivityType::Event,
+                "GOAL" => ActivityActivityType::Goal,
+                "PAGEVIEW" => ActivityActivityType::Pageview,
+                "SCREENVIEW" => ActivityActivityType::Screenview,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -74,7 +74,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Activity {
-        #[doc = "Timestamp of the activity."]
+        #[doc = "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier."]
         #[serde(rename = "activityTime", default)]
         pub activity_time: ::std::option::Option<String>,
         #[doc = "Type of this activity."]
@@ -131,26 +131,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CohortType {
-        #[doc = "If unspecified it's treated as `FIRST_VISIT_DATE`."]
-        UnspecifiedCohortType,
         #[doc = "Cohorts that are selected based on first visit date."]
         FirstVisitDate,
+        #[doc = "If unspecified it's treated as `FIRST_VISIT_DATE`."]
+        UnspecifiedCohortType,
     }
     impl CohortType {
         pub fn as_str(self) -> &'static str {
             match self {
-                CohortType::UnspecifiedCohortType => "UNSPECIFIED_COHORT_TYPE",
                 CohortType::FirstVisitDate => "FIRST_VISIT_DATE",
+                CohortType::UnspecifiedCohortType => "UNSPECIFIED_COHORT_TYPE",
             }
         }
     }
     impl ::std::fmt::Display for CohortType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CohortType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -158,14 +158,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CohortType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_COHORT_TYPE" => CohortType::UnspecifiedCohortType,
                 "FIRST_VISIT_DATE" => CohortType::FirstVisitDate,
+                "UNSPECIFIED_COHORT_TYPE" => CohortType::UnspecifiedCohortType,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -392,50 +392,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionFilterOperator {
-        #[doc = "If the match type is unspecified, it is treated as a `REGEXP`."]
-        OperatorUnspecified,
-        #[doc = "The match expression is treated as a regular expression. All match types\nare not treated as regular expressions."]
-        Regexp,
         #[doc = "Matches the value which begin with the match expression provided."]
         BeginsWith,
         #[doc = "Matches the values which end with the match expression provided."]
         EndsWith,
-        #[doc = "Substring match."]
-        Partial,
         #[doc = "The value should match the match expression entirely."]
         Exact,
+        #[doc = "This option is used to specify a dimension filter whose expression can\ntake any value from a selected list of values. This helps avoiding\nevaluating multiple exact match dimension filters which are OR'ed for\nevery single response row. For example:\n\n````text\nexpressions: [\"A\", \"B\", \"C\"]\n````\n\nAny response row whose dimension has it is value as A, B or C, matches\nthis DimensionFilter."]
+        InList,
         #[doc = "Integer comparison filters.\ncase sensitivity is ignored for these and the expression\nis assumed to be a string representing an integer.\nFailure conditions:\n\n* If expression is not a valid int64, the client should expect\n  an error.\n* Input dimensions that are not valid int64 values will never match the\n  filter."]
         NumericEqual,
         #[doc = "Checks if the dimension is numerically greater than the match\nexpression. Read the description for `NUMERIC_EQUALS` for restrictions."]
         NumericGreaterThan,
         #[doc = "Checks if the dimension is numerically less than the match expression.\nRead the description for `NUMERIC_EQUALS` for restrictions."]
         NumericLessThan,
-        #[doc = "This option is used to specify a dimension filter whose expression can\ntake any value from a selected list of values. This helps avoiding\nevaluating multiple exact match dimension filters which are OR'ed for\nevery single response row. For example:\n\n````text\nexpressions: [\"A\", \"B\", \"C\"]\n````\n\nAny response row whose dimension has it is value as A, B or C, matches\nthis DimensionFilter."]
-        InList,
+        #[doc = "If the match type is unspecified, it is treated as a `REGEXP`."]
+        OperatorUnspecified,
+        #[doc = "Substring match."]
+        Partial,
+        #[doc = "The match expression is treated as a regular expression. All match types\nare not treated as regular expressions."]
+        Regexp,
     }
     impl DimensionFilterOperator {
         pub fn as_str(self) -> &'static str {
             match self {
-                DimensionFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
-                DimensionFilterOperator::Regexp => "REGEXP",
                 DimensionFilterOperator::BeginsWith => "BEGINS_WITH",
                 DimensionFilterOperator::EndsWith => "ENDS_WITH",
-                DimensionFilterOperator::Partial => "PARTIAL",
                 DimensionFilterOperator::Exact => "EXACT",
+                DimensionFilterOperator::InList => "IN_LIST",
                 DimensionFilterOperator::NumericEqual => "NUMERIC_EQUAL",
                 DimensionFilterOperator::NumericGreaterThan => "NUMERIC_GREATER_THAN",
                 DimensionFilterOperator::NumericLessThan => "NUMERIC_LESS_THAN",
-                DimensionFilterOperator::InList => "IN_LIST",
+                DimensionFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
+                DimensionFilterOperator::Partial => "PARTIAL",
+                DimensionFilterOperator::Regexp => "REGEXP",
             }
         }
     }
     impl ::std::fmt::Display for DimensionFilterOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DimensionFilterOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -443,22 +443,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DimensionFilterOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPERATOR_UNSPECIFIED" => DimensionFilterOperator::OperatorUnspecified,
-                "REGEXP" => DimensionFilterOperator::Regexp,
                 "BEGINS_WITH" => DimensionFilterOperator::BeginsWith,
                 "ENDS_WITH" => DimensionFilterOperator::EndsWith,
-                "PARTIAL" => DimensionFilterOperator::Partial,
                 "EXACT" => DimensionFilterOperator::Exact,
+                "IN_LIST" => DimensionFilterOperator::InList,
                 "NUMERIC_EQUAL" => DimensionFilterOperator::NumericEqual,
                 "NUMERIC_GREATER_THAN" => DimensionFilterOperator::NumericGreaterThan,
                 "NUMERIC_LESS_THAN" => DimensionFilterOperator::NumericLessThan,
-                "IN_LIST" => DimensionFilterOperator::InList,
+                "OPERATOR_UNSPECIFIED" => DimensionFilterOperator::OperatorUnspecified,
+                "PARTIAL" => DimensionFilterOperator::Partial,
+                "REGEXP" => DimensionFilterOperator::Regexp,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -517,29 +517,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionFilterClauseOperator {
+        #[doc = "The logical `AND` operator."]
+        And,
         #[doc = "Unspecified operator. It is treated as an `OR`."]
         OperatorUnspecified,
         #[doc = "The logical `OR` operator."]
         Or,
-        #[doc = "The logical `AND` operator."]
-        And,
     }
     impl DimensionFilterClauseOperator {
         pub fn as_str(self) -> &'static str {
             match self {
+                DimensionFilterClauseOperator::And => "AND",
                 DimensionFilterClauseOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
                 DimensionFilterClauseOperator::Or => "OR",
-                DimensionFilterClauseOperator::And => "AND",
             }
         }
     }
     impl ::std::fmt::Display for DimensionFilterClauseOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DimensionFilterClauseOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -547,15 +547,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DimensionFilterClauseOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AND" => DimensionFilterClauseOperator::And,
                 "OPERATOR_UNSPECIFIED" => DimensionFilterClauseOperator::OperatorUnspecified,
                 "OR" => DimensionFilterClauseOperator::Or,
-                "AND" => DimensionFilterClauseOperator::And,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -637,47 +637,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EcommerceDataActionType {
-        #[doc = "Action type is not known."]
-        Unknown,
+        #[doc = "Add product(s) to cart."]
+        AddToCart,
+        #[doc = "Check out."]
+        Checkout,
+        #[doc = "Checkout options."]
+        CheckoutOption,
         #[doc = "Click through of product lists."]
         Click,
         #[doc = "Product detail views."]
         DetailsView,
-        #[doc = "Add product(s) to cart."]
-        AddToCart,
-        #[doc = "Remove product(s) from cart."]
-        RemoveFromCart,
-        #[doc = "Check out."]
-        Checkout,
         #[doc = "Completed purchase."]
         Payment,
         #[doc = "Refund of purchase."]
         Refund,
-        #[doc = "Checkout options."]
-        CheckoutOption,
+        #[doc = "Remove product(s) from cart."]
+        RemoveFromCart,
+        #[doc = "Action type is not known."]
+        Unknown,
     }
     impl EcommerceDataActionType {
         pub fn as_str(self) -> &'static str {
             match self {
-                EcommerceDataActionType::Unknown => "UNKNOWN",
+                EcommerceDataActionType::AddToCart => "ADD_TO_CART",
+                EcommerceDataActionType::Checkout => "CHECKOUT",
+                EcommerceDataActionType::CheckoutOption => "CHECKOUT_OPTION",
                 EcommerceDataActionType::Click => "CLICK",
                 EcommerceDataActionType::DetailsView => "DETAILS_VIEW",
-                EcommerceDataActionType::AddToCart => "ADD_TO_CART",
-                EcommerceDataActionType::RemoveFromCart => "REMOVE_FROM_CART",
-                EcommerceDataActionType::Checkout => "CHECKOUT",
                 EcommerceDataActionType::Payment => "PAYMENT",
                 EcommerceDataActionType::Refund => "REFUND",
-                EcommerceDataActionType::CheckoutOption => "CHECKOUT_OPTION",
+                EcommerceDataActionType::RemoveFromCart => "REMOVE_FROM_CART",
+                EcommerceDataActionType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for EcommerceDataActionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EcommerceDataActionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -685,21 +685,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EcommerceDataActionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => EcommerceDataActionType::Unknown,
+                "ADD_TO_CART" => EcommerceDataActionType::AddToCart,
+                "CHECKOUT" => EcommerceDataActionType::Checkout,
+                "CHECKOUT_OPTION" => EcommerceDataActionType::CheckoutOption,
                 "CLICK" => EcommerceDataActionType::Click,
                 "DETAILS_VIEW" => EcommerceDataActionType::DetailsView,
-                "ADD_TO_CART" => EcommerceDataActionType::AddToCart,
-                "REMOVE_FROM_CART" => EcommerceDataActionType::RemoveFromCart,
-                "CHECKOUT" => EcommerceDataActionType::Checkout,
                 "PAYMENT" => EcommerceDataActionType::Payment,
                 "REFUND" => EcommerceDataActionType::Refund,
-                "CHECKOUT_OPTION" => EcommerceDataActionType::CheckoutOption,
+                "REMOVE_FROM_CART" => EcommerceDataActionType::RemoveFromCart,
+                "UNKNOWN" => EcommerceDataActionType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -720,31 +720,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EcommerceDataEcommerceType {
-        #[doc = "Used when the e-commerce activity type is unspecified."]
-        EcommerceTypeUnspecified,
         #[doc = "Used when activity has classic (non-enhanced) e-commerce information."]
         Classic,
+        #[doc = "Used when the e-commerce activity type is unspecified."]
+        EcommerceTypeUnspecified,
         #[doc = "Used when activity has enhanced e-commerce information."]
         Enhanced,
     }
     impl EcommerceDataEcommerceType {
         pub fn as_str(self) -> &'static str {
             match self {
+                EcommerceDataEcommerceType::Classic => "CLASSIC",
                 EcommerceDataEcommerceType::EcommerceTypeUnspecified => {
                     "ECOMMERCE_TYPE_UNSPECIFIED"
                 }
-                EcommerceDataEcommerceType::Classic => "CLASSIC",
                 EcommerceDataEcommerceType::Enhanced => "ENHANCED",
             }
         }
     }
     impl ::std::fmt::Display for EcommerceDataEcommerceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EcommerceDataEcommerceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -752,16 +752,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EcommerceDataEcommerceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CLASSIC" => EcommerceDataEcommerceType::Classic,
                 "ECOMMERCE_TYPE_UNSPECIFIED" => {
                     EcommerceDataEcommerceType::EcommerceTypeUnspecified
                 }
-                "CLASSIC" => EcommerceDataEcommerceType::Classic,
                 "ENHANCED" => EcommerceDataEcommerceType::Enhanced,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -967,14 +967,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricFormattingType {
-        #[doc = "Metric type is unspecified."]
-        MetricTypeUnspecified,
-        #[doc = "Integer metric."]
-        Integer,
-        #[doc = "Float metric."]
-        Float,
         #[doc = "Currency metric."]
         Currency,
+        #[doc = "Float metric."]
+        Float,
+        #[doc = "Integer metric."]
+        Integer,
+        #[doc = "Metric type is unspecified."]
+        MetricTypeUnspecified,
         #[doc = "Percentage metric."]
         Percent,
         #[doc = "Time metric in `HH:MM:SS` format."]
@@ -983,22 +983,22 @@ pub mod schemas {
     impl MetricFormattingType {
         pub fn as_str(self) -> &'static str {
             match self {
-                MetricFormattingType::MetricTypeUnspecified => "METRIC_TYPE_UNSPECIFIED",
-                MetricFormattingType::Integer => "INTEGER",
-                MetricFormattingType::Float => "FLOAT",
                 MetricFormattingType::Currency => "CURRENCY",
+                MetricFormattingType::Float => "FLOAT",
+                MetricFormattingType::Integer => "INTEGER",
+                MetricFormattingType::MetricTypeUnspecified => "METRIC_TYPE_UNSPECIFIED",
                 MetricFormattingType::Percent => "PERCENT",
                 MetricFormattingType::Time => "TIME",
             }
         }
     }
     impl ::std::fmt::Display for MetricFormattingType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MetricFormattingType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1006,16 +1006,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MetricFormattingType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "METRIC_TYPE_UNSPECIFIED" => MetricFormattingType::MetricTypeUnspecified,
-                "INTEGER" => MetricFormattingType::Integer,
-                "FLOAT" => MetricFormattingType::Float,
                 "CURRENCY" => MetricFormattingType::Currency,
+                "FLOAT" => MetricFormattingType::Float,
+                "INTEGER" => MetricFormattingType::Integer,
+                "METRIC_TYPE_UNSPECIFIED" => MetricFormattingType::MetricTypeUnspecified,
                 "PERCENT" => MetricFormattingType::Percent,
                 "TIME" => MetricFormattingType::Time,
                 _ => {
@@ -1070,35 +1070,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricFilterOperator {
-        #[doc = "If the operator is not specified, it is treated as `EQUAL`."]
-        OperatorUnspecified,
         #[doc = "Should the value of the metric be exactly equal to the comparison value."]
         Equal,
-        #[doc = "Should the value of the metric be less than to the comparison value."]
-        LessThan,
         #[doc = "Should the value of the metric be greater than to the comparison value."]
         GreaterThan,
         #[doc = "Validates if the metric is missing.\nDoesn't take comparisonValue into account."]
         IsMissing,
+        #[doc = "Should the value of the metric be less than to the comparison value."]
+        LessThan,
+        #[doc = "If the operator is not specified, it is treated as `EQUAL`."]
+        OperatorUnspecified,
     }
     impl MetricFilterOperator {
         pub fn as_str(self) -> &'static str {
             match self {
-                MetricFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
                 MetricFilterOperator::Equal => "EQUAL",
-                MetricFilterOperator::LessThan => "LESS_THAN",
                 MetricFilterOperator::GreaterThan => "GREATER_THAN",
                 MetricFilterOperator::IsMissing => "IS_MISSING",
+                MetricFilterOperator::LessThan => "LESS_THAN",
+                MetricFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for MetricFilterOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MetricFilterOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1106,17 +1106,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MetricFilterOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPERATOR_UNSPECIFIED" => MetricFilterOperator::OperatorUnspecified,
                 "EQUAL" => MetricFilterOperator::Equal,
-                "LESS_THAN" => MetricFilterOperator::LessThan,
                 "GREATER_THAN" => MetricFilterOperator::GreaterThan,
                 "IS_MISSING" => MetricFilterOperator::IsMissing,
+                "LESS_THAN" => MetricFilterOperator::LessThan,
+                "OPERATOR_UNSPECIFIED" => MetricFilterOperator::OperatorUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1172,29 +1172,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricFilterClauseOperator {
+        #[doc = "The logical `AND` operator."]
+        And,
         #[doc = "Unspecified operator. It is treated as an `OR`."]
         OperatorUnspecified,
         #[doc = "The logical `OR` operator."]
         Or,
-        #[doc = "The logical `AND` operator."]
-        And,
     }
     impl MetricFilterClauseOperator {
         pub fn as_str(self) -> &'static str {
             match self {
+                MetricFilterClauseOperator::And => "AND",
                 MetricFilterClauseOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
                 MetricFilterClauseOperator::Or => "OR",
-                MetricFilterClauseOperator::And => "AND",
             }
         }
     }
     impl ::std::fmt::Display for MetricFilterClauseOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MetricFilterClauseOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1202,15 +1202,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MetricFilterClauseOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AND" => MetricFilterClauseOperator::And,
                 "OPERATOR_UNSPECIFIED" => MetricFilterClauseOperator::OperatorUnspecified,
                 "OR" => MetricFilterClauseOperator::Or,
-                "AND" => MetricFilterClauseOperator::And,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1289,14 +1289,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricHeaderEntryType {
-        #[doc = "Metric type is unspecified."]
-        MetricTypeUnspecified,
-        #[doc = "Integer metric."]
-        Integer,
-        #[doc = "Float metric."]
-        Float,
         #[doc = "Currency metric."]
         Currency,
+        #[doc = "Float metric."]
+        Float,
+        #[doc = "Integer metric."]
+        Integer,
+        #[doc = "Metric type is unspecified."]
+        MetricTypeUnspecified,
         #[doc = "Percentage metric."]
         Percent,
         #[doc = "Time metric in `HH:MM:SS` format."]
@@ -1305,22 +1305,22 @@ pub mod schemas {
     impl MetricHeaderEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
-                MetricHeaderEntryType::MetricTypeUnspecified => "METRIC_TYPE_UNSPECIFIED",
-                MetricHeaderEntryType::Integer => "INTEGER",
-                MetricHeaderEntryType::Float => "FLOAT",
                 MetricHeaderEntryType::Currency => "CURRENCY",
+                MetricHeaderEntryType::Float => "FLOAT",
+                MetricHeaderEntryType::Integer => "INTEGER",
+                MetricHeaderEntryType::MetricTypeUnspecified => "METRIC_TYPE_UNSPECIFIED",
                 MetricHeaderEntryType::Percent => "PERCENT",
                 MetricHeaderEntryType::Time => "TIME",
             }
         }
     }
     impl ::std::fmt::Display for MetricHeaderEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MetricHeaderEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1328,16 +1328,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MetricHeaderEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "METRIC_TYPE_UNSPECIFIED" => MetricHeaderEntryType::MetricTypeUnspecified,
-                "INTEGER" => MetricHeaderEntryType::Integer,
-                "FLOAT" => MetricHeaderEntryType::Float,
                 "CURRENCY" => MetricHeaderEntryType::Currency,
+                "FLOAT" => MetricHeaderEntryType::Float,
+                "INTEGER" => MetricHeaderEntryType::Integer,
+                "METRIC_TYPE_UNSPECIFIED" => MetricHeaderEntryType::MetricTypeUnspecified,
                 "PERCENT" => MetricHeaderEntryType::Percent,
                 "TIME" => MetricHeaderEntryType::Time,
                 _ => {
@@ -1415,38 +1415,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OrderByOrderType {
-        #[doc = "Unspecified order type will be treated as sort based on value."]
-        OrderTypeUnspecified,
-        #[doc = "The sort order is based on the value of the chosen column; looks only at\nthe first date range."]
-        Value,
         #[doc = "The sort order is based on the difference of the values of the chosen\ncolumn between the first two date ranges.  Usable only if there are\nexactly two date ranges."]
         Delta,
-        #[doc = "The sort order is based on weighted value of the chosen column.  If\ncolumn has n/d format, then weighted value of this ratio will\nbe `(n + totals.n)/(d + totals.d)` Usable only for metrics that\nrepresent ratios."]
-        Smart,
-        #[doc = "Histogram order type is applicable only to dimension columns with\nnon-empty histogram-buckets."]
-        HistogramBucket,
         #[doc = "If the dimensions are fixed length numbers, ordinary sort would just\nwork fine. `DIMENSION_AS_INTEGER` can be used if the dimensions are\nvariable length numbers."]
         DimensionAsInteger,
+        #[doc = "Histogram order type is applicable only to dimension columns with\nnon-empty histogram-buckets."]
+        HistogramBucket,
+        #[doc = "Unspecified order type will be treated as sort based on value."]
+        OrderTypeUnspecified,
+        #[doc = "The sort order is based on weighted value of the chosen column.  If\ncolumn has n/d format, then weighted value of this ratio will\nbe `(n + totals.n)/(d + totals.d)` Usable only for metrics that\nrepresent ratios."]
+        Smart,
+        #[doc = "The sort order is based on the value of the chosen column; looks only at\nthe first date range."]
+        Value,
     }
     impl OrderByOrderType {
         pub fn as_str(self) -> &'static str {
             match self {
-                OrderByOrderType::OrderTypeUnspecified => "ORDER_TYPE_UNSPECIFIED",
-                OrderByOrderType::Value => "VALUE",
                 OrderByOrderType::Delta => "DELTA",
-                OrderByOrderType::Smart => "SMART",
-                OrderByOrderType::HistogramBucket => "HISTOGRAM_BUCKET",
                 OrderByOrderType::DimensionAsInteger => "DIMENSION_AS_INTEGER",
+                OrderByOrderType::HistogramBucket => "HISTOGRAM_BUCKET",
+                OrderByOrderType::OrderTypeUnspecified => "ORDER_TYPE_UNSPECIFIED",
+                OrderByOrderType::Smart => "SMART",
+                OrderByOrderType::Value => "VALUE",
             }
         }
     }
     impl ::std::fmt::Display for OrderByOrderType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OrderByOrderType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1454,18 +1454,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OrderByOrderType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ORDER_TYPE_UNSPECIFIED" => OrderByOrderType::OrderTypeUnspecified,
-                "VALUE" => OrderByOrderType::Value,
                 "DELTA" => OrderByOrderType::Delta,
-                "SMART" => OrderByOrderType::Smart,
-                "HISTOGRAM_BUCKET" => OrderByOrderType::HistogramBucket,
                 "DIMENSION_AS_INTEGER" => OrderByOrderType::DimensionAsInteger,
+                "HISTOGRAM_BUCKET" => OrderByOrderType::HistogramBucket,
+                "ORDER_TYPE_UNSPECIFIED" => OrderByOrderType::OrderTypeUnspecified,
+                "SMART" => OrderByOrderType::Smart,
+                "VALUE" => OrderByOrderType::Value,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1486,29 +1486,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OrderBySortOrder {
-        #[doc = "If the sort order is unspecified, the default is ascending."]
-        SortOrderUnspecified,
         #[doc = "Ascending sort. The field will be sorted in an ascending manner."]
         Ascending,
         #[doc = "Descending sort. The field will be sorted in a descending manner."]
         Descending,
+        #[doc = "If the sort order is unspecified, the default is ascending."]
+        SortOrderUnspecified,
     }
     impl OrderBySortOrder {
         pub fn as_str(self) -> &'static str {
             match self {
-                OrderBySortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
                 OrderBySortOrder::Ascending => "ASCENDING",
                 OrderBySortOrder::Descending => "DESCENDING",
+                OrderBySortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for OrderBySortOrder {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OrderBySortOrder {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1516,15 +1516,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OrderBySortOrder {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SORT_ORDER_UNSPECIFIED" => OrderBySortOrder::SortOrderUnspecified,
                 "ASCENDING" => OrderBySortOrder::Ascending,
                 "DESCENDING" => OrderBySortOrder::Descending,
+                "SORT_ORDER_UNSPECIFIED" => OrderBySortOrder::SortOrderUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1841,32 +1841,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportRequestSamplingLevel {
-        #[doc = "If the `samplingLevel` field is unspecified the `DEFAULT` sampling level\nis used."]
-        SamplingUnspecified,
         #[doc = "Returns response with a sample size that balances speed and\naccuracy."]
         Default,
-        #[doc = "It returns a fast response with a smaller sampling size."]
-        Small,
         #[doc = "Returns a more accurate response using a large sampling size. But this\nmay result in response being slower."]
         Large,
+        #[doc = "If the `samplingLevel` field is unspecified the `DEFAULT` sampling level\nis used."]
+        SamplingUnspecified,
+        #[doc = "It returns a fast response with a smaller sampling size."]
+        Small,
     }
     impl ReportRequestSamplingLevel {
         pub fn as_str(self) -> &'static str {
             match self {
-                ReportRequestSamplingLevel::SamplingUnspecified => "SAMPLING_UNSPECIFIED",
                 ReportRequestSamplingLevel::Default => "DEFAULT",
-                ReportRequestSamplingLevel::Small => "SMALL",
                 ReportRequestSamplingLevel::Large => "LARGE",
+                ReportRequestSamplingLevel::SamplingUnspecified => "SAMPLING_UNSPECIFIED",
+                ReportRequestSamplingLevel::Small => "SMALL",
             }
         }
     }
     impl ::std::fmt::Display for ReportRequestSamplingLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReportRequestSamplingLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1874,16 +1874,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReportRequestSamplingLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SAMPLING_UNSPECIFIED" => ReportRequestSamplingLevel::SamplingUnspecified,
                 "DEFAULT" => ReportRequestSamplingLevel::Default,
-                "SMALL" => ReportRequestSamplingLevel::Small,
                 "LARGE" => ReportRequestSamplingLevel::Large,
+                "SAMPLING_UNSPECIFIED" => ReportRequestSamplingLevel::SamplingUnspecified,
+                "SMALL" => ReportRequestSamplingLevel::Small,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2073,11 +2073,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchUserActivityRequestActivityTypesItems {
         ActivityTypeUnspecified,
-        Pageview,
-        Screenview,
-        Goal,
         Ecommerce,
         Event,
+        Goal,
+        Pageview,
+        Screenview,
     }
     impl SearchUserActivityRequestActivityTypesItems {
         pub fn as_str(self) -> &'static str {
@@ -2085,21 +2085,21 @@ pub mod schemas {
                 SearchUserActivityRequestActivityTypesItems::ActivityTypeUnspecified => {
                     "ACTIVITY_TYPE_UNSPECIFIED"
                 }
-                SearchUserActivityRequestActivityTypesItems::Pageview => "PAGEVIEW",
-                SearchUserActivityRequestActivityTypesItems::Screenview => "SCREENVIEW",
-                SearchUserActivityRequestActivityTypesItems::Goal => "GOAL",
                 SearchUserActivityRequestActivityTypesItems::Ecommerce => "ECOMMERCE",
                 SearchUserActivityRequestActivityTypesItems::Event => "EVENT",
+                SearchUserActivityRequestActivityTypesItems::Goal => "GOAL",
+                SearchUserActivityRequestActivityTypesItems::Pageview => "PAGEVIEW",
+                SearchUserActivityRequestActivityTypesItems::Screenview => "SCREENVIEW",
             }
         }
     }
     impl ::std::fmt::Display for SearchUserActivityRequestActivityTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SearchUserActivityRequestActivityTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2107,7 +2107,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SearchUserActivityRequestActivityTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2116,11 +2116,11 @@ pub mod schemas {
                 "ACTIVITY_TYPE_UNSPECIFIED" => {
                     SearchUserActivityRequestActivityTypesItems::ActivityTypeUnspecified
                 }
-                "PAGEVIEW" => SearchUserActivityRequestActivityTypesItems::Pageview,
-                "SCREENVIEW" => SearchUserActivityRequestActivityTypesItems::Screenview,
-                "GOAL" => SearchUserActivityRequestActivityTypesItems::Goal,
                 "ECOMMERCE" => SearchUserActivityRequestActivityTypesItems::Ecommerce,
                 "EVENT" => SearchUserActivityRequestActivityTypesItems::Event,
+                "GOAL" => SearchUserActivityRequestActivityTypesItems::Goal,
+                "PAGEVIEW" => SearchUserActivityRequestActivityTypesItems::Pageview,
+                "SCREENVIEW" => SearchUserActivityRequestActivityTypesItems::Screenview,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2264,50 +2264,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SegmentDimensionFilterOperator {
-        #[doc = "If the match type is unspecified, it is treated as a REGEXP."]
-        OperatorUnspecified,
-        #[doc = "The match expression is treated as a regular expression. All other match\ntypes are not treated as regular expressions."]
-        Regexp,
         #[doc = "Matches the values which begin with the match expression provided."]
         BeginsWith,
         #[doc = "Matches the values which end with the match expression provided."]
         EndsWith,
-        #[doc = "Substring match."]
-        Partial,
         #[doc = "The value should match the match expression entirely."]
         Exact,
         #[doc = "This option is used to specify a dimension filter whose expression can\ntake any value from a selected list of values. This helps avoiding\nevaluating multiple exact match dimension filters which are OR'ed for\nevery single response row. For example:\n\n````text\nexpressions: [\"A\", \"B\", \"C\"]\n````\n\nAny response row whose dimension has it is value as A, B or C, matches\nthis DimensionFilter."]
         InList,
-        #[doc = "Integer comparison filters.\ncase sensitivity is ignored for these and the expression\nis assumed to be a string representing an integer.\nFailure conditions:\n\n* if expression is not a valid int64, the client should expect\n  an error.\n* input dimensions that are not valid int64 values will never match the\n  filter.\n\nChecks if the dimension is numerically less than the match expression."]
-        NumericLessThan,
-        #[doc = "Checks if the dimension is numerically greater than the match\nexpression."]
-        NumericGreaterThan,
         #[doc = "Checks if the dimension is numerically between the minimum and maximum\nof the match expression, boundaries excluded."]
         NumericBetween,
+        #[doc = "Checks if the dimension is numerically greater than the match\nexpression."]
+        NumericGreaterThan,
+        #[doc = "Integer comparison filters.\ncase sensitivity is ignored for these and the expression\nis assumed to be a string representing an integer.\nFailure conditions:\n\n* if expression is not a valid int64, the client should expect\n  an error.\n* input dimensions that are not valid int64 values will never match the\n  filter.\n\nChecks if the dimension is numerically less than the match expression."]
+        NumericLessThan,
+        #[doc = "If the match type is unspecified, it is treated as a REGEXP."]
+        OperatorUnspecified,
+        #[doc = "Substring match."]
+        Partial,
+        #[doc = "The match expression is treated as a regular expression. All other match\ntypes are not treated as regular expressions."]
+        Regexp,
     }
     impl SegmentDimensionFilterOperator {
         pub fn as_str(self) -> &'static str {
             match self {
-                SegmentDimensionFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
-                SegmentDimensionFilterOperator::Regexp => "REGEXP",
                 SegmentDimensionFilterOperator::BeginsWith => "BEGINS_WITH",
                 SegmentDimensionFilterOperator::EndsWith => "ENDS_WITH",
-                SegmentDimensionFilterOperator::Partial => "PARTIAL",
                 SegmentDimensionFilterOperator::Exact => "EXACT",
                 SegmentDimensionFilterOperator::InList => "IN_LIST",
-                SegmentDimensionFilterOperator::NumericLessThan => "NUMERIC_LESS_THAN",
-                SegmentDimensionFilterOperator::NumericGreaterThan => "NUMERIC_GREATER_THAN",
                 SegmentDimensionFilterOperator::NumericBetween => "NUMERIC_BETWEEN",
+                SegmentDimensionFilterOperator::NumericGreaterThan => "NUMERIC_GREATER_THAN",
+                SegmentDimensionFilterOperator::NumericLessThan => "NUMERIC_LESS_THAN",
+                SegmentDimensionFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
+                SegmentDimensionFilterOperator::Partial => "PARTIAL",
+                SegmentDimensionFilterOperator::Regexp => "REGEXP",
             }
         }
     }
     impl ::std::fmt::Display for SegmentDimensionFilterOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SegmentDimensionFilterOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2315,22 +2315,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SegmentDimensionFilterOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPERATOR_UNSPECIFIED" => SegmentDimensionFilterOperator::OperatorUnspecified,
-                "REGEXP" => SegmentDimensionFilterOperator::Regexp,
                 "BEGINS_WITH" => SegmentDimensionFilterOperator::BeginsWith,
                 "ENDS_WITH" => SegmentDimensionFilterOperator::EndsWith,
-                "PARTIAL" => SegmentDimensionFilterOperator::Partial,
                 "EXACT" => SegmentDimensionFilterOperator::Exact,
                 "IN_LIST" => SegmentDimensionFilterOperator::InList,
-                "NUMERIC_LESS_THAN" => SegmentDimensionFilterOperator::NumericLessThan,
-                "NUMERIC_GREATER_THAN" => SegmentDimensionFilterOperator::NumericGreaterThan,
                 "NUMERIC_BETWEEN" => SegmentDimensionFilterOperator::NumericBetween,
+                "NUMERIC_GREATER_THAN" => SegmentDimensionFilterOperator::NumericGreaterThan,
+                "NUMERIC_LESS_THAN" => SegmentDimensionFilterOperator::NumericLessThan,
+                "OPERATOR_UNSPECIFIED" => SegmentDimensionFilterOperator::OperatorUnspecified,
+                "PARTIAL" => SegmentDimensionFilterOperator::Partial,
+                "REGEXP" => SegmentDimensionFilterOperator::Regexp,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2456,35 +2456,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SegmentMetricFilterOperator {
-        #[doc = "Unspecified operator is treated as `LESS_THAN` operator."]
-        UnspecifiedOperator,
-        #[doc = "Checks if the metric value is less than comparison value."]
-        LessThan,
-        #[doc = "Checks if the metric value is greater than comparison value."]
-        GreaterThan,
-        #[doc = "Equals operator."]
-        Equal,
         #[doc = "For between operator, both the minimum and maximum are exclusive.\nWe will use `LT` and `GT` for comparison."]
         Between,
+        #[doc = "Equals operator."]
+        Equal,
+        #[doc = "Checks if the metric value is greater than comparison value."]
+        GreaterThan,
+        #[doc = "Checks if the metric value is less than comparison value."]
+        LessThan,
+        #[doc = "Unspecified operator is treated as `LESS_THAN` operator."]
+        UnspecifiedOperator,
     }
     impl SegmentMetricFilterOperator {
         pub fn as_str(self) -> &'static str {
             match self {
-                SegmentMetricFilterOperator::UnspecifiedOperator => "UNSPECIFIED_OPERATOR",
-                SegmentMetricFilterOperator::LessThan => "LESS_THAN",
-                SegmentMetricFilterOperator::GreaterThan => "GREATER_THAN",
-                SegmentMetricFilterOperator::Equal => "EQUAL",
                 SegmentMetricFilterOperator::Between => "BETWEEN",
+                SegmentMetricFilterOperator::Equal => "EQUAL",
+                SegmentMetricFilterOperator::GreaterThan => "GREATER_THAN",
+                SegmentMetricFilterOperator::LessThan => "LESS_THAN",
+                SegmentMetricFilterOperator::UnspecifiedOperator => "UNSPECIFIED_OPERATOR",
             }
         }
     }
     impl ::std::fmt::Display for SegmentMetricFilterOperator {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SegmentMetricFilterOperator {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2492,17 +2492,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SegmentMetricFilterOperator {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_OPERATOR" => SegmentMetricFilterOperator::UnspecifiedOperator,
-                "LESS_THAN" => SegmentMetricFilterOperator::LessThan,
-                "GREATER_THAN" => SegmentMetricFilterOperator::GreaterThan,
-                "EQUAL" => SegmentMetricFilterOperator::Equal,
                 "BETWEEN" => SegmentMetricFilterOperator::Between,
+                "EQUAL" => SegmentMetricFilterOperator::Equal,
+                "GREATER_THAN" => SegmentMetricFilterOperator::GreaterThan,
+                "LESS_THAN" => SegmentMetricFilterOperator::LessThan,
+                "UNSPECIFIED_OPERATOR" => SegmentMetricFilterOperator::UnspecifiedOperator,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2523,35 +2523,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SegmentMetricFilterScope {
-        #[doc = "If the scope is unspecified, it defaults to the condition scope,\n`USER` or `SESSION` depending on if the segment is trying to choose\nusers or sessions."]
-        UnspecifiedScope,
-        #[doc = "Product scope."]
-        Product,
         #[doc = "Hit scope."]
         Hit,
+        #[doc = "Product scope."]
+        Product,
         #[doc = "Session scope."]
         Session,
+        #[doc = "If the scope is unspecified, it defaults to the condition scope,\n`USER` or `SESSION` depending on if the segment is trying to choose\nusers or sessions."]
+        UnspecifiedScope,
         #[doc = "User scope."]
         User,
     }
     impl SegmentMetricFilterScope {
         pub fn as_str(self) -> &'static str {
             match self {
-                SegmentMetricFilterScope::UnspecifiedScope => "UNSPECIFIED_SCOPE",
-                SegmentMetricFilterScope::Product => "PRODUCT",
                 SegmentMetricFilterScope::Hit => "HIT",
+                SegmentMetricFilterScope::Product => "PRODUCT",
                 SegmentMetricFilterScope::Session => "SESSION",
+                SegmentMetricFilterScope::UnspecifiedScope => "UNSPECIFIED_SCOPE",
                 SegmentMetricFilterScope::User => "USER",
             }
         }
     }
     impl ::std::fmt::Display for SegmentMetricFilterScope {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SegmentMetricFilterScope {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2559,16 +2559,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SegmentMetricFilterScope {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_SCOPE" => SegmentMetricFilterScope::UnspecifiedScope,
-                "PRODUCT" => SegmentMetricFilterScope::Product,
                 "HIT" => SegmentMetricFilterScope::Hit,
+                "PRODUCT" => SegmentMetricFilterScope::Product,
                 "SESSION" => SegmentMetricFilterScope::Session,
+                "UNSPECIFIED_SCOPE" => SegmentMetricFilterScope::UnspecifiedScope,
                 "USER" => SegmentMetricFilterScope::User,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2628,29 +2628,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SegmentSequenceStepMatchType {
-        #[doc = "Unspecified match type is treated as precedes."]
-        UnspecifiedMatchType,
-        #[doc = "Operator indicates that the previous step precedes the next step."]
-        Precedes,
         #[doc = "Operator indicates that the previous step immediately precedes the next\nstep."]
         ImmediatelyPrecedes,
+        #[doc = "Operator indicates that the previous step precedes the next step."]
+        Precedes,
+        #[doc = "Unspecified match type is treated as precedes."]
+        UnspecifiedMatchType,
     }
     impl SegmentSequenceStepMatchType {
         pub fn as_str(self) -> &'static str {
             match self {
-                SegmentSequenceStepMatchType::UnspecifiedMatchType => "UNSPECIFIED_MATCH_TYPE",
-                SegmentSequenceStepMatchType::Precedes => "PRECEDES",
                 SegmentSequenceStepMatchType::ImmediatelyPrecedes => "IMMEDIATELY_PRECEDES",
+                SegmentSequenceStepMatchType::Precedes => "PRECEDES",
+                SegmentSequenceStepMatchType::UnspecifiedMatchType => "UNSPECIFIED_MATCH_TYPE",
             }
         }
     }
     impl ::std::fmt::Display for SegmentSequenceStepMatchType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SegmentSequenceStepMatchType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2658,15 +2658,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SegmentSequenceStepMatchType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_MATCH_TYPE" => SegmentSequenceStepMatchType::UnspecifiedMatchType,
-                "PRECEDES" => SegmentSequenceStepMatchType::Precedes,
                 "IMMEDIATELY_PRECEDES" => SegmentSequenceStepMatchType::ImmediatelyPrecedes,
+                "PRECEDES" => SegmentSequenceStepMatchType::Precedes,
+                "UNSPECIFIED_MATCH_TYPE" => SegmentSequenceStepMatchType::UnspecifiedMatchType,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2797,29 +2797,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserType {
-        #[doc = "When the User Id Type is not specified, the default type used will be\nCLIENT_ID."]
-        UserIdTypeUnspecified,
-        #[doc = "A single user, like a signed-in user account, that may interact with\ncontent across one or more devices and / or browser instances."]
-        UserId,
         #[doc = "Analytics assigned client_id."]
         ClientId,
+        #[doc = "A single user, like a signed-in user account, that may interact with\ncontent across one or more devices and / or browser instances."]
+        UserId,
+        #[doc = "When the User Id Type is not specified, the default type used will be\nCLIENT_ID."]
+        UserIdTypeUnspecified,
     }
     impl UserType {
         pub fn as_str(self) -> &'static str {
             match self {
-                UserType::UserIdTypeUnspecified => "USER_ID_TYPE_UNSPECIFIED",
-                UserType::UserId => "USER_ID",
                 UserType::ClientId => "CLIENT_ID",
+                UserType::UserId => "USER_ID",
+                UserType::UserIdTypeUnspecified => "USER_ID_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for UserType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UserType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2827,15 +2827,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UserType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "USER_ID_TYPE_UNSPECIFIED" => UserType::UserIdTypeUnspecified,
-                "USER_ID" => UserType::UserId,
                 "CLIENT_ID" => UserType::ClientId,
+                "USER_ID" => UserType::UserId,
+                "USER_ID_TYPE_UNSPECIFIED" => UserType::UserIdTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2936,12 +2936,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2949,7 +2949,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2992,12 +2992,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3005,7 +3005,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3058,7 +3058,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod reports {
         pub mod params {}
         pub struct ReportsActions<'a, A> {
@@ -3112,19 +3112,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3304,19 +3294,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3702,7 +3682,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -3711,7 +3694,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -3724,58 +3707,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

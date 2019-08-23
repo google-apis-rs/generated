@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Video Intelligence",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p2beta1",
-  "revision": "20190713",
+  "revision": "20190814",
   "title": "Cloud Video Intelligence API",
   "description": "Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.",
   "ownerDomain": "google.com",

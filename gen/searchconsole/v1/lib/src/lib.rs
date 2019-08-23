@@ -56,43 +56,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MobileFriendlyIssueRule {
-        #[doc = "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken."]
-        MobileFriendlyRuleUnspecified,
-        #[doc = "Plugins incompatible with mobile devices are being used. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#flash_usage)."]
-        UsesIncompatiblePlugins,
         #[doc = "Viewsport is not specified using the meta viewport tag. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#viewport_not_configured)."]
         ConfigureViewport,
         #[doc = "Viewport defined to a fixed width. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#fixed-width_viewport)."]
         FixedWidthViewport,
+        #[doc = "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken."]
+        MobileFriendlyRuleUnspecified,
         #[doc = "Content not sized to viewport. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#content_not_sized_to_viewport)."]
         SizeContentToViewport,
-        #[doc = "Font size is too small for easy reading on a small screen. [Learn More]\n(https://support.google.com/webmasters/answer/6352293#small_font_size)."]
-        UseLegibleFontSizes,
         #[doc = "Touch elements are too close to each other. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."]
         TapTargetsTooClose,
+        #[doc = "Font size is too small for easy reading on a small screen. [Learn More]\n(https://support.google.com/webmasters/answer/6352293#small_font_size)."]
+        UseLegibleFontSizes,
+        #[doc = "Plugins incompatible with mobile devices are being used. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#flash_usage)."]
+        UsesIncompatiblePlugins,
     }
     impl MobileFriendlyIssueRule {
         pub fn as_str(self) -> &'static str {
             match self {
+                MobileFriendlyIssueRule::ConfigureViewport => "CONFIGURE_VIEWPORT",
+                MobileFriendlyIssueRule::FixedWidthViewport => "FIXED_WIDTH_VIEWPORT",
                 MobileFriendlyIssueRule::MobileFriendlyRuleUnspecified => {
                     "MOBILE_FRIENDLY_RULE_UNSPECIFIED"
                 }
-                MobileFriendlyIssueRule::UsesIncompatiblePlugins => "USES_INCOMPATIBLE_PLUGINS",
-                MobileFriendlyIssueRule::ConfigureViewport => "CONFIGURE_VIEWPORT",
-                MobileFriendlyIssueRule::FixedWidthViewport => "FIXED_WIDTH_VIEWPORT",
                 MobileFriendlyIssueRule::SizeContentToViewport => "SIZE_CONTENT_TO_VIEWPORT",
-                MobileFriendlyIssueRule::UseLegibleFontSizes => "USE_LEGIBLE_FONT_SIZES",
                 MobileFriendlyIssueRule::TapTargetsTooClose => "TAP_TARGETS_TOO_CLOSE",
+                MobileFriendlyIssueRule::UseLegibleFontSizes => "USE_LEGIBLE_FONT_SIZES",
+                MobileFriendlyIssueRule::UsesIncompatiblePlugins => "USES_INCOMPATIBLE_PLUGINS",
             }
         }
     }
     impl ::std::fmt::Display for MobileFriendlyIssueRule {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MobileFriendlyIssueRule {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -100,21 +100,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MobileFriendlyIssueRule {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CONFIGURE_VIEWPORT" => MobileFriendlyIssueRule::ConfigureViewport,
+                "FIXED_WIDTH_VIEWPORT" => MobileFriendlyIssueRule::FixedWidthViewport,
                 "MOBILE_FRIENDLY_RULE_UNSPECIFIED" => {
                     MobileFriendlyIssueRule::MobileFriendlyRuleUnspecified
                 }
-                "USES_INCOMPATIBLE_PLUGINS" => MobileFriendlyIssueRule::UsesIncompatiblePlugins,
-                "CONFIGURE_VIEWPORT" => MobileFriendlyIssueRule::ConfigureViewport,
-                "FIXED_WIDTH_VIEWPORT" => MobileFriendlyIssueRule::FixedWidthViewport,
                 "SIZE_CONTENT_TO_VIEWPORT" => MobileFriendlyIssueRule::SizeContentToViewport,
-                "USE_LEGIBLE_FONT_SIZES" => MobileFriendlyIssueRule::UseLegibleFontSizes,
                 "TAP_TARGETS_TOO_CLOSE" => MobileFriendlyIssueRule::TapTargetsTooClose,
+                "USE_LEGIBLE_FONT_SIZES" => MobileFriendlyIssueRule::UseLegibleFontSizes,
+                "USES_INCOMPATIBLE_PLUGINS" => MobileFriendlyIssueRule::UsesIncompatiblePlugins,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -216,25 +216,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RunMobileFriendlyTestResponseMobileFriendliness {
-        #[doc = "Internal error when running this test. Please try running the test again."]
-        MobileFriendlyTestResultUnspecified,
         #[doc = "The page is mobile friendly."]
         MobileFriendly,
+        #[doc = "Internal error when running this test. Please try running the test again."]
+        MobileFriendlyTestResultUnspecified,
         #[doc = "The page is not mobile friendly."]
         NotMobileFriendly,
     }
     impl RunMobileFriendlyTestResponseMobileFriendliness {
         pub fn as_str(self) -> &'static str {
-            match self { RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified => "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" , RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly => "MOBILE_FRIENDLY" , RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly => "NOT_MOBILE_FRIENDLY" , }
+            match self { RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly => "MOBILE_FRIENDLY" , RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified => "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" , RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly => "NOT_MOBILE_FRIENDLY" , }
         }
     }
     impl ::std::fmt::Display for RunMobileFriendlyTestResponseMobileFriendliness {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RunMobileFriendlyTestResponseMobileFriendliness {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -242,12 +242,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RunMobileFriendlyTestResponseMobileFriendliness {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified , "MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly , "NOT_MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly , "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified , "NOT_MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for RunMobileFriendlyTestResponseMobileFriendliness {
@@ -300,32 +300,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestStatusStatus {
-        #[doc = "Internal error when running this test. Please try running the test again."]
-        TestStatusUnspecified,
         #[doc = "Inspection has completed without errors."]
         Complete,
         #[doc = "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later."]
         InternalError,
         #[doc = "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."]
         PageUnreachable,
+        #[doc = "Internal error when running this test. Please try running the test again."]
+        TestStatusUnspecified,
     }
     impl TestStatusStatus {
         pub fn as_str(self) -> &'static str {
             match self {
-                TestStatusStatus::TestStatusUnspecified => "TEST_STATUS_UNSPECIFIED",
                 TestStatusStatus::Complete => "COMPLETE",
                 TestStatusStatus::InternalError => "INTERNAL_ERROR",
                 TestStatusStatus::PageUnreachable => "PAGE_UNREACHABLE",
+                TestStatusStatus::TestStatusUnspecified => "TEST_STATUS_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for TestStatusStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TestStatusStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -333,16 +333,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TestStatusStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEST_STATUS_UNSPECIFIED" => TestStatusStatus::TestStatusUnspecified,
                 "COMPLETE" => TestStatusStatus::Complete,
                 "INTERNAL_ERROR" => TestStatusStatus::InternalError,
                 "PAGE_UNREACHABLE" => TestStatusStatus::PageUnreachable,
+                "TEST_STATUS_UNSPECIFIED" => TestStatusStatus::TestStatusUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -411,12 +411,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -424,7 +424,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -467,12 +467,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -480,7 +480,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -528,7 +528,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod url_testing_tools {
         pub mod params {}
         pub struct UrlTestingToolsActions<'a, A> {
@@ -593,19 +593,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -991,7 +981,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -1000,7 +993,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -1013,58 +1006,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

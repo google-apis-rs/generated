@@ -1,6 +1,12 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
+        #[serde(rename = "accessLevel", default)]
+        pub access_level:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessLevel>,
+        #[serde(rename = "accessPolicy", default)]
+        pub access_policy:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessPolicy>,
         #[doc = "Type of the asset. Example: \"compute.googleapis.com/Disk\"."]
         #[serde(rename = "assetType", default)]
         pub asset_type: ::std::option::Option<String>,
@@ -16,6 +22,10 @@ pub mod schemas {
         #[doc = "Representation of the resource."]
         #[serde(rename = "resource", default)]
         pub resource: ::std::option::Option<crate::schemas::Resource>,
+        #[serde(rename = "servicePerimeter", default)]
+        pub service_perimeter: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeter,
+        >,
     }
     impl ::field_selector::FieldSelector for Asset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -57,32 +67,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
-        #[doc = "Default case. Should never be this."]
-        LogTypeUnspecified,
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
         AdminRead,
-        #[doc = "Data writes. Example: CloudSQL Users create"]
-        DataWrite,
         #[doc = "Data reads. Example: CloudSQL Users list"]
         DataRead,
+        #[doc = "Data writes. Example: CloudSQL Users create"]
+        DataWrite,
+        #[doc = "Default case. Should never be this."]
+        LogTypeUnspecified,
     }
     impl AuditLogConfigLogType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
                 AuditLogConfigLogType::AdminRead => "ADMIN_READ",
-                AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::DataRead => "DATA_READ",
+                AuditLogConfigLogType::DataWrite => "DATA_WRITE",
+                AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AuditLogConfigLogType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -90,16 +100,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AuditLogConfigLogType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
                 "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
-                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
                 "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -134,9 +144,6 @@ pub mod schemas {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
         #[serde(rename = "exemptedMembers", default)]
         pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "Specifies whether principals can be exempted for the same LogType in\nlower-level resource policies. If true, any lower-level exemptions will\nbe ignored."]
-        #[serde(rename = "ignoreChildExemptions", default)]
-        pub ignore_child_exemptions: ::std::option::Option<bool>,
         #[doc = "The log type that this config enables."]
         #[serde(rename = "logType", default)]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
@@ -199,34 +206,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExportAssetsRequestContentType {
+        #[doc = "The Cloud Access context mananger Policy set on an asset."]
+        AccessPolicy,
         #[doc = "Unspecified content type."]
         ContentTypeUnspecified,
-        #[doc = "Resource metadata."]
-        Resource,
         #[doc = "The actual IAM policy set on a resource."]
         IamPolicy,
         #[doc = "The Cloud Organization Policy set on an asset."]
         OrgPolicy,
+        #[doc = "Resource metadata."]
+        Resource,
     }
     impl ExportAssetsRequestContentType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ExportAssetsRequestContentType::AccessPolicy => "ACCESS_POLICY",
                 ExportAssetsRequestContentType::ContentTypeUnspecified => {
                     "CONTENT_TYPE_UNSPECIFIED"
                 }
-                ExportAssetsRequestContentType::Resource => "RESOURCE",
                 ExportAssetsRequestContentType::IamPolicy => "IAM_POLICY",
                 ExportAssetsRequestContentType::OrgPolicy => "ORG_POLICY",
+                ExportAssetsRequestContentType::Resource => "RESOURCE",
             }
         }
     }
     impl ::std::fmt::Display for ExportAssetsRequestContentType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ExportAssetsRequestContentType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -234,18 +244,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ExportAssetsRequestContentType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ACCESS_POLICY" => ExportAssetsRequestContentType::AccessPolicy,
                 "CONTENT_TYPE_UNSPECIFIED" => {
                     ExportAssetsRequestContentType::ContentTypeUnspecified
                 }
-                "RESOURCE" => ExportAssetsRequestContentType::Resource,
                 "IAM_POLICY" => ExportAssetsRequestContentType::IamPolicy,
                 "ORG_POLICY" => ExportAssetsRequestContentType::OrgPolicy,
+                "RESOURCE" => ExportAssetsRequestContentType::Resource,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -410,12 +421,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for GoogleCloudOrgpolicyV1ListPolicyAllValues {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudOrgpolicyV1ListPolicyAllValues {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -423,7 +434,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudOrgpolicyV1ListPolicyAllValues {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -553,6 +564,590 @@ pub mod schemas {
     pub struct GoogleCloudOrgpolicyV1RestoreDefault;
     impl ::field_selector::FieldSelector for GoogleCloudOrgpolicyV1RestoreDefault {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1AccessLevel {
+        #[doc = "A `BasicLevel` composed of `Conditions`."]
+        #[serde(rename = "basic", default)]
+        pub basic:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevel>,
+        #[doc = "Output only. Time the `AccessLevel` was created in UTC."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Human readable title. Must be unique within the Policy."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Output only. Time the `AccessLevel` was updated in UTC."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+        #[doc = "Output only. Time the `AccessPolicy` was created in UTC."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`"]
+        #[serde(rename = "parent", default)]
+        pub parent: ::std::option::Option<String>,
+        #[doc = "Required. Human readable title. Does not affect behavior."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Output only. Time the `AccessPolicy` was updated in UTC."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        #[doc = "All `Conditions` must be true for the `BasicLevel` to be true."]
+        And,
+        #[doc = "If at least one `Condition` is true, then the `BasicLevel` is true."]
+        Or,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And => "AND",
+                GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or => "OR",
+            }
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AND" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And,
+                "OR" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1BasicLevel {
+        #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
+        #[serde(rename = "combiningFunction", default)]
+        pub combining_function: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction,
+        >,
+        #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
+        #[serde(rename = "conditions", default)]
+        pub conditions: ::std::option::Option<
+            Vec<crate::schemas::GoogleIdentityAccesscontextmanagerV1Condition>,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1BasicLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1Condition {
+        #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
+        #[serde(rename = "devicePolicy", default)]
+        pub device_policy:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1DevicePolicy>,
+        #[doc = "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for\na CIDR IP address block, the specified IP address portion must be properly\ntruncated (i.e. all the host bits must be zero) or the input is considered\nmalformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is\nnot. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas\n\"2001:db8::1/32\" is not. The originating IP of a request must be in one of\nthe listed subnets in order for this Condition to be true. If empty, all IP\naddresses are allowed."]
+        #[serde(rename = "ipSubnetworks", default)]
+        pub ip_subnetworks: ::std::option::Option<Vec<String>>,
+        #[doc = "The request must be made by one of the provided user or service\naccounts. Groups are not supported.\nSyntax:\n`user:{emailid}`\n`serviceAccount:{emailid}`\nIf not specified, a request may come from any user."]
+        #[serde(rename = "members", default)]
+        pub members: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether to negate the Condition. If true, the Condition becomes a NAND over\nits non-empty fields, each field must be false for the Condition overall to\nbe satisfied. Defaults to false."]
+        #[serde(rename = "negate", default)]
+        pub negate: ::std::option::Option<bool>,
+        #[doc = "The request must originate from one of the provided countries/regions.\nMust be valid ISO 3166-1 alpha-2 codes."]
+        #[serde(rename = "regions", default)]
+        pub regions: ::std::option::Option<Vec<String>>,
+        #[doc = "A list of other access levels defined in the same `Policy`, referenced by\nresource name. Referencing an `AccessLevel` which does not exist is an\nerror. All access levels listed must be granted for the Condition\nto be true. Example:\n\"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`"]
+        #[serde(rename = "requiredAccessLevels", default)]
+        pub required_access_levels: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1Condition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems {
+        Basic,
+        Complete,
+        ManagementUnspecified,
+        None,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic => "BASIC" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete => "COMPLETE" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified => "MANAGEMENT_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None => "NONE" , }
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "BASIC" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic , "COMPLETE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete , "MANAGEMENT_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified , "NONE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems {
+        Encrypted,
+        EncryptionUnspecified,
+        EncryptionUnsupported,
+        Unencrypted,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted => "ENCRYPTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified => "ENCRYPTION_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported => "ENCRYPTION_UNSUPPORTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted => "UNENCRYPTED" , }
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "ENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted , "ENCRYPTION_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified , "ENCRYPTION_UNSUPPORTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported , "UNENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1DevicePolicy { # [ doc = "Allowed device management levels, an empty list allows all management\nlevels." ] # [ serde ( rename = "allowedDeviceManagementLevels" , default ) ] pub allowed_device_management_levels : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems > > , # [ doc = "Allowed encryptions statuses, an empty list allows all statuses." ] # [ serde ( rename = "allowedEncryptionStatuses" , default ) ] pub allowed_encryption_statuses : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems > > , # [ doc = "Allowed OS versions, an empty list allows all types and all versions." ] # [ serde ( rename = "osConstraints" , default ) ] pub os_constraints : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1OsConstraint > > , # [ doc = "Whether the device needs to be approved by the customer admin." ] # [ serde ( rename = "requireAdminApproval" , default ) ] pub require_admin_approval : :: std :: option :: Option < bool > , # [ doc = "Whether the device needs to be corp owned." ] # [ serde ( rename = "requireCorpOwned" , default ) ] pub require_corp_owned : :: std :: option :: Option < bool > , # [ doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`." ] # [ serde ( rename = "requireScreenlock" , default ) ] pub require_screenlock : :: std :: option :: Option < bool > , }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1DevicePolicy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        #[doc = "A desktop ChromeOS operating system."]
+        DesktopChromeOs,
+        #[doc = "A desktop Linux operating system."]
+        DesktopLinux,
+        #[doc = "A desktop Mac operating system."]
+        DesktopMac,
+        #[doc = "A desktop Windows operating system."]
+        DesktopWindows,
+        #[doc = "The operating system of the device is not specified or not known."]
+        OsUnspecified,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs => {
+                    "DESKTOP_CHROME_OS"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux => {
+                    "DESKTOP_LINUX"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac => "DESKTOP_MAC",
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows => {
+                    "DESKTOP_WINDOWS"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified => {
+                    "OS_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DESKTOP_CHROME_OS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs
+                }
+                "DESKTOP_LINUX" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux
+                }
+                "DESKTOP_MAC" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac,
+                "DESKTOP_WINDOWS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows
+                }
+                "OS_UNSPECIFIED" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1OsConstraint {
+        #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
+        #[serde(rename = "minimumVersion", default)]
+        pub minimum_version: ::std::option::Option<String>,
+        #[doc = "Required. The allowed OS type."]
+        #[serde(rename = "osType", default)]
+        pub os_type: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1OsConstraintOsType,
+        >,
+        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
+        #[serde(rename = "requireVerifiedChromeOs", default)]
+        pub require_verified_chrome_os: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1OsConstraint {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        #[doc = "Perimeter Bridge."]
+        PerimeterTypeBridge,
+        #[doc = "Regular Perimeter."]
+        PerimeterTypeRegular,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge => "PERIMETER_TYPE_BRIDGE" , GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular => "PERIMETER_TYPE_REGULAR" , }
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "PERIMETER_TYPE_BRIDGE" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge , "PERIMETER_TYPE_REGULAR" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
+        #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nthe restricted service list as well as access level lists must be\nempty."]
+        #[serde(rename = "perimeterType", default)]
+        pub perimeter_type: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType,
+        >,
+        #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig,
+        >,
+        #[doc = "Human readable title. Must be unique within the Policy."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
+        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
+        #[serde(rename = "accessLevels", default)]
+        pub access_levels: ::std::option::Option<Vec<String>>,
+        #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
+        #[serde(rename = "resources", default)]
+        pub resources: ::std::option::Option<Vec<String>>,
+        #[doc = "GCP services that are subject to the Service Perimeter restrictions. For\nexample, if `storage.googleapis.com` is specified, access to the storage\nbuckets inside the perimeter must meet the perimeter's access restrictions."]
+        #[serde(rename = "restrictedServices", default)]
+        pub restricted_services: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
@@ -767,12 +1362,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -780,7 +1375,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -823,12 +1418,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -836,7 +1431,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -889,7 +1484,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a, A> {
@@ -940,19 +1535,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1087,30 +1672,32 @@ mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum BatchGetAssetsHistoryContentType {
+                AccessPolicy,
                 ContentTypeUnspecified,
-                Resource,
                 IamPolicy,
                 OrgPolicy,
+                Resource,
             }
             impl BatchGetAssetsHistoryContentType {
                 pub fn as_str(self) -> &'static str {
                     match self {
+                        BatchGetAssetsHistoryContentType::AccessPolicy => "ACCESS_POLICY",
                         BatchGetAssetsHistoryContentType::ContentTypeUnspecified => {
                             "CONTENT_TYPE_UNSPECIFIED"
                         }
-                        BatchGetAssetsHistoryContentType::Resource => "RESOURCE",
                         BatchGetAssetsHistoryContentType::IamPolicy => "IAM_POLICY",
                         BatchGetAssetsHistoryContentType::OrgPolicy => "ORG_POLICY",
+                        BatchGetAssetsHistoryContentType::Resource => "RESOURCE",
                     }
                 }
             }
             impl ::std::fmt::Display for BatchGetAssetsHistoryContentType {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for BatchGetAssetsHistoryContentType {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -1118,18 +1705,19 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for BatchGetAssetsHistoryContentType {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
+                        "ACCESS_POLICY" => BatchGetAssetsHistoryContentType::AccessPolicy,
                         "CONTENT_TYPE_UNSPECIFIED" => {
                             BatchGetAssetsHistoryContentType::ContentTypeUnspecified
                         }
-                        "RESOURCE" => BatchGetAssetsHistoryContentType::Resource,
                         "IAM_POLICY" => BatchGetAssetsHistoryContentType::IamPolicy,
                         "ORG_POLICY" => BatchGetAssetsHistoryContentType::OrgPolicy,
+                        "RESOURCE" => BatchGetAssetsHistoryContentType::Resource,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1255,19 +1843,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1431,19 +2009,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1835,7 +2403,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -1844,7 +2415,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -1857,58 +2428,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

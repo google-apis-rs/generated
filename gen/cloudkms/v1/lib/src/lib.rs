@@ -137,32 +137,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
-        #[doc = "Default case. Should never be this."]
-        LogTypeUnspecified,
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
         AdminRead,
-        #[doc = "Data writes. Example: CloudSQL Users create"]
-        DataWrite,
         #[doc = "Data reads. Example: CloudSQL Users list"]
         DataRead,
+        #[doc = "Data writes. Example: CloudSQL Users create"]
+        DataWrite,
+        #[doc = "Default case. Should never be this."]
+        LogTypeUnspecified,
     }
     impl AuditLogConfigLogType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
                 AuditLogConfigLogType::AdminRead => "ADMIN_READ",
-                AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::DataRead => "DATA_READ",
+                AuditLogConfigLogType::DataWrite => "DATA_WRITE",
+                AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AuditLogConfigLogType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -170,16 +170,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AuditLogConfigLogType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
                 "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
-                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
                 "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -261,32 +261,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyPurpose {
+        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricDecrypt and\nGetPublicKey."]
+        AsymmetricDecrypt,
+        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricSign and\nGetPublicKey."]
+        AsymmetricSign,
         #[doc = "Not specified."]
         CryptoKeyPurposeUnspecified,
         #[doc = "CryptoKeys with this purpose may be used with\nEncrypt and\nDecrypt."]
         EncryptDecrypt,
-        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricSign and\nGetPublicKey."]
-        AsymmetricSign,
-        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricDecrypt and\nGetPublicKey."]
-        AsymmetricDecrypt,
     }
     impl CryptoKeyPurpose {
         pub fn as_str(self) -> &'static str {
             match self {
+                CryptoKeyPurpose::AsymmetricDecrypt => "ASYMMETRIC_DECRYPT",
+                CryptoKeyPurpose::AsymmetricSign => "ASYMMETRIC_SIGN",
                 CryptoKeyPurpose::CryptoKeyPurposeUnspecified => "CRYPTO_KEY_PURPOSE_UNSPECIFIED",
                 CryptoKeyPurpose::EncryptDecrypt => "ENCRYPT_DECRYPT",
-                CryptoKeyPurpose::AsymmetricSign => "ASYMMETRIC_SIGN",
-                CryptoKeyPurpose::AsymmetricDecrypt => "ASYMMETRIC_DECRYPT",
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyPurpose {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyPurpose {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -294,16 +294,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyPurpose {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ASYMMETRIC_DECRYPT" => CryptoKeyPurpose::AsymmetricDecrypt,
+                "ASYMMETRIC_SIGN" => CryptoKeyPurpose::AsymmetricSign,
                 "CRYPTO_KEY_PURPOSE_UNSPECIFIED" => CryptoKeyPurpose::CryptoKeyPurposeUnspecified,
                 "ENCRYPT_DECRYPT" => CryptoKeyPurpose::EncryptDecrypt,
-                "ASYMMETRIC_SIGN" => CryptoKeyPurpose::AsymmetricSign,
-                "ASYMMETRIC_DECRYPT" => CryptoKeyPurpose::AsymmetricDecrypt,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -373,24 +373,12 @@ pub mod schemas {
     pub enum CryptoKeyVersionAlgorithm {
         #[doc = "Not specified."]
         CryptoKeyVersionAlgorithmUnspecified,
+        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
+        EcSignP256Sha256,
+        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
+        EcSignP384Sha384,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
-        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
-        RsaSignPss2048Sha256,
-        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
-        RsaSignPss3072Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
-        RsaSignPss4096Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
-        RsaSignPss4096Sha512,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
-        RsaSignPkcs12048Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
-        RsaSignPkcs13072Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
-        RsaSignPkcs14096Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
-        RsaSignPkcs14096Sha512,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
         RsaDecryptOaep2048Sha256,
         #[doc = "RSAES-OAEP 3072 bit key with a SHA256 digest."]
@@ -399,10 +387,22 @@ pub mod schemas {
         RsaDecryptOaep4096Sha256,
         #[doc = "RSAES-OAEP 4096 bit key with a SHA512 digest."]
         RsaDecryptOaep4096Sha512,
-        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
-        EcSignP256Sha256,
-        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
-        EcSignP384Sha384,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
+        RsaSignPkcs12048Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
+        RsaSignPkcs13072Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
+        RsaSignPkcs14096Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
+        RsaSignPkcs14096Sha512,
+        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
+        RsaSignPss2048Sha256,
+        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
+        RsaSignPss3072Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
+        RsaSignPss4096Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
+        RsaSignPss4096Sha512,
     }
     impl CryptoKeyVersionAlgorithm {
         pub fn as_str(self) -> &'static str {
@@ -410,17 +410,11 @@ pub mod schemas {
                 CryptoKeyVersionAlgorithm::CryptoKeyVersionAlgorithmUnspecified => {
                     "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
                 }
+                CryptoKeyVersionAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
+                CryptoKeyVersionAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
                 CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
                 }
-                CryptoKeyVersionAlgorithm::RsaSignPss2048Sha256 => "RSA_SIGN_PSS_2048_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPss3072Sha256 => "RSA_SIGN_PSS_3072_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
-                CryptoKeyVersionAlgorithm::RsaSignPkcs12048Sha256 => "RSA_SIGN_PKCS1_2048_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPkcs13072Sha256 => "RSA_SIGN_PKCS1_3072_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha256 => "RSA_SIGN_PKCS1_4096_SHA256",
-                CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha512 => "RSA_SIGN_PKCS1_4096_SHA512",
                 CryptoKeyVersionAlgorithm::RsaDecryptOaep2048Sha256 => {
                     "RSA_DECRYPT_OAEP_2048_SHA256"
                 }
@@ -433,18 +427,24 @@ pub mod schemas {
                 CryptoKeyVersionAlgorithm::RsaDecryptOaep4096Sha512 => {
                     "RSA_DECRYPT_OAEP_4096_SHA512"
                 }
-                CryptoKeyVersionAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
-                CryptoKeyVersionAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                CryptoKeyVersionAlgorithm::RsaSignPkcs12048Sha256 => "RSA_SIGN_PKCS1_2048_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPkcs13072Sha256 => "RSA_SIGN_PKCS1_3072_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha256 => "RSA_SIGN_PKCS1_4096_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha512 => "RSA_SIGN_PKCS1_4096_SHA512",
+                CryptoKeyVersionAlgorithm::RsaSignPss2048Sha256 => "RSA_SIGN_PSS_2048_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPss3072Sha256 => "RSA_SIGN_PSS_3072_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
+                CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionAlgorithm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyVersionAlgorithm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -452,7 +452,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyVersionAlgorithm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -461,17 +461,11 @@ pub mod schemas {
                 "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
                     CryptoKeyVersionAlgorithm::CryptoKeyVersionAlgorithmUnspecified
                 }
+                "EC_SIGN_P256_SHA256" => CryptoKeyVersionAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => CryptoKeyVersionAlgorithm::EcSignP384Sha384,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption
                 }
-                "RSA_SIGN_PSS_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss2048Sha256,
-                "RSA_SIGN_PSS_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss3072Sha256,
-                "RSA_SIGN_PSS_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256,
-                "RSA_SIGN_PSS_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512,
-                "RSA_SIGN_PKCS1_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs12048Sha256,
-                "RSA_SIGN_PKCS1_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs13072Sha256,
-                "RSA_SIGN_PKCS1_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha256,
-                "RSA_SIGN_PKCS1_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha512,
                 "RSA_DECRYPT_OAEP_2048_SHA256" => {
                     CryptoKeyVersionAlgorithm::RsaDecryptOaep2048Sha256
                 }
@@ -484,8 +478,14 @@ pub mod schemas {
                 "RSA_DECRYPT_OAEP_4096_SHA512" => {
                     CryptoKeyVersionAlgorithm::RsaDecryptOaep4096Sha512
                 }
-                "EC_SIGN_P256_SHA256" => CryptoKeyVersionAlgorithm::EcSignP256Sha256,
-                "EC_SIGN_P384_SHA384" => CryptoKeyVersionAlgorithm::EcSignP384Sha384,
+                "RSA_SIGN_PKCS1_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs12048Sha256,
+                "RSA_SIGN_PKCS1_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs13072Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha512,
+                "RSA_SIGN_PSS_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss2048Sha256,
+                "RSA_SIGN_PSS_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss3072Sha256,
+                "RSA_SIGN_PSS_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256,
+                "RSA_SIGN_PSS_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -506,31 +506,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionProtectionLevel {
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
         #[doc = "Not specified."]
         ProtectionLevelUnspecified,
         #[doc = "Crypto operations are performed in software."]
         Software,
-        #[doc = "Crypto operations are performed in a Hardware Security Module."]
-        Hsm,
     }
     impl CryptoKeyVersionProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                CryptoKeyVersionProtectionLevel::Hsm => "HSM",
                 CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
                 }
                 CryptoKeyVersionProtectionLevel::Software => "SOFTWARE",
-                CryptoKeyVersionProtectionLevel::Hsm => "HSM",
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionProtectionLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyVersionProtectionLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -538,17 +538,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyVersionProtectionLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "HSM" => CryptoKeyVersionProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified
                 }
                 "SOFTWARE" => CryptoKeyVersionProtectionLevel::Software,
-                "HSM" => CryptoKeyVersionProtectionLevel::Hsm,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -571,20 +571,20 @@ pub mod schemas {
     pub enum CryptoKeyVersionState {
         #[doc = "Not specified."]
         CryptoKeyVersionStateUnspecified,
-        #[doc = "This version is still being generated. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
-        PendingGeneration,
-        #[doc = "This version may be used for cryptographic operations."]
-        Enabled,
-        #[doc = "This version may not be used, but the key material is still available,\nand the version can be placed back into the ENABLED state."]
-        Disabled,
-        #[doc = "This version is destroyed, and the key material is no longer stored.\nA version may not leave this state once entered."]
-        Destroyed,
         #[doc = "This version is scheduled for destruction, and will be destroyed soon.\nCall\nRestoreCryptoKeyVersion\nto put it back into the DISABLED state."]
         DestroyScheduled,
-        #[doc = "This version is still being imported. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
-        PendingImport,
+        #[doc = "This version is destroyed, and the key material is no longer stored.\nA version may not leave this state once entered."]
+        Destroyed,
+        #[doc = "This version may not be used, but the key material is still available,\nand the version can be placed back into the ENABLED state."]
+        Disabled,
+        #[doc = "This version may be used for cryptographic operations."]
+        Enabled,
         #[doc = "This version was not imported successfully. It may not be used, enabled,\ndisabled, or destroyed. The submitted key material has been discarded.\nAdditional details can be found in\nCryptoKeyVersion.import_failure_reason."]
         ImportFailed,
+        #[doc = "This version is still being generated. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
+        PendingGeneration,
+        #[doc = "This version is still being imported. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
+        PendingImport,
     }
     impl CryptoKeyVersionState {
         pub fn as_str(self) -> &'static str {
@@ -592,23 +592,23 @@ pub mod schemas {
                 CryptoKeyVersionState::CryptoKeyVersionStateUnspecified => {
                     "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED"
                 }
-                CryptoKeyVersionState::PendingGeneration => "PENDING_GENERATION",
-                CryptoKeyVersionState::Enabled => "ENABLED",
-                CryptoKeyVersionState::Disabled => "DISABLED",
-                CryptoKeyVersionState::Destroyed => "DESTROYED",
                 CryptoKeyVersionState::DestroyScheduled => "DESTROY_SCHEDULED",
-                CryptoKeyVersionState::PendingImport => "PENDING_IMPORT",
+                CryptoKeyVersionState::Destroyed => "DESTROYED",
+                CryptoKeyVersionState::Disabled => "DISABLED",
+                CryptoKeyVersionState::Enabled => "ENABLED",
                 CryptoKeyVersionState::ImportFailed => "IMPORT_FAILED",
+                CryptoKeyVersionState::PendingGeneration => "PENDING_GENERATION",
+                CryptoKeyVersionState::PendingImport => "PENDING_IMPORT",
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyVersionState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -616,7 +616,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyVersionState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -625,13 +625,13 @@ pub mod schemas {
                 "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" => {
                     CryptoKeyVersionState::CryptoKeyVersionStateUnspecified
                 }
-                "PENDING_GENERATION" => CryptoKeyVersionState::PendingGeneration,
-                "ENABLED" => CryptoKeyVersionState::Enabled,
-                "DISABLED" => CryptoKeyVersionState::Disabled,
-                "DESTROYED" => CryptoKeyVersionState::Destroyed,
                 "DESTROY_SCHEDULED" => CryptoKeyVersionState::DestroyScheduled,
-                "PENDING_IMPORT" => CryptoKeyVersionState::PendingImport,
+                "DESTROYED" => CryptoKeyVersionState::Destroyed,
+                "DISABLED" => CryptoKeyVersionState::Disabled,
+                "ENABLED" => CryptoKeyVersionState::Enabled,
                 "IMPORT_FAILED" => CryptoKeyVersionState::ImportFailed,
+                "PENDING_GENERATION" => CryptoKeyVersionState::PendingGeneration,
+                "PENDING_IMPORT" => CryptoKeyVersionState::PendingImport,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -714,24 +714,12 @@ pub mod schemas {
     pub enum CryptoKeyVersionTemplateAlgorithm {
         #[doc = "Not specified."]
         CryptoKeyVersionAlgorithmUnspecified,
+        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
+        EcSignP256Sha256,
+        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
+        EcSignP384Sha384,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
-        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
-        RsaSignPss2048Sha256,
-        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
-        RsaSignPss3072Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
-        RsaSignPss4096Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
-        RsaSignPss4096Sha512,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
-        RsaSignPkcs12048Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
-        RsaSignPkcs13072Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
-        RsaSignPkcs14096Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
-        RsaSignPkcs14096Sha512,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
         RsaDecryptOaep2048Sha256,
         #[doc = "RSAES-OAEP 3072 bit key with a SHA256 digest."]
@@ -740,10 +728,22 @@ pub mod schemas {
         RsaDecryptOaep4096Sha256,
         #[doc = "RSAES-OAEP 4096 bit key with a SHA512 digest."]
         RsaDecryptOaep4096Sha512,
-        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
-        EcSignP256Sha256,
-        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
-        EcSignP384Sha384,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
+        RsaSignPkcs12048Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
+        RsaSignPkcs13072Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
+        RsaSignPkcs14096Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
+        RsaSignPkcs14096Sha512,
+        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
+        RsaSignPss2048Sha256,
+        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
+        RsaSignPss3072Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
+        RsaSignPss4096Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
+        RsaSignPss4096Sha512,
     }
     impl CryptoKeyVersionTemplateAlgorithm {
         pub fn as_str(self) -> &'static str {
@@ -751,32 +751,10 @@ pub mod schemas {
                 CryptoKeyVersionTemplateAlgorithm::CryptoKeyVersionAlgorithmUnspecified => {
                     "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
                 }
+                CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
+                CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
                 CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPss2048Sha256 => {
-                    "RSA_SIGN_PSS_2048_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPss3072Sha256 => {
-                    "RSA_SIGN_PSS_3072_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha256 => {
-                    "RSA_SIGN_PSS_4096_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha512 => {
-                    "RSA_SIGN_PSS_4096_SHA512"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs12048Sha256 => {
-                    "RSA_SIGN_PKCS1_2048_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs13072Sha256 => {
-                    "RSA_SIGN_PKCS1_3072_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha256 => {
-                    "RSA_SIGN_PKCS1_4096_SHA256"
-                }
-                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha512 => {
-                    "RSA_SIGN_PKCS1_4096_SHA512"
                 }
                 CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep2048Sha256 => {
                     "RSA_DECRYPT_OAEP_2048_SHA256"
@@ -790,18 +768,40 @@ pub mod schemas {
                 CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep4096Sha512 => {
                     "RSA_DECRYPT_OAEP_4096_SHA512"
                 }
-                CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
-                CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs12048Sha256 => {
+                    "RSA_SIGN_PKCS1_2048_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs13072Sha256 => {
+                    "RSA_SIGN_PKCS1_3072_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha256 => {
+                    "RSA_SIGN_PKCS1_4096_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha512 => {
+                    "RSA_SIGN_PKCS1_4096_SHA512"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPss2048Sha256 => {
+                    "RSA_SIGN_PSS_2048_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPss3072Sha256 => {
+                    "RSA_SIGN_PSS_3072_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha256 => {
+                    "RSA_SIGN_PSS_4096_SHA256"
+                }
+                CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha512 => {
+                    "RSA_SIGN_PSS_4096_SHA512"
+                }
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionTemplateAlgorithm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyVersionTemplateAlgorithm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -809,7 +809,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyVersionTemplateAlgorithm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -818,32 +818,10 @@ pub mod schemas {
                 "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
                     CryptoKeyVersionTemplateAlgorithm::CryptoKeyVersionAlgorithmUnspecified
                 }
+                "EC_SIGN_P256_SHA256" => CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption
-                }
-                "RSA_SIGN_PSS_2048_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss2048Sha256
-                }
-                "RSA_SIGN_PSS_3072_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss3072Sha256
-                }
-                "RSA_SIGN_PSS_4096_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha256
-                }
-                "RSA_SIGN_PSS_4096_SHA512" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha512
-                }
-                "RSA_SIGN_PKCS1_2048_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs12048Sha256
-                }
-                "RSA_SIGN_PKCS1_3072_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs13072Sha256
-                }
-                "RSA_SIGN_PKCS1_4096_SHA256" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha256
-                }
-                "RSA_SIGN_PKCS1_4096_SHA512" => {
-                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha512
                 }
                 "RSA_DECRYPT_OAEP_2048_SHA256" => {
                     CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep2048Sha256
@@ -857,8 +835,30 @@ pub mod schemas {
                 "RSA_DECRYPT_OAEP_4096_SHA512" => {
                     CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep4096Sha512
                 }
-                "EC_SIGN_P256_SHA256" => CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256,
-                "EC_SIGN_P384_SHA384" => CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384,
+                "RSA_SIGN_PKCS1_2048_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs12048Sha256
+                }
+                "RSA_SIGN_PKCS1_3072_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs13072Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA512" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha512
+                }
+                "RSA_SIGN_PSS_2048_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss2048Sha256
+                }
+                "RSA_SIGN_PSS_3072_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss3072Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA512" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha512
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -879,31 +879,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionTemplateProtectionLevel {
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
         #[doc = "Not specified."]
         ProtectionLevelUnspecified,
         #[doc = "Crypto operations are performed in software."]
         Software,
-        #[doc = "Crypto operations are performed in a Hardware Security Module."]
-        Hsm,
     }
     impl CryptoKeyVersionTemplateProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                CryptoKeyVersionTemplateProtectionLevel::Hsm => "HSM",
                 CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
                 }
                 CryptoKeyVersionTemplateProtectionLevel::Software => "SOFTWARE",
-                CryptoKeyVersionTemplateProtectionLevel::Hsm => "HSM",
             }
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionTemplateProtectionLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CryptoKeyVersionTemplateProtectionLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -911,17 +911,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CryptoKeyVersionTemplateProtectionLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "HSM" => CryptoKeyVersionTemplateProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified
                 }
                 "SOFTWARE" => CryptoKeyVersionTemplateProtectionLevel::Software,
-                "HSM" => CryptoKeyVersionTemplateProtectionLevel::Hsm,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1171,24 +1171,12 @@ pub mod schemas {
     pub enum ImportCryptoKeyVersionRequestAlgorithm {
         #[doc = "Not specified."]
         CryptoKeyVersionAlgorithmUnspecified,
+        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
+        EcSignP256Sha256,
+        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
+        EcSignP384Sha384,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
-        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
-        RsaSignPss2048Sha256,
-        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
-        RsaSignPss3072Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
-        RsaSignPss4096Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
-        RsaSignPss4096Sha512,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
-        RsaSignPkcs12048Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
-        RsaSignPkcs13072Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
-        RsaSignPkcs14096Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
-        RsaSignPkcs14096Sha512,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
         RsaDecryptOaep2048Sha256,
         #[doc = "RSAES-OAEP 3072 bit key with a SHA256 digest."]
@@ -1197,10 +1185,22 @@ pub mod schemas {
         RsaDecryptOaep4096Sha256,
         #[doc = "RSAES-OAEP 4096 bit key with a SHA512 digest."]
         RsaDecryptOaep4096Sha512,
-        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
-        EcSignP256Sha256,
-        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
-        EcSignP384Sha384,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
+        RsaSignPkcs12048Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
+        RsaSignPkcs13072Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
+        RsaSignPkcs14096Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
+        RsaSignPkcs14096Sha512,
+        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
+        RsaSignPss2048Sha256,
+        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
+        RsaSignPss3072Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
+        RsaSignPss4096Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
+        RsaSignPss4096Sha512,
     }
     impl ImportCryptoKeyVersionRequestAlgorithm {
         pub fn as_str(self) -> &'static str {
@@ -1208,32 +1208,10 @@ pub mod schemas {
                 ImportCryptoKeyVersionRequestAlgorithm::CryptoKeyVersionAlgorithmUnspecified => {
                     "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
                 }
+                ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
+                ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
                 ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss2048Sha256 => {
-                    "RSA_SIGN_PSS_2048_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss3072Sha256 => {
-                    "RSA_SIGN_PSS_3072_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha256 => {
-                    "RSA_SIGN_PSS_4096_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha512 => {
-                    "RSA_SIGN_PSS_4096_SHA512"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs12048Sha256 => {
-                    "RSA_SIGN_PKCS1_2048_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs13072Sha256 => {
-                    "RSA_SIGN_PKCS1_3072_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha256 => {
-                    "RSA_SIGN_PKCS1_4096_SHA256"
-                }
-                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha512 => {
-                    "RSA_SIGN_PKCS1_4096_SHA512"
                 }
                 ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep2048Sha256 => {
                     "RSA_DECRYPT_OAEP_2048_SHA256"
@@ -1247,18 +1225,40 @@ pub mod schemas {
                 ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep4096Sha512 => {
                     "RSA_DECRYPT_OAEP_4096_SHA512"
                 }
-                ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
-                ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs12048Sha256 => {
+                    "RSA_SIGN_PKCS1_2048_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs13072Sha256 => {
+                    "RSA_SIGN_PKCS1_3072_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha256 => {
+                    "RSA_SIGN_PKCS1_4096_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha512 => {
+                    "RSA_SIGN_PKCS1_4096_SHA512"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss2048Sha256 => {
+                    "RSA_SIGN_PSS_2048_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss3072Sha256 => {
+                    "RSA_SIGN_PSS_3072_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha256 => {
+                    "RSA_SIGN_PSS_4096_SHA256"
+                }
+                ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha512 => {
+                    "RSA_SIGN_PSS_4096_SHA512"
+                }
             }
         }
     }
     impl ::std::fmt::Display for ImportCryptoKeyVersionRequestAlgorithm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ImportCryptoKeyVersionRequestAlgorithm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1266,7 +1266,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ImportCryptoKeyVersionRequestAlgorithm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1275,32 +1275,10 @@ pub mod schemas {
                 "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
                     ImportCryptoKeyVersionRequestAlgorithm::CryptoKeyVersionAlgorithmUnspecified
                 }
+                "EC_SIGN_P256_SHA256" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption
-                }
-                "RSA_SIGN_PSS_2048_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss2048Sha256
-                }
-                "RSA_SIGN_PSS_3072_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss3072Sha256
-                }
-                "RSA_SIGN_PSS_4096_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha256
-                }
-                "RSA_SIGN_PSS_4096_SHA512" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha512
-                }
-                "RSA_SIGN_PKCS1_2048_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs12048Sha256
-                }
-                "RSA_SIGN_PKCS1_3072_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs13072Sha256
-                }
-                "RSA_SIGN_PKCS1_4096_SHA256" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha256
-                }
-                "RSA_SIGN_PKCS1_4096_SHA512" => {
-                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha512
                 }
                 "RSA_DECRYPT_OAEP_2048_SHA256" => {
                     ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep2048Sha256
@@ -1314,8 +1292,30 @@ pub mod schemas {
                 "RSA_DECRYPT_OAEP_4096_SHA512" => {
                     ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep4096Sha512
                 }
-                "EC_SIGN_P256_SHA256" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256,
-                "EC_SIGN_P384_SHA384" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384,
+                "RSA_SIGN_PKCS1_2048_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs12048Sha256
+                }
+                "RSA_SIGN_PKCS1_3072_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs13072Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA512" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha512
+                }
+                "RSA_SIGN_PSS_2048_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss2048Sha256
+                }
+                "RSA_SIGN_PSS_3072_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss3072Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA512" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha512
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1386,12 +1386,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ImportJobImportMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ImportJobImportMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1399,7 +1399,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ImportJobImportMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1428,31 +1428,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImportJobProtectionLevel {
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
         #[doc = "Not specified."]
         ProtectionLevelUnspecified,
         #[doc = "Crypto operations are performed in software."]
         Software,
-        #[doc = "Crypto operations are performed in a Hardware Security Module."]
-        Hsm,
     }
     impl ImportJobProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                ImportJobProtectionLevel::Hsm => "HSM",
                 ImportJobProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
                 }
                 ImportJobProtectionLevel::Software => "SOFTWARE",
-                ImportJobProtectionLevel::Hsm => "HSM",
             }
         }
     }
     impl ::std::fmt::Display for ImportJobProtectionLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ImportJobProtectionLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1460,17 +1460,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ImportJobProtectionLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "HSM" => ImportJobProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     ImportJobProtectionLevel::ProtectionLevelUnspecified
                 }
                 "SOFTWARE" => ImportJobProtectionLevel::Software,
-                "HSM" => ImportJobProtectionLevel::Hsm,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1491,32 +1491,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImportJobState {
-        #[doc = "Not specified."]
-        ImportJobStateUnspecified,
-        #[doc = "The wrapping key for this job is still being generated. It may not be\nused. Cloud KMS will automatically mark this job as\nACTIVE as soon as the wrapping key is generated."]
-        PendingGeneration,
         #[doc = "This job may be used in\nCreateCryptoKey and\nCreateCryptoKeyVersion\nrequests."]
         Active,
         #[doc = "This job can no longer be used and may not leave this state once entered."]
         Expired,
+        #[doc = "Not specified."]
+        ImportJobStateUnspecified,
+        #[doc = "The wrapping key for this job is still being generated. It may not be\nused. Cloud KMS will automatically mark this job as\nACTIVE as soon as the wrapping key is generated."]
+        PendingGeneration,
     }
     impl ImportJobState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ImportJobState::ImportJobStateUnspecified => "IMPORT_JOB_STATE_UNSPECIFIED",
-                ImportJobState::PendingGeneration => "PENDING_GENERATION",
                 ImportJobState::Active => "ACTIVE",
                 ImportJobState::Expired => "EXPIRED",
+                ImportJobState::ImportJobStateUnspecified => "IMPORT_JOB_STATE_UNSPECIFIED",
+                ImportJobState::PendingGeneration => "PENDING_GENERATION",
             }
         }
     }
     impl ::std::fmt::Display for ImportJobState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ImportJobState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1524,16 +1524,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ImportJobState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "IMPORT_JOB_STATE_UNSPECIFIED" => ImportJobState::ImportJobStateUnspecified,
-                "PENDING_GENERATION" => ImportJobState::PendingGeneration,
                 "ACTIVE" => ImportJobState::Active,
                 "EXPIRED" => ImportJobState::Expired,
+                "IMPORT_JOB_STATE_UNSPECIFIED" => ImportJobState::ImportJobStateUnspecified,
+                "PENDING_GENERATION" => ImportJobState::PendingGeneration,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1626,12 +1626,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for KeyOperationAttestationFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for KeyOperationAttestationFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1639,7 +1639,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for KeyOperationAttestationFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1965,24 +1965,12 @@ pub mod schemas {
     pub enum PublicKeyAlgorithm {
         #[doc = "Not specified."]
         CryptoKeyVersionAlgorithmUnspecified,
+        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
+        EcSignP256Sha256,
+        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
+        EcSignP384Sha384,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
-        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
-        RsaSignPss2048Sha256,
-        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
-        RsaSignPss3072Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
-        RsaSignPss4096Sha256,
-        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
-        RsaSignPss4096Sha512,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
-        RsaSignPkcs12048Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
-        RsaSignPkcs13072Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
-        RsaSignPkcs14096Sha256,
-        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
-        RsaSignPkcs14096Sha512,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
         RsaDecryptOaep2048Sha256,
         #[doc = "RSAES-OAEP 3072 bit key with a SHA256 digest."]
@@ -1991,10 +1979,22 @@ pub mod schemas {
         RsaDecryptOaep4096Sha256,
         #[doc = "RSAES-OAEP 4096 bit key with a SHA512 digest."]
         RsaDecryptOaep4096Sha512,
-        #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
-        EcSignP256Sha256,
-        #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
-        EcSignP384Sha384,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest."]
+        RsaSignPkcs12048Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest."]
+        RsaSignPkcs13072Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest."]
+        RsaSignPkcs14096Sha256,
+        #[doc = "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest."]
+        RsaSignPkcs14096Sha512,
+        #[doc = "RSASSA-PSS 2048 bit key with a SHA256 digest."]
+        RsaSignPss2048Sha256,
+        #[doc = "RSASSA-PSS 3072 bit key with a SHA256 digest."]
+        RsaSignPss3072Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA256 digest."]
+        RsaSignPss4096Sha256,
+        #[doc = "RSASSA-PSS 4096 bit key with a SHA512 digest."]
+        RsaSignPss4096Sha512,
     }
     impl PublicKeyAlgorithm {
         pub fn as_str(self) -> &'static str {
@@ -2002,31 +2002,31 @@ pub mod schemas {
                 PublicKeyAlgorithm::CryptoKeyVersionAlgorithmUnspecified => {
                     "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
                 }
+                PublicKeyAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
+                PublicKeyAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
                 PublicKeyAlgorithm::GoogleSymmetricEncryption => "GOOGLE_SYMMETRIC_ENCRYPTION",
-                PublicKeyAlgorithm::RsaSignPss2048Sha256 => "RSA_SIGN_PSS_2048_SHA256",
-                PublicKeyAlgorithm::RsaSignPss3072Sha256 => "RSA_SIGN_PSS_3072_SHA256",
-                PublicKeyAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
-                PublicKeyAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
-                PublicKeyAlgorithm::RsaSignPkcs12048Sha256 => "RSA_SIGN_PKCS1_2048_SHA256",
-                PublicKeyAlgorithm::RsaSignPkcs13072Sha256 => "RSA_SIGN_PKCS1_3072_SHA256",
-                PublicKeyAlgorithm::RsaSignPkcs14096Sha256 => "RSA_SIGN_PKCS1_4096_SHA256",
-                PublicKeyAlgorithm::RsaSignPkcs14096Sha512 => "RSA_SIGN_PKCS1_4096_SHA512",
                 PublicKeyAlgorithm::RsaDecryptOaep2048Sha256 => "RSA_DECRYPT_OAEP_2048_SHA256",
                 PublicKeyAlgorithm::RsaDecryptOaep3072Sha256 => "RSA_DECRYPT_OAEP_3072_SHA256",
                 PublicKeyAlgorithm::RsaDecryptOaep4096Sha256 => "RSA_DECRYPT_OAEP_4096_SHA256",
                 PublicKeyAlgorithm::RsaDecryptOaep4096Sha512 => "RSA_DECRYPT_OAEP_4096_SHA512",
-                PublicKeyAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
-                PublicKeyAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                PublicKeyAlgorithm::RsaSignPkcs12048Sha256 => "RSA_SIGN_PKCS1_2048_SHA256",
+                PublicKeyAlgorithm::RsaSignPkcs13072Sha256 => "RSA_SIGN_PKCS1_3072_SHA256",
+                PublicKeyAlgorithm::RsaSignPkcs14096Sha256 => "RSA_SIGN_PKCS1_4096_SHA256",
+                PublicKeyAlgorithm::RsaSignPkcs14096Sha512 => "RSA_SIGN_PKCS1_4096_SHA512",
+                PublicKeyAlgorithm::RsaSignPss2048Sha256 => "RSA_SIGN_PSS_2048_SHA256",
+                PublicKeyAlgorithm::RsaSignPss3072Sha256 => "RSA_SIGN_PSS_3072_SHA256",
+                PublicKeyAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
+                PublicKeyAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
             }
         }
     }
     impl ::std::fmt::Display for PublicKeyAlgorithm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PublicKeyAlgorithm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2034,7 +2034,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PublicKeyAlgorithm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2043,21 +2043,21 @@ pub mod schemas {
                 "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
                     PublicKeyAlgorithm::CryptoKeyVersionAlgorithmUnspecified
                 }
+                "EC_SIGN_P256_SHA256" => PublicKeyAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => PublicKeyAlgorithm::EcSignP384Sha384,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::GoogleSymmetricEncryption,
-                "RSA_SIGN_PSS_2048_SHA256" => PublicKeyAlgorithm::RsaSignPss2048Sha256,
-                "RSA_SIGN_PSS_3072_SHA256" => PublicKeyAlgorithm::RsaSignPss3072Sha256,
-                "RSA_SIGN_PSS_4096_SHA256" => PublicKeyAlgorithm::RsaSignPss4096Sha256,
-                "RSA_SIGN_PSS_4096_SHA512" => PublicKeyAlgorithm::RsaSignPss4096Sha512,
-                "RSA_SIGN_PKCS1_2048_SHA256" => PublicKeyAlgorithm::RsaSignPkcs12048Sha256,
-                "RSA_SIGN_PKCS1_3072_SHA256" => PublicKeyAlgorithm::RsaSignPkcs13072Sha256,
-                "RSA_SIGN_PKCS1_4096_SHA256" => PublicKeyAlgorithm::RsaSignPkcs14096Sha256,
-                "RSA_SIGN_PKCS1_4096_SHA512" => PublicKeyAlgorithm::RsaSignPkcs14096Sha512,
                 "RSA_DECRYPT_OAEP_2048_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep2048Sha256,
                 "RSA_DECRYPT_OAEP_3072_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep3072Sha256,
                 "RSA_DECRYPT_OAEP_4096_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep4096Sha256,
                 "RSA_DECRYPT_OAEP_4096_SHA512" => PublicKeyAlgorithm::RsaDecryptOaep4096Sha512,
-                "EC_SIGN_P256_SHA256" => PublicKeyAlgorithm::EcSignP256Sha256,
-                "EC_SIGN_P384_SHA384" => PublicKeyAlgorithm::EcSignP384Sha384,
+                "RSA_SIGN_PKCS1_2048_SHA256" => PublicKeyAlgorithm::RsaSignPkcs12048Sha256,
+                "RSA_SIGN_PKCS1_3072_SHA256" => PublicKeyAlgorithm::RsaSignPkcs13072Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA256" => PublicKeyAlgorithm::RsaSignPkcs14096Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA512" => PublicKeyAlgorithm::RsaSignPkcs14096Sha512,
+                "RSA_SIGN_PSS_2048_SHA256" => PublicKeyAlgorithm::RsaSignPss2048Sha256,
+                "RSA_SIGN_PSS_3072_SHA256" => PublicKeyAlgorithm::RsaSignPss3072Sha256,
+                "RSA_SIGN_PSS_4096_SHA256" => PublicKeyAlgorithm::RsaSignPss4096Sha256,
+                "RSA_SIGN_PSS_4096_SHA512" => PublicKeyAlgorithm::RsaSignPss4096Sha512,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2279,12 +2279,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2292,7 +2292,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2335,12 +2335,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2348,7 +2348,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2394,7 +2394,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -2492,19 +2492,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2677,19 +2667,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2732,15 +2712,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_locations<T>(self) -> ListLocationsIter<'a, A, T>
+                pub fn iter_locations<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListLocationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "locations").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "locations")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2748,13 +2732,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_locations_standard(
                     mut self,
-                ) -> ListLocationsIter<'a, A, crate::schemas::Location> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Location> {
                     self.fields = Some(concat!("nextPageToken,", "locations").to_owned());
-                    ListLocationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "locations")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2764,26 +2744,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_locations_debug(
                     mut self,
-                ) -> ListLocationsIter<'a, A, crate::schemas::Location> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Location> {
                     self.fields = Some(concat!("nextPageToken,", "locations", "(*)").to_owned());
-                    ListLocationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "locations")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListLocationsResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListLocationsResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2883,52 +2874,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListLocationsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListLocationsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "locations")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -3115,19 +3067,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3286,19 +3228,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3460,19 +3392,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3657,19 +3579,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3712,15 +3624,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_key_rings<T>(self) -> ListKeyRingsIter<'a, A, T>
+                    pub fn iter_key_rings<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListKeyRingsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "keyRings").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "keyRings")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3728,13 +3644,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_key_rings_standard(
                         mut self,
-                    ) -> ListKeyRingsIter<'a, A, crate::schemas::KeyRing> {
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::KeyRing>
+                    {
                         self.fields = Some(concat!("nextPageToken,", "keyRings").to_owned());
-                        ListKeyRingsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "keyRings")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3744,26 +3657,38 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_key_rings_debug(
                         mut self,
-                    ) -> ListKeyRingsIter<'a, A, crate::schemas::KeyRing> {
-                        self.fields = Some(concat!("nextPageToken,", "keyRings", "(*)").to_owned());
-                        ListKeyRingsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
-                    }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::KeyRing>
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        self.fields = Some(concat!("nextPageToken,", "keyRings", "(*)").to_owned());
+                        crate::iter::PageItemIter::new(self, "keyRings")
+                    }
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    {
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListKeyRingsResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListKeyRingsResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -3865,52 +3790,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListKeyRingsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListKeyRingsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "keyRings")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -3939,19 +3825,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4110,19 +3986,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4279,12 +4145,15 @@ mod resources {
                             }
                         }
                         impl ::std::fmt::Display for ListVersionView {
-                            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                                 f.write_str(self.as_str())
                             }
                         }
                         impl ::serde::Serialize for ListVersionView {
-                            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                            fn serialize<S>(
+                                &self,
+                                serializer: S,
+                            ) -> ::std::result::Result<S::Ok, S::Error>
                             where
                                 S: ::serde::ser::Serializer,
                             {
@@ -4292,7 +4161,9 @@ mod resources {
                             }
                         }
                         impl<'de> ::serde::Deserialize<'de> for ListVersionView {
-                            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                            fn deserialize<D>(
+                                deserializer: D,
+                            ) -> ::std::result::Result<Self, D::Error>
                             where
                                 D: ::serde::de::Deserializer<'de>,
                             {
@@ -4603,19 +4474,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4779,19 +4640,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4950,19 +4801,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5120,19 +4961,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5294,19 +5125,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5480,19 +5301,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5535,15 +5346,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_crypto_keys<T>(self) -> ListCryptoKeysIter<'a, A, T>
+                        pub fn iter_crypto_keys<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListCryptoKeysIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "cryptoKeys").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "cryptoKeys")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5551,14 +5366,10 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_crypto_keys_standard(
                             mut self,
-                        ) -> ListCryptoKeysIter<'a, A, crate::schemas::CryptoKey>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::CryptoKey>
                         {
                             self.fields = Some(concat!("nextPageToken,", "cryptoKeys").to_owned());
-                            ListCryptoKeysIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "cryptoKeys")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5568,28 +5379,39 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_crypto_keys_debug(
                             mut self,
-                        ) -> ListCryptoKeysIter<'a, A, crate::schemas::CryptoKey>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::CryptoKey>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "cryptoKeys", "(*)").to_owned());
-                            ListCryptoKeysIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "cryptoKeys")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListCryptoKeysResponse>
+                        {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListCryptoKeysResponse>
+                        {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -5696,52 +5518,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListCryptoKeysIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListCryptoKeysIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "cryptoKeys")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -5776,19 +5559,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5947,19 +5720,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6118,19 +5881,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6293,19 +6046,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6458,12 +6201,18 @@ mod resources {
                                 }
                             }
                             impl ::std::fmt::Display for ListView {
-                                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                                fn fmt(
+                                    &self,
+                                    f: &mut std::fmt::Formatter<'_>,
+                                ) -> ::std::fmt::Result {
                                     f.write_str(self.as_str())
                                 }
                             }
                             impl ::serde::Serialize for ListView {
-                                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                                fn serialize<S>(
+                                    &self,
+                                    serializer: S,
+                                ) -> ::std::result::Result<S::Ok, S::Error>
                                 where
                                     S: ::serde::ser::Serializer,
                                 {
@@ -6471,7 +6220,9 @@ mod resources {
                                 }
                             }
                             impl<'de> ::serde::Deserialize<'de> for ListView {
-                                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                                fn deserialize<D>(
+                                    deserializer: D,
+                                ) -> ::std::result::Result<Self, D::Error>
                                 where
                                     D: ::serde::de::Deserializer<'de>,
                                 {
@@ -6764,19 +6515,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6939,19 +6680,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7114,19 +6845,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7289,19 +7010,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7463,19 +7174,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7635,19 +7336,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7805,19 +7496,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7992,19 +7673,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8048,16 +7719,21 @@ mod resources {
                             #[doc = r" populated fields in the yielded items will be determined by the"]
                             #[doc = r" `FieldSelector` implementation."]
                             pub fn iter_crypto_key_versions<T>(
-                                self,
-                            ) -> ListCryptoKeyVersionsIter<'a, A, T>
+                                mut self,
+                            ) -> crate::iter::PageItemIter<Self, T>
                             where
                                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                             {
-                                ListCryptoKeyVersionsIter {
-                                    method: self,
-                                    last_page_reached: false,
-                                    items_iter: None,
+                                let mut fields =
+                                    concat!("nextPageToken,", "cryptoKeyVersions").to_owned();
+                                let items_fields = T::field_selector();
+                                if !items_fields.is_empty() {
+                                    fields.push_str("(");
+                                    fields.push_str(&items_fields);
+                                    fields.push_str(")");
                                 }
+                                self.fields = Some(fields);
+                                crate::iter::PageItemIter::new(self, "cryptoKeyVersions")
                             }
                             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8065,15 +7741,11 @@ mod resources {
                             #[doc = r" the server."]
                             pub fn iter_crypto_key_versions_standard(
                                 mut self,
-                            ) -> ListCryptoKeyVersionsIter<'a, A, crate::schemas::CryptoKeyVersion>
+                            ) -> crate::iter::PageItemIter<Self, crate::schemas::CryptoKeyVersion>
                             {
                                 self.fields =
                                     Some(concat!("nextPageToken,", "cryptoKeyVersions").to_owned());
-                                ListCryptoKeyVersionsIter {
-                                    method: self,
-                                    last_page_reached: false,
-                                    items_iter: None,
-                                }
+                                crate::iter::PageItemIter::new(self, "cryptoKeyVersions")
                             }
                             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8083,34 +7755,45 @@ mod resources {
                             #[doc = r" resources."]
                             pub fn iter_crypto_key_versions_debug(
                                 mut self,
-                            ) -> ListCryptoKeyVersionsIter<'a, A, crate::schemas::CryptoKeyVersion>
+                            ) -> crate::iter::PageItemIter<Self, crate::schemas::CryptoKeyVersion>
                             {
                                 self.fields = Some(
                                     concat!("nextPageToken,", "cryptoKeyVersions", "(*)")
                                         .to_owned(),
                                 );
-                                ListCryptoKeyVersionsIter {
-                                    method: self,
-                                    last_page_reached: false,
-                                    items_iter: None,
-                                }
+                                crate::iter::PageItemIter::new(self, "cryptoKeyVersions")
                             }
-                            #[doc = r" Return an iterator that"]
-                            pub fn iter<T>(
-                                self,
-                            ) -> impl Iterator<
-                                Item = Result<T, Box<dyn ::std::error::Error + 'static>>,
-                            > + 'a
+                            pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                             where
-                                T: ::serde::de::DeserializeOwned
-                                    + ::field_selector::FieldSelector
-                                    + 'a,
+                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                             {
-                                crate::PageIter {
-                                    method: self,
-                                    finished: false,
-                                    _phantom: ::std::default::Default::default(),
+                                let mut fields = T::field_selector();
+                                if !fields.is_empty() {
+                                    match fields.chars().rev().nth(0) {
+                                        Some(',') | None => {}
+                                        _ => fields.push_str(","),
+                                    }
+                                    fields.push_str("nextPageToken");
+                                    self.fields = Some(fields);
                                 }
+                                crate::iter::PageIter::new(self)
+                            }
+                            pub fn iter_standard(
+                                self,
+                            ) -> crate::iter::PageIter<
+                                Self,
+                                crate::schemas::ListCryptoKeyVersionsResponse,
+                            > {
+                                crate::iter::PageIter::new(self)
+                            }
+                            pub fn iter_debug(
+                                mut self,
+                            ) -> crate::iter::PageIter<
+                                Self,
+                                crate::schemas::ListCryptoKeyVersionsResponse,
+                            > {
+                                self.fields = Some("*".to_owned());
+                                crate::iter::PageIter::new(self)
                             }
                             #[doc = r" Execute the given operation. The fields requested are"]
                             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -8217,53 +7900,13 @@ mod resources {
                                 req
                             }
                         }
-                        pub struct ListCryptoKeyVersionsIter<'a, A, T> {
-                            method: ListRequestBuilder<'a, A>,
-                            last_page_reached: bool,
-                            items_iter: Option<::std::vec::IntoIter<T>>,
-                        }
-                        impl<'a, A, T> Iterator for ListCryptoKeyVersionsIter<'a, A, T>
-                        where
-                            A: ::yup_oauth2::GetToken,
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            type Item = Result<T, Box<dyn ::std::error::Error>>;
-                            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                                #[derive(:: serde :: Deserialize)]
-                                struct Resp<T> {
-                                    #[serde(rename = "cryptoKeyVersions")]
-                                    items: Option<Vec<T>>,
-                                    #[serde(rename = "nextPageToken")]
-                                    next_page_token: Option<String>,
-                                }
-                                loop {
-                                    if let Some(iter) = self.items_iter.as_mut() {
-                                        match iter.next() {
-                                            Some(v) => return Some(Ok(v)),
-                                            None => {}
-                                        }
-                                    }
-                                    if self.last_page_reached {
-                                        return None;
-                                    }
-                                    let resp: Resp<T> = match self.method._execute() {
-                                        Ok(r) => r,
-                                        Err(err) => return Some(Err(err)),
-                                    };
-                                    self.last_page_reached =
-                                        resp.next_page_token.as_ref().is_none();
-                                    self.method.page_token = resp.next_page_token;
-                                    self.items_iter = resp.items.map(|i| i.into_iter());
-                                }
-                            }
-                        }
-                        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                        impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                             fn set_page_token(&mut self, value: String) {
                                 self.page_token = value.into();
                             }
                             fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                             where
-                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                                T: ::serde::de::DeserializeOwned,
                             {
                                 self._execute()
                             }
@@ -8298,19 +7941,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8473,19 +8106,9 @@ mod resources {
                                 self.access_token = Some(value.into());
                                 self
                             }
-                            #[doc = "Data format for response."]
-                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                                self.alt = Some(value);
-                                self
-                            }
                             #[doc = "JSONP"]
                             pub fn callback(mut self, value: impl Into<String>) -> Self {
                                 self.callback = Some(value.into());
-                                self
-                            }
-                            #[doc = "Selector specifying which fields to include in a partial response."]
-                            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                                self.fields = Some(value.into());
                                 self
                             }
                             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8802,19 +8425,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8973,19 +8586,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9147,19 +8750,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9344,19 +8937,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9399,15 +8982,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_import_jobs<T>(self) -> ListImportJobsIter<'a, A, T>
+                        pub fn iter_import_jobs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListImportJobsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "importJobs").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "importJobs")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9415,14 +9002,10 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_import_jobs_standard(
                             mut self,
-                        ) -> ListImportJobsIter<'a, A, crate::schemas::ImportJob>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::ImportJob>
                         {
                             self.fields = Some(concat!("nextPageToken,", "importJobs").to_owned());
-                            ListImportJobsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "importJobs")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9432,28 +9015,39 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_import_jobs_debug(
                             mut self,
-                        ) -> ListImportJobsIter<'a, A, crate::schemas::ImportJob>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::ImportJob>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "importJobs", "(*)").to_owned());
-                            ListImportJobsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "importJobs")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListImportJobsResponse>
+                        {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListImportJobsResponse>
+                        {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -9559,52 +9153,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListImportJobsIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListImportJobsIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "importJobs")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -9633,19 +9188,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9804,19 +9349,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10218,7 +9753,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -10227,7 +9765,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -10240,58 +9778,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

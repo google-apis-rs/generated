@@ -1,29 +1,29 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetLicense {
-        #[doc = "Unknown license value."]
-        Unknown,
-        #[doc = "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/"]
-        CreativeCommonsBy,
         #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are\n**not** returned by List Assets."]
         AllRightsReserved,
+        #[doc = "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/"]
+        CreativeCommonsBy,
+        #[doc = "Unknown license value."]
+        Unknown,
     }
     impl AssetLicense {
         pub fn as_str(self) -> &'static str {
             match self {
-                AssetLicense::Unknown => "UNKNOWN",
-                AssetLicense::CreativeCommonsBy => "CREATIVE_COMMONS_BY",
                 AssetLicense::AllRightsReserved => "ALL_RIGHTS_RESERVED",
+                AssetLicense::CreativeCommonsBy => "CREATIVE_COMMONS_BY",
+                AssetLicense::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for AssetLicense {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AssetLicense {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -31,15 +31,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AssetLicense {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => AssetLicense::Unknown,
-                "CREATIVE_COMMONS_BY" => AssetLicense::CreativeCommonsBy,
                 "ALL_RIGHTS_RESERVED" => AssetLicense::AllRightsReserved,
+                "CREATIVE_COMMONS_BY" => AssetLicense::CreativeCommonsBy,
+                "UNKNOWN" => AssetLicense::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -60,32 +60,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetVisibility {
-        #[doc = "Unknown (and invalid) visibility."]
-        VisibilityUnspecified,
         #[doc = "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account."]
         Private,
-        #[doc = "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets."]
-        Unlisted,
         #[doc = "Access to the asset and its underlying files and resources is available\nto anyone."]
         Public,
+        #[doc = "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets."]
+        Unlisted,
+        #[doc = "Unknown (and invalid) visibility."]
+        VisibilityUnspecified,
     }
     impl AssetVisibility {
         pub fn as_str(self) -> &'static str {
             match self {
-                AssetVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
                 AssetVisibility::Private => "PRIVATE",
-                AssetVisibility::Unlisted => "UNLISTED",
                 AssetVisibility::Public => "PUBLIC",
+                AssetVisibility::Unlisted => "UNLISTED",
+                AssetVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AssetVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AssetVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -93,16 +93,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AssetVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "VISIBILITY_UNSPECIFIED" => AssetVisibility::VisibilityUnspecified,
                 "PRIVATE" => AssetVisibility::Private,
-                "UNLISTED" => AssetVisibility::Unlisted,
                 "PUBLIC" => AssetVisibility::Public,
+                "UNLISTED" => AssetVisibility::Unlisted,
+                "VISIBILITY_UNSPECIFIED" => AssetVisibility::VisibilityUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -181,48 +181,48 @@ pub mod schemas {
     pub enum AssetImportMessageCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
-        #[doc = "The asset import did not include any file that we can import (i.e. an OBJ\nfile)."]
-        NoImportableFile,
-        #[doc = "When generating the preview for the import, no geometry was found."]
-        EmptyModel,
-        #[doc = "A problem was encountered while parsing the OBJ file. The converter makes\na 'best effort' attempt to continue when encountering such issues. In\nsome cases the resulting preview model may still be acceptable. The\ndetails can be found in the parse error message."]
-        ObjParseError,
-        #[doc = "The importer was not able to import the model before the expiration time."]
-        Expired,
-        #[doc = "The importer encountered a problem reading an image file."]
-        ImageError,
-        #[doc = "Multiple files were encountered in addition to a ZIP archive. When\nuploading an archive only one file is permitted."]
-        ExtraFilesWithArchive,
         #[doc = "Default materials are used in the model. This means that one or more\nfaces is using default materials either because no usemtl statement was\nspecified or because the requested material was not found due to a\nmissing material file or bad material name. This does not cover the case\nof missing textures."]
         DefaultMaterials,
+        #[doc = "When generating the preview for the import, no geometry was found."]
+        EmptyModel,
+        #[doc = "The importer was not able to import the model before the expiration time."]
+        Expired,
+        #[doc = "Multiple files were encountered in addition to a ZIP archive. When\nuploading an archive only one file is permitted."]
+        ExtraFilesWithArchive,
         #[doc = "The importer encountered a fatal error and was unable to import the\nmodel."]
         FatalError,
+        #[doc = "The importer encountered a problem reading an image file."]
+        ImageError,
         #[doc = "The import includes a file of an unsupported element type. The file path\nis specified."]
         InvalidElementType,
+        #[doc = "The asset import did not include any file that we can import (i.e. an OBJ\nfile)."]
+        NoImportableFile,
+        #[doc = "A problem was encountered while parsing the OBJ file. The converter makes\na 'best effort' attempt to continue when encountering such issues. In\nsome cases the resulting preview model may still be acceptable. The\ndetails can be found in the parse error message."]
+        ObjParseError,
     }
     impl AssetImportMessageCode {
         pub fn as_str(self) -> &'static str {
             match self {
                 AssetImportMessageCode::CodeUnspecified => "CODE_UNSPECIFIED",
-                AssetImportMessageCode::NoImportableFile => "NO_IMPORTABLE_FILE",
-                AssetImportMessageCode::EmptyModel => "EMPTY_MODEL",
-                AssetImportMessageCode::ObjParseError => "OBJ_PARSE_ERROR",
-                AssetImportMessageCode::Expired => "EXPIRED",
-                AssetImportMessageCode::ImageError => "IMAGE_ERROR",
-                AssetImportMessageCode::ExtraFilesWithArchive => "EXTRA_FILES_WITH_ARCHIVE",
                 AssetImportMessageCode::DefaultMaterials => "DEFAULT_MATERIALS",
+                AssetImportMessageCode::EmptyModel => "EMPTY_MODEL",
+                AssetImportMessageCode::Expired => "EXPIRED",
+                AssetImportMessageCode::ExtraFilesWithArchive => "EXTRA_FILES_WITH_ARCHIVE",
                 AssetImportMessageCode::FatalError => "FATAL_ERROR",
+                AssetImportMessageCode::ImageError => "IMAGE_ERROR",
                 AssetImportMessageCode::InvalidElementType => "INVALID_ELEMENT_TYPE",
+                AssetImportMessageCode::NoImportableFile => "NO_IMPORTABLE_FILE",
+                AssetImportMessageCode::ObjParseError => "OBJ_PARSE_ERROR",
             }
         }
     }
     impl ::std::fmt::Display for AssetImportMessageCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AssetImportMessageCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -230,22 +230,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AssetImportMessageCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CODE_UNSPECIFIED" => AssetImportMessageCode::CodeUnspecified,
-                "NO_IMPORTABLE_FILE" => AssetImportMessageCode::NoImportableFile,
-                "EMPTY_MODEL" => AssetImportMessageCode::EmptyModel,
-                "OBJ_PARSE_ERROR" => AssetImportMessageCode::ObjParseError,
-                "EXPIRED" => AssetImportMessageCode::Expired,
-                "IMAGE_ERROR" => AssetImportMessageCode::ImageError,
-                "EXTRA_FILES_WITH_ARCHIVE" => AssetImportMessageCode::ExtraFilesWithArchive,
                 "DEFAULT_MATERIALS" => AssetImportMessageCode::DefaultMaterials,
+                "EMPTY_MODEL" => AssetImportMessageCode::EmptyModel,
+                "EXPIRED" => AssetImportMessageCode::Expired,
+                "EXTRA_FILES_WITH_ARCHIVE" => AssetImportMessageCode::ExtraFilesWithArchive,
                 "FATAL_ERROR" => AssetImportMessageCode::FatalError,
+                "IMAGE_ERROR" => AssetImportMessageCode::ImageError,
                 "INVALID_ELEMENT_TYPE" => AssetImportMessageCode::InvalidElementType,
+                "NO_IMPORTABLE_FILE" => AssetImportMessageCode::NoImportableFile,
+                "OBJ_PARSE_ERROR" => AssetImportMessageCode::ObjParseError,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -400,10 +400,10 @@ pub mod schemas {
     pub enum ImageErrorCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
-        #[doc = "We were unable to read the image file."]
-        InvalidImage,
         #[doc = "The image size is too large."]
         ImageTooBig,
+        #[doc = "We were unable to read the image file."]
+        InvalidImage,
         #[doc = "The image data does not match the expected MIME type of the image."]
         WrongImageType,
     }
@@ -411,19 +411,19 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 ImageErrorCode::CodeUnspecified => "CODE_UNSPECIFIED",
-                ImageErrorCode::InvalidImage => "INVALID_IMAGE",
                 ImageErrorCode::ImageTooBig => "IMAGE_TOO_BIG",
+                ImageErrorCode::InvalidImage => "INVALID_IMAGE",
                 ImageErrorCode::WrongImageType => "WRONG_IMAGE_TYPE",
             }
         }
     }
     impl ::std::fmt::Display for ImageErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ImageErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -431,15 +431,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ImageErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CODE_UNSPECIFIED" => ImageErrorCode::CodeUnspecified,
-                "INVALID_IMAGE" => ImageErrorCode::InvalidImage,
                 "IMAGE_TOO_BIG" => ImageErrorCode::ImageTooBig,
+                "INVALID_IMAGE" => ImageErrorCode::InvalidImage,
                 "WRONG_IMAGE_TYPE" => ImageErrorCode::WrongImageType,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -561,96 +561,96 @@ pub mod schemas {
     pub enum ObjParseErrorCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
+        #[doc = "The specified file was not found in the import."]
+        FileNotFound,
+        #[doc = "A missing file was found at a different file path."]
+        FileSubstitution,
         #[doc = "Vertex references are specified in an inconsistent style for a face (e.g.\nsome vertices specify texture vertices but some don't)."]
         InconsistentVertexRefs,
         #[doc = "The command is invalid."]
         InvalidCommand,
+        #[doc = "The file path was invalid. Only relative paths are supported."]
+        InvalidFilePath,
         #[doc = "A invalid number was specified."]
         InvalidNumber,
+        #[doc = "The smoothing group is not valid."]
+        InvalidSmoothingGroup,
+        #[doc = "The specified texture option is not valid."]
+        InvalidTextureOption,
+        #[doc = "The specified parameter value was not recognized."]
+        InvalidValue,
         #[doc = "An invalid vertex reference was specified."]
         InvalidVertexRef,
+        #[doc = "A line in an OBJ or MTL file exceeded the maximum line length."]
+        LineTooLong,
+        #[doc = "An expected file name was not specified."]
+        MissingFileName,
         #[doc = "A vertex reference does not specify a geometric vertex."]
         MissingGeometricVertex,
         #[doc = "An expected token was not found."]
         MissingToken,
+        #[doc = "Vertex colors were specified for only some vertices of a face."]
+        MissingVertexColors,
+        #[doc = "Material parameters were specified before the first material definition."]
+        NoMaterialDefined,
+        #[doc = "The specified number was too large or small for its usage."]
+        NumberOutOfRange,
         #[doc = "The vertex specified too few dimensions for its usage."]
         TooFewDimensions,
         #[doc = "The face specified too few vertices."]
         TooFewVertices,
         #[doc = "The vertex specified too many dimensions for its usage."]
         TooManyDimensions,
+        #[doc = "The maximum number of problems to report was reached. Parsing continues,\nbut further problems will be ignored."]
+        TooManyProblems,
+        #[doc = "The specified material was not found in any material definition in the\nimport."]
+        UnknownMaterial,
         #[doc = "This command is a valid OBJ command but is not supported. This error is\nonly generated for the first instance of such a command."]
         UnsupportedCommand,
         #[doc = "This line ended with unparsed token characters."]
         UnusedTokens,
         #[doc = "The specified vertex was not found."]
         VertexNotFound,
-        #[doc = "The specified number was too large or small for its usage."]
-        NumberOutOfRange,
-        #[doc = "The specified parameter value was not recognized."]
-        InvalidValue,
-        #[doc = "The specified texture option is not valid."]
-        InvalidTextureOption,
-        #[doc = "The maximum number of problems to report was reached. Parsing continues,\nbut further problems will be ignored."]
-        TooManyProblems,
-        #[doc = "An expected file name was not specified."]
-        MissingFileName,
-        #[doc = "The specified file was not found in the import."]
-        FileNotFound,
-        #[doc = "The specified material was not found in any material definition in the\nimport."]
-        UnknownMaterial,
-        #[doc = "Material parameters were specified before the first material definition."]
-        NoMaterialDefined,
-        #[doc = "The smoothing group is not valid."]
-        InvalidSmoothingGroup,
-        #[doc = "Vertex colors were specified for only some vertices of a face."]
-        MissingVertexColors,
-        #[doc = "A missing file was found at a different file path."]
-        FileSubstitution,
-        #[doc = "A line in an OBJ or MTL file exceeded the maximum line length."]
-        LineTooLong,
-        #[doc = "The file path was invalid. Only relative paths are supported."]
-        InvalidFilePath,
     }
     impl ObjParseErrorCode {
         pub fn as_str(self) -> &'static str {
             match self {
                 ObjParseErrorCode::CodeUnspecified => "CODE_UNSPECIFIED",
+                ObjParseErrorCode::FileNotFound => "FILE_NOT_FOUND",
+                ObjParseErrorCode::FileSubstitution => "FILE_SUBSTITUTION",
                 ObjParseErrorCode::InconsistentVertexRefs => "INCONSISTENT_VERTEX_REFS",
                 ObjParseErrorCode::InvalidCommand => "INVALID_COMMAND",
+                ObjParseErrorCode::InvalidFilePath => "INVALID_FILE_PATH",
                 ObjParseErrorCode::InvalidNumber => "INVALID_NUMBER",
+                ObjParseErrorCode::InvalidSmoothingGroup => "INVALID_SMOOTHING_GROUP",
+                ObjParseErrorCode::InvalidTextureOption => "INVALID_TEXTURE_OPTION",
+                ObjParseErrorCode::InvalidValue => "INVALID_VALUE",
                 ObjParseErrorCode::InvalidVertexRef => "INVALID_VERTEX_REF",
+                ObjParseErrorCode::LineTooLong => "LINE_TOO_LONG",
+                ObjParseErrorCode::MissingFileName => "MISSING_FILE_NAME",
                 ObjParseErrorCode::MissingGeometricVertex => "MISSING_GEOMETRIC_VERTEX",
                 ObjParseErrorCode::MissingToken => "MISSING_TOKEN",
+                ObjParseErrorCode::MissingVertexColors => "MISSING_VERTEX_COLORS",
+                ObjParseErrorCode::NoMaterialDefined => "NO_MATERIAL_DEFINED",
+                ObjParseErrorCode::NumberOutOfRange => "NUMBER_OUT_OF_RANGE",
                 ObjParseErrorCode::TooFewDimensions => "TOO_FEW_DIMENSIONS",
                 ObjParseErrorCode::TooFewVertices => "TOO_FEW_VERTICES",
                 ObjParseErrorCode::TooManyDimensions => "TOO_MANY_DIMENSIONS",
+                ObjParseErrorCode::TooManyProblems => "TOO_MANY_PROBLEMS",
+                ObjParseErrorCode::UnknownMaterial => "UNKNOWN_MATERIAL",
                 ObjParseErrorCode::UnsupportedCommand => "UNSUPPORTED_COMMAND",
                 ObjParseErrorCode::UnusedTokens => "UNUSED_TOKENS",
                 ObjParseErrorCode::VertexNotFound => "VERTEX_NOT_FOUND",
-                ObjParseErrorCode::NumberOutOfRange => "NUMBER_OUT_OF_RANGE",
-                ObjParseErrorCode::InvalidValue => "INVALID_VALUE",
-                ObjParseErrorCode::InvalidTextureOption => "INVALID_TEXTURE_OPTION",
-                ObjParseErrorCode::TooManyProblems => "TOO_MANY_PROBLEMS",
-                ObjParseErrorCode::MissingFileName => "MISSING_FILE_NAME",
-                ObjParseErrorCode::FileNotFound => "FILE_NOT_FOUND",
-                ObjParseErrorCode::UnknownMaterial => "UNKNOWN_MATERIAL",
-                ObjParseErrorCode::NoMaterialDefined => "NO_MATERIAL_DEFINED",
-                ObjParseErrorCode::InvalidSmoothingGroup => "INVALID_SMOOTHING_GROUP",
-                ObjParseErrorCode::MissingVertexColors => "MISSING_VERTEX_COLORS",
-                ObjParseErrorCode::FileSubstitution => "FILE_SUBSTITUTION",
-                ObjParseErrorCode::LineTooLong => "LINE_TOO_LONG",
-                ObjParseErrorCode::InvalidFilePath => "INVALID_FILE_PATH",
             }
         }
     }
     impl ::std::fmt::Display for ObjParseErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ObjParseErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -658,38 +658,38 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ObjParseErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CODE_UNSPECIFIED" => ObjParseErrorCode::CodeUnspecified,
+                "FILE_NOT_FOUND" => ObjParseErrorCode::FileNotFound,
+                "FILE_SUBSTITUTION" => ObjParseErrorCode::FileSubstitution,
                 "INCONSISTENT_VERTEX_REFS" => ObjParseErrorCode::InconsistentVertexRefs,
                 "INVALID_COMMAND" => ObjParseErrorCode::InvalidCommand,
+                "INVALID_FILE_PATH" => ObjParseErrorCode::InvalidFilePath,
                 "INVALID_NUMBER" => ObjParseErrorCode::InvalidNumber,
+                "INVALID_SMOOTHING_GROUP" => ObjParseErrorCode::InvalidSmoothingGroup,
+                "INVALID_TEXTURE_OPTION" => ObjParseErrorCode::InvalidTextureOption,
+                "INVALID_VALUE" => ObjParseErrorCode::InvalidValue,
                 "INVALID_VERTEX_REF" => ObjParseErrorCode::InvalidVertexRef,
+                "LINE_TOO_LONG" => ObjParseErrorCode::LineTooLong,
+                "MISSING_FILE_NAME" => ObjParseErrorCode::MissingFileName,
                 "MISSING_GEOMETRIC_VERTEX" => ObjParseErrorCode::MissingGeometricVertex,
                 "MISSING_TOKEN" => ObjParseErrorCode::MissingToken,
+                "MISSING_VERTEX_COLORS" => ObjParseErrorCode::MissingVertexColors,
+                "NO_MATERIAL_DEFINED" => ObjParseErrorCode::NoMaterialDefined,
+                "NUMBER_OUT_OF_RANGE" => ObjParseErrorCode::NumberOutOfRange,
                 "TOO_FEW_DIMENSIONS" => ObjParseErrorCode::TooFewDimensions,
                 "TOO_FEW_VERTICES" => ObjParseErrorCode::TooFewVertices,
                 "TOO_MANY_DIMENSIONS" => ObjParseErrorCode::TooManyDimensions,
+                "TOO_MANY_PROBLEMS" => ObjParseErrorCode::TooManyProblems,
+                "UNKNOWN_MATERIAL" => ObjParseErrorCode::UnknownMaterial,
                 "UNSUPPORTED_COMMAND" => ObjParseErrorCode::UnsupportedCommand,
                 "UNUSED_TOKENS" => ObjParseErrorCode::UnusedTokens,
                 "VERTEX_NOT_FOUND" => ObjParseErrorCode::VertexNotFound,
-                "NUMBER_OUT_OF_RANGE" => ObjParseErrorCode::NumberOutOfRange,
-                "INVALID_VALUE" => ObjParseErrorCode::InvalidValue,
-                "INVALID_TEXTURE_OPTION" => ObjParseErrorCode::InvalidTextureOption,
-                "TOO_MANY_PROBLEMS" => ObjParseErrorCode::TooManyProblems,
-                "MISSING_FILE_NAME" => ObjParseErrorCode::MissingFileName,
-                "FILE_NOT_FOUND" => ObjParseErrorCode::FileNotFound,
-                "UNKNOWN_MATERIAL" => ObjParseErrorCode::UnknownMaterial,
-                "NO_MATERIAL_DEFINED" => ObjParseErrorCode::NoMaterialDefined,
-                "INVALID_SMOOTHING_GROUP" => ObjParseErrorCode::InvalidSmoothingGroup,
-                "MISSING_VERTEX_COLORS" => ObjParseErrorCode::MissingVertexColors,
-                "FILE_SUBSTITUTION" => ObjParseErrorCode::FileSubstitution,
-                "LINE_TOO_LONG" => ObjParseErrorCode::LineTooLong,
-                "INVALID_FILE_PATH" => ObjParseErrorCode::InvalidFilePath,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -751,29 +751,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PresentationParamsColorSpace {
-        #[doc = "Invalid color value."]
-        Unknown,
-        #[doc = "Linear color values. Default."]
-        Linear,
         #[doc = "Colors should be converted to linear by assuming gamma = 2.0."]
         Gamma,
+        #[doc = "Linear color values. Default."]
+        Linear,
+        #[doc = "Invalid color value."]
+        Unknown,
     }
     impl PresentationParamsColorSpace {
         pub fn as_str(self) -> &'static str {
             match self {
-                PresentationParamsColorSpace::Unknown => "UNKNOWN",
-                PresentationParamsColorSpace::Linear => "LINEAR",
                 PresentationParamsColorSpace::Gamma => "GAMMA",
+                PresentationParamsColorSpace::Linear => "LINEAR",
+                PresentationParamsColorSpace::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for PresentationParamsColorSpace {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PresentationParamsColorSpace {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -781,15 +781,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PresentationParamsColorSpace {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => PresentationParamsColorSpace::Unknown,
-                "LINEAR" => PresentationParamsColorSpace::Linear,
                 "GAMMA" => PresentationParamsColorSpace::Gamma,
+                "LINEAR" => PresentationParamsColorSpace::Linear,
+                "UNKNOWN" => PresentationParamsColorSpace::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -956,12 +956,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -969,7 +969,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1012,12 +1012,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1025,7 +1025,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1078,33 +1078,33 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod assets {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMaxComplexity {
-                ComplexityUnspecified,
                 Complex,
+                ComplexityUnspecified,
                 Medium,
                 Simple,
             }
             impl ListMaxComplexity {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListMaxComplexity::ComplexityUnspecified => "COMPLEXITY_UNSPECIFIED",
                         ListMaxComplexity::Complex => "COMPLEX",
+                        ListMaxComplexity::ComplexityUnspecified => "COMPLEXITY_UNSPECIFIED",
                         ListMaxComplexity::Medium => "MEDIUM",
                         ListMaxComplexity::Simple => "SIMPLE",
                     }
                 }
             }
             impl ::std::fmt::Display for ListMaxComplexity {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for ListMaxComplexity {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -1112,14 +1112,14 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for ListMaxComplexity {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "COMPLEXITY_UNSPECIFIED" => ListMaxComplexity::ComplexityUnspecified,
                         "COMPLEX" => ListMaxComplexity::Complex,
+                        "COMPLEXITY_UNSPECIFIED" => ListMaxComplexity::ComplexityUnspecified,
                         "MEDIUM" => ListMaxComplexity::Medium,
                         "SIMPLE" => ListMaxComplexity::Simple,
                         _ => {
@@ -1215,19 +1215,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1425,19 +1415,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1480,27 +1460,29 @@ mod resources {
             #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
             #[doc = r" populated fields in the yielded items will be determined by the"]
             #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_assets<T>(self) -> ListAssetsIter<'a, A, T>
+            pub fn iter_assets<T>(mut self) -> crate::iter::PageItemIter<Self, T>
             where
                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                ListAssetsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
+                let mut fields = concat!("nextPageToken,", "assets").to_owned();
+                let items_fields = T::field_selector();
+                if !items_fields.is_empty() {
+                    fields.push_str("(");
+                    fields.push_str(&items_fields);
+                    fields.push_str(")");
                 }
+                self.fields = Some(fields);
+                crate::iter::PageItemIter::new(self, "assets")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
             #[doc = r" fields in `#items_type` will be the default fields populated by"]
             #[doc = r" the server."]
-            pub fn iter_assets_standard(mut self) -> ListAssetsIter<'a, A, crate::schemas::Asset> {
+            pub fn iter_assets_standard(
+                mut self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Asset> {
                 self.fields = Some(concat!("nextPageToken,", "assets").to_owned());
-                ListAssetsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "assets")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1508,26 +1490,37 @@ mod resources {
             #[doc = r" primarily be used during developement and debugging as fetching"]
             #[doc = r" all fields can be expensive both in bandwidth and server"]
             #[doc = r" resources."]
-            pub fn iter_assets_debug(mut self) -> ListAssetsIter<'a, A, crate::schemas::Asset> {
+            pub fn iter_assets_debug(
+                mut self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Asset> {
                 self.fields = Some(concat!("nextPageToken,", "assets", "(*)").to_owned());
-                ListAssetsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "assets")
             }
-            #[doc = r" Return an iterator that"]
-            pub fn iter<T>(
-                self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+            pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                crate::PageIter {
-                    method: self,
-                    finished: false,
-                    _phantom: ::std::default::Default::default(),
+                let mut fields = T::field_selector();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
                 }
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_standard(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListAssetsResponse> {
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_debug(
+                mut self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListAssetsResponse> {
+                self.fields = Some("*".to_owned());
+                crate::iter::PageIter::new(self)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -1619,52 +1612,13 @@ mod resources {
                 req
             }
         }
-        pub struct ListAssetsIter<'a, A, T> {
-            method: ListRequestBuilder<'a, A>,
-            last_page_reached: bool,
-            items_iter: Option<::std::vec::IntoIter<T>>,
-        }
-        impl<'a, A, T> Iterator for ListAssetsIter<'a, A, T>
-        where
-            A: ::yup_oauth2::GetToken,
-            T: ::serde::de::DeserializeOwned,
-        {
-            type Item = Result<T, Box<dyn ::std::error::Error>>;
-            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                #[derive(:: serde :: Deserialize)]
-                struct Resp<T> {
-                    #[serde(rename = "assets")]
-                    items: Option<Vec<T>>,
-                    #[serde(rename = "nextPageToken")]
-                    next_page_token: Option<String>,
-                }
-                loop {
-                    if let Some(iter) = self.items_iter.as_mut() {
-                        match iter.next() {
-                            Some(v) => return Some(Ok(v)),
-                            None => {}
-                        }
-                    }
-                    if self.last_page_reached {
-                        return None;
-                    }
-                    let resp: Resp<T> = match self.method._execute() {
-                        Ok(r) => r,
-                        Err(err) => return Some(Err(err)),
-                    };
-                    self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                    self.method.page_token = resp.next_page_token;
-                    self.items_iter = resp.items.map(|i| i.into_iter());
-                }
-            }
-        }
-        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+        impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
             fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned,
             {
                 self._execute()
             }
@@ -1698,26 +1652,26 @@ mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListVisibility {
-                    VisibilityUnspecified,
-                    Published,
                     Private,
+                    Published,
+                    VisibilityUnspecified,
                 }
                 impl ListVisibility {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            ListVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
-                            ListVisibility::Published => "PUBLISHED",
                             ListVisibility::Private => "PRIVATE",
+                            ListVisibility::Published => "PUBLISHED",
+                            ListVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
                         }
                     }
                 }
                 impl ::std::fmt::Display for ListVisibility {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for ListVisibility {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -1725,15 +1679,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for ListVisibility {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "VISIBILITY_UNSPECIFIED" => ListVisibility::VisibilityUnspecified,
-                            "PUBLISHED" => ListVisibility::Published,
                             "PRIVATE" => ListVisibility::Private,
+                            "PUBLISHED" => ListVisibility::Published,
+                            "VISIBILITY_UNSPECIFIED" => ListVisibility::VisibilityUnspecified,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -1839,19 +1793,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1894,15 +1838,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_user_assets<T>(self) -> ListUserAssetsIter<'a, A, T>
+                pub fn iter_user_assets<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListUserAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "userAssets").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "userAssets")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1910,13 +1858,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_user_assets_standard(
                     mut self,
-                ) -> ListUserAssetsIter<'a, A, crate::schemas::UserAsset> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::UserAsset> {
                     self.fields = Some(concat!("nextPageToken,", "userAssets").to_owned());
-                    ListUserAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "userAssets")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1926,26 +1870,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_user_assets_debug(
                     mut self,
-                ) -> ListUserAssetsIter<'a, A, crate::schemas::UserAsset> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::UserAsset> {
                     self.fields = Some(concat!("nextPageToken,", "userAssets", "(*)").to_owned());
-                    ListUserAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "userAssets")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListUserAssetsResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListUserAssetsResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2042,52 +1997,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListUserAssetsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListUserAssetsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "userAssets")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -2171,19 +2087,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2226,15 +2132,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_assets<T>(self) -> ListAssetsIter<'a, A, T>
+                pub fn iter_assets<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "assets").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "assets")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2242,13 +2152,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_assets_standard(
                     mut self,
-                ) -> ListAssetsIter<'a, A, crate::schemas::Asset> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Asset> {
                     self.fields = Some(concat!("nextPageToken,", "assets").to_owned());
-                    ListAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "assets")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2256,26 +2162,39 @@ mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_assets_debug(mut self) -> ListAssetsIter<'a, A, crate::schemas::Asset> {
+                pub fn iter_assets_debug(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Asset> {
                     self.fields = Some(concat!("nextPageToken,", "assets", "(*)").to_owned());
-                    ListAssetsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "assets")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListLikedAssetsResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListLikedAssetsResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2371,52 +2290,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListAssetsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListAssetsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "assets")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -2682,7 +2562,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -2691,7 +2574,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -2704,58 +2587,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

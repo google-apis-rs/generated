@@ -112,33 +112,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidInstrumentationTestOrchestratorOption {
+        #[doc = "Run test without using orchestrator."]
+        DoNotUseOrchestrator,
         #[doc = "Default value: the server will choose the mode. Currently implies that\nthe test will run without the orchestrator. In the future,\nall instrumentation tests will be run with the orchestrator.\nUsing the orchestrator is highly encouraged because of all the benefits it\noffers."]
         OrchestratorOptionUnspecified,
         #[doc = "Run test using orchestrator.\n** Only compatible with AndroidJUnitRunner version 1.0 or higher! **\nRecommended."]
         UseOrchestrator,
-        #[doc = "Run test without using orchestrator."]
-        DoNotUseOrchestrator,
     }
     impl AndroidInstrumentationTestOrchestratorOption {
         pub fn as_str(self) -> &'static str {
             match self {
+                AndroidInstrumentationTestOrchestratorOption::DoNotUseOrchestrator => {
+                    "DO_NOT_USE_ORCHESTRATOR"
+                }
                 AndroidInstrumentationTestOrchestratorOption::OrchestratorOptionUnspecified => {
                     "ORCHESTRATOR_OPTION_UNSPECIFIED"
                 }
                 AndroidInstrumentationTestOrchestratorOption::UseOrchestrator => "USE_ORCHESTRATOR",
-                AndroidInstrumentationTestOrchestratorOption::DoNotUseOrchestrator => {
-                    "DO_NOT_USE_ORCHESTRATOR"
-                }
             }
         }
     }
     impl ::std::fmt::Display for AndroidInstrumentationTestOrchestratorOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidInstrumentationTestOrchestratorOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -146,19 +146,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidInstrumentationTestOrchestratorOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DO_NOT_USE_ORCHESTRATOR" => {
+                    AndroidInstrumentationTestOrchestratorOption::DoNotUseOrchestrator
+                }
                 "ORCHESTRATOR_OPTION_UNSPECIFIED" => {
                     AndroidInstrumentationTestOrchestratorOption::OrchestratorOptionUnspecified
                 }
                 "USE_ORCHESTRATOR" => AndroidInstrumentationTestOrchestratorOption::UseOrchestrator,
-                "DO_NOT_USE_ORCHESTRATOR" => {
-                    AndroidInstrumentationTestOrchestratorOption::DoNotUseOrchestrator
-                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -264,27 +264,27 @@ pub mod schemas {
     pub enum AndroidModelForm {
         #[doc = "Do not use.  For proto versioning only."]
         DeviceFormUnspecified,
-        #[doc = "A software stack that simulates the device."]
-        Virtual,
         #[doc = "Actual hardware."]
         Physical,
+        #[doc = "A software stack that simulates the device."]
+        Virtual,
     }
     impl AndroidModelForm {
         pub fn as_str(self) -> &'static str {
             match self {
                 AndroidModelForm::DeviceFormUnspecified => "DEVICE_FORM_UNSPECIFIED",
-                AndroidModelForm::Virtual => "VIRTUAL",
                 AndroidModelForm::Physical => "PHYSICAL",
+                AndroidModelForm::Virtual => "VIRTUAL",
             }
         }
     }
     impl ::std::fmt::Display for AndroidModelForm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidModelForm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -292,15 +292,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidModelForm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DEVICE_FORM_UNSPECIFIED" => AndroidModelForm::DeviceFormUnspecified,
-                "VIRTUAL" => AndroidModelForm::Virtual,
                 "PHYSICAL" => AndroidModelForm::Physical,
+                "VIRTUAL" => AndroidModelForm::Virtual,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -343,12 +343,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for AndroidModelFormFactor {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidModelFormFactor {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -356,7 +356,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidModelFormFactor {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -725,59 +725,59 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CancelTestMatrixResponseTestState {
-        #[doc = "Do not use.  For proto versioning only."]
-        TestStateUnspecified,
-        #[doc = "The execution or matrix is being validated."]
-        Validating,
+        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        Cancelled,
+        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        Error,
+        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        Finished,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        IncompatibleArchitecture,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        IncompatibleEnvironment,
+        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
         #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
         Running,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
-        Finished,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
-        Error,
+        #[doc = "Do not use.  For proto versioning only."]
+        TestStateUnspecified,
         #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
         UnsupportedEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
-        IncompatibleEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
-        IncompatibleArchitecture,
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
-        Cancelled,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
-        Invalid,
+        #[doc = "The execution or matrix is being validated."]
+        Validating,
     }
     impl CancelTestMatrixResponseTestState {
         pub fn as_str(self) -> &'static str {
             match self {
-                CancelTestMatrixResponseTestState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
-                CancelTestMatrixResponseTestState::Validating => "VALIDATING",
-                CancelTestMatrixResponseTestState::Pending => "PENDING",
-                CancelTestMatrixResponseTestState::Running => "RUNNING",
-                CancelTestMatrixResponseTestState::Finished => "FINISHED",
+                CancelTestMatrixResponseTestState::Cancelled => "CANCELLED",
                 CancelTestMatrixResponseTestState::Error => "ERROR",
-                CancelTestMatrixResponseTestState::UnsupportedEnvironment => {
-                    "UNSUPPORTED_ENVIRONMENT"
+                CancelTestMatrixResponseTestState::Finished => "FINISHED",
+                CancelTestMatrixResponseTestState::IncompatibleArchitecture => {
+                    "INCOMPATIBLE_ARCHITECTURE"
                 }
                 CancelTestMatrixResponseTestState::IncompatibleEnvironment => {
                     "INCOMPATIBLE_ENVIRONMENT"
                 }
-                CancelTestMatrixResponseTestState::IncompatibleArchitecture => {
-                    "INCOMPATIBLE_ARCHITECTURE"
-                }
-                CancelTestMatrixResponseTestState::Cancelled => "CANCELLED",
                 CancelTestMatrixResponseTestState::Invalid => "INVALID",
+                CancelTestMatrixResponseTestState::Pending => "PENDING",
+                CancelTestMatrixResponseTestState::Running => "RUNNING",
+                CancelTestMatrixResponseTestState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
+                CancelTestMatrixResponseTestState::UnsupportedEnvironment => {
+                    "UNSUPPORTED_ENVIRONMENT"
+                }
+                CancelTestMatrixResponseTestState::Validating => "VALIDATING",
             }
         }
     }
     impl ::std::fmt::Display for CancelTestMatrixResponseTestState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CancelTestMatrixResponseTestState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -785,29 +785,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CancelTestMatrixResponseTestState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEST_STATE_UNSPECIFIED" => CancelTestMatrixResponseTestState::TestStateUnspecified,
-                "VALIDATING" => CancelTestMatrixResponseTestState::Validating,
-                "PENDING" => CancelTestMatrixResponseTestState::Pending,
-                "RUNNING" => CancelTestMatrixResponseTestState::Running,
-                "FINISHED" => CancelTestMatrixResponseTestState::Finished,
+                "CANCELLED" => CancelTestMatrixResponseTestState::Cancelled,
                 "ERROR" => CancelTestMatrixResponseTestState::Error,
-                "UNSUPPORTED_ENVIRONMENT" => {
-                    CancelTestMatrixResponseTestState::UnsupportedEnvironment
+                "FINISHED" => CancelTestMatrixResponseTestState::Finished,
+                "INCOMPATIBLE_ARCHITECTURE" => {
+                    CancelTestMatrixResponseTestState::IncompatibleArchitecture
                 }
                 "INCOMPATIBLE_ENVIRONMENT" => {
                     CancelTestMatrixResponseTestState::IncompatibleEnvironment
                 }
-                "INCOMPATIBLE_ARCHITECTURE" => {
-                    CancelTestMatrixResponseTestState::IncompatibleArchitecture
-                }
-                "CANCELLED" => CancelTestMatrixResponseTestState::Cancelled,
                 "INVALID" => CancelTestMatrixResponseTestState::Invalid,
+                "PENDING" => CancelTestMatrixResponseTestState::Pending,
+                "RUNNING" => CancelTestMatrixResponseTestState::Running,
+                "TEST_STATE_UNSPECIFIED" => CancelTestMatrixResponseTestState::TestStateUnspecified,
+                "UNSUPPORTED_ENVIRONMENT" => {
+                    CancelTestMatrixResponseTestState::UnsupportedEnvironment
+                }
+                "VALIDATING" => CancelTestMatrixResponseTestState::Validating,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1326,12 +1326,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for IosModelFormFactor {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for IosModelFormFactor {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1339,7 +1339,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for IosModelFormFactor {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1782,30 +1782,30 @@ pub mod schemas {
     pub enum RoboDirectiveActionType {
         #[doc = "DO NOT USE. For proto versioning only."]
         ActionTypeUnspecified,
-        #[doc = "Direct Robo to click on the specified element. No-op if specified element\nis not clickable."]
-        SingleClick,
         #[doc = "Direct Robo to enter text on the specified element. No-op if specified\nelement is not enabled or does not allow text entry."]
         EnterText,
         #[doc = "Direct Robo to ignore interactions with a specific element."]
         Ignore,
+        #[doc = "Direct Robo to click on the specified element. No-op if specified element\nis not clickable."]
+        SingleClick,
     }
     impl RoboDirectiveActionType {
         pub fn as_str(self) -> &'static str {
             match self {
                 RoboDirectiveActionType::ActionTypeUnspecified => "ACTION_TYPE_UNSPECIFIED",
-                RoboDirectiveActionType::SingleClick => "SINGLE_CLICK",
                 RoboDirectiveActionType::EnterText => "ENTER_TEXT",
                 RoboDirectiveActionType::Ignore => "IGNORE",
+                RoboDirectiveActionType::SingleClick => "SINGLE_CLICK",
             }
         }
     }
     impl ::std::fmt::Display for RoboDirectiveActionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RoboDirectiveActionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1813,16 +1813,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RoboDirectiveActionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ACTION_TYPE_UNSPECIFIED" => RoboDirectiveActionType::ActionTypeUnspecified,
-                "SINGLE_CLICK" => RoboDirectiveActionType::SingleClick,
                 "ENTER_TEXT" => RoboDirectiveActionType::EnterText,
                 "IGNORE" => RoboDirectiveActionType::Ignore,
+                "SINGLE_CLICK" => RoboDirectiveActionType::SingleClick,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1995,53 +1995,53 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestExecutionState {
-        #[doc = "Do not use.  For proto versioning only."]
-        TestStateUnspecified,
-        #[doc = "The execution or matrix is being validated."]
-        Validating,
+        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        Cancelled,
+        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        Error,
+        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        Finished,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        IncompatibleArchitecture,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        IncompatibleEnvironment,
+        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
         #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
         Running,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
-        Finished,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
-        Error,
+        #[doc = "Do not use.  For proto versioning only."]
+        TestStateUnspecified,
         #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
         UnsupportedEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
-        IncompatibleEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
-        IncompatibleArchitecture,
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
-        Cancelled,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
-        Invalid,
+        #[doc = "The execution or matrix is being validated."]
+        Validating,
     }
     impl TestExecutionState {
         pub fn as_str(self) -> &'static str {
             match self {
-                TestExecutionState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
-                TestExecutionState::Validating => "VALIDATING",
+                TestExecutionState::Cancelled => "CANCELLED",
+                TestExecutionState::Error => "ERROR",
+                TestExecutionState::Finished => "FINISHED",
+                TestExecutionState::IncompatibleArchitecture => "INCOMPATIBLE_ARCHITECTURE",
+                TestExecutionState::IncompatibleEnvironment => "INCOMPATIBLE_ENVIRONMENT",
+                TestExecutionState::Invalid => "INVALID",
                 TestExecutionState::Pending => "PENDING",
                 TestExecutionState::Running => "RUNNING",
-                TestExecutionState::Finished => "FINISHED",
-                TestExecutionState::Error => "ERROR",
+                TestExecutionState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
                 TestExecutionState::UnsupportedEnvironment => "UNSUPPORTED_ENVIRONMENT",
-                TestExecutionState::IncompatibleEnvironment => "INCOMPATIBLE_ENVIRONMENT",
-                TestExecutionState::IncompatibleArchitecture => "INCOMPATIBLE_ARCHITECTURE",
-                TestExecutionState::Cancelled => "CANCELLED",
-                TestExecutionState::Invalid => "INVALID",
+                TestExecutionState::Validating => "VALIDATING",
             }
         }
     }
     impl ::std::fmt::Display for TestExecutionState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TestExecutionState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2049,23 +2049,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TestExecutionState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEST_STATE_UNSPECIFIED" => TestExecutionState::TestStateUnspecified,
-                "VALIDATING" => TestExecutionState::Validating,
+                "CANCELLED" => TestExecutionState::Cancelled,
+                "ERROR" => TestExecutionState::Error,
+                "FINISHED" => TestExecutionState::Finished,
+                "INCOMPATIBLE_ARCHITECTURE" => TestExecutionState::IncompatibleArchitecture,
+                "INCOMPATIBLE_ENVIRONMENT" => TestExecutionState::IncompatibleEnvironment,
+                "INVALID" => TestExecutionState::Invalid,
                 "PENDING" => TestExecutionState::Pending,
                 "RUNNING" => TestExecutionState::Running,
-                "FINISHED" => TestExecutionState::Finished,
-                "ERROR" => TestExecutionState::Error,
+                "TEST_STATE_UNSPECIFIED" => TestExecutionState::TestStateUnspecified,
                 "UNSUPPORTED_ENVIRONMENT" => TestExecutionState::UnsupportedEnvironment,
-                "INCOMPATIBLE_ENVIRONMENT" => TestExecutionState::IncompatibleEnvironment,
-                "INCOMPATIBLE_ARCHITECTURE" => TestExecutionState::IncompatibleArchitecture,
-                "CANCELLED" => TestExecutionState::Cancelled,
-                "INVALID" => TestExecutionState::Invalid,
+                "VALIDATING" => TestExecutionState::Validating,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2136,133 +2136,133 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixInvalidMatrixDetails {
-        #[doc = "Do not use. For proto versioning only."]
-        InvalidMatrixDetailsUnspecified,
+        #[doc = "The zipped XCTest was built for the iOS simulator rather than for a\nphysical device."]
+        BuiltForIosSimulator,
         #[doc = "The matrix is INVALID, but there are no further details available."]
         DetailsUnavailable,
+        #[doc = "Device administrator applications are not allowed."]
+        DeviceAdminReceiver,
+        #[doc = "The app declares one or more permissions that are not allowed."]
+        ForbiddenPermissions,
+        #[doc = "The test runner class specified by user or in the test APK's manifest file\nis not compatible with Android Test Orchestrator.\nOrchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher.\nOrchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR\nOrchestratorOption."]
+        InstrumentationOrchestratorIncompatible,
+        #[doc = "APK is built for a preview SDK which is unsupported"]
+        InvalidApkPreviewSdk,
+        #[doc = "Invalid definition of action in the robo directives\n(e.g. a click or ignore action includes an input text field)"]
+        InvalidDirectiveAction,
+        #[doc = "Either the provided input APK path was malformed,\nthe APK file does not exist, or the user does not have permission to\naccess the APK file."]
+        InvalidInputApk,
+        #[doc = "Do not use. For proto versioning only."]
+        InvalidMatrixDetailsUnspecified,
+        #[doc = "The APK application ID (aka package name) is invalid.\nSee also\nhttps://developer.android.com/studio/build/application-id"]
+        InvalidPackageName,
+        #[doc = "There is at least one invalid resource name in the provided\nrobo directives"]
+        InvalidResourceName,
+        #[doc = "There is a conflict in the provided robo_directives."]
+        InvalidRoboDirectives,
         #[doc = "The input app APK could not be parsed."]
         MalformedApk,
+        #[doc = "The input IPA could not be parsed.\nDeprecated and not currently used."]
+        MalformedIpa,
         #[doc = "The input test APK could not be parsed."]
         MalformedTestApk,
+        #[doc = "The zipped XCTest was malformed. The zip did not contain a single\n.xctestrun file and the contents of the DerivedData/Build/Products\ndirectory."]
+        MalformedXcTestZip,
+        #[doc = "APK contains no code.\nSee also\nhttps://developer.android.com/guide/topics/manifest/application-element.html#code"]
+        NoCodeApk,
+        #[doc = "The test apk does not declare an instrumentation."]
+        NoInstrumentation,
+        #[doc = "A main launcher activity could not be found."]
+        NoLauncherActivity,
         #[doc = "The AndroidManifest.xml could not be found."]
         NoManifest,
         #[doc = "The APK manifest does not declare a package name."]
         NoPackageName,
-        #[doc = "The APK application ID (aka package name) is invalid.\nSee also\nhttps://developer.android.com/studio/build/application-id"]
-        InvalidPackageName,
-        #[doc = "The test package and app package are the same."]
-        TestSameAsApp,
-        #[doc = "The test apk does not declare an instrumentation."]
-        NoInstrumentation,
         #[doc = "The input app apk does not have a signature."]
         NoSignature,
-        #[doc = "The test runner class specified by user or in the test APK's manifest file\nis not compatible with Android Test Orchestrator.\nOrchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher.\nOrchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR\nOrchestratorOption."]
-        InstrumentationOrchestratorIncompatible,
         #[doc = "The test APK does not contain the test runner class specified by user or in\nthe manifest file.\nThis can be caused by either of the following reasons:\n\n* the user provided a runner class name that's incorrect, or\n* the test runner isn't built into the test APK (might be in the app APK\n  instead)."]
         NoTestRunnerClass,
-        #[doc = "A main launcher activity could not be found."]
-        NoLauncherActivity,
-        #[doc = "The app declares one or more permissions that are not allowed."]
-        ForbiddenPermissions,
-        #[doc = "There is a conflict in the provided robo_directives."]
-        InvalidRoboDirectives,
-        #[doc = "There is at least one invalid resource name in the provided\nrobo directives"]
-        InvalidResourceName,
-        #[doc = "Invalid definition of action in the robo directives\n(e.g. a click or ignore action includes an input text field)"]
-        InvalidDirectiveAction,
-        #[doc = "There is no test loop intent filter, or the one that is given is\nnot formatted correctly."]
-        TestLoopIntentFilterNotFound,
-        #[doc = "The request contains a scenario label that was not declared in the\nmanifest."]
-        ScenarioLabelNotDeclared,
-        #[doc = "There was an error when parsing a label's value."]
-        ScenarioLabelMalformed,
-        #[doc = "The request contains a scenario number that was not declared in the\nmanifest."]
-        ScenarioNotDeclared,
-        #[doc = "Device administrator applications are not allowed."]
-        DeviceAdminReceiver,
-        #[doc = "The zipped XCTest was malformed. The zip did not contain a single\n.xctestrun file and the contents of the DerivedData/Build/Products\ndirectory."]
-        MalformedXcTestZip,
-        #[doc = "The zipped XCTest was built for the iOS simulator rather than for a\nphysical device."]
-        BuiltForIosSimulator,
         #[doc = "The .xctestrun file did not specify any test targets."]
         NoTestsInXcTestZip,
-        #[doc = "One or more of the test targets defined in the .xctestrun file specifies\n\"UseDestinationArtifacts\", which is disallowed."]
-        UseDestinationArtifacts,
-        #[doc = "XC tests which run on physical devices must have\n\"IsAppHostedTestBundle\" == \"true\" in the xctestrun file."]
-        TestNotAppHosted,
         #[doc = "An Info.plist file in the XCTest zip could not be parsed."]
         PlistCannotBeParsed,
+        #[doc = "There was an error when parsing a label's value."]
+        ScenarioLabelMalformed,
+        #[doc = "The request contains a scenario label that was not declared in the\nmanifest."]
+        ScenarioLabelNotDeclared,
+        #[doc = "The request contains a scenario number that was not declared in the\nmanifest."]
+        ScenarioNotDeclared,
+        #[doc = "There is no test loop intent filter, or the one that is given is\nnot formatted correctly."]
+        TestLoopIntentFilterNotFound,
+        #[doc = "XC tests which run on physical devices must have\n\"IsAppHostedTestBundle\" == \"true\" in the xctestrun file."]
+        TestNotAppHosted,
         #[doc = "The APK is marked as \"testOnly\".\nDeprecated and not currently used."]
         TestOnlyApk,
-        #[doc = "The input IPA could not be parsed.\nDeprecated and not currently used."]
-        MalformedIpa,
-        #[doc = "APK contains no code.\nSee also\nhttps://developer.android.com/guide/topics/manifest/application-element.html#code"]
-        NoCodeApk,
-        #[doc = "Either the provided input APK path was malformed,\nthe APK file does not exist, or the user does not have permission to\naccess the APK file."]
-        InvalidInputApk,
-        #[doc = "APK is built for a preview SDK which is unsupported"]
-        InvalidApkPreviewSdk,
+        #[doc = "The test package and app package are the same."]
+        TestSameAsApp,
+        #[doc = "One or more of the test targets defined in the .xctestrun file specifies\n\"UseDestinationArtifacts\", which is disallowed."]
+        UseDestinationArtifacts,
     }
     impl TestMatrixInvalidMatrixDetails {
         pub fn as_str(self) -> &'static str {
             match self {
-                TestMatrixInvalidMatrixDetails::InvalidMatrixDetailsUnspecified => {
-                    "INVALID_MATRIX_DETAILS_UNSPECIFIED"
-                }
+                TestMatrixInvalidMatrixDetails::BuiltForIosSimulator => "BUILT_FOR_IOS_SIMULATOR",
                 TestMatrixInvalidMatrixDetails::DetailsUnavailable => "DETAILS_UNAVAILABLE",
-                TestMatrixInvalidMatrixDetails::MalformedApk => "MALFORMED_APK",
-                TestMatrixInvalidMatrixDetails::MalformedTestApk => "MALFORMED_TEST_APK",
-                TestMatrixInvalidMatrixDetails::NoManifest => "NO_MANIFEST",
-                TestMatrixInvalidMatrixDetails::NoPackageName => "NO_PACKAGE_NAME",
-                TestMatrixInvalidMatrixDetails::InvalidPackageName => "INVALID_PACKAGE_NAME",
-                TestMatrixInvalidMatrixDetails::TestSameAsApp => "TEST_SAME_AS_APP",
-                TestMatrixInvalidMatrixDetails::NoInstrumentation => "NO_INSTRUMENTATION",
-                TestMatrixInvalidMatrixDetails::NoSignature => "NO_SIGNATURE",
+                TestMatrixInvalidMatrixDetails::DeviceAdminReceiver => "DEVICE_ADMIN_RECEIVER",
+                TestMatrixInvalidMatrixDetails::ForbiddenPermissions => "FORBIDDEN_PERMISSIONS",
                 TestMatrixInvalidMatrixDetails::InstrumentationOrchestratorIncompatible => {
                     "INSTRUMENTATION_ORCHESTRATOR_INCOMPATIBLE"
                 }
-                TestMatrixInvalidMatrixDetails::NoTestRunnerClass => "NO_TEST_RUNNER_CLASS",
-                TestMatrixInvalidMatrixDetails::NoLauncherActivity => "NO_LAUNCHER_ACTIVITY",
-                TestMatrixInvalidMatrixDetails::ForbiddenPermissions => "FORBIDDEN_PERMISSIONS",
-                TestMatrixInvalidMatrixDetails::InvalidRoboDirectives => "INVALID_ROBO_DIRECTIVES",
-                TestMatrixInvalidMatrixDetails::InvalidResourceName => "INVALID_RESOURCE_NAME",
+                TestMatrixInvalidMatrixDetails::InvalidApkPreviewSdk => "INVALID_APK_PREVIEW_SDK",
                 TestMatrixInvalidMatrixDetails::InvalidDirectiveAction => {
                     "INVALID_DIRECTIVE_ACTION"
                 }
-                TestMatrixInvalidMatrixDetails::TestLoopIntentFilterNotFound => {
-                    "TEST_LOOP_INTENT_FILTER_NOT_FOUND"
+                TestMatrixInvalidMatrixDetails::InvalidInputApk => "INVALID_INPUT_APK",
+                TestMatrixInvalidMatrixDetails::InvalidMatrixDetailsUnspecified => {
+                    "INVALID_MATRIX_DETAILS_UNSPECIFIED"
+                }
+                TestMatrixInvalidMatrixDetails::InvalidPackageName => "INVALID_PACKAGE_NAME",
+                TestMatrixInvalidMatrixDetails::InvalidResourceName => "INVALID_RESOURCE_NAME",
+                TestMatrixInvalidMatrixDetails::InvalidRoboDirectives => "INVALID_ROBO_DIRECTIVES",
+                TestMatrixInvalidMatrixDetails::MalformedApk => "MALFORMED_APK",
+                TestMatrixInvalidMatrixDetails::MalformedIpa => "MALFORMED_IPA",
+                TestMatrixInvalidMatrixDetails::MalformedTestApk => "MALFORMED_TEST_APK",
+                TestMatrixInvalidMatrixDetails::MalformedXcTestZip => "MALFORMED_XC_TEST_ZIP",
+                TestMatrixInvalidMatrixDetails::NoCodeApk => "NO_CODE_APK",
+                TestMatrixInvalidMatrixDetails::NoInstrumentation => "NO_INSTRUMENTATION",
+                TestMatrixInvalidMatrixDetails::NoLauncherActivity => "NO_LAUNCHER_ACTIVITY",
+                TestMatrixInvalidMatrixDetails::NoManifest => "NO_MANIFEST",
+                TestMatrixInvalidMatrixDetails::NoPackageName => "NO_PACKAGE_NAME",
+                TestMatrixInvalidMatrixDetails::NoSignature => "NO_SIGNATURE",
+                TestMatrixInvalidMatrixDetails::NoTestRunnerClass => "NO_TEST_RUNNER_CLASS",
+                TestMatrixInvalidMatrixDetails::NoTestsInXcTestZip => "NO_TESTS_IN_XC_TEST_ZIP",
+                TestMatrixInvalidMatrixDetails::PlistCannotBeParsed => "PLIST_CANNOT_BE_PARSED",
+                TestMatrixInvalidMatrixDetails::ScenarioLabelMalformed => {
+                    "SCENARIO_LABEL_MALFORMED"
                 }
                 TestMatrixInvalidMatrixDetails::ScenarioLabelNotDeclared => {
                     "SCENARIO_LABEL_NOT_DECLARED"
                 }
-                TestMatrixInvalidMatrixDetails::ScenarioLabelMalformed => {
-                    "SCENARIO_LABEL_MALFORMED"
-                }
                 TestMatrixInvalidMatrixDetails::ScenarioNotDeclared => "SCENARIO_NOT_DECLARED",
-                TestMatrixInvalidMatrixDetails::DeviceAdminReceiver => "DEVICE_ADMIN_RECEIVER",
-                TestMatrixInvalidMatrixDetails::MalformedXcTestZip => "MALFORMED_XC_TEST_ZIP",
-                TestMatrixInvalidMatrixDetails::BuiltForIosSimulator => "BUILT_FOR_IOS_SIMULATOR",
-                TestMatrixInvalidMatrixDetails::NoTestsInXcTestZip => "NO_TESTS_IN_XC_TEST_ZIP",
+                TestMatrixInvalidMatrixDetails::TestLoopIntentFilterNotFound => {
+                    "TEST_LOOP_INTENT_FILTER_NOT_FOUND"
+                }
+                TestMatrixInvalidMatrixDetails::TestNotAppHosted => "TEST_NOT_APP_HOSTED",
+                TestMatrixInvalidMatrixDetails::TestOnlyApk => "TEST_ONLY_APK",
+                TestMatrixInvalidMatrixDetails::TestSameAsApp => "TEST_SAME_AS_APP",
                 TestMatrixInvalidMatrixDetails::UseDestinationArtifacts => {
                     "USE_DESTINATION_ARTIFACTS"
                 }
-                TestMatrixInvalidMatrixDetails::TestNotAppHosted => "TEST_NOT_APP_HOSTED",
-                TestMatrixInvalidMatrixDetails::PlistCannotBeParsed => "PLIST_CANNOT_BE_PARSED",
-                TestMatrixInvalidMatrixDetails::TestOnlyApk => "TEST_ONLY_APK",
-                TestMatrixInvalidMatrixDetails::MalformedIpa => "MALFORMED_IPA",
-                TestMatrixInvalidMatrixDetails::NoCodeApk => "NO_CODE_APK",
-                TestMatrixInvalidMatrixDetails::InvalidInputApk => "INVALID_INPUT_APK",
-                TestMatrixInvalidMatrixDetails::InvalidApkPreviewSdk => "INVALID_APK_PREVIEW_SDK",
             }
         }
     }
     impl ::std::fmt::Display for TestMatrixInvalidMatrixDetails {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TestMatrixInvalidMatrixDetails {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2270,59 +2270,59 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TestMatrixInvalidMatrixDetails {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "INVALID_MATRIX_DETAILS_UNSPECIFIED" => {
-                    TestMatrixInvalidMatrixDetails::InvalidMatrixDetailsUnspecified
-                }
+                "BUILT_FOR_IOS_SIMULATOR" => TestMatrixInvalidMatrixDetails::BuiltForIosSimulator,
                 "DETAILS_UNAVAILABLE" => TestMatrixInvalidMatrixDetails::DetailsUnavailable,
-                "MALFORMED_APK" => TestMatrixInvalidMatrixDetails::MalformedApk,
-                "MALFORMED_TEST_APK" => TestMatrixInvalidMatrixDetails::MalformedTestApk,
-                "NO_MANIFEST" => TestMatrixInvalidMatrixDetails::NoManifest,
-                "NO_PACKAGE_NAME" => TestMatrixInvalidMatrixDetails::NoPackageName,
-                "INVALID_PACKAGE_NAME" => TestMatrixInvalidMatrixDetails::InvalidPackageName,
-                "TEST_SAME_AS_APP" => TestMatrixInvalidMatrixDetails::TestSameAsApp,
-                "NO_INSTRUMENTATION" => TestMatrixInvalidMatrixDetails::NoInstrumentation,
-                "NO_SIGNATURE" => TestMatrixInvalidMatrixDetails::NoSignature,
+                "DEVICE_ADMIN_RECEIVER" => TestMatrixInvalidMatrixDetails::DeviceAdminReceiver,
+                "FORBIDDEN_PERMISSIONS" => TestMatrixInvalidMatrixDetails::ForbiddenPermissions,
                 "INSTRUMENTATION_ORCHESTRATOR_INCOMPATIBLE" => {
                     TestMatrixInvalidMatrixDetails::InstrumentationOrchestratorIncompatible
                 }
-                "NO_TEST_RUNNER_CLASS" => TestMatrixInvalidMatrixDetails::NoTestRunnerClass,
-                "NO_LAUNCHER_ACTIVITY" => TestMatrixInvalidMatrixDetails::NoLauncherActivity,
-                "FORBIDDEN_PERMISSIONS" => TestMatrixInvalidMatrixDetails::ForbiddenPermissions,
-                "INVALID_ROBO_DIRECTIVES" => TestMatrixInvalidMatrixDetails::InvalidRoboDirectives,
-                "INVALID_RESOURCE_NAME" => TestMatrixInvalidMatrixDetails::InvalidResourceName,
+                "INVALID_APK_PREVIEW_SDK" => TestMatrixInvalidMatrixDetails::InvalidApkPreviewSdk,
                 "INVALID_DIRECTIVE_ACTION" => {
                     TestMatrixInvalidMatrixDetails::InvalidDirectiveAction
                 }
-                "TEST_LOOP_INTENT_FILTER_NOT_FOUND" => {
-                    TestMatrixInvalidMatrixDetails::TestLoopIntentFilterNotFound
+                "INVALID_INPUT_APK" => TestMatrixInvalidMatrixDetails::InvalidInputApk,
+                "INVALID_MATRIX_DETAILS_UNSPECIFIED" => {
+                    TestMatrixInvalidMatrixDetails::InvalidMatrixDetailsUnspecified
+                }
+                "INVALID_PACKAGE_NAME" => TestMatrixInvalidMatrixDetails::InvalidPackageName,
+                "INVALID_RESOURCE_NAME" => TestMatrixInvalidMatrixDetails::InvalidResourceName,
+                "INVALID_ROBO_DIRECTIVES" => TestMatrixInvalidMatrixDetails::InvalidRoboDirectives,
+                "MALFORMED_APK" => TestMatrixInvalidMatrixDetails::MalformedApk,
+                "MALFORMED_IPA" => TestMatrixInvalidMatrixDetails::MalformedIpa,
+                "MALFORMED_TEST_APK" => TestMatrixInvalidMatrixDetails::MalformedTestApk,
+                "MALFORMED_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::MalformedXcTestZip,
+                "NO_CODE_APK" => TestMatrixInvalidMatrixDetails::NoCodeApk,
+                "NO_INSTRUMENTATION" => TestMatrixInvalidMatrixDetails::NoInstrumentation,
+                "NO_LAUNCHER_ACTIVITY" => TestMatrixInvalidMatrixDetails::NoLauncherActivity,
+                "NO_MANIFEST" => TestMatrixInvalidMatrixDetails::NoManifest,
+                "NO_PACKAGE_NAME" => TestMatrixInvalidMatrixDetails::NoPackageName,
+                "NO_SIGNATURE" => TestMatrixInvalidMatrixDetails::NoSignature,
+                "NO_TEST_RUNNER_CLASS" => TestMatrixInvalidMatrixDetails::NoTestRunnerClass,
+                "NO_TESTS_IN_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::NoTestsInXcTestZip,
+                "PLIST_CANNOT_BE_PARSED" => TestMatrixInvalidMatrixDetails::PlistCannotBeParsed,
+                "SCENARIO_LABEL_MALFORMED" => {
+                    TestMatrixInvalidMatrixDetails::ScenarioLabelMalformed
                 }
                 "SCENARIO_LABEL_NOT_DECLARED" => {
                     TestMatrixInvalidMatrixDetails::ScenarioLabelNotDeclared
                 }
-                "SCENARIO_LABEL_MALFORMED" => {
-                    TestMatrixInvalidMatrixDetails::ScenarioLabelMalformed
-                }
                 "SCENARIO_NOT_DECLARED" => TestMatrixInvalidMatrixDetails::ScenarioNotDeclared,
-                "DEVICE_ADMIN_RECEIVER" => TestMatrixInvalidMatrixDetails::DeviceAdminReceiver,
-                "MALFORMED_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::MalformedXcTestZip,
-                "BUILT_FOR_IOS_SIMULATOR" => TestMatrixInvalidMatrixDetails::BuiltForIosSimulator,
-                "NO_TESTS_IN_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::NoTestsInXcTestZip,
+                "TEST_LOOP_INTENT_FILTER_NOT_FOUND" => {
+                    TestMatrixInvalidMatrixDetails::TestLoopIntentFilterNotFound
+                }
+                "TEST_NOT_APP_HOSTED" => TestMatrixInvalidMatrixDetails::TestNotAppHosted,
+                "TEST_ONLY_APK" => TestMatrixInvalidMatrixDetails::TestOnlyApk,
+                "TEST_SAME_AS_APP" => TestMatrixInvalidMatrixDetails::TestSameAsApp,
                 "USE_DESTINATION_ARTIFACTS" => {
                     TestMatrixInvalidMatrixDetails::UseDestinationArtifacts
                 }
-                "TEST_NOT_APP_HOSTED" => TestMatrixInvalidMatrixDetails::TestNotAppHosted,
-                "PLIST_CANNOT_BE_PARSED" => TestMatrixInvalidMatrixDetails::PlistCannotBeParsed,
-                "TEST_ONLY_APK" => TestMatrixInvalidMatrixDetails::TestOnlyApk,
-                "MALFORMED_IPA" => TestMatrixInvalidMatrixDetails::MalformedIpa,
-                "NO_CODE_APK" => TestMatrixInvalidMatrixDetails::NoCodeApk,
-                "INVALID_INPUT_APK" => TestMatrixInvalidMatrixDetails::InvalidInputApk,
-                "INVALID_APK_PREVIEW_SDK" => TestMatrixInvalidMatrixDetails::InvalidApkPreviewSdk,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2343,37 +2343,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixOutcomeSummary {
-        #[doc = "Do not use. For proto versioning only."]
-        OutcomeSummaryUnspecified,
-        #[doc = "The test matrix run was successful, for instance:\n\n* All the test cases passed.\n* Robo did not detect a crash of the application under test."]
-        Success,
         #[doc = "A run failed, for instance:\n\n* One or more test case failed.\n* A test timed out.\n* The application under test crashed."]
         Failure,
         #[doc = "Something unexpected happened. The run should still be considered\nunsuccessful but this is likely a transient problem and re-running the\ntest might be successful."]
         Inconclusive,
+        #[doc = "Do not use. For proto versioning only."]
+        OutcomeSummaryUnspecified,
         #[doc = "All tests were skipped, for instance:\n\n* All device configurations were incompatible."]
         Skipped,
+        #[doc = "The test matrix run was successful, for instance:\n\n* All the test cases passed.\n* Robo did not detect a crash of the application under test."]
+        Success,
     }
     impl TestMatrixOutcomeSummary {
         pub fn as_str(self) -> &'static str {
             match self {
+                TestMatrixOutcomeSummary::Failure => "FAILURE",
+                TestMatrixOutcomeSummary::Inconclusive => "INCONCLUSIVE",
                 TestMatrixOutcomeSummary::OutcomeSummaryUnspecified => {
                     "OUTCOME_SUMMARY_UNSPECIFIED"
                 }
-                TestMatrixOutcomeSummary::Success => "SUCCESS",
-                TestMatrixOutcomeSummary::Failure => "FAILURE",
-                TestMatrixOutcomeSummary::Inconclusive => "INCONCLUSIVE",
                 TestMatrixOutcomeSummary::Skipped => "SKIPPED",
+                TestMatrixOutcomeSummary::Success => "SUCCESS",
             }
         }
     }
     impl ::std::fmt::Display for TestMatrixOutcomeSummary {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TestMatrixOutcomeSummary {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2381,19 +2381,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TestMatrixOutcomeSummary {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "FAILURE" => TestMatrixOutcomeSummary::Failure,
+                "INCONCLUSIVE" => TestMatrixOutcomeSummary::Inconclusive,
                 "OUTCOME_SUMMARY_UNSPECIFIED" => {
                     TestMatrixOutcomeSummary::OutcomeSummaryUnspecified
                 }
-                "SUCCESS" => TestMatrixOutcomeSummary::Success,
-                "FAILURE" => TestMatrixOutcomeSummary::Failure,
-                "INCONCLUSIVE" => TestMatrixOutcomeSummary::Inconclusive,
                 "SKIPPED" => TestMatrixOutcomeSummary::Skipped,
+                "SUCCESS" => TestMatrixOutcomeSummary::Success,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2414,53 +2414,53 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixState {
-        #[doc = "Do not use.  For proto versioning only."]
-        TestStateUnspecified,
-        #[doc = "The execution or matrix is being validated."]
-        Validating,
+        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        Cancelled,
+        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        Error,
+        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        Finished,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        IncompatibleArchitecture,
+        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        IncompatibleEnvironment,
+        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
         #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
         Running,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
-        Finished,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
-        Error,
+        #[doc = "Do not use.  For proto versioning only."]
+        TestStateUnspecified,
         #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
         UnsupportedEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
-        IncompatibleEnvironment,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
-        IncompatibleArchitecture,
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
-        Cancelled,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
-        Invalid,
+        #[doc = "The execution or matrix is being validated."]
+        Validating,
     }
     impl TestMatrixState {
         pub fn as_str(self) -> &'static str {
             match self {
-                TestMatrixState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
-                TestMatrixState::Validating => "VALIDATING",
+                TestMatrixState::Cancelled => "CANCELLED",
+                TestMatrixState::Error => "ERROR",
+                TestMatrixState::Finished => "FINISHED",
+                TestMatrixState::IncompatibleArchitecture => "INCOMPATIBLE_ARCHITECTURE",
+                TestMatrixState::IncompatibleEnvironment => "INCOMPATIBLE_ENVIRONMENT",
+                TestMatrixState::Invalid => "INVALID",
                 TestMatrixState::Pending => "PENDING",
                 TestMatrixState::Running => "RUNNING",
-                TestMatrixState::Finished => "FINISHED",
-                TestMatrixState::Error => "ERROR",
+                TestMatrixState::TestStateUnspecified => "TEST_STATE_UNSPECIFIED",
                 TestMatrixState::UnsupportedEnvironment => "UNSUPPORTED_ENVIRONMENT",
-                TestMatrixState::IncompatibleEnvironment => "INCOMPATIBLE_ENVIRONMENT",
-                TestMatrixState::IncompatibleArchitecture => "INCOMPATIBLE_ARCHITECTURE",
-                TestMatrixState::Cancelled => "CANCELLED",
-                TestMatrixState::Invalid => "INVALID",
+                TestMatrixState::Validating => "VALIDATING",
             }
         }
     }
     impl ::std::fmt::Display for TestMatrixState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TestMatrixState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2468,23 +2468,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TestMatrixState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEST_STATE_UNSPECIFIED" => TestMatrixState::TestStateUnspecified,
-                "VALIDATING" => TestMatrixState::Validating,
+                "CANCELLED" => TestMatrixState::Cancelled,
+                "ERROR" => TestMatrixState::Error,
+                "FINISHED" => TestMatrixState::Finished,
+                "INCOMPATIBLE_ARCHITECTURE" => TestMatrixState::IncompatibleArchitecture,
+                "INCOMPATIBLE_ENVIRONMENT" => TestMatrixState::IncompatibleEnvironment,
+                "INVALID" => TestMatrixState::Invalid,
                 "PENDING" => TestMatrixState::Pending,
                 "RUNNING" => TestMatrixState::Running,
-                "FINISHED" => TestMatrixState::Finished,
-                "ERROR" => TestMatrixState::Error,
+                "TEST_STATE_UNSPECIFIED" => TestMatrixState::TestStateUnspecified,
                 "UNSUPPORTED_ENVIRONMENT" => TestMatrixState::UnsupportedEnvironment,
-                "INCOMPATIBLE_ENVIRONMENT" => TestMatrixState::IncompatibleEnvironment,
-                "INCOMPATIBLE_ARCHITECTURE" => TestMatrixState::IncompatibleArchitecture,
-                "CANCELLED" => TestMatrixState::Cancelled,
-                "INVALID" => TestMatrixState::Invalid,
+                "VALIDATING" => TestMatrixState::Validating,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2830,12 +2830,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2843,7 +2843,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2886,12 +2886,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2899,7 +2899,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2963,7 +2963,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod application_detail_service {
         pub mod params {}
         pub struct ApplicationDetailServiceActions<'a, A> {
@@ -3017,19 +3017,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3278,19 +3268,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3461,19 +3441,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3632,19 +3602,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3790,8 +3750,8 @@ mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetEnvironmentType {
-                EnvironmentTypeUnspecified,
                 Android,
+                EnvironmentTypeUnspecified,
                 Ios,
                 NetworkConfiguration,
                 ProvidedSoftware,
@@ -3799,10 +3759,10 @@ mod resources {
             impl GetEnvironmentType {
                 pub fn as_str(self) -> &'static str {
                     match self {
+                        GetEnvironmentType::Android => "ANDROID",
                         GetEnvironmentType::EnvironmentTypeUnspecified => {
                             "ENVIRONMENT_TYPE_UNSPECIFIED"
                         }
-                        GetEnvironmentType::Android => "ANDROID",
                         GetEnvironmentType::Ios => "IOS",
                         GetEnvironmentType::NetworkConfiguration => "NETWORK_CONFIGURATION",
                         GetEnvironmentType::ProvidedSoftware => "PROVIDED_SOFTWARE",
@@ -3810,12 +3770,12 @@ mod resources {
                 }
             }
             impl ::std::fmt::Display for GetEnvironmentType {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for GetEnvironmentType {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -3823,16 +3783,16 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for GetEnvironmentType {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
+                        "ANDROID" => GetEnvironmentType::Android,
                         "ENVIRONMENT_TYPE_UNSPECIFIED" => {
                             GetEnvironmentType::EnvironmentTypeUnspecified
                         }
-                        "ANDROID" => GetEnvironmentType::Android,
                         "IOS" => GetEnvironmentType::Ios,
                         "NETWORK_CONFIGURATION" => GetEnvironmentType::NetworkConfiguration,
                         "PROVIDED_SOFTWARE" => GetEnvironmentType::ProvidedSoftware,
@@ -3914,19 +3874,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4320,7 +4270,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -4329,7 +4282,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -4342,58 +4295,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

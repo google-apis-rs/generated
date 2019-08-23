@@ -1,29 +1,29 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoTextType {
-        #[doc = "An unspecified auto text type."]
-        TypeUnspecified,
-        #[doc = "Type for auto text that represents the current page number."]
-        PageNumber,
         #[doc = "Type for auto text that represents the total number of pages in the\ndocument."]
         PageCount,
+        #[doc = "Type for auto text that represents the current page number."]
+        PageNumber,
+        #[doc = "An unspecified auto text type."]
+        TypeUnspecified,
     }
     impl AutoTextType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AutoTextType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                AutoTextType::PageNumber => "PAGE_NUMBER",
                 AutoTextType::PageCount => "PAGE_COUNT",
+                AutoTextType::PageNumber => "PAGE_NUMBER",
+                AutoTextType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AutoTextType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AutoTextType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -31,15 +31,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AutoTextType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => AutoTextType::TypeUnspecified,
-                "PAGE_NUMBER" => AutoTextType::PageNumber,
                 "PAGE_COUNT" => AutoTextType::PageCount,
+                "PAGE_NUMBER" => AutoTextType::PageNumber,
+                "TYPE_UNSPECIFIED" => AutoTextType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -359,26 +359,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateParagraphBulletsRequestBulletPreset {
-        #[doc = "The bullet glyph preset is unspecified."]
-        BulletGlyphPresetUnspecified,
-        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels."]
-        BulletDiscCircleSquare,
-        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletDiamondxArrow3DSquare,
-        #[doc = "A bulleted list with `CHECKBOX` bullet glyphs for all list nesting levels."]
-        BulletCheckbox,
-        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletArrowDiamondDisc,
-        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletStarCircleSquare,
         #[doc = "A bulleted list with a `ARROW3D`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
         BulletArrow3DCircleSquare,
-        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph\nfor the first 3 list nesting levels."]
-        BulletLefttriangleDiamondDisc,
-        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet\nglyph for the first 3 list nesting levels."]
-        BulletDiamondxHollowdiamondSquare,
+        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletArrowDiamondDisc,
+        #[doc = "A bulleted list with `CHECKBOX` bullet glyphs for all list nesting levels."]
+        BulletCheckbox,
         #[doc = "A bulleted list with a `DIAMOND`, `CIRCLE` and `SQUARE` bullet glyph\nfor the first 3 list nesting levels."]
         BulletDiamondCircleSquare,
+        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletDiamondxArrow3DSquare,
+        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet\nglyph for the first 3 list nesting levels."]
+        BulletDiamondxHollowdiamondSquare,
+        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels."]
+        BulletDiscCircleSquare,
+        #[doc = "The bullet glyph preset is unspecified."]
+        BulletGlyphPresetUnspecified,
+        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph\nfor the first 3 list nesting levels."]
+        BulletLefttriangleDiamondDisc,
+        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletStarCircleSquare,
         #[doc = "A numbered list with `DECIMAL`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."]
         NumberedDecimalAlphaRoman,
         #[doc = "A numbered list with `DECIMAL`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by parenthesis."]
@@ -395,33 +395,33 @@ pub mod schemas {
     impl CreateParagraphBulletsRequestBulletPreset {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateParagraphBulletsRequestBulletPreset::BulletGlyphPresetUnspecified => {
-                    "BULLET_GLYPH_PRESET_UNSPECIFIED"
+                CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare => {
+                    "BULLET_ARROW3D_CIRCLE_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare => {
-                    "BULLET_DISC_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc => {
+                    "BULLET_ARROW_DIAMOND_DISC"
+                }
+                CreateParagraphBulletsRequestBulletPreset::BulletCheckbox => "BULLET_CHECKBOX",
+                CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare => {
+                    "BULLET_DIAMOND_CIRCLE_SQUARE"
                 }
                 CreateParagraphBulletsRequestBulletPreset::BulletDiamondxArrow3DSquare => {
                     "BULLET_DIAMONDX_ARROW3D_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletCheckbox => "BULLET_CHECKBOX",
-                CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc => {
-                    "BULLET_ARROW_DIAMOND_DISC"
+                CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare => {
+                    "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare => {
-                    "BULLET_STAR_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare => {
+                    "BULLET_DISC_CIRCLE_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare => {
-                    "BULLET_ARROW3D_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletGlyphPresetUnspecified => {
+                    "BULLET_GLYPH_PRESET_UNSPECIFIED"
                 }
                 CreateParagraphBulletsRequestBulletPreset::BulletLefttriangleDiamondDisc => {
                     "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare => {
-                    "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
-                }
-                CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare => {
-                    "BULLET_DIAMOND_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare => {
+                    "BULLET_STAR_CIRCLE_SQUARE"
                 }
                 CreateParagraphBulletsRequestBulletPreset::NumberedDecimalAlphaRoman => {
                     "NUMBERED_DECIMAL_ALPHA_ROMAN"
@@ -445,12 +445,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CreateParagraphBulletsRequestBulletPreset {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateParagraphBulletsRequestBulletPreset {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -458,39 +458,39 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateParagraphBulletsRequestBulletPreset {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BULLET_GLYPH_PRESET_UNSPECIFIED" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletGlyphPresetUnspecified
+                "BULLET_ARROW3D_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare
                 }
-                "BULLET_DISC_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare
+                "BULLET_ARROW_DIAMOND_DISC" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc
+                }
+                "BULLET_CHECKBOX" => CreateParagraphBulletsRequestBulletPreset::BulletCheckbox,
+                "BULLET_DIAMOND_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare
                 }
                 "BULLET_DIAMONDX_ARROW3D_SQUARE" => {
                     CreateParagraphBulletsRequestBulletPreset::BulletDiamondxArrow3DSquare
                 }
-                "BULLET_CHECKBOX" => CreateParagraphBulletsRequestBulletPreset::BulletCheckbox,
-                "BULLET_ARROW_DIAMOND_DISC" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc
+                "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare
                 }
-                "BULLET_STAR_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare
+                "BULLET_DISC_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare
                 }
-                "BULLET_ARROW3D_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare
+                "BULLET_GLYPH_PRESET_UNSPECIFIED" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletGlyphPresetUnspecified
                 }
                 "BULLET_LEFTTRIANGLE_DIAMOND_DISC" => {
                     CreateParagraphBulletsRequestBulletPreset::BulletLefttriangleDiamondDisc
                 }
-                "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare
-                }
-                "BULLET_DIAMOND_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare
+                "BULLET_STAR_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare
                 }
                 "NUMBERED_DECIMAL_ALPHA_ROMAN" => {
                     CreateParagraphBulletsRequestBulletPreset::NumberedDecimalAlphaRoman
@@ -786,26 +786,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionUnit {
-        #[doc = "The units are unknown."]
-        UnitUnspecified,
         #[doc = "A point, 1/72 of an inch."]
         Pt,
+        #[doc = "The units are unknown."]
+        UnitUnspecified,
     }
     impl DimensionUnit {
         pub fn as_str(self) -> &'static str {
             match self {
-                DimensionUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
                 DimensionUnit::Pt => "PT",
+                DimensionUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DimensionUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DimensionUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -813,14 +813,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DimensionUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNIT_UNSPECIFIED" => DimensionUnit::UnitUnspecified,
                 "PT" => DimensionUnit::Pt,
+                "UNIT_UNSPECIFIED" => DimensionUnit::UnitUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -863,12 +863,12 @@ pub mod schemas {
     pub enum DocumentSuggestionsViewMode {
         #[doc = "The SuggestionsViewMode applied to the returned document depends on the\nuser's current access level. If the user only has view access,\nPREVIEW_WITHOUT_SUGGESTIONS is\napplied. Otherwise, SUGGESTIONS_INLINE is applied.\nThis is the default suggestions view mode."]
         DefaultForCurrentAccess,
-        #[doc = "The returned document has suggestions inline. Suggested changes will be\ndifferentiated from base content within the document.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
-        SuggestionsInline,
         #[doc = "The returned document is a preview with all suggested changes accepted.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
         PreviewSuggestionsAccepted,
         #[doc = "The returned document is a preview with all suggested changes rejected if\nthere are any suggestions in the document."]
         PreviewWithoutSuggestions,
+        #[doc = "The returned document has suggestions inline. Suggested changes will be\ndifferentiated from base content within the document.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
+        SuggestionsInline,
     }
     impl DocumentSuggestionsViewMode {
         pub fn as_str(self) -> &'static str {
@@ -876,23 +876,23 @@ pub mod schemas {
                 DocumentSuggestionsViewMode::DefaultForCurrentAccess => {
                     "DEFAULT_FOR_CURRENT_ACCESS"
                 }
-                DocumentSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
                 DocumentSuggestionsViewMode::PreviewSuggestionsAccepted => {
                     "PREVIEW_SUGGESTIONS_ACCEPTED"
                 }
                 DocumentSuggestionsViewMode::PreviewWithoutSuggestions => {
                     "PREVIEW_WITHOUT_SUGGESTIONS"
                 }
+                DocumentSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
             }
         }
     }
     impl ::std::fmt::Display for DocumentSuggestionsViewMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DocumentSuggestionsViewMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -900,7 +900,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DocumentSuggestionsViewMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -909,13 +909,13 @@ pub mod schemas {
                 "DEFAULT_FOR_CURRENT_ACCESS" => {
                     DocumentSuggestionsViewMode::DefaultForCurrentAccess
                 }
-                "SUGGESTIONS_INLINE" => DocumentSuggestionsViewMode::SuggestionsInline,
                 "PREVIEW_SUGGESTIONS_ACCEPTED" => {
                     DocumentSuggestionsViewMode::PreviewSuggestionsAccepted
                 }
                 "PREVIEW_WITHOUT_SUGGESTIONS" => {
                     DocumentSuggestionsViewMode::PreviewWithoutSuggestions
                 }
+                "SUGGESTIONS_INLINE" => DocumentSuggestionsViewMode::SuggestionsInline,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1223,32 +1223,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EmbeddedObjectBorderDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl EmbeddedObjectBorderDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                EmbeddedObjectBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                EmbeddedObjectBorderDashStyle::Solid => "SOLID",
-                EmbeddedObjectBorderDashStyle::Dot => "DOT",
                 EmbeddedObjectBorderDashStyle::Dash => "DASH",
+                EmbeddedObjectBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                EmbeddedObjectBorderDashStyle::Dot => "DOT",
+                EmbeddedObjectBorderDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for EmbeddedObjectBorderDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EmbeddedObjectBorderDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1256,16 +1256,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EmbeddedObjectBorderDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => EmbeddedObjectBorderDashStyle::DashStyleUnspecified,
-                "SOLID" => EmbeddedObjectBorderDashStyle::Solid,
-                "DOT" => EmbeddedObjectBorderDashStyle::Dot,
                 "DASH" => EmbeddedObjectBorderDashStyle::Dash,
+                "DASH_STYLE_UNSPECIFIED" => EmbeddedObjectBorderDashStyle::DashStyleUnspecified,
+                "DOT" => EmbeddedObjectBorderDashStyle::Dot,
+                "SOLID" => EmbeddedObjectBorderDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1286,26 +1286,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EmbeddedObjectBorderPropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered in the document. This is the default value."]
-        Rendered,
         #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered in the document."]
         NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered in the document. This is the default value."]
+        Rendered,
     }
     impl EmbeddedObjectBorderPropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                EmbeddedObjectBorderPropertyState::Rendered => "RENDERED",
                 EmbeddedObjectBorderPropertyState::NotRendered => "NOT_RENDERED",
+                EmbeddedObjectBorderPropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for EmbeddedObjectBorderPropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EmbeddedObjectBorderPropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1313,14 +1313,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EmbeddedObjectBorderPropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => EmbeddedObjectBorderPropertyState::Rendered,
                 "NOT_RENDERED" => EmbeddedObjectBorderPropertyState::NotRendered,
+                "RENDERED" => EmbeddedObjectBorderPropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2305,14 +2305,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NamedStyleNamedStyleType {
-        #[doc = "The type of named style is unspecified."]
-        NamedStyleTypeUnspecified,
-        #[doc = "Normal text."]
-        NormalText,
-        #[doc = "Title."]
-        Title,
-        #[doc = "Subtitle."]
-        Subtitle,
         #[doc = "Heading 1."]
         Heading1,
         #[doc = "Heading 2."]
@@ -2325,32 +2317,40 @@ pub mod schemas {
         Heading5,
         #[doc = "Heading 6."]
         Heading6,
+        #[doc = "The type of named style is unspecified."]
+        NamedStyleTypeUnspecified,
+        #[doc = "Normal text."]
+        NormalText,
+        #[doc = "Subtitle."]
+        Subtitle,
+        #[doc = "Title."]
+        Title,
     }
     impl NamedStyleNamedStyleType {
         pub fn as_str(self) -> &'static str {
             match self {
-                NamedStyleNamedStyleType::NamedStyleTypeUnspecified => {
-                    "NAMED_STYLE_TYPE_UNSPECIFIED"
-                }
-                NamedStyleNamedStyleType::NormalText => "NORMAL_TEXT",
-                NamedStyleNamedStyleType::Title => "TITLE",
-                NamedStyleNamedStyleType::Subtitle => "SUBTITLE",
                 NamedStyleNamedStyleType::Heading1 => "HEADING_1",
                 NamedStyleNamedStyleType::Heading2 => "HEADING_2",
                 NamedStyleNamedStyleType::Heading3 => "HEADING_3",
                 NamedStyleNamedStyleType::Heading4 => "HEADING_4",
                 NamedStyleNamedStyleType::Heading5 => "HEADING_5",
                 NamedStyleNamedStyleType::Heading6 => "HEADING_6",
+                NamedStyleNamedStyleType::NamedStyleTypeUnspecified => {
+                    "NAMED_STYLE_TYPE_UNSPECIFIED"
+                }
+                NamedStyleNamedStyleType::NormalText => "NORMAL_TEXT",
+                NamedStyleNamedStyleType::Subtitle => "SUBTITLE",
+                NamedStyleNamedStyleType::Title => "TITLE",
             }
         }
     }
     impl ::std::fmt::Display for NamedStyleNamedStyleType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NamedStyleNamedStyleType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2358,24 +2358,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NamedStyleNamedStyleType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
-                    NamedStyleNamedStyleType::NamedStyleTypeUnspecified
-                }
-                "NORMAL_TEXT" => NamedStyleNamedStyleType::NormalText,
-                "TITLE" => NamedStyleNamedStyleType::Title,
-                "SUBTITLE" => NamedStyleNamedStyleType::Subtitle,
                 "HEADING_1" => NamedStyleNamedStyleType::Heading1,
                 "HEADING_2" => NamedStyleNamedStyleType::Heading2,
                 "HEADING_3" => NamedStyleNamedStyleType::Heading3,
                 "HEADING_4" => NamedStyleNamedStyleType::Heading4,
                 "HEADING_5" => NamedStyleNamedStyleType::Heading5,
                 "HEADING_6" => NamedStyleNamedStyleType::Heading6,
+                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
+                    NamedStyleNamedStyleType::NamedStyleTypeUnspecified
+                }
+                "NORMAL_TEXT" => NamedStyleNamedStyleType::NormalText,
+                "SUBTITLE" => NamedStyleNamedStyleType::Subtitle,
+                "TITLE" => NamedStyleNamedStyleType::Title,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2419,14 +2419,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NamedStyleSuggestionStateNamedStyleType {
-        #[doc = "The type of named style is unspecified."]
-        NamedStyleTypeUnspecified,
-        #[doc = "Normal text."]
-        NormalText,
-        #[doc = "Title."]
-        Title,
-        #[doc = "Subtitle."]
-        Subtitle,
         #[doc = "Heading 1."]
         Heading1,
         #[doc = "Heading 2."]
@@ -2439,32 +2431,40 @@ pub mod schemas {
         Heading5,
         #[doc = "Heading 6."]
         Heading6,
+        #[doc = "The type of named style is unspecified."]
+        NamedStyleTypeUnspecified,
+        #[doc = "Normal text."]
+        NormalText,
+        #[doc = "Subtitle."]
+        Subtitle,
+        #[doc = "Title."]
+        Title,
     }
     impl NamedStyleSuggestionStateNamedStyleType {
         pub fn as_str(self) -> &'static str {
             match self {
-                NamedStyleSuggestionStateNamedStyleType::NamedStyleTypeUnspecified => {
-                    "NAMED_STYLE_TYPE_UNSPECIFIED"
-                }
-                NamedStyleSuggestionStateNamedStyleType::NormalText => "NORMAL_TEXT",
-                NamedStyleSuggestionStateNamedStyleType::Title => "TITLE",
-                NamedStyleSuggestionStateNamedStyleType::Subtitle => "SUBTITLE",
                 NamedStyleSuggestionStateNamedStyleType::Heading1 => "HEADING_1",
                 NamedStyleSuggestionStateNamedStyleType::Heading2 => "HEADING_2",
                 NamedStyleSuggestionStateNamedStyleType::Heading3 => "HEADING_3",
                 NamedStyleSuggestionStateNamedStyleType::Heading4 => "HEADING_4",
                 NamedStyleSuggestionStateNamedStyleType::Heading5 => "HEADING_5",
                 NamedStyleSuggestionStateNamedStyleType::Heading6 => "HEADING_6",
+                NamedStyleSuggestionStateNamedStyleType::NamedStyleTypeUnspecified => {
+                    "NAMED_STYLE_TYPE_UNSPECIFIED"
+                }
+                NamedStyleSuggestionStateNamedStyleType::NormalText => "NORMAL_TEXT",
+                NamedStyleSuggestionStateNamedStyleType::Subtitle => "SUBTITLE",
+                NamedStyleSuggestionStateNamedStyleType::Title => "TITLE",
             }
         }
     }
     impl ::std::fmt::Display for NamedStyleSuggestionStateNamedStyleType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NamedStyleSuggestionStateNamedStyleType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2472,24 +2472,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NamedStyleSuggestionStateNamedStyleType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
-                    NamedStyleSuggestionStateNamedStyleType::NamedStyleTypeUnspecified
-                }
-                "NORMAL_TEXT" => NamedStyleSuggestionStateNamedStyleType::NormalText,
-                "TITLE" => NamedStyleSuggestionStateNamedStyleType::Title,
-                "SUBTITLE" => NamedStyleSuggestionStateNamedStyleType::Subtitle,
                 "HEADING_1" => NamedStyleSuggestionStateNamedStyleType::Heading1,
                 "HEADING_2" => NamedStyleSuggestionStateNamedStyleType::Heading2,
                 "HEADING_3" => NamedStyleSuggestionStateNamedStyleType::Heading3,
                 "HEADING_4" => NamedStyleSuggestionStateNamedStyleType::Heading4,
                 "HEADING_5" => NamedStyleSuggestionStateNamedStyleType::Heading5,
                 "HEADING_6" => NamedStyleSuggestionStateNamedStyleType::Heading6,
+                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
+                    NamedStyleSuggestionStateNamedStyleType::NamedStyleTypeUnspecified
+                }
+                "NORMAL_TEXT" => NamedStyleSuggestionStateNamedStyleType::NormalText,
+                "SUBTITLE" => NamedStyleSuggestionStateNamedStyleType::Subtitle,
+                "TITLE" => NamedStyleSuggestionStateNamedStyleType::Title,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2591,12 +2591,12 @@ pub mod schemas {
     pub enum NestingLevelBulletAlignment {
         #[doc = "The bullet alignment is unspecified."]
         BulletAlignmentUnspecified,
-        #[doc = "The bullet is aligned to the start of the space allotted for rendering\nthe bullet. Left-aligned for LTR text, right-aligned otherwise."]
-        Start,
         #[doc = "The bullet is aligned to the center of the space allotted for rendering\nthe bullet."]
         Center,
         #[doc = "The bullet is aligned to the end of the space allotted for rendering the\nbullet. Right-aligned for LTR text, left-aligned otherwise."]
         End,
+        #[doc = "The bullet is aligned to the start of the space allotted for rendering\nthe bullet. Left-aligned for LTR text, right-aligned otherwise."]
+        Start,
     }
     impl NestingLevelBulletAlignment {
         pub fn as_str(self) -> &'static str {
@@ -2604,19 +2604,19 @@ pub mod schemas {
                 NestingLevelBulletAlignment::BulletAlignmentUnspecified => {
                     "BULLET_ALIGNMENT_UNSPECIFIED"
                 }
-                NestingLevelBulletAlignment::Start => "START",
                 NestingLevelBulletAlignment::Center => "CENTER",
                 NestingLevelBulletAlignment::End => "END",
+                NestingLevelBulletAlignment::Start => "START",
             }
         }
     }
     impl ::std::fmt::Display for NestingLevelBulletAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NestingLevelBulletAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2624,7 +2624,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NestingLevelBulletAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2633,9 +2633,9 @@ pub mod schemas {
                 "BULLET_ALIGNMENT_UNSPECIFIED" => {
                     NestingLevelBulletAlignment::BulletAlignmentUnspecified
                 }
-                "START" => NestingLevelBulletAlignment::Start,
                 "CENTER" => NestingLevelBulletAlignment::Center,
                 "END" => NestingLevelBulletAlignment::End,
+                "START" => NestingLevelBulletAlignment::Start,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2656,44 +2656,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NestingLevelGlyphType {
+        #[doc = "A lowercase letter, like `a`, `b`, or `c`."]
+        Alpha,
+        #[doc = "A number, like `1`, `2`, or `3`."]
+        Decimal,
         #[doc = "The glyph type is unspecified or unsupported."]
         GlyphTypeUnspecified,
         #[doc = "An empty string."]
         None,
-        #[doc = "A number, like `1`, `2`, or `3`."]
-        Decimal,
-        #[doc = "A number where single digit numbers are prefixed with a zero, like `01`,\n`02`, or `03`. Numbers with more than one digit are not prefixed with a\nzero."]
-        ZeroDecimal,
-        #[doc = "An uppercase letter, like `A`, `B`, or `C`."]
-        UpperAlpha,
-        #[doc = "A lowercase letter, like `a`, `b`, or `c`."]
-        Alpha,
-        #[doc = "An uppercase Roman numeral, like `I`, `II`, or `III`."]
-        UpperRoman,
         #[doc = "A lowercase Roman numeral, like `i`, `ii`, or `iii`."]
         Roman,
+        #[doc = "An uppercase letter, like `A`, `B`, or `C`."]
+        UpperAlpha,
+        #[doc = "An uppercase Roman numeral, like `I`, `II`, or `III`."]
+        UpperRoman,
+        #[doc = "A number where single digit numbers are prefixed with a zero, like `01`,\n`02`, or `03`. Numbers with more than one digit are not prefixed with a\nzero."]
+        ZeroDecimal,
     }
     impl NestingLevelGlyphType {
         pub fn as_str(self) -> &'static str {
             match self {
+                NestingLevelGlyphType::Alpha => "ALPHA",
+                NestingLevelGlyphType::Decimal => "DECIMAL",
                 NestingLevelGlyphType::GlyphTypeUnspecified => "GLYPH_TYPE_UNSPECIFIED",
                 NestingLevelGlyphType::None => "NONE",
-                NestingLevelGlyphType::Decimal => "DECIMAL",
-                NestingLevelGlyphType::ZeroDecimal => "ZERO_DECIMAL",
-                NestingLevelGlyphType::UpperAlpha => "UPPER_ALPHA",
-                NestingLevelGlyphType::Alpha => "ALPHA",
-                NestingLevelGlyphType::UpperRoman => "UPPER_ROMAN",
                 NestingLevelGlyphType::Roman => "ROMAN",
+                NestingLevelGlyphType::UpperAlpha => "UPPER_ALPHA",
+                NestingLevelGlyphType::UpperRoman => "UPPER_ROMAN",
+                NestingLevelGlyphType::ZeroDecimal => "ZERO_DECIMAL",
             }
         }
     }
     impl ::std::fmt::Display for NestingLevelGlyphType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NestingLevelGlyphType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2701,20 +2701,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NestingLevelGlyphType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALPHA" => NestingLevelGlyphType::Alpha,
+                "DECIMAL" => NestingLevelGlyphType::Decimal,
                 "GLYPH_TYPE_UNSPECIFIED" => NestingLevelGlyphType::GlyphTypeUnspecified,
                 "NONE" => NestingLevelGlyphType::None,
-                "DECIMAL" => NestingLevelGlyphType::Decimal,
-                "ZERO_DECIMAL" => NestingLevelGlyphType::ZeroDecimal,
-                "UPPER_ALPHA" => NestingLevelGlyphType::UpperAlpha,
-                "ALPHA" => NestingLevelGlyphType::Alpha,
-                "UPPER_ROMAN" => NestingLevelGlyphType::UpperRoman,
                 "ROMAN" => NestingLevelGlyphType::Roman,
+                "UPPER_ALPHA" => NestingLevelGlyphType::UpperAlpha,
+                "UPPER_ROMAN" => NestingLevelGlyphType::UpperRoman,
+                "ZERO_DECIMAL" => NestingLevelGlyphType::ZeroDecimal,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2933,32 +2933,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphBorderDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl ParagraphBorderDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                ParagraphBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                ParagraphBorderDashStyle::Solid => "SOLID",
-                ParagraphBorderDashStyle::Dot => "DOT",
                 ParagraphBorderDashStyle::Dash => "DASH",
+                ParagraphBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                ParagraphBorderDashStyle::Dot => "DOT",
+                ParagraphBorderDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphBorderDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphBorderDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2966,16 +2966,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphBorderDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => ParagraphBorderDashStyle::DashStyleUnspecified,
-                "SOLID" => ParagraphBorderDashStyle::Solid,
-                "DOT" => ParagraphBorderDashStyle::Dot,
                 "DASH" => ParagraphBorderDashStyle::Dash,
+                "DASH_STYLE_UNSPECIFIED" => ParagraphBorderDashStyle::DashStyleUnspecified,
+                "DOT" => ParagraphBorderDashStyle::Dot,
+                "SOLID" => ParagraphBorderDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3068,33 +3068,33 @@ pub mod schemas {
     pub enum ParagraphStyleAlignment {
         #[doc = "The paragraph alignment is inherited from the parent."]
         AlignmentUnspecified,
-        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for LTR\ntext, right-aligned otherwise."]
-        Start,
         #[doc = "The paragraph is centered."]
         Center,
         #[doc = "The paragraph is aligned to the end of the line. Right-aligned for LTR\ntext, left-aligned otherwise."]
         End,
         #[doc = "The paragraph is justified."]
         Justified,
+        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for LTR\ntext, right-aligned otherwise."]
+        Start,
     }
     impl ParagraphStyleAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
                 ParagraphStyleAlignment::AlignmentUnspecified => "ALIGNMENT_UNSPECIFIED",
-                ParagraphStyleAlignment::Start => "START",
                 ParagraphStyleAlignment::Center => "CENTER",
                 ParagraphStyleAlignment::End => "END",
                 ParagraphStyleAlignment::Justified => "JUSTIFIED",
+                ParagraphStyleAlignment::Start => "START",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3102,17 +3102,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ALIGNMENT_UNSPECIFIED" => ParagraphStyleAlignment::AlignmentUnspecified,
-                "START" => ParagraphStyleAlignment::Start,
                 "CENTER" => ParagraphStyleAlignment::Center,
                 "END" => ParagraphStyleAlignment::End,
                 "JUSTIFIED" => ParagraphStyleAlignment::Justified,
+                "START" => ParagraphStyleAlignment::Start,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3152,12 +3152,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ParagraphStyleDirection {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleDirection {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3165,7 +3165,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleDirection {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3196,14 +3196,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphStyleNamedStyleType {
-        #[doc = "The type of named style is unspecified."]
-        NamedStyleTypeUnspecified,
-        #[doc = "Normal text."]
-        NormalText,
-        #[doc = "Title."]
-        Title,
-        #[doc = "Subtitle."]
-        Subtitle,
         #[doc = "Heading 1."]
         Heading1,
         #[doc = "Heading 2."]
@@ -3216,32 +3208,40 @@ pub mod schemas {
         Heading5,
         #[doc = "Heading 6."]
         Heading6,
+        #[doc = "The type of named style is unspecified."]
+        NamedStyleTypeUnspecified,
+        #[doc = "Normal text."]
+        NormalText,
+        #[doc = "Subtitle."]
+        Subtitle,
+        #[doc = "Title."]
+        Title,
     }
     impl ParagraphStyleNamedStyleType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ParagraphStyleNamedStyleType::NamedStyleTypeUnspecified => {
-                    "NAMED_STYLE_TYPE_UNSPECIFIED"
-                }
-                ParagraphStyleNamedStyleType::NormalText => "NORMAL_TEXT",
-                ParagraphStyleNamedStyleType::Title => "TITLE",
-                ParagraphStyleNamedStyleType::Subtitle => "SUBTITLE",
                 ParagraphStyleNamedStyleType::Heading1 => "HEADING_1",
                 ParagraphStyleNamedStyleType::Heading2 => "HEADING_2",
                 ParagraphStyleNamedStyleType::Heading3 => "HEADING_3",
                 ParagraphStyleNamedStyleType::Heading4 => "HEADING_4",
                 ParagraphStyleNamedStyleType::Heading5 => "HEADING_5",
                 ParagraphStyleNamedStyleType::Heading6 => "HEADING_6",
+                ParagraphStyleNamedStyleType::NamedStyleTypeUnspecified => {
+                    "NAMED_STYLE_TYPE_UNSPECIFIED"
+                }
+                ParagraphStyleNamedStyleType::NormalText => "NORMAL_TEXT",
+                ParagraphStyleNamedStyleType::Subtitle => "SUBTITLE",
+                ParagraphStyleNamedStyleType::Title => "TITLE",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleNamedStyleType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleNamedStyleType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3249,24 +3249,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleNamedStyleType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
-                    ParagraphStyleNamedStyleType::NamedStyleTypeUnspecified
-                }
-                "NORMAL_TEXT" => ParagraphStyleNamedStyleType::NormalText,
-                "TITLE" => ParagraphStyleNamedStyleType::Title,
-                "SUBTITLE" => ParagraphStyleNamedStyleType::Subtitle,
                 "HEADING_1" => ParagraphStyleNamedStyleType::Heading1,
                 "HEADING_2" => ParagraphStyleNamedStyleType::Heading2,
                 "HEADING_3" => ParagraphStyleNamedStyleType::Heading3,
                 "HEADING_4" => ParagraphStyleNamedStyleType::Heading4,
                 "HEADING_5" => ParagraphStyleNamedStyleType::Heading5,
                 "HEADING_6" => ParagraphStyleNamedStyleType::Heading6,
+                "NAMED_STYLE_TYPE_UNSPECIFIED" => {
+                    ParagraphStyleNamedStyleType::NamedStyleTypeUnspecified
+                }
+                "NORMAL_TEXT" => ParagraphStyleNamedStyleType::NormalText,
+                "SUBTITLE" => ParagraphStyleNamedStyleType::Subtitle,
+                "TITLE" => ParagraphStyleNamedStyleType::Title,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3287,29 +3287,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphStyleSpacingMode {
-        #[doc = "The spacing mode is inherited from the parent."]
-        SpacingModeUnspecified,
-        #[doc = "Paragraph spacing is always rendered."]
-        NeverCollapse,
         #[doc = "Paragraph spacing is skipped between list elements."]
         CollapseLists,
+        #[doc = "Paragraph spacing is always rendered."]
+        NeverCollapse,
+        #[doc = "The spacing mode is inherited from the parent."]
+        SpacingModeUnspecified,
     }
     impl ParagraphStyleSpacingMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                ParagraphStyleSpacingMode::SpacingModeUnspecified => "SPACING_MODE_UNSPECIFIED",
-                ParagraphStyleSpacingMode::NeverCollapse => "NEVER_COLLAPSE",
                 ParagraphStyleSpacingMode::CollapseLists => "COLLAPSE_LISTS",
+                ParagraphStyleSpacingMode::NeverCollapse => "NEVER_COLLAPSE",
+                ParagraphStyleSpacingMode::SpacingModeUnspecified => "SPACING_MODE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleSpacingMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleSpacingMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3317,15 +3317,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleSpacingMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SPACING_MODE_UNSPECIFIED" => ParagraphStyleSpacingMode::SpacingModeUnspecified,
-                "NEVER_COLLAPSE" => ParagraphStyleSpacingMode::NeverCollapse,
                 "COLLAPSE_LISTS" => ParagraphStyleSpacingMode::CollapseLists,
+                "NEVER_COLLAPSE" => ParagraphStyleSpacingMode::NeverCollapse,
+                "SPACING_MODE_UNSPECIFIED" => ParagraphStyleSpacingMode::SpacingModeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3541,40 +3541,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PositionedObjectPositioningLayout {
+        #[doc = "Breaks text such that the positioned object is on the left and text is on\nthe right."]
+        BreakLeft,
+        #[doc = "Breaks text such that there is no text on the left or right of the\npositioned object."]
+        BreakLeftRight,
+        #[doc = "Breaks text such that the positioned object is on the right and text is on\nthe left."]
+        BreakRight,
+        #[doc = "The positioned object is in front of the text."]
+        InFrontOfText,
         #[doc = "The layout is unspecified."]
         PositionedObjectLayoutUnspecified,
         #[doc = "The text wraps around the positioned object."]
         WrapText,
-        #[doc = "Breaks text such that the positioned object is on the left and text is on\nthe right."]
-        BreakLeft,
-        #[doc = "Breaks text such that the positioned object is on the right and text is on\nthe left."]
-        BreakRight,
-        #[doc = "Breaks text such that there is no text on the left or right of the\npositioned object."]
-        BreakLeftRight,
-        #[doc = "The positioned object is in front of the text."]
-        InFrontOfText,
     }
     impl PositionedObjectPositioningLayout {
         pub fn as_str(self) -> &'static str {
             match self {
+                PositionedObjectPositioningLayout::BreakLeft => "BREAK_LEFT",
+                PositionedObjectPositioningLayout::BreakLeftRight => "BREAK_LEFT_RIGHT",
+                PositionedObjectPositioningLayout::BreakRight => "BREAK_RIGHT",
+                PositionedObjectPositioningLayout::InFrontOfText => "IN_FRONT_OF_TEXT",
                 PositionedObjectPositioningLayout::PositionedObjectLayoutUnspecified => {
                     "POSITIONED_OBJECT_LAYOUT_UNSPECIFIED"
                 }
                 PositionedObjectPositioningLayout::WrapText => "WRAP_TEXT",
-                PositionedObjectPositioningLayout::BreakLeft => "BREAK_LEFT",
-                PositionedObjectPositioningLayout::BreakRight => "BREAK_RIGHT",
-                PositionedObjectPositioningLayout::BreakLeftRight => "BREAK_LEFT_RIGHT",
-                PositionedObjectPositioningLayout::InFrontOfText => "IN_FRONT_OF_TEXT",
             }
         }
     }
     impl ::std::fmt::Display for PositionedObjectPositioningLayout {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PositionedObjectPositioningLayout {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3582,20 +3582,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PositionedObjectPositioningLayout {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BREAK_LEFT" => PositionedObjectPositioningLayout::BreakLeft,
+                "BREAK_LEFT_RIGHT" => PositionedObjectPositioningLayout::BreakLeftRight,
+                "BREAK_RIGHT" => PositionedObjectPositioningLayout::BreakRight,
+                "IN_FRONT_OF_TEXT" => PositionedObjectPositioningLayout::InFrontOfText,
                 "POSITIONED_OBJECT_LAYOUT_UNSPECIFIED" => {
                     PositionedObjectPositioningLayout::PositionedObjectLayoutUnspecified
                 }
                 "WRAP_TEXT" => PositionedObjectPositioningLayout::WrapText,
-                "BREAK_LEFT" => PositionedObjectPositioningLayout::BreakLeft,
-                "BREAK_RIGHT" => PositionedObjectPositioningLayout::BreakRight,
-                "BREAK_LEFT_RIGHT" => PositionedObjectPositioningLayout::BreakLeftRight,
-                "IN_FRONT_OF_TEXT" => PositionedObjectPositioningLayout::InFrontOfText,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3996,31 +3996,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SectionStyleColumnSeparatorStyle {
+        #[doc = "Renders a column separator line between each column."]
+        BetweenEachColumn,
         #[doc = "An unspecified column separator style."]
         ColumnSeparatorStyleUnspecified,
         #[doc = "No column separator lines between columns."]
         None,
-        #[doc = "Renders a column separator line between each column."]
-        BetweenEachColumn,
     }
     impl SectionStyleColumnSeparatorStyle {
         pub fn as_str(self) -> &'static str {
             match self {
+                SectionStyleColumnSeparatorStyle::BetweenEachColumn => "BETWEEN_EACH_COLUMN",
                 SectionStyleColumnSeparatorStyle::ColumnSeparatorStyleUnspecified => {
                     "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
                 }
                 SectionStyleColumnSeparatorStyle::None => "NONE",
-                SectionStyleColumnSeparatorStyle::BetweenEachColumn => "BETWEEN_EACH_COLUMN",
             }
         }
     }
     impl ::std::fmt::Display for SectionStyleColumnSeparatorStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SectionStyleColumnSeparatorStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4028,17 +4028,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SectionStyleColumnSeparatorStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BETWEEN_EACH_COLUMN" => SectionStyleColumnSeparatorStyle::BetweenEachColumn,
                 "COLUMN_SEPARATOR_STYLE_UNSPECIFIED" => {
                     SectionStyleColumnSeparatorStyle::ColumnSeparatorStyleUnspecified
                 }
                 "NONE" => SectionStyleColumnSeparatorStyle::None,
-                "BETWEEN_EACH_COLUMN" => SectionStyleColumnSeparatorStyle::BetweenEachColumn,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4078,12 +4078,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for SectionStyleContentDirection {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SectionStyleContentDirection {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4091,7 +4091,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SectionStyleContentDirection {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4567,32 +4567,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TabStopAlignment {
-        #[doc = "The tab stop alignment is unspecified."]
-        TabStopAlignmentUnspecified,
-        #[doc = "The tab stop is aligned to the start of the line. This is the default."]
-        Start,
         #[doc = "The tab stop is aligned to the center of the line."]
         Center,
         #[doc = "The tab stop is aligned to the end of the line."]
         End,
+        #[doc = "The tab stop is aligned to the start of the line. This is the default."]
+        Start,
+        #[doc = "The tab stop alignment is unspecified."]
+        TabStopAlignmentUnspecified,
     }
     impl TabStopAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
-                TabStopAlignment::TabStopAlignmentUnspecified => "TAB_STOP_ALIGNMENT_UNSPECIFIED",
-                TabStopAlignment::Start => "START",
                 TabStopAlignment::Center => "CENTER",
                 TabStopAlignment::End => "END",
+                TabStopAlignment::Start => "START",
+                TabStopAlignment::TabStopAlignmentUnspecified => "TAB_STOP_ALIGNMENT_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for TabStopAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TabStopAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4600,16 +4600,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TabStopAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TAB_STOP_ALIGNMENT_UNSPECIFIED" => TabStopAlignment::TabStopAlignmentUnspecified,
-                "START" => TabStopAlignment::Start,
                 "CENTER" => TabStopAlignment::Center,
                 "END" => TabStopAlignment::End,
+                "START" => TabStopAlignment::Start,
+                "TAB_STOP_ALIGNMENT_UNSPECIFIED" => TabStopAlignment::TabStopAlignmentUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4719,32 +4719,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellBorderDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl TableCellBorderDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                TableCellBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                TableCellBorderDashStyle::Solid => "SOLID",
-                TableCellBorderDashStyle::Dot => "DOT",
                 TableCellBorderDashStyle::Dash => "DASH",
+                TableCellBorderDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                TableCellBorderDashStyle::Dot => "DOT",
+                TableCellBorderDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for TableCellBorderDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableCellBorderDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4752,16 +4752,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableCellBorderDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => TableCellBorderDashStyle::DashStyleUnspecified,
-                "SOLID" => TableCellBorderDashStyle::Solid,
-                "DOT" => TableCellBorderDashStyle::Dot,
                 "DASH" => TableCellBorderDashStyle::Dash,
+                "DASH_STYLE_UNSPECIFIED" => TableCellBorderDashStyle::DashStyleUnspecified,
+                "DOT" => TableCellBorderDashStyle::Dot,
+                "SOLID" => TableCellBorderDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4837,39 +4837,39 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellStyleContentAlignment {
+        #[doc = "An alignment that aligns the content to the bottom of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 'b'."]
+        Bottom,
         #[doc = "An unspecified content alignment. The content alignment is inherited from\nthe parent if one exists."]
         ContentAlignmentUnspecified,
         #[doc = "An unsupported content alignment."]
         ContentAlignmentUnsupported,
-        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
-        Top,
         #[doc = "An alignment that aligns the content to the middle of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
         Middle,
-        #[doc = "An alignment that aligns the content to the bottom of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 'b'."]
-        Bottom,
+        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
+        Top,
     }
     impl TableCellStyleContentAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                TableCellStyleContentAlignment::Bottom => "BOTTOM",
                 TableCellStyleContentAlignment::ContentAlignmentUnspecified => {
                     "CONTENT_ALIGNMENT_UNSPECIFIED"
                 }
                 TableCellStyleContentAlignment::ContentAlignmentUnsupported => {
                     "CONTENT_ALIGNMENT_UNSUPPORTED"
                 }
-                TableCellStyleContentAlignment::Top => "TOP",
                 TableCellStyleContentAlignment::Middle => "MIDDLE",
-                TableCellStyleContentAlignment::Bottom => "BOTTOM",
+                TableCellStyleContentAlignment::Top => "TOP",
             }
         }
     }
     impl ::std::fmt::Display for TableCellStyleContentAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableCellStyleContentAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4877,21 +4877,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableCellStyleContentAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM" => TableCellStyleContentAlignment::Bottom,
                 "CONTENT_ALIGNMENT_UNSPECIFIED" => {
                     TableCellStyleContentAlignment::ContentAlignmentUnspecified
                 }
                 "CONTENT_ALIGNMENT_UNSUPPORTED" => {
                     TableCellStyleContentAlignment::ContentAlignmentUnsupported
                 }
-                "TOP" => TableCellStyleContentAlignment::Top,
                 "MIDDLE" => TableCellStyleContentAlignment::Middle,
-                "BOTTOM" => TableCellStyleContentAlignment::Bottom,
+                "TOP" => TableCellStyleContentAlignment::Top,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5022,29 +5022,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableColumnPropertiesWidthType {
-        #[doc = "The column width type is unspecified."]
-        WidthTypeUnspecified,
         #[doc = "The column width is evenly distributed among the other evenly distrubted\ncolumns.\n\nThe width of the column is automatically determined and will\nhave an equal portion of the width remaining for the table after\naccounting for all columns with specified widths."]
         EvenlyDistributed,
         #[doc = "A fixed column width. The\nwidth property\ncontains the column's width."]
         FixedWidth,
+        #[doc = "The column width type is unspecified."]
+        WidthTypeUnspecified,
     }
     impl TableColumnPropertiesWidthType {
         pub fn as_str(self) -> &'static str {
             match self {
-                TableColumnPropertiesWidthType::WidthTypeUnspecified => "WIDTH_TYPE_UNSPECIFIED",
                 TableColumnPropertiesWidthType::EvenlyDistributed => "EVENLY_DISTRIBUTED",
                 TableColumnPropertiesWidthType::FixedWidth => "FIXED_WIDTH",
+                TableColumnPropertiesWidthType::WidthTypeUnspecified => "WIDTH_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for TableColumnPropertiesWidthType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableColumnPropertiesWidthType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5052,15 +5052,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableColumnPropertiesWidthType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "WIDTH_TYPE_UNSPECIFIED" => TableColumnPropertiesWidthType::WidthTypeUnspecified,
                 "EVENLY_DISTRIBUTED" => TableColumnPropertiesWidthType::EvenlyDistributed,
                 "FIXED_WIDTH" => TableColumnPropertiesWidthType::FixedWidth,
+                "WIDTH_TYPE_UNSPECIFIED" => TableColumnPropertiesWidthType::WidthTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5289,28 +5289,28 @@ pub mod schemas {
         BaselineOffsetUnspecified,
         #[doc = "The text is not vertically offset."]
         None,
-        #[doc = "The text is vertically offset upwards (superscript)."]
-        Superscript,
         #[doc = "The text is vertically offset downwards (subscript)."]
         Subscript,
+        #[doc = "The text is vertically offset upwards (superscript)."]
+        Superscript,
     }
     impl TextStyleBaselineOffset {
         pub fn as_str(self) -> &'static str {
             match self {
                 TextStyleBaselineOffset::BaselineOffsetUnspecified => "BASELINE_OFFSET_UNSPECIFIED",
                 TextStyleBaselineOffset::None => "NONE",
-                TextStyleBaselineOffset::Superscript => "SUPERSCRIPT",
                 TextStyleBaselineOffset::Subscript => "SUBSCRIPT",
+                TextStyleBaselineOffset::Superscript => "SUPERSCRIPT",
             }
         }
     }
     impl ::std::fmt::Display for TextStyleBaselineOffset {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TextStyleBaselineOffset {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5318,7 +5318,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TextStyleBaselineOffset {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5326,8 +5326,8 @@ pub mod schemas {
             Ok(match value {
                 "BASELINE_OFFSET_UNSPECIFIED" => TextStyleBaselineOffset::BaselineOffsetUnspecified,
                 "NONE" => TextStyleBaselineOffset::None,
-                "SUPERSCRIPT" => TextStyleBaselineOffset::Superscript,
                 "SUBSCRIPT" => TextStyleBaselineOffset::Subscript,
+                "SUPERSCRIPT" => TextStyleBaselineOffset::Superscript,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5672,12 +5672,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5685,7 +5685,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5728,12 +5728,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5741,7 +5741,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5787,15 +5787,15 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod documents {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetSuggestionsViewMode {
                 DefaultForCurrentAccess,
-                SuggestionsInline,
                 PreviewSuggestionsAccepted,
                 PreviewWithoutSuggestions,
+                SuggestionsInline,
             }
             impl GetSuggestionsViewMode {
                 pub fn as_str(self) -> &'static str {
@@ -5803,23 +5803,23 @@ mod resources {
                         GetSuggestionsViewMode::DefaultForCurrentAccess => {
                             "DEFAULT_FOR_CURRENT_ACCESS"
                         }
-                        GetSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
                         GetSuggestionsViewMode::PreviewSuggestionsAccepted => {
                             "PREVIEW_SUGGESTIONS_ACCEPTED"
                         }
                         GetSuggestionsViewMode::PreviewWithoutSuggestions => {
                             "PREVIEW_WITHOUT_SUGGESTIONS"
                         }
+                        GetSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
                     }
                 }
             }
             impl ::std::fmt::Display for GetSuggestionsViewMode {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for GetSuggestionsViewMode {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -5827,7 +5827,7 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for GetSuggestionsViewMode {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
@@ -5836,13 +5836,13 @@ mod resources {
                         "DEFAULT_FOR_CURRENT_ACCESS" => {
                             GetSuggestionsViewMode::DefaultForCurrentAccess
                         }
-                        "SUGGESTIONS_INLINE" => GetSuggestionsViewMode::SuggestionsInline,
                         "PREVIEW_SUGGESTIONS_ACCEPTED" => {
                             GetSuggestionsViewMode::PreviewSuggestionsAccepted
                         }
                         "PREVIEW_WITHOUT_SUGGESTIONS" => {
                             GetSuggestionsViewMode::PreviewWithoutSuggestions
                         }
+                        "SUGGESTIONS_INLINE" => GetSuggestionsViewMode::SuggestionsInline,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -5955,19 +5955,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6124,19 +6114,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6293,19 +6273,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6696,7 +6666,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -6705,7 +6678,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -6718,58 +6691,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

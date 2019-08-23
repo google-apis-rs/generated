@@ -73,37 +73,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoscalingEventEventType {
-        #[doc = "Default type for the enum.  Value should never be returned."]
-        TypeUnknown,
-        #[doc = "The TARGET_NUM_WORKERS_CHANGED type should be used when the target\nworker pool size has changed at the start of an actuation. An event\nshould always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects\na change in the target_num_workers."]
-        TargetNumWorkersChanged,
-        #[doc = "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker\npool size has been changed, but the target_num_workers has not changed."]
-        CurrentNumWorkersChanged,
         #[doc = "The ACTUATION_FAILURE type should be used when we want to report\nan error to the user indicating why the current number of workers\nin the pool could not be changed.\nDisplayed in the current status and history widgets."]
         ActuationFailure,
+        #[doc = "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker\npool size has been changed, but the target_num_workers has not changed."]
+        CurrentNumWorkersChanged,
         #[doc = "Used when we want to report to the user a reason why we are\nnot currently adjusting the number of workers.\nShould specify both target_num_workers, current_num_workers and a\ndecision_message."]
         NoChange,
+        #[doc = "The TARGET_NUM_WORKERS_CHANGED type should be used when the target\nworker pool size has changed at the start of an actuation. An event\nshould always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects\na change in the target_num_workers."]
+        TargetNumWorkersChanged,
+        #[doc = "Default type for the enum.  Value should never be returned."]
+        TypeUnknown,
     }
     impl AutoscalingEventEventType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AutoscalingEventEventType::TypeUnknown => "TYPE_UNKNOWN",
-                AutoscalingEventEventType::TargetNumWorkersChanged => "TARGET_NUM_WORKERS_CHANGED",
+                AutoscalingEventEventType::ActuationFailure => "ACTUATION_FAILURE",
                 AutoscalingEventEventType::CurrentNumWorkersChanged => {
                     "CURRENT_NUM_WORKERS_CHANGED"
                 }
-                AutoscalingEventEventType::ActuationFailure => "ACTUATION_FAILURE",
                 AutoscalingEventEventType::NoChange => "NO_CHANGE",
+                AutoscalingEventEventType::TargetNumWorkersChanged => "TARGET_NUM_WORKERS_CHANGED",
+                AutoscalingEventEventType::TypeUnknown => "TYPE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for AutoscalingEventEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AutoscalingEventEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -111,19 +111,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AutoscalingEventEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNKNOWN" => AutoscalingEventEventType::TypeUnknown,
-                "TARGET_NUM_WORKERS_CHANGED" => AutoscalingEventEventType::TargetNumWorkersChanged,
+                "ACTUATION_FAILURE" => AutoscalingEventEventType::ActuationFailure,
                 "CURRENT_NUM_WORKERS_CHANGED" => {
                     AutoscalingEventEventType::CurrentNumWorkersChanged
                 }
-                "ACTUATION_FAILURE" => AutoscalingEventEventType::ActuationFailure,
                 "NO_CHANGE" => AutoscalingEventEventType::NoChange,
+                "TARGET_NUM_WORKERS_CHANGED" => AutoscalingEventEventType::TargetNumWorkersChanged,
+                "TYPE_UNKNOWN" => AutoscalingEventEventType::TypeUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -176,35 +176,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoscalingSettingsAlgorithm {
-        #[doc = "The algorithm is unknown, or unspecified."]
-        AutoscalingAlgorithmUnknown,
-        #[doc = "Disable autoscaling."]
-        AutoscalingAlgorithmNone,
         #[doc = "Increase worker count over time to reduce job execution time."]
         AutoscalingAlgorithmBasic,
+        #[doc = "Disable autoscaling."]
+        AutoscalingAlgorithmNone,
+        #[doc = "The algorithm is unknown, or unspecified."]
+        AutoscalingAlgorithmUnknown,
     }
     impl AutoscalingSettingsAlgorithm {
         pub fn as_str(self) -> &'static str {
             match self {
-                AutoscalingSettingsAlgorithm::AutoscalingAlgorithmUnknown => {
-                    "AUTOSCALING_ALGORITHM_UNKNOWN"
+                AutoscalingSettingsAlgorithm::AutoscalingAlgorithmBasic => {
+                    "AUTOSCALING_ALGORITHM_BASIC"
                 }
                 AutoscalingSettingsAlgorithm::AutoscalingAlgorithmNone => {
                     "AUTOSCALING_ALGORITHM_NONE"
                 }
-                AutoscalingSettingsAlgorithm::AutoscalingAlgorithmBasic => {
-                    "AUTOSCALING_ALGORITHM_BASIC"
+                AutoscalingSettingsAlgorithm::AutoscalingAlgorithmUnknown => {
+                    "AUTOSCALING_ALGORITHM_UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for AutoscalingSettingsAlgorithm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AutoscalingSettingsAlgorithm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -212,20 +212,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AutoscalingSettingsAlgorithm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "AUTOSCALING_ALGORITHM_UNKNOWN" => {
-                    AutoscalingSettingsAlgorithm::AutoscalingAlgorithmUnknown
+                "AUTOSCALING_ALGORITHM_BASIC" => {
+                    AutoscalingSettingsAlgorithm::AutoscalingAlgorithmBasic
                 }
                 "AUTOSCALING_ALGORITHM_NONE" => {
                     AutoscalingSettingsAlgorithm::AutoscalingAlgorithmNone
                 }
-                "AUTOSCALING_ALGORITHM_BASIC" => {
-                    AutoscalingSettingsAlgorithm::AutoscalingAlgorithmBasic
+                "AUTOSCALING_ALGORITHM_UNKNOWN" => {
+                    AutoscalingSettingsAlgorithm::AutoscalingAlgorithmUnknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -464,7 +464,7 @@ pub mod schemas {
         pub index: ::std::option::Option<i32>,
         #[doc = "Position within the inner source."]
         #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::Position>,
+        pub position: ::std::option::Option<Box<crate::schemas::Position>>,
     }
     impl ::field_selector::FieldSelector for ConcatPosition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -477,50 +477,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CounterMetadataKind {
-        #[doc = "Counter aggregation kind was not set."]
-        Invalid,
-        #[doc = "Aggregated value is the sum of all contributed values."]
-        Sum,
-        #[doc = "Aggregated value is the max of all contributed values."]
-        Max,
-        #[doc = "Aggregated value is the min of all contributed values."]
-        Min,
-        #[doc = "Aggregated value is the mean of all contributed values."]
-        Mean,
-        #[doc = "Aggregated value represents the logical 'or' of all contributed values."]
-        Or,
         #[doc = "Aggregated value represents the logical 'and' of all contributed values."]
         And,
-        #[doc = "Aggregated value is a set of unique contributed values."]
-        Set,
         #[doc = "Aggregated value captures statistics about a distribution."]
         Distribution,
+        #[doc = "Counter aggregation kind was not set."]
+        Invalid,
         #[doc = "Aggregated value tracks the latest value of a variable."]
         LatestValue,
+        #[doc = "Aggregated value is the max of all contributed values."]
+        Max,
+        #[doc = "Aggregated value is the mean of all contributed values."]
+        Mean,
+        #[doc = "Aggregated value is the min of all contributed values."]
+        Min,
+        #[doc = "Aggregated value represents the logical 'or' of all contributed values."]
+        Or,
+        #[doc = "Aggregated value is a set of unique contributed values."]
+        Set,
+        #[doc = "Aggregated value is the sum of all contributed values."]
+        Sum,
     }
     impl CounterMetadataKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                CounterMetadataKind::Invalid => "INVALID",
-                CounterMetadataKind::Sum => "SUM",
-                CounterMetadataKind::Max => "MAX",
-                CounterMetadataKind::Min => "MIN",
-                CounterMetadataKind::Mean => "MEAN",
-                CounterMetadataKind::Or => "OR",
                 CounterMetadataKind::And => "AND",
-                CounterMetadataKind::Set => "SET",
                 CounterMetadataKind::Distribution => "DISTRIBUTION",
+                CounterMetadataKind::Invalid => "INVALID",
                 CounterMetadataKind::LatestValue => "LATEST_VALUE",
+                CounterMetadataKind::Max => "MAX",
+                CounterMetadataKind::Mean => "MEAN",
+                CounterMetadataKind::Min => "MIN",
+                CounterMetadataKind::Or => "OR",
+                CounterMetadataKind::Set => "SET",
+                CounterMetadataKind::Sum => "SUM",
             }
         }
     }
     impl ::std::fmt::Display for CounterMetadataKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CounterMetadataKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -528,22 +528,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CounterMetadataKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "INVALID" => CounterMetadataKind::Invalid,
-                "SUM" => CounterMetadataKind::Sum,
-                "MAX" => CounterMetadataKind::Max,
-                "MIN" => CounterMetadataKind::Min,
-                "MEAN" => CounterMetadataKind::Mean,
-                "OR" => CounterMetadataKind::Or,
                 "AND" => CounterMetadataKind::And,
-                "SET" => CounterMetadataKind::Set,
                 "DISTRIBUTION" => CounterMetadataKind::Distribution,
+                "INVALID" => CounterMetadataKind::Invalid,
                 "LATEST_VALUE" => CounterMetadataKind::LatestValue,
+                "MAX" => CounterMetadataKind::Max,
+                "MEAN" => CounterMetadataKind::Mean,
+                "MIN" => CounterMetadataKind::Min,
+                "OR" => CounterMetadataKind::Or,
+                "SET" => CounterMetadataKind::Set,
+                "SUM" => CounterMetadataKind::Sum,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -568,40 +568,40 @@ pub mod schemas {
         Bytes,
         #[doc = "Counter returns a value in bytes per second."]
         BytesPerSec,
-        #[doc = "Counter returns a value in milliseconds."]
-        Milliseconds,
         #[doc = "Counter returns a value in microseconds."]
         Microseconds,
+        #[doc = "Counter returns a value in milliseconds."]
+        Milliseconds,
         #[doc = "Counter returns a value in nanoseconds."]
         Nanoseconds,
         #[doc = "Counter returns a timestamp in milliseconds."]
         TimestampMsec,
-        #[doc = "Counter returns a timestamp in microseconds."]
-        TimestampUsec,
         #[doc = "Counter returns a timestamp in nanoseconds."]
         TimestampNsec,
+        #[doc = "Counter returns a timestamp in microseconds."]
+        TimestampUsec,
     }
     impl CounterMetadataStandardUnits {
         pub fn as_str(self) -> &'static str {
             match self {
                 CounterMetadataStandardUnits::Bytes => "BYTES",
                 CounterMetadataStandardUnits::BytesPerSec => "BYTES_PER_SEC",
-                CounterMetadataStandardUnits::Milliseconds => "MILLISECONDS",
                 CounterMetadataStandardUnits::Microseconds => "MICROSECONDS",
+                CounterMetadataStandardUnits::Milliseconds => "MILLISECONDS",
                 CounterMetadataStandardUnits::Nanoseconds => "NANOSECONDS",
                 CounterMetadataStandardUnits::TimestampMsec => "TIMESTAMP_MSEC",
-                CounterMetadataStandardUnits::TimestampUsec => "TIMESTAMP_USEC",
                 CounterMetadataStandardUnits::TimestampNsec => "TIMESTAMP_NSEC",
+                CounterMetadataStandardUnits::TimestampUsec => "TIMESTAMP_USEC",
             }
         }
     }
     impl ::std::fmt::Display for CounterMetadataStandardUnits {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CounterMetadataStandardUnits {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -609,7 +609,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CounterMetadataStandardUnits {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -617,12 +617,12 @@ pub mod schemas {
             Ok(match value {
                 "BYTES" => CounterMetadataStandardUnits::Bytes,
                 "BYTES_PER_SEC" => CounterMetadataStandardUnits::BytesPerSec,
-                "MILLISECONDS" => CounterMetadataStandardUnits::Milliseconds,
                 "MICROSECONDS" => CounterMetadataStandardUnits::Microseconds,
+                "MILLISECONDS" => CounterMetadataStandardUnits::Milliseconds,
                 "NANOSECONDS" => CounterMetadataStandardUnits::Nanoseconds,
                 "TIMESTAMP_MSEC" => CounterMetadataStandardUnits::TimestampMsec,
-                "TIMESTAMP_USEC" => CounterMetadataStandardUnits::TimestampUsec,
                 "TIMESTAMP_NSEC" => CounterMetadataStandardUnits::TimestampNsec,
+                "TIMESTAMP_USEC" => CounterMetadataStandardUnits::TimestampUsec,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -692,12 +692,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CounterStructuredNameOrigin {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CounterStructuredNameOrigin {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -705,7 +705,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CounterStructuredNameOrigin {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -750,12 +750,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CounterStructuredNamePortion {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CounterStructuredNamePortion {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -763,7 +763,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CounterStructuredNamePortion {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1096,40 +1096,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DerivedSourceDerivationMode {
-        #[doc = "The source derivation is unknown, or unspecified."]
-        SourceDerivationModeUnknown,
-        #[doc = "Produce a completely independent Source with no base."]
-        SourceDerivationModeIndependent,
         #[doc = "Produce a Source based on the Source being split."]
         SourceDerivationModeChildOfCurrent,
+        #[doc = "Produce a completely independent Source with no base."]
+        SourceDerivationModeIndependent,
         #[doc = "Produce a Source based on the base of the Source being split."]
         SourceDerivationModeSiblingOfCurrent,
+        #[doc = "The source derivation is unknown, or unspecified."]
+        SourceDerivationModeUnknown,
     }
     impl DerivedSourceDerivationMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                DerivedSourceDerivationMode::SourceDerivationModeUnknown => {
-                    "SOURCE_DERIVATION_MODE_UNKNOWN"
+                DerivedSourceDerivationMode::SourceDerivationModeChildOfCurrent => {
+                    "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
                 }
                 DerivedSourceDerivationMode::SourceDerivationModeIndependent => {
                     "SOURCE_DERIVATION_MODE_INDEPENDENT"
                 }
-                DerivedSourceDerivationMode::SourceDerivationModeChildOfCurrent => {
-                    "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
-                }
                 DerivedSourceDerivationMode::SourceDerivationModeSiblingOfCurrent => {
                     "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
+                }
+                DerivedSourceDerivationMode::SourceDerivationModeUnknown => {
+                    "SOURCE_DERIVATION_MODE_UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for DerivedSourceDerivationMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DerivedSourceDerivationMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1137,23 +1137,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DerivedSourceDerivationMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SOURCE_DERIVATION_MODE_UNKNOWN" => {
-                    DerivedSourceDerivationMode::SourceDerivationModeUnknown
+                "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT" => {
+                    DerivedSourceDerivationMode::SourceDerivationModeChildOfCurrent
                 }
                 "SOURCE_DERIVATION_MODE_INDEPENDENT" => {
                     DerivedSourceDerivationMode::SourceDerivationModeIndependent
                 }
-                "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT" => {
-                    DerivedSourceDerivationMode::SourceDerivationModeChildOfCurrent
-                }
                 "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT" => {
                     DerivedSourceDerivationMode::SourceDerivationModeSiblingOfCurrent
+                }
+                "SOURCE_DERIVATION_MODE_UNKNOWN" => {
+                    DerivedSourceDerivationMode::SourceDerivationModeUnknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1326,33 +1326,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnvironmentFlexResourceSchedulingGoal {
-        #[doc = "Run in the default mode."]
-        FlexrsUnspecified,
-        #[doc = "Optimize for lower execution time."]
-        FlexrsSpeedOptimized,
         #[doc = "Optimize for lower cost."]
         FlexrsCostOptimized,
+        #[doc = "Optimize for lower execution time."]
+        FlexrsSpeedOptimized,
+        #[doc = "Run in the default mode."]
+        FlexrsUnspecified,
     }
     impl EnvironmentFlexResourceSchedulingGoal {
         pub fn as_str(self) -> &'static str {
             match self {
-                EnvironmentFlexResourceSchedulingGoal::FlexrsUnspecified => "FLEXRS_UNSPECIFIED",
-                EnvironmentFlexResourceSchedulingGoal::FlexrsSpeedOptimized => {
-                    "FLEXRS_SPEED_OPTIMIZED"
-                }
                 EnvironmentFlexResourceSchedulingGoal::FlexrsCostOptimized => {
                     "FLEXRS_COST_OPTIMIZED"
                 }
+                EnvironmentFlexResourceSchedulingGoal::FlexrsSpeedOptimized => {
+                    "FLEXRS_SPEED_OPTIMIZED"
+                }
+                EnvironmentFlexResourceSchedulingGoal::FlexrsUnspecified => "FLEXRS_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for EnvironmentFlexResourceSchedulingGoal {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EnvironmentFlexResourceSchedulingGoal {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1360,19 +1360,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EnvironmentFlexResourceSchedulingGoal {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FLEXRS_UNSPECIFIED" => EnvironmentFlexResourceSchedulingGoal::FlexrsUnspecified,
-                "FLEXRS_SPEED_OPTIMIZED" => {
-                    EnvironmentFlexResourceSchedulingGoal::FlexrsSpeedOptimized
-                }
                 "FLEXRS_COST_OPTIMIZED" => {
                     EnvironmentFlexResourceSchedulingGoal::FlexrsCostOptimized
                 }
+                "FLEXRS_SPEED_OPTIMIZED" => {
+                    EnvironmentFlexResourceSchedulingGoal::FlexrsSpeedOptimized
+                }
+                "FLEXRS_UNSPECIFIED" => EnvironmentFlexResourceSchedulingGoal::FlexrsUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1446,58 +1446,58 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecutionStageStateExecutionStageState {
-        #[doc = "The job's run state isn't specified."]
-        JobStateUnknown,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
-        JobStateStopped,
-        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
-        JobStateRunning,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
-        JobStateDone,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
-        JobStateFailed,
         #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
-        JobStateUpdated,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
-        JobStateDraining,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
-        JobStateDrained,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
-        JobStatePending,
         #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        JobStateDone,
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        JobStateDrained,
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        JobStateDraining,
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        JobStateFailed,
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        JobStatePending,
         #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
+        JobStateRunning,
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        JobStateStopped,
+        #[doc = "The job's run state isn't specified."]
+        JobStateUnknown,
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        JobStateUpdated,
     }
     impl ExecutionStageStateExecutionStageState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ExecutionStageStateExecutionStageState::JobStateUnknown => "JOB_STATE_UNKNOWN",
-                ExecutionStageStateExecutionStageState::JobStateStopped => "JOB_STATE_STOPPED",
-                ExecutionStageStateExecutionStageState::JobStateRunning => "JOB_STATE_RUNNING",
-                ExecutionStageStateExecutionStageState::JobStateDone => "JOB_STATE_DONE",
-                ExecutionStageStateExecutionStageState::JobStateFailed => "JOB_STATE_FAILED",
                 ExecutionStageStateExecutionStageState::JobStateCancelled => "JOB_STATE_CANCELLED",
-                ExecutionStageStateExecutionStageState::JobStateUpdated => "JOB_STATE_UPDATED",
-                ExecutionStageStateExecutionStageState::JobStateDraining => "JOB_STATE_DRAINING",
-                ExecutionStageStateExecutionStageState::JobStateDrained => "JOB_STATE_DRAINED",
-                ExecutionStageStateExecutionStageState::JobStatePending => "JOB_STATE_PENDING",
                 ExecutionStageStateExecutionStageState::JobStateCancelling => {
                     "JOB_STATE_CANCELLING"
                 }
+                ExecutionStageStateExecutionStageState::JobStateDone => "JOB_STATE_DONE",
+                ExecutionStageStateExecutionStageState::JobStateDrained => "JOB_STATE_DRAINED",
+                ExecutionStageStateExecutionStageState::JobStateDraining => "JOB_STATE_DRAINING",
+                ExecutionStageStateExecutionStageState::JobStateFailed => "JOB_STATE_FAILED",
+                ExecutionStageStateExecutionStageState::JobStatePending => "JOB_STATE_PENDING",
                 ExecutionStageStateExecutionStageState::JobStateQueued => "JOB_STATE_QUEUED",
+                ExecutionStageStateExecutionStageState::JobStateRunning => "JOB_STATE_RUNNING",
+                ExecutionStageStateExecutionStageState::JobStateStopped => "JOB_STATE_STOPPED",
+                ExecutionStageStateExecutionStageState::JobStateUnknown => "JOB_STATE_UNKNOWN",
+                ExecutionStageStateExecutionStageState::JobStateUpdated => "JOB_STATE_UPDATED",
             }
         }
     }
     impl ::std::fmt::Display for ExecutionStageStateExecutionStageState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ExecutionStageStateExecutionStageState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1505,26 +1505,26 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ExecutionStageStateExecutionStageState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_STATE_UNKNOWN" => ExecutionStageStateExecutionStageState::JobStateUnknown,
-                "JOB_STATE_STOPPED" => ExecutionStageStateExecutionStageState::JobStateStopped,
-                "JOB_STATE_RUNNING" => ExecutionStageStateExecutionStageState::JobStateRunning,
-                "JOB_STATE_DONE" => ExecutionStageStateExecutionStageState::JobStateDone,
-                "JOB_STATE_FAILED" => ExecutionStageStateExecutionStageState::JobStateFailed,
                 "JOB_STATE_CANCELLED" => ExecutionStageStateExecutionStageState::JobStateCancelled,
-                "JOB_STATE_UPDATED" => ExecutionStageStateExecutionStageState::JobStateUpdated,
-                "JOB_STATE_DRAINING" => ExecutionStageStateExecutionStageState::JobStateDraining,
-                "JOB_STATE_DRAINED" => ExecutionStageStateExecutionStageState::JobStateDrained,
-                "JOB_STATE_PENDING" => ExecutionStageStateExecutionStageState::JobStatePending,
                 "JOB_STATE_CANCELLING" => {
                     ExecutionStageStateExecutionStageState::JobStateCancelling
                 }
+                "JOB_STATE_DONE" => ExecutionStageStateExecutionStageState::JobStateDone,
+                "JOB_STATE_DRAINED" => ExecutionStageStateExecutionStageState::JobStateDrained,
+                "JOB_STATE_DRAINING" => ExecutionStageStateExecutionStageState::JobStateDraining,
+                "JOB_STATE_FAILED" => ExecutionStageStateExecutionStageState::JobStateFailed,
+                "JOB_STATE_PENDING" => ExecutionStageStateExecutionStageState::JobStatePending,
                 "JOB_STATE_QUEUED" => ExecutionStageStateExecutionStageState::JobStateQueued,
+                "JOB_STATE_RUNNING" => ExecutionStageStateExecutionStageState::JobStateRunning,
+                "JOB_STATE_STOPPED" => ExecutionStageStateExecutionStageState::JobStateStopped,
+                "JOB_STATE_UNKNOWN" => ExecutionStageStateExecutionStageState::JobStateUnknown,
+                "JOB_STATE_UPDATED" => ExecutionStageStateExecutionStageState::JobStateUpdated,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1578,47 +1578,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecutionStageSummaryKind {
-        #[doc = "Unrecognized transform type."]
-        UnknownKind,
-        #[doc = "ParDo transform."]
-        ParDoKind,
-        #[doc = "Group By Key transform."]
-        GroupByKeyKind,
-        #[doc = "Flatten transform."]
-        FlattenKind,
-        #[doc = "Read transform."]
-        ReadKind,
-        #[doc = "Write transform."]
-        WriteKind,
         #[doc = "Constructs from a constant value, such as with Create.of."]
         ConstantKind,
-        #[doc = "Creates a Singleton view of a collection."]
-        SingletonKind,
+        #[doc = "Flatten transform."]
+        FlattenKind,
+        #[doc = "Group By Key transform."]
+        GroupByKeyKind,
+        #[doc = "ParDo transform."]
+        ParDoKind,
+        #[doc = "Read transform."]
+        ReadKind,
         #[doc = "Opening or closing a shuffle session, often as part of a GroupByKey."]
         ShuffleKind,
+        #[doc = "Creates a Singleton view of a collection."]
+        SingletonKind,
+        #[doc = "Unrecognized transform type."]
+        UnknownKind,
+        #[doc = "Write transform."]
+        WriteKind,
     }
     impl ExecutionStageSummaryKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                ExecutionStageSummaryKind::UnknownKind => "UNKNOWN_KIND",
-                ExecutionStageSummaryKind::ParDoKind => "PAR_DO_KIND",
-                ExecutionStageSummaryKind::GroupByKeyKind => "GROUP_BY_KEY_KIND",
-                ExecutionStageSummaryKind::FlattenKind => "FLATTEN_KIND",
-                ExecutionStageSummaryKind::ReadKind => "READ_KIND",
-                ExecutionStageSummaryKind::WriteKind => "WRITE_KIND",
                 ExecutionStageSummaryKind::ConstantKind => "CONSTANT_KIND",
-                ExecutionStageSummaryKind::SingletonKind => "SINGLETON_KIND",
+                ExecutionStageSummaryKind::FlattenKind => "FLATTEN_KIND",
+                ExecutionStageSummaryKind::GroupByKeyKind => "GROUP_BY_KEY_KIND",
+                ExecutionStageSummaryKind::ParDoKind => "PAR_DO_KIND",
+                ExecutionStageSummaryKind::ReadKind => "READ_KIND",
                 ExecutionStageSummaryKind::ShuffleKind => "SHUFFLE_KIND",
+                ExecutionStageSummaryKind::SingletonKind => "SINGLETON_KIND",
+                ExecutionStageSummaryKind::UnknownKind => "UNKNOWN_KIND",
+                ExecutionStageSummaryKind::WriteKind => "WRITE_KIND",
             }
         }
     }
     impl ::std::fmt::Display for ExecutionStageSummaryKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ExecutionStageSummaryKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1626,21 +1626,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ExecutionStageSummaryKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_KIND" => ExecutionStageSummaryKind::UnknownKind,
-                "PAR_DO_KIND" => ExecutionStageSummaryKind::ParDoKind,
-                "GROUP_BY_KEY_KIND" => ExecutionStageSummaryKind::GroupByKeyKind,
-                "FLATTEN_KIND" => ExecutionStageSummaryKind::FlattenKind,
-                "READ_KIND" => ExecutionStageSummaryKind::ReadKind,
-                "WRITE_KIND" => ExecutionStageSummaryKind::WriteKind,
                 "CONSTANT_KIND" => ExecutionStageSummaryKind::ConstantKind,
-                "SINGLETON_KIND" => ExecutionStageSummaryKind::SingletonKind,
+                "FLATTEN_KIND" => ExecutionStageSummaryKind::FlattenKind,
+                "GROUP_BY_KEY_KIND" => ExecutionStageSummaryKind::GroupByKeyKind,
+                "PAR_DO_KIND" => ExecutionStageSummaryKind::ParDoKind,
+                "READ_KIND" => ExecutionStageSummaryKind::ReadKind,
                 "SHUFFLE_KIND" => ExecutionStageSummaryKind::ShuffleKind,
+                "SINGLETON_KIND" => ExecutionStageSummaryKind::SingletonKind,
+                "UNKNOWN_KIND" => ExecutionStageSummaryKind::UnknownKind,
+                "WRITE_KIND" => ExecutionStageSummaryKind::WriteKind,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2100,56 +2100,56 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobCurrentState {
-        #[doc = "The job's run state isn't specified."]
-        JobStateUnknown,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
-        JobStateStopped,
-        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
-        JobStateRunning,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
-        JobStateDone,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
-        JobStateFailed,
         #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
-        JobStateUpdated,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
-        JobStateDraining,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
-        JobStateDrained,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
-        JobStatePending,
         #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        JobStateDone,
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        JobStateDrained,
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        JobStateDraining,
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        JobStateFailed,
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        JobStatePending,
         #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
+        JobStateRunning,
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        JobStateStopped,
+        #[doc = "The job's run state isn't specified."]
+        JobStateUnknown,
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        JobStateUpdated,
     }
     impl JobCurrentState {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobCurrentState::JobStateUnknown => "JOB_STATE_UNKNOWN",
-                JobCurrentState::JobStateStopped => "JOB_STATE_STOPPED",
-                JobCurrentState::JobStateRunning => "JOB_STATE_RUNNING",
-                JobCurrentState::JobStateDone => "JOB_STATE_DONE",
-                JobCurrentState::JobStateFailed => "JOB_STATE_FAILED",
                 JobCurrentState::JobStateCancelled => "JOB_STATE_CANCELLED",
-                JobCurrentState::JobStateUpdated => "JOB_STATE_UPDATED",
-                JobCurrentState::JobStateDraining => "JOB_STATE_DRAINING",
-                JobCurrentState::JobStateDrained => "JOB_STATE_DRAINED",
-                JobCurrentState::JobStatePending => "JOB_STATE_PENDING",
                 JobCurrentState::JobStateCancelling => "JOB_STATE_CANCELLING",
+                JobCurrentState::JobStateDone => "JOB_STATE_DONE",
+                JobCurrentState::JobStateDrained => "JOB_STATE_DRAINED",
+                JobCurrentState::JobStateDraining => "JOB_STATE_DRAINING",
+                JobCurrentState::JobStateFailed => "JOB_STATE_FAILED",
+                JobCurrentState::JobStatePending => "JOB_STATE_PENDING",
                 JobCurrentState::JobStateQueued => "JOB_STATE_QUEUED",
+                JobCurrentState::JobStateRunning => "JOB_STATE_RUNNING",
+                JobCurrentState::JobStateStopped => "JOB_STATE_STOPPED",
+                JobCurrentState::JobStateUnknown => "JOB_STATE_UNKNOWN",
+                JobCurrentState::JobStateUpdated => "JOB_STATE_UPDATED",
             }
         }
     }
     impl ::std::fmt::Display for JobCurrentState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobCurrentState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2157,24 +2157,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobCurrentState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_STATE_UNKNOWN" => JobCurrentState::JobStateUnknown,
-                "JOB_STATE_STOPPED" => JobCurrentState::JobStateStopped,
-                "JOB_STATE_RUNNING" => JobCurrentState::JobStateRunning,
-                "JOB_STATE_DONE" => JobCurrentState::JobStateDone,
-                "JOB_STATE_FAILED" => JobCurrentState::JobStateFailed,
                 "JOB_STATE_CANCELLED" => JobCurrentState::JobStateCancelled,
-                "JOB_STATE_UPDATED" => JobCurrentState::JobStateUpdated,
-                "JOB_STATE_DRAINING" => JobCurrentState::JobStateDraining,
-                "JOB_STATE_DRAINED" => JobCurrentState::JobStateDrained,
-                "JOB_STATE_PENDING" => JobCurrentState::JobStatePending,
                 "JOB_STATE_CANCELLING" => JobCurrentState::JobStateCancelling,
+                "JOB_STATE_DONE" => JobCurrentState::JobStateDone,
+                "JOB_STATE_DRAINED" => JobCurrentState::JobStateDrained,
+                "JOB_STATE_DRAINING" => JobCurrentState::JobStateDraining,
+                "JOB_STATE_FAILED" => JobCurrentState::JobStateFailed,
+                "JOB_STATE_PENDING" => JobCurrentState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobCurrentState::JobStateQueued,
+                "JOB_STATE_RUNNING" => JobCurrentState::JobStateRunning,
+                "JOB_STATE_STOPPED" => JobCurrentState::JobStateStopped,
+                "JOB_STATE_UNKNOWN" => JobCurrentState::JobStateUnknown,
+                "JOB_STATE_UPDATED" => JobCurrentState::JobStateUpdated,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2195,29 +2195,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobType {
-        #[doc = "The type of the job is unspecified, or unknown."]
-        JobTypeUnknown,
         #[doc = "A batch job with a well-defined end point: data is read, data is\nprocessed, data is written, and the job is done."]
         JobTypeBatch,
         #[doc = "A continuously streaming job with no end: data is read,\nprocessed, and written continuously."]
         JobTypeStreaming,
+        #[doc = "The type of the job is unspecified, or unknown."]
+        JobTypeUnknown,
     }
     impl JobType {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobType::JobTypeUnknown => "JOB_TYPE_UNKNOWN",
                 JobType::JobTypeBatch => "JOB_TYPE_BATCH",
                 JobType::JobTypeStreaming => "JOB_TYPE_STREAMING",
+                JobType::JobTypeUnknown => "JOB_TYPE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for JobType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2225,15 +2225,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_TYPE_UNKNOWN" => JobType::JobTypeUnknown,
                 "JOB_TYPE_BATCH" => JobType::JobTypeBatch,
                 "JOB_TYPE_STREAMING" => JobType::JobTypeStreaming,
+                "JOB_TYPE_UNKNOWN" => JobType::JobTypeUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2254,56 +2254,56 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobRequestedState {
-        #[doc = "The job's run state isn't specified."]
-        JobStateUnknown,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
-        JobStateStopped,
-        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
-        JobStateRunning,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
-        JobStateDone,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
-        JobStateFailed,
         #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
-        JobStateUpdated,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
-        JobStateDraining,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
-        JobStateDrained,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
-        JobStatePending,
         #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        JobStateDone,
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        JobStateDrained,
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        JobStateDraining,
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        JobStateFailed,
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        JobStatePending,
         #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
+        JobStateRunning,
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        JobStateStopped,
+        #[doc = "The job's run state isn't specified."]
+        JobStateUnknown,
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        JobStateUpdated,
     }
     impl JobRequestedState {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobRequestedState::JobStateUnknown => "JOB_STATE_UNKNOWN",
-                JobRequestedState::JobStateStopped => "JOB_STATE_STOPPED",
-                JobRequestedState::JobStateRunning => "JOB_STATE_RUNNING",
-                JobRequestedState::JobStateDone => "JOB_STATE_DONE",
-                JobRequestedState::JobStateFailed => "JOB_STATE_FAILED",
                 JobRequestedState::JobStateCancelled => "JOB_STATE_CANCELLED",
-                JobRequestedState::JobStateUpdated => "JOB_STATE_UPDATED",
-                JobRequestedState::JobStateDraining => "JOB_STATE_DRAINING",
-                JobRequestedState::JobStateDrained => "JOB_STATE_DRAINED",
-                JobRequestedState::JobStatePending => "JOB_STATE_PENDING",
                 JobRequestedState::JobStateCancelling => "JOB_STATE_CANCELLING",
+                JobRequestedState::JobStateDone => "JOB_STATE_DONE",
+                JobRequestedState::JobStateDrained => "JOB_STATE_DRAINED",
+                JobRequestedState::JobStateDraining => "JOB_STATE_DRAINING",
+                JobRequestedState::JobStateFailed => "JOB_STATE_FAILED",
+                JobRequestedState::JobStatePending => "JOB_STATE_PENDING",
                 JobRequestedState::JobStateQueued => "JOB_STATE_QUEUED",
+                JobRequestedState::JobStateRunning => "JOB_STATE_RUNNING",
+                JobRequestedState::JobStateStopped => "JOB_STATE_STOPPED",
+                JobRequestedState::JobStateUnknown => "JOB_STATE_UNKNOWN",
+                JobRequestedState::JobStateUpdated => "JOB_STATE_UPDATED",
             }
         }
     }
     impl ::std::fmt::Display for JobRequestedState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobRequestedState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2311,24 +2311,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobRequestedState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_STATE_UNKNOWN" => JobRequestedState::JobStateUnknown,
-                "JOB_STATE_STOPPED" => JobRequestedState::JobStateStopped,
-                "JOB_STATE_RUNNING" => JobRequestedState::JobStateRunning,
-                "JOB_STATE_DONE" => JobRequestedState::JobStateDone,
-                "JOB_STATE_FAILED" => JobRequestedState::JobStateFailed,
                 "JOB_STATE_CANCELLED" => JobRequestedState::JobStateCancelled,
-                "JOB_STATE_UPDATED" => JobRequestedState::JobStateUpdated,
-                "JOB_STATE_DRAINING" => JobRequestedState::JobStateDraining,
-                "JOB_STATE_DRAINED" => JobRequestedState::JobStateDrained,
-                "JOB_STATE_PENDING" => JobRequestedState::JobStatePending,
                 "JOB_STATE_CANCELLING" => JobRequestedState::JobStateCancelling,
+                "JOB_STATE_DONE" => JobRequestedState::JobStateDone,
+                "JOB_STATE_DRAINED" => JobRequestedState::JobStateDrained,
+                "JOB_STATE_DRAINING" => JobRequestedState::JobStateDraining,
+                "JOB_STATE_FAILED" => JobRequestedState::JobStateFailed,
+                "JOB_STATE_PENDING" => JobRequestedState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobRequestedState::JobStateQueued,
+                "JOB_STATE_RUNNING" => JobRequestedState::JobStateRunning,
+                "JOB_STATE_STOPPED" => JobRequestedState::JobStateStopped,
+                "JOB_STATE_UNKNOWN" => JobRequestedState::JobStateUnknown,
+                "JOB_STATE_UPDATED" => JobRequestedState::JobStateUpdated,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2488,40 +2488,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobMessageMessageImportance {
-        #[doc = "The message importance isn't specified, or is unknown."]
-        JobMessageImportanceUnknown,
+        #[doc = "The message is at the 'basic' level: useful for keeping\ntrack of the execution of a Dataflow pipeline.  Typically,\nDataflow pipeline runners display log messages at this level by\ndefault, and these messages are displayed by default in the\nDataflow monitoring UI."]
+        JobMessageBasic,
         #[doc = "The message is at the 'debug' level: typically only useful for\nsoftware engineers working on the code the job is running.\nTypically, Dataflow pipeline runners do not display log messages\nat this level by default."]
         JobMessageDebug,
         #[doc = "The message is at the 'detailed' level: somewhat verbose, but\npotentially useful to users.  Typically, Dataflow pipeline\nrunners do not display log messages at this level by default.\nThese messages are displayed by default in the Dataflow\nmonitoring UI."]
         JobMessageDetailed,
-        #[doc = "The message is at the 'basic' level: useful for keeping\ntrack of the execution of a Dataflow pipeline.  Typically,\nDataflow pipeline runners display log messages at this level by\ndefault, and these messages are displayed by default in the\nDataflow monitoring UI."]
-        JobMessageBasic,
-        #[doc = "The message is at the 'warning' level: indicating a condition\npertaining to a job which may require human intervention.\nTypically, Dataflow pipeline runners display log messages at this\nlevel by default, and these messages are displayed by default in\nthe Dataflow monitoring UI."]
-        JobMessageWarning,
         #[doc = "The message is at the 'error' level: indicating a condition\npreventing a job from succeeding.  Typically, Dataflow pipeline\nrunners display log messages at this level by default, and these\nmessages are displayed by default in the Dataflow monitoring UI."]
         JobMessageError,
+        #[doc = "The message importance isn't specified, or is unknown."]
+        JobMessageImportanceUnknown,
+        #[doc = "The message is at the 'warning' level: indicating a condition\npertaining to a job which may require human intervention.\nTypically, Dataflow pipeline runners display log messages at this\nlevel by default, and these messages are displayed by default in\nthe Dataflow monitoring UI."]
+        JobMessageWarning,
     }
     impl JobMessageMessageImportance {
         pub fn as_str(self) -> &'static str {
             match self {
+                JobMessageMessageImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
+                JobMessageMessageImportance::JobMessageDebug => "JOB_MESSAGE_DEBUG",
+                JobMessageMessageImportance::JobMessageDetailed => "JOB_MESSAGE_DETAILED",
+                JobMessageMessageImportance::JobMessageError => "JOB_MESSAGE_ERROR",
                 JobMessageMessageImportance::JobMessageImportanceUnknown => {
                     "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
                 }
-                JobMessageMessageImportance::JobMessageDebug => "JOB_MESSAGE_DEBUG",
-                JobMessageMessageImportance::JobMessageDetailed => "JOB_MESSAGE_DETAILED",
-                JobMessageMessageImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
                 JobMessageMessageImportance::JobMessageWarning => "JOB_MESSAGE_WARNING",
-                JobMessageMessageImportance::JobMessageError => "JOB_MESSAGE_ERROR",
             }
         }
     }
     impl ::std::fmt::Display for JobMessageMessageImportance {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobMessageMessageImportance {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2529,20 +2529,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobMessageMessageImportance {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "JOB_MESSAGE_BASIC" => JobMessageMessageImportance::JobMessageBasic,
+                "JOB_MESSAGE_DEBUG" => JobMessageMessageImportance::JobMessageDebug,
+                "JOB_MESSAGE_DETAILED" => JobMessageMessageImportance::JobMessageDetailed,
+                "JOB_MESSAGE_ERROR" => JobMessageMessageImportance::JobMessageError,
                 "JOB_MESSAGE_IMPORTANCE_UNKNOWN" => {
                     JobMessageMessageImportance::JobMessageImportanceUnknown
                 }
-                "JOB_MESSAGE_DEBUG" => JobMessageMessageImportance::JobMessageDebug,
-                "JOB_MESSAGE_DETAILED" => JobMessageMessageImportance::JobMessageDetailed,
-                "JOB_MESSAGE_BASIC" => JobMessageMessageImportance::JobMessageBasic,
                 "JOB_MESSAGE_WARNING" => JobMessageMessageImportance::JobMessageWarning,
-                "JOB_MESSAGE_ERROR" => JobMessageMessageImportance::JobMessageError,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3088,50 +3088,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NameAndKindKind {
-        #[doc = "Counter aggregation kind was not set."]
-        Invalid,
-        #[doc = "Aggregated value is the sum of all contributed values."]
-        Sum,
-        #[doc = "Aggregated value is the max of all contributed values."]
-        Max,
-        #[doc = "Aggregated value is the min of all contributed values."]
-        Min,
-        #[doc = "Aggregated value is the mean of all contributed values."]
-        Mean,
-        #[doc = "Aggregated value represents the logical 'or' of all contributed values."]
-        Or,
         #[doc = "Aggregated value represents the logical 'and' of all contributed values."]
         And,
-        #[doc = "Aggregated value is a set of unique contributed values."]
-        Set,
         #[doc = "Aggregated value captures statistics about a distribution."]
         Distribution,
+        #[doc = "Counter aggregation kind was not set."]
+        Invalid,
         #[doc = "Aggregated value tracks the latest value of a variable."]
         LatestValue,
+        #[doc = "Aggregated value is the max of all contributed values."]
+        Max,
+        #[doc = "Aggregated value is the mean of all contributed values."]
+        Mean,
+        #[doc = "Aggregated value is the min of all contributed values."]
+        Min,
+        #[doc = "Aggregated value represents the logical 'or' of all contributed values."]
+        Or,
+        #[doc = "Aggregated value is a set of unique contributed values."]
+        Set,
+        #[doc = "Aggregated value is the sum of all contributed values."]
+        Sum,
     }
     impl NameAndKindKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                NameAndKindKind::Invalid => "INVALID",
-                NameAndKindKind::Sum => "SUM",
-                NameAndKindKind::Max => "MAX",
-                NameAndKindKind::Min => "MIN",
-                NameAndKindKind::Mean => "MEAN",
-                NameAndKindKind::Or => "OR",
                 NameAndKindKind::And => "AND",
-                NameAndKindKind::Set => "SET",
                 NameAndKindKind::Distribution => "DISTRIBUTION",
+                NameAndKindKind::Invalid => "INVALID",
                 NameAndKindKind::LatestValue => "LATEST_VALUE",
+                NameAndKindKind::Max => "MAX",
+                NameAndKindKind::Mean => "MEAN",
+                NameAndKindKind::Min => "MIN",
+                NameAndKindKind::Or => "OR",
+                NameAndKindKind::Set => "SET",
+                NameAndKindKind::Sum => "SUM",
             }
         }
     }
     impl ::std::fmt::Display for NameAndKindKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NameAndKindKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3139,22 +3139,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NameAndKindKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "INVALID" => NameAndKindKind::Invalid,
-                "SUM" => NameAndKindKind::Sum,
-                "MAX" => NameAndKindKind::Max,
-                "MIN" => NameAndKindKind::Min,
-                "MEAN" => NameAndKindKind::Mean,
-                "OR" => NameAndKindKind::Or,
                 "AND" => NameAndKindKind::And,
-                "SET" => NameAndKindKind::Set,
                 "DISTRIBUTION" => NameAndKindKind::Distribution,
+                "INVALID" => NameAndKindKind::Invalid,
                 "LATEST_VALUE" => NameAndKindKind::LatestValue,
+                "MAX" => NameAndKindKind::Max,
+                "MEAN" => NameAndKindKind::Mean,
+                "MIN" => NameAndKindKind::Min,
+                "OR" => NameAndKindKind::Or,
+                "SET" => NameAndKindKind::Set,
+                "SUM" => NameAndKindKind::Sum,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3431,7 +3431,7 @@ pub mod schemas {
         pub byte_offset: ::std::option::Option<i64>,
         #[doc = "CloudPosition is a concat position."]
         #[serde(rename = "concatPosition", default)]
-        pub concat_position: ::std::option::Option<crate::schemas::ConcatPosition>,
+        pub concat_position: ::std::option::Option<Box<crate::schemas::ConcatPosition>>,
         #[doc = "Position is past all other positions. Also useful for the end\nposition of an unbounded range."]
         #[serde(rename = "end", default)]
         pub end: ::std::option::Option<bool>,
@@ -3707,35 +3707,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SdkVersionSdkSupportStatus {
-        #[doc = "Cloud Dataflow is unaware of this version."]
-        Unknown,
-        #[doc = "This is a known version of an SDK, and is supported."]
-        Supported,
-        #[doc = "A newer version of the SDK family exists, and an update is recommended."]
-        Stale,
         #[doc = "This version of the SDK is deprecated and will eventually be no\nlonger supported."]
         Deprecated,
+        #[doc = "A newer version of the SDK family exists, and an update is recommended."]
+        Stale,
+        #[doc = "This is a known version of an SDK, and is supported."]
+        Supported,
+        #[doc = "Cloud Dataflow is unaware of this version."]
+        Unknown,
         #[doc = "Support for this SDK version has ended and it should no longer be used."]
         Unsupported,
     }
     impl SdkVersionSdkSupportStatus {
         pub fn as_str(self) -> &'static str {
             match self {
-                SdkVersionSdkSupportStatus::Unknown => "UNKNOWN",
-                SdkVersionSdkSupportStatus::Supported => "SUPPORTED",
-                SdkVersionSdkSupportStatus::Stale => "STALE",
                 SdkVersionSdkSupportStatus::Deprecated => "DEPRECATED",
+                SdkVersionSdkSupportStatus::Stale => "STALE",
+                SdkVersionSdkSupportStatus::Supported => "SUPPORTED",
+                SdkVersionSdkSupportStatus::Unknown => "UNKNOWN",
                 SdkVersionSdkSupportStatus::Unsupported => "UNSUPPORTED",
             }
         }
     }
     impl ::std::fmt::Display for SdkVersionSdkSupportStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SdkVersionSdkSupportStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3743,16 +3743,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SdkVersionSdkSupportStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SdkVersionSdkSupportStatus::Unknown,
-                "SUPPORTED" => SdkVersionSdkSupportStatus::Supported,
-                "STALE" => SdkVersionSdkSupportStatus::Stale,
                 "DEPRECATED" => SdkVersionSdkSupportStatus::Deprecated,
+                "STALE" => SdkVersionSdkSupportStatus::Stale,
+                "SUPPORTED" => SdkVersionSdkSupportStatus::Supported,
+                "UNKNOWN" => SdkVersionSdkSupportStatus::Unknown,
                 "UNSUPPORTED" => SdkVersionSdkSupportStatus::Unsupported,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4020,38 +4020,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SnapshotState {
-        #[doc = "Unknown state."]
-        UnknownSnapshotState,
-        #[doc = "Snapshot intent to create has been persisted, snapshotting of state has not\nyet started."]
-        Pending,
-        #[doc = "Snapshotting is being performed."]
-        Running,
-        #[doc = "Snapshot has been created and is ready to be used."]
-        Ready,
-        #[doc = "Snapshot failed to be created."]
-        Failed,
         #[doc = "Snapshot has been deleted."]
         Deleted,
+        #[doc = "Snapshot failed to be created."]
+        Failed,
+        #[doc = "Snapshot intent to create has been persisted, snapshotting of state has not\nyet started."]
+        Pending,
+        #[doc = "Snapshot has been created and is ready to be used."]
+        Ready,
+        #[doc = "Snapshotting is being performed."]
+        Running,
+        #[doc = "Unknown state."]
+        UnknownSnapshotState,
     }
     impl SnapshotState {
         pub fn as_str(self) -> &'static str {
             match self {
-                SnapshotState::UnknownSnapshotState => "UNKNOWN_SNAPSHOT_STATE",
-                SnapshotState::Pending => "PENDING",
-                SnapshotState::Running => "RUNNING",
-                SnapshotState::Ready => "READY",
-                SnapshotState::Failed => "FAILED",
                 SnapshotState::Deleted => "DELETED",
+                SnapshotState::Failed => "FAILED",
+                SnapshotState::Pending => "PENDING",
+                SnapshotState::Ready => "READY",
+                SnapshotState::Running => "RUNNING",
+                SnapshotState::UnknownSnapshotState => "UNKNOWN_SNAPSHOT_STATE",
             }
         }
     }
     impl ::std::fmt::Display for SnapshotState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SnapshotState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4059,18 +4059,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SnapshotState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_SNAPSHOT_STATE" => SnapshotState::UnknownSnapshotState,
-                "PENDING" => SnapshotState::Pending,
-                "RUNNING" => SnapshotState::Running,
-                "READY" => SnapshotState::Ready,
-                "FAILED" => SnapshotState::Failed,
                 "DELETED" => SnapshotState::Deleted,
+                "FAILED" => SnapshotState::Failed,
+                "PENDING" => SnapshotState::Pending,
+                "READY" => SnapshotState::Ready,
+                "RUNNING" => SnapshotState::Running,
+                "UNKNOWN_SNAPSHOT_STATE" => SnapshotState::UnknownSnapshotState,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4384,35 +4384,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SourceSplitResponseOutcome {
+        #[doc = "Splitting produced a list of bundles."]
+        SourceSplitOutcomeSplittingHappened,
         #[doc = "The source split outcome is unknown, or unspecified."]
         SourceSplitOutcomeUnknown,
         #[doc = "The current source should be processed \"as is\" without splitting."]
         SourceSplitOutcomeUseCurrent,
-        #[doc = "Splitting produced a list of bundles."]
-        SourceSplitOutcomeSplittingHappened,
     }
     impl SourceSplitResponseOutcome {
         pub fn as_str(self) -> &'static str {
             match self {
+                SourceSplitResponseOutcome::SourceSplitOutcomeSplittingHappened => {
+                    "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
+                }
                 SourceSplitResponseOutcome::SourceSplitOutcomeUnknown => {
                     "SOURCE_SPLIT_OUTCOME_UNKNOWN"
                 }
                 SourceSplitResponseOutcome::SourceSplitOutcomeUseCurrent => {
                     "SOURCE_SPLIT_OUTCOME_USE_CURRENT"
                 }
-                SourceSplitResponseOutcome::SourceSplitOutcomeSplittingHappened => {
-                    "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
-                }
             }
         }
     }
     impl ::std::fmt::Display for SourceSplitResponseOutcome {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SourceSplitResponseOutcome {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4420,20 +4420,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SourceSplitResponseOutcome {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED" => {
+                    SourceSplitResponseOutcome::SourceSplitOutcomeSplittingHappened
+                }
                 "SOURCE_SPLIT_OUTCOME_UNKNOWN" => {
                     SourceSplitResponseOutcome::SourceSplitOutcomeUnknown
                 }
                 "SOURCE_SPLIT_OUTCOME_USE_CURRENT" => {
                     SourceSplitResponseOutcome::SourceSplitOutcomeUseCurrent
-                }
-                "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED" => {
-                    SourceSplitResponseOutcome::SourceSplitOutcomeSplittingHappened
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4476,40 +4476,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SourceSplitShardDerivationMode {
-        #[doc = "The source derivation is unknown, or unspecified."]
-        SourceDerivationModeUnknown,
-        #[doc = "Produce a completely independent Source with no base."]
-        SourceDerivationModeIndependent,
         #[doc = "Produce a Source based on the Source being split."]
         SourceDerivationModeChildOfCurrent,
+        #[doc = "Produce a completely independent Source with no base."]
+        SourceDerivationModeIndependent,
         #[doc = "Produce a Source based on the base of the Source being split."]
         SourceDerivationModeSiblingOfCurrent,
+        #[doc = "The source derivation is unknown, or unspecified."]
+        SourceDerivationModeUnknown,
     }
     impl SourceSplitShardDerivationMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                SourceSplitShardDerivationMode::SourceDerivationModeUnknown => {
-                    "SOURCE_DERIVATION_MODE_UNKNOWN"
+                SourceSplitShardDerivationMode::SourceDerivationModeChildOfCurrent => {
+                    "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
                 }
                 SourceSplitShardDerivationMode::SourceDerivationModeIndependent => {
                     "SOURCE_DERIVATION_MODE_INDEPENDENT"
                 }
-                SourceSplitShardDerivationMode::SourceDerivationModeChildOfCurrent => {
-                    "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
-                }
                 SourceSplitShardDerivationMode::SourceDerivationModeSiblingOfCurrent => {
                     "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
+                }
+                SourceSplitShardDerivationMode::SourceDerivationModeUnknown => {
+                    "SOURCE_DERIVATION_MODE_UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for SourceSplitShardDerivationMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SourceSplitShardDerivationMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4517,23 +4517,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SourceSplitShardDerivationMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SOURCE_DERIVATION_MODE_UNKNOWN" => {
-                    SourceSplitShardDerivationMode::SourceDerivationModeUnknown
+                "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT" => {
+                    SourceSplitShardDerivationMode::SourceDerivationModeChildOfCurrent
                 }
                 "SOURCE_DERIVATION_MODE_INDEPENDENT" => {
                     SourceSplitShardDerivationMode::SourceDerivationModeIndependent
                 }
-                "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT" => {
-                    SourceSplitShardDerivationMode::SourceDerivationModeChildOfCurrent
-                }
                 "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT" => {
                     SourceSplitShardDerivationMode::SourceDerivationModeSiblingOfCurrent
+                }
+                "SOURCE_DERIVATION_MODE_UNKNOWN" => {
+                    SourceSplitShardDerivationMode::SourceDerivationModeUnknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4865,35 +4865,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StreamingComputationTaskTaskType {
-        #[doc = "The streaming computation task is unknown, or unspecified."]
-        StreamingComputationTaskUnknown,
-        #[doc = "Stop processing specified streaming computation range(s)."]
-        StreamingComputationTaskStop,
         #[doc = "Start processing specified streaming computation range(s)."]
         StreamingComputationTaskStart,
+        #[doc = "Stop processing specified streaming computation range(s)."]
+        StreamingComputationTaskStop,
+        #[doc = "The streaming computation task is unknown, or unspecified."]
+        StreamingComputationTaskUnknown,
     }
     impl StreamingComputationTaskTaskType {
         pub fn as_str(self) -> &'static str {
             match self {
-                StreamingComputationTaskTaskType::StreamingComputationTaskUnknown => {
-                    "STREAMING_COMPUTATION_TASK_UNKNOWN"
+                StreamingComputationTaskTaskType::StreamingComputationTaskStart => {
+                    "STREAMING_COMPUTATION_TASK_START"
                 }
                 StreamingComputationTaskTaskType::StreamingComputationTaskStop => {
                     "STREAMING_COMPUTATION_TASK_STOP"
                 }
-                StreamingComputationTaskTaskType::StreamingComputationTaskStart => {
-                    "STREAMING_COMPUTATION_TASK_START"
+                StreamingComputationTaskTaskType::StreamingComputationTaskUnknown => {
+                    "STREAMING_COMPUTATION_TASK_UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for StreamingComputationTaskTaskType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for StreamingComputationTaskTaskType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4901,20 +4901,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for StreamingComputationTaskTaskType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STREAMING_COMPUTATION_TASK_UNKNOWN" => {
-                    StreamingComputationTaskTaskType::StreamingComputationTaskUnknown
+                "STREAMING_COMPUTATION_TASK_START" => {
+                    StreamingComputationTaskTaskType::StreamingComputationTaskStart
                 }
                 "STREAMING_COMPUTATION_TASK_STOP" => {
                     StreamingComputationTaskTaskType::StreamingComputationTaskStop
                 }
-                "STREAMING_COMPUTATION_TASK_START" => {
-                    StreamingComputationTaskTaskType::StreamingComputationTaskStart
+                "STREAMING_COMPUTATION_TASK_UNKNOWN" => {
+                    StreamingComputationTaskTaskType::StreamingComputationTaskUnknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5292,47 +5292,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TransformSummaryKind {
-        #[doc = "Unrecognized transform type."]
-        UnknownKind,
-        #[doc = "ParDo transform."]
-        ParDoKind,
-        #[doc = "Group By Key transform."]
-        GroupByKeyKind,
-        #[doc = "Flatten transform."]
-        FlattenKind,
-        #[doc = "Read transform."]
-        ReadKind,
-        #[doc = "Write transform."]
-        WriteKind,
         #[doc = "Constructs from a constant value, such as with Create.of."]
         ConstantKind,
-        #[doc = "Creates a Singleton view of a collection."]
-        SingletonKind,
+        #[doc = "Flatten transform."]
+        FlattenKind,
+        #[doc = "Group By Key transform."]
+        GroupByKeyKind,
+        #[doc = "ParDo transform."]
+        ParDoKind,
+        #[doc = "Read transform."]
+        ReadKind,
         #[doc = "Opening or closing a shuffle session, often as part of a GroupByKey."]
         ShuffleKind,
+        #[doc = "Creates a Singleton view of a collection."]
+        SingletonKind,
+        #[doc = "Unrecognized transform type."]
+        UnknownKind,
+        #[doc = "Write transform."]
+        WriteKind,
     }
     impl TransformSummaryKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                TransformSummaryKind::UnknownKind => "UNKNOWN_KIND",
-                TransformSummaryKind::ParDoKind => "PAR_DO_KIND",
-                TransformSummaryKind::GroupByKeyKind => "GROUP_BY_KEY_KIND",
-                TransformSummaryKind::FlattenKind => "FLATTEN_KIND",
-                TransformSummaryKind::ReadKind => "READ_KIND",
-                TransformSummaryKind::WriteKind => "WRITE_KIND",
                 TransformSummaryKind::ConstantKind => "CONSTANT_KIND",
-                TransformSummaryKind::SingletonKind => "SINGLETON_KIND",
+                TransformSummaryKind::FlattenKind => "FLATTEN_KIND",
+                TransformSummaryKind::GroupByKeyKind => "GROUP_BY_KEY_KIND",
+                TransformSummaryKind::ParDoKind => "PAR_DO_KIND",
+                TransformSummaryKind::ReadKind => "READ_KIND",
                 TransformSummaryKind::ShuffleKind => "SHUFFLE_KIND",
+                TransformSummaryKind::SingletonKind => "SINGLETON_KIND",
+                TransformSummaryKind::UnknownKind => "UNKNOWN_KIND",
+                TransformSummaryKind::WriteKind => "WRITE_KIND",
             }
         }
     }
     impl ::std::fmt::Display for TransformSummaryKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TransformSummaryKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5340,21 +5340,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TransformSummaryKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_KIND" => TransformSummaryKind::UnknownKind,
-                "PAR_DO_KIND" => TransformSummaryKind::ParDoKind,
-                "GROUP_BY_KEY_KIND" => TransformSummaryKind::GroupByKeyKind,
-                "FLATTEN_KIND" => TransformSummaryKind::FlattenKind,
-                "READ_KIND" => TransformSummaryKind::ReadKind,
-                "WRITE_KIND" => TransformSummaryKind::WriteKind,
                 "CONSTANT_KIND" => TransformSummaryKind::ConstantKind,
-                "SINGLETON_KIND" => TransformSummaryKind::SingletonKind,
+                "FLATTEN_KIND" => TransformSummaryKind::FlattenKind,
+                "GROUP_BY_KEY_KIND" => TransformSummaryKind::GroupByKeyKind,
+                "PAR_DO_KIND" => TransformSummaryKind::ParDoKind,
+                "READ_KIND" => TransformSummaryKind::ReadKind,
                 "SHUFFLE_KIND" => TransformSummaryKind::ShuffleKind,
+                "SINGLETON_KIND" => TransformSummaryKind::SingletonKind,
+                "UNKNOWN_KIND" => TransformSummaryKind::UnknownKind,
+                "WRITE_KIND" => TransformSummaryKind::WriteKind,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5647,48 +5647,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerLifecycleEventEvent {
-        #[doc = "Invalid event."]
-        UnknownEvent,
-        #[doc = "The time the VM started."]
-        OsStart,
         #[doc = "Our container code starts running. Multiple containers could be\ndistinguished with WorkerMessage.labels if desired."]
         ContainerStart,
         #[doc = "The worker has a functional external network connection."]
         NetworkUp,
-        #[doc = "Started downloading staging files."]
-        StagingFilesDownloadStart,
-        #[doc = "Finished downloading all staging files."]
-        StagingFilesDownloadFinish,
-        #[doc = "For applicable SDKs, started installation of SDK and worker packages."]
-        SdkInstallStart,
+        #[doc = "The time the VM started."]
+        OsStart,
         #[doc = "Finished installing SDK."]
         SdkInstallFinish,
+        #[doc = "For applicable SDKs, started installation of SDK and worker packages."]
+        SdkInstallStart,
+        #[doc = "Finished downloading all staging files."]
+        StagingFilesDownloadFinish,
+        #[doc = "Started downloading staging files."]
+        StagingFilesDownloadStart,
+        #[doc = "Invalid event."]
+        UnknownEvent,
     }
     impl WorkerLifecycleEventEvent {
         pub fn as_str(self) -> &'static str {
             match self {
-                WorkerLifecycleEventEvent::UnknownEvent => "UNKNOWN_EVENT",
-                WorkerLifecycleEventEvent::OsStart => "OS_START",
                 WorkerLifecycleEventEvent::ContainerStart => "CONTAINER_START",
                 WorkerLifecycleEventEvent::NetworkUp => "NETWORK_UP",
-                WorkerLifecycleEventEvent::StagingFilesDownloadStart => {
-                    "STAGING_FILES_DOWNLOAD_START"
-                }
+                WorkerLifecycleEventEvent::OsStart => "OS_START",
+                WorkerLifecycleEventEvent::SdkInstallFinish => "SDK_INSTALL_FINISH",
+                WorkerLifecycleEventEvent::SdkInstallStart => "SDK_INSTALL_START",
                 WorkerLifecycleEventEvent::StagingFilesDownloadFinish => {
                     "STAGING_FILES_DOWNLOAD_FINISH"
                 }
-                WorkerLifecycleEventEvent::SdkInstallStart => "SDK_INSTALL_START",
-                WorkerLifecycleEventEvent::SdkInstallFinish => "SDK_INSTALL_FINISH",
+                WorkerLifecycleEventEvent::StagingFilesDownloadStart => {
+                    "STAGING_FILES_DOWNLOAD_START"
+                }
+                WorkerLifecycleEventEvent::UnknownEvent => "UNKNOWN_EVENT",
             }
         }
     }
     impl ::std::fmt::Display for WorkerLifecycleEventEvent {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WorkerLifecycleEventEvent {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5696,24 +5696,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WorkerLifecycleEventEvent {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_EVENT" => WorkerLifecycleEventEvent::UnknownEvent,
-                "OS_START" => WorkerLifecycleEventEvent::OsStart,
                 "CONTAINER_START" => WorkerLifecycleEventEvent::ContainerStart,
                 "NETWORK_UP" => WorkerLifecycleEventEvent::NetworkUp,
-                "STAGING_FILES_DOWNLOAD_START" => {
-                    WorkerLifecycleEventEvent::StagingFilesDownloadStart
-                }
+                "OS_START" => WorkerLifecycleEventEvent::OsStart,
+                "SDK_INSTALL_FINISH" => WorkerLifecycleEventEvent::SdkInstallFinish,
+                "SDK_INSTALL_START" => WorkerLifecycleEventEvent::SdkInstallStart,
                 "STAGING_FILES_DOWNLOAD_FINISH" => {
                     WorkerLifecycleEventEvent::StagingFilesDownloadFinish
                 }
-                "SDK_INSTALL_START" => WorkerLifecycleEventEvent::SdkInstallStart,
-                "SDK_INSTALL_FINISH" => WorkerLifecycleEventEvent::SdkInstallFinish,
+                "STAGING_FILES_DOWNLOAD_START" => {
+                    WorkerLifecycleEventEvent::StagingFilesDownloadStart
+                }
+                "UNKNOWN_EVENT" => WorkerLifecycleEventEvent::UnknownEvent,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5853,36 +5853,36 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerPoolDefaultPackageSet {
-        #[doc = "The default set of packages to stage is unknown, or unspecified."]
-        DefaultPackageSetUnknown,
-        #[doc = "Indicates that no packages should be staged at the worker unless\nexplicitly specified by the job."]
-        DefaultPackageSetNone,
         #[doc = "Stage packages typically useful to workers written in Java."]
         DefaultPackageSetJava,
+        #[doc = "Indicates that no packages should be staged at the worker unless\nexplicitly specified by the job."]
+        DefaultPackageSetNone,
         #[doc = "Stage pacakges typically useful to workers written in Python."]
         DefaultPackageSetPython,
+        #[doc = "The default set of packages to stage is unknown, or unspecified."]
+        DefaultPackageSetUnknown,
     }
     impl WorkerPoolDefaultPackageSet {
         pub fn as_str(self) -> &'static str {
             match self {
-                WorkerPoolDefaultPackageSet::DefaultPackageSetUnknown => {
-                    "DEFAULT_PACKAGE_SET_UNKNOWN"
-                }
-                WorkerPoolDefaultPackageSet::DefaultPackageSetNone => "DEFAULT_PACKAGE_SET_NONE",
                 WorkerPoolDefaultPackageSet::DefaultPackageSetJava => "DEFAULT_PACKAGE_SET_JAVA",
+                WorkerPoolDefaultPackageSet::DefaultPackageSetNone => "DEFAULT_PACKAGE_SET_NONE",
                 WorkerPoolDefaultPackageSet::DefaultPackageSetPython => {
                     "DEFAULT_PACKAGE_SET_PYTHON"
+                }
+                WorkerPoolDefaultPackageSet::DefaultPackageSetUnknown => {
+                    "DEFAULT_PACKAGE_SET_UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for WorkerPoolDefaultPackageSet {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WorkerPoolDefaultPackageSet {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5890,19 +5890,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WorkerPoolDefaultPackageSet {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEFAULT_PACKAGE_SET_UNKNOWN" => {
-                    WorkerPoolDefaultPackageSet::DefaultPackageSetUnknown
-                }
-                "DEFAULT_PACKAGE_SET_NONE" => WorkerPoolDefaultPackageSet::DefaultPackageSetNone,
                 "DEFAULT_PACKAGE_SET_JAVA" => WorkerPoolDefaultPackageSet::DefaultPackageSetJava,
+                "DEFAULT_PACKAGE_SET_NONE" => WorkerPoolDefaultPackageSet::DefaultPackageSetNone,
                 "DEFAULT_PACKAGE_SET_PYTHON" => {
                     WorkerPoolDefaultPackageSet::DefaultPackageSetPython
+                }
+                "DEFAULT_PACKAGE_SET_UNKNOWN" => {
+                    WorkerPoolDefaultPackageSet::DefaultPackageSetUnknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5924,29 +5924,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerPoolIpConfiguration {
-        #[doc = "The configuration is unknown, or unspecified."]
-        WorkerIpUnspecified,
-        #[doc = "Workers should have public IP addresses."]
-        WorkerIpPublic,
         #[doc = "Workers should have private IP addresses."]
         WorkerIpPrivate,
+        #[doc = "Workers should have public IP addresses."]
+        WorkerIpPublic,
+        #[doc = "The configuration is unknown, or unspecified."]
+        WorkerIpUnspecified,
     }
     impl WorkerPoolIpConfiguration {
         pub fn as_str(self) -> &'static str {
             match self {
-                WorkerPoolIpConfiguration::WorkerIpUnspecified => "WORKER_IP_UNSPECIFIED",
-                WorkerPoolIpConfiguration::WorkerIpPublic => "WORKER_IP_PUBLIC",
                 WorkerPoolIpConfiguration::WorkerIpPrivate => "WORKER_IP_PRIVATE",
+                WorkerPoolIpConfiguration::WorkerIpPublic => "WORKER_IP_PUBLIC",
+                WorkerPoolIpConfiguration::WorkerIpUnspecified => "WORKER_IP_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for WorkerPoolIpConfiguration {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WorkerPoolIpConfiguration {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5954,15 +5954,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WorkerPoolIpConfiguration {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "WORKER_IP_UNSPECIFIED" => WorkerPoolIpConfiguration::WorkerIpUnspecified,
-                "WORKER_IP_PUBLIC" => WorkerPoolIpConfiguration::WorkerIpPublic,
                 "WORKER_IP_PRIVATE" => WorkerPoolIpConfiguration::WorkerIpPrivate,
+                "WORKER_IP_PUBLIC" => WorkerPoolIpConfiguration::WorkerIpPublic,
+                "WORKER_IP_UNSPECIFIED" => WorkerPoolIpConfiguration::WorkerIpUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5983,32 +5983,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerPoolTeardownPolicy {
-        #[doc = "The teardown policy isn't specified, or is unknown."]
-        TeardownPolicyUnknown,
         #[doc = "Always teardown the resource."]
         TeardownAlways,
-        #[doc = "Teardown the resource on success. This is useful for debugging\nfailures."]
-        TeardownOnSuccess,
         #[doc = "Never teardown the resource. This is useful for debugging and\ndevelopment."]
         TeardownNever,
+        #[doc = "Teardown the resource on success. This is useful for debugging\nfailures."]
+        TeardownOnSuccess,
+        #[doc = "The teardown policy isn't specified, or is unknown."]
+        TeardownPolicyUnknown,
     }
     impl WorkerPoolTeardownPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
-                WorkerPoolTeardownPolicy::TeardownPolicyUnknown => "TEARDOWN_POLICY_UNKNOWN",
                 WorkerPoolTeardownPolicy::TeardownAlways => "TEARDOWN_ALWAYS",
-                WorkerPoolTeardownPolicy::TeardownOnSuccess => "TEARDOWN_ON_SUCCESS",
                 WorkerPoolTeardownPolicy::TeardownNever => "TEARDOWN_NEVER",
+                WorkerPoolTeardownPolicy::TeardownOnSuccess => "TEARDOWN_ON_SUCCESS",
+                WorkerPoolTeardownPolicy::TeardownPolicyUnknown => "TEARDOWN_POLICY_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for WorkerPoolTeardownPolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WorkerPoolTeardownPolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6016,16 +6016,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WorkerPoolTeardownPolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEARDOWN_POLICY_UNKNOWN" => WorkerPoolTeardownPolicy::TeardownPolicyUnknown,
                 "TEARDOWN_ALWAYS" => WorkerPoolTeardownPolicy::TeardownAlways,
-                "TEARDOWN_ON_SUCCESS" => WorkerPoolTeardownPolicy::TeardownOnSuccess,
                 "TEARDOWN_NEVER" => WorkerPoolTeardownPolicy::TeardownNever,
+                "TEARDOWN_ON_SUCCESS" => WorkerPoolTeardownPolicy::TeardownOnSuccess,
+                "TEARDOWN_POLICY_UNKNOWN" => WorkerPoolTeardownPolicy::TeardownPolicyUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6243,12 +6243,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6256,7 +6256,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -6299,12 +6299,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6312,7 +6312,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -6358,7 +6358,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -6478,19 +6478,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6649,19 +6639,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6799,28 +6779,28 @@ mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AggregatedFilter {
-                    Unknown,
+                    Active,
                     All,
                     Terminated,
-                    Active,
+                    Unknown,
                 }
                 impl AggregatedFilter {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            AggregatedFilter::Unknown => "UNKNOWN",
+                            AggregatedFilter::Active => "ACTIVE",
                             AggregatedFilter::All => "ALL",
                             AggregatedFilter::Terminated => "TERMINATED",
-                            AggregatedFilter::Active => "ACTIVE",
+                            AggregatedFilter::Unknown => "UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for AggregatedFilter {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AggregatedFilter {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -6828,16 +6808,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AggregatedFilter {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "UNKNOWN" => AggregatedFilter::Unknown,
+                            "ACTIVE" => AggregatedFilter::Active,
                             "ALL" => AggregatedFilter::All,
                             "TERMINATED" => AggregatedFilter::Terminated,
-                            "ACTIVE" => AggregatedFilter::Active,
+                            "UNKNOWN" => AggregatedFilter::Unknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -6858,28 +6838,28 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AggregatedView {
-                    JobViewUnknown,
-                    JobViewSummary,
                     JobViewAll,
                     JobViewDescription,
+                    JobViewSummary,
+                    JobViewUnknown,
                 }
                 impl AggregatedView {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            AggregatedView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                            AggregatedView::JobViewSummary => "JOB_VIEW_SUMMARY",
                             AggregatedView::JobViewAll => "JOB_VIEW_ALL",
                             AggregatedView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                            AggregatedView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                            AggregatedView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for AggregatedView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AggregatedView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -6887,16 +6867,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AggregatedView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "JOB_VIEW_UNKNOWN" => AggregatedView::JobViewUnknown,
-                            "JOB_VIEW_SUMMARY" => AggregatedView::JobViewSummary,
                             "JOB_VIEW_ALL" => AggregatedView::JobViewAll,
                             "JOB_VIEW_DESCRIPTION" => AggregatedView::JobViewDescription,
+                            "JOB_VIEW_SUMMARY" => AggregatedView::JobViewSummary,
+                            "JOB_VIEW_UNKNOWN" => AggregatedView::JobViewUnknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -6917,28 +6897,28 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum CreateView {
-                    JobViewUnknown,
-                    JobViewSummary,
                     JobViewAll,
                     JobViewDescription,
+                    JobViewSummary,
+                    JobViewUnknown,
                 }
                 impl CreateView {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            CreateView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                            CreateView::JobViewSummary => "JOB_VIEW_SUMMARY",
                             CreateView::JobViewAll => "JOB_VIEW_ALL",
                             CreateView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                            CreateView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                            CreateView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for CreateView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for CreateView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -6946,16 +6926,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for CreateView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "JOB_VIEW_UNKNOWN" => CreateView::JobViewUnknown,
-                            "JOB_VIEW_SUMMARY" => CreateView::JobViewSummary,
                             "JOB_VIEW_ALL" => CreateView::JobViewAll,
                             "JOB_VIEW_DESCRIPTION" => CreateView::JobViewDescription,
+                            "JOB_VIEW_SUMMARY" => CreateView::JobViewSummary,
+                            "JOB_VIEW_UNKNOWN" => CreateView::JobViewUnknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -6976,28 +6956,28 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetView {
-                    JobViewUnknown,
-                    JobViewSummary,
                     JobViewAll,
                     JobViewDescription,
+                    JobViewSummary,
+                    JobViewUnknown,
                 }
                 impl GetView {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            GetView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                            GetView::JobViewSummary => "JOB_VIEW_SUMMARY",
                             GetView::JobViewAll => "JOB_VIEW_ALL",
                             GetView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                            GetView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                            GetView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for GetView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -7005,16 +6985,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "JOB_VIEW_UNKNOWN" => GetView::JobViewUnknown,
-                            "JOB_VIEW_SUMMARY" => GetView::JobViewSummary,
                             "JOB_VIEW_ALL" => GetView::JobViewAll,
                             "JOB_VIEW_DESCRIPTION" => GetView::JobViewDescription,
+                            "JOB_VIEW_SUMMARY" => GetView::JobViewSummary,
+                            "JOB_VIEW_UNKNOWN" => GetView::JobViewUnknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -7035,28 +7015,28 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListFilter {
-                    Unknown,
+                    Active,
                     All,
                     Terminated,
-                    Active,
+                    Unknown,
                 }
                 impl ListFilter {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            ListFilter::Unknown => "UNKNOWN",
+                            ListFilter::Active => "ACTIVE",
                             ListFilter::All => "ALL",
                             ListFilter::Terminated => "TERMINATED",
-                            ListFilter::Active => "ACTIVE",
+                            ListFilter::Unknown => "UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for ListFilter {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for ListFilter {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -7064,16 +7044,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for ListFilter {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "UNKNOWN" => ListFilter::Unknown,
+                            "ACTIVE" => ListFilter::Active,
                             "ALL" => ListFilter::All,
                             "TERMINATED" => ListFilter::Terminated,
-                            "ACTIVE" => ListFilter::Active,
+                            "UNKNOWN" => ListFilter::Unknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -7094,28 +7074,28 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListView {
-                    JobViewUnknown,
-                    JobViewSummary,
                     JobViewAll,
                     JobViewDescription,
+                    JobViewSummary,
+                    JobViewUnknown,
                 }
                 impl ListView {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            ListView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                            ListView::JobViewSummary => "JOB_VIEW_SUMMARY",
                             ListView::JobViewAll => "JOB_VIEW_ALL",
                             ListView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                            ListView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                            ListView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                         }
                     }
                 }
                 impl ::std::fmt::Display for ListView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for ListView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -7123,16 +7103,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for ListView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "JOB_VIEW_UNKNOWN" => ListView::JobViewUnknown,
-                            "JOB_VIEW_SUMMARY" => ListView::JobViewSummary,
                             "JOB_VIEW_ALL" => ListView::JobViewAll,
                             "JOB_VIEW_DESCRIPTION" => ListView::JobViewDescription,
+                            "JOB_VIEW_SUMMARY" => ListView::JobViewSummary,
+                            "JOB_VIEW_UNKNOWN" => ListView::JobViewUnknown,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -7427,19 +7407,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7482,15 +7452,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_failed_location<T>(self) -> AggregatedFailedLocationIter<'a, A, T>
+                pub fn iter_failed_location<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    AggregatedFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "failedLocation").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7498,14 +7472,10 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_failed_location_standard(
                     mut self,
-                ) -> AggregatedFailedLocationIter<'a, A, crate::schemas::FailedLocation>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
                 {
                     self.fields = Some(concat!("nextPageToken,", "failedLocation").to_owned());
-                    AggregatedFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7515,30 +7485,30 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_failed_location_debug(
                     mut self,
-                ) -> AggregatedFailedLocationIter<'a, A, crate::schemas::FailedLocation>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
                 {
                     self.fields =
                         Some(concat!("nextPageToken,", "failedLocation", "(*)").to_owned());
-                    AggregatedFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are chosen by the caller of this"]
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_jobs<T>(self) -> AggregatedJobsIter<'a, A, T>
+                pub fn iter_jobs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    AggregatedJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "jobs").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7546,13 +7516,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_jobs_standard(
                     mut self,
-                ) -> AggregatedJobsIter<'a, A, crate::schemas::Job> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs").to_owned());
-                    AggregatedJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7560,26 +7526,37 @@ mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_jobs_debug(mut self) -> AggregatedJobsIter<'a, A, crate::schemas::Job> {
+                pub fn iter_jobs_debug(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs", "(*)").to_owned());
-                    AggregatedJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -7681,91 +7658,13 @@ mod resources {
                     req
                 }
             }
-            pub struct AggregatedFailedLocationIter<'a, A, T> {
-                method: AggregatedRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for AggregatedFailedLocationIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "failedLocation")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            pub struct AggregatedJobsIter<'a, A, T> {
-                method: AggregatedRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for AggregatedJobsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "jobs")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for AggregatedRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for AggregatedRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -7815,19 +7714,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8001,19 +7890,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8189,19 +8068,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8403,19 +8272,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8458,15 +8317,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_failed_location<T>(self) -> ListFailedLocationIter<'a, A, T>
+                pub fn iter_failed_location<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "failedLocation").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8474,13 +8337,10 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_failed_location_standard(
                     mut self,
-                ) -> ListFailedLocationIter<'a, A, crate::schemas::FailedLocation> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
+                {
                     self.fields = Some(concat!("nextPageToken,", "failedLocation").to_owned());
-                    ListFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8490,41 +8350,40 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_failed_location_debug(
                     mut self,
-                ) -> ListFailedLocationIter<'a, A, crate::schemas::FailedLocation> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
+                {
                     self.fields =
                         Some(concat!("nextPageToken,", "failedLocation", "(*)").to_owned());
-                    ListFailedLocationIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "failedLocation")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are chosen by the caller of this"]
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_jobs<T>(self) -> ListJobsIter<'a, A, T>
+                pub fn iter_jobs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "jobs").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_jobs_standard(mut self) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                pub fn iter_jobs_standard(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs").to_owned());
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8532,26 +8391,37 @@ mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_jobs_debug(mut self) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                pub fn iter_jobs_debug(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs", "(*)").to_owned());
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -8653,91 +8523,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListFailedLocationIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListFailedLocationIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "failedLocation")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            pub struct ListJobsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListJobsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "jobs")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -8767,19 +8559,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8952,19 +8734,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9189,19 +8961,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9369,19 +9131,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9533,34 +9285,37 @@ mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListMinimumImportance {
-                        JobMessageImportanceUnknown,
+                        JobMessageBasic,
                         JobMessageDebug,
                         JobMessageDetailed,
-                        JobMessageBasic,
-                        JobMessageWarning,
                         JobMessageError,
+                        JobMessageImportanceUnknown,
+                        JobMessageWarning,
                     }
                     impl ListMinimumImportance {
                         pub fn as_str(self) -> &'static str {
                             match self {
+                                ListMinimumImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
+                                ListMinimumImportance::JobMessageDebug => "JOB_MESSAGE_DEBUG",
+                                ListMinimumImportance::JobMessageDetailed => "JOB_MESSAGE_DETAILED",
+                                ListMinimumImportance::JobMessageError => "JOB_MESSAGE_ERROR",
                                 ListMinimumImportance::JobMessageImportanceUnknown => {
                                     "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
                                 }
-                                ListMinimumImportance::JobMessageDebug => "JOB_MESSAGE_DEBUG",
-                                ListMinimumImportance::JobMessageDetailed => "JOB_MESSAGE_DETAILED",
-                                ListMinimumImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
                                 ListMinimumImportance::JobMessageWarning => "JOB_MESSAGE_WARNING",
-                                ListMinimumImportance::JobMessageError => "JOB_MESSAGE_ERROR",
                             }
                         }
                     }
                     impl ::std::fmt::Display for ListMinimumImportance {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for ListMinimumImportance {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -9568,20 +9323,20 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for ListMinimumImportance {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
+                                "JOB_MESSAGE_BASIC" => ListMinimumImportance::JobMessageBasic,
+                                "JOB_MESSAGE_DEBUG" => ListMinimumImportance::JobMessageDebug,
+                                "JOB_MESSAGE_DETAILED" => ListMinimumImportance::JobMessageDetailed,
+                                "JOB_MESSAGE_ERROR" => ListMinimumImportance::JobMessageError,
                                 "JOB_MESSAGE_IMPORTANCE_UNKNOWN" => {
                                     ListMinimumImportance::JobMessageImportanceUnknown
                                 }
-                                "JOB_MESSAGE_DEBUG" => ListMinimumImportance::JobMessageDebug,
-                                "JOB_MESSAGE_DETAILED" => ListMinimumImportance::JobMessageDetailed,
-                                "JOB_MESSAGE_BASIC" => ListMinimumImportance::JobMessageBasic,
                                 "JOB_MESSAGE_WARNING" => ListMinimumImportance::JobMessageWarning,
-                                "JOB_MESSAGE_ERROR" => ListMinimumImportance::JobMessageError,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -9702,19 +9457,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9757,15 +9502,21 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_autoscaling_events<T>(self) -> ListAutoscalingEventsIter<'a, A, T>
+                    pub fn iter_autoscaling_events<T>(
+                        mut self,
+                    ) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListAutoscalingEventsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "autoscalingEvents").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "autoscalingEvents")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9773,15 +9524,11 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_autoscaling_events_standard(
                         mut self,
-                    ) -> ListAutoscalingEventsIter<'a, A, crate::schemas::AutoscalingEvent>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::AutoscalingEvent>
                     {
                         self.fields =
                             Some(concat!("nextPageToken,", "autoscalingEvents").to_owned());
-                        ListAutoscalingEventsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "autoscalingEvents")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9791,30 +9538,30 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_autoscaling_events_debug(
                         mut self,
-                    ) -> ListAutoscalingEventsIter<'a, A, crate::schemas::AutoscalingEvent>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::AutoscalingEvent>
                     {
                         self.fields =
                             Some(concat!("nextPageToken,", "autoscalingEvents", "(*)").to_owned());
-                        ListAutoscalingEventsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "autoscalingEvents")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are chosen by the caller of this"]
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_job_messages<T>(self) -> ListJobMessagesIter<'a, A, T>
+                    pub fn iter_job_messages<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListJobMessagesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "jobMessages").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "jobMessages")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9822,14 +9569,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_job_messages_standard(
                         mut self,
-                    ) -> ListJobMessagesIter<'a, A, crate::schemas::JobMessage>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::JobMessage>
                     {
                         self.fields = Some(concat!("nextPageToken,", "jobMessages").to_owned());
-                        ListJobMessagesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "jobMessages")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9839,28 +9582,39 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_job_messages_debug(
                         mut self,
-                    ) -> ListJobMessagesIter<'a, A, crate::schemas::JobMessage>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::JobMessage>
                     {
                         self.fields =
                             Some(concat!("nextPageToken,", "jobMessages", "(*)").to_owned());
-                        ListJobMessagesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "jobMessages")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListJobMessagesResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListJobMessagesResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -9972,91 +9726,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListAutoscalingEventsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListAutoscalingEventsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "autoscalingEvents")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                pub struct ListJobMessagesIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListJobMessagesIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "jobMessages")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -10147,19 +9823,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10327,19 +9993,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10581,19 +10237,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10739,28 +10385,31 @@ mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum CreateView {
-                        JobViewUnknown,
-                        JobViewSummary,
                         JobViewAll,
                         JobViewDescription,
+                        JobViewSummary,
+                        JobViewUnknown,
                     }
                     impl CreateView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                CreateView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                                CreateView::JobViewSummary => "JOB_VIEW_SUMMARY",
                                 CreateView::JobViewAll => "JOB_VIEW_ALL",
                                 CreateView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                                CreateView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                                CreateView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                             }
                         }
                     }
                     impl ::std::fmt::Display for CreateView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for CreateView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -10768,16 +10417,16 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for CreateView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "JOB_VIEW_UNKNOWN" => CreateView::JobViewUnknown,
-                                "JOB_VIEW_SUMMARY" => CreateView::JobViewSummary,
                                 "JOB_VIEW_ALL" => CreateView::JobViewAll,
                                 "JOB_VIEW_DESCRIPTION" => CreateView::JobViewDescription,
+                                "JOB_VIEW_SUMMARY" => CreateView::JobViewSummary,
+                                "JOB_VIEW_UNKNOWN" => CreateView::JobViewUnknown,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -10798,28 +10447,31 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum GetView {
-                        JobViewUnknown,
-                        JobViewSummary,
                         JobViewAll,
                         JobViewDescription,
+                        JobViewSummary,
+                        JobViewUnknown,
                     }
                     impl GetView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                GetView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                                GetView::JobViewSummary => "JOB_VIEW_SUMMARY",
                                 GetView::JobViewAll => "JOB_VIEW_ALL",
                                 GetView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                                GetView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                                GetView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                             }
                         }
                     }
                     impl ::std::fmt::Display for GetView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for GetView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -10827,16 +10479,16 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for GetView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "JOB_VIEW_UNKNOWN" => GetView::JobViewUnknown,
-                                "JOB_VIEW_SUMMARY" => GetView::JobViewSummary,
                                 "JOB_VIEW_ALL" => GetView::JobViewAll,
                                 "JOB_VIEW_DESCRIPTION" => GetView::JobViewDescription,
+                                "JOB_VIEW_SUMMARY" => GetView::JobViewSummary,
+                                "JOB_VIEW_UNKNOWN" => GetView::JobViewUnknown,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -10857,28 +10509,31 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListFilter {
-                        Unknown,
+                        Active,
                         All,
                         Terminated,
-                        Active,
+                        Unknown,
                     }
                     impl ListFilter {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                ListFilter::Unknown => "UNKNOWN",
+                                ListFilter::Active => "ACTIVE",
                                 ListFilter::All => "ALL",
                                 ListFilter::Terminated => "TERMINATED",
-                                ListFilter::Active => "ACTIVE",
+                                ListFilter::Unknown => "UNKNOWN",
                             }
                         }
                     }
                     impl ::std::fmt::Display for ListFilter {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for ListFilter {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -10886,16 +10541,16 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for ListFilter {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "UNKNOWN" => ListFilter::Unknown,
+                                "ACTIVE" => ListFilter::Active,
                                 "ALL" => ListFilter::All,
                                 "TERMINATED" => ListFilter::Terminated,
-                                "ACTIVE" => ListFilter::Active,
+                                "UNKNOWN" => ListFilter::Unknown,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -10916,28 +10571,31 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListView {
-                        JobViewUnknown,
-                        JobViewSummary,
                         JobViewAll,
                         JobViewDescription,
+                        JobViewSummary,
+                        JobViewUnknown,
                     }
                     impl ListView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                ListView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
-                                ListView::JobViewSummary => "JOB_VIEW_SUMMARY",
                                 ListView::JobViewAll => "JOB_VIEW_ALL",
                                 ListView::JobViewDescription => "JOB_VIEW_DESCRIPTION",
+                                ListView::JobViewSummary => "JOB_VIEW_SUMMARY",
+                                ListView::JobViewUnknown => "JOB_VIEW_UNKNOWN",
                             }
                         }
                     }
                     impl ::std::fmt::Display for ListView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for ListView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -10945,16 +10603,16 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for ListView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "JOB_VIEW_UNKNOWN" => ListView::JobViewUnknown,
-                                "JOB_VIEW_SUMMARY" => ListView::JobViewSummary,
                                 "JOB_VIEW_ALL" => ListView::JobViewAll,
                                 "JOB_VIEW_DESCRIPTION" => ListView::JobViewDescription,
+                                "JOB_VIEW_SUMMARY" => ListView::JobViewSummary,
+                                "JOB_VIEW_UNKNOWN" => ListView::JobViewUnknown,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -11226,19 +10884,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11417,19 +11065,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11610,19 +11248,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11827,19 +11455,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11882,15 +11500,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_failed_location<T>(self) -> ListFailedLocationIter<'a, A, T>
+                    pub fn iter_failed_location<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListFailedLocationIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "failedLocation").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "failedLocation")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11898,14 +11520,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_failed_location_standard(
                         mut self,
-                    ) -> ListFailedLocationIter<'a, A, crate::schemas::FailedLocation>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
                     {
                         self.fields = Some(concat!("nextPageToken,", "failedLocation").to_owned());
-                        ListFailedLocationIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "failedLocation")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11915,30 +11533,30 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_failed_location_debug(
                         mut self,
-                    ) -> ListFailedLocationIter<'a, A, crate::schemas::FailedLocation>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::FailedLocation>
                     {
                         self.fields =
                             Some(concat!("nextPageToken,", "failedLocation", "(*)").to_owned());
-                        ListFailedLocationIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "failedLocation")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are chosen by the caller of this"]
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_jobs<T>(self) -> ListJobsIter<'a, A, T>
+                    pub fn iter_jobs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListJobsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "jobs").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "jobs")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11946,13 +11564,9 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_jobs_standard(
                         mut self,
-                    ) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                         self.fields = Some(concat!("nextPageToken,", "jobs").to_owned());
-                        ListJobsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "jobs")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11960,26 +11574,39 @@ mod resources {
                     #[doc = r" primarily be used during developement and debugging as fetching"]
                     #[doc = r" all fields can be expensive both in bandwidth and server"]
                     #[doc = r" resources."]
-                    pub fn iter_jobs_debug(mut self) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                    pub fn iter_jobs_debug(
+                        mut self,
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                         self.fields = Some(concat!("nextPageToken,", "jobs", "(*)").to_owned());
-                        ListJobsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "jobs")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -12089,91 +11716,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListFailedLocationIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListFailedLocationIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "failedLocation")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                pub struct ListJobsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListJobsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "jobs")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -12204,19 +11753,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12393,19 +11932,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12645,19 +12174,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12838,19 +12357,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13010,38 +12519,41 @@ mod resources {
                     pub mod params {
                         #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                         pub enum ListMinimumImportance {
-                            JobMessageImportanceUnknown,
+                            JobMessageBasic,
                             JobMessageDebug,
                             JobMessageDetailed,
-                            JobMessageBasic,
-                            JobMessageWarning,
                             JobMessageError,
+                            JobMessageImportanceUnknown,
+                            JobMessageWarning,
                         }
                         impl ListMinimumImportance {
                             pub fn as_str(self) -> &'static str {
                                 match self {
-                                    ListMinimumImportance::JobMessageImportanceUnknown => {
-                                        "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
-                                    }
+                                    ListMinimumImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
                                     ListMinimumImportance::JobMessageDebug => "JOB_MESSAGE_DEBUG",
                                     ListMinimumImportance::JobMessageDetailed => {
                                         "JOB_MESSAGE_DETAILED"
                                     }
-                                    ListMinimumImportance::JobMessageBasic => "JOB_MESSAGE_BASIC",
+                                    ListMinimumImportance::JobMessageError => "JOB_MESSAGE_ERROR",
+                                    ListMinimumImportance::JobMessageImportanceUnknown => {
+                                        "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
+                                    }
                                     ListMinimumImportance::JobMessageWarning => {
                                         "JOB_MESSAGE_WARNING"
                                     }
-                                    ListMinimumImportance::JobMessageError => "JOB_MESSAGE_ERROR",
                                 }
                             }
                         }
                         impl ::std::fmt::Display for ListMinimumImportance {
-                            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                                 f.write_str(self.as_str())
                             }
                         }
                         impl ::serde::Serialize for ListMinimumImportance {
-                            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                            fn serialize<S>(
+                                &self,
+                                serializer: S,
+                            ) -> ::std::result::Result<S::Ok, S::Error>
                             where
                                 S: ::serde::ser::Serializer,
                             {
@@ -13049,24 +12561,26 @@ mod resources {
                             }
                         }
                         impl<'de> ::serde::Deserialize<'de> for ListMinimumImportance {
-                            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                            fn deserialize<D>(
+                                deserializer: D,
+                            ) -> ::std::result::Result<Self, D::Error>
                             where
                                 D: ::serde::de::Deserializer<'de>,
                             {
                                 let value: &'de str = <&str>::deserialize(deserializer)?;
                                 Ok(match value {
-                                    "JOB_MESSAGE_IMPORTANCE_UNKNOWN" => {
-                                        ListMinimumImportance::JobMessageImportanceUnknown
-                                    }
+                                    "JOB_MESSAGE_BASIC" => ListMinimumImportance::JobMessageBasic,
                                     "JOB_MESSAGE_DEBUG" => ListMinimumImportance::JobMessageDebug,
                                     "JOB_MESSAGE_DETAILED" => {
                                         ListMinimumImportance::JobMessageDetailed
                                     }
-                                    "JOB_MESSAGE_BASIC" => ListMinimumImportance::JobMessageBasic,
+                                    "JOB_MESSAGE_ERROR" => ListMinimumImportance::JobMessageError,
+                                    "JOB_MESSAGE_IMPORTANCE_UNKNOWN" => {
+                                        ListMinimumImportance::JobMessageImportanceUnknown
+                                    }
                                     "JOB_MESSAGE_WARNING" => {
                                         ListMinimumImportance::JobMessageWarning
                                     }
-                                    "JOB_MESSAGE_ERROR" => ListMinimumImportance::JobMessageError,
                                     _ => {
                                         return Err(::serde::de::Error::custom(format!(
                                             "invalid enum for #name: {}",
@@ -13159,19 +12673,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13215,16 +12719,21 @@ mod resources {
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
                         pub fn iter_autoscaling_events<T>(
-                            self,
-                        ) -> ListAutoscalingEventsIter<'a, A, T>
+                            mut self,
+                        ) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListAutoscalingEventsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields =
+                                concat!("nextPageToken,", "autoscalingEvents").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "autoscalingEvents")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13232,15 +12741,11 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_autoscaling_events_standard(
                             mut self,
-                        ) -> ListAutoscalingEventsIter<'a, A, crate::schemas::AutoscalingEvent>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::AutoscalingEvent>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "autoscalingEvents").to_owned());
-                            ListAutoscalingEventsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "autoscalingEvents")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13250,31 +12755,31 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_autoscaling_events_debug(
                             mut self,
-                        ) -> ListAutoscalingEventsIter<'a, A, crate::schemas::AutoscalingEvent>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::AutoscalingEvent>
                         {
                             self.fields = Some(
                                 concat!("nextPageToken,", "autoscalingEvents", "(*)").to_owned(),
                             );
-                            ListAutoscalingEventsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "autoscalingEvents")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are chosen by the caller of this"]
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_job_messages<T>(self) -> ListJobMessagesIter<'a, A, T>
+                        pub fn iter_job_messages<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListJobMessagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "jobMessages").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "jobMessages")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13282,14 +12787,10 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_job_messages_standard(
                             mut self,
-                        ) -> ListJobMessagesIter<'a, A, crate::schemas::JobMessage>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::JobMessage>
                         {
                             self.fields = Some(concat!("nextPageToken,", "jobMessages").to_owned());
-                            ListJobMessagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "jobMessages")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13299,28 +12800,39 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_job_messages_debug(
                             mut self,
-                        ) -> ListJobMessagesIter<'a, A, crate::schemas::JobMessage>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::JobMessage>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "jobMessages", "(*)").to_owned());
-                            ListJobMessagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "jobMessages")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListJobMessagesResponse>
+                        {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListJobMessagesResponse>
+                        {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -13443,91 +12955,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListAutoscalingEventsIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListAutoscalingEventsIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "autoscalingEvents")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    pub struct ListJobMessagesIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListJobMessagesIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "jobMessages")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -13592,19 +13026,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13849,19 +13273,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14042,19 +13456,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14321,19 +13725,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14507,19 +13901,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14698,19 +14082,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14917,19 +14291,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -15087,12 +14451,15 @@ mod resources {
                         }
                     }
                     impl ::std::fmt::Display for GetView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for GetView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -15100,7 +14467,7 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for GetView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
@@ -15239,19 +14606,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -15433,19 +14790,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -15641,19 +14988,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -15890,19 +15227,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -16078,19 +15405,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -16240,12 +15557,12 @@ mod resources {
                     }
                 }
                 impl ::std::fmt::Display for GetView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -16253,7 +15570,7 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
@@ -16384,19 +15701,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -16572,19 +15879,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -16777,19 +16074,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -17193,7 +16480,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -17202,7 +16492,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -17215,58 +16505,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

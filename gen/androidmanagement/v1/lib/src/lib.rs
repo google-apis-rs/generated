@@ -82,20 +82,20 @@ pub mod schemas {
     pub enum ApplicationEventEventType {
         #[doc = "This value is disallowed."]
         ApplicationEventTypeUnspecified,
-        #[doc = "The app was installed."]
-        Installed,
         #[doc = "The app was changed, for example, a component was enabled or disabled."]
         Changed,
         #[doc = "The app data was cleared."]
         DataCleared,
+        #[doc = "The app was installed."]
+        Installed,
+        #[doc = "The app was pinned to the foreground."]
+        Pinned,
         #[doc = "The app was removed."]
         Removed,
         #[doc = "A new version of the app has been installed, replacing the old version."]
         Replaced,
         #[doc = "The app was restarted."]
         Restarted,
-        #[doc = "The app was pinned to the foreground."]
-        Pinned,
         #[doc = "The app was unpinned."]
         Unpinned,
     }
@@ -105,24 +105,24 @@ pub mod schemas {
                 ApplicationEventEventType::ApplicationEventTypeUnspecified => {
                     "APPLICATION_EVENT_TYPE_UNSPECIFIED"
                 }
-                ApplicationEventEventType::Installed => "INSTALLED",
                 ApplicationEventEventType::Changed => "CHANGED",
                 ApplicationEventEventType::DataCleared => "DATA_CLEARED",
+                ApplicationEventEventType::Installed => "INSTALLED",
+                ApplicationEventEventType::Pinned => "PINNED",
                 ApplicationEventEventType::Removed => "REMOVED",
                 ApplicationEventEventType::Replaced => "REPLACED",
                 ApplicationEventEventType::Restarted => "RESTARTED",
-                ApplicationEventEventType::Pinned => "PINNED",
                 ApplicationEventEventType::Unpinned => "UNPINNED",
             }
         }
     }
     impl ::std::fmt::Display for ApplicationEventEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationEventEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -130,7 +130,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationEventEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -139,13 +139,13 @@ pub mod schemas {
                 "APPLICATION_EVENT_TYPE_UNSPECIFIED" => {
                     ApplicationEventEventType::ApplicationEventTypeUnspecified
                 }
-                "INSTALLED" => ApplicationEventEventType::Installed,
                 "CHANGED" => ApplicationEventEventType::Changed,
                 "DATA_CLEARED" => ApplicationEventEventType::DataCleared,
+                "INSTALLED" => ApplicationEventEventType::Installed,
+                "PINNED" => ApplicationEventEventType::Pinned,
                 "REMOVED" => ApplicationEventEventType::Removed,
                 "REPLACED" => ApplicationEventEventType::Replaced,
                 "RESTARTED" => ApplicationEventEventType::Restarted,
-                "PINNED" => ApplicationEventEventType::Pinned,
                 "UNPINNED" => ApplicationEventEventType::Unpinned,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -228,34 +228,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationPolicyDefaultPermissionPolicy {
+        #[doc = "Automatically deny a permission."]
+        Deny,
+        #[doc = "Automatically grant a permission."]
+        Grant,
         #[doc = "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default."]
         PermissionPolicyUnspecified,
         #[doc = "Prompt the user to grant a permission."]
         Prompt,
-        #[doc = "Automatically grant a permission."]
-        Grant,
-        #[doc = "Automatically deny a permission."]
-        Deny,
     }
     impl ApplicationPolicyDefaultPermissionPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
+                ApplicationPolicyDefaultPermissionPolicy::Deny => "DENY",
+                ApplicationPolicyDefaultPermissionPolicy::Grant => "GRANT",
                 ApplicationPolicyDefaultPermissionPolicy::PermissionPolicyUnspecified => {
                     "PERMISSION_POLICY_UNSPECIFIED"
                 }
                 ApplicationPolicyDefaultPermissionPolicy::Prompt => "PROMPT",
-                ApplicationPolicyDefaultPermissionPolicy::Grant => "GRANT",
-                ApplicationPolicyDefaultPermissionPolicy::Deny => "DENY",
             }
         }
     }
     impl ::std::fmt::Display for ApplicationPolicyDefaultPermissionPolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationPolicyDefaultPermissionPolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -263,18 +263,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationPolicyDefaultPermissionPolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DENY" => ApplicationPolicyDefaultPermissionPolicy::Deny,
+                "GRANT" => ApplicationPolicyDefaultPermissionPolicy::Grant,
                 "PERMISSION_POLICY_UNSPECIFIED" => {
                     ApplicationPolicyDefaultPermissionPolicy::PermissionPolicyUnspecified
                 }
                 "PROMPT" => ApplicationPolicyDefaultPermissionPolicy::Prompt,
-                "GRANT" => ApplicationPolicyDefaultPermissionPolicy::Grant,
-                "DENY" => ApplicationPolicyDefaultPermissionPolicy::Deny,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -295,38 +295,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationPolicyDelegatedScopesItems {
-        DelegatedScopeUnspecified,
-        CertInstall,
-        ManagedConfigurations,
         BlockUninstall,
-        PermissionGrant,
-        PackageAccess,
+        CertInstall,
+        DelegatedScopeUnspecified,
         EnableSystemApp,
+        ManagedConfigurations,
+        PackageAccess,
+        PermissionGrant,
     }
     impl ApplicationPolicyDelegatedScopesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                ApplicationPolicyDelegatedScopesItems::BlockUninstall => "BLOCK_UNINSTALL",
+                ApplicationPolicyDelegatedScopesItems::CertInstall => "CERT_INSTALL",
                 ApplicationPolicyDelegatedScopesItems::DelegatedScopeUnspecified => {
                     "DELEGATED_SCOPE_UNSPECIFIED"
                 }
-                ApplicationPolicyDelegatedScopesItems::CertInstall => "CERT_INSTALL",
+                ApplicationPolicyDelegatedScopesItems::EnableSystemApp => "ENABLE_SYSTEM_APP",
                 ApplicationPolicyDelegatedScopesItems::ManagedConfigurations => {
                     "MANAGED_CONFIGURATIONS"
                 }
-                ApplicationPolicyDelegatedScopesItems::BlockUninstall => "BLOCK_UNINSTALL",
-                ApplicationPolicyDelegatedScopesItems::PermissionGrant => "PERMISSION_GRANT",
                 ApplicationPolicyDelegatedScopesItems::PackageAccess => "PACKAGE_ACCESS",
-                ApplicationPolicyDelegatedScopesItems::EnableSystemApp => "ENABLE_SYSTEM_APP",
+                ApplicationPolicyDelegatedScopesItems::PermissionGrant => "PERMISSION_GRANT",
             }
         }
     }
     impl ::std::fmt::Display for ApplicationPolicyDelegatedScopesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationPolicyDelegatedScopesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -334,23 +334,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationPolicyDelegatedScopesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BLOCK_UNINSTALL" => ApplicationPolicyDelegatedScopesItems::BlockUninstall,
+                "CERT_INSTALL" => ApplicationPolicyDelegatedScopesItems::CertInstall,
                 "DELEGATED_SCOPE_UNSPECIFIED" => {
                     ApplicationPolicyDelegatedScopesItems::DelegatedScopeUnspecified
                 }
-                "CERT_INSTALL" => ApplicationPolicyDelegatedScopesItems::CertInstall,
+                "ENABLE_SYSTEM_APP" => ApplicationPolicyDelegatedScopesItems::EnableSystemApp,
                 "MANAGED_CONFIGURATIONS" => {
                     ApplicationPolicyDelegatedScopesItems::ManagedConfigurations
                 }
-                "BLOCK_UNINSTALL" => ApplicationPolicyDelegatedScopesItems::BlockUninstall,
-                "PERMISSION_GRANT" => ApplicationPolicyDelegatedScopesItems::PermissionGrant,
                 "PACKAGE_ACCESS" => ApplicationPolicyDelegatedScopesItems::PackageAccess,
-                "ENABLE_SYSTEM_APP" => ApplicationPolicyDelegatedScopesItems::EnableSystemApp,
+                "PERMISSION_GRANT" => ApplicationPolicyDelegatedScopesItems::PermissionGrant,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -371,41 +371,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationPolicyInstallType {
-        #[doc = "Unspecified. Defaults to AVAILABLE."]
-        InstallTypeUnspecified,
-        #[doc = "The app is automatically installed and can be removed by the user."]
-        Preinstalled,
-        #[doc = "The app is automatically installed and can't be removed by the user."]
-        ForceInstalled,
-        #[doc = "The app is blocked and can't be installed. If the app was installed under a previous policy, it will be uninstalled."]
-        Blocked,
         #[doc = "The app is available to install."]
         Available,
-        #[doc = "The app is automatically installed and can't be removed by the user and will prevent setup from completion until installation is complete."]
-        RequiredForSetup,
+        #[doc = "The app is blocked and can't be installed. If the app was installed under a previous policy, it will be uninstalled."]
+        Blocked,
+        #[doc = "The app is automatically installed and can't be removed by the user."]
+        ForceInstalled,
+        #[doc = "Unspecified. Defaults to AVAILABLE."]
+        InstallTypeUnspecified,
         #[doc = "The app is automatically installed in kiosk mode: it's set as the preferred home intent and whitelisted for lock task mode. Device setup won't complete until the app is installed. After installation, users won't be able to remove the app. You can only set this installType for one app per policy. When this is present in the policy, status bar will be automatically disabled."]
         Kiosk,
+        #[doc = "The app is automatically installed and can be removed by the user."]
+        Preinstalled,
+        #[doc = "The app is automatically installed and can't be removed by the user and will prevent setup from completion until installation is complete."]
+        RequiredForSetup,
     }
     impl ApplicationPolicyInstallType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ApplicationPolicyInstallType::InstallTypeUnspecified => "INSTALL_TYPE_UNSPECIFIED",
-                ApplicationPolicyInstallType::Preinstalled => "PREINSTALLED",
-                ApplicationPolicyInstallType::ForceInstalled => "FORCE_INSTALLED",
-                ApplicationPolicyInstallType::Blocked => "BLOCKED",
                 ApplicationPolicyInstallType::Available => "AVAILABLE",
-                ApplicationPolicyInstallType::RequiredForSetup => "REQUIRED_FOR_SETUP",
+                ApplicationPolicyInstallType::Blocked => "BLOCKED",
+                ApplicationPolicyInstallType::ForceInstalled => "FORCE_INSTALLED",
+                ApplicationPolicyInstallType::InstallTypeUnspecified => "INSTALL_TYPE_UNSPECIFIED",
                 ApplicationPolicyInstallType::Kiosk => "KIOSK",
+                ApplicationPolicyInstallType::Preinstalled => "PREINSTALLED",
+                ApplicationPolicyInstallType::RequiredForSetup => "REQUIRED_FOR_SETUP",
             }
         }
     }
     impl ::std::fmt::Display for ApplicationPolicyInstallType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationPolicyInstallType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -413,19 +413,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationPolicyInstallType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "INSTALL_TYPE_UNSPECIFIED" => ApplicationPolicyInstallType::InstallTypeUnspecified,
-                "PREINSTALLED" => ApplicationPolicyInstallType::Preinstalled,
-                "FORCE_INSTALLED" => ApplicationPolicyInstallType::ForceInstalled,
-                "BLOCKED" => ApplicationPolicyInstallType::Blocked,
                 "AVAILABLE" => ApplicationPolicyInstallType::Available,
-                "REQUIRED_FOR_SETUP" => ApplicationPolicyInstallType::RequiredForSetup,
+                "BLOCKED" => ApplicationPolicyInstallType::Blocked,
+                "FORCE_INSTALLED" => ApplicationPolicyInstallType::ForceInstalled,
+                "INSTALL_TYPE_UNSPECIFIED" => ApplicationPolicyInstallType::InstallTypeUnspecified,
                 "KIOSK" => ApplicationPolicyInstallType::Kiosk,
+                "PREINSTALLED" => ApplicationPolicyInstallType::Preinstalled,
+                "REQUIRED_FOR_SETUP" => ApplicationPolicyInstallType::RequiredForSetup,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -494,12 +494,12 @@ pub mod schemas {
     pub enum ApplicationReportApplicationSource {
         #[doc = "The app was sideloaded from an unspecified source."]
         ApplicationSourceUnspecified,
+        #[doc = "The app was installed from the Google Play Store."]
+        InstalledFromPlayStore,
         #[doc = "This is a system app from the device's factory image."]
         SystemAppFactoryVersion,
         #[doc = "This is an updated system app."]
         SystemAppUpdatedVersion,
-        #[doc = "The app was installed from the Google Play Store."]
-        InstalledFromPlayStore,
     }
     impl ApplicationReportApplicationSource {
         pub fn as_str(self) -> &'static str {
@@ -507,25 +507,25 @@ pub mod schemas {
                 ApplicationReportApplicationSource::ApplicationSourceUnspecified => {
                     "APPLICATION_SOURCE_UNSPECIFIED"
                 }
+                ApplicationReportApplicationSource::InstalledFromPlayStore => {
+                    "INSTALLED_FROM_PLAY_STORE"
+                }
                 ApplicationReportApplicationSource::SystemAppFactoryVersion => {
                     "SYSTEM_APP_FACTORY_VERSION"
                 }
                 ApplicationReportApplicationSource::SystemAppUpdatedVersion => {
                     "SYSTEM_APP_UPDATED_VERSION"
                 }
-                ApplicationReportApplicationSource::InstalledFromPlayStore => {
-                    "INSTALLED_FROM_PLAY_STORE"
-                }
             }
         }
     }
     impl ::std::fmt::Display for ApplicationReportApplicationSource {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationReportApplicationSource {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -533,7 +533,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationReportApplicationSource {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -542,14 +542,14 @@ pub mod schemas {
                 "APPLICATION_SOURCE_UNSPECIFIED" => {
                     ApplicationReportApplicationSource::ApplicationSourceUnspecified
                 }
+                "INSTALLED_FROM_PLAY_STORE" => {
+                    ApplicationReportApplicationSource::InstalledFromPlayStore
+                }
                 "SYSTEM_APP_FACTORY_VERSION" => {
                     ApplicationReportApplicationSource::SystemAppFactoryVersion
                 }
                 "SYSTEM_APP_UPDATED_VERSION" => {
                     ApplicationReportApplicationSource::SystemAppUpdatedVersion
-                }
-                "INSTALLED_FROM_PLAY_STORE" => {
-                    ApplicationReportApplicationSource::InstalledFromPlayStore
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -585,12 +585,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ApplicationReportState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationReportState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -598,7 +598,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationReportState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -767,38 +767,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommandErrorCode {
-        #[doc = "There was no error."]
-        CommandErrorCodeUnspecified,
-        #[doc = "An unknown error occurred."]
-        Unknown,
         #[doc = "The API level of the device does not support this command."]
         ApiLevel,
-        #[doc = "The management mode (profile owner, device owner, etc.) does not support the command."]
-        ManagementMode,
+        #[doc = "There was no error."]
+        CommandErrorCodeUnspecified,
         #[doc = "The command has an invalid parameter value."]
         InvalidValue,
+        #[doc = "The management mode (profile owner, device owner, etc.) does not support the command."]
+        ManagementMode,
+        #[doc = "An unknown error occurred."]
+        Unknown,
         #[doc = "The device doesn't support the command. Updating Android Device Policy to the latest version may resolve the issue."]
         Unsupported,
     }
     impl CommandErrorCode {
         pub fn as_str(self) -> &'static str {
             match self {
-                CommandErrorCode::CommandErrorCodeUnspecified => "COMMAND_ERROR_CODE_UNSPECIFIED",
-                CommandErrorCode::Unknown => "UNKNOWN",
                 CommandErrorCode::ApiLevel => "API_LEVEL",
-                CommandErrorCode::ManagementMode => "MANAGEMENT_MODE",
+                CommandErrorCode::CommandErrorCodeUnspecified => "COMMAND_ERROR_CODE_UNSPECIFIED",
                 CommandErrorCode::InvalidValue => "INVALID_VALUE",
+                CommandErrorCode::ManagementMode => "MANAGEMENT_MODE",
+                CommandErrorCode::Unknown => "UNKNOWN",
                 CommandErrorCode::Unsupported => "UNSUPPORTED",
             }
         }
     }
     impl ::std::fmt::Display for CommandErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CommandErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -806,17 +806,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CommandErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "COMMAND_ERROR_CODE_UNSPECIFIED" => CommandErrorCode::CommandErrorCodeUnspecified,
-                "UNKNOWN" => CommandErrorCode::Unknown,
                 "API_LEVEL" => CommandErrorCode::ApiLevel,
-                "MANAGEMENT_MODE" => CommandErrorCode::ManagementMode,
+                "COMMAND_ERROR_CODE_UNSPECIFIED" => CommandErrorCode::CommandErrorCodeUnspecified,
                 "INVALID_VALUE" => CommandErrorCode::InvalidValue,
+                "MANAGEMENT_MODE" => CommandErrorCode::ManagementMode,
+                "UNKNOWN" => CommandErrorCode::Unknown,
                 "UNSUPPORTED" => CommandErrorCode::Unsupported,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -842,28 +842,28 @@ pub mod schemas {
         CommandTypeUnspecified,
         #[doc = "Lock the device, as if the lock screen timeout had expired."]
         Lock,
-        #[doc = "Reset the user's password."]
-        ResetPassword,
         #[doc = "Reboot the device. Only supported on API level 24+."]
         Reboot,
+        #[doc = "Reset the user's password."]
+        ResetPassword,
     }
     impl CommandType {
         pub fn as_str(self) -> &'static str {
             match self {
                 CommandType::CommandTypeUnspecified => "COMMAND_TYPE_UNSPECIFIED",
                 CommandType::Lock => "LOCK",
-                CommandType::ResetPassword => "RESET_PASSWORD",
                 CommandType::Reboot => "REBOOT",
+                CommandType::ResetPassword => "RESET_PASSWORD",
             }
         }
     }
     impl ::std::fmt::Display for CommandType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CommandType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -871,7 +871,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CommandType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -879,8 +879,8 @@ pub mod schemas {
             Ok(match value {
                 "COMMAND_TYPE_UNSPECIFIED" => CommandType::CommandTypeUnspecified,
                 "LOCK" => CommandType::Lock,
-                "RESET_PASSWORD" => CommandType::ResetPassword,
                 "REBOOT" => CommandType::Reboot,
+                "RESET_PASSWORD" => CommandType::ResetPassword,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -901,32 +901,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommandResetPasswordFlagsItems {
-        ResetPasswordFlagUnspecified,
-        RequireEntry,
         DoNotAskCredentialsOnBoot,
         LockNow,
+        RequireEntry,
+        ResetPasswordFlagUnspecified,
     }
     impl CommandResetPasswordFlagsItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                CommandResetPasswordFlagsItems::ResetPasswordFlagUnspecified => {
-                    "RESET_PASSWORD_FLAG_UNSPECIFIED"
-                }
-                CommandResetPasswordFlagsItems::RequireEntry => "REQUIRE_ENTRY",
                 CommandResetPasswordFlagsItems::DoNotAskCredentialsOnBoot => {
                     "DO_NOT_ASK_CREDENTIALS_ON_BOOT"
                 }
                 CommandResetPasswordFlagsItems::LockNow => "LOCK_NOW",
+                CommandResetPasswordFlagsItems::RequireEntry => "REQUIRE_ENTRY",
+                CommandResetPasswordFlagsItems::ResetPasswordFlagUnspecified => {
+                    "RESET_PASSWORD_FLAG_UNSPECIFIED"
+                }
             }
         }
     }
     impl ::std::fmt::Display for CommandResetPasswordFlagsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CommandResetPasswordFlagsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -934,20 +934,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CommandResetPasswordFlagsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RESET_PASSWORD_FLAG_UNSPECIFIED" => {
-                    CommandResetPasswordFlagsItems::ResetPasswordFlagUnspecified
-                }
-                "REQUIRE_ENTRY" => CommandResetPasswordFlagsItems::RequireEntry,
                 "DO_NOT_ASK_CREDENTIALS_ON_BOOT" => {
                     CommandResetPasswordFlagsItems::DoNotAskCredentialsOnBoot
                 }
                 "LOCK_NOW" => CommandResetPasswordFlagsItems::LockNow,
+                "REQUIRE_ENTRY" => CommandResetPasswordFlagsItems::RequireEntry,
+                "RESET_PASSWORD_FLAG_UNSPECIFIED" => {
+                    CommandResetPasswordFlagsItems::ResetPasswordFlagUnspecified
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1049,35 +1049,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceAppliedState {
-        #[doc = "This value is disallowed."]
-        DeviceStateUnspecified,
         #[doc = "The device is active."]
         Active,
-        #[doc = "The device is disabled."]
-        Disabled,
         #[doc = "The device was deleted. This state will never be returned by an API call, but is used in the final status report published to Cloud Pub/Sub when the device acknowledges the deletion."]
         Deleted,
+        #[doc = "This value is disallowed."]
+        DeviceStateUnspecified,
+        #[doc = "The device is disabled."]
+        Disabled,
         #[doc = "The device is being provisioned. Newly enrolled devices are in this state until they have a policy applied."]
         Provisioning,
     }
     impl DeviceAppliedState {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceAppliedState::DeviceStateUnspecified => "DEVICE_STATE_UNSPECIFIED",
                 DeviceAppliedState::Active => "ACTIVE",
-                DeviceAppliedState::Disabled => "DISABLED",
                 DeviceAppliedState::Deleted => "DELETED",
+                DeviceAppliedState::DeviceStateUnspecified => "DEVICE_STATE_UNSPECIFIED",
+                DeviceAppliedState::Disabled => "DISABLED",
                 DeviceAppliedState::Provisioning => "PROVISIONING",
             }
         }
     }
     impl ::std::fmt::Display for DeviceAppliedState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeviceAppliedState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1085,16 +1085,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeviceAppliedState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEVICE_STATE_UNSPECIFIED" => DeviceAppliedState::DeviceStateUnspecified,
                 "ACTIVE" => DeviceAppliedState::Active,
-                "DISABLED" => DeviceAppliedState::Disabled,
                 "DELETED" => DeviceAppliedState::Deleted,
+                "DEVICE_STATE_UNSPECIFIED" => DeviceAppliedState::DeviceStateUnspecified,
+                "DISABLED" => DeviceAppliedState::Disabled,
                 "PROVISIONING" => DeviceAppliedState::Provisioning,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1116,29 +1116,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceManagementMode {
-        #[doc = "This value is disallowed."]
-        ManagementModeUnspecified,
         #[doc = "Device owner. Android Device Policy has full control over the device."]
         DeviceOwner,
+        #[doc = "This value is disallowed."]
+        ManagementModeUnspecified,
         #[doc = "Profile owner. Android Device Policy has control over a managed profile on the device."]
         ProfileOwner,
     }
     impl DeviceManagementMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceManagementMode::ManagementModeUnspecified => "MANAGEMENT_MODE_UNSPECIFIED",
                 DeviceManagementMode::DeviceOwner => "DEVICE_OWNER",
+                DeviceManagementMode::ManagementModeUnspecified => "MANAGEMENT_MODE_UNSPECIFIED",
                 DeviceManagementMode::ProfileOwner => "PROFILE_OWNER",
             }
         }
     }
     impl ::std::fmt::Display for DeviceManagementMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeviceManagementMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1146,14 +1146,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeviceManagementMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "MANAGEMENT_MODE_UNSPECIFIED" => DeviceManagementMode::ManagementModeUnspecified,
                 "DEVICE_OWNER" => DeviceManagementMode::DeviceOwner,
+                "MANAGEMENT_MODE_UNSPECIFIED" => DeviceManagementMode::ManagementModeUnspecified,
                 "PROFILE_OWNER" => DeviceManagementMode::ProfileOwner,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1175,35 +1175,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceState {
-        #[doc = "This value is disallowed."]
-        DeviceStateUnspecified,
         #[doc = "The device is active."]
         Active,
-        #[doc = "The device is disabled."]
-        Disabled,
         #[doc = "The device was deleted. This state will never be returned by an API call, but is used in the final status report published to Cloud Pub/Sub when the device acknowledges the deletion."]
         Deleted,
+        #[doc = "This value is disallowed."]
+        DeviceStateUnspecified,
+        #[doc = "The device is disabled."]
+        Disabled,
         #[doc = "The device is being provisioned. Newly enrolled devices are in this state until they have a policy applied."]
         Provisioning,
     }
     impl DeviceState {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceState::DeviceStateUnspecified => "DEVICE_STATE_UNSPECIFIED",
                 DeviceState::Active => "ACTIVE",
-                DeviceState::Disabled => "DISABLED",
                 DeviceState::Deleted => "DELETED",
+                DeviceState::DeviceStateUnspecified => "DEVICE_STATE_UNSPECIFIED",
+                DeviceState::Disabled => "DISABLED",
                 DeviceState::Provisioning => "PROVISIONING",
             }
         }
     }
     impl ::std::fmt::Display for DeviceState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeviceState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1211,16 +1211,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeviceState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEVICE_STATE_UNSPECIFIED" => DeviceState::DeviceStateUnspecified,
                 "ACTIVE" => DeviceState::Active,
-                "DISABLED" => DeviceState::Disabled,
                 "DELETED" => DeviceState::Deleted,
+                "DEVICE_STATE_UNSPECIFIED" => DeviceState::DeviceStateUnspecified,
+                "DISABLED" => DeviceState::Disabled,
                 "PROVISIONING" => DeviceState::Provisioning,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1352,12 +1352,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceSettingsEncryptionStatus {
-        #[doc = "Unspecified. No device should have this type."]
-        EncryptionStatusUnspecified,
-        #[doc = "Encryption is not supported by the device."]
-        Unsupported,
-        #[doc = "Encryption is supported by the device, but is not currently active."]
-        Inactive,
         #[doc = "Encryption is not currently active, but is currently being activated."]
         Activating,
         #[doc = "Encryption is active."]
@@ -1366,29 +1360,35 @@ pub mod schemas {
         ActiveDefaultKey,
         #[doc = "Encryption is active, and the encryption key is tied to the user profile."]
         ActivePerUser,
+        #[doc = "Unspecified. No device should have this type."]
+        EncryptionStatusUnspecified,
+        #[doc = "Encryption is supported by the device, but is not currently active."]
+        Inactive,
+        #[doc = "Encryption is not supported by the device."]
+        Unsupported,
     }
     impl DeviceSettingsEncryptionStatus {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceSettingsEncryptionStatus::EncryptionStatusUnspecified => {
-                    "ENCRYPTION_STATUS_UNSPECIFIED"
-                }
-                DeviceSettingsEncryptionStatus::Unsupported => "UNSUPPORTED",
-                DeviceSettingsEncryptionStatus::Inactive => "INACTIVE",
                 DeviceSettingsEncryptionStatus::Activating => "ACTIVATING",
                 DeviceSettingsEncryptionStatus::Active => "ACTIVE",
                 DeviceSettingsEncryptionStatus::ActiveDefaultKey => "ACTIVE_DEFAULT_KEY",
                 DeviceSettingsEncryptionStatus::ActivePerUser => "ACTIVE_PER_USER",
+                DeviceSettingsEncryptionStatus::EncryptionStatusUnspecified => {
+                    "ENCRYPTION_STATUS_UNSPECIFIED"
+                }
+                DeviceSettingsEncryptionStatus::Inactive => "INACTIVE",
+                DeviceSettingsEncryptionStatus::Unsupported => "UNSUPPORTED",
             }
         }
     }
     impl ::std::fmt::Display for DeviceSettingsEncryptionStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeviceSettingsEncryptionStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1396,21 +1396,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeviceSettingsEncryptionStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ENCRYPTION_STATUS_UNSPECIFIED" => {
-                    DeviceSettingsEncryptionStatus::EncryptionStatusUnspecified
-                }
-                "UNSUPPORTED" => DeviceSettingsEncryptionStatus::Unsupported,
-                "INACTIVE" => DeviceSettingsEncryptionStatus::Inactive,
                 "ACTIVATING" => DeviceSettingsEncryptionStatus::Activating,
                 "ACTIVE" => DeviceSettingsEncryptionStatus::Active,
                 "ACTIVE_DEFAULT_KEY" => DeviceSettingsEncryptionStatus::ActiveDefaultKey,
                 "ACTIVE_PER_USER" => DeviceSettingsEncryptionStatus::ActivePerUser,
+                "ENCRYPTION_STATUS_UNSPECIFIED" => {
+                    DeviceSettingsEncryptionStatus::EncryptionStatusUnspecified
+                }
+                "INACTIVE" => DeviceSettingsEncryptionStatus::Inactive,
+                "UNSUPPORTED" => DeviceSettingsEncryptionStatus::Unsupported,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1478,12 +1478,12 @@ pub mod schemas {
     pub enum DisplayState {
         #[doc = "This value is disallowed."]
         DisplayStateUnspecified,
+        #[doc = "Display is dozing in a low power state"]
+        Doze,
         #[doc = "Display is off."]
         Off,
         #[doc = "Display is on."]
         On,
-        #[doc = "Display is dozing in a low power state"]
-        Doze,
         #[doc = "Display is dozing in a suspended low power state."]
         Suspended,
     }
@@ -1491,20 +1491,20 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 DisplayState::DisplayStateUnspecified => "DISPLAY_STATE_UNSPECIFIED",
+                DisplayState::Doze => "DOZE",
                 DisplayState::Off => "OFF",
                 DisplayState::On => "ON",
-                DisplayState::Doze => "DOZE",
                 DisplayState::Suspended => "SUSPENDED",
             }
         }
     }
     impl ::std::fmt::Display for DisplayState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DisplayState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1512,16 +1512,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DisplayState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DISPLAY_STATE_UNSPECIFIED" => DisplayState::DisplayStateUnspecified,
+                "DOZE" => DisplayState::Doze,
                 "OFF" => DisplayState::Off,
                 "ON" => DisplayState::On,
-                "DOZE" => DisplayState::Doze,
                 "SUSPENDED" => DisplayState::Suspended,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1654,32 +1654,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnterpriseEnabledNotificationTypesItems {
-        NotificationTypeUnspecified,
-        Enrollment,
-        ComplianceReport,
-        StatusReport,
         Command,
+        ComplianceReport,
+        Enrollment,
+        NotificationTypeUnspecified,
+        StatusReport,
     }
     impl EnterpriseEnabledNotificationTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                EnterpriseEnabledNotificationTypesItems::Command => "COMMAND",
+                EnterpriseEnabledNotificationTypesItems::ComplianceReport => "COMPLIANCE_REPORT",
+                EnterpriseEnabledNotificationTypesItems::Enrollment => "ENROLLMENT",
                 EnterpriseEnabledNotificationTypesItems::NotificationTypeUnspecified => {
                     "NOTIFICATION_TYPE_UNSPECIFIED"
                 }
-                EnterpriseEnabledNotificationTypesItems::Enrollment => "ENROLLMENT",
-                EnterpriseEnabledNotificationTypesItems::ComplianceReport => "COMPLIANCE_REPORT",
                 EnterpriseEnabledNotificationTypesItems::StatusReport => "STATUS_REPORT",
-                EnterpriseEnabledNotificationTypesItems::Command => "COMMAND",
             }
         }
     }
     impl ::std::fmt::Display for EnterpriseEnabledNotificationTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EnterpriseEnabledNotificationTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1687,19 +1687,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EnterpriseEnabledNotificationTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COMMAND" => EnterpriseEnabledNotificationTypesItems::Command,
+                "COMPLIANCE_REPORT" => EnterpriseEnabledNotificationTypesItems::ComplianceReport,
+                "ENROLLMENT" => EnterpriseEnabledNotificationTypesItems::Enrollment,
                 "NOTIFICATION_TYPE_UNSPECIFIED" => {
                     EnterpriseEnabledNotificationTypesItems::NotificationTypeUnspecified
                 }
-                "ENROLLMENT" => EnterpriseEnabledNotificationTypesItems::Enrollment,
-                "COMPLIANCE_REPORT" => EnterpriseEnabledNotificationTypesItems::ComplianceReport,
                 "STATUS_REPORT" => EnterpriseEnabledNotificationTypesItems::StatusReport,
-                "COMMAND" => EnterpriseEnabledNotificationTypesItems::Command,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1891,29 +1891,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum KeyedAppStateSeverity {
-        #[doc = "Unspecified severity level."]
-        SeverityUnspecified,
-        #[doc = "Information severity level."]
-        Info,
         #[doc = "Error severity level. This should only be set for genuine error conditions that a management organization needs to take action to fix."]
         Error,
+        #[doc = "Information severity level."]
+        Info,
+        #[doc = "Unspecified severity level."]
+        SeverityUnspecified,
     }
     impl KeyedAppStateSeverity {
         pub fn as_str(self) -> &'static str {
             match self {
-                KeyedAppStateSeverity::SeverityUnspecified => "SEVERITY_UNSPECIFIED",
-                KeyedAppStateSeverity::Info => "INFO",
                 KeyedAppStateSeverity::Error => "ERROR",
+                KeyedAppStateSeverity::Info => "INFO",
+                KeyedAppStateSeverity::SeverityUnspecified => "SEVERITY_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for KeyedAppStateSeverity {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for KeyedAppStateSeverity {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1921,15 +1921,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for KeyedAppStateSeverity {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SEVERITY_UNSPECIFIED" => KeyedAppStateSeverity::SeverityUnspecified,
-                "INFO" => KeyedAppStateSeverity::Info,
                 "ERROR" => KeyedAppStateSeverity::Error,
+                "INFO" => KeyedAppStateSeverity::Info,
+                "SEVERITY_UNSPECIFIED" => KeyedAppStateSeverity::SeverityUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2130,46 +2130,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedPropertyType {
-        #[doc = "Not used."]
-        ManagedPropertyTypeUnspecified,
         #[doc = "A property of boolean type."]
         Bool,
-        #[doc = "A property of string type."]
-        String,
-        #[doc = "A property of integer type."]
-        Integer,
-        #[doc = "A choice of one item from a set."]
-        Choice,
-        #[doc = "A choice of multiple items from a set."]
-        Multiselect,
-        #[doc = "A hidden restriction of string type (the default value can be used to pass along information that can't be modified, such as a version code)."]
-        Hidden,
         #[doc = "An array of property bundles."]
         BundleArray,
+        #[doc = "A choice of one item from a set."]
+        Choice,
+        #[doc = "A hidden restriction of string type (the default value can be used to pass along information that can't be modified, such as a version code)."]
+        Hidden,
+        #[doc = "A property of integer type."]
+        Integer,
+        #[doc = "Not used."]
+        ManagedPropertyTypeUnspecified,
+        #[doc = "A choice of multiple items from a set."]
+        Multiselect,
+        #[doc = "A property of string type."]
+        String,
     }
     impl ManagedPropertyType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ManagedPropertyType::Bool => "BOOL",
+                ManagedPropertyType::BundleArray => "BUNDLE_ARRAY",
+                ManagedPropertyType::Choice => "CHOICE",
+                ManagedPropertyType::Hidden => "HIDDEN",
+                ManagedPropertyType::Integer => "INTEGER",
                 ManagedPropertyType::ManagedPropertyTypeUnspecified => {
                     "MANAGED_PROPERTY_TYPE_UNSPECIFIED"
                 }
-                ManagedPropertyType::Bool => "BOOL",
-                ManagedPropertyType::String => "STRING",
-                ManagedPropertyType::Integer => "INTEGER",
-                ManagedPropertyType::Choice => "CHOICE",
                 ManagedPropertyType::Multiselect => "MULTISELECT",
-                ManagedPropertyType::Hidden => "HIDDEN",
-                ManagedPropertyType::BundleArray => "BUNDLE_ARRAY",
+                ManagedPropertyType::String => "STRING",
             }
         }
     }
     impl ::std::fmt::Display for ManagedPropertyType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ManagedPropertyType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2177,22 +2177,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ManagedPropertyType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOOL" => ManagedPropertyType::Bool,
+                "BUNDLE_ARRAY" => ManagedPropertyType::BundleArray,
+                "CHOICE" => ManagedPropertyType::Choice,
+                "HIDDEN" => ManagedPropertyType::Hidden,
+                "INTEGER" => ManagedPropertyType::Integer,
                 "MANAGED_PROPERTY_TYPE_UNSPECIFIED" => {
                     ManagedPropertyType::ManagedPropertyTypeUnspecified
                 }
-                "BOOL" => ManagedPropertyType::Bool,
-                "STRING" => ManagedPropertyType::String,
-                "INTEGER" => ManagedPropertyType::Integer,
-                "CHOICE" => ManagedPropertyType::Choice,
                 "MULTISELECT" => ManagedPropertyType::Multiselect,
-                "HIDDEN" => ManagedPropertyType::Hidden,
-                "BUNDLE_ARRAY" => ManagedPropertyType::BundleArray,
+                "STRING" => ManagedPropertyType::String,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2275,38 +2275,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MemoryEventEventType {
+        #[doc = "A new external storage medium was detected. The reported byte count is the total capacity of the storage medium."]
+        ExternalStorageDetected,
+        #[doc = "Free space in an external storage medium was measured."]
+        ExternalStorageMeasured,
+        #[doc = "An external storage medium was removed. The reported byte count is zero."]
+        ExternalStorageRemoved,
+        #[doc = "Free space in internal storage was measured."]
+        InternalStorageMeasured,
         #[doc = "Unspecified. No events have this type."]
         MemoryEventTypeUnspecified,
         #[doc = "Free space in RAM was measured."]
         RamMeasured,
-        #[doc = "Free space in internal storage was measured."]
-        InternalStorageMeasured,
-        #[doc = "A new external storage medium was detected. The reported byte count is the total capacity of the storage medium."]
-        ExternalStorageDetected,
-        #[doc = "An external storage medium was removed. The reported byte count is zero."]
-        ExternalStorageRemoved,
-        #[doc = "Free space in an external storage medium was measured."]
-        ExternalStorageMeasured,
     }
     impl MemoryEventEventType {
         pub fn as_str(self) -> &'static str {
             match self {
+                MemoryEventEventType::ExternalStorageDetected => "EXTERNAL_STORAGE_DETECTED",
+                MemoryEventEventType::ExternalStorageMeasured => "EXTERNAL_STORAGE_MEASURED",
+                MemoryEventEventType::ExternalStorageRemoved => "EXTERNAL_STORAGE_REMOVED",
+                MemoryEventEventType::InternalStorageMeasured => "INTERNAL_STORAGE_MEASURED",
                 MemoryEventEventType::MemoryEventTypeUnspecified => "MEMORY_EVENT_TYPE_UNSPECIFIED",
                 MemoryEventEventType::RamMeasured => "RAM_MEASURED",
-                MemoryEventEventType::InternalStorageMeasured => "INTERNAL_STORAGE_MEASURED",
-                MemoryEventEventType::ExternalStorageDetected => "EXTERNAL_STORAGE_DETECTED",
-                MemoryEventEventType::ExternalStorageRemoved => "EXTERNAL_STORAGE_REMOVED",
-                MemoryEventEventType::ExternalStorageMeasured => "EXTERNAL_STORAGE_MEASURED",
             }
         }
     }
     impl ::std::fmt::Display for MemoryEventEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MemoryEventEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2314,18 +2314,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MemoryEventEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXTERNAL_STORAGE_DETECTED" => MemoryEventEventType::ExternalStorageDetected,
+                "EXTERNAL_STORAGE_MEASURED" => MemoryEventEventType::ExternalStorageMeasured,
+                "EXTERNAL_STORAGE_REMOVED" => MemoryEventEventType::ExternalStorageRemoved,
+                "INTERNAL_STORAGE_MEASURED" => MemoryEventEventType::InternalStorageMeasured,
                 "MEMORY_EVENT_TYPE_UNSPECIFIED" => MemoryEventEventType::MemoryEventTypeUnspecified,
                 "RAM_MEASURED" => MemoryEventEventType::RamMeasured,
-                "INTERNAL_STORAGE_MEASURED" => MemoryEventEventType::InternalStorageMeasured,
-                "EXTERNAL_STORAGE_DETECTED" => MemoryEventEventType::ExternalStorageDetected,
-                "EXTERNAL_STORAGE_REMOVED" => MemoryEventEventType::ExternalStorageRemoved,
-                "EXTERNAL_STORAGE_MEASURED" => MemoryEventEventType::ExternalStorageMeasured,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2445,41 +2445,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NonComplianceDetailInstallationFailureReason {
-        #[doc = "This value is disallowed."]
-        InstallationFailureReasonUnspecified,
-        #[doc = "An unknown condition is preventing the app from being installed. Some potential reasons are that the device doesn't have enough storage, the device network connection is unreliable, or the installation is taking longer than expected. The installation will be retried automatically."]
-        InstallationFailureReasonUnknown,
         #[doc = "The installation is still in progress."]
         InProgress,
-        #[doc = "The app was not found in Play."]
-        NotFound,
-        #[doc = "The app is incompatible with the device."]
-        NotCompatibleWithDevice,
-        #[doc = "The app has not been approved by the admin."]
-        NotApproved,
-        #[doc = "The app has new permissions that have not been accepted by the admin."]
-        PermissionsNotAccepted,
-        #[doc = "The app is not available in the user's country."]
-        NotAvailableInCountry,
+        #[doc = "An unknown condition is preventing the app from being installed. Some potential reasons are that the device doesn't have enough storage, the device network connection is unreliable, or the installation is taking longer than expected. The installation will be retried automatically."]
+        InstallationFailureReasonUnknown,
+        #[doc = "This value is disallowed."]
+        InstallationFailureReasonUnspecified,
         #[doc = "There are no licenses available to assign to the user."]
         NoLicensesRemaining,
+        #[doc = "The app has not been approved by the admin."]
+        NotApproved,
+        #[doc = "The app is not available in the user's country."]
+        NotAvailableInCountry,
+        #[doc = "The app is incompatible with the device."]
+        NotCompatibleWithDevice,
         #[doc = "The enterprise is no longer enrolled with managed Play or the admin has not accepted the latest managed Play terms of service."]
         NotEnrolled,
+        #[doc = "The app was not found in Play."]
+        NotFound,
+        #[doc = "The app has new permissions that have not been accepted by the admin."]
+        PermissionsNotAccepted,
         #[doc = "The user is no longer valid. The user may have been deleted or disabled."]
         UserInvalid,
     }
     impl NonComplianceDetailInstallationFailureReason {
         pub fn as_str(self) -> &'static str {
-            match self { NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnspecified => "INSTALLATION_FAILURE_REASON_UNSPECIFIED" , NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnknown => "INSTALLATION_FAILURE_REASON_UNKNOWN" , NonComplianceDetailInstallationFailureReason :: InProgress => "IN_PROGRESS" , NonComplianceDetailInstallationFailureReason :: NotFound => "NOT_FOUND" , NonComplianceDetailInstallationFailureReason :: NotCompatibleWithDevice => "NOT_COMPATIBLE_WITH_DEVICE" , NonComplianceDetailInstallationFailureReason :: NotApproved => "NOT_APPROVED" , NonComplianceDetailInstallationFailureReason :: PermissionsNotAccepted => "PERMISSIONS_NOT_ACCEPTED" , NonComplianceDetailInstallationFailureReason :: NotAvailableInCountry => "NOT_AVAILABLE_IN_COUNTRY" , NonComplianceDetailInstallationFailureReason :: NoLicensesRemaining => "NO_LICENSES_REMAINING" , NonComplianceDetailInstallationFailureReason :: NotEnrolled => "NOT_ENROLLED" , NonComplianceDetailInstallationFailureReason :: UserInvalid => "USER_INVALID" , }
+            match self { NonComplianceDetailInstallationFailureReason :: InProgress => "IN_PROGRESS" , NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnknown => "INSTALLATION_FAILURE_REASON_UNKNOWN" , NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnspecified => "INSTALLATION_FAILURE_REASON_UNSPECIFIED" , NonComplianceDetailInstallationFailureReason :: NoLicensesRemaining => "NO_LICENSES_REMAINING" , NonComplianceDetailInstallationFailureReason :: NotApproved => "NOT_APPROVED" , NonComplianceDetailInstallationFailureReason :: NotAvailableInCountry => "NOT_AVAILABLE_IN_COUNTRY" , NonComplianceDetailInstallationFailureReason :: NotCompatibleWithDevice => "NOT_COMPATIBLE_WITH_DEVICE" , NonComplianceDetailInstallationFailureReason :: NotEnrolled => "NOT_ENROLLED" , NonComplianceDetailInstallationFailureReason :: NotFound => "NOT_FOUND" , NonComplianceDetailInstallationFailureReason :: PermissionsNotAccepted => "PERMISSIONS_NOT_ACCEPTED" , NonComplianceDetailInstallationFailureReason :: UserInvalid => "USER_INVALID" , }
         }
     }
     impl ::std::fmt::Display for NonComplianceDetailInstallationFailureReason {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NonComplianceDetailInstallationFailureReason {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2487,12 +2487,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NonComplianceDetailInstallationFailureReason {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "INSTALLATION_FAILURE_REASON_UNSPECIFIED" => NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnspecified , "INSTALLATION_FAILURE_REASON_UNKNOWN" => NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnknown , "IN_PROGRESS" => NonComplianceDetailInstallationFailureReason :: InProgress , "NOT_FOUND" => NonComplianceDetailInstallationFailureReason :: NotFound , "NOT_COMPATIBLE_WITH_DEVICE" => NonComplianceDetailInstallationFailureReason :: NotCompatibleWithDevice , "NOT_APPROVED" => NonComplianceDetailInstallationFailureReason :: NotApproved , "PERMISSIONS_NOT_ACCEPTED" => NonComplianceDetailInstallationFailureReason :: PermissionsNotAccepted , "NOT_AVAILABLE_IN_COUNTRY" => NonComplianceDetailInstallationFailureReason :: NotAvailableInCountry , "NO_LICENSES_REMAINING" => NonComplianceDetailInstallationFailureReason :: NoLicensesRemaining , "NOT_ENROLLED" => NonComplianceDetailInstallationFailureReason :: NotEnrolled , "USER_INVALID" => NonComplianceDetailInstallationFailureReason :: UserInvalid , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "IN_PROGRESS" => NonComplianceDetailInstallationFailureReason :: InProgress , "INSTALLATION_FAILURE_REASON_UNKNOWN" => NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnknown , "INSTALLATION_FAILURE_REASON_UNSPECIFIED" => NonComplianceDetailInstallationFailureReason :: InstallationFailureReasonUnspecified , "NO_LICENSES_REMAINING" => NonComplianceDetailInstallationFailureReason :: NoLicensesRemaining , "NOT_APPROVED" => NonComplianceDetailInstallationFailureReason :: NotApproved , "NOT_AVAILABLE_IN_COUNTRY" => NonComplianceDetailInstallationFailureReason :: NotAvailableInCountry , "NOT_COMPATIBLE_WITH_DEVICE" => NonComplianceDetailInstallationFailureReason :: NotCompatibleWithDevice , "NOT_ENROLLED" => NonComplianceDetailInstallationFailureReason :: NotEnrolled , "NOT_FOUND" => NonComplianceDetailInstallationFailureReason :: NotFound , "PERMISSIONS_NOT_ACCEPTED" => NonComplianceDetailInstallationFailureReason :: PermissionsNotAccepted , "USER_INVALID" => NonComplianceDetailInstallationFailureReason :: UserInvalid , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for NonComplianceDetailInstallationFailureReason {
@@ -2506,55 +2506,55 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NonComplianceDetailNonComplianceReason {
-        #[doc = "This value is disallowed."]
-        NonComplianceReasonUnspecified,
         #[doc = "The setting is not supported in the API level of the Android version running on the device."]
         ApiLevel,
-        #[doc = "The management mode (profile owner, device owner, etc.) doesn't support the setting."]
-        ManagementMode,
-        #[doc = "The user has not taken required action to comply with the setting."]
-        UserAction,
-        #[doc = "The setting has an invalid value."]
-        InvalidValue,
-        #[doc = "The app required to implement the policy is not installed."]
-        AppNotInstalled,
-        #[doc = "The policy is not supported by the version of Android Device Policy on the device."]
-        Unsupported,
-        #[doc = "A blocked app is installed."]
-        AppInstalled,
-        #[doc = "The setting hasn't been applied at the time of the report, but is expected to be applied shortly."]
-        Pending,
         #[doc = "The setting can't be applied to the app because the app doesn't support it, for example because its target SDK version is not high enough."]
         AppIncompatible,
+        #[doc = "A blocked app is installed."]
+        AppInstalled,
+        #[doc = "The app required to implement the policy is not installed."]
+        AppNotInstalled,
         #[doc = "The app is installed, but it hasn't been updated to the minimum version code specified by policy."]
         AppNotUpdated,
+        #[doc = "The setting has an invalid value."]
+        InvalidValue,
+        #[doc = "The management mode (profile owner, device owner, etc.) doesn't support the setting."]
+        ManagementMode,
+        #[doc = "This value is disallowed."]
+        NonComplianceReasonUnspecified,
+        #[doc = "The setting hasn't been applied at the time of the report, but is expected to be applied shortly."]
+        Pending,
+        #[doc = "The policy is not supported by the version of Android Device Policy on the device."]
+        Unsupported,
+        #[doc = "The user has not taken required action to comply with the setting."]
+        UserAction,
     }
     impl NonComplianceDetailNonComplianceReason {
         pub fn as_str(self) -> &'static str {
             match self {
+                NonComplianceDetailNonComplianceReason::ApiLevel => "API_LEVEL",
+                NonComplianceDetailNonComplianceReason::AppIncompatible => "APP_INCOMPATIBLE",
+                NonComplianceDetailNonComplianceReason::AppInstalled => "APP_INSTALLED",
+                NonComplianceDetailNonComplianceReason::AppNotInstalled => "APP_NOT_INSTALLED",
+                NonComplianceDetailNonComplianceReason::AppNotUpdated => "APP_NOT_UPDATED",
+                NonComplianceDetailNonComplianceReason::InvalidValue => "INVALID_VALUE",
+                NonComplianceDetailNonComplianceReason::ManagementMode => "MANAGEMENT_MODE",
                 NonComplianceDetailNonComplianceReason::NonComplianceReasonUnspecified => {
                     "NON_COMPLIANCE_REASON_UNSPECIFIED"
                 }
-                NonComplianceDetailNonComplianceReason::ApiLevel => "API_LEVEL",
-                NonComplianceDetailNonComplianceReason::ManagementMode => "MANAGEMENT_MODE",
-                NonComplianceDetailNonComplianceReason::UserAction => "USER_ACTION",
-                NonComplianceDetailNonComplianceReason::InvalidValue => "INVALID_VALUE",
-                NonComplianceDetailNonComplianceReason::AppNotInstalled => "APP_NOT_INSTALLED",
-                NonComplianceDetailNonComplianceReason::Unsupported => "UNSUPPORTED",
-                NonComplianceDetailNonComplianceReason::AppInstalled => "APP_INSTALLED",
                 NonComplianceDetailNonComplianceReason::Pending => "PENDING",
-                NonComplianceDetailNonComplianceReason::AppIncompatible => "APP_INCOMPATIBLE",
-                NonComplianceDetailNonComplianceReason::AppNotUpdated => "APP_NOT_UPDATED",
+                NonComplianceDetailNonComplianceReason::Unsupported => "UNSUPPORTED",
+                NonComplianceDetailNonComplianceReason::UserAction => "USER_ACTION",
             }
         }
     }
     impl ::std::fmt::Display for NonComplianceDetailNonComplianceReason {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NonComplianceDetailNonComplianceReason {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2562,25 +2562,25 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NonComplianceDetailNonComplianceReason {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "API_LEVEL" => NonComplianceDetailNonComplianceReason::ApiLevel,
+                "APP_INCOMPATIBLE" => NonComplianceDetailNonComplianceReason::AppIncompatible,
+                "APP_INSTALLED" => NonComplianceDetailNonComplianceReason::AppInstalled,
+                "APP_NOT_INSTALLED" => NonComplianceDetailNonComplianceReason::AppNotInstalled,
+                "APP_NOT_UPDATED" => NonComplianceDetailNonComplianceReason::AppNotUpdated,
+                "INVALID_VALUE" => NonComplianceDetailNonComplianceReason::InvalidValue,
+                "MANAGEMENT_MODE" => NonComplianceDetailNonComplianceReason::ManagementMode,
                 "NON_COMPLIANCE_REASON_UNSPECIFIED" => {
                     NonComplianceDetailNonComplianceReason::NonComplianceReasonUnspecified
                 }
-                "API_LEVEL" => NonComplianceDetailNonComplianceReason::ApiLevel,
-                "MANAGEMENT_MODE" => NonComplianceDetailNonComplianceReason::ManagementMode,
-                "USER_ACTION" => NonComplianceDetailNonComplianceReason::UserAction,
-                "INVALID_VALUE" => NonComplianceDetailNonComplianceReason::InvalidValue,
-                "APP_NOT_INSTALLED" => NonComplianceDetailNonComplianceReason::AppNotInstalled,
-                "UNSUPPORTED" => NonComplianceDetailNonComplianceReason::Unsupported,
-                "APP_INSTALLED" => NonComplianceDetailNonComplianceReason::AppInstalled,
                 "PENDING" => NonComplianceDetailNonComplianceReason::Pending,
-                "APP_INCOMPATIBLE" => NonComplianceDetailNonComplianceReason::AppIncompatible,
-                "APP_NOT_UPDATED" => NonComplianceDetailNonComplianceReason::AppNotUpdated,
+                "UNSUPPORTED" => NonComplianceDetailNonComplianceReason::Unsupported,
+                "USER_ACTION" => NonComplianceDetailNonComplianceReason::UserAction,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2633,61 +2633,61 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NonComplianceDetailConditionNonComplianceReason {
-        #[doc = "This value is disallowed."]
-        NonComplianceReasonUnspecified,
         #[doc = "The setting is not supported in the API level of the Android version running on the device."]
         ApiLevel,
-        #[doc = "The management mode (profile owner, device owner, etc.) doesn't support the setting."]
-        ManagementMode,
-        #[doc = "The user has not taken required action to comply with the setting."]
-        UserAction,
-        #[doc = "The setting has an invalid value."]
-        InvalidValue,
-        #[doc = "The app required to implement the policy is not installed."]
-        AppNotInstalled,
-        #[doc = "The policy is not supported by the version of Android Device Policy on the device."]
-        Unsupported,
-        #[doc = "A blocked app is installed."]
-        AppInstalled,
-        #[doc = "The setting hasn't been applied at the time of the report, but is expected to be applied shortly."]
-        Pending,
         #[doc = "The setting can't be applied to the app because the app doesn't support it, for example because its target SDK version is not high enough."]
         AppIncompatible,
+        #[doc = "A blocked app is installed."]
+        AppInstalled,
+        #[doc = "The app required to implement the policy is not installed."]
+        AppNotInstalled,
         #[doc = "The app is installed, but it hasn't been updated to the minimum version code specified by policy."]
         AppNotUpdated,
+        #[doc = "The setting has an invalid value."]
+        InvalidValue,
+        #[doc = "The management mode (profile owner, device owner, etc.) doesn't support the setting."]
+        ManagementMode,
+        #[doc = "This value is disallowed."]
+        NonComplianceReasonUnspecified,
+        #[doc = "The setting hasn't been applied at the time of the report, but is expected to be applied shortly."]
+        Pending,
+        #[doc = "The policy is not supported by the version of Android Device Policy on the device."]
+        Unsupported,
+        #[doc = "The user has not taken required action to comply with the setting."]
+        UserAction,
     }
     impl NonComplianceDetailConditionNonComplianceReason {
         pub fn as_str(self) -> &'static str {
             match self {
-                NonComplianceDetailConditionNonComplianceReason::NonComplianceReasonUnspecified => {
-                    "NON_COMPLIANCE_REASON_UNSPECIFIED"
-                }
                 NonComplianceDetailConditionNonComplianceReason::ApiLevel => "API_LEVEL",
-                NonComplianceDetailConditionNonComplianceReason::ManagementMode => {
-                    "MANAGEMENT_MODE"
-                }
-                NonComplianceDetailConditionNonComplianceReason::UserAction => "USER_ACTION",
-                NonComplianceDetailConditionNonComplianceReason::InvalidValue => "INVALID_VALUE",
-                NonComplianceDetailConditionNonComplianceReason::AppNotInstalled => {
-                    "APP_NOT_INSTALLED"
-                }
-                NonComplianceDetailConditionNonComplianceReason::Unsupported => "UNSUPPORTED",
-                NonComplianceDetailConditionNonComplianceReason::AppInstalled => "APP_INSTALLED",
-                NonComplianceDetailConditionNonComplianceReason::Pending => "PENDING",
                 NonComplianceDetailConditionNonComplianceReason::AppIncompatible => {
                     "APP_INCOMPATIBLE"
                 }
+                NonComplianceDetailConditionNonComplianceReason::AppInstalled => "APP_INSTALLED",
+                NonComplianceDetailConditionNonComplianceReason::AppNotInstalled => {
+                    "APP_NOT_INSTALLED"
+                }
                 NonComplianceDetailConditionNonComplianceReason::AppNotUpdated => "APP_NOT_UPDATED",
+                NonComplianceDetailConditionNonComplianceReason::InvalidValue => "INVALID_VALUE",
+                NonComplianceDetailConditionNonComplianceReason::ManagementMode => {
+                    "MANAGEMENT_MODE"
+                }
+                NonComplianceDetailConditionNonComplianceReason::NonComplianceReasonUnspecified => {
+                    "NON_COMPLIANCE_REASON_UNSPECIFIED"
+                }
+                NonComplianceDetailConditionNonComplianceReason::Pending => "PENDING",
+                NonComplianceDetailConditionNonComplianceReason::Unsupported => "UNSUPPORTED",
+                NonComplianceDetailConditionNonComplianceReason::UserAction => "USER_ACTION",
             }
         }
     }
     impl ::std::fmt::Display for NonComplianceDetailConditionNonComplianceReason {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NonComplianceDetailConditionNonComplianceReason {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2695,31 +2695,31 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NonComplianceDetailConditionNonComplianceReason {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NON_COMPLIANCE_REASON_UNSPECIFIED" => {
-                    NonComplianceDetailConditionNonComplianceReason::NonComplianceReasonUnspecified
-                }
                 "API_LEVEL" => NonComplianceDetailConditionNonComplianceReason::ApiLevel,
-                "MANAGEMENT_MODE" => {
-                    NonComplianceDetailConditionNonComplianceReason::ManagementMode
-                }
-                "USER_ACTION" => NonComplianceDetailConditionNonComplianceReason::UserAction,
-                "INVALID_VALUE" => NonComplianceDetailConditionNonComplianceReason::InvalidValue,
-                "APP_NOT_INSTALLED" => {
-                    NonComplianceDetailConditionNonComplianceReason::AppNotInstalled
-                }
-                "UNSUPPORTED" => NonComplianceDetailConditionNonComplianceReason::Unsupported,
-                "APP_INSTALLED" => NonComplianceDetailConditionNonComplianceReason::AppInstalled,
-                "PENDING" => NonComplianceDetailConditionNonComplianceReason::Pending,
                 "APP_INCOMPATIBLE" => {
                     NonComplianceDetailConditionNonComplianceReason::AppIncompatible
                 }
+                "APP_INSTALLED" => NonComplianceDetailConditionNonComplianceReason::AppInstalled,
+                "APP_NOT_INSTALLED" => {
+                    NonComplianceDetailConditionNonComplianceReason::AppNotInstalled
+                }
                 "APP_NOT_UPDATED" => NonComplianceDetailConditionNonComplianceReason::AppNotUpdated,
+                "INVALID_VALUE" => NonComplianceDetailConditionNonComplianceReason::InvalidValue,
+                "MANAGEMENT_MODE" => {
+                    NonComplianceDetailConditionNonComplianceReason::ManagementMode
+                }
+                "NON_COMPLIANCE_REASON_UNSPECIFIED" => {
+                    NonComplianceDetailConditionNonComplianceReason::NonComplianceReasonUnspecified
+                }
+                "PENDING" => NonComplianceDetailConditionNonComplianceReason::Pending,
+                "UNSUPPORTED" => NonComplianceDetailConditionNonComplianceReason::Unsupported,
+                "USER_ACTION" => NonComplianceDetailConditionNonComplianceReason::UserAction,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2828,46 +2828,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PasswordRequirementsPasswordQuality {
-        #[doc = "There are no password requirements."]
-        PasswordQualityUnspecified,
-        #[doc = "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000)."]
-        BiometricWeak,
-        #[doc = "A password is required, but there are no restrictions on what the password must contain."]
-        Something,
-        #[doc = "The password must contain numeric characters."]
-        Numeric,
-        #[doc = "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences."]
-        NumericComplex,
         #[doc = "The password must contain alphabetic (or symbol) characters."]
         Alphabetic,
         #[doc = "The password must contain both numeric and alphabetic (or symbol) characters."]
         Alphanumeric,
+        #[doc = "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000)."]
+        BiometricWeak,
         #[doc = "The password must contain at least a letter, a numerical digit and a special symbol. Other password constraints, for example, password_minimum_letters are enforced."]
         Complex,
+        #[doc = "The password must contain numeric characters."]
+        Numeric,
+        #[doc = "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences."]
+        NumericComplex,
+        #[doc = "There are no password requirements."]
+        PasswordQualityUnspecified,
+        #[doc = "A password is required, but there are no restrictions on what the password must contain."]
+        Something,
     }
     impl PasswordRequirementsPasswordQuality {
         pub fn as_str(self) -> &'static str {
             match self {
+                PasswordRequirementsPasswordQuality::Alphabetic => "ALPHABETIC",
+                PasswordRequirementsPasswordQuality::Alphanumeric => "ALPHANUMERIC",
+                PasswordRequirementsPasswordQuality::BiometricWeak => "BIOMETRIC_WEAK",
+                PasswordRequirementsPasswordQuality::Complex => "COMPLEX",
+                PasswordRequirementsPasswordQuality::Numeric => "NUMERIC",
+                PasswordRequirementsPasswordQuality::NumericComplex => "NUMERIC_COMPLEX",
                 PasswordRequirementsPasswordQuality::PasswordQualityUnspecified => {
                     "PASSWORD_QUALITY_UNSPECIFIED"
                 }
-                PasswordRequirementsPasswordQuality::BiometricWeak => "BIOMETRIC_WEAK",
                 PasswordRequirementsPasswordQuality::Something => "SOMETHING",
-                PasswordRequirementsPasswordQuality::Numeric => "NUMERIC",
-                PasswordRequirementsPasswordQuality::NumericComplex => "NUMERIC_COMPLEX",
-                PasswordRequirementsPasswordQuality::Alphabetic => "ALPHABETIC",
-                PasswordRequirementsPasswordQuality::Alphanumeric => "ALPHANUMERIC",
-                PasswordRequirementsPasswordQuality::Complex => "COMPLEX",
             }
         }
     }
     impl ::std::fmt::Display for PasswordRequirementsPasswordQuality {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PasswordRequirementsPasswordQuality {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2875,22 +2875,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PasswordRequirementsPasswordQuality {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALPHABETIC" => PasswordRequirementsPasswordQuality::Alphabetic,
+                "ALPHANUMERIC" => PasswordRequirementsPasswordQuality::Alphanumeric,
+                "BIOMETRIC_WEAK" => PasswordRequirementsPasswordQuality::BiometricWeak,
+                "COMPLEX" => PasswordRequirementsPasswordQuality::Complex,
+                "NUMERIC" => PasswordRequirementsPasswordQuality::Numeric,
+                "NUMERIC_COMPLEX" => PasswordRequirementsPasswordQuality::NumericComplex,
                 "PASSWORD_QUALITY_UNSPECIFIED" => {
                     PasswordRequirementsPasswordQuality::PasswordQualityUnspecified
                 }
-                "BIOMETRIC_WEAK" => PasswordRequirementsPasswordQuality::BiometricWeak,
                 "SOMETHING" => PasswordRequirementsPasswordQuality::Something,
-                "NUMERIC" => PasswordRequirementsPasswordQuality::Numeric,
-                "NUMERIC_COMPLEX" => PasswordRequirementsPasswordQuality::NumericComplex,
-                "ALPHABETIC" => PasswordRequirementsPasswordQuality::Alphabetic,
-                "ALPHANUMERIC" => PasswordRequirementsPasswordQuality::Alphanumeric,
-                "COMPLEX" => PasswordRequirementsPasswordQuality::Complex,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2911,29 +2911,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PasswordRequirementsPasswordScope {
-        #[doc = "The scope is unspecified. The password requirements are applied to the work profile for work profile devices and the whole device for fully managed or dedicated devices."]
-        ScopeUnspecified,
         #[doc = "The password requirements are only applied to the device."]
         ScopeDevice,
         #[doc = "The password requirements are only applied to the work profile."]
         ScopeProfile,
+        #[doc = "The scope is unspecified. The password requirements are applied to the work profile for work profile devices and the whole device for fully managed or dedicated devices."]
+        ScopeUnspecified,
     }
     impl PasswordRequirementsPasswordScope {
         pub fn as_str(self) -> &'static str {
             match self {
-                PasswordRequirementsPasswordScope::ScopeUnspecified => "SCOPE_UNSPECIFIED",
                 PasswordRequirementsPasswordScope::ScopeDevice => "SCOPE_DEVICE",
                 PasswordRequirementsPasswordScope::ScopeProfile => "SCOPE_PROFILE",
+                PasswordRequirementsPasswordScope::ScopeUnspecified => "SCOPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for PasswordRequirementsPasswordScope {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PasswordRequirementsPasswordScope {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2941,15 +2941,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PasswordRequirementsPasswordScope {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SCOPE_UNSPECIFIED" => PasswordRequirementsPasswordScope::ScopeUnspecified,
                 "SCOPE_DEVICE" => PasswordRequirementsPasswordScope::ScopeDevice,
                 "SCOPE_PROFILE" => PasswordRequirementsPasswordScope::ScopeProfile,
+                "SCOPE_UNSPECIFIED" => PasswordRequirementsPasswordScope::ScopeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3031,34 +3031,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PermissionGrantPolicy {
+        #[doc = "Automatically deny a permission."]
+        Deny,
+        #[doc = "Automatically grant a permission."]
+        Grant,
         #[doc = "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default."]
         PermissionPolicyUnspecified,
         #[doc = "Prompt the user to grant a permission."]
         Prompt,
-        #[doc = "Automatically grant a permission."]
-        Grant,
-        #[doc = "Automatically deny a permission."]
-        Deny,
     }
     impl PermissionGrantPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
+                PermissionGrantPolicy::Deny => "DENY",
+                PermissionGrantPolicy::Grant => "GRANT",
                 PermissionGrantPolicy::PermissionPolicyUnspecified => {
                     "PERMISSION_POLICY_UNSPECIFIED"
                 }
                 PermissionGrantPolicy::Prompt => "PROMPT",
-                PermissionGrantPolicy::Grant => "GRANT",
-                PermissionGrantPolicy::Deny => "DENY",
             }
         }
     }
     impl ::std::fmt::Display for PermissionGrantPolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PermissionGrantPolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3066,18 +3066,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PermissionGrantPolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DENY" => PermissionGrantPolicy::Deny,
+                "GRANT" => PermissionGrantPolicy::Grant,
                 "PERMISSION_POLICY_UNSPECIFIED" => {
                     PermissionGrantPolicy::PermissionPolicyUnspecified
                 }
                 "PROMPT" => PermissionGrantPolicy::Prompt,
-                "GRANT" => PermissionGrantPolicy::Grant,
-                "DENY" => PermissionGrantPolicy::Deny,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3160,8 +3160,8 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyAndroidDevicePolicyTracksItems {
         AppTrackUnspecified,
-        Production,
         Beta,
+        Production,
     }
     impl PolicyAndroidDevicePolicyTracksItems {
         pub fn as_str(self) -> &'static str {
@@ -3169,18 +3169,18 @@ pub mod schemas {
                 PolicyAndroidDevicePolicyTracksItems::AppTrackUnspecified => {
                     "APP_TRACK_UNSPECIFIED"
                 }
-                PolicyAndroidDevicePolicyTracksItems::Production => "PRODUCTION",
                 PolicyAndroidDevicePolicyTracksItems::Beta => "BETA",
+                PolicyAndroidDevicePolicyTracksItems::Production => "PRODUCTION",
             }
         }
     }
     impl ::std::fmt::Display for PolicyAndroidDevicePolicyTracksItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyAndroidDevicePolicyTracksItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3188,7 +3188,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyAndroidDevicePolicyTracksItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3197,8 +3197,8 @@ pub mod schemas {
                 "APP_TRACK_UNSPECIFIED" => {
                     PolicyAndroidDevicePolicyTracksItems::AppTrackUnspecified
                 }
-                "PRODUCTION" => PolicyAndroidDevicePolicyTracksItems::Production,
                 "BETA" => PolicyAndroidDevicePolicyTracksItems::Beta,
+                "PRODUCTION" => PolicyAndroidDevicePolicyTracksItems::Production,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3219,6 +3219,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyAppAutoUpdatePolicy {
+        #[doc = "Apps are auto-updated at any time. Data charges may apply."]
+        Always,
         #[doc = "The auto-update policy is not set. Equivalent to CHOICE_TO_THE_USER."]
         AppAutoUpdatePolicyUnspecified,
         #[doc = "The user can control auto-updates."]
@@ -3227,29 +3229,27 @@ pub mod schemas {
         Never,
         #[doc = "Apps are auto-updated over Wi-Fi only."]
         WifiOnly,
-        #[doc = "Apps are auto-updated at any time. Data charges may apply."]
-        Always,
     }
     impl PolicyAppAutoUpdatePolicy {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyAppAutoUpdatePolicy::Always => "ALWAYS",
                 PolicyAppAutoUpdatePolicy::AppAutoUpdatePolicyUnspecified => {
                     "APP_AUTO_UPDATE_POLICY_UNSPECIFIED"
                 }
                 PolicyAppAutoUpdatePolicy::ChoiceToTheUser => "CHOICE_TO_THE_USER",
                 PolicyAppAutoUpdatePolicy::Never => "NEVER",
                 PolicyAppAutoUpdatePolicy::WifiOnly => "WIFI_ONLY",
-                PolicyAppAutoUpdatePolicy::Always => "ALWAYS",
             }
         }
     }
     impl ::std::fmt::Display for PolicyAppAutoUpdatePolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyAppAutoUpdatePolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3257,19 +3257,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyAppAutoUpdatePolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALWAYS" => PolicyAppAutoUpdatePolicy::Always,
                 "APP_AUTO_UPDATE_POLICY_UNSPECIFIED" => {
                     PolicyAppAutoUpdatePolicy::AppAutoUpdatePolicyUnspecified
                 }
                 "CHOICE_TO_THE_USER" => PolicyAppAutoUpdatePolicy::ChoiceToTheUser,
                 "NEVER" => PolicyAppAutoUpdatePolicy::Never,
                 "WIFI_ONLY" => PolicyAppAutoUpdatePolicy::WifiOnly,
-                "ALWAYS" => PolicyAppAutoUpdatePolicy::Always,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3290,34 +3290,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyDefaultPermissionPolicy {
+        #[doc = "Automatically deny a permission."]
+        Deny,
+        #[doc = "Automatically grant a permission."]
+        Grant,
         #[doc = "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default."]
         PermissionPolicyUnspecified,
         #[doc = "Prompt the user to grant a permission."]
         Prompt,
-        #[doc = "Automatically grant a permission."]
-        Grant,
-        #[doc = "Automatically deny a permission."]
-        Deny,
     }
     impl PolicyDefaultPermissionPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyDefaultPermissionPolicy::Deny => "DENY",
+                PolicyDefaultPermissionPolicy::Grant => "GRANT",
                 PolicyDefaultPermissionPolicy::PermissionPolicyUnspecified => {
                     "PERMISSION_POLICY_UNSPECIFIED"
                 }
                 PolicyDefaultPermissionPolicy::Prompt => "PROMPT",
-                PolicyDefaultPermissionPolicy::Grant => "GRANT",
-                PolicyDefaultPermissionPolicy::Deny => "DENY",
             }
         }
     }
     impl ::std::fmt::Display for PolicyDefaultPermissionPolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyDefaultPermissionPolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3325,18 +3325,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyDefaultPermissionPolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DENY" => PolicyDefaultPermissionPolicy::Deny,
+                "GRANT" => PolicyDefaultPermissionPolicy::Grant,
                 "PERMISSION_POLICY_UNSPECIFIED" => {
                     PolicyDefaultPermissionPolicy::PermissionPolicyUnspecified
                 }
                 "PROMPT" => PolicyDefaultPermissionPolicy::Prompt,
-                "GRANT" => PolicyDefaultPermissionPolicy::Grant,
-                "DENY" => PolicyDefaultPermissionPolicy::Deny,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3357,31 +3357,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyEncryptionPolicy {
-        #[doc = "This value is ignored, i.e. no encryption required"]
-        EncryptionPolicyUnspecified,
-        #[doc = "Encryption required but no password required to boot"]
-        EnabledWithoutPassword,
         #[doc = "Encryption required with password required to boot"]
         EnabledWithPassword,
+        #[doc = "Encryption required but no password required to boot"]
+        EnabledWithoutPassword,
+        #[doc = "This value is ignored, i.e. no encryption required"]
+        EncryptionPolicyUnspecified,
     }
     impl PolicyEncryptionPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyEncryptionPolicy::EnabledWithPassword => "ENABLED_WITH_PASSWORD",
+                PolicyEncryptionPolicy::EnabledWithoutPassword => "ENABLED_WITHOUT_PASSWORD",
                 PolicyEncryptionPolicy::EncryptionPolicyUnspecified => {
                     "ENCRYPTION_POLICY_UNSPECIFIED"
                 }
-                PolicyEncryptionPolicy::EnabledWithoutPassword => "ENABLED_WITHOUT_PASSWORD",
-                PolicyEncryptionPolicy::EnabledWithPassword => "ENABLED_WITH_PASSWORD",
             }
         }
     }
     impl ::std::fmt::Display for PolicyEncryptionPolicy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyEncryptionPolicy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3389,17 +3389,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyEncryptionPolicy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ENABLED_WITH_PASSWORD" => PolicyEncryptionPolicy::EnabledWithPassword,
+                "ENABLED_WITHOUT_PASSWORD" => PolicyEncryptionPolicy::EnabledWithoutPassword,
                 "ENCRYPTION_POLICY_UNSPECIFIED" => {
                     PolicyEncryptionPolicy::EncryptionPolicyUnspecified
                 }
-                "ENABLED_WITHOUT_PASSWORD" => PolicyEncryptionPolicy::EnabledWithoutPassword,
-                "ENABLED_WITH_PASSWORD" => PolicyEncryptionPolicy::EnabledWithPassword,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3420,40 +3420,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyKeyguardDisabledFeaturesItems {
-        KeyguardDisabledFeatureUnspecified,
+        AllFeatures,
         Camera,
-        Notifications,
-        UnredactedNotifications,
-        TrustAgents,
         DisableFingerprint,
         DisableRemoteInput,
-        AllFeatures,
+        KeyguardDisabledFeatureUnspecified,
+        Notifications,
+        TrustAgents,
+        UnredactedNotifications,
     }
     impl PolicyKeyguardDisabledFeaturesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyKeyguardDisabledFeaturesItems::AllFeatures => "ALL_FEATURES",
+                PolicyKeyguardDisabledFeaturesItems::Camera => "CAMERA",
+                PolicyKeyguardDisabledFeaturesItems::DisableFingerprint => "DISABLE_FINGERPRINT",
+                PolicyKeyguardDisabledFeaturesItems::DisableRemoteInput => "DISABLE_REMOTE_INPUT",
                 PolicyKeyguardDisabledFeaturesItems::KeyguardDisabledFeatureUnspecified => {
                     "KEYGUARD_DISABLED_FEATURE_UNSPECIFIED"
                 }
-                PolicyKeyguardDisabledFeaturesItems::Camera => "CAMERA",
                 PolicyKeyguardDisabledFeaturesItems::Notifications => "NOTIFICATIONS",
+                PolicyKeyguardDisabledFeaturesItems::TrustAgents => "TRUST_AGENTS",
                 PolicyKeyguardDisabledFeaturesItems::UnredactedNotifications => {
                     "UNREDACTED_NOTIFICATIONS"
                 }
-                PolicyKeyguardDisabledFeaturesItems::TrustAgents => "TRUST_AGENTS",
-                PolicyKeyguardDisabledFeaturesItems::DisableFingerprint => "DISABLE_FINGERPRINT",
-                PolicyKeyguardDisabledFeaturesItems::DisableRemoteInput => "DISABLE_REMOTE_INPUT",
-                PolicyKeyguardDisabledFeaturesItems::AllFeatures => "ALL_FEATURES",
             }
         }
     }
     impl ::std::fmt::Display for PolicyKeyguardDisabledFeaturesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyKeyguardDisabledFeaturesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3461,24 +3461,24 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyKeyguardDisabledFeaturesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_FEATURES" => PolicyKeyguardDisabledFeaturesItems::AllFeatures,
+                "CAMERA" => PolicyKeyguardDisabledFeaturesItems::Camera,
+                "DISABLE_FINGERPRINT" => PolicyKeyguardDisabledFeaturesItems::DisableFingerprint,
+                "DISABLE_REMOTE_INPUT" => PolicyKeyguardDisabledFeaturesItems::DisableRemoteInput,
                 "KEYGUARD_DISABLED_FEATURE_UNSPECIFIED" => {
                     PolicyKeyguardDisabledFeaturesItems::KeyguardDisabledFeatureUnspecified
                 }
-                "CAMERA" => PolicyKeyguardDisabledFeaturesItems::Camera,
                 "NOTIFICATIONS" => PolicyKeyguardDisabledFeaturesItems::Notifications,
+                "TRUST_AGENTS" => PolicyKeyguardDisabledFeaturesItems::TrustAgents,
                 "UNREDACTED_NOTIFICATIONS" => {
                     PolicyKeyguardDisabledFeaturesItems::UnredactedNotifications
                 }
-                "TRUST_AGENTS" => PolicyKeyguardDisabledFeaturesItems::TrustAgents,
-                "DISABLE_FINGERPRINT" => PolicyKeyguardDisabledFeaturesItems::DisableFingerprint,
-                "DISABLE_REMOTE_INPUT" => PolicyKeyguardDisabledFeaturesItems::DisableRemoteInput,
-                "ALL_FEATURES" => PolicyKeyguardDisabledFeaturesItems::AllFeatures,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3499,35 +3499,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyLocationMode {
-        #[doc = "The current device value is not modified."]
-        LocationModeUnspecified,
-        #[doc = "All location detection methods are enabled, including GPS, networks, and other sensors."]
-        HighAccuracy,
-        #[doc = "Only GPS and other sensors are enabled."]
-        SensorsOnly,
         #[doc = "Only the network location provider is enabled."]
         BatterySaving,
+        #[doc = "All location detection methods are enabled, including GPS, networks, and other sensors."]
+        HighAccuracy,
+        #[doc = "The current device value is not modified."]
+        LocationModeUnspecified,
         #[doc = "Location detection is disabled."]
         Off,
+        #[doc = "Only GPS and other sensors are enabled."]
+        SensorsOnly,
     }
     impl PolicyLocationMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                PolicyLocationMode::LocationModeUnspecified => "LOCATION_MODE_UNSPECIFIED",
-                PolicyLocationMode::HighAccuracy => "HIGH_ACCURACY",
-                PolicyLocationMode::SensorsOnly => "SENSORS_ONLY",
                 PolicyLocationMode::BatterySaving => "BATTERY_SAVING",
+                PolicyLocationMode::HighAccuracy => "HIGH_ACCURACY",
+                PolicyLocationMode::LocationModeUnspecified => "LOCATION_MODE_UNSPECIFIED",
                 PolicyLocationMode::Off => "OFF",
+                PolicyLocationMode::SensorsOnly => "SENSORS_ONLY",
             }
         }
     }
     impl ::std::fmt::Display for PolicyLocationMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyLocationMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3535,17 +3535,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyLocationMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LOCATION_MODE_UNSPECIFIED" => PolicyLocationMode::LocationModeUnspecified,
-                "HIGH_ACCURACY" => PolicyLocationMode::HighAccuracy,
-                "SENSORS_ONLY" => PolicyLocationMode::SensorsOnly,
                 "BATTERY_SAVING" => PolicyLocationMode::BatterySaving,
+                "HIGH_ACCURACY" => PolicyLocationMode::HighAccuracy,
+                "LOCATION_MODE_UNSPECIFIED" => PolicyLocationMode::LocationModeUnspecified,
                 "OFF" => PolicyLocationMode::Off,
+                "SENSORS_ONLY" => PolicyLocationMode::SensorsOnly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3566,29 +3566,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyPlayStoreMode {
+        #[doc = "All apps are available and any app that should not be on the device should be explicitly marked as 'BLOCKED' in the applications policy."]
+        Blacklist,
         #[doc = "Unspecified. Defaults to WHITELIST."]
         PlayStoreModeUnspecified,
         #[doc = "Only apps that are in the policy are available and any app not in the policy will be automatically uninstalled from the device."]
         Whitelist,
-        #[doc = "All apps are available and any app that should not be on the device should be explicitly marked as 'BLOCKED' in the applications policy."]
-        Blacklist,
     }
     impl PolicyPlayStoreMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyPlayStoreMode::Blacklist => "BLACKLIST",
                 PolicyPlayStoreMode::PlayStoreModeUnspecified => "PLAY_STORE_MODE_UNSPECIFIED",
                 PolicyPlayStoreMode::Whitelist => "WHITELIST",
-                PolicyPlayStoreMode::Blacklist => "BLACKLIST",
             }
         }
     }
     impl ::std::fmt::Display for PolicyPlayStoreMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyPlayStoreMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3596,15 +3596,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyPlayStoreMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BLACKLIST" => PolicyPlayStoreMode::Blacklist,
                 "PLAY_STORE_MODE_UNSPECIFIED" => PolicyPlayStoreMode::PlayStoreModeUnspecified,
                 "WHITELIST" => PolicyPlayStoreMode::Whitelist,
-                "BLACKLIST" => PolicyPlayStoreMode::Blacklist,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3625,30 +3625,30 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyStayOnPluggedModesItems {
-        BatteryPluggedModeUnspecified,
         Ac,
+        BatteryPluggedModeUnspecified,
         Usb,
         Wireless,
     }
     impl PolicyStayOnPluggedModesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                PolicyStayOnPluggedModesItems::Ac => "AC",
                 PolicyStayOnPluggedModesItems::BatteryPluggedModeUnspecified => {
                     "BATTERY_PLUGGED_MODE_UNSPECIFIED"
                 }
-                PolicyStayOnPluggedModesItems::Ac => "AC",
                 PolicyStayOnPluggedModesItems::Usb => "USB",
                 PolicyStayOnPluggedModesItems::Wireless => "WIRELESS",
             }
         }
     }
     impl ::std::fmt::Display for PolicyStayOnPluggedModesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PolicyStayOnPluggedModesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3656,16 +3656,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PolicyStayOnPluggedModesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AC" => PolicyStayOnPluggedModesItems::Ac,
                 "BATTERY_PLUGGED_MODE_UNSPECIFIED" => {
                     PolicyStayOnPluggedModesItems::BatteryPluggedModeUnspecified
                 }
-                "AC" => PolicyStayOnPluggedModesItems::Ac,
                 "USB" => PolicyStayOnPluggedModesItems::Usb,
                 "WIRELESS" => PolicyStayOnPluggedModesItems::Wireless,
                 _ => {
@@ -3975,29 +3975,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PostureDetailSecurityRisk {
+        #[doc = "SafetyNet detects that the device uses a compromised OS (basicIntegrity check fails)."]
+        CompromisedOs,
         #[doc = "Unspecified. Cannot determine the risk detail."]
         SecurityRiskUnspecified,
         #[doc = "SafetyNet detects that the device uses an unknown OS (basicIntegrity check passes while ctsProfileMatch fails)."]
         UnknownOs,
-        #[doc = "SafetyNet detects that the device uses a compromised OS (basicIntegrity check fails)."]
-        CompromisedOs,
     }
     impl PostureDetailSecurityRisk {
         pub fn as_str(self) -> &'static str {
             match self {
+                PostureDetailSecurityRisk::CompromisedOs => "COMPROMISED_OS",
                 PostureDetailSecurityRisk::SecurityRiskUnspecified => "SECURITY_RISK_UNSPECIFIED",
                 PostureDetailSecurityRisk::UnknownOs => "UNKNOWN_OS",
-                PostureDetailSecurityRisk::CompromisedOs => "COMPROMISED_OS",
             }
         }
     }
     impl ::std::fmt::Display for PostureDetailSecurityRisk {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PostureDetailSecurityRisk {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4005,15 +4005,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PostureDetailSecurityRisk {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COMPROMISED_OS" => PostureDetailSecurityRisk::CompromisedOs,
                 "SECURITY_RISK_UNSPECIFIED" => PostureDetailSecurityRisk::SecurityRiskUnspecified,
                 "UNKNOWN_OS" => PostureDetailSecurityRisk::UnknownOs,
-                "COMPROMISED_OS" => PostureDetailSecurityRisk::CompromisedOs,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4063,46 +4063,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PowerManagementEventEventType {
-        #[doc = "Unspecified. No events have this type."]
-        PowerManagementEventTypeUnspecified,
         #[doc = "Battery level was measured."]
         BatteryLevelCollected,
-        #[doc = "The device started charging."]
-        PowerConnected,
-        #[doc = "The device stopped charging."]
-        PowerDisconnected,
         #[doc = "The device entered low-power mode."]
         BatteryLow,
         #[doc = "The device exited low-power mode."]
         BatteryOkay,
         #[doc = "The device booted."]
         BootCompleted,
+        #[doc = "The device started charging."]
+        PowerConnected,
+        #[doc = "The device stopped charging."]
+        PowerDisconnected,
+        #[doc = "Unspecified. No events have this type."]
+        PowerManagementEventTypeUnspecified,
         #[doc = "The device shut down."]
         Shutdown,
     }
     impl PowerManagementEventEventType {
         pub fn as_str(self) -> &'static str {
             match self {
-                PowerManagementEventEventType::PowerManagementEventTypeUnspecified => {
-                    "POWER_MANAGEMENT_EVENT_TYPE_UNSPECIFIED"
-                }
                 PowerManagementEventEventType::BatteryLevelCollected => "BATTERY_LEVEL_COLLECTED",
-                PowerManagementEventEventType::PowerConnected => "POWER_CONNECTED",
-                PowerManagementEventEventType::PowerDisconnected => "POWER_DISCONNECTED",
                 PowerManagementEventEventType::BatteryLow => "BATTERY_LOW",
                 PowerManagementEventEventType::BatteryOkay => "BATTERY_OKAY",
                 PowerManagementEventEventType::BootCompleted => "BOOT_COMPLETED",
+                PowerManagementEventEventType::PowerConnected => "POWER_CONNECTED",
+                PowerManagementEventEventType::PowerDisconnected => "POWER_DISCONNECTED",
+                PowerManagementEventEventType::PowerManagementEventTypeUnspecified => {
+                    "POWER_MANAGEMENT_EVENT_TYPE_UNSPECIFIED"
+                }
                 PowerManagementEventEventType::Shutdown => "SHUTDOWN",
             }
         }
     }
     impl ::std::fmt::Display for PowerManagementEventEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PowerManagementEventEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4110,21 +4110,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PowerManagementEventEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "POWER_MANAGEMENT_EVENT_TYPE_UNSPECIFIED" => {
-                    PowerManagementEventEventType::PowerManagementEventTypeUnspecified
-                }
                 "BATTERY_LEVEL_COLLECTED" => PowerManagementEventEventType::BatteryLevelCollected,
-                "POWER_CONNECTED" => PowerManagementEventEventType::PowerConnected,
-                "POWER_DISCONNECTED" => PowerManagementEventEventType::PowerDisconnected,
                 "BATTERY_LOW" => PowerManagementEventEventType::BatteryLow,
                 "BATTERY_OKAY" => PowerManagementEventEventType::BatteryOkay,
                 "BOOT_COMPLETED" => PowerManagementEventEventType::BootCompleted,
+                "POWER_CONNECTED" => PowerManagementEventEventType::PowerConnected,
+                "POWER_DISCONNECTED" => PowerManagementEventEventType::PowerDisconnected,
+                "POWER_MANAGEMENT_EVENT_TYPE_UNSPECIFIED" => {
+                    PowerManagementEventEventType::PowerManagementEventTypeUnspecified
+                }
                 "SHUTDOWN" => PowerManagementEventEventType::Shutdown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4204,32 +4204,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SecurityPostureDevicePosture {
-        #[doc = "Unspecified. It is unable to determine the correct device posture because of insufficient data (for example, in the case of SafetyNet outage, there is no SafetyNet result). There is no posture detail for this posture value."]
-        PostureUnspecified,
-        #[doc = "The device is in the most secure state (both SafetyNet's ctsProfileMatch check and basicIntegrity check pass)."]
-        Secure,
         #[doc = "The device is at risk (both SafetyNet's ctsProfileMatch check and basicIntegrity check pass)."]
         AtRisk,
+        #[doc = "Unspecified. It is unable to determine the correct device posture because of insufficient data (for example, in the case of SafetyNet outage, there is no SafetyNet result). There is no posture detail for this posture value."]
+        PostureUnspecified,
         #[doc = "The device is potentially compromised (either SafetyNet's ctsProfileMatch check or basicIntegrity check fails)."]
         PotentiallyCompromised,
+        #[doc = "The device is in the most secure state (both SafetyNet's ctsProfileMatch check and basicIntegrity check pass)."]
+        Secure,
     }
     impl SecurityPostureDevicePosture {
         pub fn as_str(self) -> &'static str {
             match self {
-                SecurityPostureDevicePosture::PostureUnspecified => "POSTURE_UNSPECIFIED",
-                SecurityPostureDevicePosture::Secure => "SECURE",
                 SecurityPostureDevicePosture::AtRisk => "AT_RISK",
+                SecurityPostureDevicePosture::PostureUnspecified => "POSTURE_UNSPECIFIED",
                 SecurityPostureDevicePosture::PotentiallyCompromised => "POTENTIALLY_COMPROMISED",
+                SecurityPostureDevicePosture::Secure => "SECURE",
             }
         }
     }
     impl ::std::fmt::Display for SecurityPostureDevicePosture {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SecurityPostureDevicePosture {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4237,16 +4237,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SecurityPostureDevicePosture {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "POSTURE_UNSPECIFIED" => SecurityPostureDevicePosture::PostureUnspecified,
-                "SECURE" => SecurityPostureDevicePosture::Secure,
                 "AT_RISK" => SecurityPostureDevicePosture::AtRisk,
+                "POSTURE_UNSPECIFIED" => SecurityPostureDevicePosture::PostureUnspecified,
                 "POTENTIALLY_COMPROMISED" => SecurityPostureDevicePosture::PotentiallyCompromised,
+                "SECURE" => SecurityPostureDevicePosture::Secure,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4518,32 +4518,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SystemUpdateType {
-        #[doc = "Follow the default update behavior for the device, which typically requires the user to accept system updates."]
-        SystemUpdateTypeUnspecified,
         #[doc = "Install automatically as soon as an update is available."]
         Automatic,
-        #[doc = "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play."]
-        Windowed,
         #[doc = "Postpone automatic install up to a maximum of 30 days."]
         Postpone,
+        #[doc = "Follow the default update behavior for the device, which typically requires the user to accept system updates."]
+        SystemUpdateTypeUnspecified,
+        #[doc = "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play."]
+        Windowed,
     }
     impl SystemUpdateType {
         pub fn as_str(self) -> &'static str {
             match self {
-                SystemUpdateType::SystemUpdateTypeUnspecified => "SYSTEM_UPDATE_TYPE_UNSPECIFIED",
                 SystemUpdateType::Automatic => "AUTOMATIC",
-                SystemUpdateType::Windowed => "WINDOWED",
                 SystemUpdateType::Postpone => "POSTPONE",
+                SystemUpdateType::SystemUpdateTypeUnspecified => "SYSTEM_UPDATE_TYPE_UNSPECIFIED",
+                SystemUpdateType::Windowed => "WINDOWED",
             }
         }
     }
     impl ::std::fmt::Display for SystemUpdateType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SystemUpdateType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4551,16 +4551,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SystemUpdateType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SYSTEM_UPDATE_TYPE_UNSPECIFIED" => SystemUpdateType::SystemUpdateTypeUnspecified,
                 "AUTOMATIC" => SystemUpdateType::Automatic,
-                "WINDOWED" => SystemUpdateType::Windowed,
                 "POSTPONE" => SystemUpdateType::Postpone,
+                "SYSTEM_UPDATE_TYPE_UNSPECIFIED" => SystemUpdateType::SystemUpdateTypeUnspecified,
+                "WINDOWED" => SystemUpdateType::Windowed,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4699,30 +4699,30 @@ pub mod schemas {
     pub enum WebAppDisplayMode {
         #[doc = "Not used."]
         DisplayModeUnspecified,
+        #[doc = "Opens the web app in full screen without any visible controls. The browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area."]
+        FullScreen,
         #[doc = "Opens the web app with a minimal set of browser UI elements for controlling navigation and viewing the page URL."]
         MinimalUi,
         #[doc = "Opens the web app to look and feel like a standalone native application. The browser UI elements and page URL are not visible, however the system status bar and back button are visible."]
         Standalone,
-        #[doc = "Opens the web app in full screen without any visible controls. The browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area."]
-        FullScreen,
     }
     impl WebAppDisplayMode {
         pub fn as_str(self) -> &'static str {
             match self {
                 WebAppDisplayMode::DisplayModeUnspecified => "DISPLAY_MODE_UNSPECIFIED",
+                WebAppDisplayMode::FullScreen => "FULL_SCREEN",
                 WebAppDisplayMode::MinimalUi => "MINIMAL_UI",
                 WebAppDisplayMode::Standalone => "STANDALONE",
-                WebAppDisplayMode::FullScreen => "FULL_SCREEN",
             }
         }
     }
     impl ::std::fmt::Display for WebAppDisplayMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WebAppDisplayMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4730,16 +4730,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WebAppDisplayMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DISPLAY_MODE_UNSPECIFIED" => WebAppDisplayMode::DisplayModeUnspecified,
+                "FULL_SCREEN" => WebAppDisplayMode::FullScreen,
                 "MINIMAL_UI" => WebAppDisplayMode::MinimalUi,
                 "STANDALONE" => WebAppDisplayMode::Standalone,
-                "FULL_SCREEN" => WebAppDisplayMode::FullScreen,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4828,26 +4828,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WebTokenPermissionsItems {
-        WebTokenPermissionUnspecified,
         ApproveApps,
+        WebTokenPermissionUnspecified,
     }
     impl WebTokenPermissionsItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                WebTokenPermissionsItems::ApproveApps => "APPROVE_APPS",
                 WebTokenPermissionsItems::WebTokenPermissionUnspecified => {
                     "WEB_TOKEN_PERMISSION_UNSPECIFIED"
                 }
-                WebTokenPermissionsItems::ApproveApps => "APPROVE_APPS",
             }
         }
     }
     impl ::std::fmt::Display for WebTokenPermissionsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WebTokenPermissionsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4855,16 +4855,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WebTokenPermissionsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "APPROVE_APPS" => WebTokenPermissionsItems::ApproveApps,
                 "WEB_TOKEN_PERMISSION_UNSPECIFIED" => {
                     WebTokenPermissionsItems::WebTokenPermissionUnspecified
                 }
-                "APPROVE_APPS" => WebTokenPermissionsItems::ApproveApps,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4968,12 +4968,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4981,7 +4981,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5024,12 +5024,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5037,7 +5037,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5090,7 +5090,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod enterprises {
         pub mod params {}
         pub struct EnterprisesActions<'a, A> {
@@ -5255,19 +5255,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5417,19 +5407,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5589,19 +5569,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5790,19 +5760,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5937,7 +5897,76 @@ mod resources {
             }
         }
         pub mod devices {
-            pub mod params {}
+            pub mod params {
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum DeleteWipeDataFlagsItems {
+                    PreserveResetProtectionData,
+                    WipeDataFlagUnspecified,
+                    WipeExternalStorage,
+                }
+                impl DeleteWipeDataFlagsItems {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            DeleteWipeDataFlagsItems::PreserveResetProtectionData => {
+                                "PRESERVE_RESET_PROTECTION_DATA"
+                            }
+                            DeleteWipeDataFlagsItems::WipeDataFlagUnspecified => {
+                                "WIPE_DATA_FLAG_UNSPECIFIED"
+                            }
+                            DeleteWipeDataFlagsItems::WipeExternalStorage => {
+                                "WIPE_EXTERNAL_STORAGE"
+                            }
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for DeleteWipeDataFlagsItems {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for DeleteWipeDataFlagsItems {
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for DeleteWipeDataFlagsItems {
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "PRESERVE_RESET_PROTECTION_DATA" => {
+                                DeleteWipeDataFlagsItems::PreserveResetProtectionData
+                            }
+                            "WIPE_DATA_FLAG_UNSPECIFIED" => {
+                                DeleteWipeDataFlagsItems::WipeDataFlagUnspecified
+                            }
+                            "WIPE_EXTERNAL_STORAGE" => {
+                                DeleteWipeDataFlagsItems::WipeExternalStorage
+                            }
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                impl ::field_selector::FieldSelector for DeleteWipeDataFlagsItems {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
+            }
             pub struct DevicesActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
                 pub(crate) auth: &'a std::sync::Mutex<A>,
@@ -6097,19 +6126,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6263,19 +6282,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6429,19 +6438,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6610,19 +6609,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6665,15 +6654,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_devices<T>(self) -> ListDevicesIter<'a, A, T>
+                pub fn iter_devices<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListDevicesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "devices").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "devices")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -6681,13 +6674,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_devices_standard(
                     mut self,
-                ) -> ListDevicesIter<'a, A, crate::schemas::Device> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Device> {
                     self.fields = Some(concat!("nextPageToken,", "devices").to_owned());
-                    ListDevicesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "devices")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -6697,26 +6686,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_devices_debug(
                     mut self,
-                ) -> ListDevicesIter<'a, A, crate::schemas::Device> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Device> {
                     self.fields = Some(concat!("nextPageToken,", "devices", "(*)").to_owned());
-                    ListDevicesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "devices")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListDevicesResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListDevicesResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -6815,52 +6815,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListDevicesIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListDevicesIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "devices")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -6895,19 +6856,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7149,19 +7100,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7318,19 +7259,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7486,19 +7417,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7672,19 +7593,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7727,15 +7638,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_operations<T>(self) -> ListOperationsIter<'a, A, T>
+                    pub fn iter_operations<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListOperationsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "operations").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "operations")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7743,13 +7658,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_operations_standard(
                         mut self,
-                    ) -> ListOperationsIter<'a, A, crate::schemas::Operation> {
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Operation>
+                    {
                         self.fields = Some(concat!("nextPageToken,", "operations").to_owned());
-                        ListOperationsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "operations")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7759,27 +7671,39 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_operations_debug(
                         mut self,
-                    ) -> ListOperationsIter<'a, A, crate::schemas::Operation> {
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Operation>
+                    {
                         self.fields =
                             Some(concat!("nextPageToken,", "operations", "(*)").to_owned());
-                        ListOperationsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "operations")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListOperationsResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListOperationsResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -7879,52 +7803,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListOperationsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListOperationsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "operations")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -8006,19 +7891,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8175,19 +8050,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8433,19 +8298,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8598,19 +8453,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8775,19 +8620,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8830,15 +8665,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_policies<T>(self) -> ListPoliciesIter<'a, A, T>
+                pub fn iter_policies<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListPoliciesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "policies").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "policies")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8846,13 +8685,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_policies_standard(
                     mut self,
-                ) -> ListPoliciesIter<'a, A, crate::schemas::Policy> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Policy> {
                     self.fields = Some(concat!("nextPageToken,", "policies").to_owned());
-                    ListPoliciesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "policies")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8862,26 +8697,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_policies_debug(
                     mut self,
-                ) -> ListPoliciesIter<'a, A, crate::schemas::Policy> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Policy> {
                     self.fields = Some(concat!("nextPageToken,", "policies", "(*)").to_owned());
-                    ListPoliciesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "policies")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListPoliciesResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListPoliciesResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -8980,52 +8826,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListPoliciesIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListPoliciesIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "policies")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -9060,19 +8867,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9345,19 +9142,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9512,19 +9299,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9677,19 +9454,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9854,19 +9621,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9909,15 +9666,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_web_apps<T>(self) -> ListWebAppsIter<'a, A, T>
+                pub fn iter_web_apps<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListWebAppsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "webApps").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "webApps")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9925,13 +9686,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_web_apps_standard(
                     mut self,
-                ) -> ListWebAppsIter<'a, A, crate::schemas::WebApp> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::WebApp> {
                     self.fields = Some(concat!("nextPageToken,", "webApps").to_owned());
-                    ListWebAppsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "webApps")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -9941,26 +9698,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_web_apps_debug(
                     mut self,
-                ) -> ListWebAppsIter<'a, A, crate::schemas::WebApp> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::WebApp> {
                     self.fields = Some(concat!("nextPageToken,", "webApps", "(*)").to_owned());
-                    ListWebAppsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "webApps")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListWebAppsResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListWebAppsResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -10059,52 +9827,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListWebAppsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListWebAppsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "webApps")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -10139,19 +9868,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10340,19 +10059,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10550,19 +10259,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10947,7 +10646,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -10956,7 +10658,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -10969,58 +10671,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

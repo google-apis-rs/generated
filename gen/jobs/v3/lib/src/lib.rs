@@ -159,12 +159,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CommuteFilterCommuteMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CommuteFilterCommuteMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -172,7 +172,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CommuteFilterCommuteMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -203,29 +203,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommuteFilterRoadTraffic {
+        #[doc = "Commute time calculation takes in account the peak traffic impact."]
+        BusyHour,
         #[doc = "Road traffic situation is not specified."]
         RoadTrafficUnspecified,
         #[doc = "Optimal commute time without considering any traffic impact."]
         TrafficFree,
-        #[doc = "Commute time calculation takes in account the peak traffic impact."]
-        BusyHour,
     }
     impl CommuteFilterRoadTraffic {
         pub fn as_str(self) -> &'static str {
             match self {
+                CommuteFilterRoadTraffic::BusyHour => "BUSY_HOUR",
                 CommuteFilterRoadTraffic::RoadTrafficUnspecified => "ROAD_TRAFFIC_UNSPECIFIED",
                 CommuteFilterRoadTraffic::TrafficFree => "TRAFFIC_FREE",
-                CommuteFilterRoadTraffic::BusyHour => "BUSY_HOUR",
             }
         }
     }
     impl ::std::fmt::Display for CommuteFilterRoadTraffic {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CommuteFilterRoadTraffic {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -233,15 +233,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CommuteFilterRoadTraffic {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BUSY_HOUR" => CommuteFilterRoadTraffic::BusyHour,
                 "ROAD_TRAFFIC_UNSPECIFIED" => CommuteFilterRoadTraffic::RoadTrafficUnspecified,
                 "TRAFFIC_FREE" => CommuteFilterRoadTraffic::TrafficFree,
-                "BUSY_HOUR" => CommuteFilterRoadTraffic::BusyHour,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -314,44 +314,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompanySize {
+        #[doc = "The company has between 1,000 and 4,999 employees."]
+        Big,
+        #[doc = "The company has between 5,000 and 9,999 employees."]
+        Bigger,
         #[doc = "Default value if the size is not specified."]
         CompanySizeUnspecified,
+        #[doc = "The company has 10,000 or more employees."]
+        Giant,
+        #[doc = "The company has between 500 and 999 employees."]
+        Medium,
         #[doc = "The company has less than 50 employees."]
         Mini,
         #[doc = "The company has between 50 and 99 employees."]
         Small,
         #[doc = "The company has between 100 and 499 employees."]
         Smedium,
-        #[doc = "The company has between 500 and 999 employees."]
-        Medium,
-        #[doc = "The company has between 1,000 and 4,999 employees."]
-        Big,
-        #[doc = "The company has between 5,000 and 9,999 employees."]
-        Bigger,
-        #[doc = "The company has 10,000 or more employees."]
-        Giant,
     }
     impl CompanySize {
         pub fn as_str(self) -> &'static str {
             match self {
+                CompanySize::Big => "BIG",
+                CompanySize::Bigger => "BIGGER",
                 CompanySize::CompanySizeUnspecified => "COMPANY_SIZE_UNSPECIFIED",
+                CompanySize::Giant => "GIANT",
+                CompanySize::Medium => "MEDIUM",
                 CompanySize::Mini => "MINI",
                 CompanySize::Small => "SMALL",
                 CompanySize::Smedium => "SMEDIUM",
-                CompanySize::Medium => "MEDIUM",
-                CompanySize::Big => "BIG",
-                CompanySize::Bigger => "BIGGER",
-                CompanySize::Giant => "GIANT",
             }
         }
     }
     impl ::std::fmt::Display for CompanySize {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompanySize {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -359,20 +359,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompanySize {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BIG" => CompanySize::Big,
+                "BIGGER" => CompanySize::Bigger,
                 "COMPANY_SIZE_UNSPECIFIED" => CompanySize::CompanySizeUnspecified,
+                "GIANT" => CompanySize::Giant,
+                "MEDIUM" => CompanySize::Medium,
                 "MINI" => CompanySize::Mini,
                 "SMALL" => CompanySize::Small,
                 "SMEDIUM" => CompanySize::Smedium,
-                "MEDIUM" => CompanySize::Medium,
-                "BIG" => CompanySize::Big,
-                "BIGGER" => CompanySize::Bigger,
-                "GIANT" => CompanySize::Giant,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -463,49 +463,49 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompensationEntryType {
-        #[doc = "Default value."]
-        CompensationTypeUnspecified,
         #[doc = "Base compensation: Refers to the fixed amount of money paid to an\nemployee by an employer in return for work performed. Base compensation\ndoes not include benefits, bonuses or any other potential compensation\nfrom an employer."]
         Base,
         #[doc = "Bonus."]
         Bonus,
-        #[doc = "Signing bonus."]
-        SigningBonus,
-        #[doc = "Equity."]
-        Equity,
-        #[doc = "Profit sharing."]
-        ProfitSharing,
         #[doc = "Commission."]
         Commissions,
-        #[doc = "Tips."]
-        Tips,
+        #[doc = "Default value."]
+        CompensationTypeUnspecified,
+        #[doc = "Equity."]
+        Equity,
         #[doc = "Other compensation type."]
         OtherCompensationType,
+        #[doc = "Profit sharing."]
+        ProfitSharing,
+        #[doc = "Signing bonus."]
+        SigningBonus,
+        #[doc = "Tips."]
+        Tips,
     }
     impl CompensationEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
+                CompensationEntryType::Base => "BASE",
+                CompensationEntryType::Bonus => "BONUS",
+                CompensationEntryType::Commissions => "COMMISSIONS",
                 CompensationEntryType::CompensationTypeUnspecified => {
                     "COMPENSATION_TYPE_UNSPECIFIED"
                 }
-                CompensationEntryType::Base => "BASE",
-                CompensationEntryType::Bonus => "BONUS",
-                CompensationEntryType::SigningBonus => "SIGNING_BONUS",
                 CompensationEntryType::Equity => "EQUITY",
-                CompensationEntryType::ProfitSharing => "PROFIT_SHARING",
-                CompensationEntryType::Commissions => "COMMISSIONS",
-                CompensationEntryType::Tips => "TIPS",
                 CompensationEntryType::OtherCompensationType => "OTHER_COMPENSATION_TYPE",
+                CompensationEntryType::ProfitSharing => "PROFIT_SHARING",
+                CompensationEntryType::SigningBonus => "SIGNING_BONUS",
+                CompensationEntryType::Tips => "TIPS",
             }
         }
     }
     impl ::std::fmt::Display for CompensationEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -513,23 +513,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BASE" => CompensationEntryType::Base,
+                "BONUS" => CompensationEntryType::Bonus,
+                "COMMISSIONS" => CompensationEntryType::Commissions,
                 "COMPENSATION_TYPE_UNSPECIFIED" => {
                     CompensationEntryType::CompensationTypeUnspecified
                 }
-                "BASE" => CompensationEntryType::Base,
-                "BONUS" => CompensationEntryType::Bonus,
-                "SIGNING_BONUS" => CompensationEntryType::SigningBonus,
                 "EQUITY" => CompensationEntryType::Equity,
-                "PROFIT_SHARING" => CompensationEntryType::ProfitSharing,
-                "COMMISSIONS" => CompensationEntryType::Commissions,
-                "TIPS" => CompensationEntryType::Tips,
                 "OTHER_COMPENSATION_TYPE" => CompensationEntryType::OtherCompensationType,
+                "PROFIT_SHARING" => CompensationEntryType::ProfitSharing,
+                "SIGNING_BONUS" => CompensationEntryType::SigningBonus,
+                "TIPS" => CompensationEntryType::Tips,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -552,20 +552,20 @@ pub mod schemas {
     pub enum CompensationEntryUnit {
         #[doc = "Default value."]
         CompensationUnitUnspecified,
-        #[doc = "Hourly."]
-        Hourly,
         #[doc = "Daily."]
         Daily,
-        #[doc = "Weekly"]
-        Weekly,
+        #[doc = "Hourly."]
+        Hourly,
         #[doc = "Monthly."]
         Monthly,
-        #[doc = "Yearly."]
-        Yearly,
         #[doc = "One time."]
         OneTime,
         #[doc = "Other compensation units."]
         OtherCompensationUnit,
+        #[doc = "Weekly"]
+        Weekly,
+        #[doc = "Yearly."]
+        Yearly,
     }
     impl CompensationEntryUnit {
         pub fn as_str(self) -> &'static str {
@@ -573,23 +573,23 @@ pub mod schemas {
                 CompensationEntryUnit::CompensationUnitUnspecified => {
                     "COMPENSATION_UNIT_UNSPECIFIED"
                 }
-                CompensationEntryUnit::Hourly => "HOURLY",
                 CompensationEntryUnit::Daily => "DAILY",
-                CompensationEntryUnit::Weekly => "WEEKLY",
+                CompensationEntryUnit::Hourly => "HOURLY",
                 CompensationEntryUnit::Monthly => "MONTHLY",
-                CompensationEntryUnit::Yearly => "YEARLY",
                 CompensationEntryUnit::OneTime => "ONE_TIME",
                 CompensationEntryUnit::OtherCompensationUnit => "OTHER_COMPENSATION_UNIT",
+                CompensationEntryUnit::Weekly => "WEEKLY",
+                CompensationEntryUnit::Yearly => "YEARLY",
             }
         }
     }
     impl ::std::fmt::Display for CompensationEntryUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationEntryUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -597,7 +597,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationEntryUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -606,13 +606,13 @@ pub mod schemas {
                 "COMPENSATION_UNIT_UNSPECIFIED" => {
                     CompensationEntryUnit::CompensationUnitUnspecified
                 }
-                "HOURLY" => CompensationEntryUnit::Hourly,
                 "DAILY" => CompensationEntryUnit::Daily,
-                "WEEKLY" => CompensationEntryUnit::Weekly,
+                "HOURLY" => CompensationEntryUnit::Hourly,
                 "MONTHLY" => CompensationEntryUnit::Monthly,
-                "YEARLY" => CompensationEntryUnit::Yearly,
                 "ONE_TIME" => CompensationEntryUnit::OneTime,
                 "OTHER_COMPENSATION_UNIT" => CompensationEntryUnit::OtherCompensationUnit,
+                "WEEKLY" => CompensationEntryUnit::Weekly,
+                "YEARLY" => CompensationEntryUnit::Yearly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -665,35 +665,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompensationFilterType {
-        #[doc = "Filter type unspecified. Position holder, INVALID, should never be used."]
-        FilterTypeUnspecified,
-        #[doc = "Filter by `base compensation entry's` unit. A job is a match if and\nonly if the job contains a base CompensationEntry and the base\nCompensationEntry's unit matches provided units.\nPopulate one or more units.\n\nSee CompensationInfo.CompensationEntry for definition of\nbase compensation entry."]
-        UnitOnly,
-        #[doc = "Filter by `base compensation entry's` unit and amount / range. A job\nis a match if and only if the job contains a base CompensationEntry, and\nthe base entry's unit matches provided compensation_units and amount\nor range overlaps with provided compensation_range.\n\nSee CompensationInfo.CompensationEntry for definition of\nbase compensation entry.\n\nSet exactly one units and populate range."]
-        UnitAndAmount,
         #[doc = "Filter by annualized base compensation amount and `base compensation entry's` unit. Populate range and zero or more units."]
         AnnualizedBaseAmount,
         #[doc = "Filter by annualized total compensation amount and `base compensation entry's` unit . Populate range and zero or more units."]
         AnnualizedTotalAmount,
+        #[doc = "Filter type unspecified. Position holder, INVALID, should never be used."]
+        FilterTypeUnspecified,
+        #[doc = "Filter by `base compensation entry's` unit and amount / range. A job\nis a match if and only if the job contains a base CompensationEntry, and\nthe base entry's unit matches provided compensation_units and amount\nor range overlaps with provided compensation_range.\n\nSee CompensationInfo.CompensationEntry for definition of\nbase compensation entry.\n\nSet exactly one units and populate range."]
+        UnitAndAmount,
+        #[doc = "Filter by `base compensation entry's` unit. A job is a match if and\nonly if the job contains a base CompensationEntry and the base\nCompensationEntry's unit matches provided units.\nPopulate one or more units.\n\nSee CompensationInfo.CompensationEntry for definition of\nbase compensation entry."]
+        UnitOnly,
     }
     impl CompensationFilterType {
         pub fn as_str(self) -> &'static str {
             match self {
-                CompensationFilterType::FilterTypeUnspecified => "FILTER_TYPE_UNSPECIFIED",
-                CompensationFilterType::UnitOnly => "UNIT_ONLY",
-                CompensationFilterType::UnitAndAmount => "UNIT_AND_AMOUNT",
                 CompensationFilterType::AnnualizedBaseAmount => "ANNUALIZED_BASE_AMOUNT",
                 CompensationFilterType::AnnualizedTotalAmount => "ANNUALIZED_TOTAL_AMOUNT",
+                CompensationFilterType::FilterTypeUnspecified => "FILTER_TYPE_UNSPECIFIED",
+                CompensationFilterType::UnitAndAmount => "UNIT_AND_AMOUNT",
+                CompensationFilterType::UnitOnly => "UNIT_ONLY",
             }
         }
     }
     impl ::std::fmt::Display for CompensationFilterType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationFilterType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -701,17 +701,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationFilterType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FILTER_TYPE_UNSPECIFIED" => CompensationFilterType::FilterTypeUnspecified,
-                "UNIT_ONLY" => CompensationFilterType::UnitOnly,
-                "UNIT_AND_AMOUNT" => CompensationFilterType::UnitAndAmount,
                 "ANNUALIZED_BASE_AMOUNT" => CompensationFilterType::AnnualizedBaseAmount,
                 "ANNUALIZED_TOTAL_AMOUNT" => CompensationFilterType::AnnualizedTotalAmount,
+                "FILTER_TYPE_UNSPECIFIED" => CompensationFilterType::FilterTypeUnspecified,
+                "UNIT_AND_AMOUNT" => CompensationFilterType::UnitAndAmount,
+                "UNIT_ONLY" => CompensationFilterType::UnitOnly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -733,13 +733,13 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompensationFilterUnitsItems {
         CompensationUnitUnspecified,
-        Hourly,
         Daily,
-        Weekly,
+        Hourly,
         Monthly,
-        Yearly,
         OneTime,
         OtherCompensationUnit,
+        Weekly,
+        Yearly,
     }
     impl CompensationFilterUnitsItems {
         pub fn as_str(self) -> &'static str {
@@ -747,23 +747,23 @@ pub mod schemas {
                 CompensationFilterUnitsItems::CompensationUnitUnspecified => {
                     "COMPENSATION_UNIT_UNSPECIFIED"
                 }
-                CompensationFilterUnitsItems::Hourly => "HOURLY",
                 CompensationFilterUnitsItems::Daily => "DAILY",
-                CompensationFilterUnitsItems::Weekly => "WEEKLY",
+                CompensationFilterUnitsItems::Hourly => "HOURLY",
                 CompensationFilterUnitsItems::Monthly => "MONTHLY",
-                CompensationFilterUnitsItems::Yearly => "YEARLY",
                 CompensationFilterUnitsItems::OneTime => "ONE_TIME",
                 CompensationFilterUnitsItems::OtherCompensationUnit => "OTHER_COMPENSATION_UNIT",
+                CompensationFilterUnitsItems::Weekly => "WEEKLY",
+                CompensationFilterUnitsItems::Yearly => "YEARLY",
             }
         }
     }
     impl ::std::fmt::Display for CompensationFilterUnitsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationFilterUnitsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -771,7 +771,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationFilterUnitsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -780,13 +780,13 @@ pub mod schemas {
                 "COMPENSATION_UNIT_UNSPECIFIED" => {
                     CompensationFilterUnitsItems::CompensationUnitUnspecified
                 }
-                "HOURLY" => CompensationFilterUnitsItems::Hourly,
                 "DAILY" => CompensationFilterUnitsItems::Daily,
-                "WEEKLY" => CompensationFilterUnitsItems::Weekly,
+                "HOURLY" => CompensationFilterUnitsItems::Hourly,
                 "MONTHLY" => CompensationFilterUnitsItems::Monthly,
-                "YEARLY" => CompensationFilterUnitsItems::Yearly,
                 "ONE_TIME" => CompensationFilterUnitsItems::OneTime,
                 "OTHER_COMPENSATION_UNIT" => CompensationFilterUnitsItems::OtherCompensationUnit,
+                "WEEKLY" => CompensationFilterUnitsItems::Weekly,
+                "YEARLY" => CompensationFilterUnitsItems::Yearly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -842,34 +842,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompensationHistogramRequestType {
-        #[doc = "Default value. Invalid."]
-        CompensationHistogramRequestTypeUnspecified,
-        #[doc = "Histogram by job's base compensation. See CompensationEntry for\ndefinition of base compensation."]
-        Base,
         #[doc = "Histogram by job's annualized base compensation. See CompensationEntry\nfor definition of annualized base compensation."]
         AnnualizedBase,
         #[doc = "Histogram by job's annualized total compensation. See CompensationEntry\nfor definition of annualized total compensation."]
         AnnualizedTotal,
+        #[doc = "Histogram by job's base compensation. See CompensationEntry for\ndefinition of base compensation."]
+        Base,
+        #[doc = "Default value. Invalid."]
+        CompensationHistogramRequestTypeUnspecified,
     }
     impl CompensationHistogramRequestType {
         pub fn as_str(self) -> &'static str {
             match self {
+                CompensationHistogramRequestType::AnnualizedBase => "ANNUALIZED_BASE",
+                CompensationHistogramRequestType::AnnualizedTotal => "ANNUALIZED_TOTAL",
+                CompensationHistogramRequestType::Base => "BASE",
                 CompensationHistogramRequestType::CompensationHistogramRequestTypeUnspecified => {
                     "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
                 }
-                CompensationHistogramRequestType::Base => "BASE",
-                CompensationHistogramRequestType::AnnualizedBase => "ANNUALIZED_BASE",
-                CompensationHistogramRequestType::AnnualizedTotal => "ANNUALIZED_TOTAL",
             }
         }
     }
     impl ::std::fmt::Display for CompensationHistogramRequestType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationHistogramRequestType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -877,18 +877,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationHistogramRequestType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ANNUALIZED_BASE" => CompensationHistogramRequestType::AnnualizedBase,
+                "ANNUALIZED_TOTAL" => CompensationHistogramRequestType::AnnualizedTotal,
+                "BASE" => CompensationHistogramRequestType::Base,
                 "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED" => {
                     CompensationHistogramRequestType::CompensationHistogramRequestTypeUnspecified
                 }
-                "BASE" => CompensationHistogramRequestType::Base,
-                "ANNUALIZED_BASE" => CompensationHistogramRequestType::AnnualizedBase,
-                "ANNUALIZED_TOTAL" => CompensationHistogramRequestType::AnnualizedTotal,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -929,34 +929,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompensationHistogramResultType {
-        #[doc = "Default value. Invalid."]
-        CompensationHistogramRequestTypeUnspecified,
-        #[doc = "Histogram by job's base compensation. See CompensationEntry for\ndefinition of base compensation."]
-        Base,
         #[doc = "Histogram by job's annualized base compensation. See CompensationEntry\nfor definition of annualized base compensation."]
         AnnualizedBase,
         #[doc = "Histogram by job's annualized total compensation. See CompensationEntry\nfor definition of annualized total compensation."]
         AnnualizedTotal,
+        #[doc = "Histogram by job's base compensation. See CompensationEntry for\ndefinition of base compensation."]
+        Base,
+        #[doc = "Default value. Invalid."]
+        CompensationHistogramRequestTypeUnspecified,
     }
     impl CompensationHistogramResultType {
         pub fn as_str(self) -> &'static str {
             match self {
+                CompensationHistogramResultType::AnnualizedBase => "ANNUALIZED_BASE",
+                CompensationHistogramResultType::AnnualizedTotal => "ANNUALIZED_TOTAL",
+                CompensationHistogramResultType::Base => "BASE",
                 CompensationHistogramResultType::CompensationHistogramRequestTypeUnspecified => {
                     "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
                 }
-                CompensationHistogramResultType::Base => "BASE",
-                CompensationHistogramResultType::AnnualizedBase => "ANNUALIZED_BASE",
-                CompensationHistogramResultType::AnnualizedTotal => "ANNUALIZED_TOTAL",
             }
         }
     }
     impl ::std::fmt::Display for CompensationHistogramResultType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompensationHistogramResultType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -964,18 +964,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompensationHistogramResultType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ANNUALIZED_BASE" => CompensationHistogramResultType::AnnualizedBase,
+                "ANNUALIZED_TOTAL" => CompensationHistogramResultType::AnnualizedTotal,
+                "BASE" => CompensationHistogramResultType::Base,
                 "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED" => {
                     CompensationHistogramResultType::CompensationHistogramRequestTypeUnspecified
                 }
-                "BASE" => CompensationHistogramResultType::Base,
-                "ANNUALIZED_BASE" => CompensationHistogramResultType::AnnualizedBase,
-                "ANNUALIZED_TOTAL" => CompensationHistogramResultType::AnnualizedTotal,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1099,32 +1099,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CompletionResultType {
+        #[doc = "Suggest both job titles and company names."]
+        Combined,
+        #[doc = "Only suggest company names."]
+        CompanyName,
         #[doc = "Default value."]
         CompletionTypeUnspecified,
         #[doc = "Only suggest job titles."]
         JobTitle,
-        #[doc = "Only suggest company names."]
-        CompanyName,
-        #[doc = "Suggest both job titles and company names."]
-        Combined,
     }
     impl CompletionResultType {
         pub fn as_str(self) -> &'static str {
             match self {
+                CompletionResultType::Combined => "COMBINED",
+                CompletionResultType::CompanyName => "COMPANY_NAME",
                 CompletionResultType::CompletionTypeUnspecified => "COMPLETION_TYPE_UNSPECIFIED",
                 CompletionResultType::JobTitle => "JOB_TITLE",
-                CompletionResultType::CompanyName => "COMPANY_NAME",
-                CompletionResultType::Combined => "COMBINED",
             }
         }
     }
     impl ::std::fmt::Display for CompletionResultType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CompletionResultType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1132,16 +1132,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CompletionResultType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COMBINED" => CompletionResultType::Combined,
+                "COMPANY_NAME" => CompletionResultType::CompanyName,
                 "COMPLETION_TYPE_UNSPECIFIED" => CompletionResultType::CompletionTypeUnspecified,
                 "JOB_TITLE" => CompletionResultType::JobTitle,
-                "COMPANY_NAME" => CompletionResultType::CompanyName,
-                "COMBINED" => CompletionResultType::Combined,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1335,41 +1335,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceInfoDeviceType {
-        #[doc = "The device type isn't specified."]
-        DeviceTypeUnspecified,
-        #[doc = "A desktop web browser, such as, Chrome, Firefox, Safari, or Internet\nExplorer)"]
-        Web,
-        #[doc = "A mobile device web browser, such as a phone or tablet with a Chrome\nbrowser."]
-        MobileWeb,
         #[doc = "An Android device native application."]
         Android,
-        #[doc = "An iOS device native application."]
-        Ios,
         #[doc = "A bot, as opposed to a device operated by human beings, such as a web\ncrawler."]
         Bot,
+        #[doc = "The device type isn't specified."]
+        DeviceTypeUnspecified,
+        #[doc = "An iOS device native application."]
+        Ios,
+        #[doc = "A mobile device web browser, such as a phone or tablet with a Chrome\nbrowser."]
+        MobileWeb,
         #[doc = "Other devices types."]
         Other,
+        #[doc = "A desktop web browser, such as, Chrome, Firefox, Safari, or Internet\nExplorer)"]
+        Web,
     }
     impl DeviceInfoDeviceType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceInfoDeviceType::DeviceTypeUnspecified => "DEVICE_TYPE_UNSPECIFIED",
-                DeviceInfoDeviceType::Web => "WEB",
-                DeviceInfoDeviceType::MobileWeb => "MOBILE_WEB",
                 DeviceInfoDeviceType::Android => "ANDROID",
-                DeviceInfoDeviceType::Ios => "IOS",
                 DeviceInfoDeviceType::Bot => "BOT",
+                DeviceInfoDeviceType::DeviceTypeUnspecified => "DEVICE_TYPE_UNSPECIFIED",
+                DeviceInfoDeviceType::Ios => "IOS",
+                DeviceInfoDeviceType::MobileWeb => "MOBILE_WEB",
                 DeviceInfoDeviceType::Other => "OTHER",
+                DeviceInfoDeviceType::Web => "WEB",
             }
         }
     }
     impl ::std::fmt::Display for DeviceInfoDeviceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeviceInfoDeviceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1377,19 +1377,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeviceInfoDeviceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEVICE_TYPE_UNSPECIFIED" => DeviceInfoDeviceType::DeviceTypeUnspecified,
-                "WEB" => DeviceInfoDeviceType::Web,
-                "MOBILE_WEB" => DeviceInfoDeviceType::MobileWeb,
                 "ANDROID" => DeviceInfoDeviceType::Android,
-                "IOS" => DeviceInfoDeviceType::Ios,
                 "BOT" => DeviceInfoDeviceType::Bot,
+                "DEVICE_TYPE_UNSPECIFIED" => DeviceInfoDeviceType::DeviceTypeUnspecified,
+                "IOS" => DeviceInfoDeviceType::Ios,
+                "MOBILE_WEB" => DeviceInfoDeviceType::MobileWeb,
                 "OTHER" => DeviceInfoDeviceType::Other,
+                "WEB" => DeviceInfoDeviceType::Web,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1456,60 +1456,60 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum HistogramFacetsSimpleHistogramFacetsItems {
-        SearchTypeUnspecified,
+        Admin1,
+        Admin1Country,
+        BaseCompensationUnit,
+        Category,
+        City,
+        CityCoordinate,
+        CompanyDisplayName,
         CompanyId,
-        EmploymentType,
         CompanySize,
+        Country,
         DatePublished,
         EducationLevel,
+        EmploymentType,
         ExperienceLevel,
-        Admin1,
-        Country,
-        City,
-        Locale,
         Language,
-        Category,
-        CityCoordinate,
-        Admin1Country,
-        CompanyDisplayName,
-        BaseCompensationUnit,
+        Locale,
+        SearchTypeUnspecified,
     }
     impl HistogramFacetsSimpleHistogramFacetsItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                HistogramFacetsSimpleHistogramFacetsItems::SearchTypeUnspecified => {
-                    "SEARCH_TYPE_UNSPECIFIED"
-                }
-                HistogramFacetsSimpleHistogramFacetsItems::CompanyId => "COMPANY_ID",
-                HistogramFacetsSimpleHistogramFacetsItems::EmploymentType => "EMPLOYMENT_TYPE",
-                HistogramFacetsSimpleHistogramFacetsItems::CompanySize => "COMPANY_SIZE",
-                HistogramFacetsSimpleHistogramFacetsItems::DatePublished => "DATE_PUBLISHED",
-                HistogramFacetsSimpleHistogramFacetsItems::EducationLevel => "EDUCATION_LEVEL",
-                HistogramFacetsSimpleHistogramFacetsItems::ExperienceLevel => "EXPERIENCE_LEVEL",
                 HistogramFacetsSimpleHistogramFacetsItems::Admin1 => "ADMIN_1",
-                HistogramFacetsSimpleHistogramFacetsItems::Country => "COUNTRY",
-                HistogramFacetsSimpleHistogramFacetsItems::City => "CITY",
-                HistogramFacetsSimpleHistogramFacetsItems::Locale => "LOCALE",
-                HistogramFacetsSimpleHistogramFacetsItems::Language => "LANGUAGE",
-                HistogramFacetsSimpleHistogramFacetsItems::Category => "CATEGORY",
-                HistogramFacetsSimpleHistogramFacetsItems::CityCoordinate => "CITY_COORDINATE",
                 HistogramFacetsSimpleHistogramFacetsItems::Admin1Country => "ADMIN_1_COUNTRY",
+                HistogramFacetsSimpleHistogramFacetsItems::BaseCompensationUnit => {
+                    "BASE_COMPENSATION_UNIT"
+                }
+                HistogramFacetsSimpleHistogramFacetsItems::Category => "CATEGORY",
+                HistogramFacetsSimpleHistogramFacetsItems::City => "CITY",
+                HistogramFacetsSimpleHistogramFacetsItems::CityCoordinate => "CITY_COORDINATE",
                 HistogramFacetsSimpleHistogramFacetsItems::CompanyDisplayName => {
                     "COMPANY_DISPLAY_NAME"
                 }
-                HistogramFacetsSimpleHistogramFacetsItems::BaseCompensationUnit => {
-                    "BASE_COMPENSATION_UNIT"
+                HistogramFacetsSimpleHistogramFacetsItems::CompanyId => "COMPANY_ID",
+                HistogramFacetsSimpleHistogramFacetsItems::CompanySize => "COMPANY_SIZE",
+                HistogramFacetsSimpleHistogramFacetsItems::Country => "COUNTRY",
+                HistogramFacetsSimpleHistogramFacetsItems::DatePublished => "DATE_PUBLISHED",
+                HistogramFacetsSimpleHistogramFacetsItems::EducationLevel => "EDUCATION_LEVEL",
+                HistogramFacetsSimpleHistogramFacetsItems::EmploymentType => "EMPLOYMENT_TYPE",
+                HistogramFacetsSimpleHistogramFacetsItems::ExperienceLevel => "EXPERIENCE_LEVEL",
+                HistogramFacetsSimpleHistogramFacetsItems::Language => "LANGUAGE",
+                HistogramFacetsSimpleHistogramFacetsItems::Locale => "LOCALE",
+                HistogramFacetsSimpleHistogramFacetsItems::SearchTypeUnspecified => {
+                    "SEARCH_TYPE_UNSPECIFIED"
                 }
             }
         }
     }
     impl ::std::fmt::Display for HistogramFacetsSimpleHistogramFacetsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for HistogramFacetsSimpleHistogramFacetsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1517,34 +1517,34 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for HistogramFacetsSimpleHistogramFacetsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SEARCH_TYPE_UNSPECIFIED" => {
-                    HistogramFacetsSimpleHistogramFacetsItems::SearchTypeUnspecified
-                }
-                "COMPANY_ID" => HistogramFacetsSimpleHistogramFacetsItems::CompanyId,
-                "EMPLOYMENT_TYPE" => HistogramFacetsSimpleHistogramFacetsItems::EmploymentType,
-                "COMPANY_SIZE" => HistogramFacetsSimpleHistogramFacetsItems::CompanySize,
-                "DATE_PUBLISHED" => HistogramFacetsSimpleHistogramFacetsItems::DatePublished,
-                "EDUCATION_LEVEL" => HistogramFacetsSimpleHistogramFacetsItems::EducationLevel,
-                "EXPERIENCE_LEVEL" => HistogramFacetsSimpleHistogramFacetsItems::ExperienceLevel,
                 "ADMIN_1" => HistogramFacetsSimpleHistogramFacetsItems::Admin1,
-                "COUNTRY" => HistogramFacetsSimpleHistogramFacetsItems::Country,
-                "CITY" => HistogramFacetsSimpleHistogramFacetsItems::City,
-                "LOCALE" => HistogramFacetsSimpleHistogramFacetsItems::Locale,
-                "LANGUAGE" => HistogramFacetsSimpleHistogramFacetsItems::Language,
-                "CATEGORY" => HistogramFacetsSimpleHistogramFacetsItems::Category,
-                "CITY_COORDINATE" => HistogramFacetsSimpleHistogramFacetsItems::CityCoordinate,
                 "ADMIN_1_COUNTRY" => HistogramFacetsSimpleHistogramFacetsItems::Admin1Country,
+                "BASE_COMPENSATION_UNIT" => {
+                    HistogramFacetsSimpleHistogramFacetsItems::BaseCompensationUnit
+                }
+                "CATEGORY" => HistogramFacetsSimpleHistogramFacetsItems::Category,
+                "CITY" => HistogramFacetsSimpleHistogramFacetsItems::City,
+                "CITY_COORDINATE" => HistogramFacetsSimpleHistogramFacetsItems::CityCoordinate,
                 "COMPANY_DISPLAY_NAME" => {
                     HistogramFacetsSimpleHistogramFacetsItems::CompanyDisplayName
                 }
-                "BASE_COMPENSATION_UNIT" => {
-                    HistogramFacetsSimpleHistogramFacetsItems::BaseCompensationUnit
+                "COMPANY_ID" => HistogramFacetsSimpleHistogramFacetsItems::CompanyId,
+                "COMPANY_SIZE" => HistogramFacetsSimpleHistogramFacetsItems::CompanySize,
+                "COUNTRY" => HistogramFacetsSimpleHistogramFacetsItems::Country,
+                "DATE_PUBLISHED" => HistogramFacetsSimpleHistogramFacetsItems::DatePublished,
+                "EDUCATION_LEVEL" => HistogramFacetsSimpleHistogramFacetsItems::EducationLevel,
+                "EMPLOYMENT_TYPE" => HistogramFacetsSimpleHistogramFacetsItems::EmploymentType,
+                "EXPERIENCE_LEVEL" => HistogramFacetsSimpleHistogramFacetsItems::ExperienceLevel,
+                "LANGUAGE" => HistogramFacetsSimpleHistogramFacetsItems::Language,
+                "LOCALE" => HistogramFacetsSimpleHistogramFacetsItems::Locale,
+                "SEARCH_TYPE_UNSPECIFIED" => {
+                    HistogramFacetsSimpleHistogramFacetsItems::SearchTypeUnspecified
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1592,71 +1592,71 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum HistogramResultSearchType {
-        #[doc = "The default value if search type is not specified."]
-        SearchTypeUnspecified,
+        #[doc = "Filter by Admin1, which is a global placeholder for\nreferring to state, province, or the particular term a country uses to\ndefine the geographic structure below the country level.\nExamples include states codes such as \"CA\", \"IL\", \"NY\", and\nprovinces, such as \"BC\"."]
+        Admin1,
+        #[doc = "A combination of state or province code with a country code. This field\ndiffers from `JOB_ADMIN1`, which can be used in multiple countries."]
+        Admin1Country,
+        #[doc = "Base compensation unit."]
+        BaseCompensationUnit,
+        #[doc = "Filter by the Category."]
+        Category,
+        #[doc = "Filter by the \"city name\", \"Admin1 code\", for example,\n\"Mountain View, CA\" or \"New York, NY\"."]
+        City,
+        #[doc = "Filter by the city center GPS coordinate (latitude and longitude), for\nexample, 37.4038522,-122.0987765. Since the coordinates of a city center\ncan change, clients may need to refresh them periodically."]
+        CityCoordinate,
+        #[doc = "Company display name."]
+        CompanyDisplayName,
         #[doc = "Filter by the company id field."]
         CompanyId,
-        #[doc = "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`."]
-        EmploymentType,
         #[doc = "Filter by the company size type field, such as `BIG`, `SMALL` or `BIGGER`."]
         CompanySize,
+        #[doc = "Filter by the country code of job, such as US, JP, FR."]
+        Country,
         #[doc = "Filter by the date published field. Possible return values are:\n\n* PAST_24_HOURS (The past 24 hours)\n* PAST_3_DAYS (The past 3 days)\n* PAST_WEEK (The past 7 days)\n* PAST_MONTH (The past 30 days)\n* PAST_YEAR (The past 365 days)"]
         DatePublished,
         #[doc = "Filter by the required education level of the job."]
         EducationLevel,
+        #[doc = "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`."]
+        EmploymentType,
         #[doc = "Filter by the required experience level of the job."]
         ExperienceLevel,
-        #[doc = "Filter by Admin1, which is a global placeholder for\nreferring to state, province, or the particular term a country uses to\ndefine the geographic structure below the country level.\nExamples include states codes such as \"CA\", \"IL\", \"NY\", and\nprovinces, such as \"BC\"."]
-        Admin1,
-        #[doc = "Filter by the country code of job, such as US, JP, FR."]
-        Country,
-        #[doc = "Filter by the \"city name\", \"Admin1 code\", for example,\n\"Mountain View, CA\" or \"New York, NY\"."]
-        City,
-        #[doc = "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\".\n\nThis is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47)."]
-        Locale,
         #[doc = "Filter by the language code portion of the locale field, such as \"en\" or\n\"fr\"."]
         Language,
-        #[doc = "Filter by the Category."]
-        Category,
-        #[doc = "Filter by the city center GPS coordinate (latitude and longitude), for\nexample, 37.4038522,-122.0987765. Since the coordinates of a city center\ncan change, clients may need to refresh them periodically."]
-        CityCoordinate,
-        #[doc = "A combination of state or province code with a country code. This field\ndiffers from `JOB_ADMIN1`, which can be used in multiple countries."]
-        Admin1Country,
-        #[doc = "Company display name."]
-        CompanyDisplayName,
-        #[doc = "Base compensation unit."]
-        BaseCompensationUnit,
+        #[doc = "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\".\n\nThis is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47)."]
+        Locale,
+        #[doc = "The default value if search type is not specified."]
+        SearchTypeUnspecified,
     }
     impl HistogramResultSearchType {
         pub fn as_str(self) -> &'static str {
             match self {
-                HistogramResultSearchType::SearchTypeUnspecified => "SEARCH_TYPE_UNSPECIFIED",
+                HistogramResultSearchType::Admin1 => "ADMIN_1",
+                HistogramResultSearchType::Admin1Country => "ADMIN_1_COUNTRY",
+                HistogramResultSearchType::BaseCompensationUnit => "BASE_COMPENSATION_UNIT",
+                HistogramResultSearchType::Category => "CATEGORY",
+                HistogramResultSearchType::City => "CITY",
+                HistogramResultSearchType::CityCoordinate => "CITY_COORDINATE",
+                HistogramResultSearchType::CompanyDisplayName => "COMPANY_DISPLAY_NAME",
                 HistogramResultSearchType::CompanyId => "COMPANY_ID",
-                HistogramResultSearchType::EmploymentType => "EMPLOYMENT_TYPE",
                 HistogramResultSearchType::CompanySize => "COMPANY_SIZE",
+                HistogramResultSearchType::Country => "COUNTRY",
                 HistogramResultSearchType::DatePublished => "DATE_PUBLISHED",
                 HistogramResultSearchType::EducationLevel => "EDUCATION_LEVEL",
+                HistogramResultSearchType::EmploymentType => "EMPLOYMENT_TYPE",
                 HistogramResultSearchType::ExperienceLevel => "EXPERIENCE_LEVEL",
-                HistogramResultSearchType::Admin1 => "ADMIN_1",
-                HistogramResultSearchType::Country => "COUNTRY",
-                HistogramResultSearchType::City => "CITY",
-                HistogramResultSearchType::Locale => "LOCALE",
                 HistogramResultSearchType::Language => "LANGUAGE",
-                HistogramResultSearchType::Category => "CATEGORY",
-                HistogramResultSearchType::CityCoordinate => "CITY_COORDINATE",
-                HistogramResultSearchType::Admin1Country => "ADMIN_1_COUNTRY",
-                HistogramResultSearchType::CompanyDisplayName => "COMPANY_DISPLAY_NAME",
-                HistogramResultSearchType::BaseCompensationUnit => "BASE_COMPENSATION_UNIT",
+                HistogramResultSearchType::Locale => "LOCALE",
+                HistogramResultSearchType::SearchTypeUnspecified => "SEARCH_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for HistogramResultSearchType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for HistogramResultSearchType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1664,29 +1664,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for HistogramResultSearchType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SEARCH_TYPE_UNSPECIFIED" => HistogramResultSearchType::SearchTypeUnspecified,
+                "ADMIN_1" => HistogramResultSearchType::Admin1,
+                "ADMIN_1_COUNTRY" => HistogramResultSearchType::Admin1Country,
+                "BASE_COMPENSATION_UNIT" => HistogramResultSearchType::BaseCompensationUnit,
+                "CATEGORY" => HistogramResultSearchType::Category,
+                "CITY" => HistogramResultSearchType::City,
+                "CITY_COORDINATE" => HistogramResultSearchType::CityCoordinate,
+                "COMPANY_DISPLAY_NAME" => HistogramResultSearchType::CompanyDisplayName,
                 "COMPANY_ID" => HistogramResultSearchType::CompanyId,
-                "EMPLOYMENT_TYPE" => HistogramResultSearchType::EmploymentType,
                 "COMPANY_SIZE" => HistogramResultSearchType::CompanySize,
+                "COUNTRY" => HistogramResultSearchType::Country,
                 "DATE_PUBLISHED" => HistogramResultSearchType::DatePublished,
                 "EDUCATION_LEVEL" => HistogramResultSearchType::EducationLevel,
+                "EMPLOYMENT_TYPE" => HistogramResultSearchType::EmploymentType,
                 "EXPERIENCE_LEVEL" => HistogramResultSearchType::ExperienceLevel,
-                "ADMIN_1" => HistogramResultSearchType::Admin1,
-                "COUNTRY" => HistogramResultSearchType::Country,
-                "CITY" => HistogramResultSearchType::City,
-                "LOCALE" => HistogramResultSearchType::Locale,
                 "LANGUAGE" => HistogramResultSearchType::Language,
-                "CATEGORY" => HistogramResultSearchType::Category,
-                "CITY_COORDINATE" => HistogramResultSearchType::CityCoordinate,
-                "ADMIN_1_COUNTRY" => HistogramResultSearchType::Admin1Country,
-                "COMPANY_DISPLAY_NAME" => HistogramResultSearchType::CompanyDisplayName,
-                "BASE_COMPENSATION_UNIT" => HistogramResultSearchType::BaseCompensationUnit,
+                "LOCALE" => HistogramResultSearchType::Locale,
+                "SEARCH_TYPE_UNSPECIFIED" => HistogramResultSearchType::SearchTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1761,38 +1761,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobDegreeTypesItems {
-        DegreeTypeUnspecified,
-        PrimaryEducation,
-        LowerSecondaryEducation,
-        UpperSecondaryEducation,
         AdultRemedialEducation,
         AssociatesOrEquivalent,
         BachelorsOrEquivalent,
-        MastersOrEquivalent,
+        DegreeTypeUnspecified,
         DoctoralOrEquivalent,
+        LowerSecondaryEducation,
+        MastersOrEquivalent,
+        PrimaryEducation,
+        UpperSecondaryEducation,
     }
     impl JobDegreeTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobDegreeTypesItems::DegreeTypeUnspecified => "DEGREE_TYPE_UNSPECIFIED",
-                JobDegreeTypesItems::PrimaryEducation => "PRIMARY_EDUCATION",
-                JobDegreeTypesItems::LowerSecondaryEducation => "LOWER_SECONDARY_EDUCATION",
-                JobDegreeTypesItems::UpperSecondaryEducation => "UPPER_SECONDARY_EDUCATION",
                 JobDegreeTypesItems::AdultRemedialEducation => "ADULT_REMEDIAL_EDUCATION",
                 JobDegreeTypesItems::AssociatesOrEquivalent => "ASSOCIATES_OR_EQUIVALENT",
                 JobDegreeTypesItems::BachelorsOrEquivalent => "BACHELORS_OR_EQUIVALENT",
-                JobDegreeTypesItems::MastersOrEquivalent => "MASTERS_OR_EQUIVALENT",
+                JobDegreeTypesItems::DegreeTypeUnspecified => "DEGREE_TYPE_UNSPECIFIED",
                 JobDegreeTypesItems::DoctoralOrEquivalent => "DOCTORAL_OR_EQUIVALENT",
+                JobDegreeTypesItems::LowerSecondaryEducation => "LOWER_SECONDARY_EDUCATION",
+                JobDegreeTypesItems::MastersOrEquivalent => "MASTERS_OR_EQUIVALENT",
+                JobDegreeTypesItems::PrimaryEducation => "PRIMARY_EDUCATION",
+                JobDegreeTypesItems::UpperSecondaryEducation => "UPPER_SECONDARY_EDUCATION",
             }
         }
     }
     impl ::std::fmt::Display for JobDegreeTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobDegreeTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1800,21 +1800,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobDegreeTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEGREE_TYPE_UNSPECIFIED" => JobDegreeTypesItems::DegreeTypeUnspecified,
-                "PRIMARY_EDUCATION" => JobDegreeTypesItems::PrimaryEducation,
-                "LOWER_SECONDARY_EDUCATION" => JobDegreeTypesItems::LowerSecondaryEducation,
-                "UPPER_SECONDARY_EDUCATION" => JobDegreeTypesItems::UpperSecondaryEducation,
                 "ADULT_REMEDIAL_EDUCATION" => JobDegreeTypesItems::AdultRemedialEducation,
                 "ASSOCIATES_OR_EQUIVALENT" => JobDegreeTypesItems::AssociatesOrEquivalent,
                 "BACHELORS_OR_EQUIVALENT" => JobDegreeTypesItems::BachelorsOrEquivalent,
-                "MASTERS_OR_EQUIVALENT" => JobDegreeTypesItems::MastersOrEquivalent,
+                "DEGREE_TYPE_UNSPECIFIED" => JobDegreeTypesItems::DegreeTypeUnspecified,
                 "DOCTORAL_OR_EQUIVALENT" => JobDegreeTypesItems::DoctoralOrEquivalent,
+                "LOWER_SECONDARY_EDUCATION" => JobDegreeTypesItems::LowerSecondaryEducation,
+                "MASTERS_OR_EQUIVALENT" => JobDegreeTypesItems::MastersOrEquivalent,
+                "PRIMARY_EDUCATION" => JobDegreeTypesItems::PrimaryEducation,
+                "UPPER_SECONDARY_EDUCATION" => JobDegreeTypesItems::UpperSecondaryEducation,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1835,42 +1835,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobEmploymentTypesItems {
-        EmploymentTypeUnspecified,
-        FullTime,
-        PartTime,
-        Contractor,
         ContractToHire,
-        Temporary,
-        Intern,
-        Volunteer,
-        PerDiem,
+        Contractor,
+        EmploymentTypeUnspecified,
         FlyInFlyOut,
+        FullTime,
+        Intern,
         OtherEmploymentType,
+        PartTime,
+        PerDiem,
+        Temporary,
+        Volunteer,
     }
     impl JobEmploymentTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobEmploymentTypesItems::EmploymentTypeUnspecified => "EMPLOYMENT_TYPE_UNSPECIFIED",
-                JobEmploymentTypesItems::FullTime => "FULL_TIME",
-                JobEmploymentTypesItems::PartTime => "PART_TIME",
-                JobEmploymentTypesItems::Contractor => "CONTRACTOR",
                 JobEmploymentTypesItems::ContractToHire => "CONTRACT_TO_HIRE",
-                JobEmploymentTypesItems::Temporary => "TEMPORARY",
-                JobEmploymentTypesItems::Intern => "INTERN",
-                JobEmploymentTypesItems::Volunteer => "VOLUNTEER",
-                JobEmploymentTypesItems::PerDiem => "PER_DIEM",
+                JobEmploymentTypesItems::Contractor => "CONTRACTOR",
+                JobEmploymentTypesItems::EmploymentTypeUnspecified => "EMPLOYMENT_TYPE_UNSPECIFIED",
                 JobEmploymentTypesItems::FlyInFlyOut => "FLY_IN_FLY_OUT",
+                JobEmploymentTypesItems::FullTime => "FULL_TIME",
+                JobEmploymentTypesItems::Intern => "INTERN",
                 JobEmploymentTypesItems::OtherEmploymentType => "OTHER_EMPLOYMENT_TYPE",
+                JobEmploymentTypesItems::PartTime => "PART_TIME",
+                JobEmploymentTypesItems::PerDiem => "PER_DIEM",
+                JobEmploymentTypesItems::Temporary => "TEMPORARY",
+                JobEmploymentTypesItems::Volunteer => "VOLUNTEER",
             }
         }
     }
     impl ::std::fmt::Display for JobEmploymentTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobEmploymentTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1878,23 +1878,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobEmploymentTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "EMPLOYMENT_TYPE_UNSPECIFIED" => JobEmploymentTypesItems::EmploymentTypeUnspecified,
-                "FULL_TIME" => JobEmploymentTypesItems::FullTime,
-                "PART_TIME" => JobEmploymentTypesItems::PartTime,
-                "CONTRACTOR" => JobEmploymentTypesItems::Contractor,
                 "CONTRACT_TO_HIRE" => JobEmploymentTypesItems::ContractToHire,
-                "TEMPORARY" => JobEmploymentTypesItems::Temporary,
-                "INTERN" => JobEmploymentTypesItems::Intern,
-                "VOLUNTEER" => JobEmploymentTypesItems::Volunteer,
-                "PER_DIEM" => JobEmploymentTypesItems::PerDiem,
+                "CONTRACTOR" => JobEmploymentTypesItems::Contractor,
+                "EMPLOYMENT_TYPE_UNSPECIFIED" => JobEmploymentTypesItems::EmploymentTypeUnspecified,
                 "FLY_IN_FLY_OUT" => JobEmploymentTypesItems::FlyInFlyOut,
+                "FULL_TIME" => JobEmploymentTypesItems::FullTime,
+                "INTERN" => JobEmploymentTypesItems::Intern,
                 "OTHER_EMPLOYMENT_TYPE" => JobEmploymentTypesItems::OtherEmploymentType,
+                "PART_TIME" => JobEmploymentTypesItems::PartTime,
+                "PER_DIEM" => JobEmploymentTypesItems::PerDiem,
+                "TEMPORARY" => JobEmploymentTypesItems::Temporary,
+                "VOLUNTEER" => JobEmploymentTypesItems::Volunteer,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1915,13 +1915,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobJobBenefitsItems {
-        JobBenefitUnspecified,
         ChildCare,
         Dental,
         DomesticPartner,
         FlexibleHours,
-        Medical,
+        JobBenefitUnspecified,
         LifeInsurance,
+        Medical,
         ParentalLeave,
         RetirementPlan,
         SickDays,
@@ -1931,13 +1931,13 @@ pub mod schemas {
     impl JobJobBenefitsItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobJobBenefitsItems::JobBenefitUnspecified => "JOB_BENEFIT_UNSPECIFIED",
                 JobJobBenefitsItems::ChildCare => "CHILD_CARE",
                 JobJobBenefitsItems::Dental => "DENTAL",
                 JobJobBenefitsItems::DomesticPartner => "DOMESTIC_PARTNER",
                 JobJobBenefitsItems::FlexibleHours => "FLEXIBLE_HOURS",
-                JobJobBenefitsItems::Medical => "MEDICAL",
+                JobJobBenefitsItems::JobBenefitUnspecified => "JOB_BENEFIT_UNSPECIFIED",
                 JobJobBenefitsItems::LifeInsurance => "LIFE_INSURANCE",
+                JobJobBenefitsItems::Medical => "MEDICAL",
                 JobJobBenefitsItems::ParentalLeave => "PARENTAL_LEAVE",
                 JobJobBenefitsItems::RetirementPlan => "RETIREMENT_PLAN",
                 JobJobBenefitsItems::SickDays => "SICK_DAYS",
@@ -1947,12 +1947,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for JobJobBenefitsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobJobBenefitsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1960,19 +1960,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobJobBenefitsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_BENEFIT_UNSPECIFIED" => JobJobBenefitsItems::JobBenefitUnspecified,
                 "CHILD_CARE" => JobJobBenefitsItems::ChildCare,
                 "DENTAL" => JobJobBenefitsItems::Dental,
                 "DOMESTIC_PARTNER" => JobJobBenefitsItems::DomesticPartner,
                 "FLEXIBLE_HOURS" => JobJobBenefitsItems::FlexibleHours,
-                "MEDICAL" => JobJobBenefitsItems::Medical,
+                "JOB_BENEFIT_UNSPECIFIED" => JobJobBenefitsItems::JobBenefitUnspecified,
                 "LIFE_INSURANCE" => JobJobBenefitsItems::LifeInsurance,
+                "MEDICAL" => JobJobBenefitsItems::Medical,
                 "PARENTAL_LEAVE" => JobJobBenefitsItems::ParentalLeave,
                 "RETIREMENT_PLAN" => JobJobBenefitsItems::RetirementPlan,
                 "SICK_DAYS" => JobJobBenefitsItems::SickDays,
@@ -1998,38 +1998,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobJobLevel {
-        #[doc = "The default value if the level is not specified."]
-        JobLevelUnspecified,
-        #[doc = "Entry-level individual contributors, typically with less than 2 years of\nexperience in a similar role. Includes interns."]
-        EntryLevel,
-        #[doc = "Experienced individual contributors, typically with 2+ years of\nexperience in a similar role."]
-        Experienced,
-        #[doc = "Entry- to mid-level managers responsible for managing a team of people."]
-        Manager,
         #[doc = "Senior-level managers responsible for managing teams of managers."]
         Director,
+        #[doc = "Entry-level individual contributors, typically with less than 2 years of\nexperience in a similar role. Includes interns."]
+        EntryLevel,
         #[doc = "Executive-level managers and above, including C-level positions."]
         Executive,
+        #[doc = "Experienced individual contributors, typically with 2+ years of\nexperience in a similar role."]
+        Experienced,
+        #[doc = "The default value if the level is not specified."]
+        JobLevelUnspecified,
+        #[doc = "Entry- to mid-level managers responsible for managing a team of people."]
+        Manager,
     }
     impl JobJobLevel {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobJobLevel::JobLevelUnspecified => "JOB_LEVEL_UNSPECIFIED",
-                JobJobLevel::EntryLevel => "ENTRY_LEVEL",
-                JobJobLevel::Experienced => "EXPERIENCED",
-                JobJobLevel::Manager => "MANAGER",
                 JobJobLevel::Director => "DIRECTOR",
+                JobJobLevel::EntryLevel => "ENTRY_LEVEL",
                 JobJobLevel::Executive => "EXECUTIVE",
+                JobJobLevel::Experienced => "EXPERIENCED",
+                JobJobLevel::JobLevelUnspecified => "JOB_LEVEL_UNSPECIFIED",
+                JobJobLevel::Manager => "MANAGER",
             }
         }
     }
     impl ::std::fmt::Display for JobJobLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobJobLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2037,18 +2037,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobJobLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_LEVEL_UNSPECIFIED" => JobJobLevel::JobLevelUnspecified,
-                "ENTRY_LEVEL" => JobJobLevel::EntryLevel,
-                "EXPERIENCED" => JobJobLevel::Experienced,
-                "MANAGER" => JobJobLevel::Manager,
                 "DIRECTOR" => JobJobLevel::Director,
+                "ENTRY_LEVEL" => JobJobLevel::EntryLevel,
                 "EXECUTIVE" => JobJobLevel::Executive,
+                "EXPERIENCED" => JobJobLevel::Experienced,
+                "JOB_LEVEL_UNSPECIFIED" => JobJobLevel::JobLevelUnspecified,
+                "MANAGER" => JobJobLevel::Manager,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2069,32 +2069,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobPostingRegion {
-        #[doc = "If the region is unspecified, the job is only returned if it\nmatches the LocationFilter."]
-        PostingRegionUnspecified,
         #[doc = "In addition to exact location matching, job posting is returned when the\nLocationFilter in the search query is in the same administrative area\nas the returned job posting. For example, if a `ADMINISTRATIVE_AREA` job\nis posted in \"CA, USA\", it's returned if LocationFilter has\n\"Mountain View\".\n\nAdministrative area refers to top-level administrative subdivision of this\ncountry. For example, US state, IT region, UK constituent nation and\nJP prefecture."]
         AdministrativeArea,
         #[doc = "In addition to exact location matching, job is returned when\nLocationFilter in search query is in the same country as this job.\nFor example, if a `NATION_WIDE` job is posted in \"USA\", it's\nreturned if LocationFilter has 'Mountain View'."]
         Nation,
+        #[doc = "If the region is unspecified, the job is only returned if it\nmatches the LocationFilter."]
+        PostingRegionUnspecified,
         #[doc = "Job allows employees to work remotely (telecommute).\nIf locations are provided with this value, the job is\nconsidered as having a location, but telecommuting is allowed."]
         Telecommute,
     }
     impl JobPostingRegion {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobPostingRegion::PostingRegionUnspecified => "POSTING_REGION_UNSPECIFIED",
                 JobPostingRegion::AdministrativeArea => "ADMINISTRATIVE_AREA",
                 JobPostingRegion::Nation => "NATION",
+                JobPostingRegion::PostingRegionUnspecified => "POSTING_REGION_UNSPECIFIED",
                 JobPostingRegion::Telecommute => "TELECOMMUTE",
             }
         }
     }
     impl ::std::fmt::Display for JobPostingRegion {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobPostingRegion {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2102,15 +2102,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobPostingRegion {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "POSTING_REGION_UNSPECIFIED" => JobPostingRegion::PostingRegionUnspecified,
                 "ADMINISTRATIVE_AREA" => JobPostingRegion::AdministrativeArea,
                 "NATION" => JobPostingRegion::Nation,
+                "POSTING_REGION_UNSPECIFIED" => JobPostingRegion::PostingRegionUnspecified,
                 "TELECOMMUTE" => JobPostingRegion::Telecommute,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2132,32 +2132,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobVisibility {
-        #[doc = "Default value."]
-        VisibilityUnspecified,
         #[doc = "The resource is only visible to the GCP account who owns it."]
         AccountOnly,
         #[doc = "The resource is visible to the owner and may be visible to other\napplications and processes at Google."]
         SharedWithGoogle,
         #[doc = "The resource is visible to the owner and may be visible to all other API\nclients."]
         SharedWithPublic,
+        #[doc = "Default value."]
+        VisibilityUnspecified,
     }
     impl JobVisibility {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
                 JobVisibility::AccountOnly => "ACCOUNT_ONLY",
                 JobVisibility::SharedWithGoogle => "SHARED_WITH_GOOGLE",
                 JobVisibility::SharedWithPublic => "SHARED_WITH_PUBLIC",
+                JobVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for JobVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2165,16 +2165,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "VISIBILITY_UNSPECIFIED" => JobVisibility::VisibilityUnspecified,
                 "ACCOUNT_ONLY" => JobVisibility::AccountOnly,
                 "SHARED_WITH_GOOGLE" => JobVisibility::SharedWithGoogle,
                 "SHARED_WITH_PUBLIC" => JobVisibility::SharedWithPublic,
+                "VISIBILITY_UNSPECIFIED" => JobVisibility::VisibilityUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2301,7 +2301,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobDerivedInfoJobCategoriesItems {
-        JobCategoryUnspecified,
         AccountingAndFinance,
         AdministrativeAndOffice,
         AdvertisingAndMarketing,
@@ -2318,6 +2317,7 @@ pub mod schemas {
         Healthcare,
         HumanResources,
         InstallationMaintenanceAndRepair,
+        JobCategoryUnspecified,
         Legal,
         Management,
         ManufacturingAndWarehouse,
@@ -2336,9 +2336,6 @@ pub mod schemas {
     impl JobDerivedInfoJobCategoriesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobDerivedInfoJobCategoriesItems::JobCategoryUnspecified => {
-                    "JOB_CATEGORY_UNSPECIFIED"
-                }
                 JobDerivedInfoJobCategoriesItems::AccountingAndFinance => "ACCOUNTING_AND_FINANCE",
                 JobDerivedInfoJobCategoriesItems::AdministrativeAndOffice => {
                     "ADMINISTRATIVE_AND_OFFICE"
@@ -2364,6 +2361,9 @@ pub mod schemas {
                 JobDerivedInfoJobCategoriesItems::HumanResources => "HUMAN_RESOURCES",
                 JobDerivedInfoJobCategoriesItems::InstallationMaintenanceAndRepair => {
                     "INSTALLATION_MAINTENANCE_AND_REPAIR"
+                }
+                JobDerivedInfoJobCategoriesItems::JobCategoryUnspecified => {
+                    "JOB_CATEGORY_UNSPECIFIED"
                 }
                 JobDerivedInfoJobCategoriesItems::Legal => "LEGAL",
                 JobDerivedInfoJobCategoriesItems::Management => "MANAGEMENT",
@@ -2399,12 +2399,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for JobDerivedInfoJobCategoriesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobDerivedInfoJobCategoriesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2412,15 +2412,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobDerivedInfoJobCategoriesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_CATEGORY_UNSPECIFIED" => {
-                    JobDerivedInfoJobCategoriesItems::JobCategoryUnspecified
-                }
                 "ACCOUNTING_AND_FINANCE" => JobDerivedInfoJobCategoriesItems::AccountingAndFinance,
                 "ADMINISTRATIVE_AND_OFFICE" => {
                     JobDerivedInfoJobCategoriesItems::AdministrativeAndOffice
@@ -2446,6 +2443,9 @@ pub mod schemas {
                 "HUMAN_RESOURCES" => JobDerivedInfoJobCategoriesItems::HumanResources,
                 "INSTALLATION_MAINTENANCE_AND_REPAIR" => {
                     JobDerivedInfoJobCategoriesItems::InstallationMaintenanceAndRepair
+                }
+                "JOB_CATEGORY_UNSPECIFIED" => {
+                    JobDerivedInfoJobCategoriesItems::JobCategoryUnspecified
                 }
                 "LEGAL" => JobDerivedInfoJobCategoriesItems::Legal,
                 "MANAGEMENT" => JobDerivedInfoJobCategoriesItems::Management,
@@ -2518,71 +2518,71 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobEventType {
-        #[doc = "The event is unspecified by other provided values."]
-        JobEventTypeUnspecified,
-        #[doc = "The job seeker or other entity interacting with the service has\nhad a job rendered in their view, such as in a list of search results in\na compressed or clipped format. This event is typically associated with\nthe viewing of a jobs list on a single page by a job seeker."]
-        Impression,
-        #[doc = "The job seeker, or other entity interacting with the service, has\nviewed the details of a job, including the full description. This\nevent doesn't apply to the viewing a snippet of a job appearing as a\npart of the job search results. Viewing a snippet is associated with an\nimpression)."]
-        View,
-        #[doc = "The job seeker or other entity interacting with the service\nperformed an action to view a job and was redirected to a different\nwebsite for job."]
-        ViewRedirect,
-        #[doc = "The job seeker or other entity interacting with the service\nbegan the process or demonstrated the intention of applying for a job."]
-        ApplicationStart,
+        #[doc = "This event should be used when a company submits an application\non behalf of a job seeker. This event is intended for use by staffing\nagencies attempting to place candidates."]
+        ApplicationCompanySubmit,
         #[doc = "The job seeker or other entity interacting with the service\nsubmitted an application for a job."]
         ApplicationFinish,
         #[doc = "The job seeker or other entity interacting with the service\nsubmitted an application for a job with a single click without\nentering information. If a job seeker performs this action, send only\nthis event to the service. Do not also send\nJobEventType.APPLICATION_START or JobEventType.APPLICATION_FINISH\nevents."]
         ApplicationQuickSubmission,
         #[doc = "The job seeker or other entity interacting with the service\nperformed an action to apply to a job and was redirected to a different\nwebsite to complete the application."]
         ApplicationRedirect,
-        #[doc = "The job seeker or other entity interacting with the service began the\nprocess or demonstrated the intention of applying for a job from the\nsearch results page without viewing the details of the job posting.\nIf sending this event, JobEventType.VIEW event shouldn't be sent."]
-        ApplicationStartFromSearch,
         #[doc = "The job seeker, or other entity interacting with the service, performs an\naction with a single click from the search results page to apply to a job\n(without viewing the details of the job posting), and is redirected\nto a different website to complete the application. If a candidate\nperforms this action, send only this event to the service. Do not also\nsend JobEventType.APPLICATION_START,\nJobEventType.APPLICATION_FINISH or JobEventType.VIEW events."]
         ApplicationRedirectFromSearch,
-        #[doc = "This event should be used when a company submits an application\non behalf of a job seeker. This event is intended for use by staffing\nagencies attempting to place candidates."]
-        ApplicationCompanySubmit,
+        #[doc = "The job seeker or other entity interacting with the service\nbegan the process or demonstrated the intention of applying for a job."]
+        ApplicationStart,
+        #[doc = "The job seeker or other entity interacting with the service began the\nprocess or demonstrated the intention of applying for a job from the\nsearch results page without viewing the details of the job posting.\nIf sending this event, JobEventType.VIEW event shouldn't be sent."]
+        ApplicationStartFromSearch,
         #[doc = "The job seeker or other entity interacting with the service demonstrated\nan interest in a job by bookmarking or saving it."]
         Bookmark,
-        #[doc = "The job seeker or other entity interacting with the service was\nsent a notification, such as an email alert or device notification,\ncontaining one or more jobs listings generated by the service."]
-        Notification,
         #[doc = "The job seeker or other entity interacting with the service was\nemployed by the hiring entity (employer). Send this event\nonly if the job seeker was hired through an application that was\ninitiated by a search conducted through the Cloud Talent Solution\nservice."]
         Hired,
-        #[doc = "A recruiter or staffing agency submitted an application on behalf of the\ncandidate after interacting with the service to identify a suitable job\nposting."]
-        SentCv,
+        #[doc = "The job seeker or other entity interacting with the service has\nhad a job rendered in their view, such as in a list of search results in\na compressed or clipped format. This event is typically associated with\nthe viewing of a jobs list on a single page by a job seeker."]
+        Impression,
         #[doc = "The entity interacting with the service (for example, the job seeker),\nwas granted an initial interview by the hiring entity (employer). This\nevent should only be sent if the job seeker was granted an interview as\npart of an application that was initiated by a search conducted through /\nrecommendation provided by the Cloud Talent Solution service."]
         InterviewGranted,
+        #[doc = "The event is unspecified by other provided values."]
+        JobEventTypeUnspecified,
         #[doc = "The job seeker or other entity interacting with the service showed\nno interest in the job."]
         NotInterested,
+        #[doc = "The job seeker or other entity interacting with the service was\nsent a notification, such as an email alert or device notification,\ncontaining one or more jobs listings generated by the service."]
+        Notification,
+        #[doc = "A recruiter or staffing agency submitted an application on behalf of the\ncandidate after interacting with the service to identify a suitable job\nposting."]
+        SentCv,
+        #[doc = "The job seeker, or other entity interacting with the service, has\nviewed the details of a job, including the full description. This\nevent doesn't apply to the viewing a snippet of a job appearing as a\npart of the job search results. Viewing a snippet is associated with an\nimpression)."]
+        View,
+        #[doc = "The job seeker or other entity interacting with the service\nperformed an action to view a job and was redirected to a different\nwebsite for job."]
+        ViewRedirect,
     }
     impl JobEventType {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobEventType::JobEventTypeUnspecified => "JOB_EVENT_TYPE_UNSPECIFIED",
-                JobEventType::Impression => "IMPRESSION",
-                JobEventType::View => "VIEW",
-                JobEventType::ViewRedirect => "VIEW_REDIRECT",
-                JobEventType::ApplicationStart => "APPLICATION_START",
+                JobEventType::ApplicationCompanySubmit => "APPLICATION_COMPANY_SUBMIT",
                 JobEventType::ApplicationFinish => "APPLICATION_FINISH",
                 JobEventType::ApplicationQuickSubmission => "APPLICATION_QUICK_SUBMISSION",
                 JobEventType::ApplicationRedirect => "APPLICATION_REDIRECT",
-                JobEventType::ApplicationStartFromSearch => "APPLICATION_START_FROM_SEARCH",
                 JobEventType::ApplicationRedirectFromSearch => "APPLICATION_REDIRECT_FROM_SEARCH",
-                JobEventType::ApplicationCompanySubmit => "APPLICATION_COMPANY_SUBMIT",
+                JobEventType::ApplicationStart => "APPLICATION_START",
+                JobEventType::ApplicationStartFromSearch => "APPLICATION_START_FROM_SEARCH",
                 JobEventType::Bookmark => "BOOKMARK",
-                JobEventType::Notification => "NOTIFICATION",
                 JobEventType::Hired => "HIRED",
-                JobEventType::SentCv => "SENT_CV",
+                JobEventType::Impression => "IMPRESSION",
                 JobEventType::InterviewGranted => "INTERVIEW_GRANTED",
+                JobEventType::JobEventTypeUnspecified => "JOB_EVENT_TYPE_UNSPECIFIED",
                 JobEventType::NotInterested => "NOT_INTERESTED",
+                JobEventType::Notification => "NOTIFICATION",
+                JobEventType::SentCv => "SENT_CV",
+                JobEventType::View => "VIEW",
+                JobEventType::ViewRedirect => "VIEW_REDIRECT",
             }
         }
     }
     impl ::std::fmt::Display for JobEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2590,29 +2590,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_EVENT_TYPE_UNSPECIFIED" => JobEventType::JobEventTypeUnspecified,
-                "IMPRESSION" => JobEventType::Impression,
-                "VIEW" => JobEventType::View,
-                "VIEW_REDIRECT" => JobEventType::ViewRedirect,
-                "APPLICATION_START" => JobEventType::ApplicationStart,
+                "APPLICATION_COMPANY_SUBMIT" => JobEventType::ApplicationCompanySubmit,
                 "APPLICATION_FINISH" => JobEventType::ApplicationFinish,
                 "APPLICATION_QUICK_SUBMISSION" => JobEventType::ApplicationQuickSubmission,
                 "APPLICATION_REDIRECT" => JobEventType::ApplicationRedirect,
-                "APPLICATION_START_FROM_SEARCH" => JobEventType::ApplicationStartFromSearch,
                 "APPLICATION_REDIRECT_FROM_SEARCH" => JobEventType::ApplicationRedirectFromSearch,
-                "APPLICATION_COMPANY_SUBMIT" => JobEventType::ApplicationCompanySubmit,
+                "APPLICATION_START" => JobEventType::ApplicationStart,
+                "APPLICATION_START_FROM_SEARCH" => JobEventType::ApplicationStartFromSearch,
                 "BOOKMARK" => JobEventType::Bookmark,
-                "NOTIFICATION" => JobEventType::Notification,
                 "HIRED" => JobEventType::Hired,
-                "SENT_CV" => JobEventType::SentCv,
+                "IMPRESSION" => JobEventType::Impression,
                 "INTERVIEW_GRANTED" => JobEventType::InterviewGranted,
+                "JOB_EVENT_TYPE_UNSPECIFIED" => JobEventType::JobEventTypeUnspecified,
                 "NOT_INTERESTED" => JobEventType::NotInterested,
+                "NOTIFICATION" => JobEventType::Notification,
+                "SENT_CV" => JobEventType::SentCv,
+                "VIEW" => JobEventType::View,
+                "VIEW_REDIRECT" => JobEventType::ViewRedirect,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2662,44 +2662,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobQueryEmploymentTypesItems {
-        EmploymentTypeUnspecified,
-        FullTime,
-        PartTime,
-        Contractor,
         ContractToHire,
-        Temporary,
-        Intern,
-        Volunteer,
-        PerDiem,
+        Contractor,
+        EmploymentTypeUnspecified,
         FlyInFlyOut,
+        FullTime,
+        Intern,
         OtherEmploymentType,
+        PartTime,
+        PerDiem,
+        Temporary,
+        Volunteer,
     }
     impl JobQueryEmploymentTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                JobQueryEmploymentTypesItems::ContractToHire => "CONTRACT_TO_HIRE",
+                JobQueryEmploymentTypesItems::Contractor => "CONTRACTOR",
                 JobQueryEmploymentTypesItems::EmploymentTypeUnspecified => {
                     "EMPLOYMENT_TYPE_UNSPECIFIED"
                 }
-                JobQueryEmploymentTypesItems::FullTime => "FULL_TIME",
-                JobQueryEmploymentTypesItems::PartTime => "PART_TIME",
-                JobQueryEmploymentTypesItems::Contractor => "CONTRACTOR",
-                JobQueryEmploymentTypesItems::ContractToHire => "CONTRACT_TO_HIRE",
-                JobQueryEmploymentTypesItems::Temporary => "TEMPORARY",
-                JobQueryEmploymentTypesItems::Intern => "INTERN",
-                JobQueryEmploymentTypesItems::Volunteer => "VOLUNTEER",
-                JobQueryEmploymentTypesItems::PerDiem => "PER_DIEM",
                 JobQueryEmploymentTypesItems::FlyInFlyOut => "FLY_IN_FLY_OUT",
+                JobQueryEmploymentTypesItems::FullTime => "FULL_TIME",
+                JobQueryEmploymentTypesItems::Intern => "INTERN",
                 JobQueryEmploymentTypesItems::OtherEmploymentType => "OTHER_EMPLOYMENT_TYPE",
+                JobQueryEmploymentTypesItems::PartTime => "PART_TIME",
+                JobQueryEmploymentTypesItems::PerDiem => "PER_DIEM",
+                JobQueryEmploymentTypesItems::Temporary => "TEMPORARY",
+                JobQueryEmploymentTypesItems::Volunteer => "VOLUNTEER",
             }
         }
     }
     impl ::std::fmt::Display for JobQueryEmploymentTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobQueryEmploymentTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2707,25 +2707,25 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobQueryEmploymentTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CONTRACT_TO_HIRE" => JobQueryEmploymentTypesItems::ContractToHire,
+                "CONTRACTOR" => JobQueryEmploymentTypesItems::Contractor,
                 "EMPLOYMENT_TYPE_UNSPECIFIED" => {
                     JobQueryEmploymentTypesItems::EmploymentTypeUnspecified
                 }
-                "FULL_TIME" => JobQueryEmploymentTypesItems::FullTime,
-                "PART_TIME" => JobQueryEmploymentTypesItems::PartTime,
-                "CONTRACTOR" => JobQueryEmploymentTypesItems::Contractor,
-                "CONTRACT_TO_HIRE" => JobQueryEmploymentTypesItems::ContractToHire,
-                "TEMPORARY" => JobQueryEmploymentTypesItems::Temporary,
-                "INTERN" => JobQueryEmploymentTypesItems::Intern,
-                "VOLUNTEER" => JobQueryEmploymentTypesItems::Volunteer,
-                "PER_DIEM" => JobQueryEmploymentTypesItems::PerDiem,
                 "FLY_IN_FLY_OUT" => JobQueryEmploymentTypesItems::FlyInFlyOut,
+                "FULL_TIME" => JobQueryEmploymentTypesItems::FullTime,
+                "INTERN" => JobQueryEmploymentTypesItems::Intern,
                 "OTHER_EMPLOYMENT_TYPE" => JobQueryEmploymentTypesItems::OtherEmploymentType,
+                "PART_TIME" => JobQueryEmploymentTypesItems::PartTime,
+                "PER_DIEM" => JobQueryEmploymentTypesItems::PerDiem,
+                "TEMPORARY" => JobQueryEmploymentTypesItems::Temporary,
+                "VOLUNTEER" => JobQueryEmploymentTypesItems::Volunteer,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2746,7 +2746,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobQueryJobCategoriesItems {
-        JobCategoryUnspecified,
         AccountingAndFinance,
         AdministrativeAndOffice,
         AdvertisingAndMarketing,
@@ -2763,6 +2762,7 @@ pub mod schemas {
         Healthcare,
         HumanResources,
         InstallationMaintenanceAndRepair,
+        JobCategoryUnspecified,
         Legal,
         Management,
         ManufacturingAndWarehouse,
@@ -2781,7 +2781,6 @@ pub mod schemas {
     impl JobQueryJobCategoriesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                JobQueryJobCategoriesItems::JobCategoryUnspecified => "JOB_CATEGORY_UNSPECIFIED",
                 JobQueryJobCategoriesItems::AccountingAndFinance => "ACCOUNTING_AND_FINANCE",
                 JobQueryJobCategoriesItems::AdministrativeAndOffice => "ADMINISTRATIVE_AND_OFFICE",
                 JobQueryJobCategoriesItems::AdvertisingAndMarketing => "ADVERTISING_AND_MARKETING",
@@ -2800,6 +2799,7 @@ pub mod schemas {
                 JobQueryJobCategoriesItems::InstallationMaintenanceAndRepair => {
                     "INSTALLATION_MAINTENANCE_AND_REPAIR"
                 }
+                JobQueryJobCategoriesItems::JobCategoryUnspecified => "JOB_CATEGORY_UNSPECIFIED",
                 JobQueryJobCategoriesItems::Legal => "LEGAL",
                 JobQueryJobCategoriesItems::Management => "MANAGEMENT",
                 JobQueryJobCategoriesItems::ManufacturingAndWarehouse => {
@@ -2830,12 +2830,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for JobQueryJobCategoriesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for JobQueryJobCategoriesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2843,13 +2843,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for JobQueryJobCategoriesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_CATEGORY_UNSPECIFIED" => JobQueryJobCategoriesItems::JobCategoryUnspecified,
                 "ACCOUNTING_AND_FINANCE" => JobQueryJobCategoriesItems::AccountingAndFinance,
                 "ADMINISTRATIVE_AND_OFFICE" => JobQueryJobCategoriesItems::AdministrativeAndOffice,
                 "ADVERTISING_AND_MARKETING" => JobQueryJobCategoriesItems::AdvertisingAndMarketing,
@@ -2868,6 +2867,7 @@ pub mod schemas {
                 "INSTALLATION_MAINTENANCE_AND_REPAIR" => {
                     JobQueryJobCategoriesItems::InstallationMaintenanceAndRepair
                 }
+                "JOB_CATEGORY_UNSPECIFIED" => JobQueryJobCategoriesItems::JobCategoryUnspecified,
                 "LEGAL" => JobQueryJobCategoriesItems::Legal,
                 "MANAGEMENT" => JobQueryJobCategoriesItems::Management,
                 "MANUFACTURING_AND_WAREHOUSE" => {
@@ -3031,53 +3031,53 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LocationLocationType {
-        #[doc = "Default value if the type is not specified."]
-        LocationTypeUnspecified,
-        #[doc = "A country level location."]
-        Country,
         #[doc = "A state or equivalent level location."]
         AdministrativeArea,
-        #[doc = "A county or equivalent level location."]
-        SubAdministrativeArea,
+        #[doc = "A country level location."]
+        Country,
         #[doc = "A city or equivalent level location."]
         Locality,
+        #[doc = "Default value if the type is not specified."]
+        LocationTypeUnspecified,
+        #[doc = "A neighborhood level location."]
+        Neighborhood,
         #[doc = "A postal code level location."]
         PostalCode,
+        #[doc = "A street address level location."]
+        StreetAddress,
+        #[doc = "A county or equivalent level location."]
+        SubAdministrativeArea,
         #[doc = "A sublocality is a subdivision of a locality, for example a city borough,\nward, or arrondissement. Sublocalities are usually recognized by a local\npolitical authority. For example, Manhattan and Brooklyn are recognized\nas boroughs by the City of New York, and are therefore modeled as\nsublocalities."]
         SubLocality,
         #[doc = "A district or equivalent level location."]
         SubLocality1,
         #[doc = "A smaller district or equivalent level display."]
         SubLocality2,
-        #[doc = "A neighborhood level location."]
-        Neighborhood,
-        #[doc = "A street address level location."]
-        StreetAddress,
     }
     impl LocationLocationType {
         pub fn as_str(self) -> &'static str {
             match self {
-                LocationLocationType::LocationTypeUnspecified => "LOCATION_TYPE_UNSPECIFIED",
-                LocationLocationType::Country => "COUNTRY",
                 LocationLocationType::AdministrativeArea => "ADMINISTRATIVE_AREA",
-                LocationLocationType::SubAdministrativeArea => "SUB_ADMINISTRATIVE_AREA",
+                LocationLocationType::Country => "COUNTRY",
                 LocationLocationType::Locality => "LOCALITY",
+                LocationLocationType::LocationTypeUnspecified => "LOCATION_TYPE_UNSPECIFIED",
+                LocationLocationType::Neighborhood => "NEIGHBORHOOD",
                 LocationLocationType::PostalCode => "POSTAL_CODE",
+                LocationLocationType::StreetAddress => "STREET_ADDRESS",
+                LocationLocationType::SubAdministrativeArea => "SUB_ADMINISTRATIVE_AREA",
                 LocationLocationType::SubLocality => "SUB_LOCALITY",
                 LocationLocationType::SubLocality1 => "SUB_LOCALITY_1",
                 LocationLocationType::SubLocality2 => "SUB_LOCALITY_2",
-                LocationLocationType::Neighborhood => "NEIGHBORHOOD",
-                LocationLocationType::StreetAddress => "STREET_ADDRESS",
             }
         }
     }
     impl ::std::fmt::Display for LocationLocationType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LocationLocationType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3085,23 +3085,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LocationLocationType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LOCATION_TYPE_UNSPECIFIED" => LocationLocationType::LocationTypeUnspecified,
-                "COUNTRY" => LocationLocationType::Country,
                 "ADMINISTRATIVE_AREA" => LocationLocationType::AdministrativeArea,
-                "SUB_ADMINISTRATIVE_AREA" => LocationLocationType::SubAdministrativeArea,
+                "COUNTRY" => LocationLocationType::Country,
                 "LOCALITY" => LocationLocationType::Locality,
+                "LOCATION_TYPE_UNSPECIFIED" => LocationLocationType::LocationTypeUnspecified,
+                "NEIGHBORHOOD" => LocationLocationType::Neighborhood,
                 "POSTAL_CODE" => LocationLocationType::PostalCode,
+                "STREET_ADDRESS" => LocationLocationType::StreetAddress,
+                "SUB_ADMINISTRATIVE_AREA" => LocationLocationType::SubAdministrativeArea,
                 "SUB_LOCALITY" => LocationLocationType::SubLocality,
                 "SUB_LOCALITY_1" => LocationLocationType::SubLocality1,
                 "SUB_LOCALITY_2" => LocationLocationType::SubLocality2,
-                "NEIGHBORHOOD" => LocationLocationType::Neighborhood,
-                "STREET_ADDRESS" => LocationLocationType::StreetAddress,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3148,31 +3148,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LocationFilterTelecommutePreference {
-        #[doc = "Default value if the telecommute preference is not specified."]
-        TelecommutePreferenceUnspecified,
-        #[doc = "Exclude telecommute jobs."]
-        TelecommuteExcluded,
         #[doc = "Allow telecommute jobs."]
         TelecommuteAllowed,
+        #[doc = "Exclude telecommute jobs."]
+        TelecommuteExcluded,
+        #[doc = "Default value if the telecommute preference is not specified."]
+        TelecommutePreferenceUnspecified,
     }
     impl LocationFilterTelecommutePreference {
         pub fn as_str(self) -> &'static str {
             match self {
+                LocationFilterTelecommutePreference::TelecommuteAllowed => "TELECOMMUTE_ALLOWED",
+                LocationFilterTelecommutePreference::TelecommuteExcluded => "TELECOMMUTE_EXCLUDED",
                 LocationFilterTelecommutePreference::TelecommutePreferenceUnspecified => {
                     "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
                 }
-                LocationFilterTelecommutePreference::TelecommuteExcluded => "TELECOMMUTE_EXCLUDED",
-                LocationFilterTelecommutePreference::TelecommuteAllowed => "TELECOMMUTE_ALLOWED",
             }
         }
     }
     impl ::std::fmt::Display for LocationFilterTelecommutePreference {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LocationFilterTelecommutePreference {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3180,17 +3180,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LocationFilterTelecommutePreference {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "TELECOMMUTE_ALLOWED" => LocationFilterTelecommutePreference::TelecommuteAllowed,
+                "TELECOMMUTE_EXCLUDED" => LocationFilterTelecommutePreference::TelecommuteExcluded,
                 "TELECOMMUTE_PREFERENCE_UNSPECIFIED" => {
                     LocationFilterTelecommutePreference::TelecommutePreferenceUnspecified
                 }
-                "TELECOMMUTE_EXCLUDED" => LocationFilterTelecommutePreference::TelecommuteExcluded,
-                "TELECOMMUTE_ALLOWED" => LocationFilterTelecommutePreference::TelecommuteAllowed,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3402,33 +3402,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProcessingOptionsHtmlSanitization {
-        #[doc = "Default value."]
-        HtmlSanitizationUnspecified,
         #[doc = "Disables sanitization on HTML input."]
         HtmlSanitizationDisabled,
+        #[doc = "Default value."]
+        HtmlSanitizationUnspecified,
         #[doc = "Sanitizes HTML input, only accepts bold, italic, ordered list, and\nunordered list markup tags."]
         SimpleFormattingOnly,
     }
     impl ProcessingOptionsHtmlSanitization {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProcessingOptionsHtmlSanitization::HtmlSanitizationUnspecified => {
-                    "HTML_SANITIZATION_UNSPECIFIED"
-                }
                 ProcessingOptionsHtmlSanitization::HtmlSanitizationDisabled => {
                     "HTML_SANITIZATION_DISABLED"
+                }
+                ProcessingOptionsHtmlSanitization::HtmlSanitizationUnspecified => {
+                    "HTML_SANITIZATION_UNSPECIFIED"
                 }
                 ProcessingOptionsHtmlSanitization::SimpleFormattingOnly => "SIMPLE_FORMATTING_ONLY",
             }
         }
     }
     impl ::std::fmt::Display for ProcessingOptionsHtmlSanitization {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ProcessingOptionsHtmlSanitization {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3436,17 +3436,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ProcessingOptionsHtmlSanitization {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "HTML_SANITIZATION_UNSPECIFIED" => {
-                    ProcessingOptionsHtmlSanitization::HtmlSanitizationUnspecified
-                }
                 "HTML_SANITIZATION_DISABLED" => {
                     ProcessingOptionsHtmlSanitization::HtmlSanitizationDisabled
+                }
+                "HTML_SANITIZATION_UNSPECIFIED" => {
+                    ProcessingOptionsHtmlSanitization::HtmlSanitizationUnspecified
                 }
                 "SIMPLE_FORMATTING_ONLY" => ProcessingOptionsHtmlSanitization::SimpleFormattingOnly,
                 _ => {
@@ -3560,31 +3560,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchJobsRequestDiversificationLevel {
-        #[doc = "The diversification level isn't specified. By default, jobs with this\nenum are ordered according to SIMPLE diversifying behavior."]
-        DiversificationLevelUnspecified,
         #[doc = "Disables diversification. Jobs that would normally be pushed to the last\npage would not have their positions altered. This may result in highly\nsimilar jobs appearing in sequence in the search results."]
         Disabled,
+        #[doc = "The diversification level isn't specified. By default, jobs with this\nenum are ordered according to SIMPLE diversifying behavior."]
+        DiversificationLevelUnspecified,
         #[doc = "Default diversifying behavior. The result list is ordered so that\nhighly similar results are pushed to the end of the last page of search\nresults."]
         Simple,
     }
     impl SearchJobsRequestDiversificationLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                SearchJobsRequestDiversificationLevel::Disabled => "DISABLED",
                 SearchJobsRequestDiversificationLevel::DiversificationLevelUnspecified => {
                     "DIVERSIFICATION_LEVEL_UNSPECIFIED"
                 }
-                SearchJobsRequestDiversificationLevel::Disabled => "DISABLED",
                 SearchJobsRequestDiversificationLevel::Simple => "SIMPLE",
             }
         }
     }
     impl ::std::fmt::Display for SearchJobsRequestDiversificationLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SearchJobsRequestDiversificationLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3592,16 +3592,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SearchJobsRequestDiversificationLevel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DISABLED" => SearchJobsRequestDiversificationLevel::Disabled,
                 "DIVERSIFICATION_LEVEL_UNSPECIFIED" => {
                     SearchJobsRequestDiversificationLevel::DiversificationLevelUnspecified
                 }
-                "DISABLED" => SearchJobsRequestDiversificationLevel::Disabled,
                 "SIMPLE" => SearchJobsRequestDiversificationLevel::Simple,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -3623,35 +3623,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchJobsRequestJobView {
-        #[doc = "Default value."]
-        JobViewUnspecified,
+        #[doc = "All available attributes are included in the search results."]
+        JobViewFull,
         #[doc = "A ID only view of job, with following attributes:\nJob.name, Job.requisition_id, Job.language_code."]
         JobViewIdOnly,
         #[doc = "A minimal view of the job, with the following attributes:\nJob.name, Job.requisition_id, Job.title,\nJob.company_name, Job.DerivedInfo.locations, Job.language_code."]
         JobViewMinimal,
         #[doc = "A small view of the job, with the following attributes in the search\nresults: Job.name, Job.requisition_id, Job.title,\nJob.company_name, Job.DerivedInfo.locations, Job.visibility,\nJob.language_code, Job.description."]
         JobViewSmall,
-        #[doc = "All available attributes are included in the search results."]
-        JobViewFull,
+        #[doc = "Default value."]
+        JobViewUnspecified,
     }
     impl SearchJobsRequestJobView {
         pub fn as_str(self) -> &'static str {
             match self {
-                SearchJobsRequestJobView::JobViewUnspecified => "JOB_VIEW_UNSPECIFIED",
+                SearchJobsRequestJobView::JobViewFull => "JOB_VIEW_FULL",
                 SearchJobsRequestJobView::JobViewIdOnly => "JOB_VIEW_ID_ONLY",
                 SearchJobsRequestJobView::JobViewMinimal => "JOB_VIEW_MINIMAL",
                 SearchJobsRequestJobView::JobViewSmall => "JOB_VIEW_SMALL",
-                SearchJobsRequestJobView::JobViewFull => "JOB_VIEW_FULL",
+                SearchJobsRequestJobView::JobViewUnspecified => "JOB_VIEW_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SearchJobsRequestJobView {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SearchJobsRequestJobView {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3659,17 +3659,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SearchJobsRequestJobView {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "JOB_VIEW_UNSPECIFIED" => SearchJobsRequestJobView::JobViewUnspecified,
+                "JOB_VIEW_FULL" => SearchJobsRequestJobView::JobViewFull,
                 "JOB_VIEW_ID_ONLY" => SearchJobsRequestJobView::JobViewIdOnly,
                 "JOB_VIEW_MINIMAL" => SearchJobsRequestJobView::JobViewMinimal,
                 "JOB_VIEW_SMALL" => SearchJobsRequestJobView::JobViewSmall,
-                "JOB_VIEW_FULL" => SearchJobsRequestJobView::JobViewFull,
+                "JOB_VIEW_UNSPECIFIED" => SearchJobsRequestJobView::JobViewUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3690,29 +3690,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchJobsRequestSearchMode {
-        #[doc = "The mode of the search method isn't specified."]
-        SearchModeUnspecified,
-        #[doc = "The job search matches against all jobs, and featured jobs\n(jobs with promotionValue > 0) are not specially handled."]
-        JobSearch,
         #[doc = "The job search matches only against featured jobs (jobs with a\npromotionValue > 0). This method doesn't return any jobs having a\npromotionValue <= 0. The search results order is determined by the\npromotionValue (jobs with a higher promotionValue are returned higher up\nin the search results), with relevance being used as a tiebreaker."]
         FeaturedJobSearch,
+        #[doc = "The job search matches against all jobs, and featured jobs\n(jobs with promotionValue > 0) are not specially handled."]
+        JobSearch,
+        #[doc = "The mode of the search method isn't specified."]
+        SearchModeUnspecified,
     }
     impl SearchJobsRequestSearchMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                SearchJobsRequestSearchMode::SearchModeUnspecified => "SEARCH_MODE_UNSPECIFIED",
-                SearchJobsRequestSearchMode::JobSearch => "JOB_SEARCH",
                 SearchJobsRequestSearchMode::FeaturedJobSearch => "FEATURED_JOB_SEARCH",
+                SearchJobsRequestSearchMode::JobSearch => "JOB_SEARCH",
+                SearchJobsRequestSearchMode::SearchModeUnspecified => "SEARCH_MODE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SearchJobsRequestSearchMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SearchJobsRequestSearchMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3720,15 +3720,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SearchJobsRequestSearchMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SEARCH_MODE_UNSPECIFIED" => SearchJobsRequestSearchMode::SearchModeUnspecified,
-                "JOB_SEARCH" => SearchJobsRequestSearchMode::JobSearch,
                 "FEATURED_JOB_SEARCH" => SearchJobsRequestSearchMode::FeaturedJobSearch,
+                "JOB_SEARCH" => SearchJobsRequestSearchMode::JobSearch,
+                "SEARCH_MODE_UNSPECIFIED" => SearchJobsRequestSearchMode::SearchModeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3996,12 +3996,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4009,7 +4009,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4052,12 +4052,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4065,7 +4065,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4111,33 +4111,33 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum CompleteType {
+                Combined,
+                CompanyName,
                 CompletionTypeUnspecified,
                 JobTitle,
-                CompanyName,
-                Combined,
             }
             impl CompleteType {
                 pub fn as_str(self) -> &'static str {
                     match self {
+                        CompleteType::Combined => "COMBINED",
+                        CompleteType::CompanyName => "COMPANY_NAME",
                         CompleteType::CompletionTypeUnspecified => "COMPLETION_TYPE_UNSPECIFIED",
                         CompleteType::JobTitle => "JOB_TITLE",
-                        CompleteType::CompanyName => "COMPANY_NAME",
-                        CompleteType::Combined => "COMBINED",
                     }
                 }
             }
             impl ::std::fmt::Display for CompleteType {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for CompleteType {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -4145,16 +4145,16 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for CompleteType {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
+                        "COMBINED" => CompleteType::Combined,
+                        "COMPANY_NAME" => CompleteType::CompanyName,
                         "COMPLETION_TYPE_UNSPECIFIED" => CompleteType::CompletionTypeUnspecified,
                         "JOB_TITLE" => CompleteType::JobTitle,
-                        "COMPANY_NAME" => CompleteType::CompanyName,
-                        "COMBINED" => CompleteType::Combined,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -4176,25 +4176,25 @@ mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum CompleteScope {
                 CompletionScopeUnspecified,
-                Tenant,
                 Public,
+                Tenant,
             }
             impl CompleteScope {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         CompleteScope::CompletionScopeUnspecified => "COMPLETION_SCOPE_UNSPECIFIED",
-                        CompleteScope::Tenant => "TENANT",
                         CompleteScope::Public => "PUBLIC",
+                        CompleteScope::Tenant => "TENANT",
                     }
                 }
             }
             impl ::std::fmt::Display for CompleteScope {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
             impl ::serde::Serialize for CompleteScope {
-                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
                 {
@@ -4202,15 +4202,15 @@ mod resources {
                 }
             }
             impl<'de> ::serde::Deserialize<'de> for CompleteScope {
-                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
                         "COMPLETION_SCOPE_UNSPECIFIED" => CompleteScope::CompletionScopeUnspecified,
-                        "TENANT" => CompleteScope::Tenant,
                         "PUBLIC" => CompleteScope::Public,
+                        "TENANT" => CompleteScope::Tenant,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -4356,19 +4356,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4564,19 +4554,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4851,19 +4831,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5018,19 +4988,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5183,19 +5143,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5366,19 +5316,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5421,15 +5361,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_companies<T>(self) -> ListCompaniesIter<'a, A, T>
+                pub fn iter_companies<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListCompaniesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "companies").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "companies")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5437,13 +5381,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_companies_standard(
                     mut self,
-                ) -> ListCompaniesIter<'a, A, crate::schemas::Company> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Company> {
                     self.fields = Some(concat!("nextPageToken,", "companies").to_owned());
-                    ListCompaniesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "companies")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5453,26 +5393,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_companies_debug(
                     mut self,
-                ) -> ListCompaniesIter<'a, A, crate::schemas::Company> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Company> {
                     self.fields = Some(concat!("nextPageToken,", "companies", "(*)").to_owned());
-                    ListCompaniesIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "companies")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListCompaniesResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListCompaniesResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -5572,52 +5523,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListCompaniesIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListCompaniesIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "companies")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -5646,19 +5558,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5794,30 +5696,30 @@ mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListJobView {
-                    JobViewUnspecified,
+                    JobViewFull,
                     JobViewIdOnly,
                     JobViewMinimal,
                     JobViewSmall,
-                    JobViewFull,
+                    JobViewUnspecified,
                 }
                 impl ListJobView {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            ListJobView::JobViewUnspecified => "JOB_VIEW_UNSPECIFIED",
+                            ListJobView::JobViewFull => "JOB_VIEW_FULL",
                             ListJobView::JobViewIdOnly => "JOB_VIEW_ID_ONLY",
                             ListJobView::JobViewMinimal => "JOB_VIEW_MINIMAL",
                             ListJobView::JobViewSmall => "JOB_VIEW_SMALL",
-                            ListJobView::JobViewFull => "JOB_VIEW_FULL",
+                            ListJobView::JobViewUnspecified => "JOB_VIEW_UNSPECIFIED",
                         }
                     }
                 }
                 impl ::std::fmt::Display for ListJobView {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for ListJobView {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -5825,17 +5727,17 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for ListJobView {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "JOB_VIEW_UNSPECIFIED" => ListJobView::JobViewUnspecified,
+                            "JOB_VIEW_FULL" => ListJobView::JobViewFull,
                             "JOB_VIEW_ID_ONLY" => ListJobView::JobViewIdOnly,
                             "JOB_VIEW_MINIMAL" => ListJobView::JobViewMinimal,
                             "JOB_VIEW_SMALL" => ListJobView::JobViewSmall,
-                            "JOB_VIEW_FULL" => ListJobView::JobViewFull,
+                            "JOB_VIEW_UNSPECIFIED" => ListJobView::JobViewUnspecified,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -6066,19 +5968,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6234,19 +6126,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6401,19 +6283,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6566,19 +6438,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6758,19 +6620,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6813,27 +6665,29 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_jobs<T>(self) -> ListJobsIter<'a, A, T>
+                pub fn iter_jobs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "jobs").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_jobs_standard(mut self) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                pub fn iter_jobs_standard(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs").to_owned());
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -6841,26 +6695,37 @@ mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_jobs_debug(mut self) -> ListJobsIter<'a, A, crate::schemas::Job> {
+                pub fn iter_jobs_debug(
+                    mut self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Job> {
                     self.fields = Some(concat!("nextPageToken,", "jobs", "(*)").to_owned());
-                    ListJobsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "jobs")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListJobsResponse> {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -6961,52 +6826,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListJobsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListJobsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "jobs")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -7035,19 +6861,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7202,19 +7018,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7372,19 +7178,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7779,7 +7575,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -7788,7 +7587,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -7801,58 +7600,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

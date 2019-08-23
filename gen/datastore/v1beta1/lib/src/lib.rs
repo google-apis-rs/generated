@@ -1,25 +1,25 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
-        #[doc = "Unspecified."]
-        OperationTypeUnspecified,
         #[doc = "ExportEntities."]
         ExportEntities,
         #[doc = "ImportEntities."]
         ImportEntities,
+        #[doc = "Unspecified."]
+        OperationTypeUnspecified,
     }
     impl GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: OperationTypeUnspecified => "OPERATION_TYPE_UNSPECIFIED" , GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: ExportEntities => "EXPORT_ENTITIES" , GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: ImportEntities => "IMPORT_ENTITIES" , }
+            match self { GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: ExportEntities => "EXPORT_ENTITIES" , GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: ImportEntities => "IMPORT_ENTITIES" , GoogleDatastoreAdminV1Beta1CommonMetadataOperationType :: OperationTypeUnspecified => "OPERATION_TYPE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -27,20 +27,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPERATION_TYPE_UNSPECIFIED" => {
-                    GoogleDatastoreAdminV1Beta1CommonMetadataOperationType::OperationTypeUnspecified
-                }
                 "EXPORT_ENTITIES" => {
                     GoogleDatastoreAdminV1Beta1CommonMetadataOperationType::ExportEntities
                 }
                 "IMPORT_ENTITIES" => {
                     GoogleDatastoreAdminV1Beta1CommonMetadataOperationType::ImportEntities
+                }
+                "OPERATION_TYPE_UNSPECIFIED" => {
+                    GoogleDatastoreAdminV1Beta1CommonMetadataOperationType::OperationTypeUnspecified
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -62,46 +62,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        #[doc = "Unspecified."]
-        StateUnspecified,
+        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
+        Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
         #[doc = "Request is being prepared for processing."]
         Initializing,
         #[doc = "Request is actively being processed."]
         Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
+        #[doc = "Unspecified."]
+        StateUnspecified,
         #[doc = "Request has completed successfully."]
         Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
-        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
-        Cancelled,
     }
     impl GoogleDatastoreAdminV1Beta1CommonMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelled => "CANCELLED",
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelling => "CANCELLING",
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Failed => "FAILED",
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Finalizing => "FINALIZING",
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Initializing => "INITIALIZING",
+                GoogleDatastoreAdminV1Beta1CommonMetadataState::Processing => "PROCESSING",
                 GoogleDatastoreAdminV1Beta1CommonMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Initializing => "INITIALIZING",
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Processing => "PROCESSING",
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelling => "CANCELLING",
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Finalizing => "FINALIZING",
                 GoogleDatastoreAdminV1Beta1CommonMetadataState::Successful => "SUCCESSFUL",
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Failed => "FAILED",
-                GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -109,22 +109,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelled,
+                "CANCELLING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelling,
+                "FAILED" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Failed,
+                "FINALIZING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Finalizing,
+                "INITIALIZING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Initializing,
+                "PROCESSING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Processing,
                 "STATE_UNSPECIFIED" => {
                     GoogleDatastoreAdminV1Beta1CommonMetadataState::StateUnspecified
                 }
-                "INITIALIZING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Initializing,
-                "PROCESSING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Processing,
-                "CANCELLING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelling,
-                "FINALIZING" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Finalizing,
                 "SUCCESSFUL" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Successful,
-                "FAILED" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Failed,
-                "CANCELLED" => GoogleDatastoreAdminV1Beta1CommonMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -422,41 +422,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataOperationType {
-        #[doc = "Unspecified."]
-        OperationTypeUnspecified,
-        #[doc = "ExportEntities."]
-        ExportEntities,
-        #[doc = "ImportEntities."]
-        ImportEntities,
         #[doc = "CreateIndex."]
         CreateIndex,
         #[doc = "DeleteIndex."]
         DeleteIndex,
+        #[doc = "ExportEntities."]
+        ExportEntities,
+        #[doc = "ImportEntities."]
+        ImportEntities,
+        #[doc = "Unspecified."]
+        OperationTypeUnspecified,
     }
     impl GoogleDatastoreAdminV1CommonMetadataOperationType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDatastoreAdminV1CommonMetadataOperationType::OperationTypeUnspecified => {
-                    "OPERATION_TYPE_UNSPECIFIED"
-                }
+                GoogleDatastoreAdminV1CommonMetadataOperationType::CreateIndex => "CREATE_INDEX",
+                GoogleDatastoreAdminV1CommonMetadataOperationType::DeleteIndex => "DELETE_INDEX",
                 GoogleDatastoreAdminV1CommonMetadataOperationType::ExportEntities => {
                     "EXPORT_ENTITIES"
                 }
                 GoogleDatastoreAdminV1CommonMetadataOperationType::ImportEntities => {
                     "IMPORT_ENTITIES"
                 }
-                GoogleDatastoreAdminV1CommonMetadataOperationType::CreateIndex => "CREATE_INDEX",
-                GoogleDatastoreAdminV1CommonMetadataOperationType::DeleteIndex => "DELETE_INDEX",
+                GoogleDatastoreAdminV1CommonMetadataOperationType::OperationTypeUnspecified => {
+                    "OPERATION_TYPE_UNSPECIFIED"
+                }
             }
         }
     }
     impl ::std::fmt::Display for GoogleDatastoreAdminV1CommonMetadataOperationType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDatastoreAdminV1CommonMetadataOperationType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -464,23 +464,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDatastoreAdminV1CommonMetadataOperationType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OPERATION_TYPE_UNSPECIFIED" => {
-                    GoogleDatastoreAdminV1CommonMetadataOperationType::OperationTypeUnspecified
-                }
+                "CREATE_INDEX" => GoogleDatastoreAdminV1CommonMetadataOperationType::CreateIndex,
+                "DELETE_INDEX" => GoogleDatastoreAdminV1CommonMetadataOperationType::DeleteIndex,
                 "EXPORT_ENTITIES" => {
                     GoogleDatastoreAdminV1CommonMetadataOperationType::ExportEntities
                 }
                 "IMPORT_ENTITIES" => {
                     GoogleDatastoreAdminV1CommonMetadataOperationType::ImportEntities
                 }
-                "CREATE_INDEX" => GoogleDatastoreAdminV1CommonMetadataOperationType::CreateIndex,
-                "DELETE_INDEX" => GoogleDatastoreAdminV1CommonMetadataOperationType::DeleteIndex,
+                "OPERATION_TYPE_UNSPECIFIED" => {
+                    GoogleDatastoreAdminV1CommonMetadataOperationType::OperationTypeUnspecified
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -501,44 +501,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataState {
-        #[doc = "Unspecified."]
-        StateUnspecified,
+        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
+        Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
         #[doc = "Request is being prepared for processing."]
         Initializing,
         #[doc = "Request is actively being processed."]
         Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
+        #[doc = "Unspecified."]
+        StateUnspecified,
         #[doc = "Request has completed successfully."]
         Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
-        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
-        Cancelled,
     }
     impl GoogleDatastoreAdminV1CommonMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDatastoreAdminV1CommonMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
+                GoogleDatastoreAdminV1CommonMetadataState::Cancelled => "CANCELLED",
+                GoogleDatastoreAdminV1CommonMetadataState::Cancelling => "CANCELLING",
+                GoogleDatastoreAdminV1CommonMetadataState::Failed => "FAILED",
+                GoogleDatastoreAdminV1CommonMetadataState::Finalizing => "FINALIZING",
                 GoogleDatastoreAdminV1CommonMetadataState::Initializing => "INITIALIZING",
                 GoogleDatastoreAdminV1CommonMetadataState::Processing => "PROCESSING",
-                GoogleDatastoreAdminV1CommonMetadataState::Cancelling => "CANCELLING",
-                GoogleDatastoreAdminV1CommonMetadataState::Finalizing => "FINALIZING",
+                GoogleDatastoreAdminV1CommonMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
                 GoogleDatastoreAdminV1CommonMetadataState::Successful => "SUCCESSFUL",
-                GoogleDatastoreAdminV1CommonMetadataState::Failed => "FAILED",
-                GoogleDatastoreAdminV1CommonMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleDatastoreAdminV1CommonMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDatastoreAdminV1CommonMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -546,20 +546,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDatastoreAdminV1CommonMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => GoogleDatastoreAdminV1CommonMetadataState::StateUnspecified,
+                "CANCELLED" => GoogleDatastoreAdminV1CommonMetadataState::Cancelled,
+                "CANCELLING" => GoogleDatastoreAdminV1CommonMetadataState::Cancelling,
+                "FAILED" => GoogleDatastoreAdminV1CommonMetadataState::Failed,
+                "FINALIZING" => GoogleDatastoreAdminV1CommonMetadataState::Finalizing,
                 "INITIALIZING" => GoogleDatastoreAdminV1CommonMetadataState::Initializing,
                 "PROCESSING" => GoogleDatastoreAdminV1CommonMetadataState::Processing,
-                "CANCELLING" => GoogleDatastoreAdminV1CommonMetadataState::Cancelling,
-                "FINALIZING" => GoogleDatastoreAdminV1CommonMetadataState::Finalizing,
+                "STATE_UNSPECIFIED" => GoogleDatastoreAdminV1CommonMetadataState::StateUnspecified,
                 "SUCCESSFUL" => GoogleDatastoreAdminV1CommonMetadataState::Successful,
-                "FAILED" => GoogleDatastoreAdminV1CommonMetadataState::Failed,
-                "CANCELLED" => GoogleDatastoreAdminV1CommonMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -889,12 +889,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -902,7 +902,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -945,12 +945,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -958,7 +958,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1004,7 +1004,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -1085,19 +1085,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1255,19 +1245,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1661,7 +1641,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -1670,7 +1653,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -1683,58 +1666,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

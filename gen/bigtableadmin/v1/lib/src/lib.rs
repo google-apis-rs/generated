@@ -1,29 +1,29 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClusterDefaultStorageType {
-        #[doc = "The user did not specify a storage type."]
-        StorageTypeUnspecified,
-        #[doc = "Flash (SSD) storage should be used."]
-        Ssd,
         #[doc = "Magnetic drive (HDD) storage should be used."]
         Hdd,
+        #[doc = "Flash (SSD) storage should be used."]
+        Ssd,
+        #[doc = "The user did not specify a storage type."]
+        StorageTypeUnspecified,
     }
     impl ClusterDefaultStorageType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ClusterDefaultStorageType::StorageTypeUnspecified => "STORAGE_TYPE_UNSPECIFIED",
-                ClusterDefaultStorageType::Ssd => "SSD",
                 ClusterDefaultStorageType::Hdd => "HDD",
+                ClusterDefaultStorageType::Ssd => "SSD",
+                ClusterDefaultStorageType::StorageTypeUnspecified => "STORAGE_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ClusterDefaultStorageType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ClusterDefaultStorageType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -31,15 +31,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ClusterDefaultStorageType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STORAGE_TYPE_UNSPECIFIED" => ClusterDefaultStorageType::StorageTypeUnspecified,
-                "SSD" => ClusterDefaultStorageType::Ssd,
                 "HDD" => ClusterDefaultStorageType::Hdd,
+                "SSD" => ClusterDefaultStorageType::Ssd,
+                "STORAGE_TYPE_UNSPECIFIED" => ClusterDefaultStorageType::StorageTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -60,35 +60,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClusterState {
-        #[doc = "The state of the cluster could not be determined."]
-        StateNotKnown,
-        #[doc = "The cluster has been successfully created and is ready to serve requests."]
-        Ready,
         #[doc = "The cluster is currently being created, and may be destroyed\nif the creation process encounters an error.\nA cluster may not be able to serve requests while being created."]
         Creating,
-        #[doc = "The cluster is currently being resized, and may revert to its previous\nnode count if the process encounters an error.\nA cluster is still capable of serving requests while being resized,\nbut may exhibit performance as if its number of allocated nodes is\nbetween the starting and requested states."]
-        Resizing,
         #[doc = "The cluster has no backing nodes. The data (tables) still\nexist, but no operations can be performed on the cluster."]
         Disabled,
+        #[doc = "The cluster has been successfully created and is ready to serve requests."]
+        Ready,
+        #[doc = "The cluster is currently being resized, and may revert to its previous\nnode count if the process encounters an error.\nA cluster is still capable of serving requests while being resized,\nbut may exhibit performance as if its number of allocated nodes is\nbetween the starting and requested states."]
+        Resizing,
+        #[doc = "The state of the cluster could not be determined."]
+        StateNotKnown,
     }
     impl ClusterState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ClusterState::StateNotKnown => "STATE_NOT_KNOWN",
-                ClusterState::Ready => "READY",
                 ClusterState::Creating => "CREATING",
-                ClusterState::Resizing => "RESIZING",
                 ClusterState::Disabled => "DISABLED",
+                ClusterState::Ready => "READY",
+                ClusterState::Resizing => "RESIZING",
+                ClusterState::StateNotKnown => "STATE_NOT_KNOWN",
             }
         }
     }
     impl ::std::fmt::Display for ClusterState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ClusterState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -96,17 +96,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ClusterState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_NOT_KNOWN" => ClusterState::StateNotKnown,
-                "READY" => ClusterState::Ready,
                 "CREATING" => ClusterState::Creating,
-                "RESIZING" => ClusterState::Resizing,
                 "DISABLED" => ClusterState::Disabled,
+                "READY" => ClusterState::Ready,
+                "RESIZING" => ClusterState::Resizing,
+                "STATE_NOT_KNOWN" => ClusterState::StateNotKnown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -302,29 +302,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceType {
-        #[doc = "The type of the instance is unspecified. If set when creating an\ninstance, a `PRODUCTION` instance will be created. If set when updating\nan instance, the type will be left unchanged."]
-        TypeUnspecified,
-        #[doc = "An instance meant for production use. `serve_nodes` must be set\non the cluster."]
-        Production,
         #[doc = "The instance is meant for development and testing purposes only; it has\nno performance or uptime guarantees and is not covered by SLA.\nAfter a development instance is created, it can be upgraded by\nupdating the instance to type `PRODUCTION`. An instance created\nas a production instance cannot be changed to a development instance.\nWhen creating a development instance, `serve_nodes` on the cluster must\nnot be set."]
         Development,
+        #[doc = "An instance meant for production use. `serve_nodes` must be set\non the cluster."]
+        Production,
+        #[doc = "The type of the instance is unspecified. If set when creating an\ninstance, a `PRODUCTION` instance will be created. If set when updating\nan instance, the type will be left unchanged."]
+        TypeUnspecified,
     }
     impl InstanceType {
         pub fn as_str(self) -> &'static str {
             match self {
-                InstanceType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                InstanceType::Production => "PRODUCTION",
                 InstanceType::Development => "DEVELOPMENT",
+                InstanceType::Production => "PRODUCTION",
+                InstanceType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for InstanceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for InstanceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -332,15 +332,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for InstanceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => InstanceType::TypeUnspecified,
-                "PRODUCTION" => InstanceType::Production,
                 "DEVELOPMENT" => InstanceType::Development,
+                "PRODUCTION" => InstanceType::Production,
+                "TYPE_UNSPECIFIED" => InstanceType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -361,29 +361,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
-        #[doc = "The state of the instance could not be determined."]
-        StateNotKnown,
-        #[doc = "The instance has been successfully created and can serve requests\nto its tables."]
-        Ready,
         #[doc = "The instance is currently being created, and may be destroyed\nif the creation process encounters an error."]
         Creating,
+        #[doc = "The instance has been successfully created and can serve requests\nto its tables."]
+        Ready,
+        #[doc = "The state of the instance could not be determined."]
+        StateNotKnown,
     }
     impl InstanceState {
         pub fn as_str(self) -> &'static str {
             match self {
-                InstanceState::StateNotKnown => "STATE_NOT_KNOWN",
-                InstanceState::Ready => "READY",
                 InstanceState::Creating => "CREATING",
+                InstanceState::Ready => "READY",
+                InstanceState::StateNotKnown => "STATE_NOT_KNOWN",
             }
         }
     }
     impl ::std::fmt::Display for InstanceState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for InstanceState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -391,15 +391,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for InstanceState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_NOT_KNOWN" => InstanceState::StateNotKnown,
-                "READY" => InstanceState::Ready,
                 "CREATING" => InstanceState::Creating,
+                "READY" => InstanceState::Ready,
+                "STATE_NOT_KNOWN" => InstanceState::StateNotKnown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -487,34 +487,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableProgressState {
-        StateUnspecified,
-        #[doc = "The table has not yet begun copying to the new cluster."]
-        Pending,
-        #[doc = "The table is actively being copied to the new cluster."]
-        Copying,
-        #[doc = "The table has been fully copied to the new cluster."]
-        Completed,
         #[doc = "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."]
         Cancelled,
+        #[doc = "The table has been fully copied to the new cluster."]
+        Completed,
+        #[doc = "The table is actively being copied to the new cluster."]
+        Copying,
+        #[doc = "The table has not yet begun copying to the new cluster."]
+        Pending,
+        StateUnspecified,
     }
     impl TableProgressState {
         pub fn as_str(self) -> &'static str {
             match self {
-                TableProgressState::StateUnspecified => "STATE_UNSPECIFIED",
-                TableProgressState::Pending => "PENDING",
-                TableProgressState::Copying => "COPYING",
-                TableProgressState::Completed => "COMPLETED",
                 TableProgressState::Cancelled => "CANCELLED",
+                TableProgressState::Completed => "COMPLETED",
+                TableProgressState::Copying => "COPYING",
+                TableProgressState::Pending => "PENDING",
+                TableProgressState::StateUnspecified => "STATE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for TableProgressState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableProgressState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -522,17 +522,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableProgressState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => TableProgressState::StateUnspecified,
-                "PENDING" => TableProgressState::Pending,
-                "COPYING" => TableProgressState::Copying,
-                "COMPLETED" => TableProgressState::Completed,
                 "CANCELLED" => TableProgressState::Cancelled,
+                "COMPLETED" => TableProgressState::Completed,
+                "COPYING" => TableProgressState::Copying,
+                "PENDING" => TableProgressState::Pending,
+                "STATE_UNSPECIFIED" => TableProgressState::StateUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -686,12 +686,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -699,7 +699,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -742,12 +742,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -755,7 +755,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -794,7 +794,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {}
+pub mod resources {}
 #[allow(dead_code)]
 const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
     .remove(b'-')
@@ -1053,7 +1053,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -1062,7 +1065,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -1075,58 +1078,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

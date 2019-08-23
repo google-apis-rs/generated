@@ -62,10 +62,10 @@ pub mod schemas {
     pub enum AgeRangeTypeAgeRange {
         #[doc = "Unspecified."]
         AgeRangeUnspecified,
-        #[doc = "Younger than eighteen."]
-        LessThanEighteen,
         #[doc = "Between eighteen and twenty."]
         EighteenToTwenty,
+        #[doc = "Younger than eighteen."]
+        LessThanEighteen,
         #[doc = "Twenty-one and older."]
         TwentyOneOrOlder,
     }
@@ -73,19 +73,19 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 AgeRangeTypeAgeRange::AgeRangeUnspecified => "AGE_RANGE_UNSPECIFIED",
-                AgeRangeTypeAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 AgeRangeTypeAgeRange::EighteenToTwenty => "EIGHTEEN_TO_TWENTY",
+                AgeRangeTypeAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 AgeRangeTypeAgeRange::TwentyOneOrOlder => "TWENTY_ONE_OR_OLDER",
             }
         }
     }
     impl ::std::fmt::Display for AgeRangeTypeAgeRange {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AgeRangeTypeAgeRange {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -93,15 +93,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AgeRangeTypeAgeRange {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "AGE_RANGE_UNSPECIFIED" => AgeRangeTypeAgeRange::AgeRangeUnspecified,
-                "LESS_THAN_EIGHTEEN" => AgeRangeTypeAgeRange::LessThanEighteen,
                 "EIGHTEEN_TO_TWENTY" => AgeRangeTypeAgeRange::EighteenToTwenty,
+                "LESS_THAN_EIGHTEEN" => AgeRangeTypeAgeRange::LessThanEighteen,
                 "TWENTY_ONE_OR_OLDER" => AgeRangeTypeAgeRange::TwentyOneOrOlder,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -169,27 +169,27 @@ pub mod schemas {
     pub enum BiographyContentType {
         #[doc = "Unspecified."]
         ContentTypeUnspecified,
-        #[doc = "Plain text."]
-        TextPlain,
         #[doc = "HTML text."]
         TextHtml,
+        #[doc = "Plain text."]
+        TextPlain,
     }
     impl BiographyContentType {
         pub fn as_str(self) -> &'static str {
             match self {
                 BiographyContentType::ContentTypeUnspecified => "CONTENT_TYPE_UNSPECIFIED",
-                BiographyContentType::TextPlain => "TEXT_PLAIN",
                 BiographyContentType::TextHtml => "TEXT_HTML",
+                BiographyContentType::TextPlain => "TEXT_PLAIN",
             }
         }
     }
     impl ::std::fmt::Display for BiographyContentType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BiographyContentType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -197,15 +197,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BiographyContentType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CONTENT_TYPE_UNSPECIFIED" => BiographyContentType::ContentTypeUnspecified,
-                "TEXT_PLAIN" => BiographyContentType::TextPlain,
                 "TEXT_HTML" => BiographyContentType::TextHtml,
+                "TEXT_PLAIN" => BiographyContentType::TextPlain,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -321,27 +321,27 @@ pub mod schemas {
     pub enum ContactGroupGroupType {
         #[doc = "Unspecified."]
         GroupTypeUnspecified,
-        #[doc = "User defined contact group."]
-        UserContactGroup,
         #[doc = "System defined contact group."]
         SystemContactGroup,
+        #[doc = "User defined contact group."]
+        UserContactGroup,
     }
     impl ContactGroupGroupType {
         pub fn as_str(self) -> &'static str {
             match self {
                 ContactGroupGroupType::GroupTypeUnspecified => "GROUP_TYPE_UNSPECIFIED",
-                ContactGroupGroupType::UserContactGroup => "USER_CONTACT_GROUP",
                 ContactGroupGroupType::SystemContactGroup => "SYSTEM_CONTACT_GROUP",
+                ContactGroupGroupType::UserContactGroup => "USER_CONTACT_GROUP",
             }
         }
     }
     impl ::std::fmt::Display for ContactGroupGroupType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ContactGroupGroupType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -349,15 +349,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ContactGroupGroupType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "GROUP_TYPE_UNSPECIFIED" => ContactGroupGroupType::GroupTypeUnspecified,
-                "USER_CONTACT_GROUP" => ContactGroupGroupType::UserContactGroup,
                 "SYSTEM_CONTACT_GROUP" => ContactGroupGroupType::SystemContactGroup,
+                "USER_CONTACT_GROUP" => ContactGroupGroupType::UserContactGroup,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1144,12 +1144,12 @@ pub mod schemas {
     pub enum NicknameType {
         #[doc = "Generic nickname."]
         Default,
-        #[doc = "Maiden name or birth family name. Used when the person's family name has\nchanged as a result of marriage."]
-        MaidenName,
-        #[doc = "Initials."]
-        Initials,
         #[doc = "Google+ profile nickname."]
         Gplus,
+        #[doc = "Initials."]
+        Initials,
+        #[doc = "Maiden name or birth family name. Used when the person's family name has\nchanged as a result of marriage."]
+        MaidenName,
         #[doc = "A professional affiliation or other name; for example, `Dr. Smith.`"]
         OtherName,
     }
@@ -1157,20 +1157,20 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 NicknameType::Default => "DEFAULT",
-                NicknameType::MaidenName => "MAIDEN_NAME",
-                NicknameType::Initials => "INITIALS",
                 NicknameType::Gplus => "GPLUS",
+                NicknameType::Initials => "INITIALS",
+                NicknameType::MaidenName => "MAIDEN_NAME",
                 NicknameType::OtherName => "OTHER_NAME",
             }
         }
     }
     impl ::std::fmt::Display for NicknameType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NicknameType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1178,16 +1178,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NicknameType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DEFAULT" => NicknameType::Default,
-                "MAIDEN_NAME" => NicknameType::MaidenName,
-                "INITIALS" => NicknameType::Initials,
                 "GPLUS" => NicknameType::Gplus,
+                "INITIALS" => NicknameType::Initials,
+                "MAIDEN_NAME" => NicknameType::MaidenName,
                 "OTHER_NAME" => NicknameType::OtherName,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1337,10 +1337,10 @@ pub mod schemas {
     pub enum PersonAgeRange {
         #[doc = "Unspecified."]
         AgeRangeUnspecified,
-        #[doc = "Younger than eighteen."]
-        LessThanEighteen,
         #[doc = "Between eighteen and twenty."]
         EighteenToTwenty,
+        #[doc = "Younger than eighteen."]
+        LessThanEighteen,
         #[doc = "Twenty-one and older."]
         TwentyOneOrOlder,
     }
@@ -1348,19 +1348,19 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 PersonAgeRange::AgeRangeUnspecified => "AGE_RANGE_UNSPECIFIED",
-                PersonAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 PersonAgeRange::EighteenToTwenty => "EIGHTEEN_TO_TWENTY",
+                PersonAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 PersonAgeRange::TwentyOneOrOlder => "TWENTY_ONE_OR_OLDER",
             }
         }
     }
     impl ::std::fmt::Display for PersonAgeRange {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PersonAgeRange {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1368,15 +1368,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PersonAgeRange {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "AGE_RANGE_UNSPECIFIED" => PersonAgeRange::AgeRangeUnspecified,
-                "LESS_THAN_EIGHTEEN" => PersonAgeRange::LessThanEighteen,
                 "EIGHTEEN_TO_TWENTY" => PersonAgeRange::EighteenToTwenty,
+                "LESS_THAN_EIGHTEEN" => PersonAgeRange::LessThanEighteen,
                 "TWENTY_ONE_OR_OLDER" => PersonAgeRange::TwentyOneOrOlder,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1520,27 +1520,27 @@ pub mod schemas {
     pub enum PersonMetadataObjectType {
         #[doc = "Unspecified."]
         ObjectTypeUnspecified,
-        #[doc = "Person."]
-        Person,
         #[doc = "[Google+ Page.](http://www.google.com/+/brands/)"]
         Page,
+        #[doc = "Person."]
+        Person,
     }
     impl PersonMetadataObjectType {
         pub fn as_str(self) -> &'static str {
             match self {
                 PersonMetadataObjectType::ObjectTypeUnspecified => "OBJECT_TYPE_UNSPECIFIED",
-                PersonMetadataObjectType::Person => "PERSON",
                 PersonMetadataObjectType::Page => "PAGE",
+                PersonMetadataObjectType::Person => "PERSON",
             }
         }
     }
     impl ::std::fmt::Display for PersonMetadataObjectType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PersonMetadataObjectType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1548,15 +1548,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PersonMetadataObjectType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "OBJECT_TYPE_UNSPECIFIED" => PersonMetadataObjectType::ObjectTypeUnspecified,
-                "PERSON" => PersonMetadataObjectType::Person,
                 "PAGE" => PersonMetadataObjectType::Page,
+                "PERSON" => PersonMetadataObjectType::Person,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1711,27 +1711,27 @@ pub mod schemas {
     pub enum ProfileMetadataObjectType {
         #[doc = "Unspecified."]
         ObjectTypeUnspecified,
-        #[doc = "Person."]
-        Person,
         #[doc = "[Google+ Page.](http://www.google.com/+/brands/)"]
         Page,
+        #[doc = "Person."]
+        Person,
     }
     impl ProfileMetadataObjectType {
         pub fn as_str(self) -> &'static str {
             match self {
                 ProfileMetadataObjectType::ObjectTypeUnspecified => "OBJECT_TYPE_UNSPECIFIED",
-                ProfileMetadataObjectType::Person => "PERSON",
                 ProfileMetadataObjectType::Page => "PAGE",
+                ProfileMetadataObjectType::Person => "PERSON",
             }
         }
     }
     impl ::std::fmt::Display for ProfileMetadataObjectType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ProfileMetadataObjectType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1739,15 +1739,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ProfileMetadataObjectType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "OBJECT_TYPE_UNSPECIFIED" => ProfileMetadataObjectType::ObjectTypeUnspecified,
-                "PERSON" => ProfileMetadataObjectType::Person,
                 "PAGE" => ProfileMetadataObjectType::Page,
+                "PERSON" => ProfileMetadataObjectType::Person,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1768,28 +1768,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProfileMetadataUserTypesItems {
-        UserTypeUnknown,
+        GoogleAppsUser,
         GoogleUser,
         GplusUser,
-        GoogleAppsUser,
+        UserTypeUnknown,
     }
     impl ProfileMetadataUserTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProfileMetadataUserTypesItems::UserTypeUnknown => "USER_TYPE_UNKNOWN",
+                ProfileMetadataUserTypesItems::GoogleAppsUser => "GOOGLE_APPS_USER",
                 ProfileMetadataUserTypesItems::GoogleUser => "GOOGLE_USER",
                 ProfileMetadataUserTypesItems::GplusUser => "GPLUS_USER",
-                ProfileMetadataUserTypesItems::GoogleAppsUser => "GOOGLE_APPS_USER",
+                ProfileMetadataUserTypesItems::UserTypeUnknown => "USER_TYPE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for ProfileMetadataUserTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ProfileMetadataUserTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1797,16 +1797,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ProfileMetadataUserTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "USER_TYPE_UNKNOWN" => ProfileMetadataUserTypesItems::UserTypeUnknown,
+                "GOOGLE_APPS_USER" => ProfileMetadataUserTypesItems::GoogleAppsUser,
                 "GOOGLE_USER" => ProfileMetadataUserTypesItems::GoogleUser,
                 "GPLUS_USER" => ProfileMetadataUserTypesItems::GplusUser,
-                "GOOGLE_APPS_USER" => ProfileMetadataUserTypesItems::GoogleAppsUser,
+                "USER_TYPE_UNKNOWN" => ProfileMetadataUserTypesItems::UserTypeUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2051,35 +2051,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SourceType {
-        #[doc = "Unspecified."]
-        SourceTypeUnspecified,
         #[doc = "[Google Account](https://accounts.google.com)."]
         Account,
-        #[doc = "[Google profile](https://profiles.google.com). You can view the\nprofile at https://profiles.google.com/<var>id</var> where\n<var>id</var> is the source id."]
-        Profile,
-        #[doc = "[G Suite domain profile](https://support.google.com/a/answer/1628008)."]
-        DomainProfile,
         #[doc = "[Google contact](https://contacts.google.com). You can view the\ncontact at https://contact.google.com/<var>id</var> where <var>id</var>\nis the source id."]
         Contact,
+        #[doc = "[G Suite domain profile](https://support.google.com/a/answer/1628008)."]
+        DomainProfile,
+        #[doc = "[Google profile](https://profiles.google.com). You can view the\nprofile at https://profiles.google.com/<var>id</var> where\n<var>id</var> is the source id."]
+        Profile,
+        #[doc = "Unspecified."]
+        SourceTypeUnspecified,
     }
     impl SourceType {
         pub fn as_str(self) -> &'static str {
             match self {
-                SourceType::SourceTypeUnspecified => "SOURCE_TYPE_UNSPECIFIED",
                 SourceType::Account => "ACCOUNT",
-                SourceType::Profile => "PROFILE",
-                SourceType::DomainProfile => "DOMAIN_PROFILE",
                 SourceType::Contact => "CONTACT",
+                SourceType::DomainProfile => "DOMAIN_PROFILE",
+                SourceType::Profile => "PROFILE",
+                SourceType::SourceTypeUnspecified => "SOURCE_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SourceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SourceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2087,17 +2087,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SourceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SOURCE_TYPE_UNSPECIFIED" => SourceType::SourceTypeUnspecified,
                 "ACCOUNT" => SourceType::Account,
-                "PROFILE" => SourceType::Profile,
-                "DOMAIN_PROFILE" => SourceType::DomainProfile,
                 "CONTACT" => SourceType::Contact,
+                "DOMAIN_PROFILE" => SourceType::DomainProfile,
+                "PROFILE" => SourceType::Profile,
+                "SOURCE_TYPE_UNSPECIFIED" => SourceType::SourceTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2374,12 +2374,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2387,7 +2387,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2430,12 +2430,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2443,7 +2443,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2496,7 +2496,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod contact_groups {
         pub mod params {}
         pub struct ContactGroupsActions<'a, A> {
@@ -2673,19 +2673,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2835,19 +2825,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3000,19 +2980,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3172,19 +3142,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3355,19 +3315,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3410,15 +3360,19 @@ mod resources {
             #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
             #[doc = r" populated fields in the yielded items will be determined by the"]
             #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_contact_groups<T>(self) -> ListContactGroupsIter<'a, A, T>
+            pub fn iter_contact_groups<T>(mut self) -> crate::iter::PageItemIter<Self, T>
             where
                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                ListContactGroupsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
+                let mut fields = concat!("nextPageToken,", "contactGroups").to_owned();
+                let items_fields = T::field_selector();
+                if !items_fields.is_empty() {
+                    fields.push_str("(");
+                    fields.push_str(&items_fields);
+                    fields.push_str(")");
                 }
+                self.fields = Some(fields);
+                crate::iter::PageItemIter::new(self, "contactGroups")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3426,13 +3380,9 @@ mod resources {
             #[doc = r" the server."]
             pub fn iter_contact_groups_standard(
                 mut self,
-            ) -> ListContactGroupsIter<'a, A, crate::schemas::ContactGroup> {
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::ContactGroup> {
                 self.fields = Some(concat!("nextPageToken,", "contactGroups").to_owned());
-                ListContactGroupsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "contactGroups")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3442,26 +3392,37 @@ mod resources {
             #[doc = r" resources."]
             pub fn iter_contact_groups_debug(
                 mut self,
-            ) -> ListContactGroupsIter<'a, A, crate::schemas::ContactGroup> {
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::ContactGroup> {
                 self.fields = Some(concat!("nextPageToken,", "contactGroups", "(*)").to_owned());
-                ListContactGroupsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "contactGroups")
             }
-            #[doc = r" Return an iterator that"]
-            pub fn iter<T>(
-                self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+            pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                crate::PageIter {
-                    method: self,
-                    finished: false,
-                    _phantom: ::std::default::Default::default(),
+                let mut fields = T::field_selector();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
                 }
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_standard(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListContactGroupsResponse>
+            {
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_debug(
+                mut self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListContactGroupsResponse>
+            {
+                self.fields = Some("*".to_owned());
+                crate::iter::PageIter::new(self)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -3553,52 +3514,13 @@ mod resources {
                 req
             }
         }
-        pub struct ListContactGroupsIter<'a, A, T> {
-            method: ListRequestBuilder<'a, A>,
-            last_page_reached: bool,
-            items_iter: Option<::std::vec::IntoIter<T>>,
-        }
-        impl<'a, A, T> Iterator for ListContactGroupsIter<'a, A, T>
-        where
-            A: ::yup_oauth2::GetToken,
-            T: ::serde::de::DeserializeOwned,
-        {
-            type Item = Result<T, Box<dyn ::std::error::Error>>;
-            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                #[derive(:: serde :: Deserialize)]
-                struct Resp<T> {
-                    #[serde(rename = "contactGroups")]
-                    items: Option<Vec<T>>,
-                    #[serde(rename = "nextPageToken")]
-                    next_page_token: Option<String>,
-                }
-                loop {
-                    if let Some(iter) = self.items_iter.as_mut() {
-                        match iter.next() {
-                            Some(v) => return Some(Ok(v)),
-                            None => {}
-                        }
-                    }
-                    if self.last_page_reached {
-                        return None;
-                    }
-                    let resp: Resp<T> = match self.method._execute() {
-                        Ok(r) => r,
-                        Err(err) => return Some(Err(err)),
-                    };
-                    self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                    self.method.page_token = resp.next_page_token;
-                    self.items_iter = resp.items.map(|i| i.into_iter());
-                }
-            }
-        }
-        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+        impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
             fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned,
             {
                 self._execute()
             }
@@ -3627,19 +3549,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3826,19 +3738,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4183,19 +4085,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4343,19 +4235,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4515,19 +4397,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4696,19 +4568,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4881,19 +4743,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5052,19 +4904,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5221,19 +5063,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5371,28 +5203,28 @@ mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListSortOrder {
+                    FirstNameAscending,
                     LastModifiedAscending,
                     LastModifiedDescending,
-                    FirstNameAscending,
                     LastNameAscending,
                 }
                 impl ListSortOrder {
                     pub fn as_str(self) -> &'static str {
                         match self {
+                            ListSortOrder::FirstNameAscending => "FIRST_NAME_ASCENDING",
                             ListSortOrder::LastModifiedAscending => "LAST_MODIFIED_ASCENDING",
                             ListSortOrder::LastModifiedDescending => "LAST_MODIFIED_DESCENDING",
-                            ListSortOrder::FirstNameAscending => "FIRST_NAME_ASCENDING",
                             ListSortOrder::LastNameAscending => "LAST_NAME_ASCENDING",
                         }
                     }
                 }
                 impl ::std::fmt::Display for ListSortOrder {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for ListSortOrder {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -5400,15 +5232,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for ListSortOrder {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
+                            "FIRST_NAME_ASCENDING" => ListSortOrder::FirstNameAscending,
                             "LAST_MODIFIED_ASCENDING" => ListSortOrder::LastModifiedAscending,
                             "LAST_MODIFIED_DESCENDING" => ListSortOrder::LastModifiedDescending,
-                            "FIRST_NAME_ASCENDING" => ListSortOrder::FirstNameAscending,
                             "LAST_NAME_ASCENDING" => ListSortOrder::LastNameAscending,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
@@ -5529,19 +5361,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5584,15 +5406,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_connections<T>(self) -> ListConnectionsIter<'a, A, T>
+                pub fn iter_connections<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListConnectionsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "connections").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "connections")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5600,13 +5426,9 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_connections_standard(
                     mut self,
-                ) -> ListConnectionsIter<'a, A, crate::schemas::Person> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Person> {
                     self.fields = Some(concat!("nextPageToken,", "connections").to_owned());
-                    ListConnectionsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "connections")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -5616,26 +5438,37 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_connections_debug(
                     mut self,
-                ) -> ListConnectionsIter<'a, A, crate::schemas::Person> {
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::Person> {
                     self.fields = Some(concat!("nextPageToken,", "connections", "(*)").to_owned());
-                    ListConnectionsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "connections")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListConnectionsResponse>
+                {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListConnectionsResponse>
+                {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -5740,52 +5573,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListConnectionsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListConnectionsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "connections")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -6051,7 +5845,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -6060,7 +5857,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -6073,58 +5870,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

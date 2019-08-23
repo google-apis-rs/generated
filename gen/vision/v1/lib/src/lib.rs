@@ -369,35 +369,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchOperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
-        Successful,
-        #[doc = "The request is done and no item has been successfully processed."]
-        Failed,
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
         Cancelled,
+        #[doc = "The request is done and no item has been successfully processed."]
+        Failed,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Invalid."]
+        StateUnspecified,
+        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
+        Successful,
     }
     impl BatchOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
-                BatchOperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
-                BatchOperationMetadataState::Processing => "PROCESSING",
-                BatchOperationMetadataState::Successful => "SUCCESSFUL",
-                BatchOperationMetadataState::Failed => "FAILED",
                 BatchOperationMetadataState::Cancelled => "CANCELLED",
+                BatchOperationMetadataState::Failed => "FAILED",
+                BatchOperationMetadataState::Processing => "PROCESSING",
+                BatchOperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
+                BatchOperationMetadataState::Successful => "SUCCESSFUL",
             }
         }
     }
     impl ::std::fmt::Display for BatchOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -405,17 +405,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => BatchOperationMetadataState::StateUnspecified,
-                "PROCESSING" => BatchOperationMetadataState::Processing,
-                "SUCCESSFUL" => BatchOperationMetadataState::Successful,
-                "FAILED" => BatchOperationMetadataState::Failed,
                 "CANCELLED" => BatchOperationMetadataState::Cancelled,
+                "FAILED" => BatchOperationMetadataState::Failed,
+                "PROCESSING" => BatchOperationMetadataState::Processing,
+                "STATE_UNSPECIFIED" => BatchOperationMetadataState::StateUnspecified,
+                "SUCCESSFUL" => BatchOperationMetadataState::Successful,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -468,38 +468,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
+        #[doc = "Barcode block."]
+        Barcode,
         #[doc = "Image block."]
         Picture,
         #[doc = "Horizontal/vertical line box."]
         Ruler,
-        #[doc = "Barcode block."]
-        Barcode,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                BlockBlockType::Unknown => "UNKNOWN",
-                BlockBlockType::Text => "TEXT",
-                BlockBlockType::Table => "TABLE",
+                BlockBlockType::Barcode => "BARCODE",
                 BlockBlockType::Picture => "PICTURE",
                 BlockBlockType::Ruler => "RULER",
-                BlockBlockType::Barcode => "BARCODE",
+                BlockBlockType::Table => "TABLE",
+                BlockBlockType::Text => "TEXT",
+                BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -507,18 +507,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => BlockBlockType::Unknown,
-                "TEXT" => BlockBlockType::Text,
-                "TABLE" => BlockBlockType::Table,
+                "BARCODE" => BlockBlockType::Barcode,
                 "PICTURE" => BlockBlockType::Picture,
                 "RULER" => BlockBlockType::Ruler,
-                "BARCODE" => BlockBlockType::Barcode,
+                "TABLE" => BlockBlockType::Table,
+                "TEXT" => BlockBlockType::Text,
+                "UNKNOWN" => BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -711,38 +711,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl DetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DetectedBreakType::Unknown => "UNKNOWN",
-                DetectedBreakType::Space => "SPACE",
-                DetectedBreakType::SureSpace => "SURE_SPACE",
                 DetectedBreakType::EolSureSpace => "EOL_SURE_SPACE",
                 DetectedBreakType::Hyphen => "HYPHEN",
                 DetectedBreakType::LineBreak => "LINE_BREAK",
+                DetectedBreakType::Space => "SPACE",
+                DetectedBreakType::SureSpace => "SURE_SPACE",
+                DetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for DetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -750,18 +750,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => DetectedBreakType::Unknown,
-                "SPACE" => DetectedBreakType::Space,
-                "SURE_SPACE" => DetectedBreakType::SureSpace,
                 "EOL_SURE_SPACE" => DetectedBreakType::EolSureSpace,
                 "HYPHEN" => DetectedBreakType::Hyphen,
                 "LINE_BREAK" => DetectedBreakType::LineBreak,
+                "SPACE" => DetectedBreakType::Space,
+                "SURE_SPACE" => DetectedBreakType::SureSpace,
+                "UNKNOWN" => DetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -906,38 +906,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationAngerLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationAngerLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationAngerLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -945,18 +945,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationAngerLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationAngerLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationAngerLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -977,38 +977,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationBlurredLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationBlurredLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationBlurredLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1016,18 +1016,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationBlurredLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationBlurredLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationBlurredLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1048,38 +1048,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationHeadwearLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationHeadwearLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationHeadwearLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1087,18 +1087,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationHeadwearLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationHeadwearLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationHeadwearLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1119,38 +1119,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationJoyLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationJoyLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1158,18 +1158,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationJoyLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationJoyLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationJoyLikelihood::Possible,
                 "LIKELY" => FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationJoyLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationJoyLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1190,38 +1190,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationSorrowLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationSorrowLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationSorrowLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1229,18 +1229,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationSorrowLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationSorrowLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationSorrowLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1261,38 +1261,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationSurpriseLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationSurpriseLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationSurpriseLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1300,18 +1300,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationSurpriseLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationSurpriseLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationSurpriseLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1332,38 +1332,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                FaceAnnotationUnderExposedLikelihood::Unknown => "UNKNOWN",
-                FaceAnnotationUnderExposedLikelihood::VeryUnlikely => "VERY_UNLIKELY",
-                FaceAnnotationUnderExposedLikelihood::Unlikely => "UNLIKELY",
-                FaceAnnotationUnderExposedLikelihood::Possible => "POSSIBLE",
                 FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                FaceAnnotationUnderExposedLikelihood::Possible => "POSSIBLE",
+                FaceAnnotationUnderExposedLikelihood::Unknown => "UNKNOWN",
+                FaceAnnotationUnderExposedLikelihood::Unlikely => "UNLIKELY",
                 FaceAnnotationUnderExposedLikelihood::VeryLikely => "VERY_LIKELY",
+                FaceAnnotationUnderExposedLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1371,18 +1371,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FaceAnnotationUnderExposedLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => FaceAnnotationUnderExposedLikelihood::Unknown,
-                "VERY_UNLIKELY" => FaceAnnotationUnderExposedLikelihood::VeryUnlikely,
-                "UNLIKELY" => FaceAnnotationUnderExposedLikelihood::Unlikely,
-                "POSSIBLE" => FaceAnnotationUnderExposedLikelihood::Possible,
                 "LIKELY" => FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationUnderExposedLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationUnderExposedLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationUnderExposedLikelihood::Unlikely,
                 "VERY_LIKELY" => FaceAnnotationUnderExposedLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationUnderExposedLikelihood::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1467,59 +1467,59 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FeatureType {
-        #[doc = "Unspecified feature type."]
-        TypeUnspecified,
+        #[doc = "Run crop hints."]
+        CropHints,
+        #[doc = "Run dense text document OCR. Takes precedence when both\n`DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` are present."]
+        DocumentTextDetection,
         #[doc = "Run face detection."]
         FaceDetection,
+        #[doc = "Compute a set of image properties, such as the\nimage's dominant colors."]
+        ImageProperties,
+        #[doc = "Run label detection."]
+        LabelDetection,
         #[doc = "Run landmark detection."]
         LandmarkDetection,
         #[doc = "Run logo detection."]
         LogoDetection,
-        #[doc = "Run label detection."]
-        LabelDetection,
-        #[doc = "Run text detection / optical character recognition (OCR). Text detection\nis optimized for areas of text within a larger image; if the image is\na document, use `DOCUMENT_TEXT_DETECTION` instead."]
-        TextDetection,
-        #[doc = "Run dense text document OCR. Takes precedence when both\n`DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` are present."]
-        DocumentTextDetection,
-        #[doc = "Run Safe Search to detect potentially unsafe\nor undesirable content."]
-        SafeSearchDetection,
-        #[doc = "Compute a set of image properties, such as the\nimage's dominant colors."]
-        ImageProperties,
-        #[doc = "Run crop hints."]
-        CropHints,
-        #[doc = "Run web detection."]
-        WebDetection,
-        #[doc = "Run Product Search."]
-        ProductSearch,
         #[doc = "Run localizer for object detection."]
         ObjectLocalization,
+        #[doc = "Run Product Search."]
+        ProductSearch,
+        #[doc = "Run Safe Search to detect potentially unsafe\nor undesirable content."]
+        SafeSearchDetection,
+        #[doc = "Run text detection / optical character recognition (OCR). Text detection\nis optimized for areas of text within a larger image; if the image is\na document, use `DOCUMENT_TEXT_DETECTION` instead."]
+        TextDetection,
+        #[doc = "Unspecified feature type."]
+        TypeUnspecified,
+        #[doc = "Run web detection."]
+        WebDetection,
     }
     impl FeatureType {
         pub fn as_str(self) -> &'static str {
             match self {
-                FeatureType::TypeUnspecified => "TYPE_UNSPECIFIED",
+                FeatureType::CropHints => "CROP_HINTS",
+                FeatureType::DocumentTextDetection => "DOCUMENT_TEXT_DETECTION",
                 FeatureType::FaceDetection => "FACE_DETECTION",
+                FeatureType::ImageProperties => "IMAGE_PROPERTIES",
+                FeatureType::LabelDetection => "LABEL_DETECTION",
                 FeatureType::LandmarkDetection => "LANDMARK_DETECTION",
                 FeatureType::LogoDetection => "LOGO_DETECTION",
-                FeatureType::LabelDetection => "LABEL_DETECTION",
-                FeatureType::TextDetection => "TEXT_DETECTION",
-                FeatureType::DocumentTextDetection => "DOCUMENT_TEXT_DETECTION",
-                FeatureType::SafeSearchDetection => "SAFE_SEARCH_DETECTION",
-                FeatureType::ImageProperties => "IMAGE_PROPERTIES",
-                FeatureType::CropHints => "CROP_HINTS",
-                FeatureType::WebDetection => "WEB_DETECTION",
-                FeatureType::ProductSearch => "PRODUCT_SEARCH",
                 FeatureType::ObjectLocalization => "OBJECT_LOCALIZATION",
+                FeatureType::ProductSearch => "PRODUCT_SEARCH",
+                FeatureType::SafeSearchDetection => "SAFE_SEARCH_DETECTION",
+                FeatureType::TextDetection => "TEXT_DETECTION",
+                FeatureType::TypeUnspecified => "TYPE_UNSPECIFIED",
+                FeatureType::WebDetection => "WEB_DETECTION",
             }
         }
     }
     impl ::std::fmt::Display for FeatureType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FeatureType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1527,25 +1527,25 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FeatureType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => FeatureType::TypeUnspecified,
+                "CROP_HINTS" => FeatureType::CropHints,
+                "DOCUMENT_TEXT_DETECTION" => FeatureType::DocumentTextDetection,
                 "FACE_DETECTION" => FeatureType::FaceDetection,
+                "IMAGE_PROPERTIES" => FeatureType::ImageProperties,
+                "LABEL_DETECTION" => FeatureType::LabelDetection,
                 "LANDMARK_DETECTION" => FeatureType::LandmarkDetection,
                 "LOGO_DETECTION" => FeatureType::LogoDetection,
-                "LABEL_DETECTION" => FeatureType::LabelDetection,
-                "TEXT_DETECTION" => FeatureType::TextDetection,
-                "DOCUMENT_TEXT_DETECTION" => FeatureType::DocumentTextDetection,
-                "SAFE_SEARCH_DETECTION" => FeatureType::SafeSearchDetection,
-                "IMAGE_PROPERTIES" => FeatureType::ImageProperties,
-                "CROP_HINTS" => FeatureType::CropHints,
-                "WEB_DETECTION" => FeatureType::WebDetection,
-                "PRODUCT_SEARCH" => FeatureType::ProductSearch,
                 "OBJECT_LOCALIZATION" => FeatureType::ObjectLocalization,
+                "PRODUCT_SEARCH" => FeatureType::ProductSearch,
+                "SAFE_SEARCH_DETECTION" => FeatureType::SafeSearchDetection,
+                "TEXT_DETECTION" => FeatureType::TextDetection,
+                "TYPE_UNSPECIFIED" => FeatureType::TypeUnspecified,
+                "WEB_DETECTION" => FeatureType::WebDetection,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1797,38 +1797,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
+        #[doc = "Barcode block."]
+        Barcode,
         #[doc = "Image block."]
         Picture,
         #[doc = "Horizontal/vertical line box."]
         Ruler,
-        #[doc = "Barcode block."]
-        Barcode,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P1Beta1BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1BlockBlockType::Text => "TEXT",
-                GoogleCloudVisionV1P1Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P1Beta1BlockBlockType::Barcode => "BARCODE",
                 GoogleCloudVisionV1P1Beta1BlockBlockType::Picture => "PICTURE",
                 GoogleCloudVisionV1P1Beta1BlockBlockType::Ruler => "RULER",
-                GoogleCloudVisionV1P1Beta1BlockBlockType::Barcode => "BARCODE",
+                GoogleCloudVisionV1P1Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P1Beta1BlockBlockType::Text => "TEXT",
+                GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1836,18 +1836,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown,
-                "TEXT" => GoogleCloudVisionV1P1Beta1BlockBlockType::Text,
-                "TABLE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Table,
+                "BARCODE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Barcode,
                 "PICTURE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Picture,
                 "RULER" => GoogleCloudVisionV1P1Beta1BlockBlockType::Ruler,
-                "BARCODE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Barcode,
+                "TABLE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P1Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2049,42 +2049,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2092,21 +2092,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2128,42 +2128,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2171,21 +2171,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2207,42 +2207,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2250,21 +2250,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2288,40 +2288,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2329,20 +2329,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Possible,
-                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2363,42 +2363,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2406,21 +2406,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2442,42 +2442,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2485,21 +2485,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2523,48 +2523,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
+                    "POSSIBLE"
+                }
                 GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unknown => {
                     "UNKNOWN"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
                 }
                 GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unlikely => {
                     "UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
-                    "POSSIBLE"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
                 GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2574,27 +2574,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
                 "UNKNOWN" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unknown
-                }
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 "UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
                 }
-                "POSSIBLE" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Possible
-                }
-                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Likely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2695,160 +2695,80 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
-                    "UNKNOWN_LANDMARK"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
-                    "LEFT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
-                    "RIGHT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
-                    "LEFT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
-                    "RIGHT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
-                    "MIDPOINT_BETWEEN_EYES"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
-                    "NOSE_BOTTOM_RIGHT"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
-                    "NOSE_BOTTOM_LEFT"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
-                    "NOSE_BOTTOM_CENTER"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
-                    "LEFT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
-                    "LEFT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
-                    "LEFT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
-                    "LEFT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
-                    "RIGHT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
-                    "RIGHT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
-                    "RIGHT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
-                    "RIGHT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
-                    "LEFT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
-                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
-                    "LEFT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEarTragion => {
-                    "RIGHT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
-                    "LEFT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyePupil => {
-                    "RIGHT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
-                    "FOREHEAD_GLABELLA"
-                }
                 GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinGnathion => {
                     "CHIN_GNATHION"
                 }
@@ -2858,16 +2778,96 @@ pub mod schemas {
                 GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinRightGonion => {
                     "CHIN_RIGHT_GONION"
                 }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
+                    "FOREHEAD_GLABELLA"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
+                    "LEFT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
+                    "LEFT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
+                    "LEFT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
+                    "LEFT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
+                    "LEFT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
+                    "LEFT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
+                    "LEFT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
+                    "LEFT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
+                    "LEFT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
+                    "MIDPOINT_BETWEEN_EYES"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
+                    "NOSE_BOTTOM_CENTER"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
+                    "NOSE_BOTTOM_LEFT"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
+                    "NOSE_BOTTOM_RIGHT"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEarTragion => {
+                    "RIGHT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
+                    "RIGHT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
+                    "RIGHT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyePupil => {
+                    "RIGHT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
+                    "RIGHT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
+                    "RIGHT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
+                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
+                    "RIGHT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
+                    "RIGHT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
+                    "UNKNOWN_LANDMARK"
+                }
+                GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2875,92 +2875,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UnknownLandmark
-                }
-                "LEFT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEye,
-                "RIGHT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
-                }
-                "RIGHT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
-                }
-                "LEFT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
-                }
-                "RIGHT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
-                }
-                "MIDPOINT_BETWEEN_EYES" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
-                }
-                "NOSE_TIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseTip,
-                "UPPER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UpperLip,
-                "LOWER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LowerLip,
-                "MOUTH_LEFT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthRight,
-                "MOUTH_CENTER" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomRight
-                }
-                "NOSE_BOTTOM_LEFT" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomLeft
-                }
-                "NOSE_BOTTOM_CENTER" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomCenter
-                }
-                "LEFT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
-                }
-                "LEFT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
-                }
-                "LEFT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
-                }
-                "LEFT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
-                }
-                "RIGHT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
-                }
-                "RIGHT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
-                }
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
-                }
-                "RIGHT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
-                }
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
-                }
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
-                }
-                "LEFT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEarTragion
-                }
-                "RIGHT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEarTragion
-                }
-                "LEFT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyePupil
-                }
-                "RIGHT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyePupil
-                }
-                "FOREHEAD_GLABELLA" => {
-                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ForeheadGlabella
-                }
                 "CHIN_GNATHION" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinGnathion
                 }
@@ -2970,6 +2890,86 @@ pub mod schemas {
                 "CHIN_RIGHT_GONION" => {
                     GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinRightGonion
                 }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3211,37 +3211,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl GoogleCloudVisionV1P1Beta1OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1OperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P1Beta1OperationMetadataState::Created => "CREATED",
+                GoogleCloudVisionV1P1Beta1OperationMetadataState::Done => "DONE",
+                GoogleCloudVisionV1P1Beta1OperationMetadataState::Running => "RUNNING",
                 GoogleCloudVisionV1P1Beta1OperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P1Beta1OperationMetadataState::Created => "CREATED",
-                GoogleCloudVisionV1P1Beta1OperationMetadataState::Running => "RUNNING",
-                GoogleCloudVisionV1P1Beta1OperationMetadataState::Done => "DONE",
-                GoogleCloudVisionV1P1Beta1OperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3249,19 +3249,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P1Beta1OperationMetadataState::StateUnspecified
                 }
-                "CREATED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Created,
-                "RUNNING" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Running,
-                "DONE" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Done,
-                "CANCELLED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3604,40 +3604,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3645,20 +3645,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Possible,
-                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3679,40 +3679,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3720,20 +3720,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Possible,
-                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3754,38 +3754,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3793,18 +3793,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3825,40 +3825,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3866,20 +3866,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Possible,
-                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3900,40 +3900,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
-                GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3941,20 +3941,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Possible,
-                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4072,27 +4072,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
-                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::SureSpace => {
-                    "SURE_SPACE"
-                }
                 GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::EolSureSpace => {
                     "EOL_SURE_SPACE"
                 }
@@ -4100,16 +4095,21 @@ pub mod schemas {
                 GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::LineBreak => {
                     "LINE_BREAK"
                 }
+                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
+                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::SureSpace => {
+                    "SURE_SPACE"
+                }
+                GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4117,17 +4117,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown,
-                "SPACE" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Space,
-                "SURE_SPACE" => {
-                    GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::SureSpace
-                }
                 "EOL_SURE_SPACE" => {
                     GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::EolSureSpace
                 }
@@ -4135,6 +4130,11 @@ pub mod schemas {
                 "LINE_BREAK" => {
                     GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::LineBreak
                 }
+                "SPACE" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4584,38 +4584,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
+        #[doc = "Barcode block."]
+        Barcode,
         #[doc = "Image block."]
         Picture,
         #[doc = "Horizontal/vertical line box."]
         Ruler,
-        #[doc = "Barcode block."]
-        Barcode,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P2Beta1BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1BlockBlockType::Text => "TEXT",
-                GoogleCloudVisionV1P2Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P2Beta1BlockBlockType::Barcode => "BARCODE",
                 GoogleCloudVisionV1P2Beta1BlockBlockType::Picture => "PICTURE",
                 GoogleCloudVisionV1P2Beta1BlockBlockType::Ruler => "RULER",
-                GoogleCloudVisionV1P2Beta1BlockBlockType::Barcode => "BARCODE",
+                GoogleCloudVisionV1P2Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P2Beta1BlockBlockType::Text => "TEXT",
+                GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4623,18 +4623,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown,
-                "TEXT" => GoogleCloudVisionV1P2Beta1BlockBlockType::Text,
-                "TABLE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Table,
+                "BARCODE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Barcode,
                 "PICTURE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Picture,
                 "RULER" => GoogleCloudVisionV1P2Beta1BlockBlockType::Ruler,
-                "BARCODE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Barcode,
+                "TABLE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P2Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4836,42 +4836,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4879,21 +4879,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4915,42 +4915,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4958,21 +4958,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4994,42 +4994,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5037,21 +5037,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5075,40 +5075,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5116,20 +5116,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Possible,
-                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5150,42 +5150,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5193,21 +5193,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5229,42 +5229,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5272,21 +5272,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5310,48 +5310,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
+                    "POSSIBLE"
+                }
                 GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unknown => {
                     "UNKNOWN"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
                 }
                 GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unlikely => {
                     "UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
-                    "POSSIBLE"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
                 GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5361,27 +5361,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
                 "UNKNOWN" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unknown
-                }
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 "UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
                 }
-                "POSSIBLE" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Possible
-                }
-                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Likely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -5482,160 +5482,80 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
-                    "UNKNOWN_LANDMARK"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
-                    "LEFT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
-                    "RIGHT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
-                    "LEFT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
-                    "RIGHT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
-                    "MIDPOINT_BETWEEN_EYES"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
-                    "NOSE_BOTTOM_RIGHT"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
-                    "NOSE_BOTTOM_LEFT"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
-                    "NOSE_BOTTOM_CENTER"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
-                    "LEFT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
-                    "LEFT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
-                    "LEFT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
-                    "LEFT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
-                    "RIGHT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
-                    "RIGHT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
-                    "RIGHT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
-                    "RIGHT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
-                    "LEFT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
-                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
-                    "LEFT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEarTragion => {
-                    "RIGHT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
-                    "LEFT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyePupil => {
-                    "RIGHT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
-                    "FOREHEAD_GLABELLA"
-                }
                 GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinGnathion => {
                     "CHIN_GNATHION"
                 }
@@ -5645,16 +5565,96 @@ pub mod schemas {
                 GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinRightGonion => {
                     "CHIN_RIGHT_GONION"
                 }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
+                    "FOREHEAD_GLABELLA"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
+                    "LEFT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
+                    "LEFT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
+                    "LEFT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
+                    "LEFT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
+                    "LEFT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
+                    "LEFT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
+                    "LEFT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
+                    "LEFT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
+                    "LEFT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
+                    "MIDPOINT_BETWEEN_EYES"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
+                    "NOSE_BOTTOM_CENTER"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
+                    "NOSE_BOTTOM_LEFT"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
+                    "NOSE_BOTTOM_RIGHT"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEarTragion => {
+                    "RIGHT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
+                    "RIGHT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
+                    "RIGHT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyePupil => {
+                    "RIGHT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
+                    "RIGHT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
+                    "RIGHT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
+                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
+                    "RIGHT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
+                    "RIGHT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
+                    "UNKNOWN_LANDMARK"
+                }
+                GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5662,92 +5662,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UnknownLandmark
-                }
-                "LEFT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEye,
-                "RIGHT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
-                }
-                "RIGHT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
-                }
-                "LEFT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
-                }
-                "RIGHT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
-                }
-                "MIDPOINT_BETWEEN_EYES" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
-                }
-                "NOSE_TIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseTip,
-                "UPPER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UpperLip,
-                "LOWER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LowerLip,
-                "MOUTH_LEFT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthRight,
-                "MOUTH_CENTER" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomRight
-                }
-                "NOSE_BOTTOM_LEFT" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomLeft
-                }
-                "NOSE_BOTTOM_CENTER" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomCenter
-                }
-                "LEFT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
-                }
-                "LEFT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
-                }
-                "LEFT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
-                }
-                "LEFT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
-                }
-                "RIGHT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
-                }
-                "RIGHT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
-                }
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
-                }
-                "RIGHT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
-                }
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
-                }
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
-                }
-                "LEFT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEarTragion
-                }
-                "RIGHT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEarTragion
-                }
-                "LEFT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyePupil
-                }
-                "RIGHT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyePupil
-                }
-                "FOREHEAD_GLABELLA" => {
-                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ForeheadGlabella
-                }
                 "CHIN_GNATHION" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinGnathion
                 }
@@ -5757,6 +5677,86 @@ pub mod schemas {
                 "CHIN_RIGHT_GONION" => {
                     GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinRightGonion
                 }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5998,37 +5998,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl GoogleCloudVisionV1P2Beta1OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1OperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P2Beta1OperationMetadataState::Created => "CREATED",
+                GoogleCloudVisionV1P2Beta1OperationMetadataState::Done => "DONE",
+                GoogleCloudVisionV1P2Beta1OperationMetadataState::Running => "RUNNING",
                 GoogleCloudVisionV1P2Beta1OperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P2Beta1OperationMetadataState::Created => "CREATED",
-                GoogleCloudVisionV1P2Beta1OperationMetadataState::Running => "RUNNING",
-                GoogleCloudVisionV1P2Beta1OperationMetadataState::Done => "DONE",
-                GoogleCloudVisionV1P2Beta1OperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6036,19 +6036,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P2Beta1OperationMetadataState::StateUnspecified
                 }
-                "CREATED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Created,
-                "RUNNING" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Running,
-                "DONE" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Done,
-                "CANCELLED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6391,40 +6391,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6432,20 +6432,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Possible,
-                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6466,40 +6466,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6507,20 +6507,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Possible,
-                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6541,38 +6541,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6580,18 +6580,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6612,40 +6612,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6653,20 +6653,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Possible,
-                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6687,40 +6687,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
-                GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6728,20 +6728,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Possible,
-                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6859,27 +6859,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
-                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::SureSpace => {
-                    "SURE_SPACE"
-                }
                 GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::EolSureSpace => {
                     "EOL_SURE_SPACE"
                 }
@@ -6887,16 +6882,21 @@ pub mod schemas {
                 GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::LineBreak => {
                     "LINE_BREAK"
                 }
+                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
+                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::SureSpace => {
+                    "SURE_SPACE"
+                }
+                GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6904,17 +6904,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown,
-                "SPACE" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Space,
-                "SURE_SPACE" => {
-                    GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::SureSpace
-                }
                 "EOL_SURE_SPACE" => {
                     GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::EolSureSpace
                 }
@@ -6922,6 +6917,11 @@ pub mod schemas {
                 "LINE_BREAK" => {
                     GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::LineBreak
                 }
+                "SPACE" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7371,37 +7371,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
-        Successful,
-        #[doc = "The request is done and no item has been successfully processed."]
-        Failed,
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
         Cancelled,
+        #[doc = "The request is done and no item has been successfully processed."]
+        Failed,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Invalid."]
+        StateUnspecified,
+        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
+        Successful,
     }
     impl GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Failed => "FAILED",
+                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
-                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Failed => "FAILED",
-                GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7409,19 +7409,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Processing,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::StateUnspecified
                 }
-                "PROCESSING" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Processing,
                 "SUCCESSFUL" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Successful,
-                "FAILED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Failed,
-                "CANCELLED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7476,38 +7476,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
+        #[doc = "Barcode block."]
+        Barcode,
         #[doc = "Image block."]
         Picture,
         #[doc = "Horizontal/vertical line box."]
         Ruler,
-        #[doc = "Barcode block."]
-        Barcode,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P3Beta1BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1BlockBlockType::Text => "TEXT",
-                GoogleCloudVisionV1P3Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P3Beta1BlockBlockType::Barcode => "BARCODE",
                 GoogleCloudVisionV1P3Beta1BlockBlockType::Picture => "PICTURE",
                 GoogleCloudVisionV1P3Beta1BlockBlockType::Ruler => "RULER",
-                GoogleCloudVisionV1P3Beta1BlockBlockType::Barcode => "BARCODE",
+                GoogleCloudVisionV1P3Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P3Beta1BlockBlockType::Text => "TEXT",
+                GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7515,18 +7515,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown,
-                "TEXT" => GoogleCloudVisionV1P3Beta1BlockBlockType::Text,
-                "TABLE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Table,
+                "BARCODE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Barcode,
                 "PICTURE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Picture,
                 "RULER" => GoogleCloudVisionV1P3Beta1BlockBlockType::Ruler,
-                "BARCODE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Barcode,
+                "TABLE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P3Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7728,42 +7728,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7771,21 +7771,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -7807,42 +7807,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7850,21 +7850,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -7886,42 +7886,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7929,21 +7929,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -7967,40 +7967,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8008,20 +8008,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Possible,
-                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8042,42 +8042,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8085,21 +8085,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -8121,42 +8121,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8164,21 +8164,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -8202,48 +8202,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
+                    "POSSIBLE"
+                }
                 GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unknown => {
                     "UNKNOWN"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
                 }
                 GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unlikely => {
                     "UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
-                    "POSSIBLE"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
                 GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8253,27 +8253,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
                 "UNKNOWN" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unknown
-                }
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 "UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
                 }
-                "POSSIBLE" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Possible
-                }
-                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Likely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -8374,160 +8374,80 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
-                    "UNKNOWN_LANDMARK"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
-                    "LEFT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
-                    "RIGHT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
-                    "LEFT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
-                    "RIGHT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
-                    "MIDPOINT_BETWEEN_EYES"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
-                    "NOSE_BOTTOM_RIGHT"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
-                    "NOSE_BOTTOM_LEFT"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
-                    "NOSE_BOTTOM_CENTER"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
-                    "LEFT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
-                    "LEFT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
-                    "LEFT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
-                    "LEFT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
-                    "RIGHT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
-                    "RIGHT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
-                    "RIGHT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
-                    "RIGHT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
-                    "LEFT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
-                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
-                    "LEFT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEarTragion => {
-                    "RIGHT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
-                    "LEFT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyePupil => {
-                    "RIGHT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
-                    "FOREHEAD_GLABELLA"
-                }
                 GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinGnathion => {
                     "CHIN_GNATHION"
                 }
@@ -8537,16 +8457,96 @@ pub mod schemas {
                 GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinRightGonion => {
                     "CHIN_RIGHT_GONION"
                 }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
+                    "FOREHEAD_GLABELLA"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
+                    "LEFT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
+                    "LEFT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
+                    "LEFT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
+                    "LEFT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
+                    "LEFT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
+                    "LEFT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
+                    "LEFT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
+                    "LEFT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
+                    "LEFT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
+                    "MIDPOINT_BETWEEN_EYES"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
+                    "NOSE_BOTTOM_CENTER"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
+                    "NOSE_BOTTOM_LEFT"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
+                    "NOSE_BOTTOM_RIGHT"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEarTragion => {
+                    "RIGHT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
+                    "RIGHT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
+                    "RIGHT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyePupil => {
+                    "RIGHT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
+                    "RIGHT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
+                    "RIGHT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
+                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
+                    "RIGHT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
+                    "RIGHT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
+                    "UNKNOWN_LANDMARK"
+                }
+                GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8554,92 +8554,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UnknownLandmark
-                }
-                "LEFT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEye,
-                "RIGHT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
-                }
-                "RIGHT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
-                }
-                "LEFT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
-                }
-                "RIGHT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
-                }
-                "MIDPOINT_BETWEEN_EYES" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
-                }
-                "NOSE_TIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseTip,
-                "UPPER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UpperLip,
-                "LOWER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LowerLip,
-                "MOUTH_LEFT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthRight,
-                "MOUTH_CENTER" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomRight
-                }
-                "NOSE_BOTTOM_LEFT" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomLeft
-                }
-                "NOSE_BOTTOM_CENTER" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomCenter
-                }
-                "LEFT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
-                }
-                "LEFT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
-                }
-                "LEFT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
-                }
-                "LEFT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
-                }
-                "RIGHT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
-                }
-                "RIGHT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
-                }
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
-                }
-                "RIGHT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
-                }
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
-                }
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
-                }
-                "LEFT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEarTragion
-                }
-                "RIGHT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEarTragion
-                }
-                "LEFT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyePupil
-                }
-                "RIGHT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyePupil
-                }
-                "FOREHEAD_GLABELLA" => {
-                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ForeheadGlabella
-                }
                 "CHIN_GNATHION" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinGnathion
                 }
@@ -8649,6 +8569,86 @@ pub mod schemas {
                 "CHIN_RIGHT_GONION" => {
                     GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinRightGonion
                 }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8909,37 +8909,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl GoogleCloudVisionV1P3Beta1OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1OperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P3Beta1OperationMetadataState::Created => "CREATED",
+                GoogleCloudVisionV1P3Beta1OperationMetadataState::Done => "DONE",
+                GoogleCloudVisionV1P3Beta1OperationMetadataState::Running => "RUNNING",
                 GoogleCloudVisionV1P3Beta1OperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P3Beta1OperationMetadataState::Created => "CREATED",
-                GoogleCloudVisionV1P3Beta1OperationMetadataState::Running => "RUNNING",
-                GoogleCloudVisionV1P3Beta1OperationMetadataState::Done => "DONE",
-                GoogleCloudVisionV1P3Beta1OperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8947,19 +8947,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P3Beta1OperationMetadataState::StateUnspecified
                 }
-                "CREATED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Created,
-                "RUNNING" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Running,
-                "DONE" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Done,
-                "CANCELLED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9326,40 +9326,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9367,20 +9367,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Possible,
-                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9401,40 +9401,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9442,20 +9442,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Possible,
-                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9476,38 +9476,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9515,18 +9515,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9547,40 +9547,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9588,20 +9588,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Possible,
-                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9622,40 +9622,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
-                GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9663,20 +9663,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Possible,
-                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9794,27 +9794,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
-                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::SureSpace => {
-                    "SURE_SPACE"
-                }
                 GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::EolSureSpace => {
                     "EOL_SURE_SPACE"
                 }
@@ -9822,16 +9817,21 @@ pub mod schemas {
                 GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::LineBreak => {
                     "LINE_BREAK"
                 }
+                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
+                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::SureSpace => {
+                    "SURE_SPACE"
+                }
+                GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9839,17 +9839,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown,
-                "SPACE" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Space,
-                "SURE_SPACE" => {
-                    GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::SureSpace
-                }
                 "EOL_SURE_SPACE" => {
                     GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::EolSureSpace
                 }
@@ -9857,6 +9852,11 @@ pub mod schemas {
                 "LINE_BREAK" => {
                     GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::LineBreak
                 }
+                "SPACE" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -10361,37 +10361,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
-        Successful,
-        #[doc = "The request is done and no item has been successfully processed."]
-        Failed,
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
         Cancelled,
+        #[doc = "The request is done and no item has been successfully processed."]
+        Failed,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Invalid."]
+        StateUnspecified,
+        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
+        Successful,
     }
     impl GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Failed => "FAILED",
+                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
-                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Failed => "FAILED",
-                GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10399,19 +10399,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Processing,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::StateUnspecified
                 }
-                "PROCESSING" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Processing,
                 "SUCCESSFUL" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Successful,
-                "FAILED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Failed,
-                "CANCELLED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -10466,38 +10466,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
+        #[doc = "Barcode block."]
+        Barcode,
         #[doc = "Image block."]
         Picture,
         #[doc = "Horizontal/vertical line box."]
         Ruler,
-        #[doc = "Barcode block."]
-        Barcode,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P4Beta1BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1BlockBlockType::Text => "TEXT",
-                GoogleCloudVisionV1P4Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P4Beta1BlockBlockType::Barcode => "BARCODE",
                 GoogleCloudVisionV1P4Beta1BlockBlockType::Picture => "PICTURE",
                 GoogleCloudVisionV1P4Beta1BlockBlockType::Ruler => "RULER",
-                GoogleCloudVisionV1P4Beta1BlockBlockType::Barcode => "BARCODE",
+                GoogleCloudVisionV1P4Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P4Beta1BlockBlockType::Text => "TEXT",
+                GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10505,18 +10505,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown,
-                "TEXT" => GoogleCloudVisionV1P4Beta1BlockBlockType::Text,
-                "TABLE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Table,
+                "BARCODE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Barcode,
                 "PICTURE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Picture,
                 "RULER" => GoogleCloudVisionV1P4Beta1BlockBlockType::Ruler,
-                "BARCODE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Barcode,
+                "TABLE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P4Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -10718,42 +10718,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10761,21 +10761,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -10797,42 +10797,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10840,21 +10840,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -10876,42 +10876,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10919,21 +10919,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -10957,40 +10957,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10998,20 +10998,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Possible,
-                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -11032,42 +11032,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -11075,21 +11075,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -11111,42 +11111,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -11154,21 +11154,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -11192,48 +11192,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
+                    "POSSIBLE"
+                }
                 GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unknown => {
                     "UNKNOWN"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
                 }
                 GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unlikely => {
                     "UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
-                    "POSSIBLE"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
                 GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -11243,27 +11243,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
                 "UNKNOWN" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unknown
-                }
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 "UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
                 }
-                "POSSIBLE" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Possible
-                }
-                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Likely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -11364,160 +11364,80 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
-                    "UNKNOWN_LANDMARK"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
-                    "LEFT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
-                    "RIGHT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
-                    "LEFT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
-                    "RIGHT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
-                    "MIDPOINT_BETWEEN_EYES"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
-                    "NOSE_BOTTOM_RIGHT"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
-                    "NOSE_BOTTOM_LEFT"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
-                    "NOSE_BOTTOM_CENTER"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
-                    "LEFT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
-                    "LEFT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
-                    "LEFT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
-                    "LEFT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
-                    "RIGHT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
-                    "RIGHT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
-                    "RIGHT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
-                    "RIGHT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
-                    "LEFT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
-                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
-                    "LEFT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEarTragion => {
-                    "RIGHT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
-                    "LEFT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyePupil => {
-                    "RIGHT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
-                    "FOREHEAD_GLABELLA"
-                }
                 GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinGnathion => {
                     "CHIN_GNATHION"
                 }
@@ -11527,16 +11447,96 @@ pub mod schemas {
                 GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinRightGonion => {
                     "CHIN_RIGHT_GONION"
                 }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
+                    "FOREHEAD_GLABELLA"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
+                    "LEFT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
+                    "LEFT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
+                    "LEFT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
+                    "LEFT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
+                    "LEFT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
+                    "LEFT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
+                    "LEFT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
+                    "LEFT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
+                    "LEFT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
+                    "MIDPOINT_BETWEEN_EYES"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
+                    "NOSE_BOTTOM_CENTER"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
+                    "NOSE_BOTTOM_LEFT"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
+                    "NOSE_BOTTOM_RIGHT"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEarTragion => {
+                    "RIGHT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
+                    "RIGHT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
+                    "RIGHT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyePupil => {
+                    "RIGHT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
+                    "RIGHT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
+                    "RIGHT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
+                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
+                    "RIGHT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
+                    "RIGHT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
+                    "UNKNOWN_LANDMARK"
+                }
+                GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -11544,92 +11544,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UnknownLandmark
-                }
-                "LEFT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEye,
-                "RIGHT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
-                }
-                "RIGHT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
-                }
-                "LEFT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
-                }
-                "RIGHT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
-                }
-                "MIDPOINT_BETWEEN_EYES" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
-                }
-                "NOSE_TIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseTip,
-                "UPPER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UpperLip,
-                "LOWER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LowerLip,
-                "MOUTH_LEFT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthRight,
-                "MOUTH_CENTER" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomRight
-                }
-                "NOSE_BOTTOM_LEFT" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomLeft
-                }
-                "NOSE_BOTTOM_CENTER" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomCenter
-                }
-                "LEFT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
-                }
-                "LEFT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
-                }
-                "LEFT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
-                }
-                "LEFT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
-                }
-                "RIGHT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
-                }
-                "RIGHT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
-                }
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
-                }
-                "RIGHT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
-                }
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
-                }
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
-                }
-                "LEFT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEarTragion
-                }
-                "RIGHT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEarTragion
-                }
-                "LEFT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyePupil
-                }
-                "RIGHT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyePupil
-                }
-                "FOREHEAD_GLABELLA" => {
-                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ForeheadGlabella
-                }
                 "CHIN_GNATHION" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinGnathion
                 }
@@ -11639,6 +11559,86 @@ pub mod schemas {
                 "CHIN_RIGHT_GONION" => {
                     GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinRightGonion
                 }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -11916,37 +11916,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl GoogleCloudVisionV1P4Beta1OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1OperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P4Beta1OperationMetadataState::Created => "CREATED",
+                GoogleCloudVisionV1P4Beta1OperationMetadataState::Done => "DONE",
+                GoogleCloudVisionV1P4Beta1OperationMetadataState::Running => "RUNNING",
                 GoogleCloudVisionV1P4Beta1OperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P4Beta1OperationMetadataState::Created => "CREATED",
-                GoogleCloudVisionV1P4Beta1OperationMetadataState::Running => "RUNNING",
-                GoogleCloudVisionV1P4Beta1OperationMetadataState::Done => "DONE",
-                GoogleCloudVisionV1P4Beta1OperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -11954,19 +11954,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P4Beta1OperationMetadataState::StateUnspecified
                 }
-                "CREATED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Created,
-                "RUNNING" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Running,
-                "DONE" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Done,
-                "CANCELLED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12309,31 +12309,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
-        #[doc = "Invalid. Customer must select one Type."]
-        TypeUnspecified,
         #[doc = "Reduce image file size. Detailed params specified in CompressionConfig.\nIf customer do not specify CompressionConfig, it will reduce image file\nsize while not reducing image quality. If customer specify\nCompressionConfig, we will reduce file size while keeping\nCompressionParams.target_quality."]
         Compression,
         #[doc = "Denoise, sharpening, HDR and upscaling. Detailed params specified in\nEnhancementConfig. If customer do not specify EnhancmentConfig, it will\ndo image enhancement using default values. If upscale_ratio not\nspecified, the output image will have the same resolution as input image."]
         Enhancement,
         #[doc = "Query quality score for an image. Detailed params specified in\nQualityScoreConfig. If customer does not specify QualityScoreConfig,\naesthetic score of image will be returned."]
         QualityScore,
+        #[doc = "Invalid. Customer must select one Type."]
+        TypeUnspecified,
     }
     impl GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified => "TYPE_UNSPECIFIED" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression => "COMPRESSION" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement => "ENHANCEMENT" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore => "QUALITY_SCORE" , }
+            match self { GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression => "COMPRESSION" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement => "ENHANCEMENT" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore => "QUALITY_SCORE" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified => "TYPE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12343,12 +12343,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified , "COMPRESSION" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression , "ENHANCEMENT" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement , "QUALITY_SCORE" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "COMPRESSION" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression , "ENHANCEMENT" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement , "QUALITY_SCORE" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore , "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -12410,40 +12410,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12451,20 +12451,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Possible,
-                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12485,40 +12485,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12526,20 +12526,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Possible,
-                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12560,38 +12560,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12599,18 +12599,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12631,40 +12631,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12672,20 +12672,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Possible,
-                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12706,40 +12706,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
-                GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12747,20 +12747,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Possible,
-                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -12887,27 +12887,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
-                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::SureSpace => {
-                    "SURE_SPACE"
-                }
                 GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::EolSureSpace => {
                     "EOL_SURE_SPACE"
                 }
@@ -12915,16 +12910,21 @@ pub mod schemas {
                 GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::LineBreak => {
                     "LINE_BREAK"
                 }
+                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
+                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::SureSpace => {
+                    "SURE_SPACE"
+                }
+                GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -12932,17 +12932,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown,
-                "SPACE" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Space,
-                "SURE_SPACE" => {
-                    GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::SureSpace
-                }
                 "EOL_SURE_SPACE" => {
                     GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::EolSureSpace
                 }
@@ -12950,6 +12945,11 @@ pub mod schemas {
                 "LINE_BREAK" => {
                     GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::LineBreak
                 }
+                "SPACE" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -13445,37 +13445,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
-        Successful,
-        #[doc = "The request is done and no item has been successfully processed."]
-        Failed,
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
         Cancelled,
+        #[doc = "The request is done and no item has been successfully processed."]
+        Failed,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Invalid."]
+        StateUnspecified,
+        #[doc = "The request is done and at least one item has been successfully\nprocessed."]
+        Successful,
     }
     impl GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Failed => "FAILED",
+                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Processing => "PROCESSING",
                 GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
-                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Failed => "FAILED",
-                GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -13483,19 +13483,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Processing,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::StateUnspecified
                 }
-                "PROCESSING" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Processing,
                 "SUCCESSFUL" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Successful,
-                "FAILED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Failed,
-                "CANCELLED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -13550,41 +13550,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1BlockBlockType {
-        #[doc = "Unknown block type."]
-        Unknown,
-        #[doc = "Regular text block."]
-        Text,
-        #[doc = "Table block."]
-        Table,
-        #[doc = "Image block."]
-        Picture,
-        #[doc = "Horizontal/vertical line box."]
-        Ruler,
         #[doc = "Barcode block."]
         Barcode,
         #[doc = "A key-value pair block."]
         KeyValuePair,
+        #[doc = "Image block."]
+        Picture,
+        #[doc = "Horizontal/vertical line box."]
+        Ruler,
+        #[doc = "Table block."]
+        Table,
+        #[doc = "Regular text block."]
+        Text,
+        #[doc = "Unknown block type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P5Beta1BlockBlockType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1BlockBlockType::Text => "TEXT",
-                GoogleCloudVisionV1P5Beta1BlockBlockType::Table => "TABLE",
-                GoogleCloudVisionV1P5Beta1BlockBlockType::Picture => "PICTURE",
-                GoogleCloudVisionV1P5Beta1BlockBlockType::Ruler => "RULER",
                 GoogleCloudVisionV1P5Beta1BlockBlockType::Barcode => "BARCODE",
                 GoogleCloudVisionV1P5Beta1BlockBlockType::KeyValuePair => "KEY_VALUE_PAIR",
+                GoogleCloudVisionV1P5Beta1BlockBlockType::Picture => "PICTURE",
+                GoogleCloudVisionV1P5Beta1BlockBlockType::Ruler => "RULER",
+                GoogleCloudVisionV1P5Beta1BlockBlockType::Table => "TABLE",
+                GoogleCloudVisionV1P5Beta1BlockBlockType::Text => "TEXT",
+                GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1BlockBlockType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1BlockBlockType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -13592,19 +13592,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1BlockBlockType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown,
-                "TEXT" => GoogleCloudVisionV1P5Beta1BlockBlockType::Text,
-                "TABLE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Table,
-                "PICTURE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Picture,
-                "RULER" => GoogleCloudVisionV1P5Beta1BlockBlockType::Ruler,
                 "BARCODE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Barcode,
                 "KEY_VALUE_PAIR" => GoogleCloudVisionV1P5Beta1BlockBlockType::KeyValuePair,
+                "PICTURE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P5Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P5Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -13641,7 +13641,7 @@ pub mod schemas {
         #[doc = "Detected pair for KEY_VALUE_PAIR block_type. This detection can be turned\noff by explicitly setting desired fields in\nDocumentParsingParams.block_filter."]
         #[serde(rename = "keyValuePair", default)]
         pub key_value_pair:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1KeyValuePair>,
+            ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1KeyValuePair>>,
         #[doc = "All UTF-8 text detected in this block. This field is by default not\nreturned unless specified in TextDetectionParams.block_filter or\nDocumentParsingParams.block_filter."]
         #[serde(rename = "mergedText", default)]
         pub merged_text: ::std::option::Option<String>,
@@ -13816,42 +13816,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -13859,21 +13859,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -13895,42 +13895,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -13938,21 +13938,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -13974,42 +13974,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14017,21 +14017,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -14055,40 +14055,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Likely => "LIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14096,20 +14096,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Possible,
-                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -14130,42 +14130,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14173,21 +14173,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -14209,42 +14209,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14252,21 +14252,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unknown,
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
-                }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -14290,48 +14290,48 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
+                    "POSSIBLE"
+                }
                 GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unknown => {
                     "UNKNOWN"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
-                    "VERY_UNLIKELY"
                 }
                 GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unlikely => {
                     "UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Possible => {
-                    "POSSIBLE"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Likely => "LIKELY",
                 GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely => {
                     "VERY_LIKELY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely => {
+                    "VERY_UNLIKELY"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14341,27 +14341,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
                 "UNKNOWN" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unknown
-                }
-                "VERY_UNLIKELY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 "UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
                 }
-                "POSSIBLE" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Possible
-                }
-                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Likely,
                 "VERY_LIKELY" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -14462,160 +14462,80 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
-                    "UNKNOWN_LANDMARK"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
-                    "LEFT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
-                    "RIGHT_OF_LEFT_EYEBROW"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
-                    "LEFT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
-                    "RIGHT_OF_RIGHT_EYEBROW"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
-                    "MIDPOINT_BETWEEN_EYES"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
-                    "NOSE_BOTTOM_RIGHT"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
-                    "NOSE_BOTTOM_LEFT"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
-                    "NOSE_BOTTOM_CENTER"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
-                    "LEFT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
-                    "LEFT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
-                    "LEFT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
-                    "LEFT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
-                    "RIGHT_EYE_TOP_BOUNDARY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
-                    "RIGHT_EYE_RIGHT_CORNER"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
-                    "RIGHT_EYE_BOTTOM_BOUNDARY"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
-                    "RIGHT_EYE_LEFT_CORNER"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
-                    "LEFT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
-                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
-                    "LEFT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEarTragion => {
-                    "RIGHT_EAR_TRAGION"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
-                    "LEFT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyePupil => {
-                    "RIGHT_EYE_PUPIL"
-                }
-                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
-                    "FOREHEAD_GLABELLA"
-                }
                 GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinGnathion => {
                     "CHIN_GNATHION"
                 }
@@ -14625,16 +14545,96 @@ pub mod schemas {
                 GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinRightGonion => {
                     "CHIN_RIGHT_GONION"
                 }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ForeheadGlabella => {
+                    "FOREHEAD_GLABELLA"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEarTragion => {
+                    "LEFT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEye => "LEFT_EYE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary => {
+                    "LEFT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner => {
+                    "LEFT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyePupil => {
+                    "LEFT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner => {
+                    "LEFT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary => {
+                    "LEFT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint => {
+                    "LEFT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow => {
+                    "LEFT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow => {
+                    "LEFT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LowerLip => "LOWER_LIP",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes => {
+                    "MIDPOINT_BETWEEN_EYES"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthCenter => "MOUTH_CENTER",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthLeft => "MOUTH_LEFT",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthRight => "MOUTH_RIGHT",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomCenter => {
+                    "NOSE_BOTTOM_CENTER"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomLeft => {
+                    "NOSE_BOTTOM_LEFT"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomRight => {
+                    "NOSE_BOTTOM_RIGHT"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseTip => "NOSE_TIP",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEarTragion => {
+                    "RIGHT_EAR_TRAGION"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEye => "RIGHT_EYE",
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary => {
+                    "RIGHT_EYE_BOTTOM_BOUNDARY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner => {
+                    "RIGHT_EYE_LEFT_CORNER"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyePupil => {
+                    "RIGHT_EYE_PUPIL"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeRightCorner => {
+                    "RIGHT_EYE_RIGHT_CORNER"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary => {
+                    "RIGHT_EYE_TOP_BOUNDARY"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint => {
+                    "RIGHT_EYEBROW_UPPER_MIDPOINT"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow => {
+                    "RIGHT_OF_LEFT_EYEBROW"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow => {
+                    "RIGHT_OF_RIGHT_EYEBROW"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UnknownLandmark => {
+                    "UNKNOWN_LANDMARK"
+                }
+                GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -14642,92 +14642,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UnknownLandmark
-                }
-                "LEFT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEye,
-                "RIGHT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
-                }
-                "RIGHT_OF_LEFT_EYEBROW" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
-                }
-                "LEFT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
-                }
-                "RIGHT_OF_RIGHT_EYEBROW" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
-                }
-                "MIDPOINT_BETWEEN_EYES" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
-                }
-                "NOSE_TIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseTip,
-                "UPPER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UpperLip,
-                "LOWER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LowerLip,
-                "MOUTH_LEFT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthRight,
-                "MOUTH_CENTER" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomRight
-                }
-                "NOSE_BOTTOM_LEFT" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomLeft
-                }
-                "NOSE_BOTTOM_CENTER" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomCenter
-                }
-                "LEFT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
-                }
-                "LEFT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
-                }
-                "LEFT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
-                }
-                "LEFT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
-                }
-                "RIGHT_EYE_TOP_BOUNDARY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
-                }
-                "RIGHT_EYE_RIGHT_CORNER" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
-                }
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
-                }
-                "RIGHT_EYE_LEFT_CORNER" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
-                }
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
-                }
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
-                }
-                "LEFT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEarTragion
-                }
-                "RIGHT_EAR_TRAGION" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEarTragion
-                }
-                "LEFT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyePupil
-                }
-                "RIGHT_EYE_PUPIL" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyePupil
-                }
-                "FOREHEAD_GLABELLA" => {
-                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ForeheadGlabella
-                }
                 "CHIN_GNATHION" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinGnathion
                 }
@@ -14737,6 +14657,86 @@ pub mod schemas {
                 "CHIN_RIGHT_GONION" => {
                     GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinRightGonion
                 }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -14937,13 +14937,14 @@ pub mod schemas {
         pub key: ::std::option::Option<String>,
         #[doc = "Key block of the pair containing the normalized bounding box and key text."]
         #[serde(rename = "keyBlock", default)]
-        pub key_block: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Block>,
+        pub key_block: ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1Block>>,
         #[doc = "Optional. The translation of key text if the text is not in English."]
         #[serde(rename = "normalizedKey", default)]
         pub normalized_key: ::std::option::Option<String>,
         #[doc = "Value block of the pair containing the normalized bounding box and value\ntext, including potentially deeper structures within the value text."]
         #[serde(rename = "valueBlock", default)]
-        pub value_block: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Block>,
+        pub value_block:
+            ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1Block>>,
         #[doc = "Type of the value. Valid strings are the following:\n\n\"generic\" - For generic text that is mapped to a value.\n\"number\" - for numeric types\n\"id\" - for generic identifiers.\n\"currency\" - for currency values.\n\"date\" - for dates.\n\"time\" - for time and duration values.\n\"date_range\" - for date ranges.\n\"address\" - for address values (can be long).\n\"person\" - for names of people or other personal identifiers.\n\"phone\" - for phone numbers."]
         #[serde(rename = "valueType", default)]
         pub value_type: ::std::option::Option<String>,
@@ -15026,37 +15027,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl GoogleCloudVisionV1P5Beta1OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1OperationMetadataState::Cancelled => "CANCELLED",
+                GoogleCloudVisionV1P5Beta1OperationMetadataState::Created => "CREATED",
+                GoogleCloudVisionV1P5Beta1OperationMetadataState::Done => "DONE",
+                GoogleCloudVisionV1P5Beta1OperationMetadataState::Running => "RUNNING",
                 GoogleCloudVisionV1P5Beta1OperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudVisionV1P5Beta1OperationMetadataState::Created => "CREATED",
-                GoogleCloudVisionV1P5Beta1OperationMetadataState::Running => "RUNNING",
-                GoogleCloudVisionV1P5Beta1OperationMetadataState::Done => "DONE",
-                GoogleCloudVisionV1P5Beta1OperationMetadataState::Cancelled => "CANCELLED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15064,19 +15065,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CANCELLED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudVisionV1P5Beta1OperationMetadataState::StateUnspecified
                 }
-                "CREATED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Created,
-                "RUNNING" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Running,
-                "DONE" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Done,
-                "CANCELLED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Cancelled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15449,40 +15450,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Likely => "LIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15490,20 +15491,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Possible,
-                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15524,40 +15525,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Likely => "LIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15565,20 +15566,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Possible,
-                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15599,38 +15600,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15638,18 +15639,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15670,40 +15671,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Likely => "LIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15711,20 +15712,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Possible,
-                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15745,40 +15746,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
+                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
                 GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryUnlikely => {
                     "VERY_UNLIKELY"
                 }
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Possible => "POSSIBLE",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Likely => "LIKELY",
-                GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -15786,20 +15787,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Possible,
                 "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryLikely,
                 "VERY_UNLIKELY" => {
                     GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryUnlikely
                 }
-                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Possible,
-                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Likely,
-                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryLikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -15992,27 +15993,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
-        #[doc = "Unknown break label type."]
-        Unknown,
-        #[doc = "Regular space."]
-        Space,
-        #[doc = "Sure space (very wide)."]
-        SureSpace,
         #[doc = "Line-wrapping break."]
         EolSureSpace,
         #[doc = "End-line hyphen that is not present in text; does not co-occur with\n`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."]
         Hyphen,
         #[doc = "Line break that ends a paragraph."]
         LineBreak,
+        #[doc = "Regular space."]
+        Space,
+        #[doc = "Sure space (very wide)."]
+        SureSpace,
+        #[doc = "Unknown break label type."]
+        Unknown,
     }
     impl GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
-                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
-                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::SureSpace => {
-                    "SURE_SPACE"
-                }
                 GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::EolSureSpace => {
                     "EOL_SURE_SPACE"
                 }
@@ -16020,16 +16016,21 @@ pub mod schemas {
                 GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::LineBreak => {
                     "LINE_BREAK"
                 }
+                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Space => "SPACE",
+                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::SureSpace => {
+                    "SURE_SPACE"
+                }
+                GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -16037,17 +16038,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown,
-                "SPACE" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Space,
-                "SURE_SPACE" => {
-                    GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::SureSpace
-                }
                 "EOL_SURE_SPACE" => {
                     GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::EolSureSpace
                 }
@@ -16055,6 +16051,11 @@ pub mod schemas {
                 "LINE_BREAK" => {
                     GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::LineBreak
                 }
+                "SPACE" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -16670,125 +16671,125 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LandmarkType {
-        #[doc = "Unknown face landmark detected. Should not be filled."]
-        UnknownLandmark,
-        #[doc = "Left eye."]
-        LeftEye,
-        #[doc = "Right eye."]
-        RightEye,
-        #[doc = "Left of left eyebrow."]
-        LeftOfLeftEyebrow,
-        #[doc = "Right of left eyebrow."]
-        RightOfLeftEyebrow,
-        #[doc = "Left of right eyebrow."]
-        LeftOfRightEyebrow,
-        #[doc = "Right of right eyebrow."]
-        RightOfRightEyebrow,
-        #[doc = "Midpoint between eyes."]
-        MidpointBetweenEyes,
-        #[doc = "Nose tip."]
-        NoseTip,
-        #[doc = "Upper lip."]
-        UpperLip,
-        #[doc = "Lower lip."]
-        LowerLip,
-        #[doc = "Mouth left."]
-        MouthLeft,
-        #[doc = "Mouth right."]
-        MouthRight,
-        #[doc = "Mouth center."]
-        MouthCenter,
-        #[doc = "Nose, bottom right."]
-        NoseBottomRight,
-        #[doc = "Nose, bottom left."]
-        NoseBottomLeft,
-        #[doc = "Nose, bottom center."]
-        NoseBottomCenter,
-        #[doc = "Left eye, top boundary."]
-        LeftEyeTopBoundary,
-        #[doc = "Left eye, right corner."]
-        LeftEyeRightCorner,
-        #[doc = "Left eye, bottom boundary."]
-        LeftEyeBottomBoundary,
-        #[doc = "Left eye, left corner."]
-        LeftEyeLeftCorner,
-        #[doc = "Right eye, top boundary."]
-        RightEyeTopBoundary,
-        #[doc = "Right eye, right corner."]
-        RightEyeRightCorner,
-        #[doc = "Right eye, bottom boundary."]
-        RightEyeBottomBoundary,
-        #[doc = "Right eye, left corner."]
-        RightEyeLeftCorner,
-        #[doc = "Left eyebrow, upper midpoint."]
-        LeftEyebrowUpperMidpoint,
-        #[doc = "Right eyebrow, upper midpoint."]
-        RightEyebrowUpperMidpoint,
-        #[doc = "Left ear tragion."]
-        LeftEarTragion,
-        #[doc = "Right ear tragion."]
-        RightEarTragion,
-        #[doc = "Left eye pupil."]
-        LeftEyePupil,
-        #[doc = "Right eye pupil."]
-        RightEyePupil,
-        #[doc = "Forehead glabella."]
-        ForeheadGlabella,
         #[doc = "Chin gnathion."]
         ChinGnathion,
         #[doc = "Chin left gonion."]
         ChinLeftGonion,
         #[doc = "Chin right gonion."]
         ChinRightGonion,
+        #[doc = "Forehead glabella."]
+        ForeheadGlabella,
+        #[doc = "Left ear tragion."]
+        LeftEarTragion,
+        #[doc = "Left eye."]
+        LeftEye,
+        #[doc = "Left eye, bottom boundary."]
+        LeftEyeBottomBoundary,
+        #[doc = "Left eye, left corner."]
+        LeftEyeLeftCorner,
+        #[doc = "Left eye pupil."]
+        LeftEyePupil,
+        #[doc = "Left eye, right corner."]
+        LeftEyeRightCorner,
+        #[doc = "Left eye, top boundary."]
+        LeftEyeTopBoundary,
+        #[doc = "Left eyebrow, upper midpoint."]
+        LeftEyebrowUpperMidpoint,
+        #[doc = "Left of left eyebrow."]
+        LeftOfLeftEyebrow,
+        #[doc = "Left of right eyebrow."]
+        LeftOfRightEyebrow,
+        #[doc = "Lower lip."]
+        LowerLip,
+        #[doc = "Midpoint between eyes."]
+        MidpointBetweenEyes,
+        #[doc = "Mouth center."]
+        MouthCenter,
+        #[doc = "Mouth left."]
+        MouthLeft,
+        #[doc = "Mouth right."]
+        MouthRight,
+        #[doc = "Nose, bottom center."]
+        NoseBottomCenter,
+        #[doc = "Nose, bottom left."]
+        NoseBottomLeft,
+        #[doc = "Nose, bottom right."]
+        NoseBottomRight,
+        #[doc = "Nose tip."]
+        NoseTip,
+        #[doc = "Right ear tragion."]
+        RightEarTragion,
+        #[doc = "Right eye."]
+        RightEye,
+        #[doc = "Right eye, bottom boundary."]
+        RightEyeBottomBoundary,
+        #[doc = "Right eye, left corner."]
+        RightEyeLeftCorner,
+        #[doc = "Right eye pupil."]
+        RightEyePupil,
+        #[doc = "Right eye, right corner."]
+        RightEyeRightCorner,
+        #[doc = "Right eye, top boundary."]
+        RightEyeTopBoundary,
+        #[doc = "Right eyebrow, upper midpoint."]
+        RightEyebrowUpperMidpoint,
+        #[doc = "Right of left eyebrow."]
+        RightOfLeftEyebrow,
+        #[doc = "Right of right eyebrow."]
+        RightOfRightEyebrow,
+        #[doc = "Unknown face landmark detected. Should not be filled."]
+        UnknownLandmark,
+        #[doc = "Upper lip."]
+        UpperLip,
     }
     impl LandmarkType {
         pub fn as_str(self) -> &'static str {
             match self {
-                LandmarkType::UnknownLandmark => "UNKNOWN_LANDMARK",
-                LandmarkType::LeftEye => "LEFT_EYE",
-                LandmarkType::RightEye => "RIGHT_EYE",
-                LandmarkType::LeftOfLeftEyebrow => "LEFT_OF_LEFT_EYEBROW",
-                LandmarkType::RightOfLeftEyebrow => "RIGHT_OF_LEFT_EYEBROW",
-                LandmarkType::LeftOfRightEyebrow => "LEFT_OF_RIGHT_EYEBROW",
-                LandmarkType::RightOfRightEyebrow => "RIGHT_OF_RIGHT_EYEBROW",
-                LandmarkType::MidpointBetweenEyes => "MIDPOINT_BETWEEN_EYES",
-                LandmarkType::NoseTip => "NOSE_TIP",
-                LandmarkType::UpperLip => "UPPER_LIP",
-                LandmarkType::LowerLip => "LOWER_LIP",
-                LandmarkType::MouthLeft => "MOUTH_LEFT",
-                LandmarkType::MouthRight => "MOUTH_RIGHT",
-                LandmarkType::MouthCenter => "MOUTH_CENTER",
-                LandmarkType::NoseBottomRight => "NOSE_BOTTOM_RIGHT",
-                LandmarkType::NoseBottomLeft => "NOSE_BOTTOM_LEFT",
-                LandmarkType::NoseBottomCenter => "NOSE_BOTTOM_CENTER",
-                LandmarkType::LeftEyeTopBoundary => "LEFT_EYE_TOP_BOUNDARY",
-                LandmarkType::LeftEyeRightCorner => "LEFT_EYE_RIGHT_CORNER",
-                LandmarkType::LeftEyeBottomBoundary => "LEFT_EYE_BOTTOM_BOUNDARY",
-                LandmarkType::LeftEyeLeftCorner => "LEFT_EYE_LEFT_CORNER",
-                LandmarkType::RightEyeTopBoundary => "RIGHT_EYE_TOP_BOUNDARY",
-                LandmarkType::RightEyeRightCorner => "RIGHT_EYE_RIGHT_CORNER",
-                LandmarkType::RightEyeBottomBoundary => "RIGHT_EYE_BOTTOM_BOUNDARY",
-                LandmarkType::RightEyeLeftCorner => "RIGHT_EYE_LEFT_CORNER",
-                LandmarkType::LeftEyebrowUpperMidpoint => "LEFT_EYEBROW_UPPER_MIDPOINT",
-                LandmarkType::RightEyebrowUpperMidpoint => "RIGHT_EYEBROW_UPPER_MIDPOINT",
-                LandmarkType::LeftEarTragion => "LEFT_EAR_TRAGION",
-                LandmarkType::RightEarTragion => "RIGHT_EAR_TRAGION",
-                LandmarkType::LeftEyePupil => "LEFT_EYE_PUPIL",
-                LandmarkType::RightEyePupil => "RIGHT_EYE_PUPIL",
-                LandmarkType::ForeheadGlabella => "FOREHEAD_GLABELLA",
                 LandmarkType::ChinGnathion => "CHIN_GNATHION",
                 LandmarkType::ChinLeftGonion => "CHIN_LEFT_GONION",
                 LandmarkType::ChinRightGonion => "CHIN_RIGHT_GONION",
+                LandmarkType::ForeheadGlabella => "FOREHEAD_GLABELLA",
+                LandmarkType::LeftEarTragion => "LEFT_EAR_TRAGION",
+                LandmarkType::LeftEye => "LEFT_EYE",
+                LandmarkType::LeftEyeBottomBoundary => "LEFT_EYE_BOTTOM_BOUNDARY",
+                LandmarkType::LeftEyeLeftCorner => "LEFT_EYE_LEFT_CORNER",
+                LandmarkType::LeftEyePupil => "LEFT_EYE_PUPIL",
+                LandmarkType::LeftEyeRightCorner => "LEFT_EYE_RIGHT_CORNER",
+                LandmarkType::LeftEyeTopBoundary => "LEFT_EYE_TOP_BOUNDARY",
+                LandmarkType::LeftEyebrowUpperMidpoint => "LEFT_EYEBROW_UPPER_MIDPOINT",
+                LandmarkType::LeftOfLeftEyebrow => "LEFT_OF_LEFT_EYEBROW",
+                LandmarkType::LeftOfRightEyebrow => "LEFT_OF_RIGHT_EYEBROW",
+                LandmarkType::LowerLip => "LOWER_LIP",
+                LandmarkType::MidpointBetweenEyes => "MIDPOINT_BETWEEN_EYES",
+                LandmarkType::MouthCenter => "MOUTH_CENTER",
+                LandmarkType::MouthLeft => "MOUTH_LEFT",
+                LandmarkType::MouthRight => "MOUTH_RIGHT",
+                LandmarkType::NoseBottomCenter => "NOSE_BOTTOM_CENTER",
+                LandmarkType::NoseBottomLeft => "NOSE_BOTTOM_LEFT",
+                LandmarkType::NoseBottomRight => "NOSE_BOTTOM_RIGHT",
+                LandmarkType::NoseTip => "NOSE_TIP",
+                LandmarkType::RightEarTragion => "RIGHT_EAR_TRAGION",
+                LandmarkType::RightEye => "RIGHT_EYE",
+                LandmarkType::RightEyeBottomBoundary => "RIGHT_EYE_BOTTOM_BOUNDARY",
+                LandmarkType::RightEyeLeftCorner => "RIGHT_EYE_LEFT_CORNER",
+                LandmarkType::RightEyePupil => "RIGHT_EYE_PUPIL",
+                LandmarkType::RightEyeRightCorner => "RIGHT_EYE_RIGHT_CORNER",
+                LandmarkType::RightEyeTopBoundary => "RIGHT_EYE_TOP_BOUNDARY",
+                LandmarkType::RightEyebrowUpperMidpoint => "RIGHT_EYEBROW_UPPER_MIDPOINT",
+                LandmarkType::RightOfLeftEyebrow => "RIGHT_OF_LEFT_EYEBROW",
+                LandmarkType::RightOfRightEyebrow => "RIGHT_OF_RIGHT_EYEBROW",
+                LandmarkType::UnknownLandmark => "UNKNOWN_LANDMARK",
+                LandmarkType::UpperLip => "UPPER_LIP",
             }
         }
     }
     impl ::std::fmt::Display for LandmarkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LandmarkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -16796,47 +16797,47 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LandmarkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN_LANDMARK" => LandmarkType::UnknownLandmark,
-                "LEFT_EYE" => LandmarkType::LeftEye,
-                "RIGHT_EYE" => LandmarkType::RightEye,
-                "LEFT_OF_LEFT_EYEBROW" => LandmarkType::LeftOfLeftEyebrow,
-                "RIGHT_OF_LEFT_EYEBROW" => LandmarkType::RightOfLeftEyebrow,
-                "LEFT_OF_RIGHT_EYEBROW" => LandmarkType::LeftOfRightEyebrow,
-                "RIGHT_OF_RIGHT_EYEBROW" => LandmarkType::RightOfRightEyebrow,
-                "MIDPOINT_BETWEEN_EYES" => LandmarkType::MidpointBetweenEyes,
-                "NOSE_TIP" => LandmarkType::NoseTip,
-                "UPPER_LIP" => LandmarkType::UpperLip,
-                "LOWER_LIP" => LandmarkType::LowerLip,
-                "MOUTH_LEFT" => LandmarkType::MouthLeft,
-                "MOUTH_RIGHT" => LandmarkType::MouthRight,
-                "MOUTH_CENTER" => LandmarkType::MouthCenter,
-                "NOSE_BOTTOM_RIGHT" => LandmarkType::NoseBottomRight,
-                "NOSE_BOTTOM_LEFT" => LandmarkType::NoseBottomLeft,
-                "NOSE_BOTTOM_CENTER" => LandmarkType::NoseBottomCenter,
-                "LEFT_EYE_TOP_BOUNDARY" => LandmarkType::LeftEyeTopBoundary,
-                "LEFT_EYE_RIGHT_CORNER" => LandmarkType::LeftEyeRightCorner,
-                "LEFT_EYE_BOTTOM_BOUNDARY" => LandmarkType::LeftEyeBottomBoundary,
-                "LEFT_EYE_LEFT_CORNER" => LandmarkType::LeftEyeLeftCorner,
-                "RIGHT_EYE_TOP_BOUNDARY" => LandmarkType::RightEyeTopBoundary,
-                "RIGHT_EYE_RIGHT_CORNER" => LandmarkType::RightEyeRightCorner,
-                "RIGHT_EYE_BOTTOM_BOUNDARY" => LandmarkType::RightEyeBottomBoundary,
-                "RIGHT_EYE_LEFT_CORNER" => LandmarkType::RightEyeLeftCorner,
-                "LEFT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::LeftEyebrowUpperMidpoint,
-                "RIGHT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::RightEyebrowUpperMidpoint,
-                "LEFT_EAR_TRAGION" => LandmarkType::LeftEarTragion,
-                "RIGHT_EAR_TRAGION" => LandmarkType::RightEarTragion,
-                "LEFT_EYE_PUPIL" => LandmarkType::LeftEyePupil,
-                "RIGHT_EYE_PUPIL" => LandmarkType::RightEyePupil,
-                "FOREHEAD_GLABELLA" => LandmarkType::ForeheadGlabella,
                 "CHIN_GNATHION" => LandmarkType::ChinGnathion,
                 "CHIN_LEFT_GONION" => LandmarkType::ChinLeftGonion,
                 "CHIN_RIGHT_GONION" => LandmarkType::ChinRightGonion,
+                "FOREHEAD_GLABELLA" => LandmarkType::ForeheadGlabella,
+                "LEFT_EAR_TRAGION" => LandmarkType::LeftEarTragion,
+                "LEFT_EYE" => LandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => LandmarkType::LeftEyeBottomBoundary,
+                "LEFT_EYE_LEFT_CORNER" => LandmarkType::LeftEyeLeftCorner,
+                "LEFT_EYE_PUPIL" => LandmarkType::LeftEyePupil,
+                "LEFT_EYE_RIGHT_CORNER" => LandmarkType::LeftEyeRightCorner,
+                "LEFT_EYE_TOP_BOUNDARY" => LandmarkType::LeftEyeTopBoundary,
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::LeftEyebrowUpperMidpoint,
+                "LEFT_OF_LEFT_EYEBROW" => LandmarkType::LeftOfLeftEyebrow,
+                "LEFT_OF_RIGHT_EYEBROW" => LandmarkType::LeftOfRightEyebrow,
+                "LOWER_LIP" => LandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => LandmarkType::MidpointBetweenEyes,
+                "MOUTH_CENTER" => LandmarkType::MouthCenter,
+                "MOUTH_LEFT" => LandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => LandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => LandmarkType::NoseBottomCenter,
+                "NOSE_BOTTOM_LEFT" => LandmarkType::NoseBottomLeft,
+                "NOSE_BOTTOM_RIGHT" => LandmarkType::NoseBottomRight,
+                "NOSE_TIP" => LandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => LandmarkType::RightEarTragion,
+                "RIGHT_EYE" => LandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => LandmarkType::RightEyeBottomBoundary,
+                "RIGHT_EYE_LEFT_CORNER" => LandmarkType::RightEyeLeftCorner,
+                "RIGHT_EYE_PUPIL" => LandmarkType::RightEyePupil,
+                "RIGHT_EYE_RIGHT_CORNER" => LandmarkType::RightEyeRightCorner,
+                "RIGHT_EYE_TOP_BOUNDARY" => LandmarkType::RightEyeTopBoundary,
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::RightEyebrowUpperMidpoint,
+                "RIGHT_OF_LEFT_EYEBROW" => LandmarkType::RightOfLeftEyebrow,
+                "RIGHT_OF_RIGHT_EYEBROW" => LandmarkType::RightOfRightEyebrow,
+                "UNKNOWN_LANDMARK" => LandmarkType::UnknownLandmark,
+                "UPPER_LIP" => LandmarkType::UpperLip,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17129,35 +17130,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationMetadataState {
-        #[doc = "Invalid."]
-        StateUnspecified,
-        #[doc = "Request is received."]
-        Created,
-        #[doc = "Request is actively being processed."]
-        Running,
-        #[doc = "The batch processing is done."]
-        Done,
         #[doc = "The batch processing was cancelled."]
         Cancelled,
+        #[doc = "Request is received."]
+        Created,
+        #[doc = "The batch processing is done."]
+        Done,
+        #[doc = "Request is actively being processed."]
+        Running,
+        #[doc = "Invalid."]
+        StateUnspecified,
     }
     impl OperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
-                OperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
-                OperationMetadataState::Created => "CREATED",
-                OperationMetadataState::Running => "RUNNING",
-                OperationMetadataState::Done => "DONE",
                 OperationMetadataState::Cancelled => "CANCELLED",
+                OperationMetadataState::Created => "CREATED",
+                OperationMetadataState::Done => "DONE",
+                OperationMetadataState::Running => "RUNNING",
+                OperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for OperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17165,17 +17166,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => OperationMetadataState::StateUnspecified,
-                "CREATED" => OperationMetadataState::Created,
-                "RUNNING" => OperationMetadataState::Running,
-                "DONE" => OperationMetadataState::Done,
                 "CANCELLED" => OperationMetadataState::Cancelled,
+                "CREATED" => OperationMetadataState::Created,
+                "DONE" => OperationMetadataState::Done,
+                "RUNNING" => OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => OperationMetadataState::StateUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17551,38 +17552,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SafeSearchAnnotationAdult {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl SafeSearchAnnotationAdult {
         pub fn as_str(self) -> &'static str {
             match self {
-                SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
-                SafeSearchAnnotationAdult::VeryUnlikely => "VERY_UNLIKELY",
-                SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
-                SafeSearchAnnotationAdult::Possible => "POSSIBLE",
                 SafeSearchAnnotationAdult::Likely => "LIKELY",
+                SafeSearchAnnotationAdult::Possible => "POSSIBLE",
+                SafeSearchAnnotationAdult::Unknown => "UNKNOWN",
+                SafeSearchAnnotationAdult::Unlikely => "UNLIKELY",
                 SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
+                SafeSearchAnnotationAdult::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationAdult {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SafeSearchAnnotationAdult {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17590,18 +17591,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SafeSearchAnnotationAdult {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SafeSearchAnnotationAdult::Unknown,
-                "VERY_UNLIKELY" => SafeSearchAnnotationAdult::VeryUnlikely,
-                "UNLIKELY" => SafeSearchAnnotationAdult::Unlikely,
-                "POSSIBLE" => SafeSearchAnnotationAdult::Possible,
                 "LIKELY" => SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationAdult::Unlikely,
                 "VERY_LIKELY" => SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationAdult::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17622,38 +17623,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SafeSearchAnnotationMedical {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl SafeSearchAnnotationMedical {
         pub fn as_str(self) -> &'static str {
             match self {
-                SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
-                SafeSearchAnnotationMedical::VeryUnlikely => "VERY_UNLIKELY",
-                SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
-                SafeSearchAnnotationMedical::Possible => "POSSIBLE",
                 SafeSearchAnnotationMedical::Likely => "LIKELY",
+                SafeSearchAnnotationMedical::Possible => "POSSIBLE",
+                SafeSearchAnnotationMedical::Unknown => "UNKNOWN",
+                SafeSearchAnnotationMedical::Unlikely => "UNLIKELY",
                 SafeSearchAnnotationMedical::VeryLikely => "VERY_LIKELY",
+                SafeSearchAnnotationMedical::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationMedical {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SafeSearchAnnotationMedical {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17661,18 +17662,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SafeSearchAnnotationMedical {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SafeSearchAnnotationMedical::Unknown,
-                "VERY_UNLIKELY" => SafeSearchAnnotationMedical::VeryUnlikely,
-                "UNLIKELY" => SafeSearchAnnotationMedical::Unlikely,
-                "POSSIBLE" => SafeSearchAnnotationMedical::Possible,
                 "LIKELY" => SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationMedical::Unlikely,
                 "VERY_LIKELY" => SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationMedical::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17693,38 +17694,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SafeSearchAnnotationRacy {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl SafeSearchAnnotationRacy {
         pub fn as_str(self) -> &'static str {
             match self {
-                SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
-                SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
-                SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
-                SafeSearchAnnotationRacy::Possible => "POSSIBLE",
                 SafeSearchAnnotationRacy::Likely => "LIKELY",
+                SafeSearchAnnotationRacy::Possible => "POSSIBLE",
+                SafeSearchAnnotationRacy::Unknown => "UNKNOWN",
+                SafeSearchAnnotationRacy::Unlikely => "UNLIKELY",
                 SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
+                SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationRacy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SafeSearchAnnotationRacy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17732,18 +17733,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SafeSearchAnnotationRacy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SafeSearchAnnotationRacy::Unknown,
-                "VERY_UNLIKELY" => SafeSearchAnnotationRacy::VeryUnlikely,
-                "UNLIKELY" => SafeSearchAnnotationRacy::Unlikely,
-                "POSSIBLE" => SafeSearchAnnotationRacy::Possible,
                 "LIKELY" => SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationRacy::Unlikely,
                 "VERY_LIKELY" => SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationRacy::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17764,38 +17765,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SafeSearchAnnotationSpoof {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl SafeSearchAnnotationSpoof {
         pub fn as_str(self) -> &'static str {
             match self {
-                SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
-                SafeSearchAnnotationSpoof::VeryUnlikely => "VERY_UNLIKELY",
-                SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
-                SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
                 SafeSearchAnnotationSpoof::Likely => "LIKELY",
+                SafeSearchAnnotationSpoof::Possible => "POSSIBLE",
+                SafeSearchAnnotationSpoof::Unknown => "UNKNOWN",
+                SafeSearchAnnotationSpoof::Unlikely => "UNLIKELY",
                 SafeSearchAnnotationSpoof::VeryLikely => "VERY_LIKELY",
+                SafeSearchAnnotationSpoof::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationSpoof {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SafeSearchAnnotationSpoof {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17803,18 +17804,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SafeSearchAnnotationSpoof {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SafeSearchAnnotationSpoof::Unknown,
-                "VERY_UNLIKELY" => SafeSearchAnnotationSpoof::VeryUnlikely,
-                "UNLIKELY" => SafeSearchAnnotationSpoof::Unlikely,
-                "POSSIBLE" => SafeSearchAnnotationSpoof::Possible,
                 "LIKELY" => SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationSpoof::Unlikely,
                 "VERY_LIKELY" => SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationSpoof::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -17835,38 +17836,38 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SafeSearchAnnotationViolence {
-        #[doc = "Unknown likelihood."]
-        Unknown,
-        #[doc = "It is very unlikely."]
-        VeryUnlikely,
-        #[doc = "It is unlikely."]
-        Unlikely,
-        #[doc = "It is possible."]
-        Possible,
         #[doc = "It is likely."]
         Likely,
+        #[doc = "It is possible."]
+        Possible,
+        #[doc = "Unknown likelihood."]
+        Unknown,
+        #[doc = "It is unlikely."]
+        Unlikely,
         #[doc = "It is very likely."]
         VeryLikely,
+        #[doc = "It is very unlikely."]
+        VeryUnlikely,
     }
     impl SafeSearchAnnotationViolence {
         pub fn as_str(self) -> &'static str {
             match self {
-                SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
-                SafeSearchAnnotationViolence::VeryUnlikely => "VERY_UNLIKELY",
-                SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
-                SafeSearchAnnotationViolence::Possible => "POSSIBLE",
                 SafeSearchAnnotationViolence::Likely => "LIKELY",
+                SafeSearchAnnotationViolence::Possible => "POSSIBLE",
+                SafeSearchAnnotationViolence::Unknown => "UNKNOWN",
+                SafeSearchAnnotationViolence::Unlikely => "UNLIKELY",
                 SafeSearchAnnotationViolence::VeryLikely => "VERY_LIKELY",
+                SafeSearchAnnotationViolence::VeryUnlikely => "VERY_UNLIKELY",
             }
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationViolence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SafeSearchAnnotationViolence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -17874,18 +17875,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SafeSearchAnnotationViolence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => SafeSearchAnnotationViolence::Unknown,
-                "VERY_UNLIKELY" => SafeSearchAnnotationViolence::VeryUnlikely,
-                "UNLIKELY" => SafeSearchAnnotationViolence::Unlikely,
-                "POSSIBLE" => SafeSearchAnnotationViolence::Possible,
                 "LIKELY" => SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationViolence::Unlikely,
                 "VERY_LIKELY" => SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationViolence::VeryUnlikely,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -18274,12 +18275,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -18287,7 +18288,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -18330,12 +18331,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -18343,7 +18344,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -18417,7 +18418,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod files {
         pub mod params {}
         pub struct FilesActions<'a, A> {
@@ -18493,19 +18494,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -18654,19 +18645,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -18866,19 +18847,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -19027,19 +18998,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -19231,19 +19192,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -19493,19 +19444,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -19660,19 +19601,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -19825,19 +19756,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -20008,19 +19929,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -20063,15 +19974,19 @@ mod resources {
             #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
             #[doc = r" populated fields in the yielded items will be determined by the"]
             #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_operations<T>(self) -> ListOperationsIter<'a, A, T>
+            pub fn iter_operations<T>(mut self) -> crate::iter::PageItemIter<Self, T>
             where
                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
+                let mut fields = concat!("nextPageToken,", "operations").to_owned();
+                let items_fields = T::field_selector();
+                if !items_fields.is_empty() {
+                    fields.push_str("(");
+                    fields.push_str(&items_fields);
+                    fields.push_str(")");
                 }
+                self.fields = Some(fields);
+                crate::iter::PageItemIter::new(self, "operations")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -20079,13 +19994,9 @@ mod resources {
             #[doc = r" the server."]
             pub fn iter_operations_standard(
                 mut self,
-            ) -> ListOperationsIter<'a, A, crate::schemas::Operation> {
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Operation> {
                 self.fields = Some(concat!("nextPageToken,", "operations").to_owned());
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "operations")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -20095,26 +20006,35 @@ mod resources {
             #[doc = r" resources."]
             pub fn iter_operations_debug(
                 mut self,
-            ) -> ListOperationsIter<'a, A, crate::schemas::Operation> {
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Operation> {
                 self.fields = Some(concat!("nextPageToken,", "operations", "(*)").to_owned());
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "operations")
             }
-            #[doc = r" Return an iterator that"]
-            pub fn iter<T>(
-                self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+            pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                crate::PageIter {
-                    method: self,
-                    finished: false,
-                    _phantom: ::std::default::Default::default(),
+                let mut fields = T::field_selector();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
                 }
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_standard(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListOperationsResponse> {
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_debug(
+                mut self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListOperationsResponse> {
+                self.fields = Some("*".to_owned());
+                crate::iter::PageIter::new(self)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -20213,52 +20133,13 @@ mod resources {
                 req
             }
         }
-        pub struct ListOperationsIter<'a, A, T> {
-            method: ListRequestBuilder<'a, A>,
-            last_page_reached: bool,
-            items_iter: Option<::std::vec::IntoIter<T>>,
-        }
-        impl<'a, A, T> Iterator for ListOperationsIter<'a, A, T>
-        where
-            A: ::yup_oauth2::GetToken,
-            T: ::serde::de::DeserializeOwned,
-        {
-            type Item = Result<T, Box<dyn ::std::error::Error>>;
-            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                #[derive(:: serde :: Deserialize)]
-                struct Resp<T> {
-                    #[serde(rename = "operations")]
-                    items: Option<Vec<T>>,
-                    #[serde(rename = "nextPageToken")]
-                    next_page_token: Option<String>,
-                }
-                loop {
-                    if let Some(iter) = self.items_iter.as_mut() {
-                        match iter.next() {
-                            Some(v) => return Some(Ok(v)),
-                            None => {}
-                        }
-                    }
-                    if self.last_page_reached {
-                        return None;
-                    }
-                    let resp: Resp<T> = match self.method._execute() {
-                        Ok(r) => r,
-                        Err(err) => return Some(Err(err)),
-                    };
-                    self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                    self.method.page_token = resp.next_page_token;
-                    self.items_iter = resp.items.map(|i| i.into_iter());
-                }
-            }
-        }
-        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+        impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
             fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned,
             {
                 self._execute()
             }
@@ -20382,19 +20263,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -20552,19 +20423,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -20779,19 +20640,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -20949,19 +20800,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -21233,19 +21074,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -21408,19 +21239,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -21636,19 +21457,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -21811,19 +21622,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -22009,19 +21810,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -22371,19 +22162,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -22548,19 +22329,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -22719,19 +22490,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -22887,19 +22648,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23056,19 +22807,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23238,19 +22979,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23293,15 +23024,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_product_sets<T>(self) -> ListProductSetsIter<'a, A, T>
+                    pub fn iter_product_sets<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListProductSetsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "productSets").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "productSets")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -23309,14 +23044,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_product_sets_standard(
                         mut self,
-                    ) -> ListProductSetsIter<'a, A, crate::schemas::ProductSet>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::ProductSet>
                     {
                         self.fields = Some(concat!("nextPageToken,", "productSets").to_owned());
-                        ListProductSetsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "productSets")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -23326,28 +23057,39 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_product_sets_debug(
                         mut self,
-                    ) -> ListProductSetsIter<'a, A, crate::schemas::ProductSet>
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::ProductSet>
                     {
                         self.fields =
                             Some(concat!("nextPageToken,", "productSets", "(*)").to_owned());
-                        ListProductSetsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "productSets")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListProductSetsResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListProductSetsResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -23447,52 +23189,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListProductSetsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListProductSetsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "productSets")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -23527,19 +23230,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23698,19 +23391,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23909,19 +23592,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -23964,15 +23637,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_products<T>(self) -> ListProductsIter<'a, A, T>
+                        pub fn iter_products<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListProductsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "products").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "products")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -23980,14 +23657,10 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_products_standard(
                             mut self,
-                        ) -> ListProductsIter<'a, A, crate::schemas::Product>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Product>
                         {
                             self.fields = Some(concat!("nextPageToken,", "products").to_owned());
-                            ListProductsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "products")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -23997,28 +23670,43 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_products_debug(
                             mut self,
-                        ) -> ListProductsIter<'a, A, crate::schemas::Product>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Product>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "products", "(*)").to_owned());
-                            ListProductsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "products")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::ListProductsInProductSetResponse,
+                        > {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::ListProductsInProductSetResponse,
+                        > {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -24122,52 +23810,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListProductsIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListProductsIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "products")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -24324,19 +23973,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -24495,19 +24134,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -24663,19 +24292,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -24843,19 +24462,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -24898,15 +24507,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_products<T>(self) -> ListProductsIter<'a, A, T>
+                    pub fn iter_products<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListProductsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "products").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "products")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -24914,13 +24527,10 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_products_standard(
                         mut self,
-                    ) -> ListProductsIter<'a, A, crate::schemas::Product> {
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Product>
+                    {
                         self.fields = Some(concat!("nextPageToken,", "products").to_owned());
-                        ListProductsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "products")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -24930,26 +24540,38 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_products_debug(
                         mut self,
-                    ) -> ListProductsIter<'a, A, crate::schemas::Product> {
-                        self.fields = Some(concat!("nextPageToken,", "products", "(*)").to_owned());
-                        ListProductsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
-                    }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Product>
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        self.fields = Some(concat!("nextPageToken,", "products", "(*)").to_owned());
+                        crate::iter::PageItemIter::new(self, "products")
+                    }
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    {
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListProductsResponse>
+                    {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::ListProductsResponse>
+                    {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -25049,52 +24671,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListProductsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListProductsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "products")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -25129,19 +24712,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -25398,19 +24971,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -25569,19 +25132,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -25737,19 +25290,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -25917,19 +25460,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -25972,15 +25505,22 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_reference_images<T>(self) -> ListReferenceImagesIter<'a, A, T>
+                        pub fn iter_reference_images<T>(
+                            mut self,
+                        ) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListReferenceImagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields =
+                                concat!("nextPageToken,", "referenceImages").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "referenceImages")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -25988,15 +25528,11 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_reference_images_standard(
                             mut self,
-                        ) -> ListReferenceImagesIter<'a, A, crate::schemas::ReferenceImage>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::ReferenceImage>
                         {
                             self.fields =
                                 Some(concat!("nextPageToken,", "referenceImages").to_owned());
-                            ListReferenceImagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "referenceImages")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -26006,29 +25542,40 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_reference_images_debug(
                             mut self,
-                        ) -> ListReferenceImagesIter<'a, A, crate::schemas::ReferenceImage>
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::ReferenceImage>
                         {
                             self.fields = Some(
                                 concat!("nextPageToken,", "referenceImages", "(*)").to_owned(),
                             );
-                            ListReferenceImagesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "referenceImages")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListReferenceImagesResponse>
+                        {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::ListReferenceImagesResponse>
+                        {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -26132,52 +25679,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListReferenceImagesIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListReferenceImagesIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "referenceImages")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -26235,19 +25743,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -26640,7 +26138,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -26649,7 +26150,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -26662,58 +26163,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

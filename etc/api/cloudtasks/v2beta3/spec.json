@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Tasks",
   "fullyEncodeReservedExpansion": true,
   "version": "v2beta3",
-  "revision": "20190618",
+  "revision": "20190813",
   "title": "Cloud Tasks API",
   "description": "Manages the execution of large numbers of distributed requests.",
   "ownerDomain": "google.com",
@@ -417,7 +417,7 @@
           "$ref": "Expr"
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "format": null,
           "enum": [],
@@ -475,7 +475,7 @@
           "items": null
         },
         "task": {
-          "description": "Required.\n\nThe task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or executed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or executed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or executed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently.",
+          "description": "Required. The task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or executed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or executed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or executed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently.",
           "$ref": "Task"
         }
       },
@@ -552,7 +552,34 @@
       "format": null,
       "enum": [],
       "enumDescriptions": [],
-      "properties": {},
+      "properties": {
+        "options": {
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
+          "$ref": "GetPolicyOptions"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GetPolicyOptions": {
+      "id": "GetPolicyOptions",
+      "description": "Encapsulates settings provided to GetIamPolicy.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "requestedPolicyVersion": {
+          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
       "additionalProperties": null,
       "items": null
     },
@@ -921,7 +948,7 @@
           }
         },
         "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1449,7 +1476,7 @@
                       "description": "Creates a task and adds it to a queue.\n\nTasks cannot be updated after creation; there is no UpdateTask command.\n\n* The maximum task size is 100KB.",
                       "parameters": {
                         "parent": {
-                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\nThe queue must already exist.",
+                          "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\nThe queue must already exist.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1488,7 +1515,7 @@
                       "description": "Deletes a task.\n\nA task can be deleted if it is scheduled or dispatched. A task\ncannot be deleted if it has executed successfully or permanently\nfailed.",
                       "parameters": {
                         "name": {
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "description": "Required. The task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1525,7 +1552,7 @@
                       "description": "Gets a task.",
                       "parameters": {
                         "name": {
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "description": "Required. The task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1608,7 +1635,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                          "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1663,7 +1690,7 @@
                       "description": "Forces a task to run now.\n\nWhen this method is called, Cloud Tasks will dispatch the task, even if\nthe task is already running, the queue has reached its RateLimits or\nis PAUSED.\n\nThis command is meant to be used for manual debugging. For\nexample, RunTask can be used to retry a failed\ntask after a fix has been made or to manually force a task to be\ndispatched now.\n\nThe dispatched task is returned. That is, the task that is returned\ncontains the status after the task is dispatched but\nbefore the task is received by its target.\n\nIf Cloud Tasks receives a successful response from the task's\ntarget, then the task will be deleted; otherwise the task's\nschedule_time will be reset to the time that\nRunTask was called plus the retry delay specified\nin the queue's RetryConfig.\n\nRunTask returns\nNOT_FOUND when it is called on a\ntask that has already succeeded or permanently failed.",
                       "parameters": {
                         "name": {
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "description": "Required. The task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1706,7 +1733,7 @@
                   "description": "Creates a queue.\n\nQueues created with this method allow tasks to live for a maximum of 31\ndays. After a task is 31 days old, the task will be deleted regardless of whether\nit was dispatched or not.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
                   "parameters": {
                     "parent": {
-                      "description": "Required.\n\nThe location name in which the queue will be created.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`\n\nThe list of allowed locations can be obtained by calling Cloud\nTasks' implementation of\nListLocations.",
+                      "description": "Required. The location name in which the queue will be created.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`\n\nThe list of allowed locations can be obtained by calling Cloud\nTasks' implementation of\nListLocations.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1745,7 +1772,7 @@
                   "description": "Deletes a queue.\n\nThis command will delete the queue even if it has tasks in it.\n\nNote: If you delete a queue, a queue with the same name can't be created\nfor 7 days.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
                   "parameters": {
                     "name": {
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                      "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1782,7 +1809,7 @@
                   "description": "Gets a queue.",
                   "parameters": {
                     "name": {
-                      "description": "Required.\n\nThe resource name of the queue. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                      "description": "Required. The resource name of the queue. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1900,7 +1927,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required.\n\nThe location name.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`",
+                      "description": "Required. The location name.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1990,7 +2017,7 @@
                   "description": "Pauses the queue.\n\nIf a queue is paused then the system will stop dispatching tasks\nuntil the queue is resumed via\nResumeQueue. Tasks can still be added\nwhen the queue is paused. A queue is paused if its\nstate is PAUSED.",
                   "parameters": {
                     "name": {
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
+                      "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2029,7 +2056,7 @@
                   "description": "Purges a queue by deleting all of its tasks.\n\nAll tasks created before this method is called are permanently deleted.\n\nPurge operations can take up to one minute to take effect. Tasks\nmight be dispatched before the purge takes effect. A purge is irreversible.",
                   "parameters": {
                     "name": {
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
+                      "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2068,7 +2095,7 @@
                   "description": "Resume a queue.\n\nThis method resumes a queue after it has been\nPAUSED or\nDISABLED. The state of a queue is stored\nin the queue's state; after calling this method it\nwill be set to RUNNING.\n\nWARNING: Resuming many high-QPS queues at the same time can\nlead to target overloading. If you are resuming high-QPS\nqueues, follow the 500/50/5 pattern described in\n[Managing Cloud Tasks Scaling\nRisks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).",
                   "parameters": {
                     "name": {
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
+                      "description": "Required. The queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
                       "default": null,
                       "location": "path",
                       "required": true,

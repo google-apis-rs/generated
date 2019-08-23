@@ -1,29 +1,29 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AffineTransformUnit {
-        #[doc = "The units are unknown."]
-        UnitUnspecified,
         #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
         Emu,
         #[doc = "A point, 1/72 of an inch."]
         Pt,
+        #[doc = "The units are unknown."]
+        UnitUnspecified,
     }
     impl AffineTransformUnit {
         pub fn as_str(self) -> &'static str {
             match self {
-                AffineTransformUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
                 AffineTransformUnit::Emu => "EMU",
                 AffineTransformUnit::Pt => "PT",
+                AffineTransformUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AffineTransformUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AffineTransformUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -31,15 +31,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AffineTransformUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNIT_UNSPECIFIED" => AffineTransformUnit::UnitUnspecified,
                 "EMU" => AffineTransformUnit::Emu,
                 "PT" => AffineTransformUnit::Pt,
+                "UNIT_UNSPECIFIED" => AffineTransformUnit::UnitUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -95,26 +95,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoTextType {
-        #[doc = "An unspecified autotext type."]
-        TypeUnspecified,
         #[doc = "Type for autotext that represents the current slide number."]
         SlideNumber,
+        #[doc = "An unspecified autotext type."]
+        TypeUnspecified,
     }
     impl AutoTextType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AutoTextType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 AutoTextType::SlideNumber => "SLIDE_NUMBER",
+                AutoTextType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AutoTextType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AutoTextType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -122,14 +122,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AutoTextType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => AutoTextType::TypeUnspecified,
                 "SLIDE_NUMBER" => AutoTextType::SlideNumber,
+                "TYPE_UNSPECIFIED" => AutoTextType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -340,32 +340,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateLineRequestCategory {
-        #[doc = "Unspecified line category."]
-        LineCategoryUnspecified,
-        #[doc = "Straight connectors, including straight connector 1."]
-        Straight,
         #[doc = "Bent connectors, including bent connector 2 to 5."]
         Bent,
         #[doc = "Curved connectors, including curved connector 2 to 5."]
         Curved,
+        #[doc = "Unspecified line category."]
+        LineCategoryUnspecified,
+        #[doc = "Straight connectors, including straight connector 1."]
+        Straight,
     }
     impl CreateLineRequestCategory {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateLineRequestCategory::LineCategoryUnspecified => "LINE_CATEGORY_UNSPECIFIED",
-                CreateLineRequestCategory::Straight => "STRAIGHT",
                 CreateLineRequestCategory::Bent => "BENT",
                 CreateLineRequestCategory::Curved => "CURVED",
+                CreateLineRequestCategory::LineCategoryUnspecified => "LINE_CATEGORY_UNSPECIFIED",
+                CreateLineRequestCategory::Straight => "STRAIGHT",
             }
         }
     }
     impl ::std::fmt::Display for CreateLineRequestCategory {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateLineRequestCategory {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -373,16 +373,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateLineRequestCategory {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LINE_CATEGORY_UNSPECIFIED" => CreateLineRequestCategory::LineCategoryUnspecified,
-                "STRAIGHT" => CreateLineRequestCategory::Straight,
                 "BENT" => CreateLineRequestCategory::Bent,
                 "CURVED" => CreateLineRequestCategory::Curved,
+                "LINE_CATEGORY_UNSPECIFIED" => CreateLineRequestCategory::LineCategoryUnspecified,
+                "STRAIGHT" => CreateLineRequestCategory::Straight,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -403,29 +403,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateLineRequestLineCategory {
-        #[doc = "Straight connectors, including straight connector 1. The is the default\ncategory when one is not specified."]
-        Straight,
         #[doc = "Bent connectors, including bent connector 2 to 5."]
         Bent,
         #[doc = "Curved connectors, including curved connector 2 to 5."]
         Curved,
+        #[doc = "Straight connectors, including straight connector 1. The is the default\ncategory when one is not specified."]
+        Straight,
     }
     impl CreateLineRequestLineCategory {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateLineRequestLineCategory::Straight => "STRAIGHT",
                 CreateLineRequestLineCategory::Bent => "BENT",
                 CreateLineRequestLineCategory::Curved => "CURVED",
+                CreateLineRequestLineCategory::Straight => "STRAIGHT",
             }
         }
     }
     impl ::std::fmt::Display for CreateLineRequestLineCategory {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateLineRequestLineCategory {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -433,15 +433,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateLineRequestLineCategory {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STRAIGHT" => CreateLineRequestLineCategory::Straight,
                 "BENT" => CreateLineRequestLineCategory::Bent,
                 "CURVED" => CreateLineRequestLineCategory::Curved,
+                "STRAIGHT" => CreateLineRequestLineCategory::Straight,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -514,24 +514,24 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateParagraphBulletsRequestBulletPreset {
-        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels."]
-        BulletDiscCircleSquare,
-        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletDiamondxArrow3DSquare,
-        #[doc = "A bulleted list with `CHECKBOX` bullet glyphs for all list nesting levels."]
-        BulletCheckbox,
-        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletArrowDiamondDisc,
-        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
-        BulletStarCircleSquare,
         #[doc = "A bulleted list with a `ARROW3D`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
         BulletArrow3DCircleSquare,
-        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph\nfor the first 3 list nesting levels."]
-        BulletLefttriangleDiamondDisc,
-        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet\nglyph for the first 3 list nesting levels."]
-        BulletDiamondxHollowdiamondSquare,
+        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletArrowDiamondDisc,
+        #[doc = "A bulleted list with `CHECKBOX` bullet glyphs for all list nesting levels."]
+        BulletCheckbox,
         #[doc = "A bulleted list with a `DIAMOND`, `CIRCLE` and `SQUARE` bullet glyph\nfor the first 3 list nesting levels."]
         BulletDiamondCircleSquare,
+        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletDiamondxArrow3DSquare,
+        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet\nglyph for the first 3 list nesting levels."]
+        BulletDiamondxHollowdiamondSquare,
+        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels."]
+        BulletDiscCircleSquare,
+        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph\nfor the first 3 list nesting levels."]
+        BulletLefttriangleDiamondDisc,
+        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        BulletStarCircleSquare,
         #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."]
         NumberedDigitAlphaRoman,
         #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by parenthesis."]
@@ -548,30 +548,30 @@ pub mod schemas {
     impl CreateParagraphBulletsRequestBulletPreset {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare => {
-                    "BULLET_DISC_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare => {
+                    "BULLET_ARROW3D_CIRCLE_SQUARE"
+                }
+                CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc => {
+                    "BULLET_ARROW_DIAMOND_DISC"
+                }
+                CreateParagraphBulletsRequestBulletPreset::BulletCheckbox => "BULLET_CHECKBOX",
+                CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare => {
+                    "BULLET_DIAMOND_CIRCLE_SQUARE"
                 }
                 CreateParagraphBulletsRequestBulletPreset::BulletDiamondxArrow3DSquare => {
                     "BULLET_DIAMONDX_ARROW3D_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletCheckbox => "BULLET_CHECKBOX",
-                CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc => {
-                    "BULLET_ARROW_DIAMOND_DISC"
+                CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare => {
+                    "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare => {
-                    "BULLET_STAR_CIRCLE_SQUARE"
-                }
-                CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare => {
-                    "BULLET_ARROW3D_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare => {
+                    "BULLET_DISC_CIRCLE_SQUARE"
                 }
                 CreateParagraphBulletsRequestBulletPreset::BulletLefttriangleDiamondDisc => {
                     "BULLET_LEFTTRIANGLE_DIAMOND_DISC"
                 }
-                CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare => {
-                    "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE"
-                }
-                CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare => {
-                    "BULLET_DIAMOND_CIRCLE_SQUARE"
+                CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare => {
+                    "BULLET_STAR_CIRCLE_SQUARE"
                 }
                 CreateParagraphBulletsRequestBulletPreset::NumberedDigitAlphaRoman => {
                     "NUMBERED_DIGIT_ALPHA_ROMAN"
@@ -595,12 +595,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CreateParagraphBulletsRequestBulletPreset {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateParagraphBulletsRequestBulletPreset {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -608,36 +608,36 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateParagraphBulletsRequestBulletPreset {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BULLET_DISC_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare
+                "BULLET_ARROW3D_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare
+                }
+                "BULLET_ARROW_DIAMOND_DISC" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc
+                }
+                "BULLET_CHECKBOX" => CreateParagraphBulletsRequestBulletPreset::BulletCheckbox,
+                "BULLET_DIAMOND_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare
                 }
                 "BULLET_DIAMONDX_ARROW3D_SQUARE" => {
                     CreateParagraphBulletsRequestBulletPreset::BulletDiamondxArrow3DSquare
                 }
-                "BULLET_CHECKBOX" => CreateParagraphBulletsRequestBulletPreset::BulletCheckbox,
-                "BULLET_ARROW_DIAMOND_DISC" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletArrowDiamondDisc
+                "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare
                 }
-                "BULLET_STAR_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare
-                }
-                "BULLET_ARROW3D_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletArrow3DCircleSquare
+                "BULLET_DISC_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletDiscCircleSquare
                 }
                 "BULLET_LEFTTRIANGLE_DIAMOND_DISC" => {
                     CreateParagraphBulletsRequestBulletPreset::BulletLefttriangleDiamondDisc
                 }
-                "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondxHollowdiamondSquare
-                }
-                "BULLET_DIAMOND_CIRCLE_SQUARE" => {
-                    CreateParagraphBulletsRequestBulletPreset::BulletDiamondCircleSquare
+                "BULLET_STAR_CIRCLE_SQUARE" => {
+                    CreateParagraphBulletsRequestBulletPreset::BulletStarCircleSquare
                 }
                 "NUMBERED_DIGIT_ALPHA_ROMAN" => {
                     CreateParagraphBulletsRequestBulletPreset::NumberedDigitAlphaRoman
@@ -713,18 +713,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateShapeRequestShapeType {
-        #[doc = "The shape type that is not predefined."]
-        TypeUnspecified,
-        #[doc = "Text box shape."]
-        TextBox,
-        #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
-        Rectangle,
-        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
-        RoundRectangle,
-        #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
-        Ellipse,
         #[doc = "Curved arc shape. Corresponds to ECMA-376 ST_ShapeType 'arc'"]
         Arc,
+        #[doc = "East arrow shape."]
+        ArrowEast,
+        #[doc = "North arrow shape."]
+        ArrowNorth,
+        #[doc = "Northeast arrow shape."]
+        ArrowNorthEast,
         #[doc = "Bent arrow shape. Corresponds to ECMA-376 ST_ShapeType 'bentArrow'"]
         BentArrow,
         #[doc = "Bent up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'bentUpArrow'"]
@@ -745,6 +741,8 @@ pub mod schemas {
         Chord,
         #[doc = "Cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloud'"]
         Cloud,
+        #[doc = "Callout cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloudCallout'"]
+        CloudCallout,
         #[doc = "Corner shape. Corresponds to ECMA-376 ST_ShapeType 'corner'"]
         Corner,
         #[doc = "Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'"]
@@ -757,6 +755,8 @@ pub mod schemas {
         CurvedRightArrow,
         #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedUpArrow'"]
         CurvedUpArrow,
+        #[doc = "Custom shape."]
+        Custom,
         #[doc = "Decagon shape. Corresponds to ECMA-376 ST_ShapeType 'decagon'"]
         Decagon,
         #[doc = "Diagonal stripe shape. Corresponds to ECMA-376 ST_ShapeType 'diagStripe'"]
@@ -773,6 +773,70 @@ pub mod schemas {
         DownArrow,
         #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'downArrowCallout'"]
         DownArrowCallout,
+        #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
+        Ellipse,
+        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
+        EllipseRibbon,
+        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
+        EllipseRibbon2,
+        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
+        FlowChartAlternateProcess,
+        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
+        FlowChartCollate,
+        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
+        FlowChartConnector,
+        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
+        FlowChartDecision,
+        #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
+        FlowChartDelay,
+        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
+        FlowChartDisplay,
+        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
+        FlowChartDocument,
+        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
+        FlowChartExtract,
+        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
+        FlowChartInputOutput,
+        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
+        FlowChartInternalStorage,
+        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
+        FlowChartMagneticDisk,
+        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
+        FlowChartMagneticDrum,
+        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
+        FlowChartMagneticTape,
+        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
+        FlowChartManualInput,
+        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
+        FlowChartManualOperation,
+        #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
+        FlowChartMerge,
+        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
+        FlowChartMultidocument,
+        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
+        FlowChartOfflineStorage,
+        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
+        FlowChartOffpageConnector,
+        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
+        FlowChartOnlineStorage,
+        #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
+        FlowChartOr,
+        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
+        FlowChartPredefinedProcess,
+        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
+        FlowChartPreparation,
+        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
+        FlowChartProcess,
+        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
+        FlowChartPunchedCard,
+        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
+        FlowChartPunchedTape,
+        #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
+        FlowChartSort,
+        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
+        FlowChartSummingJunction,
+        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
+        FlowChartTerminator,
         #[doc = "Folded corner shape. Corresponds to ECMA-376 ST_ShapeType 'foldedCorner'"]
         FoldedCorner,
         #[doc = "Frame shape. Corresponds to ECMA-376 ST_ShapeType 'frame'"]
@@ -845,6 +909,8 @@ pub mod schemas {
         QuadArrow,
         #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'quadArrowCallout'"]
         QuadArrowCallout,
+        #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
+        Rectangle,
         #[doc = "Ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon'"]
         Ribbon,
         #[doc = "Ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon2'"]
@@ -857,14 +923,16 @@ pub mod schemas {
         RightBrace,
         #[doc = "Right bracket shape. Corresponds to ECMA-376 ST_ShapeType 'rightBracket'"]
         RightBracket,
+        #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
+        RightTriangle,
         #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'round1Rect'"]
         Round1Rectangle,
         #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2DiagRect'"]
         Round2DiagonalRectangle,
         #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2SameRect'"]
         Round2SameRectangle,
-        #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
-        RightTriangle,
+        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
+        RoundRectangle,
         #[doc = "Smiley face shape. Corresponds to ECMA-376 ST_ShapeType 'smileyFace'"]
         SmileyFace,
         #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'snip1Rect'"]
@@ -875,6 +943,8 @@ pub mod schemas {
         Snip2SameRectangle,
         #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snipRoundRect'"]
         SnipRoundRectangle,
+        #[doc = "Speech shape."]
+        Speech,
         #[doc = "Ten pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star10'"]
         Star10,
         #[doc = "Twelve pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star12'"]
@@ -895,14 +965,22 @@ pub mod schemas {
         Star7,
         #[doc = "Eight pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star8'"]
         Star8,
+        #[doc = "Star burst shape."]
+        Starburst,
         #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'stripedRightArrow'"]
         StripedRightArrow,
         #[doc = "Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'"]
         Sun,
+        #[doc = "Teardrop shape. Corresponds to ECMA-376 ST_ShapeType 'teardrop'"]
+        Teardrop,
+        #[doc = "Text box shape."]
+        TextBox,
         #[doc = "Trapezoid shape. Corresponds to ECMA-376 ST_ShapeType 'trapezoid'"]
         Trapezoid,
         #[doc = "Triangle shape. Corresponds to ECMA-376 ST_ShapeType 'triangle'"]
         Triangle,
+        #[doc = "The shape type that is not predefined."]
+        TypeUnspecified,
         #[doc = "Up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrow'"]
         UpArrow,
         #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'upArrowCallout'"]
@@ -921,94 +999,14 @@ pub mod schemas {
         WedgeRectangleCallout,
         #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRoundRectCallout'"]
         WedgeRoundRectangleCallout,
-        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
-        FlowChartAlternateProcess,
-        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
-        FlowChartCollate,
-        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
-        FlowChartConnector,
-        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
-        FlowChartDecision,
-        #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
-        FlowChartDelay,
-        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
-        FlowChartDisplay,
-        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
-        FlowChartDocument,
-        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
-        FlowChartExtract,
-        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
-        FlowChartInputOutput,
-        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
-        FlowChartInternalStorage,
-        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
-        FlowChartMagneticDisk,
-        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
-        FlowChartMagneticDrum,
-        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
-        FlowChartMagneticTape,
-        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
-        FlowChartManualInput,
-        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
-        FlowChartManualOperation,
-        #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
-        FlowChartMerge,
-        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
-        FlowChartMultidocument,
-        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
-        FlowChartOfflineStorage,
-        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
-        FlowChartOffpageConnector,
-        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
-        FlowChartOnlineStorage,
-        #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
-        FlowChartOr,
-        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
-        FlowChartPredefinedProcess,
-        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
-        FlowChartPreparation,
-        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
-        FlowChartProcess,
-        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
-        FlowChartPunchedCard,
-        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
-        FlowChartPunchedTape,
-        #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
-        FlowChartSort,
-        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
-        FlowChartSummingJunction,
-        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
-        FlowChartTerminator,
-        #[doc = "East arrow shape."]
-        ArrowEast,
-        #[doc = "Northeast arrow shape."]
-        ArrowNorthEast,
-        #[doc = "North arrow shape."]
-        ArrowNorth,
-        #[doc = "Speech shape."]
-        Speech,
-        #[doc = "Star burst shape."]
-        Starburst,
-        #[doc = "Teardrop shape. Corresponds to ECMA-376 ST_ShapeType 'teardrop'"]
-        Teardrop,
-        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
-        EllipseRibbon,
-        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
-        EllipseRibbon2,
-        #[doc = "Callout cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloudCallout'"]
-        CloudCallout,
-        #[doc = "Custom shape."]
-        Custom,
     }
     impl CreateShapeRequestShapeType {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateShapeRequestShapeType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                CreateShapeRequestShapeType::TextBox => "TEXT_BOX",
-                CreateShapeRequestShapeType::Rectangle => "RECTANGLE",
-                CreateShapeRequestShapeType::RoundRectangle => "ROUND_RECTANGLE",
-                CreateShapeRequestShapeType::Ellipse => "ELLIPSE",
                 CreateShapeRequestShapeType::Arc => "ARC",
+                CreateShapeRequestShapeType::ArrowEast => "ARROW_EAST",
+                CreateShapeRequestShapeType::ArrowNorth => "ARROW_NORTH",
+                CreateShapeRequestShapeType::ArrowNorthEast => "ARROW_NORTH_EAST",
                 CreateShapeRequestShapeType::BentArrow => "BENT_ARROW",
                 CreateShapeRequestShapeType::BentUpArrow => "BENT_UP_ARROW",
                 CreateShapeRequestShapeType::Bevel => "BEVEL",
@@ -1019,12 +1017,14 @@ pub mod schemas {
                 CreateShapeRequestShapeType::Chevron => "CHEVRON",
                 CreateShapeRequestShapeType::Chord => "CHORD",
                 CreateShapeRequestShapeType::Cloud => "CLOUD",
+                CreateShapeRequestShapeType::CloudCallout => "CLOUD_CALLOUT",
                 CreateShapeRequestShapeType::Corner => "CORNER",
                 CreateShapeRequestShapeType::Cube => "CUBE",
                 CreateShapeRequestShapeType::CurvedDownArrow => "CURVED_DOWN_ARROW",
                 CreateShapeRequestShapeType::CurvedLeftArrow => "CURVED_LEFT_ARROW",
                 CreateShapeRequestShapeType::CurvedRightArrow => "CURVED_RIGHT_ARROW",
                 CreateShapeRequestShapeType::CurvedUpArrow => "CURVED_UP_ARROW",
+                CreateShapeRequestShapeType::Custom => "CUSTOM",
                 CreateShapeRequestShapeType::Decagon => "DECAGON",
                 CreateShapeRequestShapeType::DiagonalStripe => "DIAGONAL_STRIPE",
                 CreateShapeRequestShapeType::Diamond => "DIAMOND",
@@ -1033,84 +1033,9 @@ pub mod schemas {
                 CreateShapeRequestShapeType::DoubleWave => "DOUBLE_WAVE",
                 CreateShapeRequestShapeType::DownArrow => "DOWN_ARROW",
                 CreateShapeRequestShapeType::DownArrowCallout => "DOWN_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::FoldedCorner => "FOLDED_CORNER",
-                CreateShapeRequestShapeType::Frame => "FRAME",
-                CreateShapeRequestShapeType::HalfFrame => "HALF_FRAME",
-                CreateShapeRequestShapeType::Heart => "HEART",
-                CreateShapeRequestShapeType::Heptagon => "HEPTAGON",
-                CreateShapeRequestShapeType::Hexagon => "HEXAGON",
-                CreateShapeRequestShapeType::HomePlate => "HOME_PLATE",
-                CreateShapeRequestShapeType::HorizontalScroll => "HORIZONTAL_SCROLL",
-                CreateShapeRequestShapeType::IrregularSeal1 => "IRREGULAR_SEAL_1",
-                CreateShapeRequestShapeType::IrregularSeal2 => "IRREGULAR_SEAL_2",
-                CreateShapeRequestShapeType::LeftArrow => "LEFT_ARROW",
-                CreateShapeRequestShapeType::LeftArrowCallout => "LEFT_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::LeftBrace => "LEFT_BRACE",
-                CreateShapeRequestShapeType::LeftBracket => "LEFT_BRACKET",
-                CreateShapeRequestShapeType::LeftRightArrow => "LEFT_RIGHT_ARROW",
-                CreateShapeRequestShapeType::LeftRightArrowCallout => "LEFT_RIGHT_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::LeftRightUpArrow => "LEFT_RIGHT_UP_ARROW",
-                CreateShapeRequestShapeType::LeftUpArrow => "LEFT_UP_ARROW",
-                CreateShapeRequestShapeType::LightningBolt => "LIGHTNING_BOLT",
-                CreateShapeRequestShapeType::MathDivide => "MATH_DIVIDE",
-                CreateShapeRequestShapeType::MathEqual => "MATH_EQUAL",
-                CreateShapeRequestShapeType::MathMinus => "MATH_MINUS",
-                CreateShapeRequestShapeType::MathMultiply => "MATH_MULTIPLY",
-                CreateShapeRequestShapeType::MathNotEqual => "MATH_NOT_EQUAL",
-                CreateShapeRequestShapeType::MathPlus => "MATH_PLUS",
-                CreateShapeRequestShapeType::Moon => "MOON",
-                CreateShapeRequestShapeType::NoSmoking => "NO_SMOKING",
-                CreateShapeRequestShapeType::NotchedRightArrow => "NOTCHED_RIGHT_ARROW",
-                CreateShapeRequestShapeType::Octagon => "OCTAGON",
-                CreateShapeRequestShapeType::Parallelogram => "PARALLELOGRAM",
-                CreateShapeRequestShapeType::Pentagon => "PENTAGON",
-                CreateShapeRequestShapeType::Pie => "PIE",
-                CreateShapeRequestShapeType::Plaque => "PLAQUE",
-                CreateShapeRequestShapeType::Plus => "PLUS",
-                CreateShapeRequestShapeType::QuadArrow => "QUAD_ARROW",
-                CreateShapeRequestShapeType::QuadArrowCallout => "QUAD_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::Ribbon => "RIBBON",
-                CreateShapeRequestShapeType::Ribbon2 => "RIBBON_2",
-                CreateShapeRequestShapeType::RightArrow => "RIGHT_ARROW",
-                CreateShapeRequestShapeType::RightArrowCallout => "RIGHT_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::RightBrace => "RIGHT_BRACE",
-                CreateShapeRequestShapeType::RightBracket => "RIGHT_BRACKET",
-                CreateShapeRequestShapeType::Round1Rectangle => "ROUND_1_RECTANGLE",
-                CreateShapeRequestShapeType::Round2DiagonalRectangle => {
-                    "ROUND_2_DIAGONAL_RECTANGLE"
-                }
-                CreateShapeRequestShapeType::Round2SameRectangle => "ROUND_2_SAME_RECTANGLE",
-                CreateShapeRequestShapeType::RightTriangle => "RIGHT_TRIANGLE",
-                CreateShapeRequestShapeType::SmileyFace => "SMILEY_FACE",
-                CreateShapeRequestShapeType::Snip1Rectangle => "SNIP_1_RECTANGLE",
-                CreateShapeRequestShapeType::Snip2DiagonalRectangle => "SNIP_2_DIAGONAL_RECTANGLE",
-                CreateShapeRequestShapeType::Snip2SameRectangle => "SNIP_2_SAME_RECTANGLE",
-                CreateShapeRequestShapeType::SnipRoundRectangle => "SNIP_ROUND_RECTANGLE",
-                CreateShapeRequestShapeType::Star10 => "STAR_10",
-                CreateShapeRequestShapeType::Star12 => "STAR_12",
-                CreateShapeRequestShapeType::Star16 => "STAR_16",
-                CreateShapeRequestShapeType::Star24 => "STAR_24",
-                CreateShapeRequestShapeType::Star32 => "STAR_32",
-                CreateShapeRequestShapeType::Star4 => "STAR_4",
-                CreateShapeRequestShapeType::Star5 => "STAR_5",
-                CreateShapeRequestShapeType::Star6 => "STAR_6",
-                CreateShapeRequestShapeType::Star7 => "STAR_7",
-                CreateShapeRequestShapeType::Star8 => "STAR_8",
-                CreateShapeRequestShapeType::StripedRightArrow => "STRIPED_RIGHT_ARROW",
-                CreateShapeRequestShapeType::Sun => "SUN",
-                CreateShapeRequestShapeType::Trapezoid => "TRAPEZOID",
-                CreateShapeRequestShapeType::Triangle => "TRIANGLE",
-                CreateShapeRequestShapeType::UpArrow => "UP_ARROW",
-                CreateShapeRequestShapeType::UpArrowCallout => "UP_ARROW_CALLOUT",
-                CreateShapeRequestShapeType::UpDownArrow => "UP_DOWN_ARROW",
-                CreateShapeRequestShapeType::UturnArrow => "UTURN_ARROW",
-                CreateShapeRequestShapeType::VerticalScroll => "VERTICAL_SCROLL",
-                CreateShapeRequestShapeType::Wave => "WAVE",
-                CreateShapeRequestShapeType::WedgeEllipseCallout => "WEDGE_ELLIPSE_CALLOUT",
-                CreateShapeRequestShapeType::WedgeRectangleCallout => "WEDGE_RECTANGLE_CALLOUT",
-                CreateShapeRequestShapeType::WedgeRoundRectangleCallout => {
-                    "WEDGE_ROUND_RECTANGLE_CALLOUT"
-                }
+                CreateShapeRequestShapeType::Ellipse => "ELLIPSE",
+                CreateShapeRequestShapeType::EllipseRibbon => "ELLIPSE_RIBBON",
+                CreateShapeRequestShapeType::EllipseRibbon2 => "ELLIPSE_RIBBON_2",
                 CreateShapeRequestShapeType::FlowChartAlternateProcess => {
                     "FLOW_CHART_ALTERNATE_PROCESS"
                 }
@@ -1154,26 +1079,101 @@ pub mod schemas {
                     "FLOW_CHART_SUMMING_JUNCTION"
                 }
                 CreateShapeRequestShapeType::FlowChartTerminator => "FLOW_CHART_TERMINATOR",
-                CreateShapeRequestShapeType::ArrowEast => "ARROW_EAST",
-                CreateShapeRequestShapeType::ArrowNorthEast => "ARROW_NORTH_EAST",
-                CreateShapeRequestShapeType::ArrowNorth => "ARROW_NORTH",
+                CreateShapeRequestShapeType::FoldedCorner => "FOLDED_CORNER",
+                CreateShapeRequestShapeType::Frame => "FRAME",
+                CreateShapeRequestShapeType::HalfFrame => "HALF_FRAME",
+                CreateShapeRequestShapeType::Heart => "HEART",
+                CreateShapeRequestShapeType::Heptagon => "HEPTAGON",
+                CreateShapeRequestShapeType::Hexagon => "HEXAGON",
+                CreateShapeRequestShapeType::HomePlate => "HOME_PLATE",
+                CreateShapeRequestShapeType::HorizontalScroll => "HORIZONTAL_SCROLL",
+                CreateShapeRequestShapeType::IrregularSeal1 => "IRREGULAR_SEAL_1",
+                CreateShapeRequestShapeType::IrregularSeal2 => "IRREGULAR_SEAL_2",
+                CreateShapeRequestShapeType::LeftArrow => "LEFT_ARROW",
+                CreateShapeRequestShapeType::LeftArrowCallout => "LEFT_ARROW_CALLOUT",
+                CreateShapeRequestShapeType::LeftBrace => "LEFT_BRACE",
+                CreateShapeRequestShapeType::LeftBracket => "LEFT_BRACKET",
+                CreateShapeRequestShapeType::LeftRightArrow => "LEFT_RIGHT_ARROW",
+                CreateShapeRequestShapeType::LeftRightArrowCallout => "LEFT_RIGHT_ARROW_CALLOUT",
+                CreateShapeRequestShapeType::LeftRightUpArrow => "LEFT_RIGHT_UP_ARROW",
+                CreateShapeRequestShapeType::LeftUpArrow => "LEFT_UP_ARROW",
+                CreateShapeRequestShapeType::LightningBolt => "LIGHTNING_BOLT",
+                CreateShapeRequestShapeType::MathDivide => "MATH_DIVIDE",
+                CreateShapeRequestShapeType::MathEqual => "MATH_EQUAL",
+                CreateShapeRequestShapeType::MathMinus => "MATH_MINUS",
+                CreateShapeRequestShapeType::MathMultiply => "MATH_MULTIPLY",
+                CreateShapeRequestShapeType::MathNotEqual => "MATH_NOT_EQUAL",
+                CreateShapeRequestShapeType::MathPlus => "MATH_PLUS",
+                CreateShapeRequestShapeType::Moon => "MOON",
+                CreateShapeRequestShapeType::NoSmoking => "NO_SMOKING",
+                CreateShapeRequestShapeType::NotchedRightArrow => "NOTCHED_RIGHT_ARROW",
+                CreateShapeRequestShapeType::Octagon => "OCTAGON",
+                CreateShapeRequestShapeType::Parallelogram => "PARALLELOGRAM",
+                CreateShapeRequestShapeType::Pentagon => "PENTAGON",
+                CreateShapeRequestShapeType::Pie => "PIE",
+                CreateShapeRequestShapeType::Plaque => "PLAQUE",
+                CreateShapeRequestShapeType::Plus => "PLUS",
+                CreateShapeRequestShapeType::QuadArrow => "QUAD_ARROW",
+                CreateShapeRequestShapeType::QuadArrowCallout => "QUAD_ARROW_CALLOUT",
+                CreateShapeRequestShapeType::Rectangle => "RECTANGLE",
+                CreateShapeRequestShapeType::Ribbon => "RIBBON",
+                CreateShapeRequestShapeType::Ribbon2 => "RIBBON_2",
+                CreateShapeRequestShapeType::RightArrow => "RIGHT_ARROW",
+                CreateShapeRequestShapeType::RightArrowCallout => "RIGHT_ARROW_CALLOUT",
+                CreateShapeRequestShapeType::RightBrace => "RIGHT_BRACE",
+                CreateShapeRequestShapeType::RightBracket => "RIGHT_BRACKET",
+                CreateShapeRequestShapeType::RightTriangle => "RIGHT_TRIANGLE",
+                CreateShapeRequestShapeType::Round1Rectangle => "ROUND_1_RECTANGLE",
+                CreateShapeRequestShapeType::Round2DiagonalRectangle => {
+                    "ROUND_2_DIAGONAL_RECTANGLE"
+                }
+                CreateShapeRequestShapeType::Round2SameRectangle => "ROUND_2_SAME_RECTANGLE",
+                CreateShapeRequestShapeType::RoundRectangle => "ROUND_RECTANGLE",
+                CreateShapeRequestShapeType::SmileyFace => "SMILEY_FACE",
+                CreateShapeRequestShapeType::Snip1Rectangle => "SNIP_1_RECTANGLE",
+                CreateShapeRequestShapeType::Snip2DiagonalRectangle => "SNIP_2_DIAGONAL_RECTANGLE",
+                CreateShapeRequestShapeType::Snip2SameRectangle => "SNIP_2_SAME_RECTANGLE",
+                CreateShapeRequestShapeType::SnipRoundRectangle => "SNIP_ROUND_RECTANGLE",
                 CreateShapeRequestShapeType::Speech => "SPEECH",
+                CreateShapeRequestShapeType::Star10 => "STAR_10",
+                CreateShapeRequestShapeType::Star12 => "STAR_12",
+                CreateShapeRequestShapeType::Star16 => "STAR_16",
+                CreateShapeRequestShapeType::Star24 => "STAR_24",
+                CreateShapeRequestShapeType::Star32 => "STAR_32",
+                CreateShapeRequestShapeType::Star4 => "STAR_4",
+                CreateShapeRequestShapeType::Star5 => "STAR_5",
+                CreateShapeRequestShapeType::Star6 => "STAR_6",
+                CreateShapeRequestShapeType::Star7 => "STAR_7",
+                CreateShapeRequestShapeType::Star8 => "STAR_8",
                 CreateShapeRequestShapeType::Starburst => "STARBURST",
+                CreateShapeRequestShapeType::StripedRightArrow => "STRIPED_RIGHT_ARROW",
+                CreateShapeRequestShapeType::Sun => "SUN",
                 CreateShapeRequestShapeType::Teardrop => "TEARDROP",
-                CreateShapeRequestShapeType::EllipseRibbon => "ELLIPSE_RIBBON",
-                CreateShapeRequestShapeType::EllipseRibbon2 => "ELLIPSE_RIBBON_2",
-                CreateShapeRequestShapeType::CloudCallout => "CLOUD_CALLOUT",
-                CreateShapeRequestShapeType::Custom => "CUSTOM",
+                CreateShapeRequestShapeType::TextBox => "TEXT_BOX",
+                CreateShapeRequestShapeType::Trapezoid => "TRAPEZOID",
+                CreateShapeRequestShapeType::Triangle => "TRIANGLE",
+                CreateShapeRequestShapeType::TypeUnspecified => "TYPE_UNSPECIFIED",
+                CreateShapeRequestShapeType::UpArrow => "UP_ARROW",
+                CreateShapeRequestShapeType::UpArrowCallout => "UP_ARROW_CALLOUT",
+                CreateShapeRequestShapeType::UpDownArrow => "UP_DOWN_ARROW",
+                CreateShapeRequestShapeType::UturnArrow => "UTURN_ARROW",
+                CreateShapeRequestShapeType::VerticalScroll => "VERTICAL_SCROLL",
+                CreateShapeRequestShapeType::Wave => "WAVE",
+                CreateShapeRequestShapeType::WedgeEllipseCallout => "WEDGE_ELLIPSE_CALLOUT",
+                CreateShapeRequestShapeType::WedgeRectangleCallout => "WEDGE_RECTANGLE_CALLOUT",
+                CreateShapeRequestShapeType::WedgeRoundRectangleCallout => {
+                    "WEDGE_ROUND_RECTANGLE_CALLOUT"
+                }
             }
         }
     }
     impl ::std::fmt::Display for CreateShapeRequestShapeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateShapeRequestShapeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1181,18 +1181,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateShapeRequestShapeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => CreateShapeRequestShapeType::TypeUnspecified,
-                "TEXT_BOX" => CreateShapeRequestShapeType::TextBox,
-                "RECTANGLE" => CreateShapeRequestShapeType::Rectangle,
-                "ROUND_RECTANGLE" => CreateShapeRequestShapeType::RoundRectangle,
-                "ELLIPSE" => CreateShapeRequestShapeType::Ellipse,
                 "ARC" => CreateShapeRequestShapeType::Arc,
+                "ARROW_EAST" => CreateShapeRequestShapeType::ArrowEast,
+                "ARROW_NORTH" => CreateShapeRequestShapeType::ArrowNorth,
+                "ARROW_NORTH_EAST" => CreateShapeRequestShapeType::ArrowNorthEast,
                 "BENT_ARROW" => CreateShapeRequestShapeType::BentArrow,
                 "BENT_UP_ARROW" => CreateShapeRequestShapeType::BentUpArrow,
                 "BEVEL" => CreateShapeRequestShapeType::Bevel,
@@ -1203,12 +1201,14 @@ pub mod schemas {
                 "CHEVRON" => CreateShapeRequestShapeType::Chevron,
                 "CHORD" => CreateShapeRequestShapeType::Chord,
                 "CLOUD" => CreateShapeRequestShapeType::Cloud,
+                "CLOUD_CALLOUT" => CreateShapeRequestShapeType::CloudCallout,
                 "CORNER" => CreateShapeRequestShapeType::Corner,
                 "CUBE" => CreateShapeRequestShapeType::Cube,
                 "CURVED_DOWN_ARROW" => CreateShapeRequestShapeType::CurvedDownArrow,
                 "CURVED_LEFT_ARROW" => CreateShapeRequestShapeType::CurvedLeftArrow,
                 "CURVED_RIGHT_ARROW" => CreateShapeRequestShapeType::CurvedRightArrow,
                 "CURVED_UP_ARROW" => CreateShapeRequestShapeType::CurvedUpArrow,
+                "CUSTOM" => CreateShapeRequestShapeType::Custom,
                 "DECAGON" => CreateShapeRequestShapeType::Decagon,
                 "DIAGONAL_STRIPE" => CreateShapeRequestShapeType::DiagonalStripe,
                 "DIAMOND" => CreateShapeRequestShapeType::Diamond,
@@ -1217,84 +1217,9 @@ pub mod schemas {
                 "DOUBLE_WAVE" => CreateShapeRequestShapeType::DoubleWave,
                 "DOWN_ARROW" => CreateShapeRequestShapeType::DownArrow,
                 "DOWN_ARROW_CALLOUT" => CreateShapeRequestShapeType::DownArrowCallout,
-                "FOLDED_CORNER" => CreateShapeRequestShapeType::FoldedCorner,
-                "FRAME" => CreateShapeRequestShapeType::Frame,
-                "HALF_FRAME" => CreateShapeRequestShapeType::HalfFrame,
-                "HEART" => CreateShapeRequestShapeType::Heart,
-                "HEPTAGON" => CreateShapeRequestShapeType::Heptagon,
-                "HEXAGON" => CreateShapeRequestShapeType::Hexagon,
-                "HOME_PLATE" => CreateShapeRequestShapeType::HomePlate,
-                "HORIZONTAL_SCROLL" => CreateShapeRequestShapeType::HorizontalScroll,
-                "IRREGULAR_SEAL_1" => CreateShapeRequestShapeType::IrregularSeal1,
-                "IRREGULAR_SEAL_2" => CreateShapeRequestShapeType::IrregularSeal2,
-                "LEFT_ARROW" => CreateShapeRequestShapeType::LeftArrow,
-                "LEFT_ARROW_CALLOUT" => CreateShapeRequestShapeType::LeftArrowCallout,
-                "LEFT_BRACE" => CreateShapeRequestShapeType::LeftBrace,
-                "LEFT_BRACKET" => CreateShapeRequestShapeType::LeftBracket,
-                "LEFT_RIGHT_ARROW" => CreateShapeRequestShapeType::LeftRightArrow,
-                "LEFT_RIGHT_ARROW_CALLOUT" => CreateShapeRequestShapeType::LeftRightArrowCallout,
-                "LEFT_RIGHT_UP_ARROW" => CreateShapeRequestShapeType::LeftRightUpArrow,
-                "LEFT_UP_ARROW" => CreateShapeRequestShapeType::LeftUpArrow,
-                "LIGHTNING_BOLT" => CreateShapeRequestShapeType::LightningBolt,
-                "MATH_DIVIDE" => CreateShapeRequestShapeType::MathDivide,
-                "MATH_EQUAL" => CreateShapeRequestShapeType::MathEqual,
-                "MATH_MINUS" => CreateShapeRequestShapeType::MathMinus,
-                "MATH_MULTIPLY" => CreateShapeRequestShapeType::MathMultiply,
-                "MATH_NOT_EQUAL" => CreateShapeRequestShapeType::MathNotEqual,
-                "MATH_PLUS" => CreateShapeRequestShapeType::MathPlus,
-                "MOON" => CreateShapeRequestShapeType::Moon,
-                "NO_SMOKING" => CreateShapeRequestShapeType::NoSmoking,
-                "NOTCHED_RIGHT_ARROW" => CreateShapeRequestShapeType::NotchedRightArrow,
-                "OCTAGON" => CreateShapeRequestShapeType::Octagon,
-                "PARALLELOGRAM" => CreateShapeRequestShapeType::Parallelogram,
-                "PENTAGON" => CreateShapeRequestShapeType::Pentagon,
-                "PIE" => CreateShapeRequestShapeType::Pie,
-                "PLAQUE" => CreateShapeRequestShapeType::Plaque,
-                "PLUS" => CreateShapeRequestShapeType::Plus,
-                "QUAD_ARROW" => CreateShapeRequestShapeType::QuadArrow,
-                "QUAD_ARROW_CALLOUT" => CreateShapeRequestShapeType::QuadArrowCallout,
-                "RIBBON" => CreateShapeRequestShapeType::Ribbon,
-                "RIBBON_2" => CreateShapeRequestShapeType::Ribbon2,
-                "RIGHT_ARROW" => CreateShapeRequestShapeType::RightArrow,
-                "RIGHT_ARROW_CALLOUT" => CreateShapeRequestShapeType::RightArrowCallout,
-                "RIGHT_BRACE" => CreateShapeRequestShapeType::RightBrace,
-                "RIGHT_BRACKET" => CreateShapeRequestShapeType::RightBracket,
-                "ROUND_1_RECTANGLE" => CreateShapeRequestShapeType::Round1Rectangle,
-                "ROUND_2_DIAGONAL_RECTANGLE" => {
-                    CreateShapeRequestShapeType::Round2DiagonalRectangle
-                }
-                "ROUND_2_SAME_RECTANGLE" => CreateShapeRequestShapeType::Round2SameRectangle,
-                "RIGHT_TRIANGLE" => CreateShapeRequestShapeType::RightTriangle,
-                "SMILEY_FACE" => CreateShapeRequestShapeType::SmileyFace,
-                "SNIP_1_RECTANGLE" => CreateShapeRequestShapeType::Snip1Rectangle,
-                "SNIP_2_DIAGONAL_RECTANGLE" => CreateShapeRequestShapeType::Snip2DiagonalRectangle,
-                "SNIP_2_SAME_RECTANGLE" => CreateShapeRequestShapeType::Snip2SameRectangle,
-                "SNIP_ROUND_RECTANGLE" => CreateShapeRequestShapeType::SnipRoundRectangle,
-                "STAR_10" => CreateShapeRequestShapeType::Star10,
-                "STAR_12" => CreateShapeRequestShapeType::Star12,
-                "STAR_16" => CreateShapeRequestShapeType::Star16,
-                "STAR_24" => CreateShapeRequestShapeType::Star24,
-                "STAR_32" => CreateShapeRequestShapeType::Star32,
-                "STAR_4" => CreateShapeRequestShapeType::Star4,
-                "STAR_5" => CreateShapeRequestShapeType::Star5,
-                "STAR_6" => CreateShapeRequestShapeType::Star6,
-                "STAR_7" => CreateShapeRequestShapeType::Star7,
-                "STAR_8" => CreateShapeRequestShapeType::Star8,
-                "STRIPED_RIGHT_ARROW" => CreateShapeRequestShapeType::StripedRightArrow,
-                "SUN" => CreateShapeRequestShapeType::Sun,
-                "TRAPEZOID" => CreateShapeRequestShapeType::Trapezoid,
-                "TRIANGLE" => CreateShapeRequestShapeType::Triangle,
-                "UP_ARROW" => CreateShapeRequestShapeType::UpArrow,
-                "UP_ARROW_CALLOUT" => CreateShapeRequestShapeType::UpArrowCallout,
-                "UP_DOWN_ARROW" => CreateShapeRequestShapeType::UpDownArrow,
-                "UTURN_ARROW" => CreateShapeRequestShapeType::UturnArrow,
-                "VERTICAL_SCROLL" => CreateShapeRequestShapeType::VerticalScroll,
-                "WAVE" => CreateShapeRequestShapeType::Wave,
-                "WEDGE_ELLIPSE_CALLOUT" => CreateShapeRequestShapeType::WedgeEllipseCallout,
-                "WEDGE_RECTANGLE_CALLOUT" => CreateShapeRequestShapeType::WedgeRectangleCallout,
-                "WEDGE_ROUND_RECTANGLE_CALLOUT" => {
-                    CreateShapeRequestShapeType::WedgeRoundRectangleCallout
-                }
+                "ELLIPSE" => CreateShapeRequestShapeType::Ellipse,
+                "ELLIPSE_RIBBON" => CreateShapeRequestShapeType::EllipseRibbon,
+                "ELLIPSE_RIBBON_2" => CreateShapeRequestShapeType::EllipseRibbon2,
                 "FLOW_CHART_ALTERNATE_PROCESS" => {
                     CreateShapeRequestShapeType::FlowChartAlternateProcess
                 }
@@ -1338,16 +1263,91 @@ pub mod schemas {
                     CreateShapeRequestShapeType::FlowChartSummingJunction
                 }
                 "FLOW_CHART_TERMINATOR" => CreateShapeRequestShapeType::FlowChartTerminator,
-                "ARROW_EAST" => CreateShapeRequestShapeType::ArrowEast,
-                "ARROW_NORTH_EAST" => CreateShapeRequestShapeType::ArrowNorthEast,
-                "ARROW_NORTH" => CreateShapeRequestShapeType::ArrowNorth,
+                "FOLDED_CORNER" => CreateShapeRequestShapeType::FoldedCorner,
+                "FRAME" => CreateShapeRequestShapeType::Frame,
+                "HALF_FRAME" => CreateShapeRequestShapeType::HalfFrame,
+                "HEART" => CreateShapeRequestShapeType::Heart,
+                "HEPTAGON" => CreateShapeRequestShapeType::Heptagon,
+                "HEXAGON" => CreateShapeRequestShapeType::Hexagon,
+                "HOME_PLATE" => CreateShapeRequestShapeType::HomePlate,
+                "HORIZONTAL_SCROLL" => CreateShapeRequestShapeType::HorizontalScroll,
+                "IRREGULAR_SEAL_1" => CreateShapeRequestShapeType::IrregularSeal1,
+                "IRREGULAR_SEAL_2" => CreateShapeRequestShapeType::IrregularSeal2,
+                "LEFT_ARROW" => CreateShapeRequestShapeType::LeftArrow,
+                "LEFT_ARROW_CALLOUT" => CreateShapeRequestShapeType::LeftArrowCallout,
+                "LEFT_BRACE" => CreateShapeRequestShapeType::LeftBrace,
+                "LEFT_BRACKET" => CreateShapeRequestShapeType::LeftBracket,
+                "LEFT_RIGHT_ARROW" => CreateShapeRequestShapeType::LeftRightArrow,
+                "LEFT_RIGHT_ARROW_CALLOUT" => CreateShapeRequestShapeType::LeftRightArrowCallout,
+                "LEFT_RIGHT_UP_ARROW" => CreateShapeRequestShapeType::LeftRightUpArrow,
+                "LEFT_UP_ARROW" => CreateShapeRequestShapeType::LeftUpArrow,
+                "LIGHTNING_BOLT" => CreateShapeRequestShapeType::LightningBolt,
+                "MATH_DIVIDE" => CreateShapeRequestShapeType::MathDivide,
+                "MATH_EQUAL" => CreateShapeRequestShapeType::MathEqual,
+                "MATH_MINUS" => CreateShapeRequestShapeType::MathMinus,
+                "MATH_MULTIPLY" => CreateShapeRequestShapeType::MathMultiply,
+                "MATH_NOT_EQUAL" => CreateShapeRequestShapeType::MathNotEqual,
+                "MATH_PLUS" => CreateShapeRequestShapeType::MathPlus,
+                "MOON" => CreateShapeRequestShapeType::Moon,
+                "NO_SMOKING" => CreateShapeRequestShapeType::NoSmoking,
+                "NOTCHED_RIGHT_ARROW" => CreateShapeRequestShapeType::NotchedRightArrow,
+                "OCTAGON" => CreateShapeRequestShapeType::Octagon,
+                "PARALLELOGRAM" => CreateShapeRequestShapeType::Parallelogram,
+                "PENTAGON" => CreateShapeRequestShapeType::Pentagon,
+                "PIE" => CreateShapeRequestShapeType::Pie,
+                "PLAQUE" => CreateShapeRequestShapeType::Plaque,
+                "PLUS" => CreateShapeRequestShapeType::Plus,
+                "QUAD_ARROW" => CreateShapeRequestShapeType::QuadArrow,
+                "QUAD_ARROW_CALLOUT" => CreateShapeRequestShapeType::QuadArrowCallout,
+                "RECTANGLE" => CreateShapeRequestShapeType::Rectangle,
+                "RIBBON" => CreateShapeRequestShapeType::Ribbon,
+                "RIBBON_2" => CreateShapeRequestShapeType::Ribbon2,
+                "RIGHT_ARROW" => CreateShapeRequestShapeType::RightArrow,
+                "RIGHT_ARROW_CALLOUT" => CreateShapeRequestShapeType::RightArrowCallout,
+                "RIGHT_BRACE" => CreateShapeRequestShapeType::RightBrace,
+                "RIGHT_BRACKET" => CreateShapeRequestShapeType::RightBracket,
+                "RIGHT_TRIANGLE" => CreateShapeRequestShapeType::RightTriangle,
+                "ROUND_1_RECTANGLE" => CreateShapeRequestShapeType::Round1Rectangle,
+                "ROUND_2_DIAGONAL_RECTANGLE" => {
+                    CreateShapeRequestShapeType::Round2DiagonalRectangle
+                }
+                "ROUND_2_SAME_RECTANGLE" => CreateShapeRequestShapeType::Round2SameRectangle,
+                "ROUND_RECTANGLE" => CreateShapeRequestShapeType::RoundRectangle,
+                "SMILEY_FACE" => CreateShapeRequestShapeType::SmileyFace,
+                "SNIP_1_RECTANGLE" => CreateShapeRequestShapeType::Snip1Rectangle,
+                "SNIP_2_DIAGONAL_RECTANGLE" => CreateShapeRequestShapeType::Snip2DiagonalRectangle,
+                "SNIP_2_SAME_RECTANGLE" => CreateShapeRequestShapeType::Snip2SameRectangle,
+                "SNIP_ROUND_RECTANGLE" => CreateShapeRequestShapeType::SnipRoundRectangle,
                 "SPEECH" => CreateShapeRequestShapeType::Speech,
+                "STAR_10" => CreateShapeRequestShapeType::Star10,
+                "STAR_12" => CreateShapeRequestShapeType::Star12,
+                "STAR_16" => CreateShapeRequestShapeType::Star16,
+                "STAR_24" => CreateShapeRequestShapeType::Star24,
+                "STAR_32" => CreateShapeRequestShapeType::Star32,
+                "STAR_4" => CreateShapeRequestShapeType::Star4,
+                "STAR_5" => CreateShapeRequestShapeType::Star5,
+                "STAR_6" => CreateShapeRequestShapeType::Star6,
+                "STAR_7" => CreateShapeRequestShapeType::Star7,
+                "STAR_8" => CreateShapeRequestShapeType::Star8,
                 "STARBURST" => CreateShapeRequestShapeType::Starburst,
+                "STRIPED_RIGHT_ARROW" => CreateShapeRequestShapeType::StripedRightArrow,
+                "SUN" => CreateShapeRequestShapeType::Sun,
                 "TEARDROP" => CreateShapeRequestShapeType::Teardrop,
-                "ELLIPSE_RIBBON" => CreateShapeRequestShapeType::EllipseRibbon,
-                "ELLIPSE_RIBBON_2" => CreateShapeRequestShapeType::EllipseRibbon2,
-                "CLOUD_CALLOUT" => CreateShapeRequestShapeType::CloudCallout,
-                "CUSTOM" => CreateShapeRequestShapeType::Custom,
+                "TEXT_BOX" => CreateShapeRequestShapeType::TextBox,
+                "TRAPEZOID" => CreateShapeRequestShapeType::Trapezoid,
+                "TRIANGLE" => CreateShapeRequestShapeType::Triangle,
+                "TYPE_UNSPECIFIED" => CreateShapeRequestShapeType::TypeUnspecified,
+                "UP_ARROW" => CreateShapeRequestShapeType::UpArrow,
+                "UP_ARROW_CALLOUT" => CreateShapeRequestShapeType::UpArrowCallout,
+                "UP_DOWN_ARROW" => CreateShapeRequestShapeType::UpDownArrow,
+                "UTURN_ARROW" => CreateShapeRequestShapeType::UturnArrow,
+                "VERTICAL_SCROLL" => CreateShapeRequestShapeType::VerticalScroll,
+                "WAVE" => CreateShapeRequestShapeType::Wave,
+                "WEDGE_ELLIPSE_CALLOUT" => CreateShapeRequestShapeType::WedgeEllipseCallout,
+                "WEDGE_RECTANGLE_CALLOUT" => CreateShapeRequestShapeType::WedgeRectangleCallout,
+                "WEDGE_ROUND_RECTANGLE_CALLOUT" => {
+                    CreateShapeRequestShapeType::WedgeRoundRectangleCallout
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1417,26 +1417,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateSheetsChartRequestLinkingMode {
-        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
-        NotLinkedImage,
         #[doc = "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."]
         Linked,
+        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
+        NotLinkedImage,
     }
     impl CreateSheetsChartRequestLinkingMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                CreateSheetsChartRequestLinkingMode::NotLinkedImage => "NOT_LINKED_IMAGE",
                 CreateSheetsChartRequestLinkingMode::Linked => "LINKED",
+                CreateSheetsChartRequestLinkingMode::NotLinkedImage => "NOT_LINKED_IMAGE",
             }
         }
     }
     impl ::std::fmt::Display for CreateSheetsChartRequestLinkingMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateSheetsChartRequestLinkingMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1444,14 +1444,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateSheetsChartRequestLinkingMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NOT_LINKED_IMAGE" => CreateSheetsChartRequestLinkingMode::NotLinkedImage,
                 "LINKED" => CreateSheetsChartRequestLinkingMode::Linked,
+                "NOT_LINKED_IMAGE" => CreateSheetsChartRequestLinkingMode::NotLinkedImage,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1642,29 +1642,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateVideoRequestSource {
+        #[doc = "The video source is Google Drive."]
+        Drive,
         #[doc = "The video source is unspecified."]
         SourceUnspecified,
         #[doc = "The video source is YouTube."]
         Youtube,
-        #[doc = "The video source is Google Drive."]
-        Drive,
     }
     impl CreateVideoRequestSource {
         pub fn as_str(self) -> &'static str {
             match self {
+                CreateVideoRequestSource::Drive => "DRIVE",
                 CreateVideoRequestSource::SourceUnspecified => "SOURCE_UNSPECIFIED",
                 CreateVideoRequestSource::Youtube => "YOUTUBE",
-                CreateVideoRequestSource::Drive => "DRIVE",
             }
         }
     }
     impl ::std::fmt::Display for CreateVideoRequestSource {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CreateVideoRequestSource {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1672,15 +1672,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CreateVideoRequestSource {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DRIVE" => CreateVideoRequestSource::Drive,
                 "SOURCE_UNSPECIFIED" => CreateVideoRequestSource::SourceUnspecified,
                 "YOUTUBE" => CreateVideoRequestSource::Youtube,
-                "DRIVE" => CreateVideoRequestSource::Drive,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1930,29 +1930,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionUnit {
-        #[doc = "The units are unknown."]
-        UnitUnspecified,
         #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
         Emu,
         #[doc = "A point, 1/72 of an inch."]
         Pt,
+        #[doc = "The units are unknown."]
+        UnitUnspecified,
     }
     impl DimensionUnit {
         pub fn as_str(self) -> &'static str {
             match self {
-                DimensionUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
                 DimensionUnit::Emu => "EMU",
                 DimensionUnit::Pt => "PT",
+                DimensionUnit::UnitUnspecified => "UNIT_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DimensionUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DimensionUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1960,15 +1960,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DimensionUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNIT_UNSPECIFIED" => DimensionUnit::UnitUnspecified,
                 "EMU" => DimensionUnit::Emu,
                 "PT" => DimensionUnit::Pt,
+                "UNIT_UNSPECIFIED" => DimensionUnit::UnitUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2366,12 +2366,22 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LayoutReferencePredefinedLayout {
-        #[doc = "Unspecified layout."]
-        PredefinedLayoutUnspecified,
+        #[doc = "Layout with a big number heading."]
+        BigNumber,
         #[doc = "Blank layout, with no placeholders."]
         Blank,
         #[doc = "Layout with a caption at the bottom."]
         CaptionOnly,
+        #[doc = "Layout with a main point."]
+        MainPoint,
+        #[doc = "Layout with one title and one body, arranged in a single column."]
+        OneColumnText,
+        #[doc = "Unspecified layout."]
+        PredefinedLayoutUnspecified,
+        #[doc = "Layout with a section title."]
+        SectionHeader,
+        #[doc = "Layout with a title and subtitle on one side and description on the other."]
+        SectionTitleAndDescription,
         #[doc = "Layout with a title and a subtitle."]
         Title,
         #[doc = "Layout with a title and body."]
@@ -2380,46 +2390,36 @@ pub mod schemas {
         TitleAndTwoColumns,
         #[doc = "Layout with only a title."]
         TitleOnly,
-        #[doc = "Layout with a section title."]
-        SectionHeader,
-        #[doc = "Layout with a title and subtitle on one side and description on the other."]
-        SectionTitleAndDescription,
-        #[doc = "Layout with one title and one body, arranged in a single column."]
-        OneColumnText,
-        #[doc = "Layout with a main point."]
-        MainPoint,
-        #[doc = "Layout with a big number heading."]
-        BigNumber,
     }
     impl LayoutReferencePredefinedLayout {
         pub fn as_str(self) -> &'static str {
             match self {
+                LayoutReferencePredefinedLayout::BigNumber => "BIG_NUMBER",
+                LayoutReferencePredefinedLayout::Blank => "BLANK",
+                LayoutReferencePredefinedLayout::CaptionOnly => "CAPTION_ONLY",
+                LayoutReferencePredefinedLayout::MainPoint => "MAIN_POINT",
+                LayoutReferencePredefinedLayout::OneColumnText => "ONE_COLUMN_TEXT",
                 LayoutReferencePredefinedLayout::PredefinedLayoutUnspecified => {
                     "PREDEFINED_LAYOUT_UNSPECIFIED"
                 }
-                LayoutReferencePredefinedLayout::Blank => "BLANK",
-                LayoutReferencePredefinedLayout::CaptionOnly => "CAPTION_ONLY",
-                LayoutReferencePredefinedLayout::Title => "TITLE",
-                LayoutReferencePredefinedLayout::TitleAndBody => "TITLE_AND_BODY",
-                LayoutReferencePredefinedLayout::TitleAndTwoColumns => "TITLE_AND_TWO_COLUMNS",
-                LayoutReferencePredefinedLayout::TitleOnly => "TITLE_ONLY",
                 LayoutReferencePredefinedLayout::SectionHeader => "SECTION_HEADER",
                 LayoutReferencePredefinedLayout::SectionTitleAndDescription => {
                     "SECTION_TITLE_AND_DESCRIPTION"
                 }
-                LayoutReferencePredefinedLayout::OneColumnText => "ONE_COLUMN_TEXT",
-                LayoutReferencePredefinedLayout::MainPoint => "MAIN_POINT",
-                LayoutReferencePredefinedLayout::BigNumber => "BIG_NUMBER",
+                LayoutReferencePredefinedLayout::Title => "TITLE",
+                LayoutReferencePredefinedLayout::TitleAndBody => "TITLE_AND_BODY",
+                LayoutReferencePredefinedLayout::TitleAndTwoColumns => "TITLE_AND_TWO_COLUMNS",
+                LayoutReferencePredefinedLayout::TitleOnly => "TITLE_ONLY",
             }
         }
     }
     impl ::std::fmt::Display for LayoutReferencePredefinedLayout {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LayoutReferencePredefinedLayout {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2427,28 +2427,28 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LayoutReferencePredefinedLayout {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BIG_NUMBER" => LayoutReferencePredefinedLayout::BigNumber,
+                "BLANK" => LayoutReferencePredefinedLayout::Blank,
+                "CAPTION_ONLY" => LayoutReferencePredefinedLayout::CaptionOnly,
+                "MAIN_POINT" => LayoutReferencePredefinedLayout::MainPoint,
+                "ONE_COLUMN_TEXT" => LayoutReferencePredefinedLayout::OneColumnText,
                 "PREDEFINED_LAYOUT_UNSPECIFIED" => {
                     LayoutReferencePredefinedLayout::PredefinedLayoutUnspecified
                 }
-                "BLANK" => LayoutReferencePredefinedLayout::Blank,
-                "CAPTION_ONLY" => LayoutReferencePredefinedLayout::CaptionOnly,
-                "TITLE" => LayoutReferencePredefinedLayout::Title,
-                "TITLE_AND_BODY" => LayoutReferencePredefinedLayout::TitleAndBody,
-                "TITLE_AND_TWO_COLUMNS" => LayoutReferencePredefinedLayout::TitleAndTwoColumns,
-                "TITLE_ONLY" => LayoutReferencePredefinedLayout::TitleOnly,
                 "SECTION_HEADER" => LayoutReferencePredefinedLayout::SectionHeader,
                 "SECTION_TITLE_AND_DESCRIPTION" => {
                     LayoutReferencePredefinedLayout::SectionTitleAndDescription
                 }
-                "ONE_COLUMN_TEXT" => LayoutReferencePredefinedLayout::OneColumnText,
-                "MAIN_POINT" => LayoutReferencePredefinedLayout::MainPoint,
-                "BIG_NUMBER" => LayoutReferencePredefinedLayout::BigNumber,
+                "TITLE" => LayoutReferencePredefinedLayout::Title,
+                "TITLE_AND_BODY" => LayoutReferencePredefinedLayout::TitleAndBody,
+                "TITLE_AND_TWO_COLUMNS" => LayoutReferencePredefinedLayout::TitleAndTwoColumns,
+                "TITLE_ONLY" => LayoutReferencePredefinedLayout::TitleOnly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2499,32 +2499,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LineLineCategory {
-        #[doc = "Unspecified line category."]
-        LineCategoryUnspecified,
-        #[doc = "Straight connectors, including straight connector 1."]
-        Straight,
         #[doc = "Bent connectors, including bent connector 2 to 5."]
         Bent,
         #[doc = "Curved connectors, including curved connector 2 to 5."]
         Curved,
+        #[doc = "Unspecified line category."]
+        LineCategoryUnspecified,
+        #[doc = "Straight connectors, including straight connector 1."]
+        Straight,
     }
     impl LineLineCategory {
         pub fn as_str(self) -> &'static str {
             match self {
-                LineLineCategory::LineCategoryUnspecified => "LINE_CATEGORY_UNSPECIFIED",
-                LineLineCategory::Straight => "STRAIGHT",
                 LineLineCategory::Bent => "BENT",
                 LineLineCategory::Curved => "CURVED",
+                LineLineCategory::LineCategoryUnspecified => "LINE_CATEGORY_UNSPECIFIED",
+                LineLineCategory::Straight => "STRAIGHT",
             }
         }
     }
     impl ::std::fmt::Display for LineLineCategory {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LineLineCategory {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2532,16 +2532,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LineLineCategory {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LINE_CATEGORY_UNSPECIFIED" => LineLineCategory::LineCategoryUnspecified,
-                "STRAIGHT" => LineLineCategory::Straight,
                 "BENT" => LineLineCategory::Bent,
                 "CURVED" => LineLineCategory::Curved,
+                "LINE_CATEGORY_UNSPECIFIED" => LineLineCategory::LineCategoryUnspecified,
+                "STRAIGHT" => LineLineCategory::Straight,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2562,10 +2562,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LineLineType {
-        #[doc = "An unspecified line type."]
-        TypeUnspecified,
-        #[doc = "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType\n'straightConnector1'."]
-        StraightConnector1,
         #[doc = "Bent connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector2'."]
         BentConnector2,
         #[doc = "Bent connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector3'."]
@@ -2582,14 +2578,16 @@ pub mod schemas {
         CurvedConnector4,
         #[doc = "Curved connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector5'."]
         CurvedConnector5,
+        #[doc = "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType\n'straightConnector1'."]
+        StraightConnector1,
         #[doc = "Straight line. Corresponds to ECMA-376 ST_ShapeType 'line'. This line\ntype is not a connector."]
         StraightLine,
+        #[doc = "An unspecified line type."]
+        TypeUnspecified,
     }
     impl LineLineType {
         pub fn as_str(self) -> &'static str {
             match self {
-                LineLineType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                LineLineType::StraightConnector1 => "STRAIGHT_CONNECTOR_1",
                 LineLineType::BentConnector2 => "BENT_CONNECTOR_2",
                 LineLineType::BentConnector3 => "BENT_CONNECTOR_3",
                 LineLineType::BentConnector4 => "BENT_CONNECTOR_4",
@@ -2598,17 +2596,19 @@ pub mod schemas {
                 LineLineType::CurvedConnector3 => "CURVED_CONNECTOR_3",
                 LineLineType::CurvedConnector4 => "CURVED_CONNECTOR_4",
                 LineLineType::CurvedConnector5 => "CURVED_CONNECTOR_5",
+                LineLineType::StraightConnector1 => "STRAIGHT_CONNECTOR_1",
                 LineLineType::StraightLine => "STRAIGHT_LINE",
+                LineLineType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for LineLineType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LineLineType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2616,14 +2616,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LineLineType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => LineLineType::TypeUnspecified,
-                "STRAIGHT_CONNECTOR_1" => LineLineType::StraightConnector1,
                 "BENT_CONNECTOR_2" => LineLineType::BentConnector2,
                 "BENT_CONNECTOR_3" => LineLineType::BentConnector3,
                 "BENT_CONNECTOR_4" => LineLineType::BentConnector4,
@@ -2632,7 +2630,9 @@ pub mod schemas {
                 "CURVED_CONNECTOR_3" => LineLineType::CurvedConnector3,
                 "CURVED_CONNECTOR_4" => LineLineType::CurvedConnector4,
                 "CURVED_CONNECTOR_5" => LineLineType::CurvedConnector5,
+                "STRAIGHT_CONNECTOR_1" => LineLineType::StraightConnector1,
                 "STRAIGHT_LINE" => LineLineType::StraightLine,
+                "TYPE_UNSPECIFIED" => LineLineType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2722,41 +2722,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LinePropertiesDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
         #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
         DashDot,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
         #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
         LongDash,
         #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl LinePropertiesDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                LinePropertiesDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                LinePropertiesDashStyle::Solid => "SOLID",
-                LinePropertiesDashStyle::Dot => "DOT",
                 LinePropertiesDashStyle::Dash => "DASH",
                 LinePropertiesDashStyle::DashDot => "DASH_DOT",
+                LinePropertiesDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                LinePropertiesDashStyle::Dot => "DOT",
                 LinePropertiesDashStyle::LongDash => "LONG_DASH",
                 LinePropertiesDashStyle::LongDashDot => "LONG_DASH_DOT",
+                LinePropertiesDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for LinePropertiesDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LinePropertiesDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2764,19 +2764,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LinePropertiesDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => LinePropertiesDashStyle::DashStyleUnspecified,
-                "SOLID" => LinePropertiesDashStyle::Solid,
-                "DOT" => LinePropertiesDashStyle::Dot,
                 "DASH" => LinePropertiesDashStyle::Dash,
                 "DASH_DOT" => LinePropertiesDashStyle::DashDot,
+                "DASH_STYLE_UNSPECIFIED" => LinePropertiesDashStyle::DashStyleUnspecified,
+                "DOT" => LinePropertiesDashStyle::Dot,
                 "LONG_DASH" => LinePropertiesDashStyle::LongDash,
                 "LONG_DASH_DOT" => LinePropertiesDashStyle::LongDashDot,
+                "SOLID" => LinePropertiesDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2799,51 +2799,51 @@ pub mod schemas {
     pub enum LinePropertiesEndArrow {
         #[doc = "An unspecified arrow style."]
         ArrowStyleUnspecified,
-        #[doc = "No arrow."]
-        None,
-        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
-        StealthArrow,
         #[doc = "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'."]
         FillArrow,
         #[doc = "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'."]
         FillCircle,
-        #[doc = "Filled square."]
-        FillSquare,
         #[doc = "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'."]
         FillDiamond,
+        #[doc = "Filled square."]
+        FillSquare,
+        #[doc = "No arrow."]
+        None,
         #[doc = "Hollow arrow."]
         OpenArrow,
         #[doc = "Hollow circle."]
         OpenCircle,
-        #[doc = "Hollow square."]
-        OpenSquare,
         #[doc = "Hollow diamond."]
         OpenDiamond,
+        #[doc = "Hollow square."]
+        OpenSquare,
+        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
+        StealthArrow,
     }
     impl LinePropertiesEndArrow {
         pub fn as_str(self) -> &'static str {
             match self {
                 LinePropertiesEndArrow::ArrowStyleUnspecified => "ARROW_STYLE_UNSPECIFIED",
-                LinePropertiesEndArrow::None => "NONE",
-                LinePropertiesEndArrow::StealthArrow => "STEALTH_ARROW",
                 LinePropertiesEndArrow::FillArrow => "FILL_ARROW",
                 LinePropertiesEndArrow::FillCircle => "FILL_CIRCLE",
-                LinePropertiesEndArrow::FillSquare => "FILL_SQUARE",
                 LinePropertiesEndArrow::FillDiamond => "FILL_DIAMOND",
+                LinePropertiesEndArrow::FillSquare => "FILL_SQUARE",
+                LinePropertiesEndArrow::None => "NONE",
                 LinePropertiesEndArrow::OpenArrow => "OPEN_ARROW",
                 LinePropertiesEndArrow::OpenCircle => "OPEN_CIRCLE",
-                LinePropertiesEndArrow::OpenSquare => "OPEN_SQUARE",
                 LinePropertiesEndArrow::OpenDiamond => "OPEN_DIAMOND",
+                LinePropertiesEndArrow::OpenSquare => "OPEN_SQUARE",
+                LinePropertiesEndArrow::StealthArrow => "STEALTH_ARROW",
             }
         }
     }
     impl ::std::fmt::Display for LinePropertiesEndArrow {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LinePropertiesEndArrow {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2851,23 +2851,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LinePropertiesEndArrow {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ARROW_STYLE_UNSPECIFIED" => LinePropertiesEndArrow::ArrowStyleUnspecified,
-                "NONE" => LinePropertiesEndArrow::None,
-                "STEALTH_ARROW" => LinePropertiesEndArrow::StealthArrow,
                 "FILL_ARROW" => LinePropertiesEndArrow::FillArrow,
                 "FILL_CIRCLE" => LinePropertiesEndArrow::FillCircle,
-                "FILL_SQUARE" => LinePropertiesEndArrow::FillSquare,
                 "FILL_DIAMOND" => LinePropertiesEndArrow::FillDiamond,
+                "FILL_SQUARE" => LinePropertiesEndArrow::FillSquare,
+                "NONE" => LinePropertiesEndArrow::None,
                 "OPEN_ARROW" => LinePropertiesEndArrow::OpenArrow,
                 "OPEN_CIRCLE" => LinePropertiesEndArrow::OpenCircle,
-                "OPEN_SQUARE" => LinePropertiesEndArrow::OpenSquare,
                 "OPEN_DIAMOND" => LinePropertiesEndArrow::OpenDiamond,
+                "OPEN_SQUARE" => LinePropertiesEndArrow::OpenSquare,
+                "STEALTH_ARROW" => LinePropertiesEndArrow::StealthArrow,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2890,51 +2890,51 @@ pub mod schemas {
     pub enum LinePropertiesStartArrow {
         #[doc = "An unspecified arrow style."]
         ArrowStyleUnspecified,
-        #[doc = "No arrow."]
-        None,
-        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
-        StealthArrow,
         #[doc = "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'."]
         FillArrow,
         #[doc = "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'."]
         FillCircle,
-        #[doc = "Filled square."]
-        FillSquare,
         #[doc = "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'."]
         FillDiamond,
+        #[doc = "Filled square."]
+        FillSquare,
+        #[doc = "No arrow."]
+        None,
         #[doc = "Hollow arrow."]
         OpenArrow,
         #[doc = "Hollow circle."]
         OpenCircle,
-        #[doc = "Hollow square."]
-        OpenSquare,
         #[doc = "Hollow diamond."]
         OpenDiamond,
+        #[doc = "Hollow square."]
+        OpenSquare,
+        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
+        StealthArrow,
     }
     impl LinePropertiesStartArrow {
         pub fn as_str(self) -> &'static str {
             match self {
                 LinePropertiesStartArrow::ArrowStyleUnspecified => "ARROW_STYLE_UNSPECIFIED",
-                LinePropertiesStartArrow::None => "NONE",
-                LinePropertiesStartArrow::StealthArrow => "STEALTH_ARROW",
                 LinePropertiesStartArrow::FillArrow => "FILL_ARROW",
                 LinePropertiesStartArrow::FillCircle => "FILL_CIRCLE",
-                LinePropertiesStartArrow::FillSquare => "FILL_SQUARE",
                 LinePropertiesStartArrow::FillDiamond => "FILL_DIAMOND",
+                LinePropertiesStartArrow::FillSquare => "FILL_SQUARE",
+                LinePropertiesStartArrow::None => "NONE",
                 LinePropertiesStartArrow::OpenArrow => "OPEN_ARROW",
                 LinePropertiesStartArrow::OpenCircle => "OPEN_CIRCLE",
-                LinePropertiesStartArrow::OpenSquare => "OPEN_SQUARE",
                 LinePropertiesStartArrow::OpenDiamond => "OPEN_DIAMOND",
+                LinePropertiesStartArrow::OpenSquare => "OPEN_SQUARE",
+                LinePropertiesStartArrow::StealthArrow => "STEALTH_ARROW",
             }
         }
     }
     impl ::std::fmt::Display for LinePropertiesStartArrow {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LinePropertiesStartArrow {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2942,23 +2942,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LinePropertiesStartArrow {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ARROW_STYLE_UNSPECIFIED" => LinePropertiesStartArrow::ArrowStyleUnspecified,
-                "NONE" => LinePropertiesStartArrow::None,
-                "STEALTH_ARROW" => LinePropertiesStartArrow::StealthArrow,
                 "FILL_ARROW" => LinePropertiesStartArrow::FillArrow,
                 "FILL_CIRCLE" => LinePropertiesStartArrow::FillCircle,
-                "FILL_SQUARE" => LinePropertiesStartArrow::FillSquare,
                 "FILL_DIAMOND" => LinePropertiesStartArrow::FillDiamond,
+                "FILL_SQUARE" => LinePropertiesStartArrow::FillSquare,
+                "NONE" => LinePropertiesStartArrow::None,
                 "OPEN_ARROW" => LinePropertiesStartArrow::OpenArrow,
                 "OPEN_CIRCLE" => LinePropertiesStartArrow::OpenCircle,
-                "OPEN_SQUARE" => LinePropertiesStartArrow::OpenSquare,
                 "OPEN_DIAMOND" => LinePropertiesStartArrow::OpenDiamond,
+                "OPEN_SQUARE" => LinePropertiesStartArrow::OpenSquare,
+                "STEALTH_ARROW" => LinePropertiesStartArrow::StealthArrow,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3017,35 +3017,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LinkRelativeLink {
-        #[doc = "An unspecified relative slide link."]
-        RelativeSlideLinkUnspecified,
-        #[doc = "A link to the next slide."]
-        NextSlide,
-        #[doc = "A link to the previous slide."]
-        PreviousSlide,
         #[doc = "A link to the first slide in the presentation."]
         FirstSlide,
         #[doc = "A link to the last slide in the presentation."]
         LastSlide,
+        #[doc = "A link to the next slide."]
+        NextSlide,
+        #[doc = "A link to the previous slide."]
+        PreviousSlide,
+        #[doc = "An unspecified relative slide link."]
+        RelativeSlideLinkUnspecified,
     }
     impl LinkRelativeLink {
         pub fn as_str(self) -> &'static str {
             match self {
-                LinkRelativeLink::RelativeSlideLinkUnspecified => "RELATIVE_SLIDE_LINK_UNSPECIFIED",
-                LinkRelativeLink::NextSlide => "NEXT_SLIDE",
-                LinkRelativeLink::PreviousSlide => "PREVIOUS_SLIDE",
                 LinkRelativeLink::FirstSlide => "FIRST_SLIDE",
                 LinkRelativeLink::LastSlide => "LAST_SLIDE",
+                LinkRelativeLink::NextSlide => "NEXT_SLIDE",
+                LinkRelativeLink::PreviousSlide => "PREVIOUS_SLIDE",
+                LinkRelativeLink::RelativeSlideLinkUnspecified => "RELATIVE_SLIDE_LINK_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for LinkRelativeLink {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LinkRelativeLink {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3053,17 +3053,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LinkRelativeLink {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RELATIVE_SLIDE_LINK_UNSPECIFIED" => LinkRelativeLink::RelativeSlideLinkUnspecified,
-                "NEXT_SLIDE" => LinkRelativeLink::NextSlide,
-                "PREVIOUS_SLIDE" => LinkRelativeLink::PreviousSlide,
                 "FIRST_SLIDE" => LinkRelativeLink::FirstSlide,
                 "LAST_SLIDE" => LinkRelativeLink::LastSlide,
+                "NEXT_SLIDE" => LinkRelativeLink::NextSlide,
+                "PREVIOUS_SLIDE" => LinkRelativeLink::PreviousSlide,
+                "RELATIVE_SLIDE_LINK_UNSPECIFIED" => LinkRelativeLink::RelativeSlideLinkUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3239,16 +3239,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OpaqueColorThemeColor {
-        #[doc = "Unspecified theme color. This value should not be used."]
-        ThemeColorTypeUnspecified,
-        #[doc = "Represents the first dark color."]
-        Dark1,
-        #[doc = "Represents the first light color."]
-        Light1,
-        #[doc = "Represents the second dark color."]
-        Dark2,
-        #[doc = "Represents the second light color."]
-        Light2,
         #[doc = "Represents the first accent color."]
         Accent1,
         #[doc = "Represents the second accent color."]
@@ -3261,49 +3251,59 @@ pub mod schemas {
         Accent5,
         #[doc = "Represents the sixth accent color."]
         Accent6,
-        #[doc = "Represents the color to use for hyperlinks."]
-        Hyperlink,
-        #[doc = "Represents the color to use for visited hyperlinks."]
-        FollowedHyperlink,
-        #[doc = "Represents the first text color."]
-        Text1,
         #[doc = "Represents the first background color."]
         Background1,
-        #[doc = "Represents the second text color."]
-        Text2,
         #[doc = "Represents the second background color."]
         Background2,
+        #[doc = "Represents the first dark color."]
+        Dark1,
+        #[doc = "Represents the second dark color."]
+        Dark2,
+        #[doc = "Represents the color to use for visited hyperlinks."]
+        FollowedHyperlink,
+        #[doc = "Represents the color to use for hyperlinks."]
+        Hyperlink,
+        #[doc = "Represents the first light color."]
+        Light1,
+        #[doc = "Represents the second light color."]
+        Light2,
+        #[doc = "Represents the first text color."]
+        Text1,
+        #[doc = "Represents the second text color."]
+        Text2,
+        #[doc = "Unspecified theme color. This value should not be used."]
+        ThemeColorTypeUnspecified,
     }
     impl OpaqueColorThemeColor {
         pub fn as_str(self) -> &'static str {
             match self {
-                OpaqueColorThemeColor::ThemeColorTypeUnspecified => "THEME_COLOR_TYPE_UNSPECIFIED",
-                OpaqueColorThemeColor::Dark1 => "DARK1",
-                OpaqueColorThemeColor::Light1 => "LIGHT1",
-                OpaqueColorThemeColor::Dark2 => "DARK2",
-                OpaqueColorThemeColor::Light2 => "LIGHT2",
                 OpaqueColorThemeColor::Accent1 => "ACCENT1",
                 OpaqueColorThemeColor::Accent2 => "ACCENT2",
                 OpaqueColorThemeColor::Accent3 => "ACCENT3",
                 OpaqueColorThemeColor::Accent4 => "ACCENT4",
                 OpaqueColorThemeColor::Accent5 => "ACCENT5",
                 OpaqueColorThemeColor::Accent6 => "ACCENT6",
-                OpaqueColorThemeColor::Hyperlink => "HYPERLINK",
-                OpaqueColorThemeColor::FollowedHyperlink => "FOLLOWED_HYPERLINK",
-                OpaqueColorThemeColor::Text1 => "TEXT1",
                 OpaqueColorThemeColor::Background1 => "BACKGROUND1",
-                OpaqueColorThemeColor::Text2 => "TEXT2",
                 OpaqueColorThemeColor::Background2 => "BACKGROUND2",
+                OpaqueColorThemeColor::Dark1 => "DARK1",
+                OpaqueColorThemeColor::Dark2 => "DARK2",
+                OpaqueColorThemeColor::FollowedHyperlink => "FOLLOWED_HYPERLINK",
+                OpaqueColorThemeColor::Hyperlink => "HYPERLINK",
+                OpaqueColorThemeColor::Light1 => "LIGHT1",
+                OpaqueColorThemeColor::Light2 => "LIGHT2",
+                OpaqueColorThemeColor::Text1 => "TEXT1",
+                OpaqueColorThemeColor::Text2 => "TEXT2",
+                OpaqueColorThemeColor::ThemeColorTypeUnspecified => "THEME_COLOR_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for OpaqueColorThemeColor {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OpaqueColorThemeColor {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3311,29 +3311,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OpaqueColorThemeColor {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THEME_COLOR_TYPE_UNSPECIFIED" => OpaqueColorThemeColor::ThemeColorTypeUnspecified,
-                "DARK1" => OpaqueColorThemeColor::Dark1,
-                "LIGHT1" => OpaqueColorThemeColor::Light1,
-                "DARK2" => OpaqueColorThemeColor::Dark2,
-                "LIGHT2" => OpaqueColorThemeColor::Light2,
                 "ACCENT1" => OpaqueColorThemeColor::Accent1,
                 "ACCENT2" => OpaqueColorThemeColor::Accent2,
                 "ACCENT3" => OpaqueColorThemeColor::Accent3,
                 "ACCENT4" => OpaqueColorThemeColor::Accent4,
                 "ACCENT5" => OpaqueColorThemeColor::Accent5,
                 "ACCENT6" => OpaqueColorThemeColor::Accent6,
-                "HYPERLINK" => OpaqueColorThemeColor::Hyperlink,
-                "FOLLOWED_HYPERLINK" => OpaqueColorThemeColor::FollowedHyperlink,
-                "TEXT1" => OpaqueColorThemeColor::Text1,
                 "BACKGROUND1" => OpaqueColorThemeColor::Background1,
-                "TEXT2" => OpaqueColorThemeColor::Text2,
                 "BACKGROUND2" => OpaqueColorThemeColor::Background2,
+                "DARK1" => OpaqueColorThemeColor::Dark1,
+                "DARK2" => OpaqueColorThemeColor::Dark2,
+                "FOLLOWED_HYPERLINK" => OpaqueColorThemeColor::FollowedHyperlink,
+                "HYPERLINK" => OpaqueColorThemeColor::Hyperlink,
+                "LIGHT1" => OpaqueColorThemeColor::Light1,
+                "LIGHT2" => OpaqueColorThemeColor::Light2,
+                "TEXT1" => OpaqueColorThemeColor::Text1,
+                "TEXT2" => OpaqueColorThemeColor::Text2,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => OpaqueColorThemeColor::ThemeColorTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3391,41 +3391,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OutlineDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
         #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
         DashDot,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
         #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
         LongDash,
         #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl OutlineDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                OutlineDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                OutlineDashStyle::Solid => "SOLID",
-                OutlineDashStyle::Dot => "DOT",
                 OutlineDashStyle::Dash => "DASH",
                 OutlineDashStyle::DashDot => "DASH_DOT",
+                OutlineDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                OutlineDashStyle::Dot => "DOT",
                 OutlineDashStyle::LongDash => "LONG_DASH",
                 OutlineDashStyle::LongDashDot => "LONG_DASH_DOT",
+                OutlineDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for OutlineDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OutlineDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3433,19 +3433,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OutlineDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => OutlineDashStyle::DashStyleUnspecified,
-                "SOLID" => OutlineDashStyle::Solid,
-                "DOT" => OutlineDashStyle::Dot,
                 "DASH" => OutlineDashStyle::Dash,
                 "DASH_DOT" => OutlineDashStyle::DashDot,
+                "DASH_STYLE_UNSPECIFIED" => OutlineDashStyle::DashStyleUnspecified,
+                "DOT" => OutlineDashStyle::Dot,
                 "LONG_DASH" => OutlineDashStyle::LongDash,
                 "LONG_DASH_DOT" => OutlineDashStyle::LongDashDot,
+                "SOLID" => OutlineDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3466,29 +3466,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OutlinePropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
-        Rendered,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
-        NotRendered,
         #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
         Inherit,
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        Rendered,
     }
     impl OutlinePropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                OutlinePropertyState::Rendered => "RENDERED",
-                OutlinePropertyState::NotRendered => "NOT_RENDERED",
                 OutlinePropertyState::Inherit => "INHERIT",
+                OutlinePropertyState::NotRendered => "NOT_RENDERED",
+                OutlinePropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for OutlinePropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OutlinePropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3496,15 +3496,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OutlinePropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => OutlinePropertyState::Rendered,
-                "NOT_RENDERED" => OutlinePropertyState::NotRendered,
                 "INHERIT" => OutlinePropertyState::Inherit,
+                "NOT_RENDERED" => OutlinePropertyState::NotRendered,
+                "RENDERED" => OutlinePropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3568,35 +3568,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PagePageType {
-        #[doc = "A slide page."]
-        Slide,
-        #[doc = "A master slide page."]
-        Master,
         #[doc = "A layout page."]
         Layout,
+        #[doc = "A master slide page."]
+        Master,
         #[doc = "A notes page."]
         Notes,
         #[doc = "A notes master page."]
         NotesMaster,
+        #[doc = "A slide page."]
+        Slide,
     }
     impl PagePageType {
         pub fn as_str(self) -> &'static str {
             match self {
-                PagePageType::Slide => "SLIDE",
-                PagePageType::Master => "MASTER",
                 PagePageType::Layout => "LAYOUT",
+                PagePageType::Master => "MASTER",
                 PagePageType::Notes => "NOTES",
                 PagePageType::NotesMaster => "NOTES_MASTER",
+                PagePageType::Slide => "SLIDE",
             }
         }
     }
     impl ::std::fmt::Display for PagePageType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PagePageType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3604,17 +3604,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PagePageType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SLIDE" => PagePageType::Slide,
-                "MASTER" => PagePageType::Master,
                 "LAYOUT" => PagePageType::Layout,
+                "MASTER" => PagePageType::Master,
                 "NOTES" => PagePageType::Notes,
                 "NOTES_MASTER" => PagePageType::NotesMaster,
+                "SLIDE" => PagePageType::Slide,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3663,7 +3663,7 @@ pub mod schemas {
         pub revision_id: ::std::option::Option<String>,
         #[doc = "Slide specific properties. Only set if page_type = SLIDE."]
         #[serde(rename = "slideProperties", default)]
-        pub slide_properties: ::std::option::Option<crate::schemas::SlideProperties>,
+        pub slide_properties: ::std::option::Option<Box<crate::schemas::SlideProperties>>,
     }
     impl ::field_selector::FieldSelector for Page {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3676,29 +3676,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PageBackgroundFillPropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
-        Rendered,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
-        NotRendered,
         #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
         Inherit,
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        Rendered,
     }
     impl PageBackgroundFillPropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                PageBackgroundFillPropertyState::Rendered => "RENDERED",
-                PageBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
                 PageBackgroundFillPropertyState::Inherit => "INHERIT",
+                PageBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
+                PageBackgroundFillPropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for PageBackgroundFillPropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PageBackgroundFillPropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3706,15 +3706,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PageBackgroundFillPropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => PageBackgroundFillPropertyState::Rendered,
-                "NOT_RENDERED" => PageBackgroundFillPropertyState::NotRendered,
                 "INHERIT" => PageBackgroundFillPropertyState::Inherit,
+                "NOT_RENDERED" => PageBackgroundFillPropertyState::NotRendered,
+                "RENDERED" => PageBackgroundFillPropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3876,33 +3876,33 @@ pub mod schemas {
     pub enum ParagraphStyleAlignment {
         #[doc = "The paragraph alignment is inherited from the parent."]
         AlignmentUnspecified,
-        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for\nLTR text, right-aligned otherwise."]
-        Start,
         #[doc = "The paragraph is centered."]
         Center,
         #[doc = "The paragraph is aligned to the end of the line. Right-aligned for\nLTR text, left-aligned otherwise."]
         End,
         #[doc = "The paragraph is justified."]
         Justified,
+        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for\nLTR text, right-aligned otherwise."]
+        Start,
     }
     impl ParagraphStyleAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
                 ParagraphStyleAlignment::AlignmentUnspecified => "ALIGNMENT_UNSPECIFIED",
-                ParagraphStyleAlignment::Start => "START",
                 ParagraphStyleAlignment::Center => "CENTER",
                 ParagraphStyleAlignment::End => "END",
                 ParagraphStyleAlignment::Justified => "JUSTIFIED",
+                ParagraphStyleAlignment::Start => "START",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3910,17 +3910,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ALIGNMENT_UNSPECIFIED" => ParagraphStyleAlignment::AlignmentUnspecified,
-                "START" => ParagraphStyleAlignment::Start,
                 "CENTER" => ParagraphStyleAlignment::Center,
                 "END" => ParagraphStyleAlignment::End,
                 "JUSTIFIED" => ParagraphStyleAlignment::Justified,
+                "START" => ParagraphStyleAlignment::Start,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3941,29 +3941,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphStyleDirection {
-        #[doc = "The text direction is inherited from the parent."]
-        TextDirectionUnspecified,
         #[doc = "The text goes from left to right."]
         LeftToRight,
         #[doc = "The text goes from right to left."]
         RightToLeft,
+        #[doc = "The text direction is inherited from the parent."]
+        TextDirectionUnspecified,
     }
     impl ParagraphStyleDirection {
         pub fn as_str(self) -> &'static str {
             match self {
-                ParagraphStyleDirection::TextDirectionUnspecified => "TEXT_DIRECTION_UNSPECIFIED",
                 ParagraphStyleDirection::LeftToRight => "LEFT_TO_RIGHT",
                 ParagraphStyleDirection::RightToLeft => "RIGHT_TO_LEFT",
+                ParagraphStyleDirection::TextDirectionUnspecified => "TEXT_DIRECTION_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleDirection {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleDirection {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3971,15 +3971,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleDirection {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEXT_DIRECTION_UNSPECIFIED" => ParagraphStyleDirection::TextDirectionUnspecified,
                 "LEFT_TO_RIGHT" => ParagraphStyleDirection::LeftToRight,
                 "RIGHT_TO_LEFT" => ParagraphStyleDirection::RightToLeft,
+                "TEXT_DIRECTION_UNSPECIFIED" => ParagraphStyleDirection::TextDirectionUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4000,29 +4000,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphStyleSpacingMode {
-        #[doc = "The spacing mode is inherited from the parent."]
-        SpacingModeUnspecified,
-        #[doc = "Paragraph spacing is always rendered."]
-        NeverCollapse,
         #[doc = "Paragraph spacing is skipped between list elements."]
         CollapseLists,
+        #[doc = "Paragraph spacing is always rendered."]
+        NeverCollapse,
+        #[doc = "The spacing mode is inherited from the parent."]
+        SpacingModeUnspecified,
     }
     impl ParagraphStyleSpacingMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                ParagraphStyleSpacingMode::SpacingModeUnspecified => "SPACING_MODE_UNSPECIFIED",
-                ParagraphStyleSpacingMode::NeverCollapse => "NEVER_COLLAPSE",
                 ParagraphStyleSpacingMode::CollapseLists => "COLLAPSE_LISTS",
+                ParagraphStyleSpacingMode::NeverCollapse => "NEVER_COLLAPSE",
+                ParagraphStyleSpacingMode::SpacingModeUnspecified => "SPACING_MODE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ParagraphStyleSpacingMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParagraphStyleSpacingMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4030,15 +4030,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParagraphStyleSpacingMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SPACING_MODE_UNSPECIFIED" => ParagraphStyleSpacingMode::SpacingModeUnspecified,
-                "NEVER_COLLAPSE" => ParagraphStyleSpacingMode::NeverCollapse,
                 "COLLAPSE_LISTS" => ParagraphStyleSpacingMode::CollapseLists,
+                "NEVER_COLLAPSE" => ParagraphStyleSpacingMode::NeverCollapse,
+                "SPACING_MODE_UNSPECIFIED" => ParagraphStyleSpacingMode::SpacingModeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4100,30 +4100,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlaceholderType {
-        #[doc = "Default value, signifies it is not a placeholder."]
-        None,
         #[doc = "Body text."]
         Body,
+        #[doc = "Title centered."]
+        CenteredTitle,
         #[doc = "Chart or graph."]
         Chart,
         #[doc = "Clip art image."]
         ClipArt,
-        #[doc = "Title centered."]
-        CenteredTitle,
-        #[doc = "Diagram."]
-        Diagram,
         #[doc = "Date and time."]
         DateAndTime,
+        #[doc = "Diagram."]
+        Diagram,
         #[doc = "Footer text."]
         Footer,
         #[doc = "Header text."]
         Header,
         #[doc = "Multimedia."]
         Media,
+        #[doc = "Default value, signifies it is not a placeholder."]
+        None,
         #[doc = "Any content type."]
         Object,
         #[doc = "Picture."]
         Picture,
+        #[doc = "Slide image."]
+        SlideImage,
         #[doc = "Number of a slide."]
         SlideNumber,
         #[doc = "Subtitle."]
@@ -4132,39 +4134,37 @@ pub mod schemas {
         Table,
         #[doc = "Slide title."]
         Title,
-        #[doc = "Slide image."]
-        SlideImage,
     }
     impl PlaceholderType {
         pub fn as_str(self) -> &'static str {
             match self {
-                PlaceholderType::None => "NONE",
                 PlaceholderType::Body => "BODY",
+                PlaceholderType::CenteredTitle => "CENTERED_TITLE",
                 PlaceholderType::Chart => "CHART",
                 PlaceholderType::ClipArt => "CLIP_ART",
-                PlaceholderType::CenteredTitle => "CENTERED_TITLE",
-                PlaceholderType::Diagram => "DIAGRAM",
                 PlaceholderType::DateAndTime => "DATE_AND_TIME",
+                PlaceholderType::Diagram => "DIAGRAM",
                 PlaceholderType::Footer => "FOOTER",
                 PlaceholderType::Header => "HEADER",
                 PlaceholderType::Media => "MEDIA",
+                PlaceholderType::None => "NONE",
                 PlaceholderType::Object => "OBJECT",
                 PlaceholderType::Picture => "PICTURE",
+                PlaceholderType::SlideImage => "SLIDE_IMAGE",
                 PlaceholderType::SlideNumber => "SLIDE_NUMBER",
                 PlaceholderType::Subtitle => "SUBTITLE",
                 PlaceholderType::Table => "TABLE",
                 PlaceholderType::Title => "TITLE",
-                PlaceholderType::SlideImage => "SLIDE_IMAGE",
             }
         }
     }
     impl ::std::fmt::Display for PlaceholderType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PlaceholderType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4172,29 +4172,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PlaceholderType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NONE" => PlaceholderType::None,
                 "BODY" => PlaceholderType::Body,
+                "CENTERED_TITLE" => PlaceholderType::CenteredTitle,
                 "CHART" => PlaceholderType::Chart,
                 "CLIP_ART" => PlaceholderType::ClipArt,
-                "CENTERED_TITLE" => PlaceholderType::CenteredTitle,
-                "DIAGRAM" => PlaceholderType::Diagram,
                 "DATE_AND_TIME" => PlaceholderType::DateAndTime,
+                "DIAGRAM" => PlaceholderType::Diagram,
                 "FOOTER" => PlaceholderType::Footer,
                 "HEADER" => PlaceholderType::Header,
                 "MEDIA" => PlaceholderType::Media,
+                "NONE" => PlaceholderType::None,
                 "OBJECT" => PlaceholderType::Object,
                 "PICTURE" => PlaceholderType::Picture,
+                "SLIDE_IMAGE" => PlaceholderType::SlideImage,
                 "SLIDE_NUMBER" => PlaceholderType::SlideNumber,
                 "SUBTITLE" => PlaceholderType::Subtitle,
                 "TABLE" => PlaceholderType::Table,
                 "TITLE" => PlaceholderType::Title,
-                "SLIDE_IMAGE" => PlaceholderType::SlideImage,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4288,32 +4288,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RangeType {
-        #[doc = "Unspecified range type. This value must not be used."]
-        RangeTypeUnspecified,
+        #[doc = "Sets the range to be the whole length of the collection. Both the\n`start_index` and the `end_index` must not be\nspecified."]
+        All,
         #[doc = "A fixed range. Both the `start_index` and\n`end_index` must be specified."]
         FixedRange,
         #[doc = "Starts the range at `start_index` and continues until the\nend of the collection. The `end_index` must not be specified."]
         FromStartIndex,
-        #[doc = "Sets the range to be the whole length of the collection. Both the\n`start_index` and the `end_index` must not be\nspecified."]
-        All,
+        #[doc = "Unspecified range type. This value must not be used."]
+        RangeTypeUnspecified,
     }
     impl RangeType {
         pub fn as_str(self) -> &'static str {
             match self {
-                RangeType::RangeTypeUnspecified => "RANGE_TYPE_UNSPECIFIED",
+                RangeType::All => "ALL",
                 RangeType::FixedRange => "FIXED_RANGE",
                 RangeType::FromStartIndex => "FROM_START_INDEX",
-                RangeType::All => "ALL",
+                RangeType::RangeTypeUnspecified => "RANGE_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for RangeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RangeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4321,16 +4321,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RangeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RANGE_TYPE_UNSPECIFIED" => RangeType::RangeTypeUnspecified,
+                "ALL" => RangeType::All,
                 "FIXED_RANGE" => RangeType::FixedRange,
                 "FROM_START_INDEX" => RangeType::FromStartIndex,
-                "ALL" => RangeType::All,
+                "RANGE_TYPE_UNSPECIFIED" => RangeType::RangeTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4383,30 +4383,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecolorName {
-        #[doc = "No recolor effect. The default value."]
-        None,
-        #[doc = "A recolor effect that lightens the image using the page's first available\ncolor from its color scheme."]
-        Light1,
-        #[doc = "A recolor effect that lightens the image using the page's second\navailable color from its color scheme."]
-        Light2,
-        #[doc = "A recolor effect that lightens the image using the page's third available\ncolor from its color scheme."]
-        Light3,
-        #[doc = "A recolor effect that lightens the image using the page's forth available\ncolor from its color scheme."]
-        Light4,
-        #[doc = "A recolor effect that lightens the image using the page's fifth available\ncolor from its color scheme."]
-        Light5,
-        #[doc = "A recolor effect that lightens the image using the page's sixth available\ncolor from its color scheme."]
-        Light6,
-        #[doc = "A recolor effect that lightens the image using the page's seventh\navailable color from its color scheme."]
-        Light7,
-        #[doc = "A recolor effect that lightens the image using the page's eighth\navailable color from its color scheme."]
-        Light8,
-        #[doc = "A recolor effect that lightens the image using the page's ninth available\ncolor from its color scheme."]
-        Light9,
-        #[doc = "A recolor effect that lightens the image using the page's tenth available\ncolor from its color scheme."]
-        Light10,
+        #[doc = "Custom recolor effect. Refer to `recolor_stops` for the concrete\ngradient."]
+        Custom,
         #[doc = "A recolor effect that darkens the image using the page's first available\ncolor from its color scheme."]
         Dark1,
+        #[doc = "A recolor effect that darkens the image using the page's tenth available\ncolor from its color scheme."]
+        Dark10,
         #[doc = "A recolor effect that darkens the image using the page's second available\ncolor from its color scheme."]
         Dark2,
         #[doc = "A recolor effect that darkens the image using the page's third available\ncolor from its color scheme."]
@@ -4423,32 +4405,41 @@ pub mod schemas {
         Dark8,
         #[doc = "A recolor effect that darkens the image using the page's ninth available\ncolor from its color scheme."]
         Dark9,
-        #[doc = "A recolor effect that darkens the image using the page's tenth available\ncolor from its color scheme."]
-        Dark10,
         #[doc = "A recolor effect that recolors the image to grayscale."]
         Grayscale,
+        #[doc = "A recolor effect that lightens the image using the page's first available\ncolor from its color scheme."]
+        Light1,
+        #[doc = "A recolor effect that lightens the image using the page's tenth available\ncolor from its color scheme."]
+        Light10,
+        #[doc = "A recolor effect that lightens the image using the page's second\navailable color from its color scheme."]
+        Light2,
+        #[doc = "A recolor effect that lightens the image using the page's third available\ncolor from its color scheme."]
+        Light3,
+        #[doc = "A recolor effect that lightens the image using the page's forth available\ncolor from its color scheme."]
+        Light4,
+        #[doc = "A recolor effect that lightens the image using the page's fifth available\ncolor from its color scheme."]
+        Light5,
+        #[doc = "A recolor effect that lightens the image using the page's sixth available\ncolor from its color scheme."]
+        Light6,
+        #[doc = "A recolor effect that lightens the image using the page's seventh\navailable color from its color scheme."]
+        Light7,
+        #[doc = "A recolor effect that lightens the image using the page's eighth\navailable color from its color scheme."]
+        Light8,
+        #[doc = "A recolor effect that lightens the image using the page's ninth available\ncolor from its color scheme."]
+        Light9,
         #[doc = "A recolor effect that recolors the image to negative grayscale."]
         Negative,
+        #[doc = "No recolor effect. The default value."]
+        None,
         #[doc = "A recolor effect that recolors the image using the sepia color."]
         Sepia,
-        #[doc = "Custom recolor effect. Refer to `recolor_stops` for the concrete\ngradient."]
-        Custom,
     }
     impl RecolorName {
         pub fn as_str(self) -> &'static str {
             match self {
-                RecolorName::None => "NONE",
-                RecolorName::Light1 => "LIGHT1",
-                RecolorName::Light2 => "LIGHT2",
-                RecolorName::Light3 => "LIGHT3",
-                RecolorName::Light4 => "LIGHT4",
-                RecolorName::Light5 => "LIGHT5",
-                RecolorName::Light6 => "LIGHT6",
-                RecolorName::Light7 => "LIGHT7",
-                RecolorName::Light8 => "LIGHT8",
-                RecolorName::Light9 => "LIGHT9",
-                RecolorName::Light10 => "LIGHT10",
+                RecolorName::Custom => "CUSTOM",
                 RecolorName::Dark1 => "DARK1",
+                RecolorName::Dark10 => "DARK10",
                 RecolorName::Dark2 => "DARK2",
                 RecolorName::Dark3 => "DARK3",
                 RecolorName::Dark4 => "DARK4",
@@ -4457,21 +4448,30 @@ pub mod schemas {
                 RecolorName::Dark7 => "DARK7",
                 RecolorName::Dark8 => "DARK8",
                 RecolorName::Dark9 => "DARK9",
-                RecolorName::Dark10 => "DARK10",
                 RecolorName::Grayscale => "GRAYSCALE",
+                RecolorName::Light1 => "LIGHT1",
+                RecolorName::Light10 => "LIGHT10",
+                RecolorName::Light2 => "LIGHT2",
+                RecolorName::Light3 => "LIGHT3",
+                RecolorName::Light4 => "LIGHT4",
+                RecolorName::Light5 => "LIGHT5",
+                RecolorName::Light6 => "LIGHT6",
+                RecolorName::Light7 => "LIGHT7",
+                RecolorName::Light8 => "LIGHT8",
+                RecolorName::Light9 => "LIGHT9",
                 RecolorName::Negative => "NEGATIVE",
+                RecolorName::None => "NONE",
                 RecolorName::Sepia => "SEPIA",
-                RecolorName::Custom => "CUSTOM",
             }
         }
     }
     impl ::std::fmt::Display for RecolorName {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RecolorName {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4479,24 +4479,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RecolorName {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NONE" => RecolorName::None,
-                "LIGHT1" => RecolorName::Light1,
-                "LIGHT2" => RecolorName::Light2,
-                "LIGHT3" => RecolorName::Light3,
-                "LIGHT4" => RecolorName::Light4,
-                "LIGHT5" => RecolorName::Light5,
-                "LIGHT6" => RecolorName::Light6,
-                "LIGHT7" => RecolorName::Light7,
-                "LIGHT8" => RecolorName::Light8,
-                "LIGHT9" => RecolorName::Light9,
-                "LIGHT10" => RecolorName::Light10,
+                "CUSTOM" => RecolorName::Custom,
                 "DARK1" => RecolorName::Dark1,
+                "DARK10" => RecolorName::Dark10,
                 "DARK2" => RecolorName::Dark2,
                 "DARK3" => RecolorName::Dark3,
                 "DARK4" => RecolorName::Dark4,
@@ -4505,11 +4496,20 @@ pub mod schemas {
                 "DARK7" => RecolorName::Dark7,
                 "DARK8" => RecolorName::Dark8,
                 "DARK9" => RecolorName::Dark9,
-                "DARK10" => RecolorName::Dark10,
                 "GRAYSCALE" => RecolorName::Grayscale,
+                "LIGHT1" => RecolorName::Light1,
+                "LIGHT10" => RecolorName::Light10,
+                "LIGHT2" => RecolorName::Light2,
+                "LIGHT3" => RecolorName::Light3,
+                "LIGHT4" => RecolorName::Light4,
+                "LIGHT5" => RecolorName::Light5,
+                "LIGHT6" => RecolorName::Light6,
+                "LIGHT7" => RecolorName::Light7,
+                "LIGHT8" => RecolorName::Light8,
+                "LIGHT9" => RecolorName::Light9,
                 "NEGATIVE" => RecolorName::Negative,
+                "NONE" => RecolorName::None,
                 "SEPIA" => RecolorName::Sepia,
-                "CUSTOM" => RecolorName::Custom,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4576,25 +4576,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithImageRequestImageReplaceMethod {
-        #[doc = "Unspecified image replace method. This value must not be used."]
-        ImageReplaceMethodUnspecified,
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
-        CenterInside,
         #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
         CenterCrop,
+        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        CenterInside,
+        #[doc = "Unspecified image replace method. This value must not be used."]
+        ImageReplaceMethodUnspecified,
     }
     impl ReplaceAllShapesWithImageRequestImageReplaceMethod {
         pub fn as_str(self) -> &'static str {
-            match self { ReplaceAllShapesWithImageRequestImageReplaceMethod :: ImageReplaceMethodUnspecified => "IMAGE_REPLACE_METHOD_UNSPECIFIED" , ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterInside => "CENTER_INSIDE" , ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterCrop => "CENTER_CROP" , }
+            match self { ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterCrop => "CENTER_CROP" , ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterInside => "CENTER_INSIDE" , ReplaceAllShapesWithImageRequestImageReplaceMethod :: ImageReplaceMethodUnspecified => "IMAGE_REPLACE_METHOD_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for ReplaceAllShapesWithImageRequestImageReplaceMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReplaceAllShapesWithImageRequestImageReplaceMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4602,12 +4602,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReplaceAllShapesWithImageRequestImageReplaceMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "IMAGE_REPLACE_METHOD_UNSPECIFIED" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: ImageReplaceMethodUnspecified , "CENTER_INSIDE" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterInside , "CENTER_CROP" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterCrop , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CENTER_CROP" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterCrop , "CENTER_INSIDE" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: CenterInside , "IMAGE_REPLACE_METHOD_UNSPECIFIED" => ReplaceAllShapesWithImageRequestImageReplaceMethod :: ImageReplaceMethodUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for ReplaceAllShapesWithImageRequestImageReplaceMethod {
@@ -4621,26 +4621,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithImageRequestReplaceMethod {
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
-        CenterInside,
         #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
         CenterCrop,
+        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        CenterInside,
     }
     impl ReplaceAllShapesWithImageRequestReplaceMethod {
         pub fn as_str(self) -> &'static str {
             match self {
-                ReplaceAllShapesWithImageRequestReplaceMethod::CenterInside => "CENTER_INSIDE",
                 ReplaceAllShapesWithImageRequestReplaceMethod::CenterCrop => "CENTER_CROP",
+                ReplaceAllShapesWithImageRequestReplaceMethod::CenterInside => "CENTER_INSIDE",
             }
         }
     }
     impl ::std::fmt::Display for ReplaceAllShapesWithImageRequestReplaceMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReplaceAllShapesWithImageRequestReplaceMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4648,14 +4648,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReplaceAllShapesWithImageRequestReplaceMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "CENTER_INSIDE" => ReplaceAllShapesWithImageRequestReplaceMethod::CenterInside,
                 "CENTER_CROP" => ReplaceAllShapesWithImageRequestReplaceMethod::CenterCrop,
+                "CENTER_INSIDE" => ReplaceAllShapesWithImageRequestReplaceMethod::CenterInside,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4743,28 +4743,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
-        NotLinkedImage,
         #[doc = "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."]
         Linked,
+        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
+        NotLinkedImage,
     }
     impl ReplaceAllShapesWithSheetsChartRequestLinkingMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                ReplaceAllShapesWithSheetsChartRequestLinkingMode::Linked => "LINKED",
                 ReplaceAllShapesWithSheetsChartRequestLinkingMode::NotLinkedImage => {
                     "NOT_LINKED_IMAGE"
                 }
-                ReplaceAllShapesWithSheetsChartRequestLinkingMode::Linked => "LINKED",
             }
         }
     }
     impl ::std::fmt::Display for ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4772,16 +4772,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LINKED" => ReplaceAllShapesWithSheetsChartRequestLinkingMode::Linked,
                 "NOT_LINKED_IMAGE" => {
                     ReplaceAllShapesWithSheetsChartRequestLinkingMode::NotLinkedImage
                 }
-                "LINKED" => ReplaceAllShapesWithSheetsChartRequestLinkingMode::Linked,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4926,31 +4926,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceImageRequestImageReplaceMethod {
-        #[doc = "Unspecified image replace method. This value must not be used."]
-        ImageReplaceMethodUnspecified,
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
-        CenterInside,
         #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
         CenterCrop,
+        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        CenterInside,
+        #[doc = "Unspecified image replace method. This value must not be used."]
+        ImageReplaceMethodUnspecified,
     }
     impl ReplaceImageRequestImageReplaceMethod {
         pub fn as_str(self) -> &'static str {
             match self {
+                ReplaceImageRequestImageReplaceMethod::CenterCrop => "CENTER_CROP",
+                ReplaceImageRequestImageReplaceMethod::CenterInside => "CENTER_INSIDE",
                 ReplaceImageRequestImageReplaceMethod::ImageReplaceMethodUnspecified => {
                     "IMAGE_REPLACE_METHOD_UNSPECIFIED"
                 }
-                ReplaceImageRequestImageReplaceMethod::CenterInside => "CENTER_INSIDE",
-                ReplaceImageRequestImageReplaceMethod::CenterCrop => "CENTER_CROP",
             }
         }
     }
     impl ::std::fmt::Display for ReplaceImageRequestImageReplaceMethod {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReplaceImageRequestImageReplaceMethod {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4958,17 +4958,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReplaceImageRequestImageReplaceMethod {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CENTER_CROP" => ReplaceImageRequestImageReplaceMethod::CenterCrop,
+                "CENTER_INSIDE" => ReplaceImageRequestImageReplaceMethod::CenterInside,
                 "IMAGE_REPLACE_METHOD_UNSPECIFIED" => {
                     ReplaceImageRequestImageReplaceMethod::ImageReplaceMethodUnspecified
                 }
-                "CENTER_INSIDE" => ReplaceImageRequestImageReplaceMethod::CenterInside,
-                "CENTER_CROP" => ReplaceImageRequestImageReplaceMethod::CenterCrop,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5293,50 +5293,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShadowAlignment {
-        #[doc = "Unspecified."]
-        RectanglePositionUnspecified,
-        #[doc = "Top left."]
-        TopLeft,
-        #[doc = "Top center."]
-        TopCenter,
-        #[doc = "Top right."]
-        TopRight,
-        #[doc = "Left center."]
-        LeftCenter,
-        #[doc = "Center."]
-        Center,
-        #[doc = "Right center."]
-        RightCenter,
-        #[doc = "Bottom left."]
-        BottomLeft,
         #[doc = "Bottom center."]
         BottomCenter,
+        #[doc = "Bottom left."]
+        BottomLeft,
         #[doc = "Bottom right."]
         BottomRight,
+        #[doc = "Center."]
+        Center,
+        #[doc = "Left center."]
+        LeftCenter,
+        #[doc = "Unspecified."]
+        RectanglePositionUnspecified,
+        #[doc = "Right center."]
+        RightCenter,
+        #[doc = "Top center."]
+        TopCenter,
+        #[doc = "Top left."]
+        TopLeft,
+        #[doc = "Top right."]
+        TopRight,
     }
     impl ShadowAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
-                ShadowAlignment::RectanglePositionUnspecified => "RECTANGLE_POSITION_UNSPECIFIED",
-                ShadowAlignment::TopLeft => "TOP_LEFT",
-                ShadowAlignment::TopCenter => "TOP_CENTER",
-                ShadowAlignment::TopRight => "TOP_RIGHT",
-                ShadowAlignment::LeftCenter => "LEFT_CENTER",
-                ShadowAlignment::Center => "CENTER",
-                ShadowAlignment::RightCenter => "RIGHT_CENTER",
-                ShadowAlignment::BottomLeft => "BOTTOM_LEFT",
                 ShadowAlignment::BottomCenter => "BOTTOM_CENTER",
+                ShadowAlignment::BottomLeft => "BOTTOM_LEFT",
                 ShadowAlignment::BottomRight => "BOTTOM_RIGHT",
+                ShadowAlignment::Center => "CENTER",
+                ShadowAlignment::LeftCenter => "LEFT_CENTER",
+                ShadowAlignment::RectanglePositionUnspecified => "RECTANGLE_POSITION_UNSPECIFIED",
+                ShadowAlignment::RightCenter => "RIGHT_CENTER",
+                ShadowAlignment::TopCenter => "TOP_CENTER",
+                ShadowAlignment::TopLeft => "TOP_LEFT",
+                ShadowAlignment::TopRight => "TOP_RIGHT",
             }
         }
     }
     impl ::std::fmt::Display for ShadowAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShadowAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5344,22 +5344,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShadowAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RECTANGLE_POSITION_UNSPECIFIED" => ShadowAlignment::RectanglePositionUnspecified,
-                "TOP_LEFT" => ShadowAlignment::TopLeft,
-                "TOP_CENTER" => ShadowAlignment::TopCenter,
-                "TOP_RIGHT" => ShadowAlignment::TopRight,
-                "LEFT_CENTER" => ShadowAlignment::LeftCenter,
-                "CENTER" => ShadowAlignment::Center,
-                "RIGHT_CENTER" => ShadowAlignment::RightCenter,
-                "BOTTOM_LEFT" => ShadowAlignment::BottomLeft,
                 "BOTTOM_CENTER" => ShadowAlignment::BottomCenter,
+                "BOTTOM_LEFT" => ShadowAlignment::BottomLeft,
                 "BOTTOM_RIGHT" => ShadowAlignment::BottomRight,
+                "CENTER" => ShadowAlignment::Center,
+                "LEFT_CENTER" => ShadowAlignment::LeftCenter,
+                "RECTANGLE_POSITION_UNSPECIFIED" => ShadowAlignment::RectanglePositionUnspecified,
+                "RIGHT_CENTER" => ShadowAlignment::RightCenter,
+                "TOP_CENTER" => ShadowAlignment::TopCenter,
+                "TOP_LEFT" => ShadowAlignment::TopLeft,
+                "TOP_RIGHT" => ShadowAlignment::TopRight,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5380,29 +5380,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShadowPropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
-        Rendered,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
-        NotRendered,
         #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
         Inherit,
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        Rendered,
     }
     impl ShadowPropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ShadowPropertyState::Rendered => "RENDERED",
-                ShadowPropertyState::NotRendered => "NOT_RENDERED",
                 ShadowPropertyState::Inherit => "INHERIT",
+                ShadowPropertyState::NotRendered => "NOT_RENDERED",
+                ShadowPropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for ShadowPropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShadowPropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5410,15 +5410,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShadowPropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => ShadowPropertyState::Rendered,
-                "NOT_RENDERED" => ShadowPropertyState::NotRendered,
                 "INHERIT" => ShadowPropertyState::Inherit,
+                "NOT_RENDERED" => ShadowPropertyState::NotRendered,
+                "RENDERED" => ShadowPropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5439,26 +5439,26 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShadowType {
-        #[doc = "Unspecified shadow type."]
-        ShadowTypeUnspecified,
         #[doc = "Outer shadow."]
         Outer,
+        #[doc = "Unspecified shadow type."]
+        ShadowTypeUnspecified,
     }
     impl ShadowType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ShadowType::ShadowTypeUnspecified => "SHADOW_TYPE_UNSPECIFIED",
                 ShadowType::Outer => "OUTER",
+                ShadowType::ShadowTypeUnspecified => "SHADOW_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ShadowType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShadowType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5466,14 +5466,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShadowType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SHADOW_TYPE_UNSPECIFIED" => ShadowType::ShadowTypeUnspecified,
                 "OUTER" => ShadowType::Outer,
+                "SHADOW_TYPE_UNSPECIFIED" => ShadowType::ShadowTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5532,18 +5532,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShapeShapeType {
-        #[doc = "The shape type that is not predefined."]
-        TypeUnspecified,
-        #[doc = "Text box shape."]
-        TextBox,
-        #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
-        Rectangle,
-        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
-        RoundRectangle,
-        #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
-        Ellipse,
         #[doc = "Curved arc shape. Corresponds to ECMA-376 ST_ShapeType 'arc'"]
         Arc,
+        #[doc = "East arrow shape."]
+        ArrowEast,
+        #[doc = "North arrow shape."]
+        ArrowNorth,
+        #[doc = "Northeast arrow shape."]
+        ArrowNorthEast,
         #[doc = "Bent arrow shape. Corresponds to ECMA-376 ST_ShapeType 'bentArrow'"]
         BentArrow,
         #[doc = "Bent up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'bentUpArrow'"]
@@ -5564,6 +5560,8 @@ pub mod schemas {
         Chord,
         #[doc = "Cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloud'"]
         Cloud,
+        #[doc = "Callout cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloudCallout'"]
+        CloudCallout,
         #[doc = "Corner shape. Corresponds to ECMA-376 ST_ShapeType 'corner'"]
         Corner,
         #[doc = "Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'"]
@@ -5576,6 +5574,8 @@ pub mod schemas {
         CurvedRightArrow,
         #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedUpArrow'"]
         CurvedUpArrow,
+        #[doc = "Custom shape."]
+        Custom,
         #[doc = "Decagon shape. Corresponds to ECMA-376 ST_ShapeType 'decagon'"]
         Decagon,
         #[doc = "Diagonal stripe shape. Corresponds to ECMA-376 ST_ShapeType 'diagStripe'"]
@@ -5592,6 +5592,70 @@ pub mod schemas {
         DownArrow,
         #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'downArrowCallout'"]
         DownArrowCallout,
+        #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
+        Ellipse,
+        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
+        EllipseRibbon,
+        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
+        EllipseRibbon2,
+        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
+        FlowChartAlternateProcess,
+        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
+        FlowChartCollate,
+        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
+        FlowChartConnector,
+        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
+        FlowChartDecision,
+        #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
+        FlowChartDelay,
+        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
+        FlowChartDisplay,
+        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
+        FlowChartDocument,
+        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
+        FlowChartExtract,
+        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
+        FlowChartInputOutput,
+        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
+        FlowChartInternalStorage,
+        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
+        FlowChartMagneticDisk,
+        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
+        FlowChartMagneticDrum,
+        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
+        FlowChartMagneticTape,
+        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
+        FlowChartManualInput,
+        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
+        FlowChartManualOperation,
+        #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
+        FlowChartMerge,
+        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
+        FlowChartMultidocument,
+        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
+        FlowChartOfflineStorage,
+        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
+        FlowChartOffpageConnector,
+        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
+        FlowChartOnlineStorage,
+        #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
+        FlowChartOr,
+        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
+        FlowChartPredefinedProcess,
+        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
+        FlowChartPreparation,
+        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
+        FlowChartProcess,
+        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
+        FlowChartPunchedCard,
+        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
+        FlowChartPunchedTape,
+        #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
+        FlowChartSort,
+        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
+        FlowChartSummingJunction,
+        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
+        FlowChartTerminator,
         #[doc = "Folded corner shape. Corresponds to ECMA-376 ST_ShapeType 'foldedCorner'"]
         FoldedCorner,
         #[doc = "Frame shape. Corresponds to ECMA-376 ST_ShapeType 'frame'"]
@@ -5664,6 +5728,8 @@ pub mod schemas {
         QuadArrow,
         #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'quadArrowCallout'"]
         QuadArrowCallout,
+        #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
+        Rectangle,
         #[doc = "Ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon'"]
         Ribbon,
         #[doc = "Ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon2'"]
@@ -5676,14 +5742,16 @@ pub mod schemas {
         RightBrace,
         #[doc = "Right bracket shape. Corresponds to ECMA-376 ST_ShapeType 'rightBracket'"]
         RightBracket,
+        #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
+        RightTriangle,
         #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'round1Rect'"]
         Round1Rectangle,
         #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2DiagRect'"]
         Round2DiagonalRectangle,
         #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2SameRect'"]
         Round2SameRectangle,
-        #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
-        RightTriangle,
+        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
+        RoundRectangle,
         #[doc = "Smiley face shape. Corresponds to ECMA-376 ST_ShapeType 'smileyFace'"]
         SmileyFace,
         #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'snip1Rect'"]
@@ -5694,6 +5762,8 @@ pub mod schemas {
         Snip2SameRectangle,
         #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snipRoundRect'"]
         SnipRoundRectangle,
+        #[doc = "Speech shape."]
+        Speech,
         #[doc = "Ten pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star10'"]
         Star10,
         #[doc = "Twelve pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star12'"]
@@ -5714,14 +5784,22 @@ pub mod schemas {
         Star7,
         #[doc = "Eight pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star8'"]
         Star8,
+        #[doc = "Star burst shape."]
+        Starburst,
         #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'stripedRightArrow'"]
         StripedRightArrow,
         #[doc = "Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'"]
         Sun,
+        #[doc = "Teardrop shape. Corresponds to ECMA-376 ST_ShapeType 'teardrop'"]
+        Teardrop,
+        #[doc = "Text box shape."]
+        TextBox,
         #[doc = "Trapezoid shape. Corresponds to ECMA-376 ST_ShapeType 'trapezoid'"]
         Trapezoid,
         #[doc = "Triangle shape. Corresponds to ECMA-376 ST_ShapeType 'triangle'"]
         Triangle,
+        #[doc = "The shape type that is not predefined."]
+        TypeUnspecified,
         #[doc = "Up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrow'"]
         UpArrow,
         #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'upArrowCallout'"]
@@ -5740,94 +5818,14 @@ pub mod schemas {
         WedgeRectangleCallout,
         #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRoundRectCallout'"]
         WedgeRoundRectangleCallout,
-        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
-        FlowChartAlternateProcess,
-        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
-        FlowChartCollate,
-        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
-        FlowChartConnector,
-        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
-        FlowChartDecision,
-        #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
-        FlowChartDelay,
-        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
-        FlowChartDisplay,
-        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
-        FlowChartDocument,
-        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
-        FlowChartExtract,
-        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
-        FlowChartInputOutput,
-        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
-        FlowChartInternalStorage,
-        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
-        FlowChartMagneticDisk,
-        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
-        FlowChartMagneticDrum,
-        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
-        FlowChartMagneticTape,
-        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
-        FlowChartManualInput,
-        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
-        FlowChartManualOperation,
-        #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
-        FlowChartMerge,
-        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
-        FlowChartMultidocument,
-        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
-        FlowChartOfflineStorage,
-        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
-        FlowChartOffpageConnector,
-        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
-        FlowChartOnlineStorage,
-        #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
-        FlowChartOr,
-        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
-        FlowChartPredefinedProcess,
-        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
-        FlowChartPreparation,
-        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
-        FlowChartProcess,
-        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
-        FlowChartPunchedCard,
-        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
-        FlowChartPunchedTape,
-        #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
-        FlowChartSort,
-        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
-        FlowChartSummingJunction,
-        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
-        FlowChartTerminator,
-        #[doc = "East arrow shape."]
-        ArrowEast,
-        #[doc = "Northeast arrow shape."]
-        ArrowNorthEast,
-        #[doc = "North arrow shape."]
-        ArrowNorth,
-        #[doc = "Speech shape."]
-        Speech,
-        #[doc = "Star burst shape."]
-        Starburst,
-        #[doc = "Teardrop shape. Corresponds to ECMA-376 ST_ShapeType 'teardrop'"]
-        Teardrop,
-        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
-        EllipseRibbon,
-        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
-        EllipseRibbon2,
-        #[doc = "Callout cloud shape. Corresponds to ECMA-376 ST_ShapeType 'cloudCallout'"]
-        CloudCallout,
-        #[doc = "Custom shape."]
-        Custom,
     }
     impl ShapeShapeType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ShapeShapeType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                ShapeShapeType::TextBox => "TEXT_BOX",
-                ShapeShapeType::Rectangle => "RECTANGLE",
-                ShapeShapeType::RoundRectangle => "ROUND_RECTANGLE",
-                ShapeShapeType::Ellipse => "ELLIPSE",
                 ShapeShapeType::Arc => "ARC",
+                ShapeShapeType::ArrowEast => "ARROW_EAST",
+                ShapeShapeType::ArrowNorth => "ARROW_NORTH",
+                ShapeShapeType::ArrowNorthEast => "ARROW_NORTH_EAST",
                 ShapeShapeType::BentArrow => "BENT_ARROW",
                 ShapeShapeType::BentUpArrow => "BENT_UP_ARROW",
                 ShapeShapeType::Bevel => "BEVEL",
@@ -5838,12 +5836,14 @@ pub mod schemas {
                 ShapeShapeType::Chevron => "CHEVRON",
                 ShapeShapeType::Chord => "CHORD",
                 ShapeShapeType::Cloud => "CLOUD",
+                ShapeShapeType::CloudCallout => "CLOUD_CALLOUT",
                 ShapeShapeType::Corner => "CORNER",
                 ShapeShapeType::Cube => "CUBE",
                 ShapeShapeType::CurvedDownArrow => "CURVED_DOWN_ARROW",
                 ShapeShapeType::CurvedLeftArrow => "CURVED_LEFT_ARROW",
                 ShapeShapeType::CurvedRightArrow => "CURVED_RIGHT_ARROW",
                 ShapeShapeType::CurvedUpArrow => "CURVED_UP_ARROW",
+                ShapeShapeType::Custom => "CUSTOM",
                 ShapeShapeType::Decagon => "DECAGON",
                 ShapeShapeType::DiagonalStripe => "DIAGONAL_STRIPE",
                 ShapeShapeType::Diamond => "DIAMOND",
@@ -5852,6 +5852,38 @@ pub mod schemas {
                 ShapeShapeType::DoubleWave => "DOUBLE_WAVE",
                 ShapeShapeType::DownArrow => "DOWN_ARROW",
                 ShapeShapeType::DownArrowCallout => "DOWN_ARROW_CALLOUT",
+                ShapeShapeType::Ellipse => "ELLIPSE",
+                ShapeShapeType::EllipseRibbon => "ELLIPSE_RIBBON",
+                ShapeShapeType::EllipseRibbon2 => "ELLIPSE_RIBBON_2",
+                ShapeShapeType::FlowChartAlternateProcess => "FLOW_CHART_ALTERNATE_PROCESS",
+                ShapeShapeType::FlowChartCollate => "FLOW_CHART_COLLATE",
+                ShapeShapeType::FlowChartConnector => "FLOW_CHART_CONNECTOR",
+                ShapeShapeType::FlowChartDecision => "FLOW_CHART_DECISION",
+                ShapeShapeType::FlowChartDelay => "FLOW_CHART_DELAY",
+                ShapeShapeType::FlowChartDisplay => "FLOW_CHART_DISPLAY",
+                ShapeShapeType::FlowChartDocument => "FLOW_CHART_DOCUMENT",
+                ShapeShapeType::FlowChartExtract => "FLOW_CHART_EXTRACT",
+                ShapeShapeType::FlowChartInputOutput => "FLOW_CHART_INPUT_OUTPUT",
+                ShapeShapeType::FlowChartInternalStorage => "FLOW_CHART_INTERNAL_STORAGE",
+                ShapeShapeType::FlowChartMagneticDisk => "FLOW_CHART_MAGNETIC_DISK",
+                ShapeShapeType::FlowChartMagneticDrum => "FLOW_CHART_MAGNETIC_DRUM",
+                ShapeShapeType::FlowChartMagneticTape => "FLOW_CHART_MAGNETIC_TAPE",
+                ShapeShapeType::FlowChartManualInput => "FLOW_CHART_MANUAL_INPUT",
+                ShapeShapeType::FlowChartManualOperation => "FLOW_CHART_MANUAL_OPERATION",
+                ShapeShapeType::FlowChartMerge => "FLOW_CHART_MERGE",
+                ShapeShapeType::FlowChartMultidocument => "FLOW_CHART_MULTIDOCUMENT",
+                ShapeShapeType::FlowChartOfflineStorage => "FLOW_CHART_OFFLINE_STORAGE",
+                ShapeShapeType::FlowChartOffpageConnector => "FLOW_CHART_OFFPAGE_CONNECTOR",
+                ShapeShapeType::FlowChartOnlineStorage => "FLOW_CHART_ONLINE_STORAGE",
+                ShapeShapeType::FlowChartOr => "FLOW_CHART_OR",
+                ShapeShapeType::FlowChartPredefinedProcess => "FLOW_CHART_PREDEFINED_PROCESS",
+                ShapeShapeType::FlowChartPreparation => "FLOW_CHART_PREPARATION",
+                ShapeShapeType::FlowChartProcess => "FLOW_CHART_PROCESS",
+                ShapeShapeType::FlowChartPunchedCard => "FLOW_CHART_PUNCHED_CARD",
+                ShapeShapeType::FlowChartPunchedTape => "FLOW_CHART_PUNCHED_TAPE",
+                ShapeShapeType::FlowChartSort => "FLOW_CHART_SORT",
+                ShapeShapeType::FlowChartSummingJunction => "FLOW_CHART_SUMMING_JUNCTION",
+                ShapeShapeType::FlowChartTerminator => "FLOW_CHART_TERMINATOR",
                 ShapeShapeType::FoldedCorner => "FOLDED_CORNER",
                 ShapeShapeType::Frame => "FRAME",
                 ShapeShapeType::HalfFrame => "HALF_FRAME",
@@ -5888,21 +5920,24 @@ pub mod schemas {
                 ShapeShapeType::Plus => "PLUS",
                 ShapeShapeType::QuadArrow => "QUAD_ARROW",
                 ShapeShapeType::QuadArrowCallout => "QUAD_ARROW_CALLOUT",
+                ShapeShapeType::Rectangle => "RECTANGLE",
                 ShapeShapeType::Ribbon => "RIBBON",
                 ShapeShapeType::Ribbon2 => "RIBBON_2",
                 ShapeShapeType::RightArrow => "RIGHT_ARROW",
                 ShapeShapeType::RightArrowCallout => "RIGHT_ARROW_CALLOUT",
                 ShapeShapeType::RightBrace => "RIGHT_BRACE",
                 ShapeShapeType::RightBracket => "RIGHT_BRACKET",
+                ShapeShapeType::RightTriangle => "RIGHT_TRIANGLE",
                 ShapeShapeType::Round1Rectangle => "ROUND_1_RECTANGLE",
                 ShapeShapeType::Round2DiagonalRectangle => "ROUND_2_DIAGONAL_RECTANGLE",
                 ShapeShapeType::Round2SameRectangle => "ROUND_2_SAME_RECTANGLE",
-                ShapeShapeType::RightTriangle => "RIGHT_TRIANGLE",
+                ShapeShapeType::RoundRectangle => "ROUND_RECTANGLE",
                 ShapeShapeType::SmileyFace => "SMILEY_FACE",
                 ShapeShapeType::Snip1Rectangle => "SNIP_1_RECTANGLE",
                 ShapeShapeType::Snip2DiagonalRectangle => "SNIP_2_DIAGONAL_RECTANGLE",
                 ShapeShapeType::Snip2SameRectangle => "SNIP_2_SAME_RECTANGLE",
                 ShapeShapeType::SnipRoundRectangle => "SNIP_ROUND_RECTANGLE",
+                ShapeShapeType::Speech => "SPEECH",
                 ShapeShapeType::Star10 => "STAR_10",
                 ShapeShapeType::Star12 => "STAR_12",
                 ShapeShapeType::Star16 => "STAR_16",
@@ -5913,10 +5948,14 @@ pub mod schemas {
                 ShapeShapeType::Star6 => "STAR_6",
                 ShapeShapeType::Star7 => "STAR_7",
                 ShapeShapeType::Star8 => "STAR_8",
+                ShapeShapeType::Starburst => "STARBURST",
                 ShapeShapeType::StripedRightArrow => "STRIPED_RIGHT_ARROW",
                 ShapeShapeType::Sun => "SUN",
+                ShapeShapeType::Teardrop => "TEARDROP",
+                ShapeShapeType::TextBox => "TEXT_BOX",
                 ShapeShapeType::Trapezoid => "TRAPEZOID",
                 ShapeShapeType::Triangle => "TRIANGLE",
+                ShapeShapeType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 ShapeShapeType::UpArrow => "UP_ARROW",
                 ShapeShapeType::UpArrowCallout => "UP_ARROW_CALLOUT",
                 ShapeShapeType::UpDownArrow => "UP_DOWN_ARROW",
@@ -5926,55 +5965,16 @@ pub mod schemas {
                 ShapeShapeType::WedgeEllipseCallout => "WEDGE_ELLIPSE_CALLOUT",
                 ShapeShapeType::WedgeRectangleCallout => "WEDGE_RECTANGLE_CALLOUT",
                 ShapeShapeType::WedgeRoundRectangleCallout => "WEDGE_ROUND_RECTANGLE_CALLOUT",
-                ShapeShapeType::FlowChartAlternateProcess => "FLOW_CHART_ALTERNATE_PROCESS",
-                ShapeShapeType::FlowChartCollate => "FLOW_CHART_COLLATE",
-                ShapeShapeType::FlowChartConnector => "FLOW_CHART_CONNECTOR",
-                ShapeShapeType::FlowChartDecision => "FLOW_CHART_DECISION",
-                ShapeShapeType::FlowChartDelay => "FLOW_CHART_DELAY",
-                ShapeShapeType::FlowChartDisplay => "FLOW_CHART_DISPLAY",
-                ShapeShapeType::FlowChartDocument => "FLOW_CHART_DOCUMENT",
-                ShapeShapeType::FlowChartExtract => "FLOW_CHART_EXTRACT",
-                ShapeShapeType::FlowChartInputOutput => "FLOW_CHART_INPUT_OUTPUT",
-                ShapeShapeType::FlowChartInternalStorage => "FLOW_CHART_INTERNAL_STORAGE",
-                ShapeShapeType::FlowChartMagneticDisk => "FLOW_CHART_MAGNETIC_DISK",
-                ShapeShapeType::FlowChartMagneticDrum => "FLOW_CHART_MAGNETIC_DRUM",
-                ShapeShapeType::FlowChartMagneticTape => "FLOW_CHART_MAGNETIC_TAPE",
-                ShapeShapeType::FlowChartManualInput => "FLOW_CHART_MANUAL_INPUT",
-                ShapeShapeType::FlowChartManualOperation => "FLOW_CHART_MANUAL_OPERATION",
-                ShapeShapeType::FlowChartMerge => "FLOW_CHART_MERGE",
-                ShapeShapeType::FlowChartMultidocument => "FLOW_CHART_MULTIDOCUMENT",
-                ShapeShapeType::FlowChartOfflineStorage => "FLOW_CHART_OFFLINE_STORAGE",
-                ShapeShapeType::FlowChartOffpageConnector => "FLOW_CHART_OFFPAGE_CONNECTOR",
-                ShapeShapeType::FlowChartOnlineStorage => "FLOW_CHART_ONLINE_STORAGE",
-                ShapeShapeType::FlowChartOr => "FLOW_CHART_OR",
-                ShapeShapeType::FlowChartPredefinedProcess => "FLOW_CHART_PREDEFINED_PROCESS",
-                ShapeShapeType::FlowChartPreparation => "FLOW_CHART_PREPARATION",
-                ShapeShapeType::FlowChartProcess => "FLOW_CHART_PROCESS",
-                ShapeShapeType::FlowChartPunchedCard => "FLOW_CHART_PUNCHED_CARD",
-                ShapeShapeType::FlowChartPunchedTape => "FLOW_CHART_PUNCHED_TAPE",
-                ShapeShapeType::FlowChartSort => "FLOW_CHART_SORT",
-                ShapeShapeType::FlowChartSummingJunction => "FLOW_CHART_SUMMING_JUNCTION",
-                ShapeShapeType::FlowChartTerminator => "FLOW_CHART_TERMINATOR",
-                ShapeShapeType::ArrowEast => "ARROW_EAST",
-                ShapeShapeType::ArrowNorthEast => "ARROW_NORTH_EAST",
-                ShapeShapeType::ArrowNorth => "ARROW_NORTH",
-                ShapeShapeType::Speech => "SPEECH",
-                ShapeShapeType::Starburst => "STARBURST",
-                ShapeShapeType::Teardrop => "TEARDROP",
-                ShapeShapeType::EllipseRibbon => "ELLIPSE_RIBBON",
-                ShapeShapeType::EllipseRibbon2 => "ELLIPSE_RIBBON_2",
-                ShapeShapeType::CloudCallout => "CLOUD_CALLOUT",
-                ShapeShapeType::Custom => "CUSTOM",
             }
         }
     }
     impl ::std::fmt::Display for ShapeShapeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShapeShapeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5982,18 +5982,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShapeShapeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => ShapeShapeType::TypeUnspecified,
-                "TEXT_BOX" => ShapeShapeType::TextBox,
-                "RECTANGLE" => ShapeShapeType::Rectangle,
-                "ROUND_RECTANGLE" => ShapeShapeType::RoundRectangle,
-                "ELLIPSE" => ShapeShapeType::Ellipse,
                 "ARC" => ShapeShapeType::Arc,
+                "ARROW_EAST" => ShapeShapeType::ArrowEast,
+                "ARROW_NORTH" => ShapeShapeType::ArrowNorth,
+                "ARROW_NORTH_EAST" => ShapeShapeType::ArrowNorthEast,
                 "BENT_ARROW" => ShapeShapeType::BentArrow,
                 "BENT_UP_ARROW" => ShapeShapeType::BentUpArrow,
                 "BEVEL" => ShapeShapeType::Bevel,
@@ -6004,12 +6002,14 @@ pub mod schemas {
                 "CHEVRON" => ShapeShapeType::Chevron,
                 "CHORD" => ShapeShapeType::Chord,
                 "CLOUD" => ShapeShapeType::Cloud,
+                "CLOUD_CALLOUT" => ShapeShapeType::CloudCallout,
                 "CORNER" => ShapeShapeType::Corner,
                 "CUBE" => ShapeShapeType::Cube,
                 "CURVED_DOWN_ARROW" => ShapeShapeType::CurvedDownArrow,
                 "CURVED_LEFT_ARROW" => ShapeShapeType::CurvedLeftArrow,
                 "CURVED_RIGHT_ARROW" => ShapeShapeType::CurvedRightArrow,
                 "CURVED_UP_ARROW" => ShapeShapeType::CurvedUpArrow,
+                "CUSTOM" => ShapeShapeType::Custom,
                 "DECAGON" => ShapeShapeType::Decagon,
                 "DIAGONAL_STRIPE" => ShapeShapeType::DiagonalStripe,
                 "DIAMOND" => ShapeShapeType::Diamond,
@@ -6018,6 +6018,38 @@ pub mod schemas {
                 "DOUBLE_WAVE" => ShapeShapeType::DoubleWave,
                 "DOWN_ARROW" => ShapeShapeType::DownArrow,
                 "DOWN_ARROW_CALLOUT" => ShapeShapeType::DownArrowCallout,
+                "ELLIPSE" => ShapeShapeType::Ellipse,
+                "ELLIPSE_RIBBON" => ShapeShapeType::EllipseRibbon,
+                "ELLIPSE_RIBBON_2" => ShapeShapeType::EllipseRibbon2,
+                "FLOW_CHART_ALTERNATE_PROCESS" => ShapeShapeType::FlowChartAlternateProcess,
+                "FLOW_CHART_COLLATE" => ShapeShapeType::FlowChartCollate,
+                "FLOW_CHART_CONNECTOR" => ShapeShapeType::FlowChartConnector,
+                "FLOW_CHART_DECISION" => ShapeShapeType::FlowChartDecision,
+                "FLOW_CHART_DELAY" => ShapeShapeType::FlowChartDelay,
+                "FLOW_CHART_DISPLAY" => ShapeShapeType::FlowChartDisplay,
+                "FLOW_CHART_DOCUMENT" => ShapeShapeType::FlowChartDocument,
+                "FLOW_CHART_EXTRACT" => ShapeShapeType::FlowChartExtract,
+                "FLOW_CHART_INPUT_OUTPUT" => ShapeShapeType::FlowChartInputOutput,
+                "FLOW_CHART_INTERNAL_STORAGE" => ShapeShapeType::FlowChartInternalStorage,
+                "FLOW_CHART_MAGNETIC_DISK" => ShapeShapeType::FlowChartMagneticDisk,
+                "FLOW_CHART_MAGNETIC_DRUM" => ShapeShapeType::FlowChartMagneticDrum,
+                "FLOW_CHART_MAGNETIC_TAPE" => ShapeShapeType::FlowChartMagneticTape,
+                "FLOW_CHART_MANUAL_INPUT" => ShapeShapeType::FlowChartManualInput,
+                "FLOW_CHART_MANUAL_OPERATION" => ShapeShapeType::FlowChartManualOperation,
+                "FLOW_CHART_MERGE" => ShapeShapeType::FlowChartMerge,
+                "FLOW_CHART_MULTIDOCUMENT" => ShapeShapeType::FlowChartMultidocument,
+                "FLOW_CHART_OFFLINE_STORAGE" => ShapeShapeType::FlowChartOfflineStorage,
+                "FLOW_CHART_OFFPAGE_CONNECTOR" => ShapeShapeType::FlowChartOffpageConnector,
+                "FLOW_CHART_ONLINE_STORAGE" => ShapeShapeType::FlowChartOnlineStorage,
+                "FLOW_CHART_OR" => ShapeShapeType::FlowChartOr,
+                "FLOW_CHART_PREDEFINED_PROCESS" => ShapeShapeType::FlowChartPredefinedProcess,
+                "FLOW_CHART_PREPARATION" => ShapeShapeType::FlowChartPreparation,
+                "FLOW_CHART_PROCESS" => ShapeShapeType::FlowChartProcess,
+                "FLOW_CHART_PUNCHED_CARD" => ShapeShapeType::FlowChartPunchedCard,
+                "FLOW_CHART_PUNCHED_TAPE" => ShapeShapeType::FlowChartPunchedTape,
+                "FLOW_CHART_SORT" => ShapeShapeType::FlowChartSort,
+                "FLOW_CHART_SUMMING_JUNCTION" => ShapeShapeType::FlowChartSummingJunction,
+                "FLOW_CHART_TERMINATOR" => ShapeShapeType::FlowChartTerminator,
                 "FOLDED_CORNER" => ShapeShapeType::FoldedCorner,
                 "FRAME" => ShapeShapeType::Frame,
                 "HALF_FRAME" => ShapeShapeType::HalfFrame,
@@ -6054,21 +6086,24 @@ pub mod schemas {
                 "PLUS" => ShapeShapeType::Plus,
                 "QUAD_ARROW" => ShapeShapeType::QuadArrow,
                 "QUAD_ARROW_CALLOUT" => ShapeShapeType::QuadArrowCallout,
+                "RECTANGLE" => ShapeShapeType::Rectangle,
                 "RIBBON" => ShapeShapeType::Ribbon,
                 "RIBBON_2" => ShapeShapeType::Ribbon2,
                 "RIGHT_ARROW" => ShapeShapeType::RightArrow,
                 "RIGHT_ARROW_CALLOUT" => ShapeShapeType::RightArrowCallout,
                 "RIGHT_BRACE" => ShapeShapeType::RightBrace,
                 "RIGHT_BRACKET" => ShapeShapeType::RightBracket,
+                "RIGHT_TRIANGLE" => ShapeShapeType::RightTriangle,
                 "ROUND_1_RECTANGLE" => ShapeShapeType::Round1Rectangle,
                 "ROUND_2_DIAGONAL_RECTANGLE" => ShapeShapeType::Round2DiagonalRectangle,
                 "ROUND_2_SAME_RECTANGLE" => ShapeShapeType::Round2SameRectangle,
-                "RIGHT_TRIANGLE" => ShapeShapeType::RightTriangle,
+                "ROUND_RECTANGLE" => ShapeShapeType::RoundRectangle,
                 "SMILEY_FACE" => ShapeShapeType::SmileyFace,
                 "SNIP_1_RECTANGLE" => ShapeShapeType::Snip1Rectangle,
                 "SNIP_2_DIAGONAL_RECTANGLE" => ShapeShapeType::Snip2DiagonalRectangle,
                 "SNIP_2_SAME_RECTANGLE" => ShapeShapeType::Snip2SameRectangle,
                 "SNIP_ROUND_RECTANGLE" => ShapeShapeType::SnipRoundRectangle,
+                "SPEECH" => ShapeShapeType::Speech,
                 "STAR_10" => ShapeShapeType::Star10,
                 "STAR_12" => ShapeShapeType::Star12,
                 "STAR_16" => ShapeShapeType::Star16,
@@ -6079,10 +6114,14 @@ pub mod schemas {
                 "STAR_6" => ShapeShapeType::Star6,
                 "STAR_7" => ShapeShapeType::Star7,
                 "STAR_8" => ShapeShapeType::Star8,
+                "STARBURST" => ShapeShapeType::Starburst,
                 "STRIPED_RIGHT_ARROW" => ShapeShapeType::StripedRightArrow,
                 "SUN" => ShapeShapeType::Sun,
+                "TEARDROP" => ShapeShapeType::Teardrop,
+                "TEXT_BOX" => ShapeShapeType::TextBox,
                 "TRAPEZOID" => ShapeShapeType::Trapezoid,
                 "TRIANGLE" => ShapeShapeType::Triangle,
+                "TYPE_UNSPECIFIED" => ShapeShapeType::TypeUnspecified,
                 "UP_ARROW" => ShapeShapeType::UpArrow,
                 "UP_ARROW_CALLOUT" => ShapeShapeType::UpArrowCallout,
                 "UP_DOWN_ARROW" => ShapeShapeType::UpDownArrow,
@@ -6092,45 +6131,6 @@ pub mod schemas {
                 "WEDGE_ELLIPSE_CALLOUT" => ShapeShapeType::WedgeEllipseCallout,
                 "WEDGE_RECTANGLE_CALLOUT" => ShapeShapeType::WedgeRectangleCallout,
                 "WEDGE_ROUND_RECTANGLE_CALLOUT" => ShapeShapeType::WedgeRoundRectangleCallout,
-                "FLOW_CHART_ALTERNATE_PROCESS" => ShapeShapeType::FlowChartAlternateProcess,
-                "FLOW_CHART_COLLATE" => ShapeShapeType::FlowChartCollate,
-                "FLOW_CHART_CONNECTOR" => ShapeShapeType::FlowChartConnector,
-                "FLOW_CHART_DECISION" => ShapeShapeType::FlowChartDecision,
-                "FLOW_CHART_DELAY" => ShapeShapeType::FlowChartDelay,
-                "FLOW_CHART_DISPLAY" => ShapeShapeType::FlowChartDisplay,
-                "FLOW_CHART_DOCUMENT" => ShapeShapeType::FlowChartDocument,
-                "FLOW_CHART_EXTRACT" => ShapeShapeType::FlowChartExtract,
-                "FLOW_CHART_INPUT_OUTPUT" => ShapeShapeType::FlowChartInputOutput,
-                "FLOW_CHART_INTERNAL_STORAGE" => ShapeShapeType::FlowChartInternalStorage,
-                "FLOW_CHART_MAGNETIC_DISK" => ShapeShapeType::FlowChartMagneticDisk,
-                "FLOW_CHART_MAGNETIC_DRUM" => ShapeShapeType::FlowChartMagneticDrum,
-                "FLOW_CHART_MAGNETIC_TAPE" => ShapeShapeType::FlowChartMagneticTape,
-                "FLOW_CHART_MANUAL_INPUT" => ShapeShapeType::FlowChartManualInput,
-                "FLOW_CHART_MANUAL_OPERATION" => ShapeShapeType::FlowChartManualOperation,
-                "FLOW_CHART_MERGE" => ShapeShapeType::FlowChartMerge,
-                "FLOW_CHART_MULTIDOCUMENT" => ShapeShapeType::FlowChartMultidocument,
-                "FLOW_CHART_OFFLINE_STORAGE" => ShapeShapeType::FlowChartOfflineStorage,
-                "FLOW_CHART_OFFPAGE_CONNECTOR" => ShapeShapeType::FlowChartOffpageConnector,
-                "FLOW_CHART_ONLINE_STORAGE" => ShapeShapeType::FlowChartOnlineStorage,
-                "FLOW_CHART_OR" => ShapeShapeType::FlowChartOr,
-                "FLOW_CHART_PREDEFINED_PROCESS" => ShapeShapeType::FlowChartPredefinedProcess,
-                "FLOW_CHART_PREPARATION" => ShapeShapeType::FlowChartPreparation,
-                "FLOW_CHART_PROCESS" => ShapeShapeType::FlowChartProcess,
-                "FLOW_CHART_PUNCHED_CARD" => ShapeShapeType::FlowChartPunchedCard,
-                "FLOW_CHART_PUNCHED_TAPE" => ShapeShapeType::FlowChartPunchedTape,
-                "FLOW_CHART_SORT" => ShapeShapeType::FlowChartSort,
-                "FLOW_CHART_SUMMING_JUNCTION" => ShapeShapeType::FlowChartSummingJunction,
-                "FLOW_CHART_TERMINATOR" => ShapeShapeType::FlowChartTerminator,
-                "ARROW_EAST" => ShapeShapeType::ArrowEast,
-                "ARROW_NORTH_EAST" => ShapeShapeType::ArrowNorthEast,
-                "ARROW_NORTH" => ShapeShapeType::ArrowNorth,
-                "SPEECH" => ShapeShapeType::Speech,
-                "STARBURST" => ShapeShapeType::Starburst,
-                "TEARDROP" => ShapeShapeType::Teardrop,
-                "ELLIPSE_RIBBON" => ShapeShapeType::EllipseRibbon,
-                "ELLIPSE_RIBBON_2" => ShapeShapeType::EllipseRibbon2,
-                "CLOUD_CALLOUT" => ShapeShapeType::CloudCallout,
-                "CUSTOM" => ShapeShapeType::Custom,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6177,29 +6177,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShapeBackgroundFillPropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
-        Rendered,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
-        NotRendered,
         #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
         Inherit,
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        Rendered,
     }
     impl ShapeBackgroundFillPropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ShapeBackgroundFillPropertyState::Rendered => "RENDERED",
-                ShapeBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
                 ShapeBackgroundFillPropertyState::Inherit => "INHERIT",
+                ShapeBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
+                ShapeBackgroundFillPropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for ShapeBackgroundFillPropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShapeBackgroundFillPropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6207,15 +6207,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShapeBackgroundFillPropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => ShapeBackgroundFillPropertyState::Rendered,
-                "NOT_RENDERED" => ShapeBackgroundFillPropertyState::NotRendered,
                 "INHERIT" => ShapeBackgroundFillPropertyState::Inherit,
+                "NOT_RENDERED" => ShapeBackgroundFillPropertyState::NotRendered,
+                "RENDERED" => ShapeBackgroundFillPropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6256,39 +6256,39 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShapePropertiesContentAlignment {
+        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
+        Bottom,
         #[doc = "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists."]
         ContentAlignmentUnspecified,
         #[doc = "An unsupported content alignment."]
         ContentAlignmentUnsupported,
-        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
-        Top,
         #[doc = "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
         Middle,
-        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
-        Bottom,
+        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
+        Top,
     }
     impl ShapePropertiesContentAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                ShapePropertiesContentAlignment::Bottom => "BOTTOM",
                 ShapePropertiesContentAlignment::ContentAlignmentUnspecified => {
                     "CONTENT_ALIGNMENT_UNSPECIFIED"
                 }
                 ShapePropertiesContentAlignment::ContentAlignmentUnsupported => {
                     "CONTENT_ALIGNMENT_UNSUPPORTED"
                 }
-                ShapePropertiesContentAlignment::Top => "TOP",
                 ShapePropertiesContentAlignment::Middle => "MIDDLE",
-                ShapePropertiesContentAlignment::Bottom => "BOTTOM",
+                ShapePropertiesContentAlignment::Top => "TOP",
             }
         }
     }
     impl ::std::fmt::Display for ShapePropertiesContentAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ShapePropertiesContentAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6296,21 +6296,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ShapePropertiesContentAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM" => ShapePropertiesContentAlignment::Bottom,
                 "CONTENT_ALIGNMENT_UNSPECIFIED" => {
                     ShapePropertiesContentAlignment::ContentAlignmentUnspecified
                 }
                 "CONTENT_ALIGNMENT_UNSUPPORTED" => {
                     ShapePropertiesContentAlignment::ContentAlignmentUnsupported
                 }
-                "TOP" => ShapePropertiesContentAlignment::Top,
                 "MIDDLE" => ShapePropertiesContentAlignment::Middle,
-                "BOTTOM" => ShapePropertiesContentAlignment::Bottom,
+                "TOP" => ShapePropertiesContentAlignment::Top,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6434,7 +6434,7 @@ pub mod schemas {
         pub master_object_id: ::std::option::Option<String>,
         #[doc = "The notes page that this slide is associated with. It defines the visual\nappearance of a notes page when printing or exporting slides with speaker\nnotes. A notes page inherits properties from the\nnotes master.\nThe placeholder shape with type BODY on the notes page contains the speaker\nnotes for this slide. The ID of this shape is identified by the\nspeakerNotesObjectId field.\nThe notes page is read-only except for the text content and styles of the\nspeaker notes shape. This property is read-only."]
         #[serde(rename = "notesPage", default)]
-        pub notes_page: ::std::option::Option<crate::schemas::Page>,
+        pub notes_page: ::std::option::Option<Box<crate::schemas::Page>>,
     }
     impl ::field_selector::FieldSelector for SlideProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6585,41 +6585,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableBorderPropertiesDashStyle {
-        #[doc = "Unspecified dash style."]
-        DashStyleUnspecified,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
-        Solid,
-        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
-        Dot,
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
         #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
         DashDot,
+        #[doc = "Unspecified dash style."]
+        DashStyleUnspecified,
+        #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
+        Dot,
         #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
         LongDash,
         #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        Solid,
     }
     impl TableBorderPropertiesDashStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                TableBorderPropertiesDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
-                TableBorderPropertiesDashStyle::Solid => "SOLID",
-                TableBorderPropertiesDashStyle::Dot => "DOT",
                 TableBorderPropertiesDashStyle::Dash => "DASH",
                 TableBorderPropertiesDashStyle::DashDot => "DASH_DOT",
+                TableBorderPropertiesDashStyle::DashStyleUnspecified => "DASH_STYLE_UNSPECIFIED",
+                TableBorderPropertiesDashStyle::Dot => "DOT",
                 TableBorderPropertiesDashStyle::LongDash => "LONG_DASH",
                 TableBorderPropertiesDashStyle::LongDashDot => "LONG_DASH_DOT",
+                TableBorderPropertiesDashStyle::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for TableBorderPropertiesDashStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableBorderPropertiesDashStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6627,19 +6627,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableBorderPropertiesDashStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DASH_STYLE_UNSPECIFIED" => TableBorderPropertiesDashStyle::DashStyleUnspecified,
-                "SOLID" => TableBorderPropertiesDashStyle::Solid,
-                "DOT" => TableBorderPropertiesDashStyle::Dot,
                 "DASH" => TableBorderPropertiesDashStyle::Dash,
                 "DASH_DOT" => TableBorderPropertiesDashStyle::DashDot,
+                "DASH_STYLE_UNSPECIFIED" => TableBorderPropertiesDashStyle::DashStyleUnspecified,
+                "DOT" => TableBorderPropertiesDashStyle::Dot,
                 "LONG_DASH" => TableBorderPropertiesDashStyle::LongDash,
                 "LONG_DASH_DOT" => TableBorderPropertiesDashStyle::LongDashDot,
+                "SOLID" => TableBorderPropertiesDashStyle::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6729,29 +6729,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellBackgroundFillPropertyState {
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
-        Rendered,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
-        NotRendered,
         #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
         Inherit,
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        NotRendered,
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        Rendered,
     }
     impl TableCellBackgroundFillPropertyState {
         pub fn as_str(self) -> &'static str {
             match self {
-                TableCellBackgroundFillPropertyState::Rendered => "RENDERED",
-                TableCellBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
                 TableCellBackgroundFillPropertyState::Inherit => "INHERIT",
+                TableCellBackgroundFillPropertyState::NotRendered => "NOT_RENDERED",
+                TableCellBackgroundFillPropertyState::Rendered => "RENDERED",
             }
         }
     }
     impl ::std::fmt::Display for TableCellBackgroundFillPropertyState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableCellBackgroundFillPropertyState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6759,15 +6759,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableCellBackgroundFillPropertyState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RENDERED" => TableCellBackgroundFillPropertyState::Rendered,
-                "NOT_RENDERED" => TableCellBackgroundFillPropertyState::NotRendered,
                 "INHERIT" => TableCellBackgroundFillPropertyState::Inherit,
+                "NOT_RENDERED" => TableCellBackgroundFillPropertyState::NotRendered,
+                "RENDERED" => TableCellBackgroundFillPropertyState::Rendered,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6838,39 +6838,39 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellPropertiesContentAlignment {
+        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
+        Bottom,
         #[doc = "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists."]
         ContentAlignmentUnspecified,
         #[doc = "An unsupported content alignment."]
         ContentAlignmentUnsupported,
-        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
-        Top,
         #[doc = "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
         Middle,
-        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
-        Bottom,
+        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
+        Top,
     }
     impl TableCellPropertiesContentAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                TableCellPropertiesContentAlignment::Bottom => "BOTTOM",
                 TableCellPropertiesContentAlignment::ContentAlignmentUnspecified => {
                     "CONTENT_ALIGNMENT_UNSPECIFIED"
                 }
                 TableCellPropertiesContentAlignment::ContentAlignmentUnsupported => {
                     "CONTENT_ALIGNMENT_UNSUPPORTED"
                 }
-                TableCellPropertiesContentAlignment::Top => "TOP",
                 TableCellPropertiesContentAlignment::Middle => "MIDDLE",
-                TableCellPropertiesContentAlignment::Bottom => "BOTTOM",
+                TableCellPropertiesContentAlignment::Top => "TOP",
             }
         }
     }
     impl ::std::fmt::Display for TableCellPropertiesContentAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TableCellPropertiesContentAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6878,21 +6878,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TableCellPropertiesContentAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM" => TableCellPropertiesContentAlignment::Bottom,
                 "CONTENT_ALIGNMENT_UNSPECIFIED" => {
                     TableCellPropertiesContentAlignment::ContentAlignmentUnspecified
                 }
                 "CONTENT_ALIGNMENT_UNSUPPORTED" => {
                     TableCellPropertiesContentAlignment::ContentAlignmentUnsupported
                 }
-                "TOP" => TableCellPropertiesContentAlignment::Top,
                 "MIDDLE" => TableCellPropertiesContentAlignment::Middle,
-                "BOTTOM" => TableCellPropertiesContentAlignment::Bottom,
+                "TOP" => TableCellPropertiesContentAlignment::Top,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7098,28 +7098,28 @@ pub mod schemas {
         BaselineOffsetUnspecified,
         #[doc = "The text is not vertically offset."]
         None,
-        #[doc = "The text is vertically offset upwards (superscript)."]
-        Superscript,
         #[doc = "The text is vertically offset downwards (subscript)."]
         Subscript,
+        #[doc = "The text is vertically offset upwards (superscript)."]
+        Superscript,
     }
     impl TextStyleBaselineOffset {
         pub fn as_str(self) -> &'static str {
             match self {
                 TextStyleBaselineOffset::BaselineOffsetUnspecified => "BASELINE_OFFSET_UNSPECIFIED",
                 TextStyleBaselineOffset::None => "NONE",
-                TextStyleBaselineOffset::Superscript => "SUPERSCRIPT",
                 TextStyleBaselineOffset::Subscript => "SUBSCRIPT",
+                TextStyleBaselineOffset::Superscript => "SUPERSCRIPT",
             }
         }
     }
     impl ::std::fmt::Display for TextStyleBaselineOffset {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TextStyleBaselineOffset {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7127,7 +7127,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TextStyleBaselineOffset {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -7135,8 +7135,8 @@ pub mod schemas {
             Ok(match value {
                 "BASELINE_OFFSET_UNSPECIFIED" => TextStyleBaselineOffset::BaselineOffsetUnspecified,
                 "NONE" => TextStyleBaselineOffset::None,
-                "SUPERSCRIPT" => TextStyleBaselineOffset::Superscript,
                 "SUBSCRIPT" => TextStyleBaselineOffset::Subscript,
+                "SUPERSCRIPT" => TextStyleBaselineOffset::Superscript,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7207,16 +7207,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThemeColorPairType {
-        #[doc = "Unspecified theme color. This value should not be used."]
-        ThemeColorTypeUnspecified,
-        #[doc = "Represents the first dark color."]
-        Dark1,
-        #[doc = "Represents the first light color."]
-        Light1,
-        #[doc = "Represents the second dark color."]
-        Dark2,
-        #[doc = "Represents the second light color."]
-        Light2,
         #[doc = "Represents the first accent color."]
         Accent1,
         #[doc = "Represents the second accent color."]
@@ -7229,49 +7219,59 @@ pub mod schemas {
         Accent5,
         #[doc = "Represents the sixth accent color."]
         Accent6,
-        #[doc = "Represents the color to use for hyperlinks."]
-        Hyperlink,
-        #[doc = "Represents the color to use for visited hyperlinks."]
-        FollowedHyperlink,
-        #[doc = "Represents the first text color."]
-        Text1,
         #[doc = "Represents the first background color."]
         Background1,
-        #[doc = "Represents the second text color."]
-        Text2,
         #[doc = "Represents the second background color."]
         Background2,
+        #[doc = "Represents the first dark color."]
+        Dark1,
+        #[doc = "Represents the second dark color."]
+        Dark2,
+        #[doc = "Represents the color to use for visited hyperlinks."]
+        FollowedHyperlink,
+        #[doc = "Represents the color to use for hyperlinks."]
+        Hyperlink,
+        #[doc = "Represents the first light color."]
+        Light1,
+        #[doc = "Represents the second light color."]
+        Light2,
+        #[doc = "Represents the first text color."]
+        Text1,
+        #[doc = "Represents the second text color."]
+        Text2,
+        #[doc = "Unspecified theme color. This value should not be used."]
+        ThemeColorTypeUnspecified,
     }
     impl ThemeColorPairType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThemeColorPairType::ThemeColorTypeUnspecified => "THEME_COLOR_TYPE_UNSPECIFIED",
-                ThemeColorPairType::Dark1 => "DARK1",
-                ThemeColorPairType::Light1 => "LIGHT1",
-                ThemeColorPairType::Dark2 => "DARK2",
-                ThemeColorPairType::Light2 => "LIGHT2",
                 ThemeColorPairType::Accent1 => "ACCENT1",
                 ThemeColorPairType::Accent2 => "ACCENT2",
                 ThemeColorPairType::Accent3 => "ACCENT3",
                 ThemeColorPairType::Accent4 => "ACCENT4",
                 ThemeColorPairType::Accent5 => "ACCENT5",
                 ThemeColorPairType::Accent6 => "ACCENT6",
-                ThemeColorPairType::Hyperlink => "HYPERLINK",
-                ThemeColorPairType::FollowedHyperlink => "FOLLOWED_HYPERLINK",
-                ThemeColorPairType::Text1 => "TEXT1",
                 ThemeColorPairType::Background1 => "BACKGROUND1",
-                ThemeColorPairType::Text2 => "TEXT2",
                 ThemeColorPairType::Background2 => "BACKGROUND2",
+                ThemeColorPairType::Dark1 => "DARK1",
+                ThemeColorPairType::Dark2 => "DARK2",
+                ThemeColorPairType::FollowedHyperlink => "FOLLOWED_HYPERLINK",
+                ThemeColorPairType::Hyperlink => "HYPERLINK",
+                ThemeColorPairType::Light1 => "LIGHT1",
+                ThemeColorPairType::Light2 => "LIGHT2",
+                ThemeColorPairType::Text1 => "TEXT1",
+                ThemeColorPairType::Text2 => "TEXT2",
+                ThemeColorPairType::ThemeColorTypeUnspecified => "THEME_COLOR_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ThemeColorPairType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThemeColorPairType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7279,29 +7279,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThemeColorPairType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THEME_COLOR_TYPE_UNSPECIFIED" => ThemeColorPairType::ThemeColorTypeUnspecified,
-                "DARK1" => ThemeColorPairType::Dark1,
-                "LIGHT1" => ThemeColorPairType::Light1,
-                "DARK2" => ThemeColorPairType::Dark2,
-                "LIGHT2" => ThemeColorPairType::Light2,
                 "ACCENT1" => ThemeColorPairType::Accent1,
                 "ACCENT2" => ThemeColorPairType::Accent2,
                 "ACCENT3" => ThemeColorPairType::Accent3,
                 "ACCENT4" => ThemeColorPairType::Accent4,
                 "ACCENT5" => ThemeColorPairType::Accent5,
                 "ACCENT6" => ThemeColorPairType::Accent6,
-                "HYPERLINK" => ThemeColorPairType::Hyperlink,
-                "FOLLOWED_HYPERLINK" => ThemeColorPairType::FollowedHyperlink,
-                "TEXT1" => ThemeColorPairType::Text1,
                 "BACKGROUND1" => ThemeColorPairType::Background1,
-                "TEXT2" => ThemeColorPairType::Text2,
                 "BACKGROUND2" => ThemeColorPairType::Background2,
+                "DARK1" => ThemeColorPairType::Dark1,
+                "DARK2" => ThemeColorPairType::Dark2,
+                "FOLLOWED_HYPERLINK" => ThemeColorPairType::FollowedHyperlink,
+                "HYPERLINK" => ThemeColorPairType::Hyperlink,
+                "LIGHT1" => ThemeColorPairType::Light1,
+                "LIGHT2" => ThemeColorPairType::Light2,
+                "TEXT1" => ThemeColorPairType::Text1,
+                "TEXT2" => ThemeColorPairType::Text2,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => ThemeColorPairType::ThemeColorTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7452,34 +7452,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdateLineCategoryRequestLineCategory {
-        #[doc = "Unspecified line category."]
-        LineCategoryUnspecified,
-        #[doc = "Straight connectors, including straight connector 1."]
-        Straight,
         #[doc = "Bent connectors, including bent connector 2 to 5."]
         Bent,
         #[doc = "Curved connectors, including curved connector 2 to 5."]
         Curved,
+        #[doc = "Unspecified line category."]
+        LineCategoryUnspecified,
+        #[doc = "Straight connectors, including straight connector 1."]
+        Straight,
     }
     impl UpdateLineCategoryRequestLineCategory {
         pub fn as_str(self) -> &'static str {
             match self {
+                UpdateLineCategoryRequestLineCategory::Bent => "BENT",
+                UpdateLineCategoryRequestLineCategory::Curved => "CURVED",
                 UpdateLineCategoryRequestLineCategory::LineCategoryUnspecified => {
                     "LINE_CATEGORY_UNSPECIFIED"
                 }
                 UpdateLineCategoryRequestLineCategory::Straight => "STRAIGHT",
-                UpdateLineCategoryRequestLineCategory::Bent => "BENT",
-                UpdateLineCategoryRequestLineCategory::Curved => "CURVED",
             }
         }
     }
     impl ::std::fmt::Display for UpdateLineCategoryRequestLineCategory {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UpdateLineCategoryRequestLineCategory {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7487,18 +7487,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UpdateLineCategoryRequestLineCategory {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BENT" => UpdateLineCategoryRequestLineCategory::Bent,
+                "CURVED" => UpdateLineCategoryRequestLineCategory::Curved,
                 "LINE_CATEGORY_UNSPECIFIED" => {
                     UpdateLineCategoryRequestLineCategory::LineCategoryUnspecified
                 }
                 "STRAIGHT" => UpdateLineCategoryRequestLineCategory::Straight,
-                "BENT" => UpdateLineCategoryRequestLineCategory::Bent,
-                "CURVED" => UpdateLineCategoryRequestLineCategory::Curved,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7604,31 +7604,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdatePageElementTransformRequestApplyMode {
+        #[doc = "Replaces the existing AffineTransform matrix with the new one."]
+        Absolute,
         #[doc = "Unspecified mode."]
         ApplyModeUnspecified,
         #[doc = "Applies the new AffineTransform matrix to the existing one, and\nreplaces the existing one with the resulting concatenation."]
         Relative,
-        #[doc = "Replaces the existing AffineTransform matrix with the new one."]
-        Absolute,
     }
     impl UpdatePageElementTransformRequestApplyMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                UpdatePageElementTransformRequestApplyMode::Absolute => "ABSOLUTE",
                 UpdatePageElementTransformRequestApplyMode::ApplyModeUnspecified => {
                     "APPLY_MODE_UNSPECIFIED"
                 }
                 UpdatePageElementTransformRequestApplyMode::Relative => "RELATIVE",
-                UpdatePageElementTransformRequestApplyMode::Absolute => "ABSOLUTE",
             }
         }
     }
     impl ::std::fmt::Display for UpdatePageElementTransformRequestApplyMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UpdatePageElementTransformRequestApplyMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7636,17 +7636,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UpdatePageElementTransformRequestApplyMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ABSOLUTE" => UpdatePageElementTransformRequestApplyMode::Absolute,
                 "APPLY_MODE_UNSPECIFIED" => {
                     UpdatePageElementTransformRequestApplyMode::ApplyModeUnspecified
                 }
                 "RELATIVE" => UpdatePageElementTransformRequestApplyMode::Relative,
-                "ABSOLUTE" => UpdatePageElementTransformRequestApplyMode::Absolute,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7691,37 +7691,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdatePageElementsZOrderRequestOperation {
-        #[doc = "Unspecified operation."]
-        ZOrderOperationUnspecified,
-        #[doc = "Brings the page elements to the front of the page."]
-        BringToFront,
         #[doc = "Brings the page elements forward on the page by one element relative to the\nforwardmost one in the specified page elements."]
         BringForward,
+        #[doc = "Brings the page elements to the front of the page."]
+        BringToFront,
         #[doc = "Sends the page elements backward on the page by one element relative to the\nfurthest behind one in the specified page elements."]
         SendBackward,
         #[doc = "Sends the page elements to the back of the page."]
         SendToBack,
+        #[doc = "Unspecified operation."]
+        ZOrderOperationUnspecified,
     }
     impl UpdatePageElementsZOrderRequestOperation {
         pub fn as_str(self) -> &'static str {
             match self {
+                UpdatePageElementsZOrderRequestOperation::BringForward => "BRING_FORWARD",
+                UpdatePageElementsZOrderRequestOperation::BringToFront => "BRING_TO_FRONT",
+                UpdatePageElementsZOrderRequestOperation::SendBackward => "SEND_BACKWARD",
+                UpdatePageElementsZOrderRequestOperation::SendToBack => "SEND_TO_BACK",
                 UpdatePageElementsZOrderRequestOperation::ZOrderOperationUnspecified => {
                     "Z_ORDER_OPERATION_UNSPECIFIED"
                 }
-                UpdatePageElementsZOrderRequestOperation::BringToFront => "BRING_TO_FRONT",
-                UpdatePageElementsZOrderRequestOperation::BringForward => "BRING_FORWARD",
-                UpdatePageElementsZOrderRequestOperation::SendBackward => "SEND_BACKWARD",
-                UpdatePageElementsZOrderRequestOperation::SendToBack => "SEND_TO_BACK",
             }
         }
     }
     impl ::std::fmt::Display for UpdatePageElementsZOrderRequestOperation {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UpdatePageElementsZOrderRequestOperation {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7729,19 +7729,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UpdatePageElementsZOrderRequestOperation {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BRING_FORWARD" => UpdatePageElementsZOrderRequestOperation::BringForward,
+                "BRING_TO_FRONT" => UpdatePageElementsZOrderRequestOperation::BringToFront,
+                "SEND_BACKWARD" => UpdatePageElementsZOrderRequestOperation::SendBackward,
+                "SEND_TO_BACK" => UpdatePageElementsZOrderRequestOperation::SendToBack,
                 "Z_ORDER_OPERATION_UNSPECIFIED" => {
                     UpdatePageElementsZOrderRequestOperation::ZOrderOperationUnspecified
                 }
-                "BRING_TO_FRONT" => UpdatePageElementsZOrderRequestOperation::BringToFront,
-                "BRING_FORWARD" => UpdatePageElementsZOrderRequestOperation::BringForward,
-                "SEND_BACKWARD" => UpdatePageElementsZOrderRequestOperation::SendBackward,
-                "SEND_TO_BACK" => UpdatePageElementsZOrderRequestOperation::SendToBack,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7933,12 +7933,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for UpdateTableBorderPropertiesRequestBorderPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UpdateTableBorderPropertiesRequestBorderPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7946,7 +7946,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UpdateTableBorderPropertiesRequestBorderPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -8143,29 +8143,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSource {
+        #[doc = "The video source is Google Drive."]
+        Drive,
         #[doc = "The video source is unspecified."]
         SourceUnspecified,
         #[doc = "The video source is YouTube."]
         Youtube,
-        #[doc = "The video source is Google Drive."]
-        Drive,
     }
     impl VideoSource {
         pub fn as_str(self) -> &'static str {
             match self {
+                VideoSource::Drive => "DRIVE",
                 VideoSource::SourceUnspecified => "SOURCE_UNSPECIFIED",
                 VideoSource::Youtube => "YOUTUBE",
-                VideoSource::Drive => "DRIVE",
             }
         }
     }
     impl ::std::fmt::Display for VideoSource {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for VideoSource {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8173,15 +8173,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for VideoSource {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DRIVE" => VideoSource::Drive,
                 "SOURCE_UNSPECIFIED" => VideoSource::SourceUnspecified,
                 "YOUTUBE" => VideoSource::Youtube,
-                "DRIVE" => VideoSource::Drive,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8357,12 +8357,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8370,7 +8370,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -8413,12 +8413,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8426,7 +8426,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -8472,7 +8472,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod presentations {
         pub mod params {}
         pub struct PresentationsActions<'a, A> {
@@ -8574,19 +8574,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8743,19 +8733,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8902,19 +8882,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9058,12 +9028,12 @@ mod resources {
                     }
                 }
                 impl ::std::fmt::Display for GetThumbnailThumbnailPropertiesMimeType {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetThumbnailThumbnailPropertiesMimeType {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -9071,7 +9041,7 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetThumbnailThumbnailPropertiesMimeType {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
@@ -9098,23 +9068,23 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetThumbnailThumbnailPropertiesThumbnailSize {
-                    ThumbnailSizeUnspecified,
                     Large,
                     Medium,
                     Small,
+                    ThumbnailSizeUnspecified,
                 }
                 impl GetThumbnailThumbnailPropertiesThumbnailSize {
                     pub fn as_str(self) -> &'static str {
-                        match self { GetThumbnailThumbnailPropertiesThumbnailSize :: ThumbnailSizeUnspecified => "THUMBNAIL_SIZE_UNSPECIFIED" , GetThumbnailThumbnailPropertiesThumbnailSize :: Large => "LARGE" , GetThumbnailThumbnailPropertiesThumbnailSize :: Medium => "MEDIUM" , GetThumbnailThumbnailPropertiesThumbnailSize :: Small => "SMALL" , }
+                        match self { GetThumbnailThumbnailPropertiesThumbnailSize :: Large => "LARGE" , GetThumbnailThumbnailPropertiesThumbnailSize :: Medium => "MEDIUM" , GetThumbnailThumbnailPropertiesThumbnailSize :: Small => "SMALL" , GetThumbnailThumbnailPropertiesThumbnailSize :: ThumbnailSizeUnspecified => "THUMBNAIL_SIZE_UNSPECIFIED" , }
                     }
                 }
                 impl ::std::fmt::Display for GetThumbnailThumbnailPropertiesThumbnailSize {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetThumbnailThumbnailPropertiesThumbnailSize {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -9122,12 +9092,12 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetThumbnailThumbnailPropertiesThumbnailSize {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
-                        Ok ( match value { "THUMBNAIL_SIZE_UNSPECIFIED" => GetThumbnailThumbnailPropertiesThumbnailSize :: ThumbnailSizeUnspecified , "LARGE" => GetThumbnailThumbnailPropertiesThumbnailSize :: Large , "MEDIUM" => GetThumbnailThumbnailPropertiesThumbnailSize :: Medium , "SMALL" => GetThumbnailThumbnailPropertiesThumbnailSize :: Small , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+                        Ok ( match value { "LARGE" => GetThumbnailThumbnailPropertiesThumbnailSize :: Large , "MEDIUM" => GetThumbnailThumbnailPropertiesThumbnailSize :: Medium , "SMALL" => GetThumbnailThumbnailPropertiesThumbnailSize :: Small , "THUMBNAIL_SIZE_UNSPECIFIED" => GetThumbnailThumbnailPropertiesThumbnailSize :: ThumbnailSizeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
                     }
                 }
                 impl ::field_selector::FieldSelector for GetThumbnailThumbnailPropertiesThumbnailSize {
@@ -9220,19 +9190,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9394,19 +9354,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9816,7 +9766,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -9825,7 +9778,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -9838,58 +9791,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

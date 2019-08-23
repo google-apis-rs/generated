@@ -224,134 +224,134 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CheckErrorCode {
-        #[doc = "This is never used in `CheckResponse`."]
-        ErrorCodeUnspecified,
-        #[doc = "The consumer's project id, network container, or resource container was\nnot found. Same as google.rpc.Code.NOT_FOUND."]
-        NotFound,
-        #[doc = "The consumer doesn't have access to the specified resource.\nSame as google.rpc.Code.PERMISSION_DENIED."]
-        PermissionDenied,
-        #[doc = "Quota check failed. Same as google.rpc.Code.RESOURCE_EXHAUSTED."]
-        ResourceExhausted,
-        #[doc = "Budget check failed."]
-        BudgetExceeded,
-        #[doc = "The consumer's request has been flagged as a DoS attack."]
-        DenialOfServiceDetected,
-        #[doc = "The consumer's request should be rejected in order to protect the service\nfrom being overloaded."]
-        LoadShedding,
         #[doc = "The consumer has been flagged as an abuser."]
         AbuserDetected,
-        #[doc = "The consumer hasn't activated the service."]
-        ServiceNotActivated,
-        #[doc = "The consumer cannot access the service due to visibility configuration."]
-        VisibilityDenied,
-        #[doc = "The consumer cannot access the service because billing is disabled."]
-        BillingDisabled,
-        #[doc = "The consumer's project has been marked as deleted (soft deletion)."]
-        ProjectDeleted,
-        #[doc = "The consumer's project number or id does not represent a valid project."]
-        ProjectInvalid,
-        #[doc = "The input consumer info does not represent a valid consumer folder or\norganization."]
-        ConsumerInvalid,
-        #[doc = "The IP address of the consumer is invalid for the specific consumer\nproject."]
-        IpAddressBlocked,
-        #[doc = "The referer address of the consumer request is invalid for the specific\nconsumer project."]
-        RefererBlocked,
-        #[doc = "The client application of the consumer request is invalid for the\nspecific consumer project."]
-        ClientAppBlocked,
-        #[doc = "The API targeted by this request is invalid for the specified consumer\nproject."]
-        ApiTargetBlocked,
-        #[doc = "The consumer's API key is invalid."]
-        ApiKeyInvalid,
         #[doc = "The consumer's API Key has expired."]
         ApiKeyExpired,
+        #[doc = "The consumer's API key is invalid."]
+        ApiKeyInvalid,
         #[doc = "The consumer's API Key was not found in config record."]
         ApiKeyNotFound,
-        #[doc = "The consumer's spatula header is invalid."]
-        SpatulaHeaderInvalid,
-        #[doc = "The consumer's LOAS role is invalid."]
-        LoasRoleInvalid,
-        #[doc = "The consumer's LOAS role has no associated project."]
-        NoLoasProject,
-        #[doc = "The consumer's LOAS project is not `ACTIVE` in LoquatV2."]
-        LoasProjectDisabled,
-        #[doc = "Request is not allowed as per security policies defined in Org Policy."]
-        SecurityPolicyViolated,
+        #[doc = "The API targeted by this request is invalid for the specified consumer\nproject."]
+        ApiTargetBlocked,
+        #[doc = "The consumer cannot access the service because billing is disabled."]
+        BillingDisabled,
+        #[doc = "The backend server for checking billing status is unavailable."]
+        BillingStatusUnavailable,
+        #[doc = "Budget check failed."]
+        BudgetExceeded,
+        #[doc = "The client application of the consumer request is invalid for the\nspecific consumer project."]
+        ClientAppBlocked,
+        #[doc = "Cloud Resource Manager backend server is unavailable."]
+        CloudResourceManagerBackendUnavailable,
+        #[doc = "The input consumer info does not represent a valid consumer folder or\norganization."]
+        ConsumerInvalid,
+        #[doc = "The consumer's request has been flagged as a DoS attack."]
+        DenialOfServiceDetected,
+        #[doc = "This is never used in `CheckResponse`."]
+        ErrorCodeUnspecified,
         #[doc = "The credential in the request can not be verified."]
         InvalidCredential,
+        #[doc = "The IP address of the consumer is invalid for the specific consumer\nproject."]
+        IpAddressBlocked,
+        #[doc = "The consumer's request should be rejected in order to protect the service\nfrom being overloaded."]
+        LoadShedding,
+        #[doc = "The consumer's LOAS project is not `ACTIVE` in LoquatV2."]
+        LoasProjectDisabled,
+        #[doc = "The Spanner for looking up LOAS project is unavailable."]
+        LoasProjectLookupUnavailable,
+        #[doc = "The consumer's LOAS role is invalid."]
+        LoasRoleInvalid,
+        #[doc = "Backend server for evaluating location policy is unavailable."]
+        LocationPolicyBackendUnavailable,
         #[doc = "Request is not allowed as per location policies defined in Org Policy."]
         LocationPolicyViolated,
         #[doc = "The backend server for looking up project id/number is unavailable."]
         NamespaceLookupUnavailable,
-        #[doc = "The backend server for checking service status is unavailable."]
-        ServiceStatusUnavailable,
-        #[doc = "The backend server for checking billing status is unavailable."]
-        BillingStatusUnavailable,
+        #[doc = "The consumer's LOAS role has no associated project."]
+        NoLoasProject,
+        #[doc = "The consumer's project id, network container, or resource container was\nnot found. Same as google.rpc.Code.NOT_FOUND."]
+        NotFound,
+        #[doc = "The consumer doesn't have access to the specified resource.\nSame as google.rpc.Code.PERMISSION_DENIED."]
+        PermissionDenied,
+        #[doc = "The consumer's project has been marked as deleted (soft deletion)."]
+        ProjectDeleted,
+        #[doc = "The consumer's project number or id does not represent a valid project."]
+        ProjectInvalid,
         #[doc = "The backend server for checking quota limits is unavailable."]
         QuotaCheckUnavailable,
-        #[doc = "The Spanner for looking up LOAS project is unavailable."]
-        LoasProjectLookupUnavailable,
-        #[doc = "Cloud Resource Manager backend server is unavailable."]
-        CloudResourceManagerBackendUnavailable,
+        #[doc = "The referer address of the consumer request is invalid for the specific\nconsumer project."]
+        RefererBlocked,
+        #[doc = "Quota check failed. Same as google.rpc.Code.RESOURCE_EXHAUSTED."]
+        ResourceExhausted,
         #[doc = "NOTE: for customers in the scope of Beta/GA of\nhttps://cloud.google.com/vpc-service-controls, this error\nis no longer returned. If the security backend is unavailable, rpc\nUNAVAILABLE status will be returned instead. It should be ignored and\nshould not be used to reject client requests."]
         SecurityPolicyBackendUnavailable,
-        #[doc = "Backend server for evaluating location policy is unavailable."]
-        LocationPolicyBackendUnavailable,
+        #[doc = "Request is not allowed as per security policies defined in Org Policy."]
+        SecurityPolicyViolated,
+        #[doc = "The consumer hasn't activated the service."]
+        ServiceNotActivated,
+        #[doc = "The backend server for checking service status is unavailable."]
+        ServiceStatusUnavailable,
+        #[doc = "The consumer's spatula header is invalid."]
+        SpatulaHeaderInvalid,
+        #[doc = "The consumer cannot access the service due to visibility configuration."]
+        VisibilityDenied,
     }
     impl CheckErrorCode {
         pub fn as_str(self) -> &'static str {
             match self {
-                CheckErrorCode::ErrorCodeUnspecified => "ERROR_CODE_UNSPECIFIED",
-                CheckErrorCode::NotFound => "NOT_FOUND",
-                CheckErrorCode::PermissionDenied => "PERMISSION_DENIED",
-                CheckErrorCode::ResourceExhausted => "RESOURCE_EXHAUSTED",
-                CheckErrorCode::BudgetExceeded => "BUDGET_EXCEEDED",
-                CheckErrorCode::DenialOfServiceDetected => "DENIAL_OF_SERVICE_DETECTED",
-                CheckErrorCode::LoadShedding => "LOAD_SHEDDING",
                 CheckErrorCode::AbuserDetected => "ABUSER_DETECTED",
-                CheckErrorCode::ServiceNotActivated => "SERVICE_NOT_ACTIVATED",
-                CheckErrorCode::VisibilityDenied => "VISIBILITY_DENIED",
-                CheckErrorCode::BillingDisabled => "BILLING_DISABLED",
-                CheckErrorCode::ProjectDeleted => "PROJECT_DELETED",
-                CheckErrorCode::ProjectInvalid => "PROJECT_INVALID",
-                CheckErrorCode::ConsumerInvalid => "CONSUMER_INVALID",
-                CheckErrorCode::IpAddressBlocked => "IP_ADDRESS_BLOCKED",
-                CheckErrorCode::RefererBlocked => "REFERER_BLOCKED",
-                CheckErrorCode::ClientAppBlocked => "CLIENT_APP_BLOCKED",
-                CheckErrorCode::ApiTargetBlocked => "API_TARGET_BLOCKED",
-                CheckErrorCode::ApiKeyInvalid => "API_KEY_INVALID",
                 CheckErrorCode::ApiKeyExpired => "API_KEY_EXPIRED",
+                CheckErrorCode::ApiKeyInvalid => "API_KEY_INVALID",
                 CheckErrorCode::ApiKeyNotFound => "API_KEY_NOT_FOUND",
-                CheckErrorCode::SpatulaHeaderInvalid => "SPATULA_HEADER_INVALID",
-                CheckErrorCode::LoasRoleInvalid => "LOAS_ROLE_INVALID",
-                CheckErrorCode::NoLoasProject => "NO_LOAS_PROJECT",
-                CheckErrorCode::LoasProjectDisabled => "LOAS_PROJECT_DISABLED",
-                CheckErrorCode::SecurityPolicyViolated => "SECURITY_POLICY_VIOLATED",
-                CheckErrorCode::InvalidCredential => "INVALID_CREDENTIAL",
-                CheckErrorCode::LocationPolicyViolated => "LOCATION_POLICY_VIOLATED",
-                CheckErrorCode::NamespaceLookupUnavailable => "NAMESPACE_LOOKUP_UNAVAILABLE",
-                CheckErrorCode::ServiceStatusUnavailable => "SERVICE_STATUS_UNAVAILABLE",
+                CheckErrorCode::ApiTargetBlocked => "API_TARGET_BLOCKED",
+                CheckErrorCode::BillingDisabled => "BILLING_DISABLED",
                 CheckErrorCode::BillingStatusUnavailable => "BILLING_STATUS_UNAVAILABLE",
-                CheckErrorCode::QuotaCheckUnavailable => "QUOTA_CHECK_UNAVAILABLE",
-                CheckErrorCode::LoasProjectLookupUnavailable => "LOAS_PROJECT_LOOKUP_UNAVAILABLE",
+                CheckErrorCode::BudgetExceeded => "BUDGET_EXCEEDED",
+                CheckErrorCode::ClientAppBlocked => "CLIENT_APP_BLOCKED",
                 CheckErrorCode::CloudResourceManagerBackendUnavailable => {
                     "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE"
                 }
-                CheckErrorCode::SecurityPolicyBackendUnavailable => {
-                    "SECURITY_POLICY_BACKEND_UNAVAILABLE"
-                }
+                CheckErrorCode::ConsumerInvalid => "CONSUMER_INVALID",
+                CheckErrorCode::DenialOfServiceDetected => "DENIAL_OF_SERVICE_DETECTED",
+                CheckErrorCode::ErrorCodeUnspecified => "ERROR_CODE_UNSPECIFIED",
+                CheckErrorCode::InvalidCredential => "INVALID_CREDENTIAL",
+                CheckErrorCode::IpAddressBlocked => "IP_ADDRESS_BLOCKED",
+                CheckErrorCode::LoadShedding => "LOAD_SHEDDING",
+                CheckErrorCode::LoasProjectDisabled => "LOAS_PROJECT_DISABLED",
+                CheckErrorCode::LoasProjectLookupUnavailable => "LOAS_PROJECT_LOOKUP_UNAVAILABLE",
+                CheckErrorCode::LoasRoleInvalid => "LOAS_ROLE_INVALID",
                 CheckErrorCode::LocationPolicyBackendUnavailable => {
                     "LOCATION_POLICY_BACKEND_UNAVAILABLE"
                 }
+                CheckErrorCode::LocationPolicyViolated => "LOCATION_POLICY_VIOLATED",
+                CheckErrorCode::NamespaceLookupUnavailable => "NAMESPACE_LOOKUP_UNAVAILABLE",
+                CheckErrorCode::NoLoasProject => "NO_LOAS_PROJECT",
+                CheckErrorCode::NotFound => "NOT_FOUND",
+                CheckErrorCode::PermissionDenied => "PERMISSION_DENIED",
+                CheckErrorCode::ProjectDeleted => "PROJECT_DELETED",
+                CheckErrorCode::ProjectInvalid => "PROJECT_INVALID",
+                CheckErrorCode::QuotaCheckUnavailable => "QUOTA_CHECK_UNAVAILABLE",
+                CheckErrorCode::RefererBlocked => "REFERER_BLOCKED",
+                CheckErrorCode::ResourceExhausted => "RESOURCE_EXHAUSTED",
+                CheckErrorCode::SecurityPolicyBackendUnavailable => {
+                    "SECURITY_POLICY_BACKEND_UNAVAILABLE"
+                }
+                CheckErrorCode::SecurityPolicyViolated => "SECURITY_POLICY_VIOLATED",
+                CheckErrorCode::ServiceNotActivated => "SERVICE_NOT_ACTIVATED",
+                CheckErrorCode::ServiceStatusUnavailable => "SERVICE_STATUS_UNAVAILABLE",
+                CheckErrorCode::SpatulaHeaderInvalid => "SPATULA_HEADER_INVALID",
+                CheckErrorCode::VisibilityDenied => "VISIBILITY_DENIED",
             }
         }
     }
     impl ::std::fmt::Display for CheckErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CheckErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -359,54 +359,54 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CheckErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ERROR_CODE_UNSPECIFIED" => CheckErrorCode::ErrorCodeUnspecified,
-                "NOT_FOUND" => CheckErrorCode::NotFound,
-                "PERMISSION_DENIED" => CheckErrorCode::PermissionDenied,
-                "RESOURCE_EXHAUSTED" => CheckErrorCode::ResourceExhausted,
-                "BUDGET_EXCEEDED" => CheckErrorCode::BudgetExceeded,
-                "DENIAL_OF_SERVICE_DETECTED" => CheckErrorCode::DenialOfServiceDetected,
-                "LOAD_SHEDDING" => CheckErrorCode::LoadShedding,
                 "ABUSER_DETECTED" => CheckErrorCode::AbuserDetected,
-                "SERVICE_NOT_ACTIVATED" => CheckErrorCode::ServiceNotActivated,
-                "VISIBILITY_DENIED" => CheckErrorCode::VisibilityDenied,
-                "BILLING_DISABLED" => CheckErrorCode::BillingDisabled,
-                "PROJECT_DELETED" => CheckErrorCode::ProjectDeleted,
-                "PROJECT_INVALID" => CheckErrorCode::ProjectInvalid,
-                "CONSUMER_INVALID" => CheckErrorCode::ConsumerInvalid,
-                "IP_ADDRESS_BLOCKED" => CheckErrorCode::IpAddressBlocked,
-                "REFERER_BLOCKED" => CheckErrorCode::RefererBlocked,
-                "CLIENT_APP_BLOCKED" => CheckErrorCode::ClientAppBlocked,
-                "API_TARGET_BLOCKED" => CheckErrorCode::ApiTargetBlocked,
-                "API_KEY_INVALID" => CheckErrorCode::ApiKeyInvalid,
                 "API_KEY_EXPIRED" => CheckErrorCode::ApiKeyExpired,
+                "API_KEY_INVALID" => CheckErrorCode::ApiKeyInvalid,
                 "API_KEY_NOT_FOUND" => CheckErrorCode::ApiKeyNotFound,
-                "SPATULA_HEADER_INVALID" => CheckErrorCode::SpatulaHeaderInvalid,
-                "LOAS_ROLE_INVALID" => CheckErrorCode::LoasRoleInvalid,
-                "NO_LOAS_PROJECT" => CheckErrorCode::NoLoasProject,
-                "LOAS_PROJECT_DISABLED" => CheckErrorCode::LoasProjectDisabled,
-                "SECURITY_POLICY_VIOLATED" => CheckErrorCode::SecurityPolicyViolated,
-                "INVALID_CREDENTIAL" => CheckErrorCode::InvalidCredential,
-                "LOCATION_POLICY_VIOLATED" => CheckErrorCode::LocationPolicyViolated,
-                "NAMESPACE_LOOKUP_UNAVAILABLE" => CheckErrorCode::NamespaceLookupUnavailable,
-                "SERVICE_STATUS_UNAVAILABLE" => CheckErrorCode::ServiceStatusUnavailable,
+                "API_TARGET_BLOCKED" => CheckErrorCode::ApiTargetBlocked,
+                "BILLING_DISABLED" => CheckErrorCode::BillingDisabled,
                 "BILLING_STATUS_UNAVAILABLE" => CheckErrorCode::BillingStatusUnavailable,
-                "QUOTA_CHECK_UNAVAILABLE" => CheckErrorCode::QuotaCheckUnavailable,
-                "LOAS_PROJECT_LOOKUP_UNAVAILABLE" => CheckErrorCode::LoasProjectLookupUnavailable,
+                "BUDGET_EXCEEDED" => CheckErrorCode::BudgetExceeded,
+                "CLIENT_APP_BLOCKED" => CheckErrorCode::ClientAppBlocked,
                 "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE" => {
                     CheckErrorCode::CloudResourceManagerBackendUnavailable
                 }
-                "SECURITY_POLICY_BACKEND_UNAVAILABLE" => {
-                    CheckErrorCode::SecurityPolicyBackendUnavailable
-                }
+                "CONSUMER_INVALID" => CheckErrorCode::ConsumerInvalid,
+                "DENIAL_OF_SERVICE_DETECTED" => CheckErrorCode::DenialOfServiceDetected,
+                "ERROR_CODE_UNSPECIFIED" => CheckErrorCode::ErrorCodeUnspecified,
+                "INVALID_CREDENTIAL" => CheckErrorCode::InvalidCredential,
+                "IP_ADDRESS_BLOCKED" => CheckErrorCode::IpAddressBlocked,
+                "LOAD_SHEDDING" => CheckErrorCode::LoadShedding,
+                "LOAS_PROJECT_DISABLED" => CheckErrorCode::LoasProjectDisabled,
+                "LOAS_PROJECT_LOOKUP_UNAVAILABLE" => CheckErrorCode::LoasProjectLookupUnavailable,
+                "LOAS_ROLE_INVALID" => CheckErrorCode::LoasRoleInvalid,
                 "LOCATION_POLICY_BACKEND_UNAVAILABLE" => {
                     CheckErrorCode::LocationPolicyBackendUnavailable
                 }
+                "LOCATION_POLICY_VIOLATED" => CheckErrorCode::LocationPolicyViolated,
+                "NAMESPACE_LOOKUP_UNAVAILABLE" => CheckErrorCode::NamespaceLookupUnavailable,
+                "NO_LOAS_PROJECT" => CheckErrorCode::NoLoasProject,
+                "NOT_FOUND" => CheckErrorCode::NotFound,
+                "PERMISSION_DENIED" => CheckErrorCode::PermissionDenied,
+                "PROJECT_DELETED" => CheckErrorCode::ProjectDeleted,
+                "PROJECT_INVALID" => CheckErrorCode::ProjectInvalid,
+                "QUOTA_CHECK_UNAVAILABLE" => CheckErrorCode::QuotaCheckUnavailable,
+                "REFERER_BLOCKED" => CheckErrorCode::RefererBlocked,
+                "RESOURCE_EXHAUSTED" => CheckErrorCode::ResourceExhausted,
+                "SECURITY_POLICY_BACKEND_UNAVAILABLE" => {
+                    CheckErrorCode::SecurityPolicyBackendUnavailable
+                }
+                "SECURITY_POLICY_VIOLATED" => CheckErrorCode::SecurityPolicyViolated,
+                "SERVICE_NOT_ACTIVATED" => CheckErrorCode::ServiceNotActivated,
+                "SERVICE_STATUS_UNAVAILABLE" => CheckErrorCode::ServiceStatusUnavailable,
+                "SPATULA_HEADER_INVALID" => CheckErrorCode::SpatulaHeaderInvalid,
+                "VISIBILITY_DENIED" => CheckErrorCode::VisibilityDenied,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -536,12 +536,12 @@ pub mod schemas {
     pub enum ConsumerInfoType {
         #[doc = "This is never used."]
         ConsumerTypeUnspecified,
-        #[doc = "The consumer is a Google Cloud Project."]
-        Project,
         #[doc = "The consumer is a Google Cloud Folder."]
         Folder,
         #[doc = "The consumer is a Google Cloud Organization."]
         Organization,
+        #[doc = "The consumer is a Google Cloud Project."]
+        Project,
         #[doc = "Service-specific resource container which is defined by the service\nproducer to offer their users the ability to manage service control\nfunctionalities at a finer level of granularity than the PROJECT."]
         ServiceSpecific,
     }
@@ -549,20 +549,20 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 ConsumerInfoType::ConsumerTypeUnspecified => "CONSUMER_TYPE_UNSPECIFIED",
-                ConsumerInfoType::Project => "PROJECT",
                 ConsumerInfoType::Folder => "FOLDER",
                 ConsumerInfoType::Organization => "ORGANIZATION",
+                ConsumerInfoType::Project => "PROJECT",
                 ConsumerInfoType::ServiceSpecific => "SERVICE_SPECIFIC",
             }
         }
     }
     impl ::std::fmt::Display for ConsumerInfoType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ConsumerInfoType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -570,16 +570,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ConsumerInfoType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CONSUMER_TYPE_UNSPECIFIED" => ConsumerInfoType::ConsumerTypeUnspecified,
-                "PROJECT" => ConsumerInfoType::Project,
                 "FOLDER" => ConsumerInfoType::Folder,
                 "ORGANIZATION" => ConsumerInfoType::Organization,
+                "PROJECT" => ConsumerInfoType::Project,
                 "SERVICE_SPECIFIC" => ConsumerInfoType::ServiceSpecific,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -853,47 +853,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LogEntrySeverity {
-        #[doc = "(0) The log entry has no assigned severity level."]
-        Default,
+        #[doc = "(700) A person must take an action immediately."]
+        Alert,
+        #[doc = "(600) Critical events cause more severe problems or outages."]
+        Critical,
         #[doc = "(100) Debug or trace information."]
         Debug,
+        #[doc = "(0) The log entry has no assigned severity level."]
+        Default,
+        #[doc = "(800) One or more systems are unusable."]
+        Emergency,
+        #[doc = "(500) Error events are likely to cause problems."]
+        Error,
         #[doc = "(200) Routine information, such as ongoing status or performance."]
         Info,
         #[doc = "(300) Normal but significant events, such as start up, shut down, or\na configuration change."]
         Notice,
         #[doc = "(400) Warning events might cause problems."]
         Warning,
-        #[doc = "(500) Error events are likely to cause problems."]
-        Error,
-        #[doc = "(600) Critical events cause more severe problems or outages."]
-        Critical,
-        #[doc = "(700) A person must take an action immediately."]
-        Alert,
-        #[doc = "(800) One or more systems are unusable."]
-        Emergency,
     }
     impl LogEntrySeverity {
         pub fn as_str(self) -> &'static str {
             match self {
-                LogEntrySeverity::Default => "DEFAULT",
+                LogEntrySeverity::Alert => "ALERT",
+                LogEntrySeverity::Critical => "CRITICAL",
                 LogEntrySeverity::Debug => "DEBUG",
+                LogEntrySeverity::Default => "DEFAULT",
+                LogEntrySeverity::Emergency => "EMERGENCY",
+                LogEntrySeverity::Error => "ERROR",
                 LogEntrySeverity::Info => "INFO",
                 LogEntrySeverity::Notice => "NOTICE",
                 LogEntrySeverity::Warning => "WARNING",
-                LogEntrySeverity::Error => "ERROR",
-                LogEntrySeverity::Critical => "CRITICAL",
-                LogEntrySeverity::Alert => "ALERT",
-                LogEntrySeverity::Emergency => "EMERGENCY",
             }
         }
     }
     impl ::std::fmt::Display for LogEntrySeverity {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LogEntrySeverity {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -901,21 +901,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LogEntrySeverity {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEFAULT" => LogEntrySeverity::Default,
+                "ALERT" => LogEntrySeverity::Alert,
+                "CRITICAL" => LogEntrySeverity::Critical,
                 "DEBUG" => LogEntrySeverity::Debug,
+                "DEFAULT" => LogEntrySeverity::Default,
+                "EMERGENCY" => LogEntrySeverity::Emergency,
+                "ERROR" => LogEntrySeverity::Error,
                 "INFO" => LogEntrySeverity::Info,
                 "NOTICE" => LogEntrySeverity::Notice,
                 "WARNING" => LogEntrySeverity::Warning,
-                "ERROR" => LogEntrySeverity::Error,
-                "CRITICAL" => LogEntrySeverity::Critical,
-                "ALERT" => LogEntrySeverity::Alert,
-                "EMERGENCY" => LogEntrySeverity::Emergency,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1145,29 +1145,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationImportance {
-        #[doc = "The API implementation may cache and aggregate the data.\nThe data may be lost when rare and unexpected system failures occur."]
-        Low,
-        #[doc = "The API implementation doesn't cache and aggregate the data.\nIf the method returns successfully, it's guaranteed that the data has\nbeen persisted in durable storage."]
-        High,
         #[doc = "In addition to the behavior described in HIGH, DEBUG enables\nadditional validation logic that is only useful during the onboarding\nprocess. This is only available to Google internal services and\nthe service must be whitelisted by chemist-dev@google.com in order\nto use this level."]
         Debug,
+        #[doc = "The API implementation doesn't cache and aggregate the data.\nIf the method returns successfully, it's guaranteed that the data has\nbeen persisted in durable storage."]
+        High,
+        #[doc = "The API implementation may cache and aggregate the data.\nThe data may be lost when rare and unexpected system failures occur."]
+        Low,
     }
     impl OperationImportance {
         pub fn as_str(self) -> &'static str {
             match self {
-                OperationImportance::Low => "LOW",
-                OperationImportance::High => "HIGH",
                 OperationImportance::Debug => "DEBUG",
+                OperationImportance::High => "HIGH",
+                OperationImportance::Low => "LOW",
             }
         }
     }
     impl ::std::fmt::Display for OperationImportance {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OperationImportance {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1175,15 +1175,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OperationImportance {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LOW" => OperationImportance::Low,
-                "HIGH" => OperationImportance::High,
                 "DEBUG" => OperationImportance::Debug,
+                "HIGH" => OperationImportance::High,
+                "LOW" => OperationImportance::Low,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1294,62 +1294,62 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaErrorCode {
-        #[doc = "This is never used."]
-        Unspecified,
-        #[doc = "Quota allocation failed.\nSame as google.rpc.Code.RESOURCE_EXHAUSTED."]
-        ResourceExhausted,
-        #[doc = "Quota release failed.  This error is ONLY returned on a NORMAL release.\nMore formally:  if a user requests a release of 10 tokens, but only\n5 tokens were previously allocated, in a BEST_EFFORT release, this will\nbe considered a success, 5 tokens will be released, and the result will\nbe \"Ok\".  If this is done in NORMAL mode, no tokens will be released,\nand an OUT_OF_RANGE error will be returned.\nSame as google.rpc.Code.OUT_OF_RANGE."]
-        OutOfRange,
-        #[doc = "Consumer cannot access the service because the service requires active\nbilling."]
-        BillingNotActive,
-        #[doc = "Consumer's project has been marked as deleted (soft deletion)."]
-        ProjectDeleted,
-        #[doc = "Specified API key is invalid."]
-        ApiKeyInvalid,
         #[doc = "Specified API Key has expired."]
         ApiKeyExpired,
-        #[doc = "Consumer's spatula header is invalid."]
-        SpatulaHeaderInvalid,
+        #[doc = "Specified API key is invalid."]
+        ApiKeyInvalid,
+        #[doc = "Consumer cannot access the service because the service requires active\nbilling."]
+        BillingNotActive,
+        #[doc = "The backend server for checking billing status is unavailable."]
+        BillingStatusUnavailable,
         #[doc = "The consumer's LOAS role is invalid."]
         LoasRoleInvalid,
         #[doc = "The consumer's LOAS role has no associated project."]
         NoLoasProject,
+        #[doc = "Quota release failed.  This error is ONLY returned on a NORMAL release.\nMore formally:  if a user requests a release of 10 tokens, but only\n5 tokens were previously allocated, in a BEST_EFFORT release, this will\nbe considered a success, 5 tokens will be released, and the result will\nbe \"Ok\".  If this is done in NORMAL mode, no tokens will be released,\nand an OUT_OF_RANGE error will be returned.\nSame as google.rpc.Code.OUT_OF_RANGE."]
+        OutOfRange,
+        #[doc = "Consumer's project has been marked as deleted (soft deletion)."]
+        ProjectDeleted,
         #[doc = "The backend server for looking up project id/number is unavailable."]
         ProjectStatusUnavailable,
-        #[doc = "The backend server for checking service status is unavailable."]
-        ServiceStatusUnavailable,
-        #[doc = "The backend server for checking billing status is unavailable."]
-        BillingStatusUnavailable,
         #[doc = "The backend server for checking quota limits is unavailable."]
         QuotaSystemUnavailable,
+        #[doc = "Quota allocation failed.\nSame as google.rpc.Code.RESOURCE_EXHAUSTED."]
+        ResourceExhausted,
+        #[doc = "The backend server for checking service status is unavailable."]
+        ServiceStatusUnavailable,
+        #[doc = "Consumer's spatula header is invalid."]
+        SpatulaHeaderInvalid,
+        #[doc = "This is never used."]
+        Unspecified,
     }
     impl QuotaErrorCode {
         pub fn as_str(self) -> &'static str {
             match self {
-                QuotaErrorCode::Unspecified => "UNSPECIFIED",
-                QuotaErrorCode::ResourceExhausted => "RESOURCE_EXHAUSTED",
-                QuotaErrorCode::OutOfRange => "OUT_OF_RANGE",
-                QuotaErrorCode::BillingNotActive => "BILLING_NOT_ACTIVE",
-                QuotaErrorCode::ProjectDeleted => "PROJECT_DELETED",
-                QuotaErrorCode::ApiKeyInvalid => "API_KEY_INVALID",
                 QuotaErrorCode::ApiKeyExpired => "API_KEY_EXPIRED",
-                QuotaErrorCode::SpatulaHeaderInvalid => "SPATULA_HEADER_INVALID",
+                QuotaErrorCode::ApiKeyInvalid => "API_KEY_INVALID",
+                QuotaErrorCode::BillingNotActive => "BILLING_NOT_ACTIVE",
+                QuotaErrorCode::BillingStatusUnavailable => "BILLING_STATUS_UNAVAILABLE",
                 QuotaErrorCode::LoasRoleInvalid => "LOAS_ROLE_INVALID",
                 QuotaErrorCode::NoLoasProject => "NO_LOAS_PROJECT",
+                QuotaErrorCode::OutOfRange => "OUT_OF_RANGE",
+                QuotaErrorCode::ProjectDeleted => "PROJECT_DELETED",
                 QuotaErrorCode::ProjectStatusUnavailable => "PROJECT_STATUS_UNAVAILABLE",
-                QuotaErrorCode::ServiceStatusUnavailable => "SERVICE_STATUS_UNAVAILABLE",
-                QuotaErrorCode::BillingStatusUnavailable => "BILLING_STATUS_UNAVAILABLE",
                 QuotaErrorCode::QuotaSystemUnavailable => "QUOTA_SYSTEM_UNAVAILABLE",
+                QuotaErrorCode::ResourceExhausted => "RESOURCE_EXHAUSTED",
+                QuotaErrorCode::ServiceStatusUnavailable => "SERVICE_STATUS_UNAVAILABLE",
+                QuotaErrorCode::SpatulaHeaderInvalid => "SPATULA_HEADER_INVALID",
+                QuotaErrorCode::Unspecified => "UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for QuotaErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QuotaErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1357,26 +1357,26 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QuotaErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED" => QuotaErrorCode::Unspecified,
-                "RESOURCE_EXHAUSTED" => QuotaErrorCode::ResourceExhausted,
-                "OUT_OF_RANGE" => QuotaErrorCode::OutOfRange,
-                "BILLING_NOT_ACTIVE" => QuotaErrorCode::BillingNotActive,
-                "PROJECT_DELETED" => QuotaErrorCode::ProjectDeleted,
-                "API_KEY_INVALID" => QuotaErrorCode::ApiKeyInvalid,
                 "API_KEY_EXPIRED" => QuotaErrorCode::ApiKeyExpired,
-                "SPATULA_HEADER_INVALID" => QuotaErrorCode::SpatulaHeaderInvalid,
+                "API_KEY_INVALID" => QuotaErrorCode::ApiKeyInvalid,
+                "BILLING_NOT_ACTIVE" => QuotaErrorCode::BillingNotActive,
+                "BILLING_STATUS_UNAVAILABLE" => QuotaErrorCode::BillingStatusUnavailable,
                 "LOAS_ROLE_INVALID" => QuotaErrorCode::LoasRoleInvalid,
                 "NO_LOAS_PROJECT" => QuotaErrorCode::NoLoasProject,
+                "OUT_OF_RANGE" => QuotaErrorCode::OutOfRange,
+                "PROJECT_DELETED" => QuotaErrorCode::ProjectDeleted,
                 "PROJECT_STATUS_UNAVAILABLE" => QuotaErrorCode::ProjectStatusUnavailable,
-                "SERVICE_STATUS_UNAVAILABLE" => QuotaErrorCode::ServiceStatusUnavailable,
-                "BILLING_STATUS_UNAVAILABLE" => QuotaErrorCode::BillingStatusUnavailable,
                 "QUOTA_SYSTEM_UNAVAILABLE" => QuotaErrorCode::QuotaSystemUnavailable,
+                "RESOURCE_EXHAUSTED" => QuotaErrorCode::ResourceExhausted,
+                "SERVICE_STATUS_UNAVAILABLE" => QuotaErrorCode::ServiceStatusUnavailable,
+                "SPATULA_HEADER_INVALID" => QuotaErrorCode::SpatulaHeaderInvalid,
+                "UNSPECIFIED" => QuotaErrorCode::Unspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1450,32 +1450,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaOperationQuotaMode {
-        #[doc = "Guard against implicit default. Must not be used."]
-        Unspecified,
-        #[doc = "For AllocateQuota request, allocates quota for the amount specified in\nthe service configuration or specified using the quota metrics. If the\namount is higher than the available quota, allocation error will be\nreturned and no quota will be allocated.\nIf multiple quotas are part of the request, and one fails, none of the\nquotas are allocated or released."]
-        Normal,
         #[doc = "The operation allocates quota for the amount specified in the service\nconfiguration or specified using the quota metrics. If the amount is\nhigher than the available quota, request does not fail but all available\nquota will be allocated.\nFor rate quota, BEST_EFFORT will continue to deduct from other groups\neven if one does not have enough quota. For allocation, it will find the\nminimum available amount across all groups and deduct that amount from\nall the affected groups."]
         BestEffort,
         #[doc = "For AllocateQuota request, only checks if there is enough quota\navailable and does not change the available quota. No lock is placed on\nthe available quota either."]
         CheckOnly,
+        #[doc = "For AllocateQuota request, allocates quota for the amount specified in\nthe service configuration or specified using the quota metrics. If the\namount is higher than the available quota, allocation error will be\nreturned and no quota will be allocated.\nIf multiple quotas are part of the request, and one fails, none of the\nquotas are allocated or released."]
+        Normal,
+        #[doc = "Guard against implicit default. Must not be used."]
+        Unspecified,
     }
     impl QuotaOperationQuotaMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                QuotaOperationQuotaMode::Unspecified => "UNSPECIFIED",
-                QuotaOperationQuotaMode::Normal => "NORMAL",
                 QuotaOperationQuotaMode::BestEffort => "BEST_EFFORT",
                 QuotaOperationQuotaMode::CheckOnly => "CHECK_ONLY",
+                QuotaOperationQuotaMode::Normal => "NORMAL",
+                QuotaOperationQuotaMode::Unspecified => "UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for QuotaOperationQuotaMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QuotaOperationQuotaMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1483,16 +1483,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QuotaOperationQuotaMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED" => QuotaOperationQuotaMode::Unspecified,
-                "NORMAL" => QuotaOperationQuotaMode::Normal,
                 "BEST_EFFORT" => QuotaOperationQuotaMode::BestEffort,
                 "CHECK_ONLY" => QuotaOperationQuotaMode::CheckOnly,
+                "NORMAL" => QuotaOperationQuotaMode::Normal,
+                "UNSPECIFIED" => QuotaOperationQuotaMode::Unspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1563,12 +1563,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for QuotaPropertiesQuotaMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QuotaPropertiesQuotaMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1576,7 +1576,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QuotaPropertiesQuotaMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1957,12 +1957,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1970,7 +1970,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2013,12 +2013,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2026,7 +2026,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2072,7 +2072,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod services {
         pub mod params {}
         pub struct ServicesActions<'a, A> {
@@ -2177,19 +2177,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2347,19 +2337,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2515,19 +2495,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2919,7 +2889,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -2928,7 +2901,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -2941,58 +2914,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

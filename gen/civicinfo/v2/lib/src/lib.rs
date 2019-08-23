@@ -20,7 +20,7 @@ pub mod schemas {
         pub id: ::std::option::Option<String>,
         #[doc = "The city or county that provides election information for this voter. This object can have the same elements as state."]
         #[serde(rename = "local_jurisdiction", default)]
-        pub local_jurisdiction: ::std::option::Option<crate::schemas::AdministrationRegion>,
+        pub local_jurisdiction: ::std::option::Option<Box<crate::schemas::AdministrationRegion>>,
         #[doc = "The name of the jurisdiction."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
@@ -1400,7 +1400,7 @@ pub mod schemas {
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
         #[serde(rename = "voterInfoSegmentResult", default)]
         pub voter_info_segment_result:
-            ::std::option::Option<crate::schemas::VoterInfoSegmentResult>,
+            ::std::option::Option<Box<crate::schemas::VoterInfoSegmentResult>>,
     }
     impl ::field_selector::FieldSelector for VoterInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1469,7 +1469,7 @@ pub mod schemas {
         #[serde(rename = "postalAddress", default)]
         pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
         #[serde(rename = "request", default)]
-        pub request: ::std::option::Option<crate::schemas::VoterInfoRequest>,
+        pub request: ::std::option::Option<Box<crate::schemas::VoterInfoRequest>>,
         #[serde(rename = "response", default)]
         pub response: ::std::option::Option<crate::schemas::VoterInfoResponse>,
     }
@@ -1497,12 +1497,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1510,7 +1510,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1569,7 +1569,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod divisions {
         pub mod params {}
         pub struct DivisionsActions<'a, A> {
@@ -1615,16 +1615,6 @@ mod resources {
             #[doc = "The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html"]
             pub fn query(mut self, value: impl Into<String>) -> Self {
                 self.query = Some(value.into());
-                self
-            }
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1796,16 +1786,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> ElectionQueryRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -1943,16 +1923,6 @@ mod resources {
                 self.return_all_available_data = Some(value);
                 self
             }
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2063,7 +2033,396 @@ mod resources {
         }
     }
     pub mod representatives {
-        pub mod params {}
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum RepresentativeInfoByAddressLevelsItems {
+                AdministrativeArea1,
+                AdministrativeArea2,
+                Country,
+                International,
+                Locality,
+                Regional,
+                Special,
+                SubLocality1,
+                SubLocality2,
+            }
+            impl RepresentativeInfoByAddressLevelsItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        RepresentativeInfoByAddressLevelsItems::AdministrativeArea1 => {
+                            "administrativeArea1"
+                        }
+                        RepresentativeInfoByAddressLevelsItems::AdministrativeArea2 => {
+                            "administrativeArea2"
+                        }
+                        RepresentativeInfoByAddressLevelsItems::Country => "country",
+                        RepresentativeInfoByAddressLevelsItems::International => "international",
+                        RepresentativeInfoByAddressLevelsItems::Locality => "locality",
+                        RepresentativeInfoByAddressLevelsItems::Regional => "regional",
+                        RepresentativeInfoByAddressLevelsItems::Special => "special",
+                        RepresentativeInfoByAddressLevelsItems::SubLocality1 => "subLocality1",
+                        RepresentativeInfoByAddressLevelsItems::SubLocality2 => "subLocality2",
+                    }
+                }
+            }
+            impl ::std::fmt::Display for RepresentativeInfoByAddressLevelsItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for RepresentativeInfoByAddressLevelsItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByAddressLevelsItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "administrativeArea1" => {
+                            RepresentativeInfoByAddressLevelsItems::AdministrativeArea1
+                        }
+                        "administrativeArea2" => {
+                            RepresentativeInfoByAddressLevelsItems::AdministrativeArea2
+                        }
+                        "country" => RepresentativeInfoByAddressLevelsItems::Country,
+                        "international" => RepresentativeInfoByAddressLevelsItems::International,
+                        "locality" => RepresentativeInfoByAddressLevelsItems::Locality,
+                        "regional" => RepresentativeInfoByAddressLevelsItems::Regional,
+                        "special" => RepresentativeInfoByAddressLevelsItems::Special,
+                        "subLocality1" => RepresentativeInfoByAddressLevelsItems::SubLocality1,
+                        "subLocality2" => RepresentativeInfoByAddressLevelsItems::SubLocality2,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::field_selector::FieldSelector for RepresentativeInfoByAddressLevelsItems {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum RepresentativeInfoByAddressRolesItems {
+                DeputyHeadOfGovernment,
+                ExecutiveCouncil,
+                GovernmentOfficer,
+                HeadOfGovernment,
+                HeadOfState,
+                HighestCourtJudge,
+                Judge,
+                LegislatorLowerBody,
+                LegislatorUpperBody,
+                SchoolBoard,
+                SpecialPurposeOfficer,
+            }
+            impl RepresentativeInfoByAddressRolesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        RepresentativeInfoByAddressRolesItems::DeputyHeadOfGovernment => {
+                            "deputyHeadOfGovernment"
+                        }
+                        RepresentativeInfoByAddressRolesItems::ExecutiveCouncil => {
+                            "executiveCouncil"
+                        }
+                        RepresentativeInfoByAddressRolesItems::GovernmentOfficer => {
+                            "governmentOfficer"
+                        }
+                        RepresentativeInfoByAddressRolesItems::HeadOfGovernment => {
+                            "headOfGovernment"
+                        }
+                        RepresentativeInfoByAddressRolesItems::HeadOfState => "headOfState",
+                        RepresentativeInfoByAddressRolesItems::HighestCourtJudge => {
+                            "highestCourtJudge"
+                        }
+                        RepresentativeInfoByAddressRolesItems::Judge => "judge",
+                        RepresentativeInfoByAddressRolesItems::LegislatorLowerBody => {
+                            "legislatorLowerBody"
+                        }
+                        RepresentativeInfoByAddressRolesItems::LegislatorUpperBody => {
+                            "legislatorUpperBody"
+                        }
+                        RepresentativeInfoByAddressRolesItems::SchoolBoard => "schoolBoard",
+                        RepresentativeInfoByAddressRolesItems::SpecialPurposeOfficer => {
+                            "specialPurposeOfficer"
+                        }
+                    }
+                }
+            }
+            impl ::std::fmt::Display for RepresentativeInfoByAddressRolesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for RepresentativeInfoByAddressRolesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByAddressRolesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "deputyHeadOfGovernment" => {
+                            RepresentativeInfoByAddressRolesItems::DeputyHeadOfGovernment
+                        }
+                        "executiveCouncil" => {
+                            RepresentativeInfoByAddressRolesItems::ExecutiveCouncil
+                        }
+                        "governmentOfficer" => {
+                            RepresentativeInfoByAddressRolesItems::GovernmentOfficer
+                        }
+                        "headOfGovernment" => {
+                            RepresentativeInfoByAddressRolesItems::HeadOfGovernment
+                        }
+                        "headOfState" => RepresentativeInfoByAddressRolesItems::HeadOfState,
+                        "highestCourtJudge" => {
+                            RepresentativeInfoByAddressRolesItems::HighestCourtJudge
+                        }
+                        "judge" => RepresentativeInfoByAddressRolesItems::Judge,
+                        "legislatorLowerBody" => {
+                            RepresentativeInfoByAddressRolesItems::LegislatorLowerBody
+                        }
+                        "legislatorUpperBody" => {
+                            RepresentativeInfoByAddressRolesItems::LegislatorUpperBody
+                        }
+                        "schoolBoard" => RepresentativeInfoByAddressRolesItems::SchoolBoard,
+                        "specialPurposeOfficer" => {
+                            RepresentativeInfoByAddressRolesItems::SpecialPurposeOfficer
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::field_selector::FieldSelector for RepresentativeInfoByAddressRolesItems {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum RepresentativeInfoByDivisionLevelsItems {
+                AdministrativeArea1,
+                AdministrativeArea2,
+                Country,
+                International,
+                Locality,
+                Regional,
+                Special,
+                SubLocality1,
+                SubLocality2,
+            }
+            impl RepresentativeInfoByDivisionLevelsItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        RepresentativeInfoByDivisionLevelsItems::AdministrativeArea1 => {
+                            "administrativeArea1"
+                        }
+                        RepresentativeInfoByDivisionLevelsItems::AdministrativeArea2 => {
+                            "administrativeArea2"
+                        }
+                        RepresentativeInfoByDivisionLevelsItems::Country => "country",
+                        RepresentativeInfoByDivisionLevelsItems::International => "international",
+                        RepresentativeInfoByDivisionLevelsItems::Locality => "locality",
+                        RepresentativeInfoByDivisionLevelsItems::Regional => "regional",
+                        RepresentativeInfoByDivisionLevelsItems::Special => "special",
+                        RepresentativeInfoByDivisionLevelsItems::SubLocality1 => "subLocality1",
+                        RepresentativeInfoByDivisionLevelsItems::SubLocality2 => "subLocality2",
+                    }
+                }
+            }
+            impl ::std::fmt::Display for RepresentativeInfoByDivisionLevelsItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for RepresentativeInfoByDivisionLevelsItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByDivisionLevelsItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "administrativeArea1" => {
+                            RepresentativeInfoByDivisionLevelsItems::AdministrativeArea1
+                        }
+                        "administrativeArea2" => {
+                            RepresentativeInfoByDivisionLevelsItems::AdministrativeArea2
+                        }
+                        "country" => RepresentativeInfoByDivisionLevelsItems::Country,
+                        "international" => RepresentativeInfoByDivisionLevelsItems::International,
+                        "locality" => RepresentativeInfoByDivisionLevelsItems::Locality,
+                        "regional" => RepresentativeInfoByDivisionLevelsItems::Regional,
+                        "special" => RepresentativeInfoByDivisionLevelsItems::Special,
+                        "subLocality1" => RepresentativeInfoByDivisionLevelsItems::SubLocality1,
+                        "subLocality2" => RepresentativeInfoByDivisionLevelsItems::SubLocality2,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::field_selector::FieldSelector for RepresentativeInfoByDivisionLevelsItems {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum RepresentativeInfoByDivisionRolesItems {
+                DeputyHeadOfGovernment,
+                ExecutiveCouncil,
+                GovernmentOfficer,
+                HeadOfGovernment,
+                HeadOfState,
+                HighestCourtJudge,
+                Judge,
+                LegislatorLowerBody,
+                LegislatorUpperBody,
+                SchoolBoard,
+                SpecialPurposeOfficer,
+            }
+            impl RepresentativeInfoByDivisionRolesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        RepresentativeInfoByDivisionRolesItems::DeputyHeadOfGovernment => {
+                            "deputyHeadOfGovernment"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::ExecutiveCouncil => {
+                            "executiveCouncil"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::GovernmentOfficer => {
+                            "governmentOfficer"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::HeadOfGovernment => {
+                            "headOfGovernment"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::HeadOfState => "headOfState",
+                        RepresentativeInfoByDivisionRolesItems::HighestCourtJudge => {
+                            "highestCourtJudge"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::Judge => "judge",
+                        RepresentativeInfoByDivisionRolesItems::LegislatorLowerBody => {
+                            "legislatorLowerBody"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::LegislatorUpperBody => {
+                            "legislatorUpperBody"
+                        }
+                        RepresentativeInfoByDivisionRolesItems::SchoolBoard => "schoolBoard",
+                        RepresentativeInfoByDivisionRolesItems::SpecialPurposeOfficer => {
+                            "specialPurposeOfficer"
+                        }
+                    }
+                }
+            }
+            impl ::std::fmt::Display for RepresentativeInfoByDivisionRolesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for RepresentativeInfoByDivisionRolesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByDivisionRolesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "deputyHeadOfGovernment" => {
+                            RepresentativeInfoByDivisionRolesItems::DeputyHeadOfGovernment
+                        }
+                        "executiveCouncil" => {
+                            RepresentativeInfoByDivisionRolesItems::ExecutiveCouncil
+                        }
+                        "governmentOfficer" => {
+                            RepresentativeInfoByDivisionRolesItems::GovernmentOfficer
+                        }
+                        "headOfGovernment" => {
+                            RepresentativeInfoByDivisionRolesItems::HeadOfGovernment
+                        }
+                        "headOfState" => RepresentativeInfoByDivisionRolesItems::HeadOfState,
+                        "highestCourtJudge" => {
+                            RepresentativeInfoByDivisionRolesItems::HighestCourtJudge
+                        }
+                        "judge" => RepresentativeInfoByDivisionRolesItems::Judge,
+                        "legislatorLowerBody" => {
+                            RepresentativeInfoByDivisionRolesItems::LegislatorLowerBody
+                        }
+                        "legislatorUpperBody" => {
+                            RepresentativeInfoByDivisionRolesItems::LegislatorUpperBody
+                        }
+                        "schoolBoard" => RepresentativeInfoByDivisionRolesItems::SchoolBoard,
+                        "specialPurposeOfficer" => {
+                            RepresentativeInfoByDivisionRolesItems::SpecialPurposeOfficer
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::field_selector::FieldSelector for RepresentativeInfoByDivisionRolesItems {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
+        }
         pub struct RepresentativesActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a std::sync::Mutex<A>,
@@ -2142,16 +2501,6 @@ mod resources {
                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > >,
             ) -> Self {
                 self.roles = Some(value.into());
-                self
-            }
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2284,16 +2633,6 @@ mod resources {
                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > >,
             ) -> Self {
                 self.roles = Some(value.into());
-                self
-            }
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2670,7 +3009,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -2679,7 +3021,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -2692,58 +3034,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

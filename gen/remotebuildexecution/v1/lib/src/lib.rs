@@ -262,37 +262,37 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
-        #[doc = "Invalid value."]
-        Unknown,
         #[doc = "Checking the result against the cache."]
         CacheCheck,
-        #[doc = "Currently idle, awaiting a free machine to execute."]
-        Queued,
-        #[doc = "Currently being executed by a worker."]
-        Executing,
         #[doc = "Finished execution."]
         Completed,
+        #[doc = "Currently being executed by a worker."]
+        Executing,
+        #[doc = "Currently idle, awaiting a free machine to execute."]
+        Queued,
+        #[doc = "Invalid value."]
+        Unknown,
     }
     impl BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
         pub fn as_str(self) -> &'static str {
             match self {
-                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Unknown => "UNKNOWN",
                 BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::CacheCheck => {
                     "CACHE_CHECK"
                 }
-                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Queued => "QUEUED",
-                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Executing => "EXECUTING",
                 BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Completed => "COMPLETED",
+                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Executing => "EXECUTING",
+                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Queued => "QUEUED",
+                BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Unknown => "UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -300,19 +300,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Unknown,
                 "CACHE_CHECK" => {
                     BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::CacheCheck
                 }
-                "QUEUED" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Queued,
-                "EXECUTING" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Executing,
                 "COMPLETED" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Completed,
+                "EXECUTING" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Executing,
+                "QUEUED" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Queued,
+                "UNKNOWN" => BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -887,88 +887,91 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildbotCommandStatusCode {
-        #[doc = "The command succeeded."]
-        Ok,
-        #[doc = "The command input was invalid."]
-        InvalidArgument,
-        #[doc = "The command had passed its expiry time while it was still running."]
-        DeadlineExceeded,
-        #[doc = "The resources requested by the command were not found."]
-        NotFound,
-        #[doc = "The command failed due to permission errors."]
-        PermissionDenied,
-        #[doc = "The command failed because of some invariants expected by the underlying\nsystem have been broken. This usually indicates a bug wit the system."]
-        Internal,
         #[doc = "The command was aborted."]
         Aborted,
         #[doc = "The bot failed to do the cleanup, e.g. unable to delete the command\nworking directory or the command process."]
         CleanupError,
+        #[doc = "The command had passed its expiry time while it was still running."]
+        DeadlineExceeded,
+        #[doc = "The bot failed to check docker images."]
+        DockerImageExistError,
+        #[doc = "The docker image cannot be found."]
+        DockerImageNotFound,
+        #[doc = "The bot doesn't have the permissions to pull docker images."]
+        DockerImagePermissionDenied,
+        #[doc = "The bot failed to pull docker image."]
+        DockerImagePullError,
+        #[doc = "The bot failed to login to docker."]
+        DockerLoginError,
+        #[doc = "There are issues with docker service/runtime."]
+        DockerUnavailable,
         #[doc = "The bot failed to download the inputs."]
         DownloadInputsError,
+        #[doc = "The inputs contain duplicate files."]
+        DuplicateInputs,
+        #[doc = "The command failed because of some invariants expected by the underlying\nsystem have been broken. This usually indicates a bug wit the system."]
+        Internal,
+        #[doc = "The command input was invalid."]
+        InvalidArgument,
+        #[doc = "The resources requested by the command were not found."]
+        NotFound,
+        #[doc = "The command succeeded."]
+        Ok,
+        #[doc = "The command failed due to permission errors."]
+        PermissionDenied,
         #[doc = "Unknown error."]
         Unknown,
         #[doc = "The bot failed to upload the outputs."]
         UploadOutputsError,
-        #[doc = "The bot failed to login to docker."]
-        DockerLoginError,
-        #[doc = "The bot failed to pull docker image."]
-        DockerImagePullError,
-        #[doc = "The bot failed to check docker images."]
-        DockerImageExistError,
-        #[doc = "The inputs contain duplicate files."]
-        DuplicateInputs,
-        #[doc = "The bot doesn't have the permissions to pull docker images."]
-        DockerImagePermissionDenied,
-        #[doc = "The docker image cannot be found."]
-        DockerImageNotFound,
         #[doc = "Working directory is not found."]
         WorkingDirNotFound,
         #[doc = "Working directory is not under the base directory"]
         WorkingDirNotInBaseDir,
-        #[doc = "There are issues with docker service/runtime."]
-        DockerUnavailable,
     }
     impl GoogleDevtoolsRemotebuildbotCommandStatusCode {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok => "OK",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument => {
-                    "INVALID_ARGUMENT"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded => {
-                    "DEADLINE_EXCEEDED"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound => "NOT_FOUND",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied => {
-                    "PERMISSION_DENIED"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal => "INTERNAL",
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::Aborted => "ABORTED",
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::CleanupError => "CLEANUP_ERROR",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError => {
-                    "DOWNLOAD_INPUTS_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown => "UNKNOWN",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError => {
-                    "UPLOAD_OUTPUTS_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError => {
-                    "DOCKER_LOGIN_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError => {
-                    "DOCKER_IMAGE_PULL_ERROR"
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded => {
+                    "DEADLINE_EXCEEDED"
                 }
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageExistError => {
                     "DOCKER_IMAGE_EXIST_ERROR"
                 }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs => {
-                    "DUPLICATE_INPUTS"
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound => {
+                    "DOCKER_IMAGE_NOT_FOUND"
                 }
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePermissionDenied => {
                     "DOCKER_IMAGE_PERMISSION_DENIED"
                 }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound => {
-                    "DOCKER_IMAGE_NOT_FOUND"
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError => {
+                    "DOCKER_IMAGE_PULL_ERROR"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError => {
+                    "DOCKER_LOGIN_ERROR"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable => {
+                    "DOCKER_UNAVAILABLE"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError => {
+                    "DOWNLOAD_INPUTS_ERROR"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs => {
+                    "DUPLICATE_INPUTS"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal => "INTERNAL",
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument => {
+                    "INVALID_ARGUMENT"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound => "NOT_FOUND",
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok => "OK",
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied => {
+                    "PERMISSION_DENIED"
+                }
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown => "UNKNOWN",
+                GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError => {
+                    "UPLOAD_OUTPUTS_ERROR"
                 }
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotFound => {
                     "WORKING_DIR_NOT_FOUND"
@@ -976,19 +979,16 @@ pub mod schemas {
                 GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotInBaseDir => {
                     "WORKING_DIR_NOT_IN_BASE_DIR"
                 }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable => {
-                    "DOCKER_UNAVAILABLE"
-                }
             }
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemotebuildbotCommandStatusCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDevtoolsRemotebuildbotCommandStatusCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -996,59 +996,59 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDevtoolsRemotebuildbotCommandStatusCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok,
-                "INVALID_ARGUMENT" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument
-                }
-                "DEADLINE_EXCEEDED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded
-                }
-                "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound,
-                "PERMISSION_DENIED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied
-                }
-                "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal,
                 "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Aborted,
                 "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode::CleanupError,
-                "DOWNLOAD_INPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError
-                }
-                "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown,
-                "UPLOAD_OUTPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError
-                }
-                "DOCKER_LOGIN_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError
-                }
-                "DOCKER_IMAGE_PULL_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError
+                "DEADLINE_EXCEEDED" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded
                 }
                 "DOCKER_IMAGE_EXIST_ERROR" => {
                     GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageExistError
                 }
-                "DUPLICATE_INPUTS" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs
+                "DOCKER_IMAGE_NOT_FOUND" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound
                 }
                 "DOCKER_IMAGE_PERMISSION_DENIED" => {
                     GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePermissionDenied
                 }
-                "DOCKER_IMAGE_NOT_FOUND" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound
+                "DOCKER_IMAGE_PULL_ERROR" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError
+                }
+                "DOCKER_LOGIN_ERROR" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError
+                }
+                "DOCKER_UNAVAILABLE" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable
+                }
+                "DOWNLOAD_INPUTS_ERROR" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError
+                }
+                "DUPLICATE_INPUTS" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs
+                }
+                "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal,
+                "INVALID_ARGUMENT" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument
+                }
+                "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound,
+                "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok,
+                "PERMISSION_DENIED" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied
+                }
+                "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown,
+                "UPLOAD_OUTPUTS_ERROR" => {
+                    GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError
                 }
                 "WORKING_DIR_NOT_FOUND" => {
                     GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotFound
                 }
                 "WORKING_DIR_NOT_IN_BASE_DIR" => {
                     GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotInBaseDir
-                }
-                "DOCKER_UNAVAILABLE" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1316,34 +1316,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
-        #[doc = "Not a valid state, but the default value of the enum."]
-        StateUnspecified,
         #[doc = "The instance is in state `CREATING` once `CreateInstance` is called and\nbefore the instance is ready for use."]
         Creating,
-        #[doc = "The instance is in state `RUNNING` when it is ready for use."]
-        Running,
         #[doc = "An `INACTIVE` instance indicates that there is a problem that needs to be\nfixed. Such instances cannot be used for execution and instances that\nremain in this state for a significant period of time will be removed\npermanently."]
         Inactive,
+        #[doc = "The instance is in state `RUNNING` when it is ready for use."]
+        Running,
+        #[doc = "Not a valid state, but the default value of the enum."]
+        StateUnspecified,
     }
     impl GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Creating => "CREATING",
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Inactive => "INACTIVE",
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Running => "RUNNING",
                 GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Creating => "CREATING",
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Running => "RUNNING",
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Inactive => "INACTIVE",
             }
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1353,18 +1353,18 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CREATING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Creating,
+                "INACTIVE" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Inactive,
+                "RUNNING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::StateUnspecified
                 }
-                "CREATING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Creating,
-                "RUNNING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Running,
-                "INACTIVE" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState::Inactive,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1625,31 +1625,24 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
-        #[doc = "Not a valid state, but the default value of the enum."]
-        StateUnspecified,
         #[doc = "The worker pool is in state `CREATING` once `CreateWorkerPool` is called\nand before all requested workers are ready."]
         Creating,
-        #[doc = "The worker pool is in state `RUNNING` when all its workers are ready for\nuse."]
-        Running,
-        #[doc = "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called\nand before the new configuration has all the requested workers ready for\nuse, and no older configuration has any workers. At that point the state\ntransitions to `RUNNING`."]
-        Updating,
         #[doc = "The worker pool is in state `DELETING` once the `Delete` method is called\nand before the deletion completes."]
         Deleting,
         #[doc = "The worker pool is in state `INACTIVE` when the instance hosting the\nworker pool in not running."]
         Inactive,
+        #[doc = "The worker pool is in state `RUNNING` when all its workers are ready for\nuse."]
+        Running,
+        #[doc = "Not a valid state, but the default value of the enum."]
+        StateUnspecified,
+        #[doc = "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called\nand before the new configuration has all the requested workers ready for\nuse, and no older configuration has any workers. At that point the state\ntransitions to `RUNNING`."]
+        Updating,
     }
     impl GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::StateUnspecified => {
-                    "STATE_UNSPECIFIED"
-                }
                 GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Creating => {
                     "CREATING"
-                }
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Running => "RUNNING",
-                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Updating => {
-                    "UPDATING"
                 }
                 GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Deleting => {
                     "DELETING"
@@ -1657,16 +1650,23 @@ pub mod schemas {
                 GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Inactive => {
                     "INACTIVE"
                 }
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Running => "RUNNING",
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::StateUnspecified => {
+                    "STATE_UNSPECIFIED"
+                }
+                GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Updating => {
+                    "UPDATING"
+                }
             }
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1676,27 +1676,27 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => {
-                    GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::StateUnspecified
-                }
                 "CREATING" => {
                     GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Creating
-                }
-                "RUNNING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Running,
-                "UPDATING" => {
-                    GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Updating
                 }
                 "DELETING" => {
                     GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Deleting
                 }
                 "INACTIVE" => {
                     GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Inactive
+                }
+                "RUNNING" => GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::StateUnspecified
+                }
+                "UPDATING" => {
+                    GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState::Updating
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1964,44 +1964,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        Unknown,
         #[doc = "Checking the result against the cache."]
         CacheCheck,
-        #[doc = "Currently idle, awaiting a free machine to execute."]
-        Queued,
-        #[doc = "Currently being executed by a worker."]
-        Executing,
         #[doc = "Finished execution."]
         Completed,
+        #[doc = "Currently being executed by a worker."]
+        Executing,
+        #[doc = "Currently idle, awaiting a free machine to execute."]
+        Queued,
+        Unknown,
     }
     impl GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown => {
-                    "UNKNOWN"
-                }
                 GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::CacheCheck => {
                     "CACHE_CHECK"
                 }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued => {
-                    "QUEUED"
+                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed => {
+                    "COMPLETED"
                 }
                 GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Executing => {
                     "EXECUTING"
                 }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed => {
-                    "COMPLETED"
+                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued => {
+                    "QUEUED"
+                }
+                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown => {
+                    "UNKNOWN"
                 }
             }
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2011,26 +2011,26 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown
-                }
                 "CACHE_CHECK" => {
                     GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::CacheCheck
                 }
-                "QUEUED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued
+                "COMPLETED" => {
+                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed
                 }
                 "EXECUTING" => {
                     GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Executing
                 }
-                "COMPLETED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed
+                "QUEUED" => {
+                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued
+                }
+                "UNKNOWN" => {
+                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2353,35 +2353,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
-        #[doc = "Illegal value."]
-        Unspecified,
-        #[doc = "Download and run a new version of the bot. `arg` will be a resource\naccessible via `ByteStream.Read` to obtain the new bot code."]
-        BotUpdate,
         #[doc = "Restart the bot without downloading a new version. `arg` will be a\nmessage to log."]
         BotRestart,
         #[doc = "Shut down the bot. `arg` will be a task resource name (similar to those\nin tasks.proto) that the bot can use to tell the server that it is\nterminating."]
         BotTerminate,
+        #[doc = "Download and run a new version of the bot. `arg` will be a resource\naccessible via `ByteStream.Read` to obtain the new bot code."]
+        BotUpdate,
         #[doc = "Restart the host computer. `arg` will be a message to log."]
         HostRestart,
+        #[doc = "Illegal value."]
+        Unspecified,
     }
     impl GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::Unspecified => "UNSPECIFIED",
-                GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotUpdate => "BOT_UPDATE",
                 GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotRestart => "BOT_RESTART",
                 GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotTerminate => "BOT_TERMINATE",
+                GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotUpdate => "BOT_UPDATE",
                 GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::HostRestart => "HOST_RESTART",
+                GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::Unspecified => "UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2389,17 +2389,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::Unspecified,
-                "BOT_UPDATE" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotUpdate,
                 "BOT_RESTART" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotRestart,
                 "BOT_TERMINATE" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotTerminate,
+                "BOT_UPDATE" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::BotUpdate,
                 "HOST_RESTART" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::HostRestart,
+                "UNSPECIFIED" => GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand::Unspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2959,32 +2959,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleWatcherV1ChangeState {
-        #[doc = "The element exists and its full value is included in data."]
-        Exists,
         #[doc = "The element does not exist."]
         DoesNotExist,
-        #[doc = "Element may or may not exist. Used only for initial state delivery when\nthe client is not interested in fetching the initial state. See the\n\"Initial State\" section above."]
-        InitialStateSkipped,
         #[doc = "The element may exist, but some error has occurred. More information is\navailable in the data field - the value is a serialized Status\nproto (from google.rpc.Status)"]
         Error,
+        #[doc = "The element exists and its full value is included in data."]
+        Exists,
+        #[doc = "Element may or may not exist. Used only for initial state delivery when\nthe client is not interested in fetching the initial state. See the\n\"Initial State\" section above."]
+        InitialStateSkipped,
     }
     impl GoogleWatcherV1ChangeState {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleWatcherV1ChangeState::Exists => "EXISTS",
                 GoogleWatcherV1ChangeState::DoesNotExist => "DOES_NOT_EXIST",
-                GoogleWatcherV1ChangeState::InitialStateSkipped => "INITIAL_STATE_SKIPPED",
                 GoogleWatcherV1ChangeState::Error => "ERROR",
+                GoogleWatcherV1ChangeState::Exists => "EXISTS",
+                GoogleWatcherV1ChangeState::InitialStateSkipped => "INITIAL_STATE_SKIPPED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleWatcherV1ChangeState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleWatcherV1ChangeState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2992,16 +2992,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleWatcherV1ChangeState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "EXISTS" => GoogleWatcherV1ChangeState::Exists,
                 "DOES_NOT_EXIST" => GoogleWatcherV1ChangeState::DoesNotExist,
-                "INITIAL_STATE_SKIPPED" => GoogleWatcherV1ChangeState::InitialStateSkipped,
                 "ERROR" => GoogleWatcherV1ChangeState::Error,
+                "EXISTS" => GoogleWatcherV1ChangeState::Exists,
+                "INITIAL_STATE_SKIPPED" => GoogleWatcherV1ChangeState::InitialStateSkipped,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3083,12 +3083,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3096,7 +3096,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3139,12 +3139,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3152,7 +3152,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3219,7 +3219,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod media {
         pub mod params {}
         pub struct MediaActions<'a, A> {
@@ -3294,19 +3294,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3363,7 +3353,7 @@ mod resources {
             where
                 W: ::std::io::Write + ?Sized,
             {
-                self = self.alt(crate::params::Alt::Media);
+                self.alt = Some(crate::params::Alt::Media);
                 Ok(self
                     ._request(&self._path())
                     .send()?
@@ -3488,19 +3478,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3772,19 +3752,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3941,19 +3911,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4126,19 +4086,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4181,15 +4131,19 @@ mod resources {
             #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
             #[doc = r" populated fields in the yielded items will be determined by the"]
             #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_operations<T>(self) -> ListOperationsIter<'a, A, T>
+            pub fn iter_operations<T>(mut self) -> crate::iter::PageItemIter<Self, T>
             where
                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
+                let mut fields = concat!("nextPageToken,", "operations").to_owned();
+                let items_fields = T::field_selector();
+                if !items_fields.is_empty() {
+                    fields.push_str("(");
+                    fields.push_str(&items_fields);
+                    fields.push_str(")");
                 }
+                self.fields = Some(fields);
+                crate::iter::PageItemIter::new(self, "operations")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -4197,13 +4151,10 @@ mod resources {
             #[doc = r" the server."]
             pub fn iter_operations_standard(
                 mut self,
-            ) -> ListOperationsIter<'a, A, crate::schemas::GoogleLongrunningOperation> {
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleLongrunningOperation>
+            {
                 self.fields = Some(concat!("nextPageToken,", "operations").to_owned());
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
+                crate::iter::PageItemIter::new(self, "operations")
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -4213,26 +4164,38 @@ mod resources {
             #[doc = r" resources."]
             pub fn iter_operations_debug(
                 mut self,
-            ) -> ListOperationsIter<'a, A, crate::schemas::GoogleLongrunningOperation> {
-                self.fields = Some(concat!("nextPageToken,", "operations", "(*)").to_owned());
-                ListOperationsIter {
-                    method: self,
-                    last_page_reached: false,
-                    items_iter: None,
-                }
-            }
-            #[doc = r" Return an iterator that"]
-            pub fn iter<T>(
-                self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleLongrunningOperation>
             {
-                crate::PageIter {
-                    method: self,
-                    finished: false,
-                    _phantom: ::std::default::Default::default(),
+                self.fields = Some(concat!("nextPageToken,", "operations", "(*)").to_owned());
+                crate::iter::PageItemIter::new(self, "operations")
+            }
+            pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let mut fields = T::field_selector();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
                 }
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_standard(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::GoogleLongrunningListOperationsResponse>
+            {
+                crate::iter::PageIter::new(self)
+            }
+            pub fn iter_debug(
+                mut self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::GoogleLongrunningListOperationsResponse>
+            {
+                self.fields = Some("*".to_owned());
+                crate::iter::PageIter::new(self)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -4335,52 +4298,13 @@ mod resources {
                 req
             }
         }
-        pub struct ListOperationsIter<'a, A, T> {
-            method: ListRequestBuilder<'a, A>,
-            last_page_reached: bool,
-            items_iter: Option<::std::vec::IntoIter<T>>,
-        }
-        impl<'a, A, T> Iterator for ListOperationsIter<'a, A, T>
-        where
-            A: ::yup_oauth2::GetToken,
-            T: ::serde::de::DeserializeOwned,
-        {
-            type Item = Result<T, Box<dyn ::std::error::Error>>;
-            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                #[derive(:: serde :: Deserialize)]
-                struct Resp<T> {
-                    #[serde(rename = "operations")]
-                    items: Option<Vec<T>>,
-                    #[serde(rename = "nextPageToken")]
-                    next_page_token: Option<String>,
-                }
-                loop {
-                    if let Some(iter) = self.items_iter.as_mut() {
-                        match iter.next() {
-                            Some(v) => return Some(Ok(v)),
-                            None => {}
-                        }
-                    }
-                    if self.last_page_reached {
-                        return None;
-                    }
-                    let resp: Resp<T> = match self.method._execute() {
-                        Ok(r) => r,
-                        Err(err) => return Some(Err(err)),
-                    };
-                    self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                    self.method.page_token = resp.next_page_token;
-                    self.items_iter = resp.items.map(|i| i.into_iter());
-                }
-            }
-        }
-        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+        impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
             fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned,
             {
                 self._execute()
             }
@@ -4453,19 +4377,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4649,7 +4563,8 @@ mod resources {
             #[doc = "The `resume_marker` specifies how much of the existing underlying state is\ndelivered to the client when the watch request is received by the\nsystem. The client can set this marker in one of the following ways to get\ndifferent semantics:\n\n* Parameter is not specified or has the value \"\".\n  Semantics: Fetch initial state.\n  The client wants the entity's initial state to be delivered. See the\n  description in \"Initial State\".\n\n* Parameter is set to the string \"now\" (UTF-8 encoding).\n  Semantics: Fetch new changes only.\n  The client just wants to get the changes received by the system after\n  the watch point. The system may deliver changes from before the watch\n  point as well.\n\n* Parameter is set to a value received in an earlier\n  `Change.resume_marker` field while watching the same entity.\n  Semantics: Resume from a specific point.\n  The client wants to receive the changes from a specific point; this\n  value must correspond to a value received in the `Change.resume_marker`\n  field. The system may deliver changes from before the `resume_marker`\n  as well. If the system cannot resume the stream from this point (e.g.,\n  if it is too far behind in the stream), it can raise the\n  `FAILED_PRECONDITION` error.\n\nAn implementation MUST support an unspecified parameter and the\nempty string \"\" marker (initial state fetching) and the \"now\" marker.\nIt need not support resuming from a specific point."]
             pub fn resume_marker(mut self, value: impl Into<Vec<u8>>) -> Self {
                 let v: Vec<u8> = value.into();
-                self.resume_marker = Some(v.into())
+                self.resume_marker = Some(v.into());
+                self
             }
             #[doc = "The `target` value **must** be a valid URL path pointing to an entity\nto watch. Note that the service name **must** be\nremoved from the target field (e.g., the target field must say\n\"/foo/bar\", not \"myservice.googleapis.com/foo/bar\"). A client is\nalso allowed to pass system-specific parameters in the URL that\nare only obeyed by some implementations. Some parameters will be\nimplementation-specific. However, some have predefined meaning\nand are listed here:\n\n* recursive = true|false [default=false]\n  If set to true, indicates that the client wants to watch all elements\n  of entities in the subtree rooted at the entity's name in `target`. For\n  descendants that are not the immediate children of the target, the\n  `Change.element` will contain slashes.\n  \n  Note that some namespaces and entities will not support recursive\n  watching. When watching such an entity, a client must not set recursive\n  to true. Otherwise, it will receive an `UNIMPLEMENTED` error.\n\nNormal URL encoding must be used inside `target`.  For example, if a query\nparameter name or value, or the non-query parameter portion of `target`\ncontains a special character, it must be %-encoded.  We recommend that\nclients and servers use their runtime's URL library to produce and consume\ntarget values."]
             pub fn target(mut self, value: impl Into<String>) -> Self {
@@ -4661,19 +4576,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5060,7 +4965,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -5069,7 +4977,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -5082,58 +4990,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

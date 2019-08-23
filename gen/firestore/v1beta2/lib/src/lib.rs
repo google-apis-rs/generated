@@ -18,35 +18,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
-        #[doc = "Unspecified."]
-        OperationStateUnspecified,
-        #[doc = "Request is being prepared for processing."]
-        Initializing,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
-        #[doc = "Request has completed successfully."]
-        Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
         #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
         Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
+        #[doc = "Request is being prepared for processing."]
+        Initializing,
+        #[doc = "Unspecified."]
+        OperationStateUnspecified,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Request has completed successfully."]
+        Successful,
     }
     impl GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , }
+            match self { GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -56,12 +56,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing , "PROCESSING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing , "CANCELLING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling , "FINALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful , "FAILED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed , "CANCELLED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -210,35 +210,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
-        #[doc = "Unspecified."]
-        OperationStateUnspecified,
-        #[doc = "Request is being prepared for processing."]
-        Initializing,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
-        #[doc = "Request has completed successfully."]
-        Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
         #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
         Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
+        #[doc = "Request is being prepared for processing."]
+        Initializing,
+        #[doc = "Unspecified."]
+        OperationStateUnspecified,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Request has completed successfully."]
+        Successful,
     }
     impl GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful => "SUCCESSFUL" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled => "CANCELLED" , }
+            match self { GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful => "SUCCESSFUL" , }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -246,12 +246,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified , "INITIALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing , "PROCESSING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing , "CANCELLING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling , "FINALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful , "FAILED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed , "CANCELLED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
@@ -314,35 +314,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
-        #[doc = "Unspecified."]
-        OperationStateUnspecified,
-        #[doc = "Request is being prepared for processing."]
-        Initializing,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
-        #[doc = "Request has completed successfully."]
-        Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
         #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
         Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
+        #[doc = "Request is being prepared for processing."]
+        Initializing,
+        #[doc = "Unspecified."]
+        OperationStateUnspecified,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Request has completed successfully."]
+        Successful,
     }
     impl GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , }
+            match self { GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -352,12 +352,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing , "PROCESSING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing , "CANCELLING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling , "FINALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful , "FAILED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed , "CANCELLED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -450,28 +450,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexQueryScope {
-        #[doc = "The query scope is unspecified. Not a valid option."]
-        QueryScopeUnspecified,
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified\nat query time, and that has the collection id specified by the index."]
         Collection,
+        #[doc = "The query scope is unspecified. Not a valid option."]
+        QueryScopeUnspecified,
     }
     impl GoogleFirestoreAdminV1Beta2IndexQueryScope {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection => "COLLECTION",
                 GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified => {
                     "QUERY_SCOPE_UNSPECIFIED"
                 }
-                GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection => "COLLECTION",
             }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexQueryScope {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexQueryScope {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -479,16 +479,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexQueryScope {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLLECTION" => GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection,
                 "QUERY_SCOPE_UNSPECIFIED" => {
                     GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified
                 }
-                "COLLECTION" => GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -509,32 +509,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexState {
-        #[doc = "The state is unspecified."]
-        StateUnspecified,
         #[doc = "The index is being created.\nThere is an active long-running operation for the index.\nThe index is updated when writing a document.\nSome index data may exist."]
         Creating,
-        #[doc = "The index is ready to be used.\nThe index is updated when writing a document.\nThe index is fully populated from all stored documents it applies to."]
-        Ready,
         #[doc = "The index was being created, but something went wrong.\nThere is no active long-running operation for the index,\nand the most recently finished long-running operation failed.\nThe index is not updated when writing a document.\nSome index data may exist.\nUse the google.longrunning.Operations API to determine why the operation\nthat last attempted to create this index failed, then re-create the\nindex."]
         NeedsRepair,
+        #[doc = "The index is ready to be used.\nThe index is updated when writing a document.\nThe index is fully populated from all stored documents it applies to."]
+        Ready,
+        #[doc = "The state is unspecified."]
+        StateUnspecified,
     }
     impl GoogleFirestoreAdminV1Beta2IndexState {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleFirestoreAdminV1Beta2IndexState::StateUnspecified => "STATE_UNSPECIFIED",
                 GoogleFirestoreAdminV1Beta2IndexState::Creating => "CREATING",
-                GoogleFirestoreAdminV1Beta2IndexState::Ready => "READY",
                 GoogleFirestoreAdminV1Beta2IndexState::NeedsRepair => "NEEDS_REPAIR",
+                GoogleFirestoreAdminV1Beta2IndexState::Ready => "READY",
+                GoogleFirestoreAdminV1Beta2IndexState::StateUnspecified => "STATE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -542,16 +542,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexState::StateUnspecified,
                 "CREATING" => GoogleFirestoreAdminV1Beta2IndexState::Creating,
-                "READY" => GoogleFirestoreAdminV1Beta2IndexState::Ready,
                 "NEEDS_REPAIR" => GoogleFirestoreAdminV1Beta2IndexState::NeedsRepair,
+                "READY" => GoogleFirestoreAdminV1Beta2IndexState::Ready,
+                "STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexState::StateUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -644,31 +644,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
-        #[doc = "The type of change is not specified or known."]
-        ChangeTypeUnspecified,
         #[doc = "The single field index is being added."]
         Add,
+        #[doc = "The type of change is not specified or known."]
+        ChangeTypeUnspecified,
         #[doc = "The single field index is being removed."]
         Remove,
     }
     impl GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Add => "ADD",
                 GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::ChangeTypeUnspecified => {
                     "CHANGE_TYPE_UNSPECIFIED"
                 }
-                GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Add => "ADD",
                 GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Remove => "REMOVE",
             }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -676,16 +676,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ADD" => GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Add,
                 "CHANGE_TYPE_UNSPECIFIED" => {
                     GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::ChangeTypeUnspecified
                 }
-                "ADD" => GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Add,
                 "REMOVE" => GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Remove,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -754,12 +754,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -767,7 +767,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -797,29 +797,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexFieldOrder {
-        #[doc = "The ordering is unspecified. Not a valid option."]
-        OrderUnspecified,
         #[doc = "The field is ordered by ascending field value."]
         Ascending,
         #[doc = "The field is ordered by descending field value."]
         Descending,
+        #[doc = "The ordering is unspecified. Not a valid option."]
+        OrderUnspecified,
     }
     impl GoogleFirestoreAdminV1Beta2IndexFieldOrder {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleFirestoreAdminV1Beta2IndexFieldOrder::OrderUnspecified => "ORDER_UNSPECIFIED",
                 GoogleFirestoreAdminV1Beta2IndexFieldOrder::Ascending => "ASCENDING",
                 GoogleFirestoreAdminV1Beta2IndexFieldOrder::Descending => "DESCENDING",
+                GoogleFirestoreAdminV1Beta2IndexFieldOrder::OrderUnspecified => "ORDER_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -827,15 +827,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ORDER_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::OrderUnspecified,
                 "ASCENDING" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::Ascending,
                 "DESCENDING" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::Descending,
+                "ORDER_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::OrderUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -890,35 +890,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
-        #[doc = "Unspecified."]
-        OperationStateUnspecified,
-        #[doc = "Request is being prepared for processing."]
-        Initializing,
-        #[doc = "Request is actively being processed."]
-        Processing,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
-        Cancelling,
-        #[doc = "Request has been processed and is in its finalization stage."]
-        Finalizing,
-        #[doc = "Request has completed successfully."]
-        Successful,
-        #[doc = "Request has finished being processed, but encountered an error."]
-        Failed,
         #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
         Cancelled,
+        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        Cancelling,
+        #[doc = "Request has finished being processed, but encountered an error."]
+        Failed,
+        #[doc = "Request has been processed and is in its finalization stage."]
+        Finalizing,
+        #[doc = "Request is being prepared for processing."]
+        Initializing,
+        #[doc = "Unspecified."]
+        OperationStateUnspecified,
+        #[doc = "Request is actively being processed."]
+        Processing,
+        #[doc = "Request has completed successfully."]
+        Successful,
     }
     impl GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful => "SUCCESSFUL" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled => "CANCELLED" , }
+            match self { GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful => "SUCCESSFUL" , }
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -926,12 +926,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified , "INITIALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing , "PROCESSING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing , "CANCELLING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling , "FINALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful , "FAILED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed , "CANCELLED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
@@ -1149,12 +1149,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1162,7 +1162,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1205,12 +1205,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1218,7 +1218,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1264,7 +1264,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -1363,19 +1363,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1533,19 +1523,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1790,19 +1770,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1980,19 +1950,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2035,15 +1995,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_fields<T>(self) -> ListFieldsIter<'a, A, T>
+                        pub fn iter_fields<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListFieldsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "fields").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "fields")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2051,14 +2015,12 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_fields_standard(
                             mut self,
-                        ) -> ListFieldsIter<'a, A, crate::schemas::GoogleFirestoreAdminV1Beta2Field>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2Field,
+                        > {
                             self.fields = Some(concat!("nextPageToken,", "fields").to_owned());
-                            ListFieldsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "fields")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2068,28 +2030,45 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_fields_debug(
                             mut self,
-                        ) -> ListFieldsIter<'a, A, crate::schemas::GoogleFirestoreAdminV1Beta2Field>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2Field,
+                        > {
                             self.fields =
                                 Some(concat!("nextPageToken,", "fields", "(*)").to_owned());
-                            ListFieldsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "fields")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
+                        > {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
+                        > {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2194,52 +2173,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListFieldsIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListFieldsIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "fields")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -2274,19 +2214,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2542,19 +2472,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2716,19 +2636,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2884,19 +2794,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3074,19 +2974,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3129,15 +3019,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_indexes<T>(self) -> ListIndexesIter<'a, A, T>
+                        pub fn iter_indexes<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListIndexesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "indexes").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "indexes")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3145,14 +3039,12 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_indexes_standard(
                             mut self,
-                        ) -> ListIndexesIter<'a, A, crate::schemas::GoogleFirestoreAdminV1Beta2Index>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2Index,
+                        > {
                             self.fields = Some(concat!("nextPageToken,", "indexes").to_owned());
-                            ListIndexesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "indexes")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3162,28 +3054,45 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_indexes_debug(
                             mut self,
-                        ) -> ListIndexesIter<'a, A, crate::schemas::GoogleFirestoreAdminV1Beta2Index>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2Index,
+                        > {
                             self.fields =
                                 Some(concat!("nextPageToken,", "indexes", "(*)").to_owned());
-                            ListIndexesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "indexes")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
+                        > {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
+                        > {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -3288,52 +3197,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListIndexesIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListIndexesIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "indexes")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -3601,7 +3471,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -3610,7 +3483,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -3623,58 +3496,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

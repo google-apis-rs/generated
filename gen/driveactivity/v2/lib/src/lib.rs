@@ -184,29 +184,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationReferenceType {
-        #[doc = "The type is not available."]
-        UnspecifiedReferenceType,
-        #[doc = "The links of one or more Drive items were posted."]
-        Link,
         #[doc = "Comments were made regarding a Drive item."]
         Discuss,
+        #[doc = "The links of one or more Drive items were posted."]
+        Link,
+        #[doc = "The type is not available."]
+        UnspecifiedReferenceType,
     }
     impl ApplicationReferenceType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ApplicationReferenceType::UnspecifiedReferenceType => "UNSPECIFIED_REFERENCE_TYPE",
-                ApplicationReferenceType::Link => "LINK",
                 ApplicationReferenceType::Discuss => "DISCUSS",
+                ApplicationReferenceType::Link => "LINK",
+                ApplicationReferenceType::UnspecifiedReferenceType => "UNSPECIFIED_REFERENCE_TYPE",
             }
         }
     }
     impl ::std::fmt::Display for ApplicationReferenceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ApplicationReferenceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -214,15 +214,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ApplicationReferenceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNSPECIFIED_REFERENCE_TYPE" => ApplicationReferenceType::UnspecifiedReferenceType,
-                "LINK" => ApplicationReferenceType::Link,
                 "DISCUSS" => ApplicationReferenceType::Discuss,
+                "LINK" => ApplicationReferenceType::Link,
+                "UNSPECIFIED_REFERENCE_TYPE" => ApplicationReferenceType::UnspecifiedReferenceType,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -269,44 +269,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssignmentSubtype {
-        #[doc = "Subtype not available."]
-        SubtypeUnspecified,
         #[doc = "An assignment was added."]
         Added,
         #[doc = "An assignment was deleted."]
         Deleted,
+        #[doc = "An assignment was reassigned."]
+        Reassigned,
+        #[doc = "A resolved assignment was reopened."]
+        Reopened,
         #[doc = "An assignment reply was added."]
         ReplyAdded,
         #[doc = "An assignment reply was deleted."]
         ReplyDeleted,
         #[doc = "An assignment was resolved."]
         Resolved,
-        #[doc = "A resolved assignment was reopened."]
-        Reopened,
-        #[doc = "An assignment was reassigned."]
-        Reassigned,
+        #[doc = "Subtype not available."]
+        SubtypeUnspecified,
     }
     impl AssignmentSubtype {
         pub fn as_str(self) -> &'static str {
             match self {
-                AssignmentSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
                 AssignmentSubtype::Added => "ADDED",
                 AssignmentSubtype::Deleted => "DELETED",
+                AssignmentSubtype::Reassigned => "REASSIGNED",
+                AssignmentSubtype::Reopened => "REOPENED",
                 AssignmentSubtype::ReplyAdded => "REPLY_ADDED",
                 AssignmentSubtype::ReplyDeleted => "REPLY_DELETED",
                 AssignmentSubtype::Resolved => "RESOLVED",
-                AssignmentSubtype::Reopened => "REOPENED",
-                AssignmentSubtype::Reassigned => "REASSIGNED",
+                AssignmentSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AssignmentSubtype {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AssignmentSubtype {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -314,20 +314,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AssignmentSubtype {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SUBTYPE_UNSPECIFIED" => AssignmentSubtype::SubtypeUnspecified,
                 "ADDED" => AssignmentSubtype::Added,
                 "DELETED" => AssignmentSubtype::Deleted,
+                "REASSIGNED" => AssignmentSubtype::Reassigned,
+                "REOPENED" => AssignmentSubtype::Reopened,
                 "REPLY_ADDED" => AssignmentSubtype::ReplyAdded,
                 "REPLY_DELETED" => AssignmentSubtype::ReplyDeleted,
                 "RESOLVED" => AssignmentSubtype::Resolved,
-                "REOPENED" => AssignmentSubtype::Reopened,
-                "REASSIGNED" => AssignmentSubtype::Reassigned,
+                "SUBTYPE_UNSPECIFIED" => AssignmentSubtype::SubtypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -496,29 +496,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataLeakPreventionChangeType {
-        #[doc = "An update to the DLP state that is neither FLAGGED or CLEARED."]
-        TypeUnspecified,
-        #[doc = "Document has been flagged as containing sensitive content."]
-        Flagged,
         #[doc = "Document is no longer flagged as containing sensitive content."]
         Cleared,
+        #[doc = "Document has been flagged as containing sensitive content."]
+        Flagged,
+        #[doc = "An update to the DLP state that is neither FLAGGED or CLEARED."]
+        TypeUnspecified,
     }
     impl DataLeakPreventionChangeType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DataLeakPreventionChangeType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                DataLeakPreventionChangeType::Flagged => "FLAGGED",
                 DataLeakPreventionChangeType::Cleared => "CLEARED",
+                DataLeakPreventionChangeType::Flagged => "FLAGGED",
+                DataLeakPreventionChangeType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DataLeakPreventionChangeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DataLeakPreventionChangeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -526,15 +526,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DataLeakPreventionChangeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => DataLeakPreventionChangeType::TypeUnspecified,
-                "FLAGGED" => DataLeakPreventionChangeType::Flagged,
                 "CLEARED" => DataLeakPreventionChangeType::Cleared,
+                "FLAGGED" => DataLeakPreventionChangeType::Flagged,
+                "TYPE_UNSPECIFIED" => DataLeakPreventionChangeType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -581,29 +581,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeleteType {
-        #[doc = "Deletion type is not available."]
-        TypeUnspecified,
-        #[doc = "An object was put into the trash."]
-        Trash,
         #[doc = "An object was deleted permanently."]
         PermanentDelete,
+        #[doc = "An object was put into the trash."]
+        Trash,
+        #[doc = "Deletion type is not available."]
+        TypeUnspecified,
     }
     impl DeleteType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeleteType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                DeleteType::Trash => "TRASH",
                 DeleteType::PermanentDelete => "PERMANENT_DELETE",
+                DeleteType::Trash => "TRASH",
+                DeleteType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DeleteType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeleteType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -611,15 +611,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeleteType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => DeleteType::TypeUnspecified,
-                "TRASH" => DeleteType::Trash,
                 "PERMANENT_DELETE" => DeleteType::PermanentDelete,
+                "TRASH" => DeleteType::Trash,
+                "TYPE_UNSPECIFIED" => DeleteType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -802,32 +802,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DriveFolderType {
-        #[doc = "The folder type is unknown."]
-        TypeUnspecified,
         #[doc = "The folder is the root of a user's MyDrive."]
         MyDriveRoot,
         #[doc = "The folder is the root of a shared drive."]
         SharedDriveRoot,
         #[doc = "The folder is a standard, non-root, folder."]
         StandardFolder,
+        #[doc = "The folder type is unknown."]
+        TypeUnspecified,
     }
     impl DriveFolderType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DriveFolderType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 DriveFolderType::MyDriveRoot => "MY_DRIVE_ROOT",
                 DriveFolderType::SharedDriveRoot => "SHARED_DRIVE_ROOT",
                 DriveFolderType::StandardFolder => "STANDARD_FOLDER",
+                DriveFolderType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DriveFolderType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DriveFolderType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -835,16 +835,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DriveFolderType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => DriveFolderType::TypeUnspecified,
                 "MY_DRIVE_ROOT" => DriveFolderType::MyDriveRoot,
                 "SHARED_DRIVE_ROOT" => DriveFolderType::SharedDriveRoot,
                 "STANDARD_FOLDER" => DriveFolderType::StandardFolder,
+                "TYPE_UNSPECIFIED" => DriveFolderType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1078,31 +1078,31 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FolderType {
         #[doc = "This item is deprecated; please see `DriveFolder.Type` instead."]
-        TypeUnspecified,
-        #[doc = "This item is deprecated; please see `DriveFolder.Type` instead."]
         MyDriveRoot,
+        #[doc = "This item is deprecated; please see `DriveFolder.Type` instead."]
+        StandardFolder,
         #[doc = "This item is deprecated; please see `DriveFolder.Type` instead."]
         TeamDriveRoot,
         #[doc = "This item is deprecated; please see `DriveFolder.Type` instead."]
-        StandardFolder,
+        TypeUnspecified,
     }
     impl FolderType {
         pub fn as_str(self) -> &'static str {
             match self {
-                FolderType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 FolderType::MyDriveRoot => "MY_DRIVE_ROOT",
-                FolderType::TeamDriveRoot => "TEAM_DRIVE_ROOT",
                 FolderType::StandardFolder => "STANDARD_FOLDER",
+                FolderType::TeamDriveRoot => "TEAM_DRIVE_ROOT",
+                FolderType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for FolderType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FolderType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1110,16 +1110,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FolderType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => FolderType::TypeUnspecified,
                 "MY_DRIVE_ROOT" => FolderType::MyDriveRoot,
-                "TEAM_DRIVE_ROOT" => FolderType::TeamDriveRoot,
                 "STANDARD_FOLDER" => FolderType::StandardFolder,
+                "TEAM_DRIVE_ROOT" => FolderType::TeamDriveRoot,
+                "TYPE_UNSPECIFIED" => FolderType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1365,44 +1365,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PermissionRole {
-        #[doc = "The role is not available."]
-        RoleUnspecified,
-        #[doc = "A role granting full access."]
-        Owner,
-        #[doc = "A role granting the ability to manage people and settings."]
-        Organizer,
-        #[doc = "A role granting the ability to contribute and manage content."]
-        FileOrganizer,
-        #[doc = "A role granting the ability to contribute content. This role is sometimes\nalso known as \"writer\"."]
-        Editor,
         #[doc = "A role granting the ability to view and comment on content."]
         Commenter,
-        #[doc = "A role granting the ability to view content. This role is sometimes also\nknown as \"reader\"."]
-        Viewer,
+        #[doc = "A role granting the ability to contribute content. This role is sometimes\nalso known as \"writer\"."]
+        Editor,
+        #[doc = "A role granting the ability to contribute and manage content."]
+        FileOrganizer,
+        #[doc = "A role granting the ability to manage people and settings."]
+        Organizer,
+        #[doc = "A role granting full access."]
+        Owner,
         #[doc = "A role granting the ability to view content only after it has been\npublished to the web. This role is sometimes also known as \"published\nreader\". See https://support.google.com/sites/answer/6372880 for more\ninformation."]
         PublishedViewer,
+        #[doc = "The role is not available."]
+        RoleUnspecified,
+        #[doc = "A role granting the ability to view content. This role is sometimes also\nknown as \"reader\"."]
+        Viewer,
     }
     impl PermissionRole {
         pub fn as_str(self) -> &'static str {
             match self {
-                PermissionRole::RoleUnspecified => "ROLE_UNSPECIFIED",
-                PermissionRole::Owner => "OWNER",
-                PermissionRole::Organizer => "ORGANIZER",
-                PermissionRole::FileOrganizer => "FILE_ORGANIZER",
-                PermissionRole::Editor => "EDITOR",
                 PermissionRole::Commenter => "COMMENTER",
-                PermissionRole::Viewer => "VIEWER",
+                PermissionRole::Editor => "EDITOR",
+                PermissionRole::FileOrganizer => "FILE_ORGANIZER",
+                PermissionRole::Organizer => "ORGANIZER",
+                PermissionRole::Owner => "OWNER",
                 PermissionRole::PublishedViewer => "PUBLISHED_VIEWER",
+                PermissionRole::RoleUnspecified => "ROLE_UNSPECIFIED",
+                PermissionRole::Viewer => "VIEWER",
             }
         }
     }
     impl ::std::fmt::Display for PermissionRole {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PermissionRole {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1410,20 +1410,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PermissionRole {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ROLE_UNSPECIFIED" => PermissionRole::RoleUnspecified,
-                "OWNER" => PermissionRole::Owner,
-                "ORGANIZER" => PermissionRole::Organizer,
-                "FILE_ORGANIZER" => PermissionRole::FileOrganizer,
-                "EDITOR" => PermissionRole::Editor,
                 "COMMENTER" => PermissionRole::Commenter,
-                "VIEWER" => PermissionRole::Viewer,
+                "EDITOR" => PermissionRole::Editor,
+                "FILE_ORGANIZER" => PermissionRole::FileOrganizer,
+                "ORGANIZER" => PermissionRole::Organizer,
+                "OWNER" => PermissionRole::Owner,
                 "PUBLISHED_VIEWER" => PermissionRole::PublishedViewer,
+                "ROLE_UNSPECIFIED" => PermissionRole::RoleUnspecified,
+                "VIEWER" => PermissionRole::Viewer,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1514,41 +1514,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PostSubtype {
-        #[doc = "Subtype not available."]
-        SubtypeUnspecified,
         #[doc = "A post was added."]
         Added,
         #[doc = "A post was deleted."]
         Deleted,
+        #[doc = "A posted comment was reopened."]
+        Reopened,
         #[doc = "A reply was added."]
         ReplyAdded,
         #[doc = "A reply was deleted."]
         ReplyDeleted,
         #[doc = "A posted comment was resolved."]
         Resolved,
-        #[doc = "A posted comment was reopened."]
-        Reopened,
+        #[doc = "Subtype not available."]
+        SubtypeUnspecified,
     }
     impl PostSubtype {
         pub fn as_str(self) -> &'static str {
             match self {
-                PostSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
                 PostSubtype::Added => "ADDED",
                 PostSubtype::Deleted => "DELETED",
+                PostSubtype::Reopened => "REOPENED",
                 PostSubtype::ReplyAdded => "REPLY_ADDED",
                 PostSubtype::ReplyDeleted => "REPLY_DELETED",
                 PostSubtype::Resolved => "RESOLVED",
-                PostSubtype::Reopened => "REOPENED",
+                PostSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for PostSubtype {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PostSubtype {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1556,19 +1556,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PostSubtype {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SUBTYPE_UNSPECIFIED" => PostSubtype::SubtypeUnspecified,
                 "ADDED" => PostSubtype::Added,
                 "DELETED" => PostSubtype::Deleted,
+                "REOPENED" => PostSubtype::Reopened,
                 "REPLY_ADDED" => PostSubtype::ReplyAdded,
                 "REPLY_DELETED" => PostSubtype::ReplyDeleted,
                 "RESOLVED" => PostSubtype::Resolved,
-                "REOPENED" => PostSubtype::Reopened,
+                "SUBTYPE_UNSPECIFIED" => PostSubtype::SubtypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1728,12 +1728,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for RestoreType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RestoreType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1741,7 +1741,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RestoreType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1795,35 +1795,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RestrictionChangeFeature {
-        #[doc = "The feature which changed restriction settings was not available."]
-        FeatureUnspecified,
-        #[doc = "When restricted, this prevents items from being shared outside the\ndomain."]
-        SharingOutsideDomain,
         #[doc = "When restricted, this prevents direct sharing of individual items."]
         DirectSharing,
-        #[doc = "When restricted, this prevents actions like copy, download, and print\nthat might result in uncontrolled duplicates of items."]
-        ItemDuplication,
         #[doc = "When restricted, this prevents use of Drive File Stream."]
         DriveFileStream,
+        #[doc = "The feature which changed restriction settings was not available."]
+        FeatureUnspecified,
+        #[doc = "When restricted, this prevents actions like copy, download, and print\nthat might result in uncontrolled duplicates of items."]
+        ItemDuplication,
+        #[doc = "When restricted, this prevents items from being shared outside the\ndomain."]
+        SharingOutsideDomain,
     }
     impl RestrictionChangeFeature {
         pub fn as_str(self) -> &'static str {
             match self {
-                RestrictionChangeFeature::FeatureUnspecified => "FEATURE_UNSPECIFIED",
-                RestrictionChangeFeature::SharingOutsideDomain => "SHARING_OUTSIDE_DOMAIN",
                 RestrictionChangeFeature::DirectSharing => "DIRECT_SHARING",
-                RestrictionChangeFeature::ItemDuplication => "ITEM_DUPLICATION",
                 RestrictionChangeFeature::DriveFileStream => "DRIVE_FILE_STREAM",
+                RestrictionChangeFeature::FeatureUnspecified => "FEATURE_UNSPECIFIED",
+                RestrictionChangeFeature::ItemDuplication => "ITEM_DUPLICATION",
+                RestrictionChangeFeature::SharingOutsideDomain => "SHARING_OUTSIDE_DOMAIN",
             }
         }
     }
     impl ::std::fmt::Display for RestrictionChangeFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RestrictionChangeFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1831,17 +1831,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RestrictionChangeFeature {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FEATURE_UNSPECIFIED" => RestrictionChangeFeature::FeatureUnspecified,
-                "SHARING_OUTSIDE_DOMAIN" => RestrictionChangeFeature::SharingOutsideDomain,
                 "DIRECT_SHARING" => RestrictionChangeFeature::DirectSharing,
-                "ITEM_DUPLICATION" => RestrictionChangeFeature::ItemDuplication,
                 "DRIVE_FILE_STREAM" => RestrictionChangeFeature::DriveFileStream,
+                "FEATURE_UNSPECIFIED" => RestrictionChangeFeature::FeatureUnspecified,
+                "ITEM_DUPLICATION" => RestrictionChangeFeature::ItemDuplication,
+                "SHARING_OUTSIDE_DOMAIN" => RestrictionChangeFeature::SharingOutsideDomain,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1862,31 +1862,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RestrictionChangeNewRestriction {
+        #[doc = "The use of this feature is fully restricted."]
+        FullyRestricted,
         #[doc = "The type of restriction is not available."]
         RestrictionUnspecified,
         #[doc = "The feature is available without restriction."]
         Unrestricted,
-        #[doc = "The use of this feature is fully restricted."]
-        FullyRestricted,
     }
     impl RestrictionChangeNewRestriction {
         pub fn as_str(self) -> &'static str {
             match self {
+                RestrictionChangeNewRestriction::FullyRestricted => "FULLY_RESTRICTED",
                 RestrictionChangeNewRestriction::RestrictionUnspecified => {
                     "RESTRICTION_UNSPECIFIED"
                 }
                 RestrictionChangeNewRestriction::Unrestricted => "UNRESTRICTED",
-                RestrictionChangeNewRestriction::FullyRestricted => "FULLY_RESTRICTED",
             }
         }
     }
     impl ::std::fmt::Display for RestrictionChangeNewRestriction {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RestrictionChangeNewRestriction {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1894,17 +1894,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RestrictionChangeNewRestriction {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "FULLY_RESTRICTED" => RestrictionChangeNewRestriction::FullyRestricted,
                 "RESTRICTION_UNSPECIFIED" => {
                     RestrictionChangeNewRestriction::RestrictionUnspecified
                 }
                 "UNRESTRICTED" => RestrictionChangeNewRestriction::Unrestricted,
-                "FULLY_RESTRICTED" => RestrictionChangeNewRestriction::FullyRestricted,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1980,47 +1980,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SuggestionSubtype {
-        #[doc = "Subtype not available."]
-        SubtypeUnspecified,
+        #[doc = "An accepted suggestion was deleted."]
+        AcceptDeleted,
+        #[doc = "A suggestion was accepted."]
+        Accepted,
         #[doc = "A suggestion was added."]
         Added,
         #[doc = "A suggestion was deleted."]
         Deleted,
+        #[doc = "A rejected suggestion was deleted."]
+        RejectDeleted,
+        #[doc = "A suggestion was rejected."]
+        Rejected,
         #[doc = "A suggestion reply was added."]
         ReplyAdded,
         #[doc = "A suggestion reply was deleted."]
         ReplyDeleted,
-        #[doc = "A suggestion was accepted."]
-        Accepted,
-        #[doc = "A suggestion was rejected."]
-        Rejected,
-        #[doc = "An accepted suggestion was deleted."]
-        AcceptDeleted,
-        #[doc = "A rejected suggestion was deleted."]
-        RejectDeleted,
+        #[doc = "Subtype not available."]
+        SubtypeUnspecified,
     }
     impl SuggestionSubtype {
         pub fn as_str(self) -> &'static str {
             match self {
-                SuggestionSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
+                SuggestionSubtype::AcceptDeleted => "ACCEPT_DELETED",
+                SuggestionSubtype::Accepted => "ACCEPTED",
                 SuggestionSubtype::Added => "ADDED",
                 SuggestionSubtype::Deleted => "DELETED",
+                SuggestionSubtype::RejectDeleted => "REJECT_DELETED",
+                SuggestionSubtype::Rejected => "REJECTED",
                 SuggestionSubtype::ReplyAdded => "REPLY_ADDED",
                 SuggestionSubtype::ReplyDeleted => "REPLY_DELETED",
-                SuggestionSubtype::Accepted => "ACCEPTED",
-                SuggestionSubtype::Rejected => "REJECTED",
-                SuggestionSubtype::AcceptDeleted => "ACCEPT_DELETED",
-                SuggestionSubtype::RejectDeleted => "REJECT_DELETED",
+                SuggestionSubtype::SubtypeUnspecified => "SUBTYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SuggestionSubtype {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SuggestionSubtype {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2028,21 +2028,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SuggestionSubtype {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SUBTYPE_UNSPECIFIED" => SuggestionSubtype::SubtypeUnspecified,
+                "ACCEPT_DELETED" => SuggestionSubtype::AcceptDeleted,
+                "ACCEPTED" => SuggestionSubtype::Accepted,
                 "ADDED" => SuggestionSubtype::Added,
                 "DELETED" => SuggestionSubtype::Deleted,
+                "REJECT_DELETED" => SuggestionSubtype::RejectDeleted,
+                "REJECTED" => SuggestionSubtype::Rejected,
                 "REPLY_ADDED" => SuggestionSubtype::ReplyAdded,
                 "REPLY_DELETED" => SuggestionSubtype::ReplyDeleted,
-                "ACCEPTED" => SuggestionSubtype::Accepted,
-                "REJECTED" => SuggestionSubtype::Rejected,
-                "ACCEPT_DELETED" => SuggestionSubtype::AcceptDeleted,
-                "REJECT_DELETED" => SuggestionSubtype::RejectDeleted,
+                "SUBTYPE_UNSPECIFIED" => SuggestionSubtype::SubtypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2089,29 +2089,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SystemEventType {
+        #[doc = "The event is due to the system automatically purging trash."]
+        TrashAutoPurge,
         #[doc = "The event type is unspecified."]
         TypeUnspecified,
         #[doc = "The event is a consequence of a user account being deleted."]
         UserDeletion,
-        #[doc = "The event is due to the system automatically purging trash."]
-        TrashAutoPurge,
     }
     impl SystemEventType {
         pub fn as_str(self) -> &'static str {
             match self {
+                SystemEventType::TrashAutoPurge => "TRASH_AUTO_PURGE",
                 SystemEventType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 SystemEventType::UserDeletion => "USER_DELETION",
-                SystemEventType::TrashAutoPurge => "TRASH_AUTO_PURGE",
             }
         }
     }
     impl ::std::fmt::Display for SystemEventType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SystemEventType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2119,15 +2119,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SystemEventType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "TRASH_AUTO_PURGE" => SystemEventType::TrashAutoPurge,
                 "TYPE_UNSPECIFIED" => SystemEventType::TypeUnspecified,
                 "USER_DELETION" => SystemEventType::UserDeletion,
-                "TRASH_AUTO_PURGE" => SystemEventType::TrashAutoPurge,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2416,12 +2416,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2429,7 +2429,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2472,12 +2472,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2485,7 +2485,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2531,7 +2531,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod activity {
         pub mod params {}
         pub struct ActivityActions<'a, A> {
@@ -2585,19 +2585,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2983,7 +2973,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -2992,7 +2985,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -3005,58 +2998,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

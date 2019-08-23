@@ -3,30 +3,30 @@ pub mod schemas {
     pub enum AnalyzeEntitiesRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
-        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
-        Utf8,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-16 encoding of the input. Java and Javascript are examples of\nlanguages that use this encoding natively."]
         Utf16,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."]
         Utf32,
+        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
+        Utf8,
     }
     impl AnalyzeEntitiesRequestEncodingType {
         pub fn as_str(self) -> &'static str {
             match self {
                 AnalyzeEntitiesRequestEncodingType::None => "NONE",
-                AnalyzeEntitiesRequestEncodingType::Utf8 => "UTF8",
                 AnalyzeEntitiesRequestEncodingType::Utf16 => "UTF16",
                 AnalyzeEntitiesRequestEncodingType::Utf32 => "UTF32",
+                AnalyzeEntitiesRequestEncodingType::Utf8 => "UTF8",
             }
         }
     }
     impl ::std::fmt::Display for AnalyzeEntitiesRequestEncodingType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AnalyzeEntitiesRequestEncodingType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -34,16 +34,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AnalyzeEntitiesRequestEncodingType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "NONE" => AnalyzeEntitiesRequestEncodingType::None,
-                "UTF8" => AnalyzeEntitiesRequestEncodingType::Utf8,
                 "UTF16" => AnalyzeEntitiesRequestEncodingType::Utf16,
                 "UTF32" => AnalyzeEntitiesRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeEntitiesRequestEncodingType::Utf8,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -116,30 +116,30 @@ pub mod schemas {
     pub enum AnalyzeSentimentRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
-        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
-        Utf8,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-16 encoding of the input. Java and Javascript are examples of\nlanguages that use this encoding natively."]
         Utf16,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."]
         Utf32,
+        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
+        Utf8,
     }
     impl AnalyzeSentimentRequestEncodingType {
         pub fn as_str(self) -> &'static str {
             match self {
                 AnalyzeSentimentRequestEncodingType::None => "NONE",
-                AnalyzeSentimentRequestEncodingType::Utf8 => "UTF8",
                 AnalyzeSentimentRequestEncodingType::Utf16 => "UTF16",
                 AnalyzeSentimentRequestEncodingType::Utf32 => "UTF32",
+                AnalyzeSentimentRequestEncodingType::Utf8 => "UTF8",
             }
         }
     }
     impl ::std::fmt::Display for AnalyzeSentimentRequestEncodingType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AnalyzeSentimentRequestEncodingType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -147,16 +147,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AnalyzeSentimentRequestEncodingType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "NONE" => AnalyzeSentimentRequestEncodingType::None,
-                "UTF8" => AnalyzeSentimentRequestEncodingType::Utf8,
                 "UTF16" => AnalyzeSentimentRequestEncodingType::Utf16,
                 "UTF32" => AnalyzeSentimentRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeSentimentRequestEncodingType::Utf8,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -232,30 +232,30 @@ pub mod schemas {
     pub enum AnalyzeSyntaxRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
-        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
-        Utf8,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-16 encoding of the input. Java and Javascript are examples of\nlanguages that use this encoding natively."]
         Utf16,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."]
         Utf32,
+        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
+        Utf8,
     }
     impl AnalyzeSyntaxRequestEncodingType {
         pub fn as_str(self) -> &'static str {
             match self {
                 AnalyzeSyntaxRequestEncodingType::None => "NONE",
-                AnalyzeSyntaxRequestEncodingType::Utf8 => "UTF8",
                 AnalyzeSyntaxRequestEncodingType::Utf16 => "UTF16",
                 AnalyzeSyntaxRequestEncodingType::Utf32 => "UTF32",
+                AnalyzeSyntaxRequestEncodingType::Utf8 => "UTF8",
             }
         }
     }
     impl ::std::fmt::Display for AnalyzeSyntaxRequestEncodingType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AnalyzeSyntaxRequestEncodingType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -263,16 +263,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AnalyzeSyntaxRequestEncodingType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "NONE" => AnalyzeSyntaxRequestEncodingType::None,
-                "UTF8" => AnalyzeSyntaxRequestEncodingType::Utf8,
                 "UTF16" => AnalyzeSyntaxRequestEncodingType::Utf16,
                 "UTF32" => AnalyzeSyntaxRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeSyntaxRequestEncodingType::Utf8,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -347,30 +347,30 @@ pub mod schemas {
     pub enum AnnotateTextRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
-        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
-        Utf8,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-16 encoding of the input. Java and Javascript are examples of\nlanguages that use this encoding natively."]
         Utf16,
         #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."]
         Utf32,
+        #[doc = "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-8 encoding of the input. C++ and Go are examples of languages\nthat use this encoding natively."]
+        Utf8,
     }
     impl AnnotateTextRequestEncodingType {
         pub fn as_str(self) -> &'static str {
             match self {
                 AnnotateTextRequestEncodingType::None => "NONE",
-                AnnotateTextRequestEncodingType::Utf8 => "UTF8",
                 AnnotateTextRequestEncodingType::Utf16 => "UTF16",
                 AnnotateTextRequestEncodingType::Utf32 => "UTF32",
+                AnnotateTextRequestEncodingType::Utf8 => "UTF8",
             }
         }
     }
     impl ::std::fmt::Display for AnnotateTextRequestEncodingType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AnnotateTextRequestEncodingType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -378,16 +378,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AnnotateTextRequestEncodingType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "NONE" => AnnotateTextRequestEncodingType::None,
-                "UTF8" => AnnotateTextRequestEncodingType::Utf8,
                 "UTF16" => AnnotateTextRequestEncodingType::Utf16,
                 "UTF32" => AnnotateTextRequestEncodingType::Utf32,
+                "UTF8" => AnnotateTextRequestEncodingType::Utf8,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -469,8 +469,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DependencyEdgeLabel {
-        #[doc = "Unknown"]
-        Unknown,
         #[doc = "Abbreviation modifier"]
         Abbrev,
         #[doc = "Adjectival complement"]
@@ -479,22 +477,32 @@ pub mod schemas {
         Advcl,
         #[doc = "Adverbial modifier"]
         Advmod,
+        #[doc = "Adverbial phrase modifier"]
+        Advphmod,
         #[doc = "Adjectival modifier of an NP"]
         Amod,
         #[doc = "Appositional modifier of an NP"]
         Appos,
+        #[doc = "Aspect marker"]
+        Asp,
         #[doc = "Attribute dependent of a copular verb"]
         Attr,
         #[doc = "Auxiliary (non-main) verb"]
         Aux,
+        #[doc = "Causative auxiliary"]
+        Auxcaus,
         #[doc = "Passive auxiliary"]
         Auxpass,
+        #[doc = "Helper auxiliary"]
+        Auxvv,
         #[doc = "Coordinating conjunction"]
         Cc,
         #[doc = "Clausal complement of a verb or adjective"]
         Ccomp,
         #[doc = "Conjunct"]
         Conj,
+        #[doc = "Copula"]
+        Cop,
         #[doc = "Clausal subject"]
         Csubj,
         #[doc = "Clausal passive subject"]
@@ -505,24 +513,50 @@ pub mod schemas {
         Det,
         #[doc = "Discourse"]
         Discourse,
+        #[doc = "Dislocated relation (for fronted/topicalized elements)"]
+        Dislocated,
         #[doc = "Direct object"]
         Dobj,
+        #[doc = "Rentaishi (Prenominal modifier)"]
+        Dtmod,
         #[doc = "Expletive"]
         Expl,
+        #[doc = "Foreign words"]
+        Foreign,
+        #[doc = "Genitive modifier"]
+        Gmod,
+        #[doc = "Genitive object"]
+        Gobj,
         #[doc = "Goes with (part of a word in a text not well edited)"]
         Goeswith,
+        #[doc = "Infinitival modifier"]
+        Infmod,
         #[doc = "Indirect object"]
         Iobj,
+        #[doc = "Keyword"]
+        Kw,
+        #[doc = "List for chains of comparable items"]
+        List,
         #[doc = "Marker (word introducing a subordinate clause)"]
         Mark,
+        #[doc = "Measure"]
+        Mes,
         #[doc = "Multi-word expression"]
         Mwe,
         #[doc = "Multi-word verbal expression"]
         Mwv,
+        #[doc = "Nominal complement of a noun"]
+        Ncomp,
         #[doc = "Negation modifier"]
         Neg,
         #[doc = "Noun compound modifier"]
         Nn,
+        #[doc = "Nominalized clause"]
+        Nomc,
+        #[doc = "Nominalized clausal subject"]
+        Nomcsubj,
+        #[doc = "Nominalized clausal passive"]
+        Nomcsubjpass,
         #[doc = "Noun phrase used as an adverbial modifier"]
         Npadvmod,
         #[doc = "Nominal subject"]
@@ -533,6 +567,8 @@ pub mod schemas {
         Num,
         #[doc = "Element of compound number"]
         Number,
+        #[doc = "Compound of numeric modifier"]
+        Numc,
         #[doc = "Punctuation mark"]
         P,
         #[doc = "Parataxis relation"]
@@ -583,94 +619,76 @@ pub mod schemas {
         Snum,
         #[doc = "Suffix"]
         Suff,
+        #[doc = "Name suffix"]
+        Suffix,
+        #[doc = "Name title"]
+        Title,
         #[doc = "Temporal modifier"]
         Tmod,
         #[doc = "Topic marker"]
         Topic,
+        #[doc = "Unknown"]
+        Unknown,
         #[doc = "Clause headed by an infinite form of the verb that modifies a noun"]
         Vmod,
         #[doc = "Vocative"]
         Vocative,
         #[doc = "Open clausal complement"]
         Xcomp,
-        #[doc = "Name suffix"]
-        Suffix,
-        #[doc = "Name title"]
-        Title,
-        #[doc = "Adverbial phrase modifier"]
-        Advphmod,
-        #[doc = "Causative auxiliary"]
-        Auxcaus,
-        #[doc = "Helper auxiliary"]
-        Auxvv,
-        #[doc = "Rentaishi (Prenominal modifier)"]
-        Dtmod,
-        #[doc = "Foreign words"]
-        Foreign,
-        #[doc = "Keyword"]
-        Kw,
-        #[doc = "List for chains of comparable items"]
-        List,
-        #[doc = "Nominalized clause"]
-        Nomc,
-        #[doc = "Nominalized clausal subject"]
-        Nomcsubj,
-        #[doc = "Nominalized clausal passive"]
-        Nomcsubjpass,
-        #[doc = "Compound of numeric modifier"]
-        Numc,
-        #[doc = "Copula"]
-        Cop,
-        #[doc = "Dislocated relation (for fronted/topicalized elements)"]
-        Dislocated,
-        #[doc = "Aspect marker"]
-        Asp,
-        #[doc = "Genitive modifier"]
-        Gmod,
-        #[doc = "Genitive object"]
-        Gobj,
-        #[doc = "Infinitival modifier"]
-        Infmod,
-        #[doc = "Measure"]
-        Mes,
-        #[doc = "Nominal complement of a noun"]
-        Ncomp,
     }
     impl DependencyEdgeLabel {
         pub fn as_str(self) -> &'static str {
             match self {
-                DependencyEdgeLabel::Unknown => "UNKNOWN",
                 DependencyEdgeLabel::Abbrev => "ABBREV",
                 DependencyEdgeLabel::Acomp => "ACOMP",
                 DependencyEdgeLabel::Advcl => "ADVCL",
                 DependencyEdgeLabel::Advmod => "ADVMOD",
+                DependencyEdgeLabel::Advphmod => "ADVPHMOD",
                 DependencyEdgeLabel::Amod => "AMOD",
                 DependencyEdgeLabel::Appos => "APPOS",
+                DependencyEdgeLabel::Asp => "ASP",
                 DependencyEdgeLabel::Attr => "ATTR",
                 DependencyEdgeLabel::Aux => "AUX",
+                DependencyEdgeLabel::Auxcaus => "AUXCAUS",
                 DependencyEdgeLabel::Auxpass => "AUXPASS",
+                DependencyEdgeLabel::Auxvv => "AUXVV",
                 DependencyEdgeLabel::Cc => "CC",
                 DependencyEdgeLabel::Ccomp => "CCOMP",
                 DependencyEdgeLabel::Conj => "CONJ",
+                DependencyEdgeLabel::Cop => "COP",
                 DependencyEdgeLabel::Csubj => "CSUBJ",
                 DependencyEdgeLabel::Csubjpass => "CSUBJPASS",
                 DependencyEdgeLabel::Dep => "DEP",
                 DependencyEdgeLabel::Det => "DET",
                 DependencyEdgeLabel::Discourse => "DISCOURSE",
+                DependencyEdgeLabel::Dislocated => "DISLOCATED",
                 DependencyEdgeLabel::Dobj => "DOBJ",
+                DependencyEdgeLabel::Dtmod => "DTMOD",
                 DependencyEdgeLabel::Expl => "EXPL",
+                DependencyEdgeLabel::Foreign => "FOREIGN",
+                DependencyEdgeLabel::Gmod => "GMOD",
+                DependencyEdgeLabel::Gobj => "GOBJ",
                 DependencyEdgeLabel::Goeswith => "GOESWITH",
+                DependencyEdgeLabel::Infmod => "INFMOD",
                 DependencyEdgeLabel::Iobj => "IOBJ",
+                DependencyEdgeLabel::Kw => "KW",
+                DependencyEdgeLabel::List => "LIST",
                 DependencyEdgeLabel::Mark => "MARK",
+                DependencyEdgeLabel::Mes => "MES",
                 DependencyEdgeLabel::Mwe => "MWE",
                 DependencyEdgeLabel::Mwv => "MWV",
+                DependencyEdgeLabel::Ncomp => "NCOMP",
                 DependencyEdgeLabel::Neg => "NEG",
                 DependencyEdgeLabel::Nn => "NN",
+                DependencyEdgeLabel::Nomc => "NOMC",
+                DependencyEdgeLabel::Nomcsubj => "NOMCSUBJ",
+                DependencyEdgeLabel::Nomcsubjpass => "NOMCSUBJPASS",
                 DependencyEdgeLabel::Npadvmod => "NPADVMOD",
                 DependencyEdgeLabel::Nsubj => "NSUBJ",
                 DependencyEdgeLabel::Nsubjpass => "NSUBJPASS",
                 DependencyEdgeLabel::Num => "NUM",
                 DependencyEdgeLabel::Number => "NUMBER",
+                DependencyEdgeLabel::Numc => "NUMC",
                 DependencyEdgeLabel::P => "P",
                 DependencyEdgeLabel::Parataxis => "PARATAXIS",
                 DependencyEdgeLabel::Partmod => "PARTMOD",
@@ -696,42 +714,24 @@ pub mod schemas {
                 DependencyEdgeLabel::Root => "ROOT",
                 DependencyEdgeLabel::Snum => "SNUM",
                 DependencyEdgeLabel::Suff => "SUFF",
+                DependencyEdgeLabel::Suffix => "SUFFIX",
+                DependencyEdgeLabel::Title => "TITLE",
                 DependencyEdgeLabel::Tmod => "TMOD",
                 DependencyEdgeLabel::Topic => "TOPIC",
+                DependencyEdgeLabel::Unknown => "UNKNOWN",
                 DependencyEdgeLabel::Vmod => "VMOD",
                 DependencyEdgeLabel::Vocative => "VOCATIVE",
                 DependencyEdgeLabel::Xcomp => "XCOMP",
-                DependencyEdgeLabel::Suffix => "SUFFIX",
-                DependencyEdgeLabel::Title => "TITLE",
-                DependencyEdgeLabel::Advphmod => "ADVPHMOD",
-                DependencyEdgeLabel::Auxcaus => "AUXCAUS",
-                DependencyEdgeLabel::Auxvv => "AUXVV",
-                DependencyEdgeLabel::Dtmod => "DTMOD",
-                DependencyEdgeLabel::Foreign => "FOREIGN",
-                DependencyEdgeLabel::Kw => "KW",
-                DependencyEdgeLabel::List => "LIST",
-                DependencyEdgeLabel::Nomc => "NOMC",
-                DependencyEdgeLabel::Nomcsubj => "NOMCSUBJ",
-                DependencyEdgeLabel::Nomcsubjpass => "NOMCSUBJPASS",
-                DependencyEdgeLabel::Numc => "NUMC",
-                DependencyEdgeLabel::Cop => "COP",
-                DependencyEdgeLabel::Dislocated => "DISLOCATED",
-                DependencyEdgeLabel::Asp => "ASP",
-                DependencyEdgeLabel::Gmod => "GMOD",
-                DependencyEdgeLabel::Gobj => "GOBJ",
-                DependencyEdgeLabel::Infmod => "INFMOD",
-                DependencyEdgeLabel::Mes => "MES",
-                DependencyEdgeLabel::Ncomp => "NCOMP",
             }
         }
     }
     impl ::std::fmt::Display for DependencyEdgeLabel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DependencyEdgeLabel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -739,44 +739,62 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DependencyEdgeLabel {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => DependencyEdgeLabel::Unknown,
                 "ABBREV" => DependencyEdgeLabel::Abbrev,
                 "ACOMP" => DependencyEdgeLabel::Acomp,
                 "ADVCL" => DependencyEdgeLabel::Advcl,
                 "ADVMOD" => DependencyEdgeLabel::Advmod,
+                "ADVPHMOD" => DependencyEdgeLabel::Advphmod,
                 "AMOD" => DependencyEdgeLabel::Amod,
                 "APPOS" => DependencyEdgeLabel::Appos,
+                "ASP" => DependencyEdgeLabel::Asp,
                 "ATTR" => DependencyEdgeLabel::Attr,
                 "AUX" => DependencyEdgeLabel::Aux,
+                "AUXCAUS" => DependencyEdgeLabel::Auxcaus,
                 "AUXPASS" => DependencyEdgeLabel::Auxpass,
+                "AUXVV" => DependencyEdgeLabel::Auxvv,
                 "CC" => DependencyEdgeLabel::Cc,
                 "CCOMP" => DependencyEdgeLabel::Ccomp,
                 "CONJ" => DependencyEdgeLabel::Conj,
+                "COP" => DependencyEdgeLabel::Cop,
                 "CSUBJ" => DependencyEdgeLabel::Csubj,
                 "CSUBJPASS" => DependencyEdgeLabel::Csubjpass,
                 "DEP" => DependencyEdgeLabel::Dep,
                 "DET" => DependencyEdgeLabel::Det,
                 "DISCOURSE" => DependencyEdgeLabel::Discourse,
+                "DISLOCATED" => DependencyEdgeLabel::Dislocated,
                 "DOBJ" => DependencyEdgeLabel::Dobj,
+                "DTMOD" => DependencyEdgeLabel::Dtmod,
                 "EXPL" => DependencyEdgeLabel::Expl,
+                "FOREIGN" => DependencyEdgeLabel::Foreign,
+                "GMOD" => DependencyEdgeLabel::Gmod,
+                "GOBJ" => DependencyEdgeLabel::Gobj,
                 "GOESWITH" => DependencyEdgeLabel::Goeswith,
+                "INFMOD" => DependencyEdgeLabel::Infmod,
                 "IOBJ" => DependencyEdgeLabel::Iobj,
+                "KW" => DependencyEdgeLabel::Kw,
+                "LIST" => DependencyEdgeLabel::List,
                 "MARK" => DependencyEdgeLabel::Mark,
+                "MES" => DependencyEdgeLabel::Mes,
                 "MWE" => DependencyEdgeLabel::Mwe,
                 "MWV" => DependencyEdgeLabel::Mwv,
+                "NCOMP" => DependencyEdgeLabel::Ncomp,
                 "NEG" => DependencyEdgeLabel::Neg,
                 "NN" => DependencyEdgeLabel::Nn,
+                "NOMC" => DependencyEdgeLabel::Nomc,
+                "NOMCSUBJ" => DependencyEdgeLabel::Nomcsubj,
+                "NOMCSUBJPASS" => DependencyEdgeLabel::Nomcsubjpass,
                 "NPADVMOD" => DependencyEdgeLabel::Npadvmod,
                 "NSUBJ" => DependencyEdgeLabel::Nsubj,
                 "NSUBJPASS" => DependencyEdgeLabel::Nsubjpass,
                 "NUM" => DependencyEdgeLabel::Num,
                 "NUMBER" => DependencyEdgeLabel::Number,
+                "NUMC" => DependencyEdgeLabel::Numc,
                 "P" => DependencyEdgeLabel::P,
                 "PARATAXIS" => DependencyEdgeLabel::Parataxis,
                 "PARTMOD" => DependencyEdgeLabel::Partmod,
@@ -802,32 +820,14 @@ pub mod schemas {
                 "ROOT" => DependencyEdgeLabel::Root,
                 "SNUM" => DependencyEdgeLabel::Snum,
                 "SUFF" => DependencyEdgeLabel::Suff,
+                "SUFFIX" => DependencyEdgeLabel::Suffix,
+                "TITLE" => DependencyEdgeLabel::Title,
                 "TMOD" => DependencyEdgeLabel::Tmod,
                 "TOPIC" => DependencyEdgeLabel::Topic,
+                "UNKNOWN" => DependencyEdgeLabel::Unknown,
                 "VMOD" => DependencyEdgeLabel::Vmod,
                 "VOCATIVE" => DependencyEdgeLabel::Vocative,
                 "XCOMP" => DependencyEdgeLabel::Xcomp,
-                "SUFFIX" => DependencyEdgeLabel::Suffix,
-                "TITLE" => DependencyEdgeLabel::Title,
-                "ADVPHMOD" => DependencyEdgeLabel::Advphmod,
-                "AUXCAUS" => DependencyEdgeLabel::Auxcaus,
-                "AUXVV" => DependencyEdgeLabel::Auxvv,
-                "DTMOD" => DependencyEdgeLabel::Dtmod,
-                "FOREIGN" => DependencyEdgeLabel::Foreign,
-                "KW" => DependencyEdgeLabel::Kw,
-                "LIST" => DependencyEdgeLabel::List,
-                "NOMC" => DependencyEdgeLabel::Nomc,
-                "NOMCSUBJ" => DependencyEdgeLabel::Nomcsubj,
-                "NOMCSUBJPASS" => DependencyEdgeLabel::Nomcsubjpass,
-                "NUMC" => DependencyEdgeLabel::Numc,
-                "COP" => DependencyEdgeLabel::Cop,
-                "DISLOCATED" => DependencyEdgeLabel::Dislocated,
-                "ASP" => DependencyEdgeLabel::Asp,
-                "GMOD" => DependencyEdgeLabel::Gmod,
-                "GOBJ" => DependencyEdgeLabel::Gobj,
-                "INFMOD" => DependencyEdgeLabel::Infmod,
-                "MES" => DependencyEdgeLabel::Mes,
-                "NCOMP" => DependencyEdgeLabel::Ncomp,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -877,29 +877,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DocumentType {
-        #[doc = "The content type is not specified."]
-        TypeUnspecified,
-        #[doc = "Plain text"]
-        PlainText,
         #[doc = "HTML"]
         Html,
+        #[doc = "Plain text"]
+        PlainText,
+        #[doc = "The content type is not specified."]
+        TypeUnspecified,
     }
     impl DocumentType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DocumentType::TypeUnspecified => "TYPE_UNSPECIFIED",
-                DocumentType::PlainText => "PLAIN_TEXT",
                 DocumentType::Html => "HTML",
+                DocumentType::PlainText => "PLAIN_TEXT",
+                DocumentType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for DocumentType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DocumentType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -907,15 +907,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DocumentType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNSPECIFIED" => DocumentType::TypeUnspecified,
-                "PLAIN_TEXT" => DocumentType::PlainText,
                 "HTML" => DocumentType::Html,
+                "PLAIN_TEXT" => DocumentType::PlainText,
+                "TYPE_UNSPECIFIED" => DocumentType::TypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -971,44 +971,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EntityType {
-        #[doc = "Unknown"]
-        Unknown,
-        #[doc = "Person"]
-        Person,
+        #[doc = "Consumer goods"]
+        ConsumerGood,
+        #[doc = "Event"]
+        Event,
         #[doc = "Location"]
         Location,
         #[doc = "Organization"]
         Organization,
-        #[doc = "Event"]
-        Event,
-        #[doc = "Work of art"]
-        WorkOfArt,
-        #[doc = "Consumer goods"]
-        ConsumerGood,
         #[doc = "Other types"]
         Other,
+        #[doc = "Person"]
+        Person,
+        #[doc = "Unknown"]
+        Unknown,
+        #[doc = "Work of art"]
+        WorkOfArt,
     }
     impl EntityType {
         pub fn as_str(self) -> &'static str {
             match self {
-                EntityType::Unknown => "UNKNOWN",
-                EntityType::Person => "PERSON",
+                EntityType::ConsumerGood => "CONSUMER_GOOD",
+                EntityType::Event => "EVENT",
                 EntityType::Location => "LOCATION",
                 EntityType::Organization => "ORGANIZATION",
-                EntityType::Event => "EVENT",
-                EntityType::WorkOfArt => "WORK_OF_ART",
-                EntityType::ConsumerGood => "CONSUMER_GOOD",
                 EntityType::Other => "OTHER",
+                EntityType::Person => "PERSON",
+                EntityType::Unknown => "UNKNOWN",
+                EntityType::WorkOfArt => "WORK_OF_ART",
             }
         }
     }
     impl ::std::fmt::Display for EntityType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EntityType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1016,20 +1016,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EntityType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => EntityType::Unknown,
-                "PERSON" => EntityType::Person,
+                "CONSUMER_GOOD" => EntityType::ConsumerGood,
+                "EVENT" => EntityType::Event,
                 "LOCATION" => EntityType::Location,
                 "ORGANIZATION" => EntityType::Organization,
-                "EVENT" => EntityType::Event,
-                "WORK_OF_ART" => EntityType::WorkOfArt,
-                "CONSUMER_GOOD" => EntityType::ConsumerGood,
                 "OTHER" => EntityType::Other,
+                "PERSON" => EntityType::Person,
+                "UNKNOWN" => EntityType::Unknown,
+                "WORK_OF_ART" => EntityType::WorkOfArt,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1079,29 +1079,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EntityMentionType {
-        #[doc = "Unknown"]
-        TypeUnknown,
-        #[doc = "Proper name"]
-        Proper,
         #[doc = "Common noun (or noun compound)"]
         Common,
+        #[doc = "Proper name"]
+        Proper,
+        #[doc = "Unknown"]
+        TypeUnknown,
     }
     impl EntityMentionType {
         pub fn as_str(self) -> &'static str {
             match self {
-                EntityMentionType::TypeUnknown => "TYPE_UNKNOWN",
-                EntityMentionType::Proper => "PROPER",
                 EntityMentionType::Common => "COMMON",
+                EntityMentionType::Proper => "PROPER",
+                EntityMentionType::TypeUnknown => "TYPE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for EntityMentionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for EntityMentionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1109,15 +1109,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for EntityMentionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TYPE_UNKNOWN" => EntityMentionType::TypeUnknown,
-                "PROPER" => EntityMentionType::Proper,
                 "COMMON" => EntityMentionType::Common,
+                "PROPER" => EntityMentionType::Proper,
+                "TYPE_UNKNOWN" => EntityMentionType::TypeUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1201,10 +1201,10 @@ pub mod schemas {
     pub enum PartOfSpeechAspect {
         #[doc = "Aspect is not applicable in the analyzed language or is not predicted."]
         AspectUnknown,
-        #[doc = "Perfective"]
-        Perfective,
         #[doc = "Imperfective"]
         Imperfective,
+        #[doc = "Perfective"]
+        Perfective,
         #[doc = "Progressive"]
         Progressive,
     }
@@ -1212,19 +1212,19 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 PartOfSpeechAspect::AspectUnknown => "ASPECT_UNKNOWN",
-                PartOfSpeechAspect::Perfective => "PERFECTIVE",
                 PartOfSpeechAspect::Imperfective => "IMPERFECTIVE",
+                PartOfSpeechAspect::Perfective => "PERFECTIVE",
                 PartOfSpeechAspect::Progressive => "PROGRESSIVE",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechAspect {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechAspect {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1232,15 +1232,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechAspect {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ASPECT_UNKNOWN" => PartOfSpeechAspect::AspectUnknown,
-                "PERFECTIVE" => PartOfSpeechAspect::Perfective,
                 "IMPERFECTIVE" => PartOfSpeechAspect::Imperfective,
+                "PERFECTIVE" => PartOfSpeechAspect::Perfective,
                 "PROGRESSIVE" => PartOfSpeechAspect::Progressive,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1262,12 +1262,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechCase {
-        #[doc = "Case is not applicable in the analyzed language or is not predicted."]
-        CaseUnknown,
         #[doc = "Accusative"]
         Accusative,
         #[doc = "Adverbial"]
         Adverbial,
+        #[doc = "Case is not applicable in the analyzed language or is not predicted."]
+        CaseUnknown,
         #[doc = "Complementive"]
         Complementive,
         #[doc = "Dative"]
@@ -1296,9 +1296,9 @@ pub mod schemas {
     impl PartOfSpeechCase {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechCase::CaseUnknown => "CASE_UNKNOWN",
                 PartOfSpeechCase::Accusative => "ACCUSATIVE",
                 PartOfSpeechCase::Adverbial => "ADVERBIAL",
+                PartOfSpeechCase::CaseUnknown => "CASE_UNKNOWN",
                 PartOfSpeechCase::Complementive => "COMPLEMENTIVE",
                 PartOfSpeechCase::Dative => "DATIVE",
                 PartOfSpeechCase::Genitive => "GENITIVE",
@@ -1315,12 +1315,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for PartOfSpeechCase {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechCase {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1328,15 +1328,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechCase {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "CASE_UNKNOWN" => PartOfSpeechCase::CaseUnknown,
                 "ACCUSATIVE" => PartOfSpeechCase::Accusative,
                 "ADVERBIAL" => PartOfSpeechCase::Adverbial,
+                "CASE_UNKNOWN" => PartOfSpeechCase::CaseUnknown,
                 "COMPLEMENTIVE" => PartOfSpeechCase::Complementive,
                 "DATIVE" => PartOfSpeechCase::Dative,
                 "GENITIVE" => PartOfSpeechCase::Genitive,
@@ -1369,8 +1369,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechForm {
-        #[doc = "Form is not applicable in the analyzed language or is not predicted."]
-        FormUnknown,
         #[doc = "Adnomial"]
         Adnomial,
         #[doc = "Auxiliary"]
@@ -1379,46 +1377,48 @@ pub mod schemas {
         Complementizer,
         #[doc = "Final ending"]
         FinalEnding,
+        #[doc = "Form is not applicable in the analyzed language or is not predicted."]
+        FormUnknown,
         #[doc = "Gerund"]
         Gerund,
-        #[doc = "Realis"]
-        Realis,
         #[doc = "Irrealis"]
         Irrealis,
-        #[doc = "Short form"]
-        Short,
         #[doc = "Long form"]
         Long,
         #[doc = "Order form"]
         Order,
+        #[doc = "Realis"]
+        Realis,
+        #[doc = "Short form"]
+        Short,
         #[doc = "Specific form"]
         Specific,
     }
     impl PartOfSpeechForm {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechForm::FormUnknown => "FORM_UNKNOWN",
                 PartOfSpeechForm::Adnomial => "ADNOMIAL",
                 PartOfSpeechForm::Auxiliary => "AUXILIARY",
                 PartOfSpeechForm::Complementizer => "COMPLEMENTIZER",
                 PartOfSpeechForm::FinalEnding => "FINAL_ENDING",
+                PartOfSpeechForm::FormUnknown => "FORM_UNKNOWN",
                 PartOfSpeechForm::Gerund => "GERUND",
-                PartOfSpeechForm::Realis => "REALIS",
                 PartOfSpeechForm::Irrealis => "IRREALIS",
-                PartOfSpeechForm::Short => "SHORT",
                 PartOfSpeechForm::Long => "LONG",
                 PartOfSpeechForm::Order => "ORDER",
+                PartOfSpeechForm::Realis => "REALIS",
+                PartOfSpeechForm::Short => "SHORT",
                 PartOfSpeechForm::Specific => "SPECIFIC",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechForm {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechForm {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1426,23 +1426,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechForm {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FORM_UNKNOWN" => PartOfSpeechForm::FormUnknown,
                 "ADNOMIAL" => PartOfSpeechForm::Adnomial,
                 "AUXILIARY" => PartOfSpeechForm::Auxiliary,
                 "COMPLEMENTIZER" => PartOfSpeechForm::Complementizer,
                 "FINAL_ENDING" => PartOfSpeechForm::FinalEnding,
+                "FORM_UNKNOWN" => PartOfSpeechForm::FormUnknown,
                 "GERUND" => PartOfSpeechForm::Gerund,
-                "REALIS" => PartOfSpeechForm::Realis,
                 "IRREALIS" => PartOfSpeechForm::Irrealis,
-                "SHORT" => PartOfSpeechForm::Short,
                 "LONG" => PartOfSpeechForm::Long,
                 "ORDER" => PartOfSpeechForm::Order,
+                "REALIS" => PartOfSpeechForm::Realis,
+                "SHORT" => PartOfSpeechForm::Short,
                 "SPECIFIC" => PartOfSpeechForm::Specific,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1464,10 +1464,10 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechGender {
-        #[doc = "Gender is not applicable in the analyzed language or is not predicted."]
-        GenderUnknown,
         #[doc = "Feminine"]
         Feminine,
+        #[doc = "Gender is not applicable in the analyzed language or is not predicted."]
+        GenderUnknown,
         #[doc = "Masculine"]
         Masculine,
         #[doc = "Neuter"]
@@ -1476,20 +1476,20 @@ pub mod schemas {
     impl PartOfSpeechGender {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechGender::GenderUnknown => "GENDER_UNKNOWN",
                 PartOfSpeechGender::Feminine => "FEMININE",
+                PartOfSpeechGender::GenderUnknown => "GENDER_UNKNOWN",
                 PartOfSpeechGender::Masculine => "MASCULINE",
                 PartOfSpeechGender::Neuter => "NEUTER",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechGender {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechGender {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1497,14 +1497,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechGender {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "GENDER_UNKNOWN" => PartOfSpeechGender::GenderUnknown,
                 "FEMININE" => PartOfSpeechGender::Feminine,
+                "GENDER_UNKNOWN" => PartOfSpeechGender::GenderUnknown,
                 "MASCULINE" => PartOfSpeechGender::Masculine,
                 "NEUTER" => PartOfSpeechGender::Neuter,
                 _ => {
@@ -1527,8 +1527,6 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechMood {
-        #[doc = "Mood is not applicable in the analyzed language or is not predicted."]
-        MoodUnknown,
         #[doc = "Conditional"]
         ConditionalMood,
         #[doc = "Imperative"]
@@ -1539,29 +1537,31 @@ pub mod schemas {
         Interrogative,
         #[doc = "Jussive"]
         Jussive,
+        #[doc = "Mood is not applicable in the analyzed language or is not predicted."]
+        MoodUnknown,
         #[doc = "Subjunctive"]
         Subjunctive,
     }
     impl PartOfSpeechMood {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechMood::MoodUnknown => "MOOD_UNKNOWN",
                 PartOfSpeechMood::ConditionalMood => "CONDITIONAL_MOOD",
                 PartOfSpeechMood::Imperative => "IMPERATIVE",
                 PartOfSpeechMood::Indicative => "INDICATIVE",
                 PartOfSpeechMood::Interrogative => "INTERROGATIVE",
                 PartOfSpeechMood::Jussive => "JUSSIVE",
+                PartOfSpeechMood::MoodUnknown => "MOOD_UNKNOWN",
                 PartOfSpeechMood::Subjunctive => "SUBJUNCTIVE",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechMood {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechMood {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1569,18 +1569,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechMood {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "MOOD_UNKNOWN" => PartOfSpeechMood::MoodUnknown,
                 "CONDITIONAL_MOOD" => PartOfSpeechMood::ConditionalMood,
                 "IMPERATIVE" => PartOfSpeechMood::Imperative,
                 "INDICATIVE" => PartOfSpeechMood::Indicative,
                 "INTERROGATIVE" => PartOfSpeechMood::Interrogative,
                 "JUSSIVE" => PartOfSpeechMood::Jussive,
+                "MOOD_UNKNOWN" => PartOfSpeechMood::MoodUnknown,
                 "SUBJUNCTIVE" => PartOfSpeechMood::Subjunctive,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1602,32 +1602,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechNumber {
-        #[doc = "Number is not applicable in the analyzed language or is not predicted."]
-        NumberUnknown,
-        #[doc = "Singular"]
-        Singular,
-        #[doc = "Plural"]
-        Plural,
         #[doc = "Dual"]
         Dual,
+        #[doc = "Number is not applicable in the analyzed language or is not predicted."]
+        NumberUnknown,
+        #[doc = "Plural"]
+        Plural,
+        #[doc = "Singular"]
+        Singular,
     }
     impl PartOfSpeechNumber {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechNumber::NumberUnknown => "NUMBER_UNKNOWN",
-                PartOfSpeechNumber::Singular => "SINGULAR",
-                PartOfSpeechNumber::Plural => "PLURAL",
                 PartOfSpeechNumber::Dual => "DUAL",
+                PartOfSpeechNumber::NumberUnknown => "NUMBER_UNKNOWN",
+                PartOfSpeechNumber::Plural => "PLURAL",
+                PartOfSpeechNumber::Singular => "SINGULAR",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechNumber {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechNumber {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1635,16 +1635,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechNumber {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NUMBER_UNKNOWN" => PartOfSpeechNumber::NumberUnknown,
-                "SINGULAR" => PartOfSpeechNumber::Singular,
-                "PLURAL" => PartOfSpeechNumber::Plural,
                 "DUAL" => PartOfSpeechNumber::Dual,
+                "NUMBER_UNKNOWN" => PartOfSpeechNumber::NumberUnknown,
+                "PLURAL" => PartOfSpeechNumber::Plural,
+                "SINGULAR" => PartOfSpeechNumber::Singular,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1665,35 +1665,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechPerson {
-        #[doc = "Person is not applicable in the analyzed language or is not predicted."]
-        PersonUnknown,
         #[doc = "First"]
         First,
+        #[doc = "Person is not applicable in the analyzed language or is not predicted."]
+        PersonUnknown,
+        #[doc = "Reflexive"]
+        ReflexivePerson,
         #[doc = "Second"]
         Second,
         #[doc = "Third"]
         Third,
-        #[doc = "Reflexive"]
-        ReflexivePerson,
     }
     impl PartOfSpeechPerson {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechPerson::PersonUnknown => "PERSON_UNKNOWN",
                 PartOfSpeechPerson::First => "FIRST",
+                PartOfSpeechPerson::PersonUnknown => "PERSON_UNKNOWN",
+                PartOfSpeechPerson::ReflexivePerson => "REFLEXIVE_PERSON",
                 PartOfSpeechPerson::Second => "SECOND",
                 PartOfSpeechPerson::Third => "THIRD",
-                PartOfSpeechPerson::ReflexivePerson => "REFLEXIVE_PERSON",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechPerson {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechPerson {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1701,17 +1701,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechPerson {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PERSON_UNKNOWN" => PartOfSpeechPerson::PersonUnknown,
                 "FIRST" => PartOfSpeechPerson::First,
+                "PERSON_UNKNOWN" => PartOfSpeechPerson::PersonUnknown,
+                "REFLEXIVE_PERSON" => PartOfSpeechPerson::ReflexivePerson,
                 "SECOND" => PartOfSpeechPerson::Second,
                 "THIRD" => PartOfSpeechPerson::Third,
-                "REFLEXIVE_PERSON" => PartOfSpeechPerson::ReflexivePerson,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1732,29 +1732,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechProper {
-        #[doc = "Proper is not applicable in the analyzed language or is not predicted."]
-        ProperUnknown,
-        #[doc = "Proper"]
-        Proper,
         #[doc = "Not proper"]
         NotProper,
+        #[doc = "Proper"]
+        Proper,
+        #[doc = "Proper is not applicable in the analyzed language or is not predicted."]
+        ProperUnknown,
     }
     impl PartOfSpeechProper {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechProper::ProperUnknown => "PROPER_UNKNOWN",
-                PartOfSpeechProper::Proper => "PROPER",
                 PartOfSpeechProper::NotProper => "NOT_PROPER",
+                PartOfSpeechProper::Proper => "PROPER",
+                PartOfSpeechProper::ProperUnknown => "PROPER_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechProper {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechProper {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1762,15 +1762,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechProper {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PROPER_UNKNOWN" => PartOfSpeechProper::ProperUnknown,
-                "PROPER" => PartOfSpeechProper::Proper,
                 "NOT_PROPER" => PartOfSpeechProper::NotProper,
+                "PROPER" => PartOfSpeechProper::Proper,
+                "PROPER_UNKNOWN" => PartOfSpeechProper::ProperUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1791,29 +1791,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechReciprocity {
-        #[doc = "Reciprocity is not applicable in the analyzed language or is not\npredicted."]
-        ReciprocityUnknown,
-        #[doc = "Reciprocal"]
-        Reciprocal,
         #[doc = "Non-reciprocal"]
         NonReciprocal,
+        #[doc = "Reciprocal"]
+        Reciprocal,
+        #[doc = "Reciprocity is not applicable in the analyzed language or is not\npredicted."]
+        ReciprocityUnknown,
     }
     impl PartOfSpeechReciprocity {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechReciprocity::ReciprocityUnknown => "RECIPROCITY_UNKNOWN",
-                PartOfSpeechReciprocity::Reciprocal => "RECIPROCAL",
                 PartOfSpeechReciprocity::NonReciprocal => "NON_RECIPROCAL",
+                PartOfSpeechReciprocity::Reciprocal => "RECIPROCAL",
+                PartOfSpeechReciprocity::ReciprocityUnknown => "RECIPROCITY_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechReciprocity {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechReciprocity {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1821,15 +1821,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechReciprocity {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RECIPROCITY_UNKNOWN" => PartOfSpeechReciprocity::ReciprocityUnknown,
-                "RECIPROCAL" => PartOfSpeechReciprocity::Reciprocal,
                 "NON_RECIPROCAL" => PartOfSpeechReciprocity::NonReciprocal,
+                "RECIPROCAL" => PartOfSpeechReciprocity::Reciprocal,
+                "RECIPROCITY_UNKNOWN" => PartOfSpeechReciprocity::ReciprocityUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1850,14 +1850,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechTag {
-        #[doc = "Unknown"]
-        Unknown,
         #[doc = "Adjective"]
         Adj,
         #[doc = "Adposition (preposition and postposition)"]
         Adp,
         #[doc = "Adverb"]
         Adv,
+        #[doc = "Affix"]
+        Affix,
         #[doc = "Conjunction"]
         Conj,
         #[doc = "Determiner"]
@@ -1872,20 +1872,20 @@ pub mod schemas {
         Prt,
         #[doc = "Punctuation"]
         Punct,
+        #[doc = "Unknown"]
+        Unknown,
         #[doc = "Verb (all tenses and modes)"]
         Verb,
         #[doc = "Other: foreign words, typos, abbreviations"]
         X,
-        #[doc = "Affix"]
-        Affix,
     }
     impl PartOfSpeechTag {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechTag::Unknown => "UNKNOWN",
                 PartOfSpeechTag::Adj => "ADJ",
                 PartOfSpeechTag::Adp => "ADP",
                 PartOfSpeechTag::Adv => "ADV",
+                PartOfSpeechTag::Affix => "AFFIX",
                 PartOfSpeechTag::Conj => "CONJ",
                 PartOfSpeechTag::Det => "DET",
                 PartOfSpeechTag::Noun => "NOUN",
@@ -1893,19 +1893,19 @@ pub mod schemas {
                 PartOfSpeechTag::Pron => "PRON",
                 PartOfSpeechTag::Prt => "PRT",
                 PartOfSpeechTag::Punct => "PUNCT",
+                PartOfSpeechTag::Unknown => "UNKNOWN",
                 PartOfSpeechTag::Verb => "VERB",
                 PartOfSpeechTag::X => "X",
-                PartOfSpeechTag::Affix => "AFFIX",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechTag {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechTag {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1913,16 +1913,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechTag {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "UNKNOWN" => PartOfSpeechTag::Unknown,
                 "ADJ" => PartOfSpeechTag::Adj,
                 "ADP" => PartOfSpeechTag::Adp,
                 "ADV" => PartOfSpeechTag::Adv,
+                "AFFIX" => PartOfSpeechTag::Affix,
                 "CONJ" => PartOfSpeechTag::Conj,
                 "DET" => PartOfSpeechTag::Det,
                 "NOUN" => PartOfSpeechTag::Noun,
@@ -1930,9 +1930,9 @@ pub mod schemas {
                 "PRON" => PartOfSpeechTag::Pron,
                 "PRT" => PartOfSpeechTag::Prt,
                 "PUNCT" => PartOfSpeechTag::Punct,
+                "UNKNOWN" => PartOfSpeechTag::Unknown,
                 "VERB" => PartOfSpeechTag::Verb,
                 "X" => PartOfSpeechTag::X,
-                "AFFIX" => PartOfSpeechTag::Affix,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1953,41 +1953,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechTense {
-        #[doc = "Tense is not applicable in the analyzed language or is not predicted."]
-        TenseUnknown,
         #[doc = "Conditional"]
         ConditionalTense,
         #[doc = "Future"]
         Future,
-        #[doc = "Past"]
-        Past,
-        #[doc = "Present"]
-        Present,
         #[doc = "Imperfect"]
         Imperfect,
+        #[doc = "Past"]
+        Past,
         #[doc = "Pluperfect"]
         Pluperfect,
+        #[doc = "Present"]
+        Present,
+        #[doc = "Tense is not applicable in the analyzed language or is not predicted."]
+        TenseUnknown,
     }
     impl PartOfSpeechTense {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechTense::TenseUnknown => "TENSE_UNKNOWN",
                 PartOfSpeechTense::ConditionalTense => "CONDITIONAL_TENSE",
                 PartOfSpeechTense::Future => "FUTURE",
-                PartOfSpeechTense::Past => "PAST",
-                PartOfSpeechTense::Present => "PRESENT",
                 PartOfSpeechTense::Imperfect => "IMPERFECT",
+                PartOfSpeechTense::Past => "PAST",
                 PartOfSpeechTense::Pluperfect => "PLUPERFECT",
+                PartOfSpeechTense::Present => "PRESENT",
+                PartOfSpeechTense::TenseUnknown => "TENSE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechTense {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechTense {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1995,19 +1995,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechTense {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TENSE_UNKNOWN" => PartOfSpeechTense::TenseUnknown,
                 "CONDITIONAL_TENSE" => PartOfSpeechTense::ConditionalTense,
                 "FUTURE" => PartOfSpeechTense::Future,
-                "PAST" => PartOfSpeechTense::Past,
-                "PRESENT" => PartOfSpeechTense::Present,
                 "IMPERFECT" => PartOfSpeechTense::Imperfect,
+                "PAST" => PartOfSpeechTense::Past,
                 "PLUPERFECT" => PartOfSpeechTense::Pluperfect,
+                "PRESENT" => PartOfSpeechTense::Present,
+                "TENSE_UNKNOWN" => PartOfSpeechTense::TenseUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2028,32 +2028,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechVoice {
-        #[doc = "Voice is not applicable in the analyzed language or is not predicted."]
-        VoiceUnknown,
         #[doc = "Active"]
         Active,
         #[doc = "Causative"]
         Causative,
         #[doc = "Passive"]
         Passive,
+        #[doc = "Voice is not applicable in the analyzed language or is not predicted."]
+        VoiceUnknown,
     }
     impl PartOfSpeechVoice {
         pub fn as_str(self) -> &'static str {
             match self {
-                PartOfSpeechVoice::VoiceUnknown => "VOICE_UNKNOWN",
                 PartOfSpeechVoice::Active => "ACTIVE",
                 PartOfSpeechVoice::Causative => "CAUSATIVE",
                 PartOfSpeechVoice::Passive => "PASSIVE",
+                PartOfSpeechVoice::VoiceUnknown => "VOICE_UNKNOWN",
             }
         }
     }
     impl ::std::fmt::Display for PartOfSpeechVoice {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PartOfSpeechVoice {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2061,16 +2061,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PartOfSpeechVoice {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "VOICE_UNKNOWN" => PartOfSpeechVoice::VoiceUnknown,
                 "ACTIVE" => PartOfSpeechVoice::Active,
                 "CAUSATIVE" => PartOfSpeechVoice::Causative,
                 "PASSIVE" => PartOfSpeechVoice::Passive,
+                "VOICE_UNKNOWN" => PartOfSpeechVoice::VoiceUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2298,12 +2298,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2311,7 +2311,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2354,12 +2354,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2367,7 +2367,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2413,7 +2413,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod documents {
         pub mod params {}
         pub struct DocumentsActions<'a, A> {
@@ -2533,19 +2533,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2694,19 +2684,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2855,19 +2835,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3016,19 +2986,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3414,7 +3374,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -3423,7 +3386,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -3436,58 +3399,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

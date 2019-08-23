@@ -7,7 +7,7 @@
   "canonicalName": "Service Broker",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190819",
+  "revision": "20190822",
   "title": "Service Broker API",
   "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
   "ownerDomain": "google.com",

@@ -72,12 +72,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ConstraintsSupportedCompressionsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ConstraintsSupportedCompressionsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -85,7 +85,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ConstraintsSupportedCompressionsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -381,49 +381,49 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateRequestPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
         #[doc = "Unknown platform."]
         PlatformTypeUnspecified,
         #[doc = "Threat posed to Windows."]
         Windows,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
     }
     impl ListUpdateRequestPlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListUpdateRequestPlatformType::AllPlatforms => "ALL_PLATFORMS",
+                ListUpdateRequestPlatformType::Android => "ANDROID",
+                ListUpdateRequestPlatformType::AnyPlatform => "ANY_PLATFORM",
+                ListUpdateRequestPlatformType::Chrome => "CHROME",
+                ListUpdateRequestPlatformType::Ios => "IOS",
+                ListUpdateRequestPlatformType::Linux => "LINUX",
+                ListUpdateRequestPlatformType::Osx => "OSX",
                 ListUpdateRequestPlatformType::PlatformTypeUnspecified => {
                     "PLATFORM_TYPE_UNSPECIFIED"
                 }
                 ListUpdateRequestPlatformType::Windows => "WINDOWS",
-                ListUpdateRequestPlatformType::Linux => "LINUX",
-                ListUpdateRequestPlatformType::Android => "ANDROID",
-                ListUpdateRequestPlatformType::Osx => "OSX",
-                ListUpdateRequestPlatformType::Ios => "IOS",
-                ListUpdateRequestPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ListUpdateRequestPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ListUpdateRequestPlatformType::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateRequestPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateRequestPlatformType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -431,23 +431,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestPlatformType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ListUpdateRequestPlatformType::AllPlatforms,
+                "ANDROID" => ListUpdateRequestPlatformType::Android,
+                "ANY_PLATFORM" => ListUpdateRequestPlatformType::AnyPlatform,
+                "CHROME" => ListUpdateRequestPlatformType::Chrome,
+                "IOS" => ListUpdateRequestPlatformType::Ios,
+                "LINUX" => ListUpdateRequestPlatformType::Linux,
+                "OSX" => ListUpdateRequestPlatformType::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => {
                     ListUpdateRequestPlatformType::PlatformTypeUnspecified
                 }
                 "WINDOWS" => ListUpdateRequestPlatformType::Windows,
-                "LINUX" => ListUpdateRequestPlatformType::Linux,
-                "ANDROID" => ListUpdateRequestPlatformType::Android,
-                "OSX" => ListUpdateRequestPlatformType::Osx,
-                "IOS" => ListUpdateRequestPlatformType::Ios,
-                "ANY_PLATFORM" => ListUpdateRequestPlatformType::AnyPlatform,
-                "ALL_PLATFORMS" => ListUpdateRequestPlatformType::AllPlatforms,
-                "CHROME" => ListUpdateRequestPlatformType::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -468,43 +468,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateRequestThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
         #[doc = "Unspecified."]
         ThreatEntryTypeUnspecified,
         #[doc = "A URL."]
         Url,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "CERT"]
-        Cert,
     }
     impl ListUpdateRequestThreatEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListUpdateRequestThreatEntryType::Cert => "CERT",
+                ListUpdateRequestThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
+                ListUpdateRequestThreatEntryType::Executable => "EXECUTABLE",
+                ListUpdateRequestThreatEntryType::Filename => "FILENAME",
+                ListUpdateRequestThreatEntryType::IpRange => "IP_RANGE",
                 ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified => {
                     "THREAT_ENTRY_TYPE_UNSPECIFIED"
                 }
                 ListUpdateRequestThreatEntryType::Url => "URL",
-                ListUpdateRequestThreatEntryType::Executable => "EXECUTABLE",
-                ListUpdateRequestThreatEntryType::IpRange => "IP_RANGE",
-                ListUpdateRequestThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ListUpdateRequestThreatEntryType::Filename => "FILENAME",
-                ListUpdateRequestThreatEntryType::Cert => "CERT",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateRequestThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateRequestThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -512,21 +512,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CERT" => ListUpdateRequestThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ListUpdateRequestThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ListUpdateRequestThreatEntryType::Executable,
+                "FILENAME" => ListUpdateRequestThreatEntryType::Filename,
+                "IP_RANGE" => ListUpdateRequestThreatEntryType::IpRange,
                 "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
                     ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified
                 }
                 "URL" => ListUpdateRequestThreatEntryType::Url,
-                "EXECUTABLE" => ListUpdateRequestThreatEntryType::Executable,
-                "IP_RANGE" => ListUpdateRequestThreatEntryType::IpRange,
-                "CHROME_EXTENSION" => ListUpdateRequestThreatEntryType::ChromeExtension,
-                "FILENAME" => ListUpdateRequestThreatEntryType::Filename,
-                "CERT" => ListUpdateRequestThreatEntryType::Cert,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -547,75 +547,75 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateRequestThreatType {
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
         #[doc = "API abuse threat type."]
         ApiAbuse,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
         #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
         #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
         #[doc = "Trick-to-bill threat list."]
         TrickToBill,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
     }
     impl ListUpdateRequestThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ListUpdateRequestThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ListUpdateRequestThreatType::ApiAbuse => "API_ABUSE",
+                ListUpdateRequestThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
+                ListUpdateRequestThreatType::ClientIncident => "CLIENT_INCIDENT",
+                ListUpdateRequestThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
+                ListUpdateRequestThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ListUpdateRequestThreatType::CsdWhitelist => "CSD_WHITELIST",
+                ListUpdateRequestThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ListUpdateRequestThreatType::MaliciousBinary => "MALICIOUS_BINARY",
                 ListUpdateRequestThreatType::Malware => "MALWARE",
-                ListUpdateRequestThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ListUpdateRequestThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
                 ListUpdateRequestThreatType::PotentiallyHarmfulApplication => {
                     "POTENTIALLY_HARMFUL_APPLICATION"
                 }
+                ListUpdateRequestThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
                 ListUpdateRequestThreatType::SocialEngineeringInternal => {
                     "SOCIAL_ENGINEERING_INTERNAL"
                 }
-                ListUpdateRequestThreatType::ApiAbuse => "API_ABUSE",
-                ListUpdateRequestThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ListUpdateRequestThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ListUpdateRequestThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ListUpdateRequestThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ListUpdateRequestThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ListUpdateRequestThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ListUpdateRequestThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
                 ListUpdateRequestThreatType::Suspicious => "SUSPICIOUS",
+                ListUpdateRequestThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
                 ListUpdateRequestThreatType::TrickToBill => "TRICK_TO_BILL",
-                ListUpdateRequestThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ListUpdateRequestThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateRequestThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateRequestThreatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -623,33 +623,33 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestThreatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateRequestThreatType::ThreatTypeUnspecified,
+                "API_ABUSE" => ListUpdateRequestThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ListUpdateRequestThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ListUpdateRequestThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ListUpdateRequestThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ListUpdateRequestThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ListUpdateRequestThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ListUpdateRequestThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ListUpdateRequestThreatType::MaliciousBinary,
                 "MALWARE" => ListUpdateRequestThreatType::Malware,
-                "SOCIAL_ENGINEERING" => ListUpdateRequestThreatType::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ListUpdateRequestThreatType::UnwantedSoftware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
                     ListUpdateRequestThreatType::PotentiallyHarmfulApplication
                 }
+                "SOCIAL_ENGINEERING" => ListUpdateRequestThreatType::SocialEngineering,
                 "SOCIAL_ENGINEERING_INTERNAL" => {
                     ListUpdateRequestThreatType::SocialEngineeringInternal
                 }
-                "API_ABUSE" => ListUpdateRequestThreatType::ApiAbuse,
-                "MALICIOUS_BINARY" => ListUpdateRequestThreatType::MaliciousBinary,
-                "CSD_WHITELIST" => ListUpdateRequestThreatType::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateRequestThreatType::CsdDownloadWhitelist,
-                "CLIENT_INCIDENT" => ListUpdateRequestThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ListUpdateRequestThreatType::ClientIncidentWhitelist,
-                "APK_MALWARE_OFFLINE" => ListUpdateRequestThreatType::ApkMalwareOffline,
                 "SUBRESOURCE_FILTER" => ListUpdateRequestThreatType::SubresourceFilter,
                 "SUSPICIOUS" => ListUpdateRequestThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ListUpdateRequestThreatType::ThreatTypeUnspecified,
                 "TRICK_TO_BILL" => ListUpdateRequestThreatType::TrickToBill,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ListUpdateRequestThreatType::HighConfidenceAllowlist,
+                "UNWANTED_SOFTWARE" => ListUpdateRequestThreatType::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -709,49 +709,49 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateResponsePlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
         #[doc = "Unknown platform."]
         PlatformTypeUnspecified,
         #[doc = "Threat posed to Windows."]
         Windows,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
     }
     impl ListUpdateResponsePlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListUpdateResponsePlatformType::AllPlatforms => "ALL_PLATFORMS",
+                ListUpdateResponsePlatformType::Android => "ANDROID",
+                ListUpdateResponsePlatformType::AnyPlatform => "ANY_PLATFORM",
+                ListUpdateResponsePlatformType::Chrome => "CHROME",
+                ListUpdateResponsePlatformType::Ios => "IOS",
+                ListUpdateResponsePlatformType::Linux => "LINUX",
+                ListUpdateResponsePlatformType::Osx => "OSX",
                 ListUpdateResponsePlatformType::PlatformTypeUnspecified => {
                     "PLATFORM_TYPE_UNSPECIFIED"
                 }
                 ListUpdateResponsePlatformType::Windows => "WINDOWS",
-                ListUpdateResponsePlatformType::Linux => "LINUX",
-                ListUpdateResponsePlatformType::Android => "ANDROID",
-                ListUpdateResponsePlatformType::Osx => "OSX",
-                ListUpdateResponsePlatformType::Ios => "IOS",
-                ListUpdateResponsePlatformType::AnyPlatform => "ANY_PLATFORM",
-                ListUpdateResponsePlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ListUpdateResponsePlatformType::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateResponsePlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateResponsePlatformType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -759,23 +759,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateResponsePlatformType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ListUpdateResponsePlatformType::AllPlatforms,
+                "ANDROID" => ListUpdateResponsePlatformType::Android,
+                "ANY_PLATFORM" => ListUpdateResponsePlatformType::AnyPlatform,
+                "CHROME" => ListUpdateResponsePlatformType::Chrome,
+                "IOS" => ListUpdateResponsePlatformType::Ios,
+                "LINUX" => ListUpdateResponsePlatformType::Linux,
+                "OSX" => ListUpdateResponsePlatformType::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => {
                     ListUpdateResponsePlatformType::PlatformTypeUnspecified
                 }
                 "WINDOWS" => ListUpdateResponsePlatformType::Windows,
-                "LINUX" => ListUpdateResponsePlatformType::Linux,
-                "ANDROID" => ListUpdateResponsePlatformType::Android,
-                "OSX" => ListUpdateResponsePlatformType::Osx,
-                "IOS" => ListUpdateResponsePlatformType::Ios,
-                "ANY_PLATFORM" => ListUpdateResponsePlatformType::AnyPlatform,
-                "ALL_PLATFORMS" => ListUpdateResponsePlatformType::AllPlatforms,
-                "CHROME" => ListUpdateResponsePlatformType::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -796,31 +796,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateResponseResponseType {
-        #[doc = "Unknown."]
-        ResponseTypeUnspecified,
-        #[doc = "Partial updates are applied to the client's existing local database."]
-        PartialUpdate,
         #[doc = "Full updates replace the client's entire local database. This means\nthat either the client was seriously out-of-date or the client is\nbelieved to be corrupt."]
         FullUpdate,
+        #[doc = "Partial updates are applied to the client's existing local database."]
+        PartialUpdate,
+        #[doc = "Unknown."]
+        ResponseTypeUnspecified,
     }
     impl ListUpdateResponseResponseType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListUpdateResponseResponseType::FullUpdate => "FULL_UPDATE",
+                ListUpdateResponseResponseType::PartialUpdate => "PARTIAL_UPDATE",
                 ListUpdateResponseResponseType::ResponseTypeUnspecified => {
                     "RESPONSE_TYPE_UNSPECIFIED"
                 }
-                ListUpdateResponseResponseType::PartialUpdate => "PARTIAL_UPDATE",
-                ListUpdateResponseResponseType::FullUpdate => "FULL_UPDATE",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateResponseResponseType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateResponseResponseType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -828,17 +828,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseResponseType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "FULL_UPDATE" => ListUpdateResponseResponseType::FullUpdate,
+                "PARTIAL_UPDATE" => ListUpdateResponseResponseType::PartialUpdate,
                 "RESPONSE_TYPE_UNSPECIFIED" => {
                     ListUpdateResponseResponseType::ResponseTypeUnspecified
                 }
-                "PARTIAL_UPDATE" => ListUpdateResponseResponseType::PartialUpdate,
-                "FULL_UPDATE" => ListUpdateResponseResponseType::FullUpdate,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -859,43 +859,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateResponseThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
         #[doc = "Unspecified."]
         ThreatEntryTypeUnspecified,
         #[doc = "A URL."]
         Url,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "CERT"]
-        Cert,
     }
     impl ListUpdateResponseThreatEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListUpdateResponseThreatEntryType::Cert => "CERT",
+                ListUpdateResponseThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
+                ListUpdateResponseThreatEntryType::Executable => "EXECUTABLE",
+                ListUpdateResponseThreatEntryType::Filename => "FILENAME",
+                ListUpdateResponseThreatEntryType::IpRange => "IP_RANGE",
                 ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified => {
                     "THREAT_ENTRY_TYPE_UNSPECIFIED"
                 }
                 ListUpdateResponseThreatEntryType::Url => "URL",
-                ListUpdateResponseThreatEntryType::Executable => "EXECUTABLE",
-                ListUpdateResponseThreatEntryType::IpRange => "IP_RANGE",
-                ListUpdateResponseThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ListUpdateResponseThreatEntryType::Filename => "FILENAME",
-                ListUpdateResponseThreatEntryType::Cert => "CERT",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateResponseThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateResponseThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -903,21 +903,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CERT" => ListUpdateResponseThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ListUpdateResponseThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ListUpdateResponseThreatEntryType::Executable,
+                "FILENAME" => ListUpdateResponseThreatEntryType::Filename,
+                "IP_RANGE" => ListUpdateResponseThreatEntryType::IpRange,
                 "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
                     ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified
                 }
                 "URL" => ListUpdateResponseThreatEntryType::Url,
-                "EXECUTABLE" => ListUpdateResponseThreatEntryType::Executable,
-                "IP_RANGE" => ListUpdateResponseThreatEntryType::IpRange,
-                "CHROME_EXTENSION" => ListUpdateResponseThreatEntryType::ChromeExtension,
-                "FILENAME" => ListUpdateResponseThreatEntryType::Filename,
-                "CERT" => ListUpdateResponseThreatEntryType::Cert,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -938,79 +938,79 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListUpdateResponseThreatType {
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
         #[doc = "API abuse threat type."]
         ApiAbuse,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
         #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
         #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
         #[doc = "Trick-to-bill threat list."]
         TrickToBill,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
     }
     impl ListUpdateResponseThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ListUpdateResponseThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ListUpdateResponseThreatType::Malware => "MALWARE",
-                ListUpdateResponseThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ListUpdateResponseThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-                ListUpdateResponseThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ListUpdateResponseThreatType::SocialEngineeringInternal => {
-                    "SOCIAL_ENGINEERING_INTERNAL"
-                }
                 ListUpdateResponseThreatType::ApiAbuse => "API_ABUSE",
-                ListUpdateResponseThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ListUpdateResponseThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ListUpdateResponseThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ListUpdateResponseThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ListUpdateResponseThreatType::ClientIncident => "CLIENT_INCIDENT",
                 ListUpdateResponseThreatType::ClientIncidentWhitelist => {
                     "CLIENT_INCIDENT_WHITELIST"
                 }
-                ListUpdateResponseThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ListUpdateResponseThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ListUpdateResponseThreatType::Suspicious => "SUSPICIOUS",
-                ListUpdateResponseThreatType::TrickToBill => "TRICK_TO_BILL",
+                ListUpdateResponseThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ListUpdateResponseThreatType::CsdWhitelist => "CSD_WHITELIST",
                 ListUpdateResponseThreatType::HighConfidenceAllowlist => {
                     "HIGH_CONFIDENCE_ALLOWLIST"
                 }
+                ListUpdateResponseThreatType::MaliciousBinary => "MALICIOUS_BINARY",
+                ListUpdateResponseThreatType::Malware => "MALWARE",
+                ListUpdateResponseThreatType::PotentiallyHarmfulApplication => {
+                    "POTENTIALLY_HARMFUL_APPLICATION"
+                }
+                ListUpdateResponseThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
+                ListUpdateResponseThreatType::SocialEngineeringInternal => {
+                    "SOCIAL_ENGINEERING_INTERNAL"
+                }
+                ListUpdateResponseThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
+                ListUpdateResponseThreatType::Suspicious => "SUSPICIOUS",
+                ListUpdateResponseThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ListUpdateResponseThreatType::TrickToBill => "TRICK_TO_BILL",
+                ListUpdateResponseThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ListUpdateResponseThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ListUpdateResponseThreatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1018,37 +1018,37 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseThreatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateResponseThreatType::ThreatTypeUnspecified,
-                "MALWARE" => ListUpdateResponseThreatType::Malware,
-                "SOCIAL_ENGINEERING" => ListUpdateResponseThreatType::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ListUpdateResponseThreatType::UnwantedSoftware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ListUpdateResponseThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ListUpdateResponseThreatType::SocialEngineeringInternal
-                }
                 "API_ABUSE" => ListUpdateResponseThreatType::ApiAbuse,
-                "MALICIOUS_BINARY" => ListUpdateResponseThreatType::MaliciousBinary,
-                "CSD_WHITELIST" => ListUpdateResponseThreatType::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateResponseThreatType::CsdDownloadWhitelist,
+                "APK_MALWARE_OFFLINE" => ListUpdateResponseThreatType::ApkMalwareOffline,
                 "CLIENT_INCIDENT" => ListUpdateResponseThreatType::ClientIncident,
                 "CLIENT_INCIDENT_WHITELIST" => {
                     ListUpdateResponseThreatType::ClientIncidentWhitelist
                 }
-                "APK_MALWARE_OFFLINE" => ListUpdateResponseThreatType::ApkMalwareOffline,
-                "SUBRESOURCE_FILTER" => ListUpdateResponseThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ListUpdateResponseThreatType::Suspicious,
-                "TRICK_TO_BILL" => ListUpdateResponseThreatType::TrickToBill,
+                "CSD_DOWNLOAD_WHITELIST" => ListUpdateResponseThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ListUpdateResponseThreatType::CsdWhitelist,
                 "HIGH_CONFIDENCE_ALLOWLIST" => {
                     ListUpdateResponseThreatType::HighConfidenceAllowlist
                 }
+                "MALICIOUS_BINARY" => ListUpdateResponseThreatType::MaliciousBinary,
+                "MALWARE" => ListUpdateResponseThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ListUpdateResponseThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ListUpdateResponseThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ListUpdateResponseThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ListUpdateResponseThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ListUpdateResponseThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ListUpdateResponseThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ListUpdateResponseThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ListUpdateResponseThreatType::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1314,12 +1314,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ThreatEntrySetCompressionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatEntrySetCompressionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1327,7 +1327,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatEntrySetCompressionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1396,47 +1396,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatHitPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
         #[doc = "Unknown platform."]
         PlatformTypeUnspecified,
         #[doc = "Threat posed to Windows."]
         Windows,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
     }
     impl ThreatHitPlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatHitPlatformType::AllPlatforms => "ALL_PLATFORMS",
+                ThreatHitPlatformType::Android => "ANDROID",
+                ThreatHitPlatformType::AnyPlatform => "ANY_PLATFORM",
+                ThreatHitPlatformType::Chrome => "CHROME",
+                ThreatHitPlatformType::Ios => "IOS",
+                ThreatHitPlatformType::Linux => "LINUX",
+                ThreatHitPlatformType::Osx => "OSX",
                 ThreatHitPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
                 ThreatHitPlatformType::Windows => "WINDOWS",
-                ThreatHitPlatformType::Linux => "LINUX",
-                ThreatHitPlatformType::Android => "ANDROID",
-                ThreatHitPlatformType::Osx => "OSX",
-                ThreatHitPlatformType::Ios => "IOS",
-                ThreatHitPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatHitPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatHitPlatformType::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ThreatHitPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatHitPlatformType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1444,21 +1444,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatHitPlatformType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ThreatHitPlatformType::AllPlatforms,
+                "ANDROID" => ThreatHitPlatformType::Android,
+                "ANY_PLATFORM" => ThreatHitPlatformType::AnyPlatform,
+                "CHROME" => ThreatHitPlatformType::Chrome,
+                "IOS" => ThreatHitPlatformType::Ios,
+                "LINUX" => ThreatHitPlatformType::Linux,
+                "OSX" => ThreatHitPlatformType::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => ThreatHitPlatformType::PlatformTypeUnspecified,
                 "WINDOWS" => ThreatHitPlatformType::Windows,
-                "LINUX" => ThreatHitPlatformType::Linux,
-                "ANDROID" => ThreatHitPlatformType::Android,
-                "OSX" => ThreatHitPlatformType::Osx,
-                "IOS" => ThreatHitPlatformType::Ios,
-                "ANY_PLATFORM" => ThreatHitPlatformType::AnyPlatform,
-                "ALL_PLATFORMS" => ThreatHitPlatformType::AllPlatforms,
-                "CHROME" => ThreatHitPlatformType::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1479,73 +1479,73 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatHitThreatType {
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
         #[doc = "API abuse threat type."]
         ApiAbuse,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
         #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
         #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
         #[doc = "Trick-to-bill threat list."]
         TrickToBill,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
     }
     impl ThreatHitThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatHitThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ThreatHitThreatType::ApiAbuse => "API_ABUSE",
+                ThreatHitThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
+                ThreatHitThreatType::ClientIncident => "CLIENT_INCIDENT",
+                ThreatHitThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
+                ThreatHitThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ThreatHitThreatType::CsdWhitelist => "CSD_WHITELIST",
+                ThreatHitThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatHitThreatType::MaliciousBinary => "MALICIOUS_BINARY",
                 ThreatHitThreatType::Malware => "MALWARE",
-                ThreatHitThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatHitThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
                 ThreatHitThreatType::PotentiallyHarmfulApplication => {
                     "POTENTIALLY_HARMFUL_APPLICATION"
                 }
+                ThreatHitThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
                 ThreatHitThreatType::SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL",
-                ThreatHitThreatType::ApiAbuse => "API_ABUSE",
-                ThreatHitThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatHitThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatHitThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatHitThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ThreatHitThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatHitThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ThreatHitThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
                 ThreatHitThreatType::Suspicious => "SUSPICIOUS",
+                ThreatHitThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
                 ThreatHitThreatType::TrickToBill => "TRICK_TO_BILL",
-                ThreatHitThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatHitThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ThreatHitThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatHitThreatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1553,31 +1553,31 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatHitThreatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ThreatHitThreatType::ThreatTypeUnspecified,
+                "API_ABUSE" => ThreatHitThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatHitThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatHitThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatHitThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatHitThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatHitThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatHitThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatHitThreatType::MaliciousBinary,
                 "MALWARE" => ThreatHitThreatType::Malware,
-                "SOCIAL_ENGINEERING" => ThreatHitThreatType::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ThreatHitThreatType::UnwantedSoftware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
                     ThreatHitThreatType::PotentiallyHarmfulApplication
                 }
+                "SOCIAL_ENGINEERING" => ThreatHitThreatType::SocialEngineering,
                 "SOCIAL_ENGINEERING_INTERNAL" => ThreatHitThreatType::SocialEngineeringInternal,
-                "API_ABUSE" => ThreatHitThreatType::ApiAbuse,
-                "MALICIOUS_BINARY" => ThreatHitThreatType::MaliciousBinary,
-                "CSD_WHITELIST" => ThreatHitThreatType::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatHitThreatType::CsdDownloadWhitelist,
-                "CLIENT_INCIDENT" => ThreatHitThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatHitThreatType::ClientIncidentWhitelist,
-                "APK_MALWARE_OFFLINE" => ThreatHitThreatType::ApkMalwareOffline,
                 "SUBRESOURCE_FILTER" => ThreatHitThreatType::SubresourceFilter,
                 "SUSPICIOUS" => ThreatHitThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatHitThreatType::ThreatTypeUnspecified,
                 "TRICK_TO_BILL" => ThreatHitThreatType::TrickToBill,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatHitThreatType::HighConfidenceAllowlist,
+                "UNWANTED_SOFTWARE" => ThreatHitThreatType::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1639,40 +1639,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatInfoPlatformTypesItems {
+        AllPlatforms,
+        Android,
+        AnyPlatform,
+        Chrome,
+        Ios,
+        Linux,
+        Osx,
         PlatformTypeUnspecified,
         Windows,
-        Linux,
-        Android,
-        Osx,
-        Ios,
-        AnyPlatform,
-        AllPlatforms,
-        Chrome,
     }
     impl ThreatInfoPlatformTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatInfoPlatformTypesItems::AllPlatforms => "ALL_PLATFORMS",
+                ThreatInfoPlatformTypesItems::Android => "ANDROID",
+                ThreatInfoPlatformTypesItems::AnyPlatform => "ANY_PLATFORM",
+                ThreatInfoPlatformTypesItems::Chrome => "CHROME",
+                ThreatInfoPlatformTypesItems::Ios => "IOS",
+                ThreatInfoPlatformTypesItems::Linux => "LINUX",
+                ThreatInfoPlatformTypesItems::Osx => "OSX",
                 ThreatInfoPlatformTypesItems::PlatformTypeUnspecified => {
                     "PLATFORM_TYPE_UNSPECIFIED"
                 }
                 ThreatInfoPlatformTypesItems::Windows => "WINDOWS",
-                ThreatInfoPlatformTypesItems::Linux => "LINUX",
-                ThreatInfoPlatformTypesItems::Android => "ANDROID",
-                ThreatInfoPlatformTypesItems::Osx => "OSX",
-                ThreatInfoPlatformTypesItems::Ios => "IOS",
-                ThreatInfoPlatformTypesItems::AnyPlatform => "ANY_PLATFORM",
-                ThreatInfoPlatformTypesItems::AllPlatforms => "ALL_PLATFORMS",
-                ThreatInfoPlatformTypesItems::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ThreatInfoPlatformTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatInfoPlatformTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1680,23 +1680,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatInfoPlatformTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ThreatInfoPlatformTypesItems::AllPlatforms,
+                "ANDROID" => ThreatInfoPlatformTypesItems::Android,
+                "ANY_PLATFORM" => ThreatInfoPlatformTypesItems::AnyPlatform,
+                "CHROME" => ThreatInfoPlatformTypesItems::Chrome,
+                "IOS" => ThreatInfoPlatformTypesItems::Ios,
+                "LINUX" => ThreatInfoPlatformTypesItems::Linux,
+                "OSX" => ThreatInfoPlatformTypesItems::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => {
                     ThreatInfoPlatformTypesItems::PlatformTypeUnspecified
                 }
                 "WINDOWS" => ThreatInfoPlatformTypesItems::Windows,
-                "LINUX" => ThreatInfoPlatformTypesItems::Linux,
-                "ANDROID" => ThreatInfoPlatformTypesItems::Android,
-                "OSX" => ThreatInfoPlatformTypesItems::Osx,
-                "IOS" => ThreatInfoPlatformTypesItems::Ios,
-                "ANY_PLATFORM" => ThreatInfoPlatformTypesItems::AnyPlatform,
-                "ALL_PLATFORMS" => ThreatInfoPlatformTypesItems::AllPlatforms,
-                "CHROME" => ThreatInfoPlatformTypesItems::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1717,36 +1717,36 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatInfoThreatEntryTypesItems {
+        Cert,
+        ChromeExtension,
+        Executable,
+        Filename,
+        IpRange,
         ThreatEntryTypeUnspecified,
         Url,
-        Executable,
-        IpRange,
-        ChromeExtension,
-        Filename,
-        Cert,
     }
     impl ThreatInfoThreatEntryTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatInfoThreatEntryTypesItems::Cert => "CERT",
+                ThreatInfoThreatEntryTypesItems::ChromeExtension => "CHROME_EXTENSION",
+                ThreatInfoThreatEntryTypesItems::Executable => "EXECUTABLE",
+                ThreatInfoThreatEntryTypesItems::Filename => "FILENAME",
+                ThreatInfoThreatEntryTypesItems::IpRange => "IP_RANGE",
                 ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified => {
                     "THREAT_ENTRY_TYPE_UNSPECIFIED"
                 }
                 ThreatInfoThreatEntryTypesItems::Url => "URL",
-                ThreatInfoThreatEntryTypesItems::Executable => "EXECUTABLE",
-                ThreatInfoThreatEntryTypesItems::IpRange => "IP_RANGE",
-                ThreatInfoThreatEntryTypesItems::ChromeExtension => "CHROME_EXTENSION",
-                ThreatInfoThreatEntryTypesItems::Filename => "FILENAME",
-                ThreatInfoThreatEntryTypesItems::Cert => "CERT",
             }
         }
     }
     impl ::std::fmt::Display for ThreatInfoThreatEntryTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatInfoThreatEntryTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1754,21 +1754,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatInfoThreatEntryTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CERT" => ThreatInfoThreatEntryTypesItems::Cert,
+                "CHROME_EXTENSION" => ThreatInfoThreatEntryTypesItems::ChromeExtension,
+                "EXECUTABLE" => ThreatInfoThreatEntryTypesItems::Executable,
+                "FILENAME" => ThreatInfoThreatEntryTypesItems::Filename,
+                "IP_RANGE" => ThreatInfoThreatEntryTypesItems::IpRange,
                 "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
                     ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified
                 }
                 "URL" => ThreatInfoThreatEntryTypesItems::Url,
-                "EXECUTABLE" => ThreatInfoThreatEntryTypesItems::Executable,
-                "IP_RANGE" => ThreatInfoThreatEntryTypesItems::IpRange,
-                "CHROME_EXTENSION" => ThreatInfoThreatEntryTypesItems::ChromeExtension,
-                "FILENAME" => ThreatInfoThreatEntryTypesItems::Filename,
-                "CERT" => ThreatInfoThreatEntryTypesItems::Cert,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1789,58 +1789,58 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatInfoThreatTypesItems {
-        ThreatTypeUnspecified,
-        Malware,
-        SocialEngineering,
-        UnwantedSoftware,
-        PotentiallyHarmfulApplication,
-        SocialEngineeringInternal,
         ApiAbuse,
-        MaliciousBinary,
-        CsdWhitelist,
-        CsdDownloadWhitelist,
+        ApkMalwareOffline,
         ClientIncident,
         ClientIncidentWhitelist,
-        ApkMalwareOffline,
+        CsdDownloadWhitelist,
+        CsdWhitelist,
+        HighConfidenceAllowlist,
+        MaliciousBinary,
+        Malware,
+        PotentiallyHarmfulApplication,
+        SocialEngineering,
+        SocialEngineeringInternal,
         SubresourceFilter,
         Suspicious,
+        ThreatTypeUnspecified,
         TrickToBill,
-        HighConfidenceAllowlist,
+        UnwantedSoftware,
     }
     impl ThreatInfoThreatTypesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatInfoThreatTypesItems::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ThreatInfoThreatTypesItems::ApiAbuse => "API_ABUSE",
+                ThreatInfoThreatTypesItems::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
+                ThreatInfoThreatTypesItems::ClientIncident => "CLIENT_INCIDENT",
+                ThreatInfoThreatTypesItems::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
+                ThreatInfoThreatTypesItems::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ThreatInfoThreatTypesItems::CsdWhitelist => "CSD_WHITELIST",
+                ThreatInfoThreatTypesItems::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatInfoThreatTypesItems::MaliciousBinary => "MALICIOUS_BINARY",
                 ThreatInfoThreatTypesItems::Malware => "MALWARE",
-                ThreatInfoThreatTypesItems::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatInfoThreatTypesItems::UnwantedSoftware => "UNWANTED_SOFTWARE",
                 ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication => {
                     "POTENTIALLY_HARMFUL_APPLICATION"
                 }
+                ThreatInfoThreatTypesItems::SocialEngineering => "SOCIAL_ENGINEERING",
                 ThreatInfoThreatTypesItems::SocialEngineeringInternal => {
                     "SOCIAL_ENGINEERING_INTERNAL"
                 }
-                ThreatInfoThreatTypesItems::ApiAbuse => "API_ABUSE",
-                ThreatInfoThreatTypesItems::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatInfoThreatTypesItems::CsdWhitelist => "CSD_WHITELIST",
-                ThreatInfoThreatTypesItems::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatInfoThreatTypesItems::ClientIncident => "CLIENT_INCIDENT",
-                ThreatInfoThreatTypesItems::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatInfoThreatTypesItems::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ThreatInfoThreatTypesItems::SubresourceFilter => "SUBRESOURCE_FILTER",
                 ThreatInfoThreatTypesItems::Suspicious => "SUSPICIOUS",
+                ThreatInfoThreatTypesItems::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
                 ThreatInfoThreatTypesItems::TrickToBill => "TRICK_TO_BILL",
-                ThreatInfoThreatTypesItems::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatInfoThreatTypesItems::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ThreatInfoThreatTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatInfoThreatTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1848,33 +1848,33 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatInfoThreatTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ThreatInfoThreatTypesItems::ThreatTypeUnspecified,
+                "API_ABUSE" => ThreatInfoThreatTypesItems::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatInfoThreatTypesItems::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatInfoThreatTypesItems::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatInfoThreatTypesItems::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatInfoThreatTypesItems::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatInfoThreatTypesItems::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatInfoThreatTypesItems::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatInfoThreatTypesItems::MaliciousBinary,
                 "MALWARE" => ThreatInfoThreatTypesItems::Malware,
-                "SOCIAL_ENGINEERING" => ThreatInfoThreatTypesItems::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ThreatInfoThreatTypesItems::UnwantedSoftware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
                     ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication
                 }
+                "SOCIAL_ENGINEERING" => ThreatInfoThreatTypesItems::SocialEngineering,
                 "SOCIAL_ENGINEERING_INTERNAL" => {
                     ThreatInfoThreatTypesItems::SocialEngineeringInternal
                 }
-                "API_ABUSE" => ThreatInfoThreatTypesItems::ApiAbuse,
-                "MALICIOUS_BINARY" => ThreatInfoThreatTypesItems::MaliciousBinary,
-                "CSD_WHITELIST" => ThreatInfoThreatTypesItems::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatInfoThreatTypesItems::CsdDownloadWhitelist,
-                "CLIENT_INCIDENT" => ThreatInfoThreatTypesItems::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatInfoThreatTypesItems::ClientIncidentWhitelist,
-                "APK_MALWARE_OFFLINE" => ThreatInfoThreatTypesItems::ApkMalwareOffline,
                 "SUBRESOURCE_FILTER" => ThreatInfoThreatTypesItems::SubresourceFilter,
                 "SUSPICIOUS" => ThreatInfoThreatTypesItems::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatInfoThreatTypesItems::ThreatTypeUnspecified,
                 "TRICK_TO_BILL" => ThreatInfoThreatTypesItems::TrickToBill,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatInfoThreatTypesItems::HighConfidenceAllowlist,
+                "UNWANTED_SOFTWARE" => ThreatInfoThreatTypesItems::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1932,49 +1932,49 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatListDescriptorPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
         #[doc = "Unknown platform."]
         PlatformTypeUnspecified,
         #[doc = "Threat posed to Windows."]
         Windows,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
     }
     impl ThreatListDescriptorPlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatListDescriptorPlatformType::AllPlatforms => "ALL_PLATFORMS",
+                ThreatListDescriptorPlatformType::Android => "ANDROID",
+                ThreatListDescriptorPlatformType::AnyPlatform => "ANY_PLATFORM",
+                ThreatListDescriptorPlatformType::Chrome => "CHROME",
+                ThreatListDescriptorPlatformType::Ios => "IOS",
+                ThreatListDescriptorPlatformType::Linux => "LINUX",
+                ThreatListDescriptorPlatformType::Osx => "OSX",
                 ThreatListDescriptorPlatformType::PlatformTypeUnspecified => {
                     "PLATFORM_TYPE_UNSPECIFIED"
                 }
                 ThreatListDescriptorPlatformType::Windows => "WINDOWS",
-                ThreatListDescriptorPlatformType::Linux => "LINUX",
-                ThreatListDescriptorPlatformType::Android => "ANDROID",
-                ThreatListDescriptorPlatformType::Osx => "OSX",
-                ThreatListDescriptorPlatformType::Ios => "IOS",
-                ThreatListDescriptorPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatListDescriptorPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatListDescriptorPlatformType::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ThreatListDescriptorPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatListDescriptorPlatformType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1982,23 +1982,23 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorPlatformType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ThreatListDescriptorPlatformType::AllPlatforms,
+                "ANDROID" => ThreatListDescriptorPlatformType::Android,
+                "ANY_PLATFORM" => ThreatListDescriptorPlatformType::AnyPlatform,
+                "CHROME" => ThreatListDescriptorPlatformType::Chrome,
+                "IOS" => ThreatListDescriptorPlatformType::Ios,
+                "LINUX" => ThreatListDescriptorPlatformType::Linux,
+                "OSX" => ThreatListDescriptorPlatformType::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => {
                     ThreatListDescriptorPlatformType::PlatformTypeUnspecified
                 }
                 "WINDOWS" => ThreatListDescriptorPlatformType::Windows,
-                "LINUX" => ThreatListDescriptorPlatformType::Linux,
-                "ANDROID" => ThreatListDescriptorPlatformType::Android,
-                "OSX" => ThreatListDescriptorPlatformType::Osx,
-                "IOS" => ThreatListDescriptorPlatformType::Ios,
-                "ANY_PLATFORM" => ThreatListDescriptorPlatformType::AnyPlatform,
-                "ALL_PLATFORMS" => ThreatListDescriptorPlatformType::AllPlatforms,
-                "CHROME" => ThreatListDescriptorPlatformType::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2019,43 +2019,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatListDescriptorThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
         #[doc = "Unspecified."]
         ThreatEntryTypeUnspecified,
         #[doc = "A URL."]
         Url,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "CERT"]
-        Cert,
     }
     impl ThreatListDescriptorThreatEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatListDescriptorThreatEntryType::Cert => "CERT",
+                ThreatListDescriptorThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
+                ThreatListDescriptorThreatEntryType::Executable => "EXECUTABLE",
+                ThreatListDescriptorThreatEntryType::Filename => "FILENAME",
+                ThreatListDescriptorThreatEntryType::IpRange => "IP_RANGE",
                 ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified => {
                     "THREAT_ENTRY_TYPE_UNSPECIFIED"
                 }
                 ThreatListDescriptorThreatEntryType::Url => "URL",
-                ThreatListDescriptorThreatEntryType::Executable => "EXECUTABLE",
-                ThreatListDescriptorThreatEntryType::IpRange => "IP_RANGE",
-                ThreatListDescriptorThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ThreatListDescriptorThreatEntryType::Filename => "FILENAME",
-                ThreatListDescriptorThreatEntryType::Cert => "CERT",
             }
         }
     }
     impl ::std::fmt::Display for ThreatListDescriptorThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatListDescriptorThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2063,21 +2063,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CERT" => ThreatListDescriptorThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ThreatListDescriptorThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ThreatListDescriptorThreatEntryType::Executable,
+                "FILENAME" => ThreatListDescriptorThreatEntryType::Filename,
+                "IP_RANGE" => ThreatListDescriptorThreatEntryType::IpRange,
                 "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
                     ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified
                 }
                 "URL" => ThreatListDescriptorThreatEntryType::Url,
-                "EXECUTABLE" => ThreatListDescriptorThreatEntryType::Executable,
-                "IP_RANGE" => ThreatListDescriptorThreatEntryType::IpRange,
-                "CHROME_EXTENSION" => ThreatListDescriptorThreatEntryType::ChromeExtension,
-                "FILENAME" => ThreatListDescriptorThreatEntryType::Filename,
-                "CERT" => ThreatListDescriptorThreatEntryType::Cert,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2098,79 +2098,79 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatListDescriptorThreatType {
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
         #[doc = "API abuse threat type."]
         ApiAbuse,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
         #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
         #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
         #[doc = "Trick-to-bill threat list."]
         TrickToBill,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
     }
     impl ThreatListDescriptorThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatListDescriptorThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ThreatListDescriptorThreatType::Malware => "MALWARE",
-                ThreatListDescriptorThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatListDescriptorThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-                ThreatListDescriptorThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ThreatListDescriptorThreatType::SocialEngineeringInternal => {
-                    "SOCIAL_ENGINEERING_INTERNAL"
-                }
                 ThreatListDescriptorThreatType::ApiAbuse => "API_ABUSE",
-                ThreatListDescriptorThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatListDescriptorThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatListDescriptorThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ThreatListDescriptorThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ThreatListDescriptorThreatType::ClientIncident => "CLIENT_INCIDENT",
                 ThreatListDescriptorThreatType::ClientIncidentWhitelist => {
                     "CLIENT_INCIDENT_WHITELIST"
                 }
-                ThreatListDescriptorThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ThreatListDescriptorThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ThreatListDescriptorThreatType::Suspicious => "SUSPICIOUS",
-                ThreatListDescriptorThreatType::TrickToBill => "TRICK_TO_BILL",
+                ThreatListDescriptorThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ThreatListDescriptorThreatType::CsdWhitelist => "CSD_WHITELIST",
                 ThreatListDescriptorThreatType::HighConfidenceAllowlist => {
                     "HIGH_CONFIDENCE_ALLOWLIST"
                 }
+                ThreatListDescriptorThreatType::MaliciousBinary => "MALICIOUS_BINARY",
+                ThreatListDescriptorThreatType::Malware => "MALWARE",
+                ThreatListDescriptorThreatType::PotentiallyHarmfulApplication => {
+                    "POTENTIALLY_HARMFUL_APPLICATION"
+                }
+                ThreatListDescriptorThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
+                ThreatListDescriptorThreatType::SocialEngineeringInternal => {
+                    "SOCIAL_ENGINEERING_INTERNAL"
+                }
+                ThreatListDescriptorThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
+                ThreatListDescriptorThreatType::Suspicious => "SUSPICIOUS",
+                ThreatListDescriptorThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ThreatListDescriptorThreatType::TrickToBill => "TRICK_TO_BILL",
+                ThreatListDescriptorThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ThreatListDescriptorThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatListDescriptorThreatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2178,37 +2178,37 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorThreatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ThreatListDescriptorThreatType::ThreatTypeUnspecified,
-                "MALWARE" => ThreatListDescriptorThreatType::Malware,
-                "SOCIAL_ENGINEERING" => ThreatListDescriptorThreatType::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ThreatListDescriptorThreatType::UnwantedSoftware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatListDescriptorThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ThreatListDescriptorThreatType::SocialEngineeringInternal
-                }
                 "API_ABUSE" => ThreatListDescriptorThreatType::ApiAbuse,
-                "MALICIOUS_BINARY" => ThreatListDescriptorThreatType::MaliciousBinary,
-                "CSD_WHITELIST" => ThreatListDescriptorThreatType::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatListDescriptorThreatType::CsdDownloadWhitelist,
+                "APK_MALWARE_OFFLINE" => ThreatListDescriptorThreatType::ApkMalwareOffline,
                 "CLIENT_INCIDENT" => ThreatListDescriptorThreatType::ClientIncident,
                 "CLIENT_INCIDENT_WHITELIST" => {
                     ThreatListDescriptorThreatType::ClientIncidentWhitelist
                 }
-                "APK_MALWARE_OFFLINE" => ThreatListDescriptorThreatType::ApkMalwareOffline,
-                "SUBRESOURCE_FILTER" => ThreatListDescriptorThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatListDescriptorThreatType::Suspicious,
-                "TRICK_TO_BILL" => ThreatListDescriptorThreatType::TrickToBill,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatListDescriptorThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatListDescriptorThreatType::CsdWhitelist,
                 "HIGH_CONFIDENCE_ALLOWLIST" => {
                     ThreatListDescriptorThreatType::HighConfidenceAllowlist
                 }
+                "MALICIOUS_BINARY" => ThreatListDescriptorThreatType::MaliciousBinary,
+                "MALWARE" => ThreatListDescriptorThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ThreatListDescriptorThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ThreatListDescriptorThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ThreatListDescriptorThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ThreatListDescriptorThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ThreatListDescriptorThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatListDescriptorThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ThreatListDescriptorThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ThreatListDescriptorThreatType::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2262,47 +2262,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatMatchPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
         #[doc = "Unknown platform."]
         PlatformTypeUnspecified,
         #[doc = "Threat posed to Windows."]
         Windows,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
     }
     impl ThreatMatchPlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatMatchPlatformType::AllPlatforms => "ALL_PLATFORMS",
+                ThreatMatchPlatformType::Android => "ANDROID",
+                ThreatMatchPlatformType::AnyPlatform => "ANY_PLATFORM",
+                ThreatMatchPlatformType::Chrome => "CHROME",
+                ThreatMatchPlatformType::Ios => "IOS",
+                ThreatMatchPlatformType::Linux => "LINUX",
+                ThreatMatchPlatformType::Osx => "OSX",
                 ThreatMatchPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
                 ThreatMatchPlatformType::Windows => "WINDOWS",
-                ThreatMatchPlatformType::Linux => "LINUX",
-                ThreatMatchPlatformType::Android => "ANDROID",
-                ThreatMatchPlatformType::Osx => "OSX",
-                ThreatMatchPlatformType::Ios => "IOS",
-                ThreatMatchPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatMatchPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatMatchPlatformType::Chrome => "CHROME",
             }
         }
     }
     impl ::std::fmt::Display for ThreatMatchPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatMatchPlatformType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2310,21 +2310,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatMatchPlatformType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALL_PLATFORMS" => ThreatMatchPlatformType::AllPlatforms,
+                "ANDROID" => ThreatMatchPlatformType::Android,
+                "ANY_PLATFORM" => ThreatMatchPlatformType::AnyPlatform,
+                "CHROME" => ThreatMatchPlatformType::Chrome,
+                "IOS" => ThreatMatchPlatformType::Ios,
+                "LINUX" => ThreatMatchPlatformType::Linux,
+                "OSX" => ThreatMatchPlatformType::Osx,
                 "PLATFORM_TYPE_UNSPECIFIED" => ThreatMatchPlatformType::PlatformTypeUnspecified,
                 "WINDOWS" => ThreatMatchPlatformType::Windows,
-                "LINUX" => ThreatMatchPlatformType::Linux,
-                "ANDROID" => ThreatMatchPlatformType::Android,
-                "OSX" => ThreatMatchPlatformType::Osx,
-                "IOS" => ThreatMatchPlatformType::Ios,
-                "ANY_PLATFORM" => ThreatMatchPlatformType::AnyPlatform,
-                "ALL_PLATFORMS" => ThreatMatchPlatformType::AllPlatforms,
-                "CHROME" => ThreatMatchPlatformType::Chrome,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2345,43 +2345,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatMatchThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
         #[doc = "Unspecified."]
         ThreatEntryTypeUnspecified,
         #[doc = "A URL."]
         Url,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "CERT"]
-        Cert,
     }
     impl ThreatMatchThreatEntryType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ThreatMatchThreatEntryType::Cert => "CERT",
+                ThreatMatchThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
+                ThreatMatchThreatEntryType::Executable => "EXECUTABLE",
+                ThreatMatchThreatEntryType::Filename => "FILENAME",
+                ThreatMatchThreatEntryType::IpRange => "IP_RANGE",
                 ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified => {
                     "THREAT_ENTRY_TYPE_UNSPECIFIED"
                 }
                 ThreatMatchThreatEntryType::Url => "URL",
-                ThreatMatchThreatEntryType::Executable => "EXECUTABLE",
-                ThreatMatchThreatEntryType::IpRange => "IP_RANGE",
-                ThreatMatchThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ThreatMatchThreatEntryType::Filename => "FILENAME",
-                ThreatMatchThreatEntryType::Cert => "CERT",
             }
         }
     }
     impl ::std::fmt::Display for ThreatMatchThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatMatchThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2389,21 +2389,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatMatchThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CERT" => ThreatMatchThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ThreatMatchThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ThreatMatchThreatEntryType::Executable,
+                "FILENAME" => ThreatMatchThreatEntryType::Filename,
+                "IP_RANGE" => ThreatMatchThreatEntryType::IpRange,
                 "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
                     ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified
                 }
                 "URL" => ThreatMatchThreatEntryType::Url,
-                "EXECUTABLE" => ThreatMatchThreatEntryType::Executable,
-                "IP_RANGE" => ThreatMatchThreatEntryType::IpRange,
-                "CHROME_EXTENSION" => ThreatMatchThreatEntryType::ChromeExtension,
-                "FILENAME" => ThreatMatchThreatEntryType::Filename,
-                "CERT" => ThreatMatchThreatEntryType::Cert,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2424,73 +2424,73 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatMatchThreatType {
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
         #[doc = "API abuse threat type."]
         ApiAbuse,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
         #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
         #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
         #[doc = "Trick-to-bill threat list."]
         TrickToBill,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
     }
     impl ThreatMatchThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatMatchThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
+                ThreatMatchThreatType::ApiAbuse => "API_ABUSE",
+                ThreatMatchThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
+                ThreatMatchThreatType::ClientIncident => "CLIENT_INCIDENT",
+                ThreatMatchThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
+                ThreatMatchThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
+                ThreatMatchThreatType::CsdWhitelist => "CSD_WHITELIST",
+                ThreatMatchThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatMatchThreatType::MaliciousBinary => "MALICIOUS_BINARY",
                 ThreatMatchThreatType::Malware => "MALWARE",
-                ThreatMatchThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatMatchThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
                 ThreatMatchThreatType::PotentiallyHarmfulApplication => {
                     "POTENTIALLY_HARMFUL_APPLICATION"
                 }
+                ThreatMatchThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
                 ThreatMatchThreatType::SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL",
-                ThreatMatchThreatType::ApiAbuse => "API_ABUSE",
-                ThreatMatchThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatMatchThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatMatchThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatMatchThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ThreatMatchThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatMatchThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
                 ThreatMatchThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
                 ThreatMatchThreatType::Suspicious => "SUSPICIOUS",
+                ThreatMatchThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
                 ThreatMatchThreatType::TrickToBill => "TRICK_TO_BILL",
-                ThreatMatchThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
+                ThreatMatchThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
             }
         }
     }
     impl ::std::fmt::Display for ThreatMatchThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatMatchThreatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2498,31 +2498,31 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatMatchThreatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_TYPE_UNSPECIFIED" => ThreatMatchThreatType::ThreatTypeUnspecified,
+                "API_ABUSE" => ThreatMatchThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatMatchThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatMatchThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatMatchThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatMatchThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatMatchThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatMatchThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatMatchThreatType::MaliciousBinary,
                 "MALWARE" => ThreatMatchThreatType::Malware,
-                "SOCIAL_ENGINEERING" => ThreatMatchThreatType::SocialEngineering,
-                "UNWANTED_SOFTWARE" => ThreatMatchThreatType::UnwantedSoftware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
                     ThreatMatchThreatType::PotentiallyHarmfulApplication
                 }
+                "SOCIAL_ENGINEERING" => ThreatMatchThreatType::SocialEngineering,
                 "SOCIAL_ENGINEERING_INTERNAL" => ThreatMatchThreatType::SocialEngineeringInternal,
-                "API_ABUSE" => ThreatMatchThreatType::ApiAbuse,
-                "MALICIOUS_BINARY" => ThreatMatchThreatType::MaliciousBinary,
-                "CSD_WHITELIST" => ThreatMatchThreatType::CsdWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatMatchThreatType::CsdDownloadWhitelist,
-                "CLIENT_INCIDENT" => ThreatMatchThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatMatchThreatType::ClientIncidentWhitelist,
-                "APK_MALWARE_OFFLINE" => ThreatMatchThreatType::ApkMalwareOffline,
                 "SUBRESOURCE_FILTER" => ThreatMatchThreatType::SubresourceFilter,
                 "SUSPICIOUS" => ThreatMatchThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatMatchThreatType::ThreatTypeUnspecified,
                 "TRICK_TO_BILL" => ThreatMatchThreatType::TrickToBill,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatMatchThreatType::HighConfidenceAllowlist,
+                "UNWANTED_SOFTWARE" => ThreatMatchThreatType::UnwantedSoftware,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2584,35 +2584,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatSourceType {
-        #[doc = "Unknown."]
-        ThreatSourceTypeUnspecified,
         #[doc = "The URL that matched the threat list (for which GetFullHash returned a\nvalid hash)."]
         MatchingUrl,
-        #[doc = "The final top-level URL of the tab that the client was browsing when the\nmatch occurred."]
-        TabUrl,
         #[doc = "A redirect URL that was fetched before hitting the final TAB_URL."]
         TabRedirect,
         #[doc = "A resource loaded within the final TAB_URL."]
         TabResource,
+        #[doc = "The final top-level URL of the tab that the client was browsing when the\nmatch occurred."]
+        TabUrl,
+        #[doc = "Unknown."]
+        ThreatSourceTypeUnspecified,
     }
     impl ThreatSourceType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatSourceType::ThreatSourceTypeUnspecified => "THREAT_SOURCE_TYPE_UNSPECIFIED",
                 ThreatSourceType::MatchingUrl => "MATCHING_URL",
-                ThreatSourceType::TabUrl => "TAB_URL",
                 ThreatSourceType::TabRedirect => "TAB_REDIRECT",
                 ThreatSourceType::TabResource => "TAB_RESOURCE",
+                ThreatSourceType::TabUrl => "TAB_URL",
+                ThreatSourceType::ThreatSourceTypeUnspecified => "THREAT_SOURCE_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for ThreatSourceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ThreatSourceType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2620,17 +2620,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ThreatSourceType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "THREAT_SOURCE_TYPE_UNSPECIFIED" => ThreatSourceType::ThreatSourceTypeUnspecified,
                 "MATCHING_URL" => ThreatSourceType::MatchingUrl,
-                "TAB_URL" => ThreatSourceType::TabUrl,
                 "TAB_REDIRECT" => ThreatSourceType::TabRedirect,
                 "TAB_RESOURCE" => ThreatSourceType::TabResource,
+                "TAB_URL" => ThreatSourceType::TabUrl,
+                "THREAT_SOURCE_TYPE_UNSPECIFIED" => ThreatSourceType::ThreatSourceTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2734,12 +2734,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2747,7 +2747,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2790,12 +2790,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2803,7 +2803,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2895,7 +2895,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod encoded_full_hashes {
         pub mod params {}
         pub struct EncodedFullHashesActions<'a, A> {
@@ -2960,19 +2960,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3167,19 +3157,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3363,19 +3343,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3547,19 +3517,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3732,19 +3692,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3914,19 +3864,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4100,19 +4040,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4493,7 +4423,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -4502,7 +4435,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -4515,58 +4448,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

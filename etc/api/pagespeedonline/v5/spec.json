@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/FH8hr1vcSrDlKiGXDM8sQApgVtA\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/CM5ddfI3h29HSne4uDeqx2Y7B4Q\"",
   "discoveryVersion": "v1",
   "id": "pagespeedonline:v5",
   "name": "pagespeedonline",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v5",
-  "revision": "20190725",
+  "revision": "20190821",
   "title": "PageSpeed Insights API",
   "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
   "ownerDomain": "google.com",
@@ -133,6 +133,19 @@
   },
   "auth": null,
   "schemas": {
+    "GoogleprotobufListValue": {
+      "id": "GoogleprotobufListValue",
+      "description": null,
+      "type": "array",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": {
+        "$ref": "GoogleprotobufValue"
+      }
+    },
     "GoogleprotobufValue": {
       "id": "GoogleprotobufValue",
       "description": null,
@@ -774,21 +787,7 @@
         },
         "runWarnings": {
           "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "any",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
+          "$ref": "GoogleprotobufListValue"
         },
         "runtimeError": {
           "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded.",

@@ -7,7 +7,7 @@
   "canonicalName": "AnalyticsReporting",
   "fullyEncodeReservedExpansion": true,
   "version": "v4",
-  "revision": "20190814",
+  "revision": "20190821",
   "title": "Analytics Reporting API",
   "description": "Accesses Analytics report data.",
   "ownerDomain": "google.com",
@@ -219,7 +219,7 @@
       "enumDescriptions": [],
       "properties": {
         "activityTime": {
-          "description": "Timestamp of the activity.",
+          "description": "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],

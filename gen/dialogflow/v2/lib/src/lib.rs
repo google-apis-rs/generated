@@ -25,12 +25,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2AgentApiVersion {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2AgentApiVersion {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -38,7 +38,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2AgentApiVersion {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -72,31 +72,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2AgentMatchMode {
-        #[doc = "Not specified."]
-        MatchModeUnspecified,
         #[doc = "Best for agents with a small number of examples in intents and/or wide\nuse of templates syntax and composite entities."]
         MatchModeHybrid,
         #[doc = "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large developer entities."]
         MatchModeMlOnly,
+        #[doc = "Not specified."]
+        MatchModeUnspecified,
     }
     impl GoogleCloudDialogflowV2AgentMatchMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudDialogflowV2AgentMatchMode::MatchModeHybrid => "MATCH_MODE_HYBRID",
+                GoogleCloudDialogflowV2AgentMatchMode::MatchModeMlOnly => "MATCH_MODE_ML_ONLY",
                 GoogleCloudDialogflowV2AgentMatchMode::MatchModeUnspecified => {
                     "MATCH_MODE_UNSPECIFIED"
                 }
-                GoogleCloudDialogflowV2AgentMatchMode::MatchModeHybrid => "MATCH_MODE_HYBRID",
-                GoogleCloudDialogflowV2AgentMatchMode::MatchModeMlOnly => "MATCH_MODE_ML_ONLY",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2AgentMatchMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2AgentMatchMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -104,17 +104,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2AgentMatchMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "MATCH_MODE_HYBRID" => GoogleCloudDialogflowV2AgentMatchMode::MatchModeHybrid,
+                "MATCH_MODE_ML_ONLY" => GoogleCloudDialogflowV2AgentMatchMode::MatchModeMlOnly,
                 "MATCH_MODE_UNSPECIFIED" => {
                     GoogleCloudDialogflowV2AgentMatchMode::MatchModeUnspecified
                 }
-                "MATCH_MODE_HYBRID" => GoogleCloudDialogflowV2AgentMatchMode::MatchModeHybrid,
-                "MATCH_MODE_ML_ONLY" => GoogleCloudDialogflowV2AgentMatchMode::MatchModeMlOnly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -135,32 +135,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2AgentTier {
-        #[doc = "Not specified. This value should never be used."]
-        TierUnspecified,
-        #[doc = "Standard tier."]
-        TierStandard,
         #[doc = "Enterprise tier (Essentials)."]
         TierEnterprise,
         #[doc = "Enterprise tier (Plus)."]
         TierEnterprisePlus,
+        #[doc = "Standard tier."]
+        TierStandard,
+        #[doc = "Not specified. This value should never be used."]
+        TierUnspecified,
     }
     impl GoogleCloudDialogflowV2AgentTier {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2AgentTier::TierUnspecified => "TIER_UNSPECIFIED",
-                GoogleCloudDialogflowV2AgentTier::TierStandard => "TIER_STANDARD",
                 GoogleCloudDialogflowV2AgentTier::TierEnterprise => "TIER_ENTERPRISE",
                 GoogleCloudDialogflowV2AgentTier::TierEnterprisePlus => "TIER_ENTERPRISE_PLUS",
+                GoogleCloudDialogflowV2AgentTier::TierStandard => "TIER_STANDARD",
+                GoogleCloudDialogflowV2AgentTier::TierUnspecified => "TIER_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2AgentTier {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2AgentTier {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -168,16 +168,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2AgentTier {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TIER_UNSPECIFIED" => GoogleCloudDialogflowV2AgentTier::TierUnspecified,
-                "TIER_STANDARD" => GoogleCloudDialogflowV2AgentTier::TierStandard,
                 "TIER_ENTERPRISE" => GoogleCloudDialogflowV2AgentTier::TierEnterprise,
                 "TIER_ENTERPRISE_PLUS" => GoogleCloudDialogflowV2AgentTier::TierEnterprisePlus,
+                "TIER_STANDARD" => GoogleCloudDialogflowV2AgentTier::TierStandard,
+                "TIER_UNSPECIFIED" => GoogleCloudDialogflowV2AgentTier::TierUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -446,23 +446,23 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
-        #[doc = "Training phrases field is not populated in the response."]
-        IntentViewUnspecified,
         #[doc = "All fields are populated."]
         IntentViewFull,
+        #[doc = "Training phrases field is not populated in the response."]
+        IntentViewUnspecified,
     }
     impl GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED" , GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewFull => "INTENT_VIEW_FULL" , }
+            match self { GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewFull => "INTENT_VIEW_FULL" , GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -470,12 +470,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "INTENT_VIEW_UNSPECIFIED" => GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewUnspecified , "INTENT_VIEW_FULL" => GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewFull , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "INTENT_VIEW_FULL" => GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewFull , "INTENT_VIEW_UNSPECIFIED" => GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView :: IntentViewUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -676,46 +676,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1ConversationModelState {
-        #[doc = "Should not be used, an un-set enum has this value by default."]
-        StateUnspecified,
         #[doc = "Model is creating."]
         Creating,
-        #[doc = "Model is not deployed but ready to deploy."]
-        Undeployed,
-        #[doc = "Model is deploying."]
-        Deploying,
-        #[doc = "Model is deployed and ready to use."]
-        Deployed,
-        #[doc = "Model is undeploying."]
-        Undeploying,
         #[doc = "Model is deleting."]
         Deleting,
+        #[doc = "Model is deployed and ready to use."]
+        Deployed,
+        #[doc = "Model is deploying."]
+        Deploying,
         #[doc = "Model is in error state. Not ready to deploy and use."]
         Failed,
+        #[doc = "Should not be used, an un-set enum has this value by default."]
+        StateUnspecified,
+        #[doc = "Model is not deployed but ready to deploy."]
+        Undeployed,
+        #[doc = "Model is undeploying."]
+        Undeploying,
     }
     impl GoogleCloudDialogflowV2Beta1ConversationModelState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudDialogflowV2Beta1ConversationModelState::Creating => "CREATING",
+                GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting => "DELETING",
+                GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed => "DEPLOYED",
+                GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying => "DEPLOYING",
+                GoogleCloudDialogflowV2Beta1ConversationModelState::Failed => "FAILED",
                 GoogleCloudDialogflowV2Beta1ConversationModelState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Creating => "CREATING",
                 GoogleCloudDialogflowV2Beta1ConversationModelState::Undeployed => "UNDEPLOYED",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying => "DEPLOYING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed => "DEPLOYED",
                 GoogleCloudDialogflowV2Beta1ConversationModelState::Undeploying => "UNDEPLOYING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting => "DELETING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Failed => "FAILED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -723,22 +723,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CREATING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Creating,
+                "DELETING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting,
+                "DEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed,
+                "DEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying,
+                "FAILED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Failed,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudDialogflowV2Beta1ConversationModelState::StateUnspecified
                 }
-                "CREATING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Creating,
                 "UNDEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeployed,
-                "DEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying,
-                "DEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed,
                 "UNDEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeploying,
-                "DELETING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting,
-                "FAILED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Failed,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -805,23 +805,23 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
-        #[doc = "Auto expansion disabled for the entity."]
-        AutoExpansionModeUnspecified,
         #[doc = "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."]
         AutoExpansionModeDefault,
+        #[doc = "Auto expansion disabled for the entity."]
+        AutoExpansionModeUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified => "AUTO_EXPANSION_MODE_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeDefault => "AUTO_EXPANSION_MODE_DEFAULT" , }
+            match self { GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeDefault => "AUTO_EXPANSION_MODE_DEFAULT" , GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified => "AUTO_EXPANSION_MODE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -829,12 +829,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "AUTO_EXPANSION_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified , "AUTO_EXPANSION_MODE_DEFAULT" => GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeDefault , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "AUTO_EXPANSION_MODE_DEFAULT" => GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeDefault , "AUTO_EXPANSION_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode {
@@ -848,29 +848,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1EntityTypeKind {
-        #[doc = "Not specified. This value should be never used."]
-        KindUnspecified,
-        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
-        KindMap,
         #[doc = "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
         KindList,
+        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
+        KindMap,
+        #[doc = "Not specified. This value should be never used."]
+        KindUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1EntityTypeKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2Beta1EntityTypeKind::KindUnspecified => "KIND_UNSPECIFIED",
-                GoogleCloudDialogflowV2Beta1EntityTypeKind::KindMap => "KIND_MAP",
                 GoogleCloudDialogflowV2Beta1EntityTypeKind::KindList => "KIND_LIST",
+                GoogleCloudDialogflowV2Beta1EntityTypeKind::KindMap => "KIND_MAP",
+                GoogleCloudDialogflowV2Beta1EntityTypeKind::KindUnspecified => "KIND_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1EntityTypeKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1EntityTypeKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -878,15 +878,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1EntityTypeKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "KIND_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1EntityTypeKind::KindUnspecified,
-                "KIND_MAP" => GoogleCloudDialogflowV2Beta1EntityTypeKind::KindMap,
                 "KIND_LIST" => GoogleCloudDialogflowV2Beta1EntityTypeKind::KindList,
+                "KIND_MAP" => GoogleCloudDialogflowV2Beta1EntityTypeKind::KindMap,
+                "KIND_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1EntityTypeKind::KindUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1055,30 +1055,30 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems {
-        PlatformUnspecified,
+        ActionsOnGoogle,
         Facebook,
+        GoogleHangouts,
+        Kik,
+        Line,
+        PlatformUnspecified,
+        Skype,
         Slack,
         Telegram,
-        Kik,
-        Skype,
-        Line,
-        Viber,
-        ActionsOnGoogle,
         Telephony,
-        GoogleHangouts,
+        Viber,
     }
     impl GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: PlatformUnspecified => "PLATFORM_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Facebook => "FACEBOOK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Slack => "SLACK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telegram => "TELEGRAM" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Kik => "KIK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Skype => "SKYPE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Line => "LINE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Viber => "VIBER" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: ActionsOnGoogle => "ACTIONS_ON_GOOGLE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telephony => "TELEPHONY" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: GoogleHangouts => "GOOGLE_HANGOUTS" , }
+            match self { GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: ActionsOnGoogle => "ACTIONS_ON_GOOGLE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Facebook => "FACEBOOK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: GoogleHangouts => "GOOGLE_HANGOUTS" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Kik => "KIK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Line => "LINE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: PlatformUnspecified => "PLATFORM_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Skype => "SKYPE" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Slack => "SLACK" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telegram => "TELEGRAM" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telephony => "TELEPHONY" , GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Viber => "VIBER" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1088,12 +1088,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "PLATFORM_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: PlatformUnspecified , "FACEBOOK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Facebook , "SLACK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Slack , "TELEGRAM" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telegram , "KIK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Kik , "SKYPE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Skype , "LINE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Line , "VIBER" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Viber , "ACTIONS_ON_GOOGLE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: ActionsOnGoogle , "TELEPHONY" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telephony , "GOOGLE_HANGOUTS" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: GoogleHangouts , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "ACTIONS_ON_GOOGLE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: ActionsOnGoogle , "FACEBOOK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Facebook , "GOOGLE_HANGOUTS" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: GoogleHangouts , "KIK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Kik , "LINE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Line , "PLATFORM_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: PlatformUnspecified , "SKYPE" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Skype , "SLACK" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Slack , "TELEGRAM" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telegram , "TELEPHONY" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Telephony , "VIBER" => GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems :: Viber , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1109,25 +1109,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentWebhookState {
-        #[doc = "Webhook is disabled in the agent and in the intent."]
-        WebhookStateUnspecified,
         #[doc = "Webhook is enabled in the agent and in the intent."]
         WebhookStateEnabled,
         #[doc = "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."]
         WebhookStateEnabledForSlotFilling,
+        #[doc = "Webhook is disabled in the agent and in the intent."]
+        WebhookStateUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1IntentWebhookState {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateUnspecified => "WEBHOOK_STATE_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabled => "WEBHOOK_STATE_ENABLED" , GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabledForSlotFilling => "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" , }
+            match self { GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabled => "WEBHOOK_STATE_ENABLED" , GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabledForSlotFilling => "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" , GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateUnspecified => "WEBHOOK_STATE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentWebhookState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentWebhookState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1135,12 +1135,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1IntentWebhookState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "WEBHOOK_STATE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateUnspecified , "WEBHOOK_STATE_ENABLED" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabled , "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabledForSlotFilling , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "WEBHOOK_STATE_ENABLED" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabled , "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateEnabledForSlotFilling , "WEBHOOK_STATE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentWebhookState :: WebhookStateUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentWebhookState {
@@ -1265,59 +1265,59 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        #[doc = "Not specified."]
-        PlatformUnspecified,
+        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
+        ActionsOnGoogle,
         #[doc = "Facebook."]
         Facebook,
+        #[doc = "Google Hangouts."]
+        GoogleHangouts,
+        #[doc = "Kik."]
+        Kik,
+        #[doc = "Line."]
+        Line,
+        #[doc = "Not specified."]
+        PlatformUnspecified,
+        #[doc = "Skype."]
+        Skype,
         #[doc = "Slack."]
         Slack,
         #[doc = "Telegram."]
         Telegram,
-        #[doc = "Kik."]
-        Kik,
-        #[doc = "Skype."]
-        Skype,
-        #[doc = "Line."]
-        Line,
-        #[doc = "Viber."]
-        Viber,
-        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
-        ActionsOnGoogle,
         #[doc = "Telephony Gateway."]
         Telephony,
-        #[doc = "Google Hangouts."]
-        GoogleHangouts,
+        #[doc = "Viber."]
+        Viber,
     }
     impl GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::PlatformUnspecified => {
-                    "PLATFORM_UNSPECIFIED"
-                }
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Facebook => "FACEBOOK",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Slack => "SLACK",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telegram => "TELEGRAM",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Kik => "KIK",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Skype => "SKYPE",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Line => "LINE",
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Viber => "VIBER",
                 GoogleCloudDialogflowV2Beta1IntentMessagePlatform::ActionsOnGoogle => {
                     "ACTIONS_ON_GOOGLE"
                 }
-                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telephony => "TELEPHONY",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Facebook => "FACEBOOK",
                 GoogleCloudDialogflowV2Beta1IntentMessagePlatform::GoogleHangouts => {
                     "GOOGLE_HANGOUTS"
                 }
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Kik => "KIK",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Line => "LINE",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::PlatformUnspecified => {
+                    "PLATFORM_UNSPECIFIED"
+                }
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Skype => "SKYPE",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Slack => "SLACK",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telegram => "TELEGRAM",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telephony => "TELEPHONY",
+                GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Viber => "VIBER",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1325,29 +1325,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PLATFORM_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2Beta1IntentMessagePlatform::PlatformUnspecified
-                }
-                "FACEBOOK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Facebook,
-                "SLACK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Slack,
-                "TELEGRAM" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telegram,
-                "KIK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Kik,
-                "SKYPE" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Skype,
-                "LINE" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Line,
-                "VIBER" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Viber,
                 "ACTIONS_ON_GOOGLE" => {
                     GoogleCloudDialogflowV2Beta1IntentMessagePlatform::ActionsOnGoogle
                 }
-                "TELEPHONY" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telephony,
+                "FACEBOOK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Facebook,
                 "GOOGLE_HANGOUTS" => {
                     GoogleCloudDialogflowV2Beta1IntentMessagePlatform::GoogleHangouts
                 }
+                "KIK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Kik,
+                "LINE" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Line,
+                "PLATFORM_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2Beta1IntentMessagePlatform::PlatformUnspecified
+                }
+                "SKYPE" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Skype,
+                "SLACK" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Slack,
+                "TELEGRAM" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telegram,
+                "TELEPHONY" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Telephony,
+                "VIBER" => GoogleCloudDialogflowV2Beta1IntentMessagePlatform::Viber,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1898,25 +1898,25 @@ pub mod schemas {
     pub enum GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight {
         #[doc = "Not specified."]
         HeightUnspecified,
-        #[doc = "112 DP."]
-        Short,
         #[doc = "168 DP."]
         Medium,
+        #[doc = "112 DP."]
+        Short,
         #[doc = "264 DP. Not available for rich card carousels when the card width\nis set to small."]
         Tall,
     }
     impl GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: HeightUnspecified => "HEIGHT_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Short => "SHORT" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Medium => "MEDIUM" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Tall => "TALL" , }
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: HeightUnspecified => "HEIGHT_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Medium => "MEDIUM" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Short => "SHORT" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Tall => "TALL" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1926,12 +1926,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "HEIGHT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: HeightUnspecified , "SHORT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Short , "MEDIUM" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Medium , "TALL" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Tall , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "HEIGHT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: HeightUnspecified , "MEDIUM" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Medium , "SHORT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Short , "TALL" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight :: Tall , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1985,23 +1985,23 @@ pub mod schemas {
     pub enum GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth {
         #[doc = "Not specified."]
         CardWidthUnspecified,
-        #[doc = "120 DP. Note that tall media cannot be used."]
-        Small,
         #[doc = "232 DP."]
         Medium,
+        #[doc = "120 DP. Note that tall media cannot be used."]
+        Small,
     }
     impl GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: CardWidthUnspecified => "CARD_WIDTH_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Small => "SMALL" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Medium => "MEDIUM" , }
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: CardWidthUnspecified => "CARD_WIDTH_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Medium => "MEDIUM" , GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Small => "SMALL" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2011,12 +2011,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "CARD_WIDTH_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: CardWidthUnspecified , "SMALL" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Small , "MEDIUM" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Medium , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CARD_WIDTH_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: CardWidthUnspecified , "MEDIUM" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Medium , "SMALL" => GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth :: Small , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -2080,14 +2080,14 @@ pub mod schemas {
     impl ::std::fmt::Display
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardCardOrientation
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardCardOrientation
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2097,7 +2097,7 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardCardOrientation
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2118,29 +2118,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment {
-        #[doc = "Not specified."]
-        ThumbnailImageAlignmentUnspecified,
         #[doc = "Thumbnail preview is left-aligned."]
         Left,
         #[doc = "Thumbnail preview is right-aligned."]
         Right,
+        #[doc = "Not specified."]
+        ThumbnailImageAlignmentUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: ThumbnailImageAlignmentUnspecified => "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Left => "LEFT" , GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Right => "RIGHT" , }
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Left => "LEFT" , GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Right => "RIGHT" , GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: ThumbnailImageAlignmentUnspecified => "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2150,12 +2150,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: ThumbnailImageAlignmentUnspecified , "LEFT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Left , "RIGHT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Right , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LEFT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Left , "RIGHT" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: Right , "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment :: ThumbnailImageAlignmentUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -2688,31 +2688,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
-        #[doc = "Not specified. This value should never be used."]
-        TypeUnspecified,
         #[doc = "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types."]
         Example,
         #[doc = "Templates are not annotated with entity types, but they can contain\n@-prefixed entity type names as substrings.\nTemplate mode has been deprecated. Example mode is the only supported\nway to create new training phrases. If you have existing training\nphrases that you've created in template mode, those will continue to\nwork."]
         Template,
+        #[doc = "Not specified. This value should never be used."]
+        TypeUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Example => "EXAMPLE",
+                GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Template => "TEMPLATE",
                 GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::TypeUnspecified => {
                     "TYPE_UNSPECIFIED"
                 }
-                GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Example => "EXAMPLE",
-                GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Template => "TEMPLATE",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2720,17 +2720,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXAMPLE" => GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Example,
+                "TEMPLATE" => GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Template,
                 "TYPE_UNSPECIFIED" => {
                     GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::TypeUnspecified
                 }
-                "EXAMPLE" => GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Example,
-                "TEMPLATE" => GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType::Template,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2844,29 +2844,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel {
-        #[doc = "Not specified."]
-        MatchConfidenceLevelUnspecified,
-        #[doc = "Indicates that the confidence is low."]
-        Low,
-        #[doc = "Indicates our confidence is medium."]
-        Medium,
         #[doc = "Indicates our confidence is high."]
         High,
+        #[doc = "Indicates that the confidence is low."]
+        Low,
+        #[doc = "Not specified."]
+        MatchConfidenceLevelUnspecified,
+        #[doc = "Indicates our confidence is medium."]
+        Medium,
     }
     impl GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: MatchConfidenceLevelUnspecified => "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Low => "LOW" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Medium => "MEDIUM" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: High => "HIGH" , }
+            match self { GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: High => "HIGH" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Low => "LOW" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: MatchConfidenceLevelUnspecified => "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Medium => "MEDIUM" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2876,12 +2876,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: MatchConfidenceLevelUnspecified , "LOW" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Low , "MEDIUM" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Medium , "HIGH" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: High , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "HIGH" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: High , "LOW" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Low , "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: MatchConfidenceLevelUnspecified , "MEDIUM" => GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel :: Medium , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -2928,34 +2928,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState {
-        #[doc = "State unspecified."]
-        StateUnspecified,
+        #[doc = "The operation is done, either cancelled or completed."]
+        Done,
         #[doc = "The operation has been created."]
         Pending,
         #[doc = "The operation is currently running."]
         Running,
-        #[doc = "The operation is done, either cancelled or completed."]
-        Done,
+        #[doc = "State unspecified."]
+        StateUnspecified,
     }
     impl GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Done => "DONE",
+                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Pending => "PENDING",
+                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Running => "RUNNING",
                 GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::StateUnspecified => {
                     "STATE_UNSPECIFIED"
                 }
-                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Pending => "PENDING",
-                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Running => "RUNNING",
-                GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Done => "DONE",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2965,18 +2965,18 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DONE" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Done,
+                "PENDING" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Pending,
+                "RUNNING" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Running,
                 "STATE_UNSPECIFIED" => {
                     GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::StateUnspecified
                 }
-                "PENDING" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Pending,
-                "RUNNING" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Running,
-                "DONE" => GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState::Done,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3327,23 +3327,23 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
-        #[doc = "Auto expansion disabled for the entity."]
-        AutoExpansionModeUnspecified,
         #[doc = "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."]
         AutoExpansionModeDefault,
+        #[doc = "Auto expansion disabled for the entity."]
+        AutoExpansionModeUnspecified,
     }
     impl GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified => "AUTO_EXPANSION_MODE_UNSPECIFIED" , GoogleCloudDialogflowV2EntityTypeAutoExpansionMode :: AutoExpansionModeDefault => "AUTO_EXPANSION_MODE_DEFAULT" , }
+            match self { GoogleCloudDialogflowV2EntityTypeAutoExpansionMode :: AutoExpansionModeDefault => "AUTO_EXPANSION_MODE_DEFAULT" , GoogleCloudDialogflowV2EntityTypeAutoExpansionMode :: AutoExpansionModeUnspecified => "AUTO_EXPANSION_MODE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3351,17 +3351,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "AUTO_EXPANSION_MODE_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2EntityTypeAutoExpansionMode::AutoExpansionModeUnspecified
-                }
                 "AUTO_EXPANSION_MODE_DEFAULT" => {
                     GoogleCloudDialogflowV2EntityTypeAutoExpansionMode::AutoExpansionModeDefault
+                }
+                "AUTO_EXPANSION_MODE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2EntityTypeAutoExpansionMode::AutoExpansionModeUnspecified
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -3383,29 +3383,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2EntityTypeKind {
-        #[doc = "Not specified. This value should be never used."]
-        KindUnspecified,
-        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
-        KindMap,
         #[doc = "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
         KindList,
+        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
+        KindMap,
+        #[doc = "Not specified. This value should be never used."]
+        KindUnspecified,
     }
     impl GoogleCloudDialogflowV2EntityTypeKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2EntityTypeKind::KindUnspecified => "KIND_UNSPECIFIED",
-                GoogleCloudDialogflowV2EntityTypeKind::KindMap => "KIND_MAP",
                 GoogleCloudDialogflowV2EntityTypeKind::KindList => "KIND_LIST",
+                GoogleCloudDialogflowV2EntityTypeKind::KindMap => "KIND_MAP",
+                GoogleCloudDialogflowV2EntityTypeKind::KindUnspecified => "KIND_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2EntityTypeKind {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2EntityTypeKind {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3413,15 +3413,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2EntityTypeKind {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "KIND_UNSPECIFIED" => GoogleCloudDialogflowV2EntityTypeKind::KindUnspecified,
-                "KIND_MAP" => GoogleCloudDialogflowV2EntityTypeKind::KindMap,
                 "KIND_LIST" => GoogleCloudDialogflowV2EntityTypeKind::KindList,
+                "KIND_MAP" => GoogleCloudDialogflowV2EntityTypeKind::KindMap,
+                "KIND_UNSPECIFIED" => GoogleCloudDialogflowV2EntityTypeKind::KindUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3645,35 +3645,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
-        #[doc = "Not specified."]
-        AudioEncodingUnspecified,
-        #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM)."]
-        AudioEncodingLinear16,
-        #[doc = "[`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio\nCodec) is the recommended encoding because it is lossless (therefore\nrecognition is not compromised) and requires only about half the\nbandwidth of `LINEAR16`. `FLAC` stream encoding supports 16-bit and\n24-bit samples, however, not all fields in `STREAMINFO` are supported."]
-        AudioEncodingFlac,
-        #[doc = "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law."]
-        AudioEncodingMulaw,
         #[doc = "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000."]
         AudioEncodingAmr,
         #[doc = "Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000."]
         AudioEncodingAmrWb,
+        #[doc = "[`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio\nCodec) is the recommended encoding because it is lossless (therefore\nrecognition is not compromised) and requires only about half the\nbandwidth of `LINEAR16`. `FLAC` stream encoding supports 16-bit and\n24-bit samples, however, not all fields in `STREAMINFO` are supported."]
+        AudioEncodingFlac,
+        #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM)."]
+        AudioEncodingLinear16,
+        #[doc = "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law."]
+        AudioEncodingMulaw,
         #[doc = "Opus encoded audio frames in Ogg container\n([OggOpus](https://wiki.xiph.org/OggOpus)).\n`sample_rate_hertz` must be 16000."]
         AudioEncodingOggOpus,
         #[doc = "Although the use of lossy encodings is not recommended, if a very low\nbitrate encoding is required, `OGG_OPUS` is highly preferred over\nSpeex encoding. The [Speex](https://speex.org/) encoding supported by\nDialogflow API has a header byte in each block, as in MIME type\n`audio/x-speex-with-header-byte`.\nIt is a variant of the RTP Speex encoding defined in\n[RFC 5574](https://tools.ietf.org/html/rfc5574).\nThe stream is a sequence of blocks, one block per RTP packet. Each block\nstarts with a byte containing the length of the block, in bytes, followed\nby one or more frames of Speex data, padded to an integral number of\nbytes (octets) as specified in RFC 5574. In other words, each RTP header\nis replaced with a single byte containing the block length. Only Speex\nwideband is supported. `sample_rate_hertz` must be 16000."]
         AudioEncodingSpeexWithHeaderByte,
+        #[doc = "Not specified."]
+        AudioEncodingUnspecified,
     }
     impl GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingUnspecified => "AUDIO_ENCODING_UNSPECIFIED" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingLinear16 => "AUDIO_ENCODING_LINEAR_16" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingFlac => "AUDIO_ENCODING_FLAC" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingMulaw => "AUDIO_ENCODING_MULAW" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmr => "AUDIO_ENCODING_AMR" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmrWb => "AUDIO_ENCODING_AMR_WB" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingOggOpus => "AUDIO_ENCODING_OGG_OPUS" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingSpeexWithHeaderByte => "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" , }
+            match self { GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmr => "AUDIO_ENCODING_AMR" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmrWb => "AUDIO_ENCODING_AMR_WB" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingFlac => "AUDIO_ENCODING_FLAC" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingLinear16 => "AUDIO_ENCODING_LINEAR_16" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingMulaw => "AUDIO_ENCODING_MULAW" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingOggOpus => "AUDIO_ENCODING_OGG_OPUS" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingSpeexWithHeaderByte => "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" , GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingUnspecified => "AUDIO_ENCODING_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3681,12 +3681,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "AUDIO_ENCODING_UNSPECIFIED" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingUnspecified , "AUDIO_ENCODING_LINEAR_16" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingLinear16 , "AUDIO_ENCODING_FLAC" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingFlac , "AUDIO_ENCODING_MULAW" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingMulaw , "AUDIO_ENCODING_AMR" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmr , "AUDIO_ENCODING_AMR_WB" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmrWb , "AUDIO_ENCODING_OGG_OPUS" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingOggOpus , "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingSpeexWithHeaderByte , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "AUDIO_ENCODING_AMR" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmr , "AUDIO_ENCODING_AMR_WB" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingAmrWb , "AUDIO_ENCODING_FLAC" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingFlac , "AUDIO_ENCODING_LINEAR_16" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingLinear16 , "AUDIO_ENCODING_MULAW" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingMulaw , "AUDIO_ENCODING_OGG_OPUS" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingOggOpus , "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingSpeexWithHeaderByte , "AUDIO_ENCODING_UNSPECIFIED" => GoogleCloudDialogflowV2InputAudioConfigAudioEncoding :: AudioEncodingUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
@@ -3704,23 +3704,23 @@ pub mod schemas {
         SpeechModelVariantUnspecified,
         #[doc = "Use the best available variant of the Speech\nmodel that the caller is eligible for.\n\nPlease see the [Dialogflow\ndocs](https://cloud.google.com/dialogflow/docs/data-logging) for\nhow to make your project eligible for enhanced models."]
         UseBestAvailable,
-        #[doc = "Use standard model variant even if an enhanced model is available.  See the\n[Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)\nfor details about enhanced models."]
-        UseStandard,
         #[doc = "Use an enhanced model variant:\n\n* If an enhanced variant does not exist for the given\n  model and request language, Dialogflow falls\n  back to the standard variant.\n  \n  The [Cloud Speech\n  documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)\n  describes which models have enhanced variants.\n\n* If the API caller isn't eligible for enhanced models, Dialogflow returns\n  an error. Please see the [Dialogflow\n  docs](https://cloud.google.com/dialogflow/docs/data-logging)\n  for how to make your project eligible."]
         UseEnhanced,
+        #[doc = "Use standard model variant even if an enhanced model is available.  See the\n[Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)\nfor details about enhanced models."]
+        UseStandard,
     }
     impl GoogleCloudDialogflowV2InputAudioConfigModelVariant {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2InputAudioConfigModelVariant :: SpeechModelVariantUnspecified => "SPEECH_MODEL_VARIANT_UNSPECIFIED" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseBestAvailable => "USE_BEST_AVAILABLE" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseStandard => "USE_STANDARD" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseEnhanced => "USE_ENHANCED" , }
+            match self { GoogleCloudDialogflowV2InputAudioConfigModelVariant :: SpeechModelVariantUnspecified => "SPEECH_MODEL_VARIANT_UNSPECIFIED" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseBestAvailable => "USE_BEST_AVAILABLE" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseEnhanced => "USE_ENHANCED" , GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseStandard => "USE_STANDARD" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2InputAudioConfigModelVariant {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2InputAudioConfigModelVariant {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3728,12 +3728,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2InputAudioConfigModelVariant {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "SPEECH_MODEL_VARIANT_UNSPECIFIED" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: SpeechModelVariantUnspecified , "USE_BEST_AVAILABLE" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseBestAvailable , "USE_STANDARD" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseStandard , "USE_ENHANCED" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseEnhanced , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "SPEECH_MODEL_VARIANT_UNSPECIFIED" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: SpeechModelVariantUnspecified , "USE_BEST_AVAILABLE" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseBestAvailable , "USE_ENHANCED" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseEnhanced , "USE_STANDARD" => GoogleCloudDialogflowV2InputAudioConfigModelVariant :: UseStandard , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2InputAudioConfigModelVariant {
@@ -3792,46 +3792,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems {
-        PlatformUnspecified,
+        ActionsOnGoogle,
         Facebook,
+        GoogleHangouts,
+        Kik,
+        Line,
+        PlatformUnspecified,
+        Skype,
         Slack,
         Telegram,
-        Kik,
-        Skype,
-        Line,
         Viber,
-        ActionsOnGoogle,
-        GoogleHangouts,
     }
     impl GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::PlatformUnspecified => {
-                    "PLATFORM_UNSPECIFIED"
-                }
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Facebook => "FACEBOOK",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Slack => "SLACK",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Telegram => "TELEGRAM",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Kik => "KIK",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Skype => "SKYPE",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Line => "LINE",
-                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Viber => "VIBER",
                 GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::ActionsOnGoogle => {
                     "ACTIONS_ON_GOOGLE"
                 }
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Facebook => "FACEBOOK",
                 GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::GoogleHangouts => {
                     "GOOGLE_HANGOUTS"
                 }
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Kik => "KIK",
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Line => "LINE",
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::PlatformUnspecified => {
+                    "PLATFORM_UNSPECIFIED"
+                }
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Skype => "SKYPE",
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Slack => "SLACK",
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Telegram => "TELEGRAM",
+                GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Viber => "VIBER",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3839,28 +3839,28 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PLATFORM_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::PlatformUnspecified
-                }
-                "FACEBOOK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Facebook,
-                "SLACK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Slack,
-                "TELEGRAM" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Telegram,
-                "KIK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Kik,
-                "SKYPE" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Skype,
-                "LINE" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Line,
-                "VIBER" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Viber,
                 "ACTIONS_ON_GOOGLE" => {
                     GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::ActionsOnGoogle
                 }
+                "FACEBOOK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Facebook,
                 "GOOGLE_HANGOUTS" => {
                     GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::GoogleHangouts
                 }
+                "KIK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Kik,
+                "LINE" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Line,
+                "PLATFORM_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::PlatformUnspecified
+                }
+                "SKYPE" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Skype,
+                "SLACK" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Slack,
+                "TELEGRAM" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Telegram,
+                "VIBER" => GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems::Viber,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3883,35 +3883,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentWebhookState {
-        #[doc = "Webhook is disabled in the agent and in the intent."]
-        WebhookStateUnspecified,
         #[doc = "Webhook is enabled in the agent and in the intent."]
         WebhookStateEnabled,
         #[doc = "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."]
         WebhookStateEnabledForSlotFilling,
+        #[doc = "Webhook is disabled in the agent and in the intent."]
+        WebhookStateUnspecified,
     }
     impl GoogleCloudDialogflowV2IntentWebhookState {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2IntentWebhookState::WebhookStateUnspecified => {
-                    "WEBHOOK_STATE_UNSPECIFIED"
-                }
                 GoogleCloudDialogflowV2IntentWebhookState::WebhookStateEnabled => {
                     "WEBHOOK_STATE_ENABLED"
                 }
                 GoogleCloudDialogflowV2IntentWebhookState::WebhookStateEnabledForSlotFilling => {
                     "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
                 }
+                GoogleCloudDialogflowV2IntentWebhookState::WebhookStateUnspecified => {
+                    "WEBHOOK_STATE_UNSPECIFIED"
+                }
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2IntentWebhookState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2IntentWebhookState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3919,20 +3919,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2IntentWebhookState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "WEBHOOK_STATE_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2IntentWebhookState::WebhookStateUnspecified
-                }
                 "WEBHOOK_STATE_ENABLED" => {
                     GoogleCloudDialogflowV2IntentWebhookState::WebhookStateEnabled
                 }
                 "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" => {
                     GoogleCloudDialogflowV2IntentWebhookState::WebhookStateEnabledForSlotFilling
+                }
+                "WEBHOOK_STATE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2IntentWebhookState::WebhookStateUnspecified
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -4073,54 +4073,54 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentMessagePlatform {
-        #[doc = "Not specified."]
-        PlatformUnspecified,
+        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
+        ActionsOnGoogle,
         #[doc = "Facebook."]
         Facebook,
+        #[doc = "Google Hangouts."]
+        GoogleHangouts,
+        #[doc = "Kik."]
+        Kik,
+        #[doc = "Line."]
+        Line,
+        #[doc = "Not specified."]
+        PlatformUnspecified,
+        #[doc = "Skype."]
+        Skype,
         #[doc = "Slack."]
         Slack,
         #[doc = "Telegram."]
         Telegram,
-        #[doc = "Kik."]
-        Kik,
-        #[doc = "Skype."]
-        Skype,
-        #[doc = "Line."]
-        Line,
         #[doc = "Viber."]
         Viber,
-        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
-        ActionsOnGoogle,
-        #[doc = "Google Hangouts."]
-        GoogleHangouts,
     }
     impl GoogleCloudDialogflowV2IntentMessagePlatform {
         pub fn as_str(self) -> &'static str {
             match self {
-                GoogleCloudDialogflowV2IntentMessagePlatform::PlatformUnspecified => {
-                    "PLATFORM_UNSPECIFIED"
-                }
-                GoogleCloudDialogflowV2IntentMessagePlatform::Facebook => "FACEBOOK",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Slack => "SLACK",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Telegram => "TELEGRAM",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Kik => "KIK",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Skype => "SKYPE",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Line => "LINE",
-                GoogleCloudDialogflowV2IntentMessagePlatform::Viber => "VIBER",
                 GoogleCloudDialogflowV2IntentMessagePlatform::ActionsOnGoogle => {
                     "ACTIONS_ON_GOOGLE"
                 }
+                GoogleCloudDialogflowV2IntentMessagePlatform::Facebook => "FACEBOOK",
                 GoogleCloudDialogflowV2IntentMessagePlatform::GoogleHangouts => "GOOGLE_HANGOUTS",
+                GoogleCloudDialogflowV2IntentMessagePlatform::Kik => "KIK",
+                GoogleCloudDialogflowV2IntentMessagePlatform::Line => "LINE",
+                GoogleCloudDialogflowV2IntentMessagePlatform::PlatformUnspecified => {
+                    "PLATFORM_UNSPECIFIED"
+                }
+                GoogleCloudDialogflowV2IntentMessagePlatform::Skype => "SKYPE",
+                GoogleCloudDialogflowV2IntentMessagePlatform::Slack => "SLACK",
+                GoogleCloudDialogflowV2IntentMessagePlatform::Telegram => "TELEGRAM",
+                GoogleCloudDialogflowV2IntentMessagePlatform::Viber => "VIBER",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2IntentMessagePlatform {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2IntentMessagePlatform {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4128,26 +4128,26 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2IntentMessagePlatform {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PLATFORM_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2IntentMessagePlatform::PlatformUnspecified
-                }
-                "FACEBOOK" => GoogleCloudDialogflowV2IntentMessagePlatform::Facebook,
-                "SLACK" => GoogleCloudDialogflowV2IntentMessagePlatform::Slack,
-                "TELEGRAM" => GoogleCloudDialogflowV2IntentMessagePlatform::Telegram,
-                "KIK" => GoogleCloudDialogflowV2IntentMessagePlatform::Kik,
-                "SKYPE" => GoogleCloudDialogflowV2IntentMessagePlatform::Skype,
-                "LINE" => GoogleCloudDialogflowV2IntentMessagePlatform::Line,
-                "VIBER" => GoogleCloudDialogflowV2IntentMessagePlatform::Viber,
                 "ACTIONS_ON_GOOGLE" => {
                     GoogleCloudDialogflowV2IntentMessagePlatform::ActionsOnGoogle
                 }
+                "FACEBOOK" => GoogleCloudDialogflowV2IntentMessagePlatform::Facebook,
                 "GOOGLE_HANGOUTS" => GoogleCloudDialogflowV2IntentMessagePlatform::GoogleHangouts,
+                "KIK" => GoogleCloudDialogflowV2IntentMessagePlatform::Kik,
+                "LINE" => GoogleCloudDialogflowV2IntentMessagePlatform::Line,
+                "PLATFORM_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2IntentMessagePlatform::PlatformUnspecified
+                }
+                "SKYPE" => GoogleCloudDialogflowV2IntentMessagePlatform::Skype,
+                "SLACK" => GoogleCloudDialogflowV2IntentMessagePlatform::Slack,
+                "TELEGRAM" => GoogleCloudDialogflowV2IntentMessagePlatform::Telegram,
+                "VIBER" => GoogleCloudDialogflowV2IntentMessagePlatform::Viber,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4829,31 +4829,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentTrainingPhraseType {
-        #[doc = "Not specified. This value should never be used."]
-        TypeUnspecified,
         #[doc = "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types."]
         Example,
         #[doc = "Templates are not annotated with entity types, but they can contain\n@-prefixed entity type names as substrings.\nTemplate mode has been deprecated. Example mode is the only supported\nway to create new training phrases. If you have existing training\nphrases that you've created in template mode, those will continue to\nwork."]
         Template,
+        #[doc = "Not specified. This value should never be used."]
+        TypeUnspecified,
     }
     impl GoogleCloudDialogflowV2IntentTrainingPhraseType {
         pub fn as_str(self) -> &'static str {
             match self {
+                GoogleCloudDialogflowV2IntentTrainingPhraseType::Example => "EXAMPLE",
+                GoogleCloudDialogflowV2IntentTrainingPhraseType::Template => "TEMPLATE",
                 GoogleCloudDialogflowV2IntentTrainingPhraseType::TypeUnspecified => {
                     "TYPE_UNSPECIFIED"
                 }
-                GoogleCloudDialogflowV2IntentTrainingPhraseType::Example => "EXAMPLE",
-                GoogleCloudDialogflowV2IntentTrainingPhraseType::Template => "TEMPLATE",
             }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2IntentTrainingPhraseType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2IntentTrainingPhraseType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4861,17 +4861,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2IntentTrainingPhraseType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXAMPLE" => GoogleCloudDialogflowV2IntentTrainingPhraseType::Example,
+                "TEMPLATE" => GoogleCloudDialogflowV2IntentTrainingPhraseType::Template,
                 "TYPE_UNSPECIFIED" => {
                     GoogleCloudDialogflowV2IntentTrainingPhraseType::TypeUnspecified
                 }
-                "EXAMPLE" => GoogleCloudDialogflowV2IntentTrainingPhraseType::Example,
-                "TEMPLATE" => GoogleCloudDialogflowV2IntentTrainingPhraseType::Template,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5083,27 +5083,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
-        #[doc = "Not specified."]
-        OutputAudioEncodingUnspecified,
         #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header."]
         OutputAudioEncodingLinear16,
         #[doc = "MP3 audio."]
         OutputAudioEncodingMp3,
         #[doc = "Opus encoded audio wrapped in an ogg container. The result will be a\nfile which can be played natively on Android, and in browsers (at least\nChrome and Firefox). The quality of the encoding is considerably higher\nthan MP3 while using approximately the same bitrate."]
         OutputAudioEncodingOggOpus,
+        #[doc = "Not specified."]
+        OutputAudioEncodingUnspecified,
     }
     impl GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingUnspecified => "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingLinear16 => "OUTPUT_AUDIO_ENCODING_LINEAR_16" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingMp3 => "OUTPUT_AUDIO_ENCODING_MP3" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingOggOpus => "OUTPUT_AUDIO_ENCODING_OGG_OPUS" , }
+            match self { GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingLinear16 => "OUTPUT_AUDIO_ENCODING_LINEAR_16" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingMp3 => "OUTPUT_AUDIO_ENCODING_MP3" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingOggOpus => "OUTPUT_AUDIO_ENCODING_OGG_OPUS" , GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingUnspecified => "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5111,12 +5111,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingUnspecified , "OUTPUT_AUDIO_ENCODING_LINEAR_16" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingLinear16 , "OUTPUT_AUDIO_ENCODING_MP3" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingMp3 , "OUTPUT_AUDIO_ENCODING_OGG_OPUS" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingOggOpus , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "OUTPUT_AUDIO_ENCODING_LINEAR_16" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingLinear16 , "OUTPUT_AUDIO_ENCODING_MP3" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingMp3 , "OUTPUT_AUDIO_ENCODING_OGG_OPUS" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingOggOpus , "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" => GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding :: OutputAudioEncodingUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
@@ -5391,25 +5391,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
-        #[doc = "Not specified. This value should be never used."]
-        EntityOverrideModeUnspecified,
         #[doc = "The collection of session entities overrides the collection of entities\nin the corresponding developer entity type."]
         EntityOverrideModeOverride,
         #[doc = "The collection of session entities extends the collection of entities in\nthe corresponding developer entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the developer entity type\nand merge."]
         EntityOverrideModeSupplement,
+        #[doc = "Not specified. This value should be never used."]
+        EntityOverrideModeUnspecified,
     }
     impl GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified => "ENTITY_OVERRIDE_MODE_UNSPECIFIED" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride => "ENTITY_OVERRIDE_MODE_OVERRIDE" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement => "ENTITY_OVERRIDE_MODE_SUPPLEMENT" , }
+            match self { GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride => "ENTITY_OVERRIDE_MODE_OVERRIDE" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement => "ENTITY_OVERRIDE_MODE_SUPPLEMENT" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified => "ENTITY_OVERRIDE_MODE_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5417,12 +5417,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "ENTITY_OVERRIDE_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified , "ENTITY_OVERRIDE_MODE_OVERRIDE" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride , "ENTITY_OVERRIDE_MODE_SUPPLEMENT" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "ENTITY_OVERRIDE_MODE_OVERRIDE" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride , "ENTITY_OVERRIDE_MODE_SUPPLEMENT" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement , "ENTITY_OVERRIDE_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -5549,27 +5549,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
-        #[doc = "An unspecified gender, which means that the client doesn't care which\ngender the selected voice will have."]
-        SsmlVoiceGenderUnspecified,
-        #[doc = "A male voice."]
-        SsmlVoiceGenderMale,
         #[doc = "A female voice."]
         SsmlVoiceGenderFemale,
+        #[doc = "A male voice."]
+        SsmlVoiceGenderMale,
         #[doc = "A gender-neutral voice."]
         SsmlVoiceGenderNeutral,
+        #[doc = "An unspecified gender, which means that the client doesn't care which\ngender the selected voice will have."]
+        SsmlVoiceGenderUnspecified,
     }
     impl GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderUnspecified => "SSML_VOICE_GENDER_UNSPECIFIED" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderMale => "SSML_VOICE_GENDER_MALE" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderFemale => "SSML_VOICE_GENDER_FEMALE" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderNeutral => "SSML_VOICE_GENDER_NEUTRAL" , }
+            match self { GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderFemale => "SSML_VOICE_GENDER_FEMALE" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderMale => "SSML_VOICE_GENDER_MALE" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderNeutral => "SSML_VOICE_GENDER_NEUTRAL" , GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderUnspecified => "SSML_VOICE_GENDER_UNSPECIFIED" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5577,12 +5577,12 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "SSML_VOICE_GENDER_UNSPECIFIED" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderUnspecified , "SSML_VOICE_GENDER_MALE" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderMale , "SSML_VOICE_GENDER_FEMALE" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderFemale , "SSML_VOICE_GENDER_NEUTRAL" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderNeutral , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "SSML_VOICE_GENDER_FEMALE" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderFemale , "SSML_VOICE_GENDER_MALE" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderMale , "SSML_VOICE_GENDER_NEUTRAL" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderNeutral , "SSML_VOICE_GENDER_UNSPECIFIED" => GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender :: SsmlVoiceGenderUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
@@ -5812,12 +5812,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5825,7 +5825,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5868,12 +5868,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5881,7 +5881,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5927,7 +5927,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -5936,12 +5936,12 @@ mod resources {
         }
         impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
             #[doc = "Creates/updates the specified agent."]
-            pub fn agent(
+            pub fn agent_method(
                 &self,
                 request: crate::schemas::GoogleCloudDialogflowV2Agent,
                 parent: impl Into<String>,
-            ) -> AgentRequestBuilder<A> {
-                AgentRequestBuilder {
+            ) -> AgentMethodRequestBuilder<A> {
+                AgentMethodRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: &self.auth,
                     request,
@@ -6016,7 +6016,7 @@ mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct AgentRequestBuilder<'a, A> {
+        pub struct AgentMethodRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::GoogleCloudDialogflowV2Agent,
@@ -6034,7 +6034,7 @@ mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: yup_oauth2::GetToken> AgentRequestBuilder<'a, A> {
+        impl<'a, A: yup_oauth2::GetToken> AgentMethodRequestBuilder<'a, A> {
             #[doc = "Optional. The mask to control which fields get updated."]
             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                 self.update_mask = Some(value.into());
@@ -6045,19 +6045,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6215,19 +6205,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6383,19 +6363,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6706,19 +6676,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6876,19 +6836,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7046,19 +6996,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7227,19 +7167,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7282,15 +7212,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_agents<T>(self) -> SearchAgentsIter<'a, A, T>
+                pub fn iter_agents<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    SearchAgentsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "agents").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "agents")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7298,14 +7232,10 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_agents_standard(
                     mut self,
-                ) -> SearchAgentsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Agent>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleCloudDialogflowV2Agent>
                 {
                     self.fields = Some(concat!("nextPageToken,", "agents").to_owned());
-                    SearchAgentsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "agents")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -7315,27 +7245,42 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_agents_debug(
                     mut self,
-                ) -> SearchAgentsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Agent>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleCloudDialogflowV2Agent>
                 {
                     self.fields = Some(concat!("nextPageToken,", "agents", "(*)").to_owned());
-                    SearchAgentsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "agents")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudDialogflowV2SearchAgentsResponse,
+                > {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudDialogflowV2SearchAgentsResponse,
+                > {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -7438,52 +7383,13 @@ mod resources {
                     req
                 }
             }
-            pub struct SearchAgentsIter<'a, A, T> {
-                method: SearchRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for SearchAgentsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "agents")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -7512,19 +7418,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7860,19 +7756,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8035,19 +7921,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8216,19 +8092,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8391,19 +8257,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8565,19 +8421,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8756,19 +8602,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8811,15 +8647,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_entity_types<T>(self) -> ListEntityTypesIter<'a, A, T>
+                    pub fn iter_entity_types<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListEntityTypesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "entityTypes").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "entityTypes")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8827,14 +8667,12 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_entity_types_standard(
                         mut self,
-                    ) -> ListEntityTypesIter<'a, A, crate::schemas::GoogleCloudDialogflowV2EntityType>
-                    {
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2EntityType,
+                    > {
                         self.fields = Some(concat!("nextPageToken,", "entityTypes").to_owned());
-                        ListEntityTypesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "entityTypes")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -8844,28 +8682,45 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_entity_types_debug(
                         mut self,
-                    ) -> ListEntityTypesIter<'a, A, crate::schemas::GoogleCloudDialogflowV2EntityType>
-                    {
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2EntityType,
+                    > {
                         self.fields =
                             Some(concat!("nextPageToken,", "entityTypes", "(*)").to_owned());
-                        ListEntityTypesIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "entityTypes")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2ListEntityTypesResponse,
+                    > {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2ListEntityTypesResponse,
+                    > {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -8970,52 +8825,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListEntityTypesIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListEntityTypesIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "entityTypes")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -9056,19 +8872,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9312,19 +9118,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9487,19 +9283,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9662,19 +9448,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9819,26 +9595,29 @@ mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum CreateIntentView {
-                        IntentViewUnspecified,
                         IntentViewFull,
+                        IntentViewUnspecified,
                     }
                     impl CreateIntentView {
                         pub fn as_str(self) -> &'static str {
                             match self {
+                                CreateIntentView::IntentViewFull => "INTENT_VIEW_FULL",
                                 CreateIntentView::IntentViewUnspecified => {
                                     "INTENT_VIEW_UNSPECIFIED"
                                 }
-                                CreateIntentView::IntentViewFull => "INTENT_VIEW_FULL",
                             }
                         }
                     }
                     impl ::std::fmt::Display for CreateIntentView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for CreateIntentView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -9846,16 +9625,16 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for CreateIntentView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
+                                "INTENT_VIEW_FULL" => CreateIntentView::IntentViewFull,
                                 "INTENT_VIEW_UNSPECIFIED" => {
                                     CreateIntentView::IntentViewUnspecified
                                 }
-                                "INTENT_VIEW_FULL" => CreateIntentView::IntentViewFull,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -9876,24 +9655,27 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum GetIntentView {
-                        IntentViewUnspecified,
                         IntentViewFull,
+                        IntentViewUnspecified,
                     }
                     impl GetIntentView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                GetIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                                 GetIntentView::IntentViewFull => "INTENT_VIEW_FULL",
+                                GetIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                             }
                         }
                     }
                     impl ::std::fmt::Display for GetIntentView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for GetIntentView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -9901,14 +9683,14 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for GetIntentView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "INTENT_VIEW_UNSPECIFIED" => GetIntentView::IntentViewUnspecified,
                                 "INTENT_VIEW_FULL" => GetIntentView::IntentViewFull,
+                                "INTENT_VIEW_UNSPECIFIED" => GetIntentView::IntentViewUnspecified,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -9929,24 +9711,27 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListIntentView {
-                        IntentViewUnspecified,
                         IntentViewFull,
+                        IntentViewUnspecified,
                     }
                     impl ListIntentView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                ListIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                                 ListIntentView::IntentViewFull => "INTENT_VIEW_FULL",
+                                ListIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                             }
                         }
                     }
                     impl ::std::fmt::Display for ListIntentView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for ListIntentView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -9954,14 +9739,14 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for ListIntentView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "INTENT_VIEW_UNSPECIFIED" => ListIntentView::IntentViewUnspecified,
                                 "INTENT_VIEW_FULL" => ListIntentView::IntentViewFull,
+                                "INTENT_VIEW_UNSPECIFIED" => ListIntentView::IntentViewUnspecified,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -9982,24 +9767,27 @@ mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum PatchIntentView {
-                        IntentViewUnspecified,
                         IntentViewFull,
+                        IntentViewUnspecified,
                     }
                     impl PatchIntentView {
                         pub fn as_str(self) -> &'static str {
                             match self {
-                                PatchIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                                 PatchIntentView::IntentViewFull => "INTENT_VIEW_FULL",
+                                PatchIntentView::IntentViewUnspecified => "INTENT_VIEW_UNSPECIFIED",
                             }
                         }
                     }
                     impl ::std::fmt::Display for PatchIntentView {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
                         }
                     }
                     impl ::serde::Serialize for PatchIntentView {
-                        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
                         where
                             S: ::serde::ser::Serializer,
                         {
@@ -10007,14 +9795,14 @@ mod resources {
                         }
                     }
                     impl<'de> ::serde::Deserialize<'de> for PatchIntentView {
-                        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                         where
                             D: ::serde::de::Deserializer<'de>,
                         {
                             let value: &'de str = <&str>::deserialize(deserializer)?;
                             Ok(match value {
-                                "INTENT_VIEW_UNSPECIFIED" => PatchIntentView::IntentViewUnspecified,
                                 "INTENT_VIEW_FULL" => PatchIntentView::IntentViewFull,
+                                "INTENT_VIEW_UNSPECIFIED" => PatchIntentView::IntentViewUnspecified,
                                 _ => {
                                     return Err(::serde::de::Error::custom(format!(
                                         "invalid enum for #name: {}",
@@ -10228,19 +10016,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10403,19 +10181,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10595,19 +10363,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10771,19 +10529,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10955,19 +10703,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11157,19 +10895,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11212,15 +10940,19 @@ mod resources {
                     #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                     #[doc = r" populated fields in the yielded items will be determined by the"]
                     #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_intents<T>(self) -> ListIntentsIter<'a, A, T>
+                    pub fn iter_intents<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        ListIntentsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
+                        let mut fields = concat!("nextPageToken,", "intents").to_owned();
+                        let items_fields = T::field_selector();
+                        if !items_fields.is_empty() {
+                            fields.push_str("(");
+                            fields.push_str(&items_fields);
+                            fields.push_str(")");
                         }
+                        self.fields = Some(fields);
+                        crate::iter::PageItemIter::new(self, "intents")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11228,14 +10960,12 @@ mod resources {
                     #[doc = r" the server."]
                     pub fn iter_intents_standard(
                         mut self,
-                    ) -> ListIntentsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Intent>
-                    {
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Intent,
+                    > {
                         self.fields = Some(concat!("nextPageToken,", "intents").to_owned());
-                        ListIntentsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "intents")
                     }
                     #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                     #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -11245,27 +10975,44 @@ mod resources {
                     #[doc = r" resources."]
                     pub fn iter_intents_debug(
                         mut self,
-                    ) -> ListIntentsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Intent>
-                    {
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Intent,
+                    > {
                         self.fields = Some(concat!("nextPageToken,", "intents", "(*)").to_owned());
-                        ListIntentsIter {
-                            method: self,
-                            last_page_reached: false,
-                            items_iter: None,
-                        }
+                        crate::iter::PageItemIter::new(self, "intents")
                     }
-                    #[doc = r" Return an iterator that"]
-                    pub fn iter<T>(
-                        self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
+                        let mut fields = T::field_selector();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
                         }
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_standard(
+                        self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2ListIntentsResponse,
+                    > {
+                        crate::iter::PageIter::new(self)
+                    }
+                    pub fn iter_debug(
+                        mut self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2ListIntentsResponse,
+                    > {
+                        self.fields = Some("*".to_owned());
+                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -11371,52 +11118,13 @@ mod resources {
                         req
                     }
                 }
-                pub struct ListIntentsIter<'a, A, T> {
-                    method: ListRequestBuilder<'a, A>,
-                    last_page_reached: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, A, T> Iterator for ListIntentsIter<'a, A, T>
-                where
-                    A: ::yup_oauth2::GetToken,
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        #[derive(:: serde :: Deserialize)]
-                        struct Resp<T> {
-                            #[serde(rename = "intents")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.last_page_reached {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method._execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                            self.method.page_token = resp.next_page_token;
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                     fn set_page_token(&mut self, value: String) {
                         self.page_token = value.into();
                     }
                     fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
                         self._execute()
                     }
@@ -11467,19 +11175,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11711,19 +11409,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11881,19 +11569,9 @@ mod resources {
                         self.access_token = Some(value.into());
                         self
                     }
-                    #[doc = "Data format for response."]
-                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                        self.alt = Some(value);
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(mut self, value: impl Into<String>) -> Self {
-                        self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12172,19 +11850,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12346,19 +12014,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12514,19 +12172,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12698,19 +12346,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12753,15 +12391,19 @@ mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_contexts<T>(self) -> ListContextsIter<'a, A, T>
+                        pub fn iter_contexts<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListContextsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields = concat!("nextPageToken,", "contexts").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "contexts")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -12769,14 +12411,12 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_contexts_standard(
                             mut self,
-                        ) -> ListContextsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Context>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Context,
+                        > {
                             self.fields = Some(concat!("nextPageToken,", "contexts").to_owned());
-                            ListContextsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "contexts")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -12786,28 +12426,45 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_contexts_debug(
                             mut self,
-                        ) -> ListContextsIter<'a, A, crate::schemas::GoogleCloudDialogflowV2Context>
-                        {
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Context,
+                        > {
                             self.fields =
                                 Some(concat!("nextPageToken,", "contexts", "(*)").to_owned());
-                            ListContextsIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "contexts")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2ListContextsResponse,
+                        > {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2ListContextsResponse,
+                        > {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -12911,52 +12568,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListContextsIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListContextsIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "contexts")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -12991,19 +12609,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13283,19 +12891,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13457,19 +13055,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13625,19 +13213,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13809,19 +13387,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13865,16 +13433,21 @@ mod resources {
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
                         pub fn iter_session_entity_types<T>(
-                            self,
-                        ) -> ListSessionEntityTypesIter<'a, A, T>
+                            mut self,
+                        ) -> crate::iter::PageItemIter<Self, T>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            ListSessionEntityTypesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
+                            let mut fields =
+                                concat!("nextPageToken,", "sessionEntityTypes").to_owned();
+                            let items_fields = T::field_selector();
+                            if !items_fields.is_empty() {
+                                fields.push_str("(");
+                                fields.push_str(&items_fields);
+                                fields.push_str(")");
                             }
+                            self.fields = Some(fields);
+                            crate::iter::PageItemIter::new(self, "sessionEntityTypes")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13882,18 +13455,13 @@ mod resources {
                         #[doc = r" the server."]
                         pub fn iter_session_entity_types_standard(
                             mut self,
-                        ) -> ListSessionEntityTypesIter<
-                            'a,
-                            A,
+                        ) -> crate::iter::PageItemIter<
+                            Self,
                             crate::schemas::GoogleCloudDialogflowV2SessionEntityType,
                         > {
                             self.fields =
                                 Some(concat!("nextPageToken,", "sessionEntityTypes").to_owned());
-                            ListSessionEntityTypesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "sessionEntityTypes")
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -13903,32 +13471,46 @@ mod resources {
                         #[doc = r" resources."]
                         pub fn iter_session_entity_types_debug(
                             mut self,
-                        ) -> ListSessionEntityTypesIter<
-                            'a,
-                            A,
+                        ) -> crate::iter::PageItemIter<
+                            Self,
                             crate::schemas::GoogleCloudDialogflowV2SessionEntityType,
                         > {
                             self.fields = Some(
                                 concat!("nextPageToken,", "sessionEntityTypes", "(*)").to_owned(),
                             );
-                            ListSessionEntityTypesIter {
-                                method: self,
-                                last_page_reached: false,
-                                items_iter: None,
-                            }
+                            crate::iter::PageItemIter::new(self, "sessionEntityTypes")
                         }
-                        #[doc = r" Return an iterator that"]
-                        pub fn iter<T>(
-                            self,
-                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            crate::PageIter {
-                                method: self,
-                                finished: false,
-                                _phantom: ::std::default::Default::default(),
+                            let mut fields = T::field_selector();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
                             }
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_standard(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2ListSessionEntityTypesResponse,
+                        > {
+                            crate::iter::PageIter::new(self)
+                        }
+                        pub fn iter_debug(
+                            mut self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2ListSessionEntityTypesResponse,
+                        > {
+                            self.fields = Some("*".to_owned());
+                            crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -14032,52 +13614,13 @@ mod resources {
                             req
                         }
                     }
-                    pub struct ListSessionEntityTypesIter<'a, A, T> {
-                        method: ListRequestBuilder<'a, A>,
-                        last_page_reached: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, A, T> Iterator for ListSessionEntityTypesIter<'a, A, T>
-                    where
-                        A: ::yup_oauth2::GetToken,
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            #[derive(:: serde :: Deserialize)]
-                            struct Resp<T> {
-                                #[serde(rename = "sessionEntityTypes")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.last_page_reached {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method._execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                                self.method.page_token = resp.next_page_token;
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
                         fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
                             self._execute()
                         }
@@ -14112,19 +13655,9 @@ mod resources {
                             self.access_token = Some(value.into());
                             self
                         }
-                        #[doc = "Data format for response."]
-                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                            self.alt = Some(value);
-                            self
-                        }
                         #[doc = "JSONP"]
                         pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
-                            self
-                        }
-                        #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(mut self, value: impl Into<String>) -> Self {
-                            self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14338,19 +13871,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14523,19 +14046,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14578,15 +14091,19 @@ mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_operations<T>(self) -> ListOperationsIter<'a, A, T>
+                pub fn iter_operations<T>(mut self) -> crate::iter::PageItemIter<Self, T>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    ListOperationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
+                    let mut fields = concat!("nextPageToken,", "operations").to_owned();
+                    let items_fields = T::field_selector();
+                    if !items_fields.is_empty() {
+                        fields.push_str("(");
+                        fields.push_str(&items_fields);
+                        fields.push_str(")");
                     }
+                    self.fields = Some(fields);
+                    crate::iter::PageItemIter::new(self, "operations")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -14594,14 +14111,10 @@ mod resources {
                 #[doc = r" the server."]
                 pub fn iter_operations_standard(
                     mut self,
-                ) -> ListOperationsIter<'a, A, crate::schemas::GoogleLongrunningOperation>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleLongrunningOperation>
                 {
                     self.fields = Some(concat!("nextPageToken,", "operations").to_owned());
-                    ListOperationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "operations")
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -14611,27 +14124,42 @@ mod resources {
                 #[doc = r" resources."]
                 pub fn iter_operations_debug(
                     mut self,
-                ) -> ListOperationsIter<'a, A, crate::schemas::GoogleLongrunningOperation>
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::GoogleLongrunningOperation>
                 {
                     self.fields = Some(concat!("nextPageToken,", "operations", "(*)").to_owned());
-                    ListOperationsIter {
-                        method: self,
-                        last_page_reached: false,
-                        items_iter: None,
-                    }
+                    crate::iter::PageItemIter::new(self, "operations")
                 }
-                #[doc = r" Return an iterator that"]
-                pub fn iter<T>(
-                    self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    crate::PageIter {
-                        method: self,
-                        finished: false,
-                        _phantom: ::std::default::Default::default(),
+                    let mut fields = T::field_selector();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
                     }
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_standard(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleLongrunningListOperationsResponse,
+                > {
+                    crate::iter::PageIter::new(self)
+                }
+                pub fn iter_debug(
+                    mut self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleLongrunningListOperationsResponse,
+                > {
+                    self.fields = Some("*".to_owned());
+                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -14735,52 +14263,13 @@ mod resources {
                     req
                 }
             }
-            pub struct ListOperationsIter<'a, A, T> {
-                method: ListRequestBuilder<'a, A>,
-                last_page_reached: bool,
-                items_iter: Option<::std::vec::IntoIter<T>>,
-            }
-            impl<'a, A, T> Iterator for ListOperationsIter<'a, A, T>
-            where
-                A: ::yup_oauth2::GetToken,
-                T: ::serde::de::DeserializeOwned,
-            {
-                type Item = Result<T, Box<dyn ::std::error::Error>>;
-                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                    #[derive(:: serde :: Deserialize)]
-                    struct Resp<T> {
-                        #[serde(rename = "operations")]
-                        items: Option<Vec<T>>,
-                        #[serde(rename = "nextPageToken")]
-                        next_page_token: Option<String>,
-                    }
-                    loop {
-                        if let Some(iter) = self.items_iter.as_mut() {
-                            match iter.next() {
-                                Some(v) => return Some(Ok(v)),
-                                None => {}
-                            }
-                        }
-                        if self.last_page_reached {
-                            return None;
-                        }
-                        let resp: Resp<T> = match self.method._execute() {
-                            Ok(r) => r,
-                            Err(err) => return Some(Err(err)),
-                        };
-                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
-                        self.method.page_token = resp.next_page_token;
-                        self.items_iter = resp.items.map(|i| i.into_iter());
-                    }
-                }
-            }
-            impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
                 fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
                     self._execute()
                 }
@@ -15046,7 +14535,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -15055,7 +14547,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -15068,58 +14560,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

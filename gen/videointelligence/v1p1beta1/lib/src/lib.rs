@@ -155,33 +155,33 @@ pub mod schemas {
     pub enum GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
         LikelihoodUnspecified,
-        #[doc = "Very unlikely."]
-        VeryUnlikely,
-        #[doc = "Unlikely."]
-        Unlikely,
-        #[doc = "Possible."]
-        Possible,
         #[doc = "Likely."]
         Likely,
+        #[doc = "Possible."]
+        Possible,
+        #[doc = "Unlikely."]
+        Unlikely,
         #[doc = "Very likely."]
         VeryLikely,
+        #[doc = "Very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , }
+            match self { GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -191,12 +191,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryUnlikely , "UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Unlikely , "POSSIBLE" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Possible , "LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Likely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryLikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -548,33 +548,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
+        #[doc = "Explicit content detection."]
+        ExplicitContentDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Object detection and tracking."]
+        ObjectTracking,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
-        #[doc = "Explicit content detection."]
-        ExplicitContentDetection,
         #[doc = "Speech transcription."]
         SpeechTranscription,
         #[doc = "OCR text detection and tracking."]
         TextDetection,
-        #[doc = "Object detection and tracking."]
-        ObjectTracking,
     }
     impl GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , }
+            match self { GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -584,12 +584,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -833,33 +833,33 @@ pub mod schemas {
     pub enum GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
         LikelihoodUnspecified,
-        #[doc = "Very unlikely."]
-        VeryUnlikely,
-        #[doc = "Unlikely."]
-        Unlikely,
-        #[doc = "Possible."]
-        Possible,
         #[doc = "Likely."]
         Likely,
+        #[doc = "Possible."]
+        Possible,
+        #[doc = "Unlikely."]
+        Unlikely,
         #[doc = "Very likely."]
         VeryLikely,
+        #[doc = "Very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , }
+            match self { GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -869,12 +869,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , "UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Unlikely , "POSSIBLE" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Possible , "LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Likely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryLikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1141,28 +1141,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems {
+        ExplicitContentDetection,
         FeatureUnspecified,
         LabelDetection,
+        ObjectTracking,
         ShotChangeDetection,
-        ExplicitContentDetection,
         SpeechTranscription,
         TextDetection,
-        ObjectTracking,
     }
     impl GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ObjectTracking => "OBJECT_TRACKING" , }
+            match self { GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1172,12 +1172,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ObjectTracking , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1317,33 +1317,33 @@ pub mod schemas {
     pub enum GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
         LikelihoodUnspecified,
-        #[doc = "Very unlikely."]
-        VeryUnlikely,
-        #[doc = "Unlikely."]
-        Unlikely,
-        #[doc = "Possible."]
-        Possible,
         #[doc = "Likely."]
         Likely,
+        #[doc = "Possible."]
+        Possible,
+        #[doc = "Unlikely."]
+        Unlikely,
         #[doc = "Very likely."]
         VeryLikely,
+        #[doc = "Very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , }
+            match self { GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1353,12 +1353,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , "UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "POSSIBLE" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Possible , "LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Likely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1428,31 +1428,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode {
-        #[doc = "Unspecified."]
-        LabelDetectionModeUnspecified,
-        #[doc = "Detect shot-level labels."]
-        ShotMode,
         #[doc = "Detect frame-level labels."]
         FrameMode,
+        #[doc = "Unspecified."]
+        LabelDetectionModeUnspecified,
         #[doc = "Detect both shot-level and frame-level labels."]
         ShotAndFrameMode,
+        #[doc = "Detect shot-level labels."]
+        ShotMode,
     }
     impl GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: LabelDetectionModeUnspecified => "LABEL_DETECTION_MODE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotMode => "SHOT_MODE" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: FrameMode => "FRAME_MODE" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotAndFrameMode => "SHOT_AND_FRAME_MODE" , }
+            match self { GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: FrameMode => "FRAME_MODE" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: LabelDetectionModeUnspecified => "LABEL_DETECTION_MODE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotAndFrameMode => "SHOT_AND_FRAME_MODE" , GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotMode => "SHOT_MODE" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1462,12 +1462,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LABEL_DETECTION_MODE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: LabelDetectionModeUnspecified , "SHOT_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotMode , "FRAME_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: FrameMode , "SHOT_AND_FRAME_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotAndFrameMode , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "FRAME_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: FrameMode , "LABEL_DETECTION_MODE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: LabelDetectionModeUnspecified , "SHOT_AND_FRAME_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotAndFrameMode , "SHOT_MODE" => GoogleCloudVideointelligenceV1P1Beta1LabelDetectionConfigLabelDetectionMode :: ShotMode , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1949,33 +1949,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
+        #[doc = "Explicit content detection."]
+        ExplicitContentDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Object detection and tracking."]
+        ObjectTracking,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
-        #[doc = "Explicit content detection."]
-        ExplicitContentDetection,
         #[doc = "Speech transcription."]
         SpeechTranscription,
         #[doc = "OCR text detection and tracking."]
         TextDetection,
-        #[doc = "Object detection and tracking."]
-        ObjectTracking,
     }
     impl GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , }
+            match self { GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1985,12 +1985,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -2338,33 +2338,33 @@ pub mod schemas {
     pub enum GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
         LikelihoodUnspecified,
-        #[doc = "Very unlikely."]
-        VeryUnlikely,
-        #[doc = "Unlikely."]
-        Unlikely,
-        #[doc = "Possible."]
-        Possible,
         #[doc = "Likely."]
         Likely,
+        #[doc = "Possible."]
+        Possible,
+        #[doc = "Unlikely."]
+        Unlikely,
         #[doc = "Very likely."]
         VeryLikely,
+        #[doc = "Very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , }
+            match self { GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2374,12 +2374,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , "UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "POSSIBLE" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Possible , "LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Likely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -2739,33 +2739,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
+        #[doc = "Explicit content detection."]
+        ExplicitContentDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Object detection and tracking."]
+        ObjectTracking,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
-        #[doc = "Explicit content detection."]
-        ExplicitContentDetection,
         #[doc = "Speech transcription."]
         SpeechTranscription,
         #[doc = "OCR text detection and tracking."]
         TextDetection,
-        #[doc = "Object detection and tracking."]
-        ObjectTracking,
     }
     impl GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , }
+            match self { GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2775,12 +2775,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -3102,33 +3102,33 @@ pub mod schemas {
     pub enum GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
         LikelihoodUnspecified,
-        #[doc = "Very unlikely."]
-        VeryUnlikely,
-        #[doc = "Unlikely."]
-        Unlikely,
-        #[doc = "Possible."]
-        Possible,
         #[doc = "Likely."]
         Likely,
+        #[doc = "Possible."]
+        Possible,
+        #[doc = "Unlikely."]
+        Unlikely,
         #[doc = "Very likely."]
         VeryLikely,
+        #[doc = "Very unlikely."]
+        VeryUnlikely,
     }
     impl GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , }
+            match self { GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified => "LIKELIHOOD_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Likely => "LIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Possible => "POSSIBLE" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Unlikely => "UNLIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely => "VERY_LIKELY" , GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely => "VERY_UNLIKELY" , }
         }
     }
     impl ::std::fmt::Display
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3138,12 +3138,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , "UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "POSSIBLE" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Possible , "LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Likely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -3652,35 +3652,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
+        #[doc = "Explicit content detection."]
+        ExplicitContentDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Logo detection, tracking, and recognition."]
+        LogoRecognition,
+        #[doc = "Object detection and tracking."]
+        ObjectTracking,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
-        #[doc = "Explicit content detection."]
-        ExplicitContentDetection,
         #[doc = "Speech transcription."]
         SpeechTranscription,
         #[doc = "OCR text detection and tracking."]
         TextDetection,
-        #[doc = "Object detection and tracking."]
-        ObjectTracking,
-        #[doc = "Logo detection, tracking, and recognition."]
-        LogoRecognition,
     }
     impl GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , }
+            match self { GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3690,12 +3690,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -4002,33 +4002,33 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
+        #[doc = "Explicit content detection."]
+        ExplicitContentDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Object detection and tracking."]
+        ObjectTracking,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
-        #[doc = "Explicit content detection."]
-        ExplicitContentDetection,
         #[doc = "Speech transcription."]
         SpeechTranscription,
         #[doc = "OCR text detection and tracking."]
         TextDetection,
-        #[doc = "Object detection and tracking."]
-        ObjectTracking,
     }
     impl GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , }
+            match self { GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4038,12 +4038,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -4292,12 +4292,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4305,7 +4305,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4348,12 +4348,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4361,7 +4361,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4407,7 +4407,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod videos {
         pub mod params {}
         pub struct VideosActions<'a, A> {
@@ -4461,19 +4461,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4859,7 +4849,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -4868,7 +4861,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -4881,58 +4874,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

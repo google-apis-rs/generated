@@ -1,26 +1,26 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidConfigPriority {
-        #[doc = "Default priority for data messages. Normal priority messages won't open\nnetwork connections on a sleeping device, and their delivery may be\ndelayed to conserve the battery. For less time-sensitive messages, such\nas notifications of new email or other data to sync, choose normal\ndelivery priority."]
-        Normal,
         #[doc = "Default priority for notification messages. FCM attempts to deliver high\npriority messages immediately, allowing the FCM service to wake a\nsleeping device when possible and open a network connection to your app\nserver. Apps with instant messaging, chat, or voice call alerts, for\nexample, generally need to open a network connection and make sure FCM\ndelivers the message to the device without delay. Set high priority if\nthe message is time-critical and requires the user's immediate\ninteraction, but beware that setting your messages to high priority\ncontributes more to battery drain compared with normal priority messages."]
         High,
+        #[doc = "Default priority for data messages. Normal priority messages won't open\nnetwork connections on a sleeping device, and their delivery may be\ndelayed to conserve the battery. For less time-sensitive messages, such\nas notifications of new email or other data to sync, choose normal\ndelivery priority."]
+        Normal,
     }
     impl AndroidConfigPriority {
         pub fn as_str(self) -> &'static str {
             match self {
-                AndroidConfigPriority::Normal => "NORMAL",
                 AndroidConfigPriority::High => "HIGH",
+                AndroidConfigPriority::Normal => "NORMAL",
             }
         }
     }
     impl ::std::fmt::Display for AndroidConfigPriority {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidConfigPriority {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -28,14 +28,14 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidConfigPriority {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NORMAL" => AndroidConfigPriority::Normal,
                 "HIGH" => AndroidConfigPriority::High,
+                "NORMAL" => AndroidConfigPriority::Normal,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -117,40 +117,40 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidNotificationNotificationPriority {
-        #[doc = "If priority is unspecified, notification priority is set to\n`PRIORITY_DEFAULT`."]
-        PriorityUnspecified,
-        #[doc = "Lowest notification priority. Notifications with this `PRIORITY_MIN`\nmight not be shown to the user except under special circumstances,\nsuch as detailed notification logs."]
-        PriorityMin,
-        #[doc = "Lower notification priority. The UI may choose to show the notifications\nsmaller, or at a different position in the list, compared with\nnotifications with `PRIORITY_DEFAULT`."]
-        PriorityLow,
         #[doc = "Default notification priority. If the application does not prioritize its\nown notifications, use this value for all notifications."]
         PriorityDefault,
         #[doc = "Higher notification priority. Use this for more important notifications\nor alerts. The UI may choose to show these notifications larger, or at a\ndifferent position in the notification lists, compared with notifications\nwith `PRIORITY_DEFAULT`."]
         PriorityHigh,
+        #[doc = "Lower notification priority. The UI may choose to show the notifications\nsmaller, or at a different position in the list, compared with\nnotifications with `PRIORITY_DEFAULT`."]
+        PriorityLow,
         #[doc = "Highest notification priority. Use this for the application's most\nimportant items that require the user's prompt attention or input."]
         PriorityMax,
+        #[doc = "Lowest notification priority. Notifications with this `PRIORITY_MIN`\nmight not be shown to the user except under special circumstances,\nsuch as detailed notification logs."]
+        PriorityMin,
+        #[doc = "If priority is unspecified, notification priority is set to\n`PRIORITY_DEFAULT`."]
+        PriorityUnspecified,
     }
     impl AndroidNotificationNotificationPriority {
         pub fn as_str(self) -> &'static str {
             match self {
+                AndroidNotificationNotificationPriority::PriorityDefault => "PRIORITY_DEFAULT",
+                AndroidNotificationNotificationPriority::PriorityHigh => "PRIORITY_HIGH",
+                AndroidNotificationNotificationPriority::PriorityLow => "PRIORITY_LOW",
+                AndroidNotificationNotificationPriority::PriorityMax => "PRIORITY_MAX",
+                AndroidNotificationNotificationPriority::PriorityMin => "PRIORITY_MIN",
                 AndroidNotificationNotificationPriority::PriorityUnspecified => {
                     "PRIORITY_UNSPECIFIED"
                 }
-                AndroidNotificationNotificationPriority::PriorityMin => "PRIORITY_MIN",
-                AndroidNotificationNotificationPriority::PriorityLow => "PRIORITY_LOW",
-                AndroidNotificationNotificationPriority::PriorityDefault => "PRIORITY_DEFAULT",
-                AndroidNotificationNotificationPriority::PriorityHigh => "PRIORITY_HIGH",
-                AndroidNotificationNotificationPriority::PriorityMax => "PRIORITY_MAX",
             }
         }
     }
     impl ::std::fmt::Display for AndroidNotificationNotificationPriority {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidNotificationNotificationPriority {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -158,20 +158,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidNotificationNotificationPriority {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "PRIORITY_DEFAULT" => AndroidNotificationNotificationPriority::PriorityDefault,
+                "PRIORITY_HIGH" => AndroidNotificationNotificationPriority::PriorityHigh,
+                "PRIORITY_LOW" => AndroidNotificationNotificationPriority::PriorityLow,
+                "PRIORITY_MAX" => AndroidNotificationNotificationPriority::PriorityMax,
+                "PRIORITY_MIN" => AndroidNotificationNotificationPriority::PriorityMin,
                 "PRIORITY_UNSPECIFIED" => {
                     AndroidNotificationNotificationPriority::PriorityUnspecified
                 }
-                "PRIORITY_MIN" => AndroidNotificationNotificationPriority::PriorityMin,
-                "PRIORITY_LOW" => AndroidNotificationNotificationPriority::PriorityLow,
-                "PRIORITY_DEFAULT" => AndroidNotificationNotificationPriority::PriorityDefault,
-                "PRIORITY_HIGH" => AndroidNotificationNotificationPriority::PriorityHigh,
-                "PRIORITY_MAX" => AndroidNotificationNotificationPriority::PriorityMax,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -192,32 +192,32 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidNotificationVisibility {
-        #[doc = "If unspecified, default to `Visibility.PRIVATE`."]
-        VisibilityUnspecified,
         #[doc = "Show this notification on all lockscreens, but conceal sensitive or\nprivate information on secure lockscreens."]
         Private,
         #[doc = "Show this notification in its entirety on all lockscreens."]
         Public,
         #[doc = "Do not reveal any part of this notification on a secure lockscreen."]
         Secret,
+        #[doc = "If unspecified, default to `Visibility.PRIVATE`."]
+        VisibilityUnspecified,
     }
     impl AndroidNotificationVisibility {
         pub fn as_str(self) -> &'static str {
             match self {
-                AndroidNotificationVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
                 AndroidNotificationVisibility::Private => "PRIVATE",
                 AndroidNotificationVisibility::Public => "PUBLIC",
                 AndroidNotificationVisibility::Secret => "SECRET",
+                AndroidNotificationVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for AndroidNotificationVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AndroidNotificationVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -225,16 +225,16 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AndroidNotificationVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "VISIBILITY_UNSPECIFIED" => AndroidNotificationVisibility::VisibilityUnspecified,
                 "PRIVATE" => AndroidNotificationVisibility::Private,
                 "PUBLIC" => AndroidNotificationVisibility::Public,
                 "SECRET" => AndroidNotificationVisibility::Secret,
+                "VISIBILITY_UNSPECIFIED" => AndroidNotificationVisibility::VisibilityUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -633,12 +633,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -646,7 +646,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -689,12 +689,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -702,7 +702,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -748,7 +748,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
@@ -820,19 +820,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1225,7 +1215,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -1234,7 +1227,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -1247,58 +1240,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

@@ -11,12 +11,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DownloadLineItemsRequestFileSpec {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DownloadLineItemsRequestFileSpec {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -24,7 +24,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DownloadLineItemsRequestFileSpec {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -65,12 +65,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DownloadLineItemsRequestFilterType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DownloadLineItemsRequestFilterType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -78,7 +78,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DownloadLineItemsRequestFilterType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -117,12 +117,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DownloadLineItemsRequestFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DownloadLineItemsRequestFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -130,7 +130,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DownloadLineItemsRequestFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -238,12 +238,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DownloadRequestFileTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DownloadRequestFileTypesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -251,7 +251,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DownloadRequestFileTypesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -303,12 +303,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DownloadRequestFilterType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DownloadRequestFilterType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -316,7 +316,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DownloadRequestFilterType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -425,10 +425,10 @@ pub mod schemas {
     pub enum FilterPairType {
         FilterActiveViewExpectedViewability,
         FilterActivityId,
+        FilterAdPosition,
         FilterAdvertiser,
         FilterAdvertiserCurrency,
         FilterAdvertiserTimezone,
-        FilterAdPosition,
         FilterAge,
         FilterAuthorizedSellerState,
         FilterBrandsafeChannelId,
@@ -559,10 +559,10 @@ pub mod schemas {
                     "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
                 }
                 FilterPairType::FilterActivityId => "FILTER_ACTIVITY_ID",
+                FilterPairType::FilterAdPosition => "FILTER_AD_POSITION",
                 FilterPairType::FilterAdvertiser => "FILTER_ADVERTISER",
                 FilterPairType::FilterAdvertiserCurrency => "FILTER_ADVERTISER_CURRENCY",
                 FilterPairType::FilterAdvertiserTimezone => "FILTER_ADVERTISER_TIMEZONE",
-                FilterPairType::FilterAdPosition => "FILTER_AD_POSITION",
                 FilterPairType::FilterAge => "FILTER_AGE",
                 FilterPairType::FilterAuthorizedSellerState => "FILTER_AUTHORIZED_SELLER_STATE",
                 FilterPairType::FilterBrandsafeChannelId => "FILTER_BRANDSAFE_CHANNEL_ID",
@@ -709,12 +709,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for FilterPairType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for FilterPairType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -722,7 +722,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for FilterPairType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -732,10 +732,10 @@ pub mod schemas {
                     FilterPairType::FilterActiveViewExpectedViewability
                 }
                 "FILTER_ACTIVITY_ID" => FilterPairType::FilterActivityId,
+                "FILTER_AD_POSITION" => FilterPairType::FilterAdPosition,
                 "FILTER_ADVERTISER" => FilterPairType::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => FilterPairType::FilterAdvertiserCurrency,
                 "FILTER_ADVERTISER_TIMEZONE" => FilterPairType::FilterAdvertiserTimezone,
-                "FILTER_AD_POSITION" => FilterPairType::FilterAdPosition,
                 "FILTER_AGE" => FilterPairType::FilterAge,
                 "FILTER_AUTHORIZED_SELLER_STATE" => FilterPairType::FilterAuthorizedSellerState,
                 "FILTER_BRANDSAFE_CHANNEL_ID" => FilterPairType::FilterBrandsafeChannelId,
@@ -987,10 +987,10 @@ pub mod schemas {
     pub enum ParametersGroupBysItems {
         FilterActiveViewExpectedViewability,
         FilterActivityId,
+        FilterAdPosition,
         FilterAdvertiser,
         FilterAdvertiserCurrency,
         FilterAdvertiserTimezone,
-        FilterAdPosition,
         FilterAge,
         FilterAuthorizedSellerState,
         FilterBrandsafeChannelId,
@@ -1121,10 +1121,10 @@ pub mod schemas {
                     "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
                 }
                 ParametersGroupBysItems::FilterActivityId => "FILTER_ACTIVITY_ID",
+                ParametersGroupBysItems::FilterAdPosition => "FILTER_AD_POSITION",
                 ParametersGroupBysItems::FilterAdvertiser => "FILTER_ADVERTISER",
                 ParametersGroupBysItems::FilterAdvertiserCurrency => "FILTER_ADVERTISER_CURRENCY",
                 ParametersGroupBysItems::FilterAdvertiserTimezone => "FILTER_ADVERTISER_TIMEZONE",
-                ParametersGroupBysItems::FilterAdPosition => "FILTER_AD_POSITION",
                 ParametersGroupBysItems::FilterAge => "FILTER_AGE",
                 ParametersGroupBysItems::FilterAuthorizedSellerState => {
                     "FILTER_AUTHORIZED_SELLER_STATE"
@@ -1313,12 +1313,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ParametersGroupBysItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParametersGroupBysItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1326,7 +1326,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParametersGroupBysItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1336,10 +1336,10 @@ pub mod schemas {
                     ParametersGroupBysItems::FilterActiveViewExpectedViewability
                 }
                 "FILTER_ACTIVITY_ID" => ParametersGroupBysItems::FilterActivityId,
+                "FILTER_AD_POSITION" => ParametersGroupBysItems::FilterAdPosition,
                 "FILTER_ADVERTISER" => ParametersGroupBysItems::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => ParametersGroupBysItems::FilterAdvertiserCurrency,
                 "FILTER_ADVERTISER_TIMEZONE" => ParametersGroupBysItems::FilterAdvertiserTimezone,
-                "FILTER_AD_POSITION" => ParametersGroupBysItems::FilterAdPosition,
                 "FILTER_AGE" => ParametersGroupBysItems::FilterAge,
                 "FILTER_AUTHORIZED_SELLER_STATE" => {
                     ParametersGroupBysItems::FilterAuthorizedSellerState
@@ -1573,8 +1573,8 @@ pub mod schemas {
         MetricBillableCostPartner,
         MetricBillableCostUsd,
         MetricBillableImpressions,
-        MetricClicks,
         MetricClickToPostClickConversionRate,
+        MetricClicks,
         MetricCmPostClickRevenue,
         MetricCmPostViewRevenue,
         MetricComscoreVceAudienceAvgFrequency,
@@ -1677,21 +1677,21 @@ pub mod schemas {
         MetricLastClicks,
         MetricLastImpressions,
         MetricMediaCostAdvertiser,
+        MetricMediaCostEcpaAdvertiser,
+        MetricMediaCostEcpaPartner,
+        MetricMediaCostEcpaUsd,
         MetricMediaCostEcpapcAdvertiser,
         MetricMediaCostEcpapcPartner,
         MetricMediaCostEcpapcUsd,
         MetricMediaCostEcpapvAdvertiser,
         MetricMediaCostEcpapvPartner,
         MetricMediaCostEcpapvUsd,
-        MetricMediaCostEcpaAdvertiser,
-        MetricMediaCostEcpaPartner,
-        MetricMediaCostEcpaUsd,
-        MetricMediaCostEcpcvAdvertiser,
-        MetricMediaCostEcpcvPartner,
-        MetricMediaCostEcpcvUsd,
         MetricMediaCostEcpcAdvertiser,
         MetricMediaCostEcpcPartner,
         MetricMediaCostEcpcUsd,
+        MetricMediaCostEcpcvAdvertiser,
+        MetricMediaCostEcpcvPartner,
+        MetricMediaCostEcpcvUsd,
         MetricMediaCostEcpmAdvertiser,
         MetricMediaCostEcpmPartner,
         MetricMediaCostEcpmUsd,
@@ -1722,15 +1722,15 @@ pub mod schemas {
         MetricPostClickDfaRevenue,
         MetricPostViewDfaRevenue,
         MetricProfitAdvertiser,
+        MetricProfitEcpaAdvertiser,
+        MetricProfitEcpaPartner,
+        MetricProfitEcpaUsd,
         MetricProfitEcpapcAdvertiser,
         MetricProfitEcpapcPartner,
         MetricProfitEcpapcUsd,
         MetricProfitEcpapvAdvertiser,
         MetricProfitEcpapvPartner,
         MetricProfitEcpapvUsd,
-        MetricProfitEcpaAdvertiser,
-        MetricProfitEcpaPartner,
-        MetricProfitEcpaUsd,
         MetricProfitEcpcAdvertiser,
         MetricProfitEcpcPartner,
         MetricProfitEcpcUsd,
@@ -1746,21 +1746,21 @@ pub mod schemas {
         MetricReachCookieFrequency,
         MetricReachCookieReach,
         MetricRevenueAdvertiser,
+        MetricRevenueEcpaAdvertiser,
+        MetricRevenueEcpaPartner,
+        MetricRevenueEcpaUsd,
         MetricRevenueEcpapcAdvertiser,
         MetricRevenueEcpapcPartner,
         MetricRevenueEcpapcUsd,
         MetricRevenueEcpapvAdvertiser,
         MetricRevenueEcpapvPartner,
         MetricRevenueEcpapvUsd,
-        MetricRevenueEcpaAdvertiser,
-        MetricRevenueEcpaPartner,
-        MetricRevenueEcpaUsd,
-        MetricRevenueEcpcvAdvertiser,
-        MetricRevenueEcpcvPartner,
-        MetricRevenueEcpcvUsd,
         MetricRevenueEcpcAdvertiser,
         MetricRevenueEcpcPartner,
         MetricRevenueEcpcUsd,
+        MetricRevenueEcpcvAdvertiser,
+        MetricRevenueEcpcvPartner,
+        MetricRevenueEcpcvUsd,
         MetricRevenueEcpiavcAdvertiser,
         MetricRevenueEcpmAdvertiser,
         MetricRevenueEcpmPartner,
@@ -1784,21 +1784,21 @@ pub mod schemas {
         MetricTeaTrueviewUniqueCookies,
         MetricTotalConversions,
         MetricTotalMediaCostAdvertiser,
+        MetricTotalMediaCostEcpaAdvertiser,
+        MetricTotalMediaCostEcpaPartner,
+        MetricTotalMediaCostEcpaUsd,
         MetricTotalMediaCostEcpapcAdvertiser,
         MetricTotalMediaCostEcpapcPartner,
         MetricTotalMediaCostEcpapcUsd,
         MetricTotalMediaCostEcpapvAdvertiser,
         MetricTotalMediaCostEcpapvPartner,
         MetricTotalMediaCostEcpapvUsd,
-        MetricTotalMediaCostEcpaAdvertiser,
-        MetricTotalMediaCostEcpaPartner,
-        MetricTotalMediaCostEcpaUsd,
-        MetricTotalMediaCostEcpcvAdvertiser,
-        MetricTotalMediaCostEcpcvPartner,
-        MetricTotalMediaCostEcpcvUsd,
         MetricTotalMediaCostEcpcAdvertiser,
         MetricTotalMediaCostEcpcPartner,
         MetricTotalMediaCostEcpcUsd,
+        MetricTotalMediaCostEcpcvAdvertiser,
+        MetricTotalMediaCostEcpcvPartner,
+        MetricTotalMediaCostEcpcvUsd,
         MetricTotalMediaCostEcpmAdvertiser,
         MetricTotalMediaCostEcpmPartner,
         MetricTotalMediaCostEcpmUsd,
@@ -1835,8 +1835,8 @@ pub mod schemas {
         MetricTrueviewEarnedShares,
         MetricTrueviewEarnedSubscribers,
         MetricTrueviewEarnedViews,
-        MetricTrueviewEngagements,
         MetricTrueviewEngagementRate,
+        MetricTrueviewEngagements,
         MetricTrueviewImpressionShare,
         MetricTrueviewLostIsBudget,
         MetricTrueviewLostIsRank,
@@ -1847,9 +1847,9 @@ pub mod schemas {
         MetricTrueviewUniqueViewers,
         MetricTrueviewValueConversionManyPerViewRatio,
         MetricTrueviewValueConversionOnePerViewRatio,
-        MetricTrueviewViews,
         MetricTrueviewViewRate,
         MetricTrueviewViewThroughConversion,
+        MetricTrueviewViews,
         MetricUniqueVisitorsCookies,
         MetricUnknown,
         MetricVideoCompanionClicks,
@@ -1939,10 +1939,10 @@ pub mod schemas {
                 ParametersMetricsItems::MetricBillableCostPartner => "METRIC_BILLABLE_COST_PARTNER",
                 ParametersMetricsItems::MetricBillableCostUsd => "METRIC_BILLABLE_COST_USD",
                 ParametersMetricsItems::MetricBillableImpressions => "METRIC_BILLABLE_IMPRESSIONS",
-                ParametersMetricsItems::MetricClicks => "METRIC_CLICKS",
                 ParametersMetricsItems::MetricClickToPostClickConversionRate => {
                     "METRIC_CLICK_TO_POST_CLICK_CONVERSION_RATE"
                 }
+                ParametersMetricsItems::MetricClicks => "METRIC_CLICKS",
                 ParametersMetricsItems::MetricCmPostClickRevenue => "METRIC_CM_POST_CLICK_REVENUE",
                 ParametersMetricsItems::MetricCmPostViewRevenue => "METRIC_CM_POST_VIEW_REVENUE",
                 ParametersMetricsItems::MetricComscoreVceAudienceAvgFrequency => {
@@ -2069,6 +2069,13 @@ pub mod schemas {
                 ParametersMetricsItems::MetricLastClicks => "METRIC_LAST_CLICKS",
                 ParametersMetricsItems::MetricLastImpressions => "METRIC_LAST_IMPRESSIONS",
                 ParametersMetricsItems::MetricMediaCostAdvertiser => "METRIC_MEDIA_COST_ADVERTISER",
+                ParametersMetricsItems::MetricMediaCostEcpaAdvertiser => {
+                    "METRIC_MEDIA_COST_ECPA_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricMediaCostEcpaPartner => {
+                    "METRIC_MEDIA_COST_ECPA_PARTNER"
+                }
+                ParametersMetricsItems::MetricMediaCostEcpaUsd => "METRIC_MEDIA_COST_ECPA_USD",
                 ParametersMetricsItems::MetricMediaCostEcpapcAdvertiser => {
                     "METRIC_MEDIA_COST_ECPAPC_ADVERTISER"
                 }
@@ -2083,20 +2090,6 @@ pub mod schemas {
                     "METRIC_MEDIA_COST_ECPAPV_PARTNER"
                 }
                 ParametersMetricsItems::MetricMediaCostEcpapvUsd => "METRIC_MEDIA_COST_ECPAPV_USD",
-                ParametersMetricsItems::MetricMediaCostEcpaAdvertiser => {
-                    "METRIC_MEDIA_COST_ECPA_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricMediaCostEcpaPartner => {
-                    "METRIC_MEDIA_COST_ECPA_PARTNER"
-                }
-                ParametersMetricsItems::MetricMediaCostEcpaUsd => "METRIC_MEDIA_COST_ECPA_USD",
-                ParametersMetricsItems::MetricMediaCostEcpcvAdvertiser => {
-                    "METRIC_MEDIA_COST_ECPCV_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricMediaCostEcpcvPartner => {
-                    "METRIC_MEDIA_COST_ECPCV_PARTNER"
-                }
-                ParametersMetricsItems::MetricMediaCostEcpcvUsd => "METRIC_MEDIA_COST_ECPCV_USD",
                 ParametersMetricsItems::MetricMediaCostEcpcAdvertiser => {
                     "METRIC_MEDIA_COST_ECPC_ADVERTISER"
                 }
@@ -2104,6 +2097,13 @@ pub mod schemas {
                     "METRIC_MEDIA_COST_ECPC_PARTNER"
                 }
                 ParametersMetricsItems::MetricMediaCostEcpcUsd => "METRIC_MEDIA_COST_ECPC_USD",
+                ParametersMetricsItems::MetricMediaCostEcpcvAdvertiser => {
+                    "METRIC_MEDIA_COST_ECPCV_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricMediaCostEcpcvPartner => {
+                    "METRIC_MEDIA_COST_ECPCV_PARTNER"
+                }
+                ParametersMetricsItems::MetricMediaCostEcpcvUsd => "METRIC_MEDIA_COST_ECPCV_USD",
                 ParametersMetricsItems::MetricMediaCostEcpmAdvertiser => {
                     "METRIC_MEDIA_COST_ECPM_ADVERTISER"
                 }
@@ -2148,6 +2148,11 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricPostViewDfaRevenue => "METRIC_POST_VIEW_DFA_REVENUE",
                 ParametersMetricsItems::MetricProfitAdvertiser => "METRIC_PROFIT_ADVERTISER",
+                ParametersMetricsItems::MetricProfitEcpaAdvertiser => {
+                    "METRIC_PROFIT_ECPA_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricProfitEcpaPartner => "METRIC_PROFIT_ECPA_PARTNER",
+                ParametersMetricsItems::MetricProfitEcpaUsd => "METRIC_PROFIT_ECPA_USD",
                 ParametersMetricsItems::MetricProfitEcpapcAdvertiser => {
                     "METRIC_PROFIT_ECPAPC_ADVERTISER"
                 }
@@ -2158,11 +2163,6 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricProfitEcpapvPartner => "METRIC_PROFIT_ECPAPV_PARTNER",
                 ParametersMetricsItems::MetricProfitEcpapvUsd => "METRIC_PROFIT_ECPAPV_USD",
-                ParametersMetricsItems::MetricProfitEcpaAdvertiser => {
-                    "METRIC_PROFIT_ECPA_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricProfitEcpaPartner => "METRIC_PROFIT_ECPA_PARTNER",
-                ParametersMetricsItems::MetricProfitEcpaUsd => "METRIC_PROFIT_ECPA_USD",
                 ParametersMetricsItems::MetricProfitEcpcAdvertiser => {
                     "METRIC_PROFIT_ECPC_ADVERTISER"
                 }
@@ -2190,6 +2190,11 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricReachCookieReach => "METRIC_REACH_COOKIE_REACH",
                 ParametersMetricsItems::MetricRevenueAdvertiser => "METRIC_REVENUE_ADVERTISER",
+                ParametersMetricsItems::MetricRevenueEcpaAdvertiser => {
+                    "METRIC_REVENUE_ECPA_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricRevenueEcpaPartner => "METRIC_REVENUE_ECPA_PARTNER",
+                ParametersMetricsItems::MetricRevenueEcpaUsd => "METRIC_REVENUE_ECPA_USD",
                 ParametersMetricsItems::MetricRevenueEcpapcAdvertiser => {
                     "METRIC_REVENUE_ECPAPC_ADVERTISER"
                 }
@@ -2204,21 +2209,16 @@ pub mod schemas {
                     "METRIC_REVENUE_ECPAPV_PARTNER"
                 }
                 ParametersMetricsItems::MetricRevenueEcpapvUsd => "METRIC_REVENUE_ECPAPV_USD",
-                ParametersMetricsItems::MetricRevenueEcpaAdvertiser => {
-                    "METRIC_REVENUE_ECPA_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricRevenueEcpaPartner => "METRIC_REVENUE_ECPA_PARTNER",
-                ParametersMetricsItems::MetricRevenueEcpaUsd => "METRIC_REVENUE_ECPA_USD",
-                ParametersMetricsItems::MetricRevenueEcpcvAdvertiser => {
-                    "METRIC_REVENUE_ECPCV_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricRevenueEcpcvPartner => "METRIC_REVENUE_ECPCV_PARTNER",
-                ParametersMetricsItems::MetricRevenueEcpcvUsd => "METRIC_REVENUE_ECPCV_USD",
                 ParametersMetricsItems::MetricRevenueEcpcAdvertiser => {
                     "METRIC_REVENUE_ECPC_ADVERTISER"
                 }
                 ParametersMetricsItems::MetricRevenueEcpcPartner => "METRIC_REVENUE_ECPC_PARTNER",
                 ParametersMetricsItems::MetricRevenueEcpcUsd => "METRIC_REVENUE_ECPC_USD",
+                ParametersMetricsItems::MetricRevenueEcpcvAdvertiser => {
+                    "METRIC_REVENUE_ECPCV_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricRevenueEcpcvPartner => "METRIC_REVENUE_ECPCV_PARTNER",
+                ParametersMetricsItems::MetricRevenueEcpcvUsd => "METRIC_REVENUE_ECPCV_USD",
                 ParametersMetricsItems::MetricRevenueEcpiavcAdvertiser => {
                     "METRIC_REVENUE_ECPIAVC_ADVERTISER"
                 }
@@ -2276,6 +2276,15 @@ pub mod schemas {
                 ParametersMetricsItems::MetricTotalMediaCostAdvertiser => {
                     "METRIC_TOTAL_MEDIA_COST_ADVERTISER"
                 }
+                ParametersMetricsItems::MetricTotalMediaCostEcpaAdvertiser => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPA_ADVERTISER"
+                }
+                ParametersMetricsItems::MetricTotalMediaCostEcpaPartner => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPA_PARTNER"
+                }
+                ParametersMetricsItems::MetricTotalMediaCostEcpaUsd => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPA_USD"
+                }
                 ParametersMetricsItems::MetricTotalMediaCostEcpapcAdvertiser => {
                     "METRIC_TOTAL_MEDIA_COST_ECPAPC_ADVERTISER"
                 }
@@ -2294,14 +2303,14 @@ pub mod schemas {
                 ParametersMetricsItems::MetricTotalMediaCostEcpapvUsd => {
                     "METRIC_TOTAL_MEDIA_COST_ECPAPV_USD"
                 }
-                ParametersMetricsItems::MetricTotalMediaCostEcpaAdvertiser => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPA_ADVERTISER"
+                ParametersMetricsItems::MetricTotalMediaCostEcpcAdvertiser => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPC_ADVERTISER"
                 }
-                ParametersMetricsItems::MetricTotalMediaCostEcpaPartner => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPA_PARTNER"
+                ParametersMetricsItems::MetricTotalMediaCostEcpcPartner => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPC_PARTNER"
                 }
-                ParametersMetricsItems::MetricTotalMediaCostEcpaUsd => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPA_USD"
+                ParametersMetricsItems::MetricTotalMediaCostEcpcUsd => {
+                    "METRIC_TOTAL_MEDIA_COST_ECPC_USD"
                 }
                 ParametersMetricsItems::MetricTotalMediaCostEcpcvAdvertiser => {
                     "METRIC_TOTAL_MEDIA_COST_ECPCV_ADVERTISER"
@@ -2311,15 +2320,6 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricTotalMediaCostEcpcvUsd => {
                     "METRIC_TOTAL_MEDIA_COST_ECPCV_USD"
-                }
-                ParametersMetricsItems::MetricTotalMediaCostEcpcAdvertiser => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPC_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricTotalMediaCostEcpcPartner => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPC_PARTNER"
-                }
-                ParametersMetricsItems::MetricTotalMediaCostEcpcUsd => {
-                    "METRIC_TOTAL_MEDIA_COST_ECPC_USD"
                 }
                 ParametersMetricsItems::MetricTotalMediaCostEcpmAdvertiser => {
                     "METRIC_TOTAL_MEDIA_COST_ECPM_ADVERTISER"
@@ -2419,10 +2419,10 @@ pub mod schemas {
                     "METRIC_TRUEVIEW_EARNED_SUBSCRIBERS"
                 }
                 ParametersMetricsItems::MetricTrueviewEarnedViews => "METRIC_TRUEVIEW_EARNED_VIEWS",
-                ParametersMetricsItems::MetricTrueviewEngagements => "METRIC_TRUEVIEW_ENGAGEMENTS",
                 ParametersMetricsItems::MetricTrueviewEngagementRate => {
                     "METRIC_TRUEVIEW_ENGAGEMENT_RATE"
                 }
+                ParametersMetricsItems::MetricTrueviewEngagements => "METRIC_TRUEVIEW_ENGAGEMENTS",
                 ParametersMetricsItems::MetricTrueviewImpressionShare => {
                     "METRIC_TRUEVIEW_IMPRESSION_SHARE"
                 }
@@ -2451,11 +2451,11 @@ pub mod schemas {
                 ParametersMetricsItems::MetricTrueviewValueConversionOnePerViewRatio => {
                     "METRIC_TRUEVIEW_VALUE_CONVERSION_ONE_PER_VIEW_RATIO"
                 }
-                ParametersMetricsItems::MetricTrueviewViews => "METRIC_TRUEVIEW_VIEWS",
                 ParametersMetricsItems::MetricTrueviewViewRate => "METRIC_TRUEVIEW_VIEW_RATE",
                 ParametersMetricsItems::MetricTrueviewViewThroughConversion => {
                     "METRIC_TRUEVIEW_VIEW_THROUGH_CONVERSION"
                 }
+                ParametersMetricsItems::MetricTrueviewViews => "METRIC_TRUEVIEW_VIEWS",
                 ParametersMetricsItems::MetricUniqueVisitorsCookies => {
                     "METRIC_UNIQUE_VISITORS_COOKIES"
                 }
@@ -2472,12 +2472,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ParametersMetricsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParametersMetricsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2485,7 +2485,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParametersMetricsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2570,10 +2570,10 @@ pub mod schemas {
                 "METRIC_BILLABLE_COST_PARTNER" => ParametersMetricsItems::MetricBillableCostPartner,
                 "METRIC_BILLABLE_COST_USD" => ParametersMetricsItems::MetricBillableCostUsd,
                 "METRIC_BILLABLE_IMPRESSIONS" => ParametersMetricsItems::MetricBillableImpressions,
-                "METRIC_CLICKS" => ParametersMetricsItems::MetricClicks,
                 "METRIC_CLICK_TO_POST_CLICK_CONVERSION_RATE" => {
                     ParametersMetricsItems::MetricClickToPostClickConversionRate
                 }
+                "METRIC_CLICKS" => ParametersMetricsItems::MetricClicks,
                 "METRIC_CM_POST_CLICK_REVENUE" => ParametersMetricsItems::MetricCmPostClickRevenue,
                 "METRIC_CM_POST_VIEW_REVENUE" => ParametersMetricsItems::MetricCmPostViewRevenue,
                 "METRIC_COMSCORE_VCE_AUDIENCE_AVG_FREQUENCY" => {
@@ -2700,6 +2700,13 @@ pub mod schemas {
                 "METRIC_LAST_CLICKS" => ParametersMetricsItems::MetricLastClicks,
                 "METRIC_LAST_IMPRESSIONS" => ParametersMetricsItems::MetricLastImpressions,
                 "METRIC_MEDIA_COST_ADVERTISER" => ParametersMetricsItems::MetricMediaCostAdvertiser,
+                "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
+                    ParametersMetricsItems::MetricMediaCostEcpaAdvertiser
+                }
+                "METRIC_MEDIA_COST_ECPA_PARTNER" => {
+                    ParametersMetricsItems::MetricMediaCostEcpaPartner
+                }
+                "METRIC_MEDIA_COST_ECPA_USD" => ParametersMetricsItems::MetricMediaCostEcpaUsd,
                 "METRIC_MEDIA_COST_ECPAPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpapcAdvertiser
                 }
@@ -2714,20 +2721,6 @@ pub mod schemas {
                     ParametersMetricsItems::MetricMediaCostEcpapvPartner
                 }
                 "METRIC_MEDIA_COST_ECPAPV_USD" => ParametersMetricsItems::MetricMediaCostEcpapvUsd,
-                "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricMediaCostEcpaAdvertiser
-                }
-                "METRIC_MEDIA_COST_ECPA_PARTNER" => {
-                    ParametersMetricsItems::MetricMediaCostEcpaPartner
-                }
-                "METRIC_MEDIA_COST_ECPA_USD" => ParametersMetricsItems::MetricMediaCostEcpaUsd,
-                "METRIC_MEDIA_COST_ECPCV_ADVERTISER" => {
-                    ParametersMetricsItems::MetricMediaCostEcpcvAdvertiser
-                }
-                "METRIC_MEDIA_COST_ECPCV_PARTNER" => {
-                    ParametersMetricsItems::MetricMediaCostEcpcvPartner
-                }
-                "METRIC_MEDIA_COST_ECPCV_USD" => ParametersMetricsItems::MetricMediaCostEcpcvUsd,
                 "METRIC_MEDIA_COST_ECPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpcAdvertiser
                 }
@@ -2735,6 +2728,13 @@ pub mod schemas {
                     ParametersMetricsItems::MetricMediaCostEcpcPartner
                 }
                 "METRIC_MEDIA_COST_ECPC_USD" => ParametersMetricsItems::MetricMediaCostEcpcUsd,
+                "METRIC_MEDIA_COST_ECPCV_ADVERTISER" => {
+                    ParametersMetricsItems::MetricMediaCostEcpcvAdvertiser
+                }
+                "METRIC_MEDIA_COST_ECPCV_PARTNER" => {
+                    ParametersMetricsItems::MetricMediaCostEcpcvPartner
+                }
+                "METRIC_MEDIA_COST_ECPCV_USD" => ParametersMetricsItems::MetricMediaCostEcpcvUsd,
                 "METRIC_MEDIA_COST_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpmAdvertiser
                 }
@@ -2779,6 +2779,11 @@ pub mod schemas {
                 }
                 "METRIC_POST_VIEW_DFA_REVENUE" => ParametersMetricsItems::MetricPostViewDfaRevenue,
                 "METRIC_PROFIT_ADVERTISER" => ParametersMetricsItems::MetricProfitAdvertiser,
+                "METRIC_PROFIT_ECPA_ADVERTISER" => {
+                    ParametersMetricsItems::MetricProfitEcpaAdvertiser
+                }
+                "METRIC_PROFIT_ECPA_PARTNER" => ParametersMetricsItems::MetricProfitEcpaPartner,
+                "METRIC_PROFIT_ECPA_USD" => ParametersMetricsItems::MetricProfitEcpaUsd,
                 "METRIC_PROFIT_ECPAPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricProfitEcpapcAdvertiser
                 }
@@ -2789,11 +2794,6 @@ pub mod schemas {
                 }
                 "METRIC_PROFIT_ECPAPV_PARTNER" => ParametersMetricsItems::MetricProfitEcpapvPartner,
                 "METRIC_PROFIT_ECPAPV_USD" => ParametersMetricsItems::MetricProfitEcpapvUsd,
-                "METRIC_PROFIT_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpaAdvertiser
-                }
-                "METRIC_PROFIT_ECPA_PARTNER" => ParametersMetricsItems::MetricProfitEcpaPartner,
-                "METRIC_PROFIT_ECPA_USD" => ParametersMetricsItems::MetricProfitEcpaUsd,
                 "METRIC_PROFIT_ECPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricProfitEcpcAdvertiser
                 }
@@ -2821,6 +2821,11 @@ pub mod schemas {
                 }
                 "METRIC_REACH_COOKIE_REACH" => ParametersMetricsItems::MetricReachCookieReach,
                 "METRIC_REVENUE_ADVERTISER" => ParametersMetricsItems::MetricRevenueAdvertiser,
+                "METRIC_REVENUE_ECPA_ADVERTISER" => {
+                    ParametersMetricsItems::MetricRevenueEcpaAdvertiser
+                }
+                "METRIC_REVENUE_ECPA_PARTNER" => ParametersMetricsItems::MetricRevenueEcpaPartner,
+                "METRIC_REVENUE_ECPA_USD" => ParametersMetricsItems::MetricRevenueEcpaUsd,
                 "METRIC_REVENUE_ECPAPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpapcAdvertiser
                 }
@@ -2835,21 +2840,16 @@ pub mod schemas {
                     ParametersMetricsItems::MetricRevenueEcpapvPartner
                 }
                 "METRIC_REVENUE_ECPAPV_USD" => ParametersMetricsItems::MetricRevenueEcpapvUsd,
-                "METRIC_REVENUE_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricRevenueEcpaAdvertiser
-                }
-                "METRIC_REVENUE_ECPA_PARTNER" => ParametersMetricsItems::MetricRevenueEcpaPartner,
-                "METRIC_REVENUE_ECPA_USD" => ParametersMetricsItems::MetricRevenueEcpaUsd,
-                "METRIC_REVENUE_ECPCV_ADVERTISER" => {
-                    ParametersMetricsItems::MetricRevenueEcpcvAdvertiser
-                }
-                "METRIC_REVENUE_ECPCV_PARTNER" => ParametersMetricsItems::MetricRevenueEcpcvPartner,
-                "METRIC_REVENUE_ECPCV_USD" => ParametersMetricsItems::MetricRevenueEcpcvUsd,
                 "METRIC_REVENUE_ECPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpcAdvertiser
                 }
                 "METRIC_REVENUE_ECPC_PARTNER" => ParametersMetricsItems::MetricRevenueEcpcPartner,
                 "METRIC_REVENUE_ECPC_USD" => ParametersMetricsItems::MetricRevenueEcpcUsd,
+                "METRIC_REVENUE_ECPCV_ADVERTISER" => {
+                    ParametersMetricsItems::MetricRevenueEcpcvAdvertiser
+                }
+                "METRIC_REVENUE_ECPCV_PARTNER" => ParametersMetricsItems::MetricRevenueEcpcvPartner,
+                "METRIC_REVENUE_ECPCV_USD" => ParametersMetricsItems::MetricRevenueEcpcvUsd,
                 "METRIC_REVENUE_ECPIAVC_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpiavcAdvertiser
                 }
@@ -2907,6 +2907,15 @@ pub mod schemas {
                 "METRIC_TOTAL_MEDIA_COST_ADVERTISER" => {
                     ParametersMetricsItems::MetricTotalMediaCostAdvertiser
                 }
+                "METRIC_TOTAL_MEDIA_COST_ECPA_ADVERTISER" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpaAdvertiser
+                }
+                "METRIC_TOTAL_MEDIA_COST_ECPA_PARTNER" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpaPartner
+                }
+                "METRIC_TOTAL_MEDIA_COST_ECPA_USD" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpaUsd
+                }
                 "METRIC_TOTAL_MEDIA_COST_ECPAPC_ADVERTISER" => {
                     ParametersMetricsItems::MetricTotalMediaCostEcpapcAdvertiser
                 }
@@ -2925,14 +2934,14 @@ pub mod schemas {
                 "METRIC_TOTAL_MEDIA_COST_ECPAPV_USD" => {
                     ParametersMetricsItems::MetricTotalMediaCostEcpapvUsd
                 }
-                "METRIC_TOTAL_MEDIA_COST_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpaAdvertiser
+                "METRIC_TOTAL_MEDIA_COST_ECPC_ADVERTISER" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpcAdvertiser
                 }
-                "METRIC_TOTAL_MEDIA_COST_ECPA_PARTNER" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpaPartner
+                "METRIC_TOTAL_MEDIA_COST_ECPC_PARTNER" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpcPartner
                 }
-                "METRIC_TOTAL_MEDIA_COST_ECPA_USD" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpaUsd
+                "METRIC_TOTAL_MEDIA_COST_ECPC_USD" => {
+                    ParametersMetricsItems::MetricTotalMediaCostEcpcUsd
                 }
                 "METRIC_TOTAL_MEDIA_COST_ECPCV_ADVERTISER" => {
                     ParametersMetricsItems::MetricTotalMediaCostEcpcvAdvertiser
@@ -2942,15 +2951,6 @@ pub mod schemas {
                 }
                 "METRIC_TOTAL_MEDIA_COST_ECPCV_USD" => {
                     ParametersMetricsItems::MetricTotalMediaCostEcpcvUsd
-                }
-                "METRIC_TOTAL_MEDIA_COST_ECPC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpcAdvertiser
-                }
-                "METRIC_TOTAL_MEDIA_COST_ECPC_PARTNER" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpcPartner
-                }
-                "METRIC_TOTAL_MEDIA_COST_ECPC_USD" => {
-                    ParametersMetricsItems::MetricTotalMediaCostEcpcUsd
                 }
                 "METRIC_TOTAL_MEDIA_COST_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricTotalMediaCostEcpmAdvertiser
@@ -3050,10 +3050,10 @@ pub mod schemas {
                     ParametersMetricsItems::MetricTrueviewEarnedSubscribers
                 }
                 "METRIC_TRUEVIEW_EARNED_VIEWS" => ParametersMetricsItems::MetricTrueviewEarnedViews,
-                "METRIC_TRUEVIEW_ENGAGEMENTS" => ParametersMetricsItems::MetricTrueviewEngagements,
                 "METRIC_TRUEVIEW_ENGAGEMENT_RATE" => {
                     ParametersMetricsItems::MetricTrueviewEngagementRate
                 }
+                "METRIC_TRUEVIEW_ENGAGEMENTS" => ParametersMetricsItems::MetricTrueviewEngagements,
                 "METRIC_TRUEVIEW_IMPRESSION_SHARE" => {
                     ParametersMetricsItems::MetricTrueviewImpressionShare
                 }
@@ -3082,11 +3082,11 @@ pub mod schemas {
                 "METRIC_TRUEVIEW_VALUE_CONVERSION_ONE_PER_VIEW_RATIO" => {
                     ParametersMetricsItems::MetricTrueviewValueConversionOnePerViewRatio
                 }
-                "METRIC_TRUEVIEW_VIEWS" => ParametersMetricsItems::MetricTrueviewViews,
                 "METRIC_TRUEVIEW_VIEW_RATE" => ParametersMetricsItems::MetricTrueviewViewRate,
                 "METRIC_TRUEVIEW_VIEW_THROUGH_CONVERSION" => {
                     ParametersMetricsItems::MetricTrueviewViewThroughConversion
                 }
+                "METRIC_TRUEVIEW_VIEWS" => ParametersMetricsItems::MetricTrueviewViews,
                 "METRIC_UNIQUE_VISITORS_COOKIES" => {
                     ParametersMetricsItems::MetricUniqueVisitorsCookies
                 }
@@ -3201,12 +3201,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ParametersType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ParametersType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3214,7 +3214,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ParametersType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3416,12 +3416,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for QueryMetadataDataRange {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QueryMetadataDataRange {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3429,7 +3429,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QueryMetadataDataRange {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3488,12 +3488,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for QueryMetadataFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QueryMetadataFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3501,7 +3501,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QueryMetadataFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3607,12 +3607,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for QueryScheduleFrequency {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for QueryScheduleFrequency {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3620,7 +3620,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for QueryScheduleFrequency {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3782,12 +3782,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ReportFailureErrorCode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReportFailureErrorCode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3795,7 +3795,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReportFailureErrorCode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3965,12 +3965,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ReportStatusFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReportStatusFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3978,7 +3978,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReportStatusFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4021,12 +4021,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for ReportStatusState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ReportStatusState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4034,7 +4034,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ReportStatusState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4187,12 +4187,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for RunQueryRequestDataRange {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for RunQueryRequestDataRange {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4200,7 +4200,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for RunQueryRequestDataRange {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4292,12 +4292,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for UploadLineItemsRequestFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for UploadLineItemsRequestFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4305,7 +4305,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for UploadLineItemsRequestFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4432,12 +4432,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4445,7 +4445,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4511,7 +4511,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod lineitems {
         pub mod params {}
         pub struct LineitemsActions<'a, A> {
@@ -4570,16 +4570,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> DownloadlineitemsRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -4705,16 +4695,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> UploadlineitemsRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -4931,16 +4911,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> CreatequeryRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5064,16 +5034,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> DeletequeryRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5150,16 +5110,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> GetqueryRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5289,16 +5239,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> ListqueriesRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5424,16 +5364,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> RunqueryRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5535,16 +5465,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> ListreportsRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5705,16 +5625,6 @@ mod resources {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> DownloadRequestBuilder<'a, A> {
-            #[doc = "Data format for the response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -6086,7 +5996,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -6095,7 +6008,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -6108,58 +6021,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used

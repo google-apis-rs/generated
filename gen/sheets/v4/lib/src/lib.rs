@@ -354,29 +354,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AppendDimensionRequestDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl AppendDimensionRequestDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                AppendDimensionRequestDimension::Columns => "COLUMNS",
                 AppendDimensionRequestDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 AppendDimensionRequestDimension::Rows => "ROWS",
-                AppendDimensionRequestDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for AppendDimensionRequestDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for AppendDimensionRequestDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -384,15 +384,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for AppendDimensionRequestDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => AppendDimensionRequestDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => AppendDimensionRequestDimension::DimensionUnspecified,
                 "ROWS" => AppendDimensionRequestDimension::Rows,
-                "COLUMNS" => AppendDimensionRequestDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -598,12 +598,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for BasicChartAxisPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartAxisPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -611,7 +611,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartAxisPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -701,44 +701,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicChartSeriesType {
-        #[doc = "Default value, do not use."]
-        BasicChartTypeUnspecified,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
-        Bar,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
-        Line,
         #[doc = "An <a href=\"/chart/interactive/docs/gallery/areachart\">area chart</a>."]
         Area,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
+        Bar,
+        #[doc = "Default value, do not use."]
+        BasicChartTypeUnspecified,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/columnchart\">column chart</a>."]
         Column,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
-        Scatter,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/combochart\">combo chart</a>."]
         Combo,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
+        Line,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
+        Scatter,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/steppedareachart\">stepped area\nchart</a>."]
         SteppedArea,
     }
     impl BasicChartSeriesType {
         pub fn as_str(self) -> &'static str {
             match self {
-                BasicChartSeriesType::BasicChartTypeUnspecified => "BASIC_CHART_TYPE_UNSPECIFIED",
-                BasicChartSeriesType::Bar => "BAR",
-                BasicChartSeriesType::Line => "LINE",
                 BasicChartSeriesType::Area => "AREA",
+                BasicChartSeriesType::Bar => "BAR",
+                BasicChartSeriesType::BasicChartTypeUnspecified => "BASIC_CHART_TYPE_UNSPECIFIED",
                 BasicChartSeriesType::Column => "COLUMN",
-                BasicChartSeriesType::Scatter => "SCATTER",
                 BasicChartSeriesType::Combo => "COMBO",
+                BasicChartSeriesType::Line => "LINE",
+                BasicChartSeriesType::Scatter => "SCATTER",
                 BasicChartSeriesType::SteppedArea => "STEPPED_AREA",
             }
         }
     }
     impl ::std::fmt::Display for BasicChartSeriesType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSeriesType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -746,19 +746,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSeriesType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BASIC_CHART_TYPE_UNSPECIFIED" => BasicChartSeriesType::BasicChartTypeUnspecified,
-                "BAR" => BasicChartSeriesType::Bar,
-                "LINE" => BasicChartSeriesType::Line,
                 "AREA" => BasicChartSeriesType::Area,
+                "BAR" => BasicChartSeriesType::Bar,
+                "BASIC_CHART_TYPE_UNSPECIFIED" => BasicChartSeriesType::BasicChartTypeUnspecified,
                 "COLUMN" => BasicChartSeriesType::Column,
-                "SCATTER" => BasicChartSeriesType::Scatter,
                 "COMBO" => BasicChartSeriesType::Combo,
+                "LINE" => BasicChartSeriesType::Line,
+                "SCATTER" => BasicChartSeriesType::Scatter,
                 "STEPPED_AREA" => BasicChartSeriesType::SteppedArea,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -802,12 +802,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for BasicChartSeriesTargetAxis {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSeriesTargetAxis {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -815,7 +815,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSeriesTargetAxis {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -876,46 +876,46 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicChartSpecChartType {
-        #[doc = "Default value, do not use."]
-        BasicChartTypeUnspecified,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
-        Bar,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
-        Line,
         #[doc = "An <a href=\"/chart/interactive/docs/gallery/areachart\">area chart</a>."]
         Area,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
+        Bar,
+        #[doc = "Default value, do not use."]
+        BasicChartTypeUnspecified,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/columnchart\">column chart</a>."]
         Column,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
-        Scatter,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/combochart\">combo chart</a>."]
         Combo,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
+        Line,
+        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
+        Scatter,
         #[doc = "A <a href=\"/chart/interactive/docs/gallery/steppedareachart\">stepped area\nchart</a>."]
         SteppedArea,
     }
     impl BasicChartSpecChartType {
         pub fn as_str(self) -> &'static str {
             match self {
+                BasicChartSpecChartType::Area => "AREA",
+                BasicChartSpecChartType::Bar => "BAR",
                 BasicChartSpecChartType::BasicChartTypeUnspecified => {
                     "BASIC_CHART_TYPE_UNSPECIFIED"
                 }
-                BasicChartSpecChartType::Bar => "BAR",
-                BasicChartSpecChartType::Line => "LINE",
-                BasicChartSpecChartType::Area => "AREA",
                 BasicChartSpecChartType::Column => "COLUMN",
-                BasicChartSpecChartType::Scatter => "SCATTER",
                 BasicChartSpecChartType::Combo => "COMBO",
+                BasicChartSpecChartType::Line => "LINE",
+                BasicChartSpecChartType::Scatter => "SCATTER",
                 BasicChartSpecChartType::SteppedArea => "STEPPED_AREA",
             }
         }
     }
     impl ::std::fmt::Display for BasicChartSpecChartType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSpecChartType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -923,21 +923,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSpecChartType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AREA" => BasicChartSpecChartType::Area,
+                "BAR" => BasicChartSpecChartType::Bar,
                 "BASIC_CHART_TYPE_UNSPECIFIED" => {
                     BasicChartSpecChartType::BasicChartTypeUnspecified
                 }
-                "BAR" => BasicChartSpecChartType::Bar,
-                "LINE" => BasicChartSpecChartType::Line,
-                "AREA" => BasicChartSpecChartType::Area,
                 "COLUMN" => BasicChartSpecChartType::Column,
-                "SCATTER" => BasicChartSpecChartType::Scatter,
                 "COMBO" => BasicChartSpecChartType::Combo,
+                "LINE" => BasicChartSpecChartType::Line,
+                "SCATTER" => BasicChartSpecChartType::Scatter,
                 "STEPPED_AREA" => BasicChartSpecChartType::SteppedArea,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -961,10 +961,10 @@ pub mod schemas {
     pub enum BasicChartSpecCompareMode {
         #[doc = "Default value, do not use."]
         BasicChartCompareModeUnspecified,
-        #[doc = "Only the focused data element is highlighted and shown in the tooltip."]
-        Datum,
         #[doc = "All data elements with the same category (e.g., domain value) are\nhighlighted and shown in the tooltip."]
         Category,
+        #[doc = "Only the focused data element is highlighted and shown in the tooltip."]
+        Datum,
     }
     impl BasicChartSpecCompareMode {
         pub fn as_str(self) -> &'static str {
@@ -972,18 +972,18 @@ pub mod schemas {
                 BasicChartSpecCompareMode::BasicChartCompareModeUnspecified => {
                     "BASIC_CHART_COMPARE_MODE_UNSPECIFIED"
                 }
-                BasicChartSpecCompareMode::Datum => "DATUM",
                 BasicChartSpecCompareMode::Category => "CATEGORY",
+                BasicChartSpecCompareMode::Datum => "DATUM",
             }
         }
     }
     impl ::std::fmt::Display for BasicChartSpecCompareMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSpecCompareMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -991,7 +991,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSpecCompareMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1000,8 +1000,8 @@ pub mod schemas {
                 "BASIC_CHART_COMPARE_MODE_UNSPECIFIED" => {
                     BasicChartSpecCompareMode::BasicChartCompareModeUnspecified
                 }
-                "DATUM" => BasicChartSpecCompareMode::Datum,
                 "CATEGORY" => BasicChartSpecCompareMode::Category,
+                "DATUM" => BasicChartSpecCompareMode::Datum,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1028,12 +1028,12 @@ pub mod schemas {
         BottomLegend,
         #[doc = "The legend is rendered on the left of the chart."]
         LeftLegend,
+        #[doc = "No legend is rendered."]
+        NoLegend,
         #[doc = "The legend is rendered on the right of the chart."]
         RightLegend,
         #[doc = "The legend is rendered on the top of the chart."]
         TopLegend,
-        #[doc = "No legend is rendered."]
-        NoLegend,
     }
     impl BasicChartSpecLegendPosition {
         pub fn as_str(self) -> &'static str {
@@ -1043,19 +1043,19 @@ pub mod schemas {
                 }
                 BasicChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
                 BasicChartSpecLegendPosition::LeftLegend => "LEFT_LEGEND",
+                BasicChartSpecLegendPosition::NoLegend => "NO_LEGEND",
                 BasicChartSpecLegendPosition::RightLegend => "RIGHT_LEGEND",
                 BasicChartSpecLegendPosition::TopLegend => "TOP_LEGEND",
-                BasicChartSpecLegendPosition::NoLegend => "NO_LEGEND",
             }
         }
     }
     impl ::std::fmt::Display for BasicChartSpecLegendPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSpecLegendPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1063,7 +1063,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSpecLegendPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1074,9 +1074,9 @@ pub mod schemas {
                 }
                 "BOTTOM_LEGEND" => BasicChartSpecLegendPosition::BottomLegend,
                 "LEFT_LEGEND" => BasicChartSpecLegendPosition::LeftLegend,
+                "NO_LEGEND" => BasicChartSpecLegendPosition::NoLegend,
                 "RIGHT_LEGEND" => BasicChartSpecLegendPosition::RightLegend,
                 "TOP_LEGEND" => BasicChartSpecLegendPosition::TopLegend,
-                "NO_LEGEND" => BasicChartSpecLegendPosition::NoLegend,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1101,10 +1101,10 @@ pub mod schemas {
         BasicChartStackedTypeUnspecified,
         #[doc = "Series are not stacked."]
         NotStacked,
-        #[doc = "Series values are stacked, each value is rendered vertically beginning\nfrom the top of the value below it."]
-        Stacked,
         #[doc = "Vertical stacks are stretched to reach the top of the chart, with\nvalues laid out as percentages of each other."]
         PercentStacked,
+        #[doc = "Series values are stacked, each value is rendered vertically beginning\nfrom the top of the value below it."]
+        Stacked,
     }
     impl BasicChartSpecStackedType {
         pub fn as_str(self) -> &'static str {
@@ -1113,18 +1113,18 @@ pub mod schemas {
                     "BASIC_CHART_STACKED_TYPE_UNSPECIFIED"
                 }
                 BasicChartSpecStackedType::NotStacked => "NOT_STACKED",
-                BasicChartSpecStackedType::Stacked => "STACKED",
                 BasicChartSpecStackedType::PercentStacked => "PERCENT_STACKED",
+                BasicChartSpecStackedType::Stacked => "STACKED",
             }
         }
     }
     impl ::std::fmt::Display for BasicChartSpecStackedType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BasicChartSpecStackedType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1132,7 +1132,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BasicChartSpecStackedType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1142,8 +1142,8 @@ pub mod schemas {
                     BasicChartSpecStackedType::BasicChartStackedTypeUnspecified
                 }
                 "NOT_STACKED" => BasicChartSpecStackedType::NotStacked,
-                "STACKED" => BasicChartSpecStackedType::Stacked,
                 "PERCENT_STACKED" => BasicChartSpecStackedType::PercentStacked,
+                "STACKED" => BasicChartSpecStackedType::Stacked,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1355,30 +1355,30 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchGetValuesByDataFilterRequestDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
-        SerialNumber,
         #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
         FormattedString,
+        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        SerialNumber,
     }
     impl BatchGetValuesByDataFilterRequestDateTimeRenderOption {
         pub fn as_str(self) -> &'static str {
             match self {
-                BatchGetValuesByDataFilterRequestDateTimeRenderOption::SerialNumber => {
-                    "SERIAL_NUMBER"
-                }
                 BatchGetValuesByDataFilterRequestDateTimeRenderOption::FormattedString => {
                     "FORMATTED_STRING"
+                }
+                BatchGetValuesByDataFilterRequestDateTimeRenderOption::SerialNumber => {
+                    "SERIAL_NUMBER"
                 }
             }
         }
     }
     impl ::std::fmt::Display for BatchGetValuesByDataFilterRequestDateTimeRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchGetValuesByDataFilterRequestDateTimeRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1386,17 +1386,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchGetValuesByDataFilterRequestDateTimeRenderOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SERIAL_NUMBER" => {
-                    BatchGetValuesByDataFilterRequestDateTimeRenderOption::SerialNumber
-                }
                 "FORMATTED_STRING" => {
                     BatchGetValuesByDataFilterRequestDateTimeRenderOption::FormattedString
+                }
+                "SERIAL_NUMBER" => {
+                    BatchGetValuesByDataFilterRequestDateTimeRenderOption::SerialNumber
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1418,31 +1418,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchGetValuesByDataFilterRequestMajorDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl BatchGetValuesByDataFilterRequestMajorDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                BatchGetValuesByDataFilterRequestMajorDimension::Columns => "COLUMNS",
                 BatchGetValuesByDataFilterRequestMajorDimension::DimensionUnspecified => {
                     "DIMENSION_UNSPECIFIED"
                 }
                 BatchGetValuesByDataFilterRequestMajorDimension::Rows => "ROWS",
-                BatchGetValuesByDataFilterRequestMajorDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for BatchGetValuesByDataFilterRequestMajorDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchGetValuesByDataFilterRequestMajorDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1450,17 +1450,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchGetValuesByDataFilterRequestMajorDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => BatchGetValuesByDataFilterRequestMajorDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => {
                     BatchGetValuesByDataFilterRequestMajorDimension::DimensionUnspecified
                 }
                 "ROWS" => BatchGetValuesByDataFilterRequestMajorDimension::Rows,
-                "COLUMNS" => BatchGetValuesByDataFilterRequestMajorDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1483,10 +1483,10 @@ pub mod schemas {
     pub enum BatchGetValuesByDataFilterRequestValueRenderOption {
         #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
-        UnformattedValue,
         #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
         Formula,
+        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        UnformattedValue,
     }
     impl BatchGetValuesByDataFilterRequestValueRenderOption {
         pub fn as_str(self) -> &'static str {
@@ -1494,20 +1494,20 @@ pub mod schemas {
                 BatchGetValuesByDataFilterRequestValueRenderOption::FormattedValue => {
                     "FORMATTED_VALUE"
                 }
+                BatchGetValuesByDataFilterRequestValueRenderOption::Formula => "FORMULA",
                 BatchGetValuesByDataFilterRequestValueRenderOption::UnformattedValue => {
                     "UNFORMATTED_VALUE"
                 }
-                BatchGetValuesByDataFilterRequestValueRenderOption::Formula => "FORMULA",
             }
         }
     }
     impl ::std::fmt::Display for BatchGetValuesByDataFilterRequestValueRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchGetValuesByDataFilterRequestValueRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1515,7 +1515,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchGetValuesByDataFilterRequestValueRenderOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1524,10 +1524,10 @@ pub mod schemas {
                 "FORMATTED_VALUE" => {
                     BatchGetValuesByDataFilterRequestValueRenderOption::FormattedValue
                 }
+                "FORMULA" => BatchGetValuesByDataFilterRequestValueRenderOption::Formula,
                 "UNFORMATTED_VALUE" => {
                     BatchGetValuesByDataFilterRequestValueRenderOption::UnformattedValue
                 }
-                "FORMULA" => BatchGetValuesByDataFilterRequestValueRenderOption::Formula,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1673,23 +1673,23 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
-        SerialNumber,
         #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
         FormattedString,
+        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        SerialNumber,
     }
     impl BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
         pub fn as_str(self) -> &'static str {
-            match self { BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber => "SERIAL_NUMBER" , BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString => "FORMATTED_STRING" , }
+            match self { BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString => "FORMATTED_STRING" , BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber => "SERIAL_NUMBER" , }
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1699,12 +1699,12 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::field_selector::FieldSelector
@@ -1722,10 +1722,10 @@ pub mod schemas {
     pub enum BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
         #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
-        UnformattedValue,
         #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
         Formula,
+        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        UnformattedValue,
     }
     impl BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
         pub fn as_str(self) -> &'static str {
@@ -1733,20 +1733,20 @@ pub mod schemas {
                 BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::FormattedValue => {
                     "FORMATTED_VALUE"
                 }
+                BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::Formula => "FORMULA",
                 BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::UnformattedValue => {
                     "UNFORMATTED_VALUE"
                 }
-                BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::Formula => "FORMULA",
             }
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1756,7 +1756,7 @@ pub mod schemas {
     impl<'de> ::serde::Deserialize<'de>
         for BatchUpdateValuesByDataFilterRequestResponseValueRenderOption
     {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1765,10 +1765,10 @@ pub mod schemas {
                 "FORMATTED_VALUE" => {
                     BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::FormattedValue
                 }
+                "FORMULA" => BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::Formula,
                 "UNFORMATTED_VALUE" => {
                     BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::UnformattedValue
                 }
-                "FORMULA" => BatchUpdateValuesByDataFilterRequestResponseValueRenderOption::Formula,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1804,12 +1804,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesByDataFilterRequestValueInputOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesByDataFilterRequestValueInputOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1817,7 +1817,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchUpdateValuesByDataFilterRequestValueInputOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -1899,30 +1899,30 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesRequestResponseDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
-        SerialNumber,
         #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
         FormattedString,
+        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        SerialNumber,
     }
     impl BatchUpdateValuesRequestResponseDateTimeRenderOption {
         pub fn as_str(self) -> &'static str {
             match self {
-                BatchUpdateValuesRequestResponseDateTimeRenderOption::SerialNumber => {
-                    "SERIAL_NUMBER"
-                }
                 BatchUpdateValuesRequestResponseDateTimeRenderOption::FormattedString => {
                     "FORMATTED_STRING"
+                }
+                BatchUpdateValuesRequestResponseDateTimeRenderOption::SerialNumber => {
+                    "SERIAL_NUMBER"
                 }
             }
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesRequestResponseDateTimeRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesRequestResponseDateTimeRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1930,17 +1930,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchUpdateValuesRequestResponseDateTimeRenderOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SERIAL_NUMBER" => {
-                    BatchUpdateValuesRequestResponseDateTimeRenderOption::SerialNumber
-                }
                 "FORMATTED_STRING" => {
                     BatchUpdateValuesRequestResponseDateTimeRenderOption::FormattedString
+                }
+                "SERIAL_NUMBER" => {
+                    BatchUpdateValuesRequestResponseDateTimeRenderOption::SerialNumber
                 }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1964,10 +1964,10 @@ pub mod schemas {
     pub enum BatchUpdateValuesRequestResponseValueRenderOption {
         #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
-        UnformattedValue,
         #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
         Formula,
+        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        UnformattedValue,
     }
     impl BatchUpdateValuesRequestResponseValueRenderOption {
         pub fn as_str(self) -> &'static str {
@@ -1975,20 +1975,20 @@ pub mod schemas {
                 BatchUpdateValuesRequestResponseValueRenderOption::FormattedValue => {
                     "FORMATTED_VALUE"
                 }
+                BatchUpdateValuesRequestResponseValueRenderOption::Formula => "FORMULA",
                 BatchUpdateValuesRequestResponseValueRenderOption::UnformattedValue => {
                     "UNFORMATTED_VALUE"
                 }
-                BatchUpdateValuesRequestResponseValueRenderOption::Formula => "FORMULA",
             }
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesRequestResponseValueRenderOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesRequestResponseValueRenderOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -1996,7 +1996,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchUpdateValuesRequestResponseValueRenderOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2005,10 +2005,10 @@ pub mod schemas {
                 "FORMATTED_VALUE" => {
                     BatchUpdateValuesRequestResponseValueRenderOption::FormattedValue
                 }
+                "FORMULA" => BatchUpdateValuesRequestResponseValueRenderOption::Formula,
                 "UNFORMATTED_VALUE" => {
                     BatchUpdateValuesRequestResponseValueRenderOption::UnformattedValue
                 }
-                "FORMULA" => BatchUpdateValuesRequestResponseValueRenderOption::Formula,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2048,12 +2048,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesRequestValueInputOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BatchUpdateValuesRequestValueInputOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2061,7 +2061,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BatchUpdateValuesRequestValueInputOption {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2154,8 +2154,36 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BooleanConditionType {
+        #[doc = "The cell's value must be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
+        Blank,
+        #[doc = "The cell's value must be TRUE/FALSE or in the list of condition values.\nSupported by data validation.\nRenders as a cell checkbox.\nSupports zero, one or two ConditionValues.  No\nvalues indicates the cell must be TRUE or FALSE, where TRUE renders as\nchecked and FALSE renders as unchecked.  One value indicates the cell\nwill render as checked when it contains that value and unchecked when it\nis blank.  Two values indicate that the cell will render as checked when\nit contains the first value and unchecked when it contains the second\nvalue.  For example, [\"Yes\",\"No\"] indicates that the cell will render a\nchecked box when it has the value \"Yes\" and an unchecked box when it has\nthe value \"No\"."]
+        Boolean,
         #[doc = "The default value, do not use."]
         ConditionTypeUnspecified,
+        #[doc = "The condition's formula must evaluate to true.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        CustomFormula,
+        #[doc = "The cell's value must be after the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
+        DateAfter,
+        #[doc = "The cell's value must be before the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
+        DateBefore,
+        #[doc = "The cell's value must be between the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
+        DateBetween,
+        #[doc = "The cell's value must be the same date as the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        DateEq,
+        #[doc = "The cell's value must be a date.\nSupported by data validation.\nRequires no ConditionValues."]
+        DateIsValid,
+        #[doc = "The cell's value must be outside the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
+        DateNotBetween,
+        #[doc = "The cell's value must be on or after the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
+        DateOnOrAfter,
+        #[doc = "The cell's value must be on or before the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
+        DateOnOrBefore,
+        #[doc = "The cell's value must not be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
+        NotBlank,
+        #[doc = "The cell's value must be between the two condition values.\nSupported by data validation, conditional formatting and filters.\nRequires exactly two ConditionValues."]
+        NumberBetween,
+        #[doc = "The cell's value must be equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        NumberEq,
         #[doc = "The cell's value must be greater than the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
         NumberGreater,
         #[doc = "The cell's value must be greater than or equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
@@ -2164,20 +2192,16 @@ pub mod schemas {
         NumberLess,
         #[doc = "The cell's value must be less than or equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
         NumberLessThanEq,
-        #[doc = "The cell's value must be equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
-        NumberEq,
-        #[doc = "The cell's value must be not equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
-        NumberNotEq,
-        #[doc = "The cell's value must be between the two condition values.\nSupported by data validation, conditional formatting and filters.\nRequires exactly two ConditionValues."]
-        NumberBetween,
         #[doc = "The cell's value must not be between the two condition values.\nSupported by data validation, conditional formatting and filters.\nRequires exactly two ConditionValues."]
         NumberNotBetween,
+        #[doc = "The cell's value must be not equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        NumberNotEq,
+        #[doc = "The cell's value must be in the list of condition values.\nSupported by data validation.\nSupports any number of condition values,\none per item in the list.\nFormulas are not supported in the values."]
+        OneOfList,
+        #[doc = "The cell's value must be listed in the grid in condition value's range.\nSupported by data validation.\nRequires a single ConditionValue,\nand the value must be a valid range in A1 notation."]
+        OneOfRange,
         #[doc = "The cell's value must contain the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
         TextContains,
-        #[doc = "The cell's value must not contain the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
-        TextNotContains,
-        #[doc = "The cell's value must start with the condition's value.\nSupported by conditional formatting and filters.\nRequires a single ConditionValue."]
-        TextStartsWith,
         #[doc = "The cell's value must end with the condition's value.\nSupported by conditional formatting and filters.\nRequires a single ConditionValue."]
         TextEndsWith,
         #[doc = "The cell's value must be exactly the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
@@ -2186,78 +2210,54 @@ pub mod schemas {
         TextIsEmail,
         #[doc = "The cell's value must be a valid URL.\nSupported by data validation.\nRequires no ConditionValues."]
         TextIsUrl,
-        #[doc = "The cell's value must be the same date as the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
-        DateEq,
-        #[doc = "The cell's value must be before the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
-        DateBefore,
-        #[doc = "The cell's value must be after the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
-        DateAfter,
-        #[doc = "The cell's value must be on or before the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
-        DateOnOrBefore,
-        #[doc = "The cell's value must be on or after the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
-        DateOnOrAfter,
-        #[doc = "The cell's value must be between the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
-        DateBetween,
-        #[doc = "The cell's value must be outside the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
-        DateNotBetween,
-        #[doc = "The cell's value must be a date.\nSupported by data validation.\nRequires no ConditionValues."]
-        DateIsValid,
-        #[doc = "The cell's value must be listed in the grid in condition value's range.\nSupported by data validation.\nRequires a single ConditionValue,\nand the value must be a valid range in A1 notation."]
-        OneOfRange,
-        #[doc = "The cell's value must be in the list of condition values.\nSupported by data validation.\nSupports any number of condition values,\none per item in the list.\nFormulas are not supported in the values."]
-        OneOfList,
-        #[doc = "The cell's value must be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
-        Blank,
-        #[doc = "The cell's value must not be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
-        NotBlank,
-        #[doc = "The condition's formula must evaluate to true.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
-        CustomFormula,
-        #[doc = "The cell's value must be TRUE/FALSE or in the list of condition values.\nSupported by data validation.\nRenders as a cell checkbox.\nSupports zero, one or two ConditionValues.  No\nvalues indicates the cell must be TRUE or FALSE, where TRUE renders as\nchecked and FALSE renders as unchecked.  One value indicates the cell\nwill render as checked when it contains that value and unchecked when it\nis blank.  Two values indicate that the cell will render as checked when\nit contains the first value and unchecked when it contains the second\nvalue.  For example, [\"Yes\",\"No\"] indicates that the cell will render a\nchecked box when it has the value \"Yes\" and an unchecked box when it has\nthe value \"No\"."]
-        Boolean,
+        #[doc = "The cell's value must not contain the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        TextNotContains,
+        #[doc = "The cell's value must start with the condition's value.\nSupported by conditional formatting and filters.\nRequires a single ConditionValue."]
+        TextStartsWith,
     }
     impl BooleanConditionType {
         pub fn as_str(self) -> &'static str {
             match self {
+                BooleanConditionType::Blank => "BLANK",
+                BooleanConditionType::Boolean => "BOOLEAN",
                 BooleanConditionType::ConditionTypeUnspecified => "CONDITION_TYPE_UNSPECIFIED",
+                BooleanConditionType::CustomFormula => "CUSTOM_FORMULA",
+                BooleanConditionType::DateAfter => "DATE_AFTER",
+                BooleanConditionType::DateBefore => "DATE_BEFORE",
+                BooleanConditionType::DateBetween => "DATE_BETWEEN",
+                BooleanConditionType::DateEq => "DATE_EQ",
+                BooleanConditionType::DateIsValid => "DATE_IS_VALID",
+                BooleanConditionType::DateNotBetween => "DATE_NOT_BETWEEN",
+                BooleanConditionType::DateOnOrAfter => "DATE_ON_OR_AFTER",
+                BooleanConditionType::DateOnOrBefore => "DATE_ON_OR_BEFORE",
+                BooleanConditionType::NotBlank => "NOT_BLANK",
+                BooleanConditionType::NumberBetween => "NUMBER_BETWEEN",
+                BooleanConditionType::NumberEq => "NUMBER_EQ",
                 BooleanConditionType::NumberGreater => "NUMBER_GREATER",
                 BooleanConditionType::NumberGreaterThanEq => "NUMBER_GREATER_THAN_EQ",
                 BooleanConditionType::NumberLess => "NUMBER_LESS",
                 BooleanConditionType::NumberLessThanEq => "NUMBER_LESS_THAN_EQ",
-                BooleanConditionType::NumberEq => "NUMBER_EQ",
-                BooleanConditionType::NumberNotEq => "NUMBER_NOT_EQ",
-                BooleanConditionType::NumberBetween => "NUMBER_BETWEEN",
                 BooleanConditionType::NumberNotBetween => "NUMBER_NOT_BETWEEN",
+                BooleanConditionType::NumberNotEq => "NUMBER_NOT_EQ",
+                BooleanConditionType::OneOfList => "ONE_OF_LIST",
+                BooleanConditionType::OneOfRange => "ONE_OF_RANGE",
                 BooleanConditionType::TextContains => "TEXT_CONTAINS",
-                BooleanConditionType::TextNotContains => "TEXT_NOT_CONTAINS",
-                BooleanConditionType::TextStartsWith => "TEXT_STARTS_WITH",
                 BooleanConditionType::TextEndsWith => "TEXT_ENDS_WITH",
                 BooleanConditionType::TextEq => "TEXT_EQ",
                 BooleanConditionType::TextIsEmail => "TEXT_IS_EMAIL",
                 BooleanConditionType::TextIsUrl => "TEXT_IS_URL",
-                BooleanConditionType::DateEq => "DATE_EQ",
-                BooleanConditionType::DateBefore => "DATE_BEFORE",
-                BooleanConditionType::DateAfter => "DATE_AFTER",
-                BooleanConditionType::DateOnOrBefore => "DATE_ON_OR_BEFORE",
-                BooleanConditionType::DateOnOrAfter => "DATE_ON_OR_AFTER",
-                BooleanConditionType::DateBetween => "DATE_BETWEEN",
-                BooleanConditionType::DateNotBetween => "DATE_NOT_BETWEEN",
-                BooleanConditionType::DateIsValid => "DATE_IS_VALID",
-                BooleanConditionType::OneOfRange => "ONE_OF_RANGE",
-                BooleanConditionType::OneOfList => "ONE_OF_LIST",
-                BooleanConditionType::Blank => "BLANK",
-                BooleanConditionType::NotBlank => "NOT_BLANK",
-                BooleanConditionType::CustomFormula => "CUSTOM_FORMULA",
-                BooleanConditionType::Boolean => "BOOLEAN",
+                BooleanConditionType::TextNotContains => "TEXT_NOT_CONTAINS",
+                BooleanConditionType::TextStartsWith => "TEXT_STARTS_WITH",
             }
         }
     }
     impl ::std::fmt::Display for BooleanConditionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BooleanConditionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2265,42 +2265,42 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BooleanConditionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BLANK" => BooleanConditionType::Blank,
+                "BOOLEAN" => BooleanConditionType::Boolean,
                 "CONDITION_TYPE_UNSPECIFIED" => BooleanConditionType::ConditionTypeUnspecified,
+                "CUSTOM_FORMULA" => BooleanConditionType::CustomFormula,
+                "DATE_AFTER" => BooleanConditionType::DateAfter,
+                "DATE_BEFORE" => BooleanConditionType::DateBefore,
+                "DATE_BETWEEN" => BooleanConditionType::DateBetween,
+                "DATE_EQ" => BooleanConditionType::DateEq,
+                "DATE_IS_VALID" => BooleanConditionType::DateIsValid,
+                "DATE_NOT_BETWEEN" => BooleanConditionType::DateNotBetween,
+                "DATE_ON_OR_AFTER" => BooleanConditionType::DateOnOrAfter,
+                "DATE_ON_OR_BEFORE" => BooleanConditionType::DateOnOrBefore,
+                "NOT_BLANK" => BooleanConditionType::NotBlank,
+                "NUMBER_BETWEEN" => BooleanConditionType::NumberBetween,
+                "NUMBER_EQ" => BooleanConditionType::NumberEq,
                 "NUMBER_GREATER" => BooleanConditionType::NumberGreater,
                 "NUMBER_GREATER_THAN_EQ" => BooleanConditionType::NumberGreaterThanEq,
                 "NUMBER_LESS" => BooleanConditionType::NumberLess,
                 "NUMBER_LESS_THAN_EQ" => BooleanConditionType::NumberLessThanEq,
-                "NUMBER_EQ" => BooleanConditionType::NumberEq,
-                "NUMBER_NOT_EQ" => BooleanConditionType::NumberNotEq,
-                "NUMBER_BETWEEN" => BooleanConditionType::NumberBetween,
                 "NUMBER_NOT_BETWEEN" => BooleanConditionType::NumberNotBetween,
+                "NUMBER_NOT_EQ" => BooleanConditionType::NumberNotEq,
+                "ONE_OF_LIST" => BooleanConditionType::OneOfList,
+                "ONE_OF_RANGE" => BooleanConditionType::OneOfRange,
                 "TEXT_CONTAINS" => BooleanConditionType::TextContains,
-                "TEXT_NOT_CONTAINS" => BooleanConditionType::TextNotContains,
-                "TEXT_STARTS_WITH" => BooleanConditionType::TextStartsWith,
                 "TEXT_ENDS_WITH" => BooleanConditionType::TextEndsWith,
                 "TEXT_EQ" => BooleanConditionType::TextEq,
                 "TEXT_IS_EMAIL" => BooleanConditionType::TextIsEmail,
                 "TEXT_IS_URL" => BooleanConditionType::TextIsUrl,
-                "DATE_EQ" => BooleanConditionType::DateEq,
-                "DATE_BEFORE" => BooleanConditionType::DateBefore,
-                "DATE_AFTER" => BooleanConditionType::DateAfter,
-                "DATE_ON_OR_BEFORE" => BooleanConditionType::DateOnOrBefore,
-                "DATE_ON_OR_AFTER" => BooleanConditionType::DateOnOrAfter,
-                "DATE_BETWEEN" => BooleanConditionType::DateBetween,
-                "DATE_NOT_BETWEEN" => BooleanConditionType::DateNotBetween,
-                "DATE_IS_VALID" => BooleanConditionType::DateIsValid,
-                "ONE_OF_RANGE" => BooleanConditionType::OneOfRange,
-                "ONE_OF_LIST" => BooleanConditionType::OneOfList,
-                "BLANK" => BooleanConditionType::Blank,
-                "NOT_BLANK" => BooleanConditionType::NotBlank,
-                "CUSTOM_FORMULA" => BooleanConditionType::CustomFormula,
-                "BOOLEAN" => BooleanConditionType::Boolean,
+                "TEXT_NOT_CONTAINS" => BooleanConditionType::TextNotContains,
+                "TEXT_STARTS_WITH" => BooleanConditionType::TextStartsWith,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2370,44 +2370,44 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BorderStyle {
-        #[doc = "The style is not specified. Do not use this."]
-        StyleUnspecified,
-        #[doc = "The border is dotted."]
-        Dotted,
         #[doc = "The border is dashed."]
         Dashed,
+        #[doc = "The border is dotted."]
+        Dotted,
+        #[doc = "The border is two solid lines."]
+        Double,
+        #[doc = "No border.\nUsed only when updating a border in order to erase it."]
+        None,
         #[doc = "The border is a thin solid line."]
         Solid,
         #[doc = "The border is a medium solid line."]
         SolidMedium,
         #[doc = "The border is a thick solid line."]
         SolidThick,
-        #[doc = "No border.\nUsed only when updating a border in order to erase it."]
-        None,
-        #[doc = "The border is two solid lines."]
-        Double,
+        #[doc = "The style is not specified. Do not use this."]
+        StyleUnspecified,
     }
     impl BorderStyle {
         pub fn as_str(self) -> &'static str {
             match self {
-                BorderStyle::StyleUnspecified => "STYLE_UNSPECIFIED",
-                BorderStyle::Dotted => "DOTTED",
                 BorderStyle::Dashed => "DASHED",
+                BorderStyle::Dotted => "DOTTED",
+                BorderStyle::Double => "DOUBLE",
+                BorderStyle::None => "NONE",
                 BorderStyle::Solid => "SOLID",
                 BorderStyle::SolidMedium => "SOLID_MEDIUM",
                 BorderStyle::SolidThick => "SOLID_THICK",
-                BorderStyle::None => "NONE",
-                BorderStyle::Double => "DOUBLE",
+                BorderStyle::StyleUnspecified => "STYLE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for BorderStyle {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BorderStyle {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2415,20 +2415,20 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BorderStyle {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "STYLE_UNSPECIFIED" => BorderStyle::StyleUnspecified,
-                "DOTTED" => BorderStyle::Dotted,
                 "DASHED" => BorderStyle::Dashed,
+                "DOTTED" => BorderStyle::Dotted,
+                "DOUBLE" => BorderStyle::Double,
+                "NONE" => BorderStyle::None,
                 "SOLID" => BorderStyle::Solid,
                 "SOLID_MEDIUM" => BorderStyle::SolidMedium,
                 "SOLID_THICK" => BorderStyle::SolidThick,
-                "NONE" => BorderStyle::None,
-                "DOUBLE" => BorderStyle::Double,
+                "STYLE_UNSPECIFIED" => BorderStyle::StyleUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2498,43 +2498,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BubbleChartSpecLegendPosition {
-        #[doc = "Default value, do not use."]
-        BubbleChartLegendPositionUnspecified,
         #[doc = "The legend is rendered on the bottom of the chart."]
         BottomLegend,
+        #[doc = "Default value, do not use."]
+        BubbleChartLegendPositionUnspecified,
+        #[doc = "The legend is rendered inside the chart area."]
+        InsideLegend,
         #[doc = "The legend is rendered on the left of the chart."]
         LeftLegend,
+        #[doc = "No legend is rendered."]
+        NoLegend,
         #[doc = "The legend is rendered on the right of the chart."]
         RightLegend,
         #[doc = "The legend is rendered on the top of the chart."]
         TopLegend,
-        #[doc = "No legend is rendered."]
-        NoLegend,
-        #[doc = "The legend is rendered inside the chart area."]
-        InsideLegend,
     }
     impl BubbleChartSpecLegendPosition {
         pub fn as_str(self) -> &'static str {
             match self {
+                BubbleChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
                 BubbleChartSpecLegendPosition::BubbleChartLegendPositionUnspecified => {
                     "BUBBLE_CHART_LEGEND_POSITION_UNSPECIFIED"
                 }
-                BubbleChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
+                BubbleChartSpecLegendPosition::InsideLegend => "INSIDE_LEGEND",
                 BubbleChartSpecLegendPosition::LeftLegend => "LEFT_LEGEND",
+                BubbleChartSpecLegendPosition::NoLegend => "NO_LEGEND",
                 BubbleChartSpecLegendPosition::RightLegend => "RIGHT_LEGEND",
                 BubbleChartSpecLegendPosition::TopLegend => "TOP_LEGEND",
-                BubbleChartSpecLegendPosition::NoLegend => "NO_LEGEND",
-                BubbleChartSpecLegendPosition::InsideLegend => "INSIDE_LEGEND",
             }
         }
     }
     impl ::std::fmt::Display for BubbleChartSpecLegendPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for BubbleChartSpecLegendPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2542,21 +2542,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for BubbleChartSpecLegendPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM_LEGEND" => BubbleChartSpecLegendPosition::BottomLegend,
                 "BUBBLE_CHART_LEGEND_POSITION_UNSPECIFIED" => {
                     BubbleChartSpecLegendPosition::BubbleChartLegendPositionUnspecified
                 }
-                "BOTTOM_LEGEND" => BubbleChartSpecLegendPosition::BottomLegend,
+                "INSIDE_LEGEND" => BubbleChartSpecLegendPosition::InsideLegend,
                 "LEFT_LEGEND" => BubbleChartSpecLegendPosition::LeftLegend,
+                "NO_LEGEND" => BubbleChartSpecLegendPosition::NoLegend,
                 "RIGHT_LEGEND" => BubbleChartSpecLegendPosition::RightLegend,
                 "TOP_LEGEND" => BubbleChartSpecLegendPosition::TopLegend,
-                "NO_LEGEND" => BubbleChartSpecLegendPosition::NoLegend,
-                "INSIDE_LEGEND" => BubbleChartSpecLegendPosition::InsideLegend,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2787,34 +2787,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CellFormatHorizontalAlignment {
+        #[doc = "The text is explicitly aligned to the center of the cell."]
+        Center,
         #[doc = "The horizontal alignment is not specified. Do not use this."]
         HorizontalAlignUnspecified,
         #[doc = "The text is explicitly aligned to the left of the cell."]
         Left,
-        #[doc = "The text is explicitly aligned to the center of the cell."]
-        Center,
         #[doc = "The text is explicitly aligned to the right of the cell."]
         Right,
     }
     impl CellFormatHorizontalAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                CellFormatHorizontalAlignment::Center => "CENTER",
                 CellFormatHorizontalAlignment::HorizontalAlignUnspecified => {
                     "HORIZONTAL_ALIGN_UNSPECIFIED"
                 }
                 CellFormatHorizontalAlignment::Left => "LEFT",
-                CellFormatHorizontalAlignment::Center => "CENTER",
                 CellFormatHorizontalAlignment::Right => "RIGHT",
             }
         }
     }
     impl ::std::fmt::Display for CellFormatHorizontalAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CellFormatHorizontalAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2822,17 +2822,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CellFormatHorizontalAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CENTER" => CellFormatHorizontalAlignment::Center,
                 "HORIZONTAL_ALIGN_UNSPECIFIED" => {
                     CellFormatHorizontalAlignment::HorizontalAlignUnspecified
                 }
                 "LEFT" => CellFormatHorizontalAlignment::Left,
-                "CENTER" => CellFormatHorizontalAlignment::Center,
                 "RIGHT" => CellFormatHorizontalAlignment::Right,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2873,12 +2873,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CellFormatHyperlinkDisplayType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CellFormatHyperlinkDisplayType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2886,7 +2886,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CellFormatHyperlinkDisplayType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -2917,29 +2917,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CellFormatTextDirection {
-        #[doc = "The text direction is not specified. Do not use this."]
-        TextDirectionUnspecified,
         #[doc = "The text direction of left-to-right was set by the user."]
         LeftToRight,
         #[doc = "The text direction of right-to-left was set by the user."]
         RightToLeft,
+        #[doc = "The text direction is not specified. Do not use this."]
+        TextDirectionUnspecified,
     }
     impl CellFormatTextDirection {
         pub fn as_str(self) -> &'static str {
             match self {
-                CellFormatTextDirection::TextDirectionUnspecified => "TEXT_DIRECTION_UNSPECIFIED",
                 CellFormatTextDirection::LeftToRight => "LEFT_TO_RIGHT",
                 CellFormatTextDirection::RightToLeft => "RIGHT_TO_LEFT",
+                CellFormatTextDirection::TextDirectionUnspecified => "TEXT_DIRECTION_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for CellFormatTextDirection {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CellFormatTextDirection {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -2947,15 +2947,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CellFormatTextDirection {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TEXT_DIRECTION_UNSPECIFIED" => CellFormatTextDirection::TextDirectionUnspecified,
                 "LEFT_TO_RIGHT" => CellFormatTextDirection::LeftToRight,
                 "RIGHT_TO_LEFT" => CellFormatTextDirection::RightToLeft,
+                "TEXT_DIRECTION_UNSPECIFIED" => CellFormatTextDirection::TextDirectionUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2976,34 +2976,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CellFormatVerticalAlignment {
-        #[doc = "The vertical alignment is not specified.  Do not use this."]
-        VerticalAlignUnspecified,
-        #[doc = "The text is explicitly aligned to the top of the cell."]
-        Top,
-        #[doc = "The text is explicitly aligned to the middle of the cell."]
-        Middle,
         #[doc = "The text is explicitly aligned to the bottom of the cell."]
         Bottom,
+        #[doc = "The text is explicitly aligned to the middle of the cell."]
+        Middle,
+        #[doc = "The text is explicitly aligned to the top of the cell."]
+        Top,
+        #[doc = "The vertical alignment is not specified.  Do not use this."]
+        VerticalAlignUnspecified,
     }
     impl CellFormatVerticalAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                CellFormatVerticalAlignment::Bottom => "BOTTOM",
+                CellFormatVerticalAlignment::Middle => "MIDDLE",
+                CellFormatVerticalAlignment::Top => "TOP",
                 CellFormatVerticalAlignment::VerticalAlignUnspecified => {
                     "VERTICAL_ALIGN_UNSPECIFIED"
                 }
-                CellFormatVerticalAlignment::Top => "TOP",
-                CellFormatVerticalAlignment::Middle => "MIDDLE",
-                CellFormatVerticalAlignment::Bottom => "BOTTOM",
             }
         }
     }
     impl ::std::fmt::Display for CellFormatVerticalAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CellFormatVerticalAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3011,18 +3011,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CellFormatVerticalAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM" => CellFormatVerticalAlignment::Bottom,
+                "MIDDLE" => CellFormatVerticalAlignment::Middle,
+                "TOP" => CellFormatVerticalAlignment::Top,
                 "VERTICAL_ALIGN_UNSPECIFIED" => {
                     CellFormatVerticalAlignment::VerticalAlignUnspecified
                 }
-                "TOP" => CellFormatVerticalAlignment::Top,
-                "MIDDLE" => CellFormatVerticalAlignment::Middle,
-                "BOTTOM" => CellFormatVerticalAlignment::Bottom,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3043,35 +3043,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CellFormatWrapStrategy {
-        #[doc = "The default value, do not use."]
-        WrapStrategyUnspecified,
-        #[doc = "Lines that are longer than the cell width will be written in the next\ncell over, so long as that cell is empty. If the next cell over is\nnon-empty, this behaves the same as CLIP. The text will never wrap\nto the next line unless the user manually inserts a new line.\nExample:\n\n````text\n| First sentence. |\n| Manual newline that is very long. <- Text continues into next cell\n| Next newline.   |````"]
-        OverflowCell,
-        #[doc = "This wrap strategy represents the old Google Sheets wrap strategy where\nwords that are longer than a line are clipped rather than broken. This\nstrategy is not supported on all platforms and is being phased out.\nExample:\n\n````text\n| Cell has a |\n| loooooooooo| <- Word is clipped.\n| word.      |````"]
-        LegacyWrap,
         #[doc = "Lines that are longer than the cell width will be clipped.\nThe text will never wrap to the next line unless the user manually\ninserts a new line.\nExample:\n\n````text\n| First sentence. |\n| Manual newline t| <- Text is clipped\n| Next newline.   |````"]
         Clip,
+        #[doc = "This wrap strategy represents the old Google Sheets wrap strategy where\nwords that are longer than a line are clipped rather than broken. This\nstrategy is not supported on all platforms and is being phased out.\nExample:\n\n````text\n| Cell has a |\n| loooooooooo| <- Word is clipped.\n| word.      |````"]
+        LegacyWrap,
+        #[doc = "Lines that are longer than the cell width will be written in the next\ncell over, so long as that cell is empty. If the next cell over is\nnon-empty, this behaves the same as CLIP. The text will never wrap\nto the next line unless the user manually inserts a new line.\nExample:\n\n````text\n| First sentence. |\n| Manual newline that is very long. <- Text continues into next cell\n| Next newline.   |````"]
+        OverflowCell,
         #[doc = "Words that are longer than a line are wrapped at the character level\nrather than clipped.\nExample:\n\n````text\n| Cell has a |\n| loooooooooo| <- Word is broken.\n| ong word.  |````"]
         Wrap,
+        #[doc = "The default value, do not use."]
+        WrapStrategyUnspecified,
     }
     impl CellFormatWrapStrategy {
         pub fn as_str(self) -> &'static str {
             match self {
-                CellFormatWrapStrategy::WrapStrategyUnspecified => "WRAP_STRATEGY_UNSPECIFIED",
-                CellFormatWrapStrategy::OverflowCell => "OVERFLOW_CELL",
-                CellFormatWrapStrategy::LegacyWrap => "LEGACY_WRAP",
                 CellFormatWrapStrategy::Clip => "CLIP",
+                CellFormatWrapStrategy::LegacyWrap => "LEGACY_WRAP",
+                CellFormatWrapStrategy::OverflowCell => "OVERFLOW_CELL",
                 CellFormatWrapStrategy::Wrap => "WRAP",
+                CellFormatWrapStrategy::WrapStrategyUnspecified => "WRAP_STRATEGY_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for CellFormatWrapStrategy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CellFormatWrapStrategy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3079,17 +3079,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CellFormatWrapStrategy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "WRAP_STRATEGY_UNSPECIFIED" => CellFormatWrapStrategy::WrapStrategyUnspecified,
-                "OVERFLOW_CELL" => CellFormatWrapStrategy::OverflowCell,
-                "LEGACY_WRAP" => CellFormatWrapStrategy::LegacyWrap,
                 "CLIP" => CellFormatWrapStrategy::Clip,
+                "LEGACY_WRAP" => CellFormatWrapStrategy::LegacyWrap,
+                "OVERFLOW_CELL" => CellFormatWrapStrategy::OverflowCell,
                 "WRAP" => CellFormatWrapStrategy::Wrap,
+                "WRAP_STRATEGY_UNSPECIFIED" => CellFormatWrapStrategy::WrapStrategyUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3161,12 +3161,12 @@ pub mod schemas {
     pub enum ChartAxisViewWindowOptionsViewWindowMode {
         #[doc = "The default view window mode used in the Sheets editor for this chart\ntype. In most cases, if set, the default mode is equivalent to\n`PRETTY`."]
         DefaultViewWindowMode,
-        #[doc = "Do not use. Represents that the currently set mode is not supported by\nthe API."]
-        ViewWindowModeUnsupported,
         #[doc = "Follows the min and max exactly if specified. If a value is unspecified,\nit will fall back to the `PRETTY` value."]
         Explicit,
         #[doc = "Chooses a min and max that make the chart look good. Both min and max are\nignored in this mode."]
         Pretty,
+        #[doc = "Do not use. Represents that the currently set mode is not supported by\nthe API."]
+        ViewWindowModeUnsupported,
     }
     impl ChartAxisViewWindowOptionsViewWindowMode {
         pub fn as_str(self) -> &'static str {
@@ -3174,21 +3174,21 @@ pub mod schemas {
                 ChartAxisViewWindowOptionsViewWindowMode::DefaultViewWindowMode => {
                     "DEFAULT_VIEW_WINDOW_MODE"
                 }
+                ChartAxisViewWindowOptionsViewWindowMode::Explicit => "EXPLICIT",
+                ChartAxisViewWindowOptionsViewWindowMode::Pretty => "PRETTY",
                 ChartAxisViewWindowOptionsViewWindowMode::ViewWindowModeUnsupported => {
                     "VIEW_WINDOW_MODE_UNSUPPORTED"
                 }
-                ChartAxisViewWindowOptionsViewWindowMode::Explicit => "EXPLICIT",
-                ChartAxisViewWindowOptionsViewWindowMode::Pretty => "PRETTY",
             }
         }
     }
     impl ::std::fmt::Display for ChartAxisViewWindowOptionsViewWindowMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ChartAxisViewWindowOptionsViewWindowMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3196,7 +3196,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ChartAxisViewWindowOptionsViewWindowMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3205,11 +3205,11 @@ pub mod schemas {
                 "DEFAULT_VIEW_WINDOW_MODE" => {
                     ChartAxisViewWindowOptionsViewWindowMode::DefaultViewWindowMode
                 }
+                "EXPLICIT" => ChartAxisViewWindowOptionsViewWindowMode::Explicit,
+                "PRETTY" => ChartAxisViewWindowOptionsViewWindowMode::Pretty,
                 "VIEW_WINDOW_MODE_UNSUPPORTED" => {
                     ChartAxisViewWindowOptionsViewWindowMode::ViewWindowModeUnsupported
                 }
-                "EXPLICIT" => ChartAxisViewWindowOptionsViewWindowMode::Explicit,
-                "PRETTY" => ChartAxisViewWindowOptionsViewWindowMode::Pretty,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3308,14 +3308,14 @@ pub mod schemas {
     pub enum ChartSpecHiddenDimensionStrategy {
         #[doc = "Default value, do not use."]
         ChartHiddenDimensionStrategyUnspecified,
-        #[doc = "Charts will skip hidden rows and columns."]
-        SkipHiddenRowsAndColumns,
-        #[doc = "Charts will skip hidden rows only."]
-        SkipHiddenRows,
-        #[doc = "Charts will skip hidden columns only."]
-        SkipHiddenColumns,
         #[doc = "Charts will not skip any hidden rows or columns."]
         ShowAll,
+        #[doc = "Charts will skip hidden columns only."]
+        SkipHiddenColumns,
+        #[doc = "Charts will skip hidden rows only."]
+        SkipHiddenRows,
+        #[doc = "Charts will skip hidden rows and columns."]
+        SkipHiddenRowsAndColumns,
     }
     impl ChartSpecHiddenDimensionStrategy {
         pub fn as_str(self) -> &'static str {
@@ -3323,22 +3323,22 @@ pub mod schemas {
                 ChartSpecHiddenDimensionStrategy::ChartHiddenDimensionStrategyUnspecified => {
                     "CHART_HIDDEN_DIMENSION_STRATEGY_UNSPECIFIED"
                 }
+                ChartSpecHiddenDimensionStrategy::ShowAll => "SHOW_ALL",
+                ChartSpecHiddenDimensionStrategy::SkipHiddenColumns => "SKIP_HIDDEN_COLUMNS",
+                ChartSpecHiddenDimensionStrategy::SkipHiddenRows => "SKIP_HIDDEN_ROWS",
                 ChartSpecHiddenDimensionStrategy::SkipHiddenRowsAndColumns => {
                     "SKIP_HIDDEN_ROWS_AND_COLUMNS"
                 }
-                ChartSpecHiddenDimensionStrategy::SkipHiddenRows => "SKIP_HIDDEN_ROWS",
-                ChartSpecHiddenDimensionStrategy::SkipHiddenColumns => "SKIP_HIDDEN_COLUMNS",
-                ChartSpecHiddenDimensionStrategy::ShowAll => "SHOW_ALL",
             }
         }
     }
     impl ::std::fmt::Display for ChartSpecHiddenDimensionStrategy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ChartSpecHiddenDimensionStrategy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3346,7 +3346,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ChartSpecHiddenDimensionStrategy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3355,12 +3355,12 @@ pub mod schemas {
                 "CHART_HIDDEN_DIMENSION_STRATEGY_UNSPECIFIED" => {
                     ChartSpecHiddenDimensionStrategy::ChartHiddenDimensionStrategyUnspecified
                 }
+                "SHOW_ALL" => ChartSpecHiddenDimensionStrategy::ShowAll,
+                "SKIP_HIDDEN_COLUMNS" => ChartSpecHiddenDimensionStrategy::SkipHiddenColumns,
+                "SKIP_HIDDEN_ROWS" => ChartSpecHiddenDimensionStrategy::SkipHiddenRows,
                 "SKIP_HIDDEN_ROWS_AND_COLUMNS" => {
                     ChartSpecHiddenDimensionStrategy::SkipHiddenRowsAndColumns
                 }
-                "SKIP_HIDDEN_ROWS" => ChartSpecHiddenDimensionStrategy::SkipHiddenRows,
-                "SKIP_HIDDEN_COLUMNS" => ChartSpecHiddenDimensionStrategy::SkipHiddenColumns,
-                "SHOW_ALL" => ChartSpecHiddenDimensionStrategy::ShowAll,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3551,41 +3551,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ConditionValueRelativeDate {
-        #[doc = "Default value, do not use."]
-        RelativeDateUnspecified,
-        #[doc = "The value is one year before today."]
-        PastYear,
         #[doc = "The value is one month before today."]
         PastMonth,
         #[doc = "The value is one week before today."]
         PastWeek,
-        #[doc = "The value is yesterday."]
-        Yesterday,
+        #[doc = "The value is one year before today."]
+        PastYear,
+        #[doc = "Default value, do not use."]
+        RelativeDateUnspecified,
         #[doc = "The value is today."]
         Today,
         #[doc = "The value is tomorrow."]
         Tomorrow,
+        #[doc = "The value is yesterday."]
+        Yesterday,
     }
     impl ConditionValueRelativeDate {
         pub fn as_str(self) -> &'static str {
             match self {
-                ConditionValueRelativeDate::RelativeDateUnspecified => "RELATIVE_DATE_UNSPECIFIED",
-                ConditionValueRelativeDate::PastYear => "PAST_YEAR",
                 ConditionValueRelativeDate::PastMonth => "PAST_MONTH",
                 ConditionValueRelativeDate::PastWeek => "PAST_WEEK",
-                ConditionValueRelativeDate::Yesterday => "YESTERDAY",
+                ConditionValueRelativeDate::PastYear => "PAST_YEAR",
+                ConditionValueRelativeDate::RelativeDateUnspecified => "RELATIVE_DATE_UNSPECIFIED",
                 ConditionValueRelativeDate::Today => "TODAY",
                 ConditionValueRelativeDate::Tomorrow => "TOMORROW",
+                ConditionValueRelativeDate::Yesterday => "YESTERDAY",
             }
         }
     }
     impl ::std::fmt::Display for ConditionValueRelativeDate {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ConditionValueRelativeDate {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3593,19 +3593,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ConditionValueRelativeDate {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "RELATIVE_DATE_UNSPECIFIED" => ConditionValueRelativeDate::RelativeDateUnspecified,
-                "PAST_YEAR" => ConditionValueRelativeDate::PastYear,
                 "PAST_MONTH" => ConditionValueRelativeDate::PastMonth,
                 "PAST_WEEK" => ConditionValueRelativeDate::PastWeek,
-                "YESTERDAY" => ConditionValueRelativeDate::Yesterday,
+                "PAST_YEAR" => ConditionValueRelativeDate::PastYear,
+                "RELATIVE_DATE_UNSPECIFIED" => ConditionValueRelativeDate::RelativeDateUnspecified,
                 "TODAY" => ConditionValueRelativeDate::Today,
                 "TOMORROW" => ConditionValueRelativeDate::Tomorrow,
+                "YESTERDAY" => ConditionValueRelativeDate::Yesterday,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3692,12 +3692,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for CopyPasteRequestPasteOrientation {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CopyPasteRequestPasteOrientation {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3705,7 +3705,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CopyPasteRequestPasteOrientation {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -3733,43 +3733,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CopyPasteRequestPasteType {
+        #[doc = "Paste the conditional formatting rules only."]
+        PasteConditionalFormatting,
+        #[doc = "Paste the data validation only."]
+        PasteDataValidation,
+        #[doc = "Paste the format and data validation only."]
+        PasteFormat,
+        #[doc = "Paste the formulas only."]
+        PasteFormula,
+        #[doc = "Like PASTE_NORMAL but without borders."]
+        PasteNoBorders,
         #[doc = "Paste values, formulas, formats, and merges."]
         PasteNormal,
         #[doc = "Paste the values ONLY without formats, formulas, or merges."]
         PasteValues,
-        #[doc = "Paste the format and data validation only."]
-        PasteFormat,
-        #[doc = "Like PASTE_NORMAL but without borders."]
-        PasteNoBorders,
-        #[doc = "Paste the formulas only."]
-        PasteFormula,
-        #[doc = "Paste the data validation only."]
-        PasteDataValidation,
-        #[doc = "Paste the conditional formatting rules only."]
-        PasteConditionalFormatting,
     }
     impl CopyPasteRequestPasteType {
         pub fn as_str(self) -> &'static str {
             match self {
-                CopyPasteRequestPasteType::PasteNormal => "PASTE_NORMAL",
-                CopyPasteRequestPasteType::PasteValues => "PASTE_VALUES",
-                CopyPasteRequestPasteType::PasteFormat => "PASTE_FORMAT",
-                CopyPasteRequestPasteType::PasteNoBorders => "PASTE_NO_BORDERS",
-                CopyPasteRequestPasteType::PasteFormula => "PASTE_FORMULA",
-                CopyPasteRequestPasteType::PasteDataValidation => "PASTE_DATA_VALIDATION",
                 CopyPasteRequestPasteType::PasteConditionalFormatting => {
                     "PASTE_CONDITIONAL_FORMATTING"
                 }
+                CopyPasteRequestPasteType::PasteDataValidation => "PASTE_DATA_VALIDATION",
+                CopyPasteRequestPasteType::PasteFormat => "PASTE_FORMAT",
+                CopyPasteRequestPasteType::PasteFormula => "PASTE_FORMULA",
+                CopyPasteRequestPasteType::PasteNoBorders => "PASTE_NO_BORDERS",
+                CopyPasteRequestPasteType::PasteNormal => "PASTE_NORMAL",
+                CopyPasteRequestPasteType::PasteValues => "PASTE_VALUES",
             }
         }
     }
     impl ::std::fmt::Display for CopyPasteRequestPasteType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CopyPasteRequestPasteType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3777,21 +3777,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CopyPasteRequestPasteType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PASTE_NORMAL" => CopyPasteRequestPasteType::PasteNormal,
-                "PASTE_VALUES" => CopyPasteRequestPasteType::PasteValues,
-                "PASTE_FORMAT" => CopyPasteRequestPasteType::PasteFormat,
-                "PASTE_NO_BORDERS" => CopyPasteRequestPasteType::PasteNoBorders,
-                "PASTE_FORMULA" => CopyPasteRequestPasteType::PasteFormula,
-                "PASTE_DATA_VALIDATION" => CopyPasteRequestPasteType::PasteDataValidation,
                 "PASTE_CONDITIONAL_FORMATTING" => {
                     CopyPasteRequestPasteType::PasteConditionalFormatting
                 }
+                "PASTE_DATA_VALIDATION" => CopyPasteRequestPasteType::PasteDataValidation,
+                "PASTE_FORMAT" => CopyPasteRequestPasteType::PasteFormat,
+                "PASTE_FORMULA" => CopyPasteRequestPasteType::PasteFormula,
+                "PASTE_NO_BORDERS" => CopyPasteRequestPasteType::PasteNoBorders,
+                "PASTE_NORMAL" => CopyPasteRequestPasteType::PasteNormal,
+                "PASTE_VALUES" => CopyPasteRequestPasteType::PasteValues,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3926,43 +3926,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CutPasteRequestPasteType {
+        #[doc = "Paste the conditional formatting rules only."]
+        PasteConditionalFormatting,
+        #[doc = "Paste the data validation only."]
+        PasteDataValidation,
+        #[doc = "Paste the format and data validation only."]
+        PasteFormat,
+        #[doc = "Paste the formulas only."]
+        PasteFormula,
+        #[doc = "Like PASTE_NORMAL but without borders."]
+        PasteNoBorders,
         #[doc = "Paste values, formulas, formats, and merges."]
         PasteNormal,
         #[doc = "Paste the values ONLY without formats, formulas, or merges."]
         PasteValues,
-        #[doc = "Paste the format and data validation only."]
-        PasteFormat,
-        #[doc = "Like PASTE_NORMAL but without borders."]
-        PasteNoBorders,
-        #[doc = "Paste the formulas only."]
-        PasteFormula,
-        #[doc = "Paste the data validation only."]
-        PasteDataValidation,
-        #[doc = "Paste the conditional formatting rules only."]
-        PasteConditionalFormatting,
     }
     impl CutPasteRequestPasteType {
         pub fn as_str(self) -> &'static str {
             match self {
-                CutPasteRequestPasteType::PasteNormal => "PASTE_NORMAL",
-                CutPasteRequestPasteType::PasteValues => "PASTE_VALUES",
-                CutPasteRequestPasteType::PasteFormat => "PASTE_FORMAT",
-                CutPasteRequestPasteType::PasteNoBorders => "PASTE_NO_BORDERS",
-                CutPasteRequestPasteType::PasteFormula => "PASTE_FORMULA",
-                CutPasteRequestPasteType::PasteDataValidation => "PASTE_DATA_VALIDATION",
                 CutPasteRequestPasteType::PasteConditionalFormatting => {
                     "PASTE_CONDITIONAL_FORMATTING"
                 }
+                CutPasteRequestPasteType::PasteDataValidation => "PASTE_DATA_VALIDATION",
+                CutPasteRequestPasteType::PasteFormat => "PASTE_FORMAT",
+                CutPasteRequestPasteType::PasteFormula => "PASTE_FORMULA",
+                CutPasteRequestPasteType::PasteNoBorders => "PASTE_NO_BORDERS",
+                CutPasteRequestPasteType::PasteNormal => "PASTE_NORMAL",
+                CutPasteRequestPasteType::PasteValues => "PASTE_VALUES",
             }
         }
     }
     impl ::std::fmt::Display for CutPasteRequestPasteType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for CutPasteRequestPasteType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -3970,21 +3970,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for CutPasteRequestPasteType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PASTE_NORMAL" => CutPasteRequestPasteType::PasteNormal,
-                "PASTE_VALUES" => CutPasteRequestPasteType::PasteValues,
-                "PASTE_FORMAT" => CutPasteRequestPasteType::PasteFormat,
-                "PASTE_NO_BORDERS" => CutPasteRequestPasteType::PasteNoBorders,
-                "PASTE_FORMULA" => CutPasteRequestPasteType::PasteFormula,
-                "PASTE_DATA_VALIDATION" => CutPasteRequestPasteType::PasteDataValidation,
                 "PASTE_CONDITIONAL_FORMATTING" => {
                     CutPasteRequestPasteType::PasteConditionalFormatting
                 }
+                "PASTE_DATA_VALIDATION" => CutPasteRequestPasteType::PasteDataValidation,
+                "PASTE_FORMAT" => CutPasteRequestPasteType::PasteFormat,
+                "PASTE_FORMULA" => CutPasteRequestPasteType::PasteFormula,
+                "PASTE_NO_BORDERS" => CutPasteRequestPasteType::PasteNoBorders,
+                "PASTE_NORMAL" => CutPasteRequestPasteType::PasteNormal,
+                "PASTE_VALUES" => CutPasteRequestPasteType::PasteValues,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4070,29 +4070,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataFilterValueRangeMajorDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl DataFilterValueRangeMajorDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                DataFilterValueRangeMajorDimension::Columns => "COLUMNS",
                 DataFilterValueRangeMajorDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 DataFilterValueRangeMajorDimension::Rows => "ROWS",
-                DataFilterValueRangeMajorDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for DataFilterValueRangeMajorDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DataFilterValueRangeMajorDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4100,15 +4100,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DataFilterValueRangeMajorDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => DataFilterValueRangeMajorDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => DataFilterValueRangeMajorDimension::DimensionUnspecified,
                 "ROWS" => DataFilterValueRangeMajorDimension::Rows,
-                "COLUMNS" => DataFilterValueRangeMajorDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4188,66 +4188,66 @@ pub mod schemas {
     pub enum DateTimeRuleType {
         #[doc = "The default type, do not use."]
         DateTimeRuleTypeUnspecified,
-        #[doc = "Group dates by second, from 0 to 59."]
-        Second,
-        #[doc = "Group dates by minute, from 0 to 59."]
-        Minute,
+        #[doc = "Group dates by day and month, for example 22-Nov. The month is\ntranslated based on the spreadsheet locale."]
+        DayMonth,
+        #[doc = "Group dates by day of month, from 1 to 31."]
+        DayOfMonth,
+        #[doc = "Group dates by day of week, for example Sunday. The days of the week will\nbe translated based on the spreadsheet locale."]
+        DayOfWeek,
+        #[doc = "Group dates by day of year, from 1 to 366. Note that dates after Feb. 29\nfall in different buckets in leap years than in non-leap years."]
+        DayOfYear,
         #[doc = "Group dates by hour using a 24-hour system, from 0 to 23."]
         Hour,
         #[doc = "Group dates by hour and minute using a 24-hour system, for example 19:45."]
         HourMinute,
         #[doc = "Group dates by hour and minute using a 12-hour system, for example 7:45\nPM. The AM/PM designation is translated based on the spreadsheet\nlocale."]
         HourMinuteAmpm,
-        #[doc = "Group dates by day of week, for example Sunday. The days of the week will\nbe translated based on the spreadsheet locale."]
-        DayOfWeek,
-        #[doc = "Group dates by day of year, from 1 to 366. Note that dates after Feb. 29\nfall in different buckets in leap years than in non-leap years."]
-        DayOfYear,
-        #[doc = "Group dates by day of month, from 1 to 31."]
-        DayOfMonth,
-        #[doc = "Group dates by day and month, for example 22-Nov. The month is\ntranslated based on the spreadsheet locale."]
-        DayMonth,
+        #[doc = "Group dates by minute, from 0 to 59."]
+        Minute,
         #[doc = "Group dates by month, for example Nov. The month is translated based\non the spreadsheet locale."]
         Month,
         #[doc = "Group dates by quarter, for example Q1 (which represents Jan-Mar)."]
         Quarter,
+        #[doc = "Group dates by second, from 0 to 59."]
+        Second,
         #[doc = "Group dates by year, for example 2008."]
         Year,
         #[doc = "Group dates by year and month, for example 2008-Nov. The month is\ntranslated based on the spreadsheet locale."]
         YearMonth,
-        #[doc = "Group dates by year and quarter, for example 2008 Q4."]
-        YearQuarter,
         #[doc = "Group dates by year, month, and day, for example 2008-11-22."]
         YearMonthDay,
+        #[doc = "Group dates by year and quarter, for example 2008 Q4."]
+        YearQuarter,
     }
     impl DateTimeRuleType {
         pub fn as_str(self) -> &'static str {
             match self {
                 DateTimeRuleType::DateTimeRuleTypeUnspecified => "DATE_TIME_RULE_TYPE_UNSPECIFIED",
-                DateTimeRuleType::Second => "SECOND",
-                DateTimeRuleType::Minute => "MINUTE",
+                DateTimeRuleType::DayMonth => "DAY_MONTH",
+                DateTimeRuleType::DayOfMonth => "DAY_OF_MONTH",
+                DateTimeRuleType::DayOfWeek => "DAY_OF_WEEK",
+                DateTimeRuleType::DayOfYear => "DAY_OF_YEAR",
                 DateTimeRuleType::Hour => "HOUR",
                 DateTimeRuleType::HourMinute => "HOUR_MINUTE",
                 DateTimeRuleType::HourMinuteAmpm => "HOUR_MINUTE_AMPM",
-                DateTimeRuleType::DayOfWeek => "DAY_OF_WEEK",
-                DateTimeRuleType::DayOfYear => "DAY_OF_YEAR",
-                DateTimeRuleType::DayOfMonth => "DAY_OF_MONTH",
-                DateTimeRuleType::DayMonth => "DAY_MONTH",
+                DateTimeRuleType::Minute => "MINUTE",
                 DateTimeRuleType::Month => "MONTH",
                 DateTimeRuleType::Quarter => "QUARTER",
+                DateTimeRuleType::Second => "SECOND",
                 DateTimeRuleType::Year => "YEAR",
                 DateTimeRuleType::YearMonth => "YEAR_MONTH",
-                DateTimeRuleType::YearQuarter => "YEAR_QUARTER",
                 DateTimeRuleType::YearMonthDay => "YEAR_MONTH_DAY",
+                DateTimeRuleType::YearQuarter => "YEAR_QUARTER",
             }
         }
     }
     impl ::std::fmt::Display for DateTimeRuleType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DateTimeRuleType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4255,28 +4255,28 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DateTimeRuleType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DATE_TIME_RULE_TYPE_UNSPECIFIED" => DateTimeRuleType::DateTimeRuleTypeUnspecified,
-                "SECOND" => DateTimeRuleType::Second,
-                "MINUTE" => DateTimeRuleType::Minute,
+                "DAY_MONTH" => DateTimeRuleType::DayMonth,
+                "DAY_OF_MONTH" => DateTimeRuleType::DayOfMonth,
+                "DAY_OF_WEEK" => DateTimeRuleType::DayOfWeek,
+                "DAY_OF_YEAR" => DateTimeRuleType::DayOfYear,
                 "HOUR" => DateTimeRuleType::Hour,
                 "HOUR_MINUTE" => DateTimeRuleType::HourMinute,
                 "HOUR_MINUTE_AMPM" => DateTimeRuleType::HourMinuteAmpm,
-                "DAY_OF_WEEK" => DateTimeRuleType::DayOfWeek,
-                "DAY_OF_YEAR" => DateTimeRuleType::DayOfYear,
-                "DAY_OF_MONTH" => DateTimeRuleType::DayOfMonth,
-                "DAY_MONTH" => DateTimeRuleType::DayMonth,
+                "MINUTE" => DateTimeRuleType::Minute,
                 "MONTH" => DateTimeRuleType::Month,
                 "QUARTER" => DateTimeRuleType::Quarter,
+                "SECOND" => DateTimeRuleType::Second,
                 "YEAR" => DateTimeRuleType::Year,
                 "YEAR_MONTH" => DateTimeRuleType::YearMonth,
-                "YEAR_QUARTER" => DateTimeRuleType::YearQuarter,
                 "YEAR_MONTH_DAY" => DateTimeRuleType::YearMonthDay,
+                "YEAR_QUARTER" => DateTimeRuleType::YearQuarter,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4685,29 +4685,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeleteRangeRequestShiftDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl DeleteRangeRequestShiftDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                DeleteRangeRequestShiftDimension::Columns => "COLUMNS",
                 DeleteRangeRequestShiftDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 DeleteRangeRequestShiftDimension::Rows => "ROWS",
-                DeleteRangeRequestShiftDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for DeleteRangeRequestShiftDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeleteRangeRequestShiftDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4715,15 +4715,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeleteRangeRequestShiftDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => DeleteRangeRequestShiftDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => DeleteRangeRequestShiftDimension::DimensionUnspecified,
                 "ROWS" => DeleteRangeRequestShiftDimension::Rows,
-                "COLUMNS" => DeleteRangeRequestShiftDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4819,12 +4819,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeveloperMetadataVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4832,7 +4832,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeveloperMetadataVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -4901,12 +4901,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeveloperMetadataLocationLocationType {
+        #[doc = "Developer metadata associated on an entire column dimension."]
+        Column,
         #[doc = "Default value."]
         DeveloperMetadataLocationTypeUnspecified,
         #[doc = "Developer metadata associated on an entire row dimension."]
         Row,
-        #[doc = "Developer metadata associated on an entire column dimension."]
-        Column,
         #[doc = "Developer metadata associated on an entire sheet."]
         Sheet,
         #[doc = "Developer metadata associated on the entire spreadsheet."]
@@ -4915,23 +4915,23 @@ pub mod schemas {
     impl DeveloperMetadataLocationLocationType {
         pub fn as_str(self) -> &'static str {
             match self {
+                DeveloperMetadataLocationLocationType::Column => "COLUMN",
                 DeveloperMetadataLocationLocationType::DeveloperMetadataLocationTypeUnspecified => {
                     "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED"
                 }
                 DeveloperMetadataLocationLocationType::Row => "ROW",
-                DeveloperMetadataLocationLocationType::Column => "COLUMN",
                 DeveloperMetadataLocationLocationType::Sheet => "SHEET",
                 DeveloperMetadataLocationLocationType::Spreadsheet => "SPREADSHEET",
             }
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataLocationLocationType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeveloperMetadataLocationLocationType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -4939,17 +4939,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeveloperMetadataLocationLocationType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMN" => DeveloperMetadataLocationLocationType::Column,
                 "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" => {
                     DeveloperMetadataLocationLocationType::DeveloperMetadataLocationTypeUnspecified
                 }
                 "ROW" => DeveloperMetadataLocationLocationType::Row,
-                "COLUMN" => DeveloperMetadataLocationLocationType::Column,
                 "SHEET" => DeveloperMetadataLocationLocationType::Sheet,
                 "SPREADSHEET" => DeveloperMetadataLocationLocationType::Spreadsheet,
                 _ => {
@@ -5021,12 +5021,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataLookupLocationMatchingStrategy {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeveloperMetadataLookupLocationMatchingStrategy {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5034,7 +5034,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeveloperMetadataLookupLocationMatchingStrategy {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5053,12 +5053,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeveloperMetadataLookupLocationType {
+        #[doc = "Developer metadata associated on an entire column dimension."]
+        Column,
         #[doc = "Default value."]
         DeveloperMetadataLocationTypeUnspecified,
         #[doc = "Developer metadata associated on an entire row dimension."]
         Row,
-        #[doc = "Developer metadata associated on an entire column dimension."]
-        Column,
         #[doc = "Developer metadata associated on an entire sheet."]
         Sheet,
         #[doc = "Developer metadata associated on the entire spreadsheet."]
@@ -5067,23 +5067,23 @@ pub mod schemas {
     impl DeveloperMetadataLookupLocationType {
         pub fn as_str(self) -> &'static str {
             match self {
+                DeveloperMetadataLookupLocationType::Column => "COLUMN",
                 DeveloperMetadataLookupLocationType::DeveloperMetadataLocationTypeUnspecified => {
                     "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED"
                 }
                 DeveloperMetadataLookupLocationType::Row => "ROW",
-                DeveloperMetadataLookupLocationType::Column => "COLUMN",
                 DeveloperMetadataLookupLocationType::Sheet => "SHEET",
                 DeveloperMetadataLookupLocationType::Spreadsheet => "SPREADSHEET",
             }
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataLookupLocationType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeveloperMetadataLookupLocationType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5091,17 +5091,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeveloperMetadataLookupLocationType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMN" => DeveloperMetadataLookupLocationType::Column,
                 "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" => {
                     DeveloperMetadataLookupLocationType::DeveloperMetadataLocationTypeUnspecified
                 }
                 "ROW" => DeveloperMetadataLookupLocationType::Row,
-                "COLUMN" => DeveloperMetadataLookupLocationType::Column,
                 "SHEET" => DeveloperMetadataLookupLocationType::Sheet,
                 "SPREADSHEET" => DeveloperMetadataLookupLocationType::Spreadsheet,
                 _ => {
@@ -5143,12 +5143,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataLookupVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DeveloperMetadataLookupVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5156,7 +5156,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DeveloperMetadataLookupVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -5300,29 +5300,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionRangeDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl DimensionRangeDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                DimensionRangeDimension::Columns => "COLUMNS",
                 DimensionRangeDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 DimensionRangeDimension::Rows => "ROWS",
-                DimensionRangeDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for DimensionRangeDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for DimensionRangeDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5330,15 +5330,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for DimensionRangeDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => DimensionRangeDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => DimensionRangeDimension::DimensionUnspecified,
                 "ROWS" => DimensionRangeDimension::Rows,
-                "COLUMNS" => DimensionRangeDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5585,50 +5585,50 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ErrorValueType {
-        #[doc = "The default error type, do not use this."]
-        ErrorTypeUnspecified,
-        #[doc = "Corresponds to the `#ERROR!` error."]
-        Error,
-        #[doc = "Corresponds to the `#NULL!` error."]
-        NullValue,
         #[doc = "Corresponds to the `#DIV/0` error."]
         DivideByZero,
-        #[doc = "Corresponds to the `#VALUE!` error."]
-        Value,
-        #[doc = "Corresponds to the `#REF!` error."]
-        Ref,
-        #[doc = "Corresponds to the `#NAME?` error."]
-        Name,
-        #[doc = "Corresponds to the `#NUM`! error."]
-        Num,
-        #[doc = "Corresponds to the `#N/A` error."]
-        NA,
+        #[doc = "Corresponds to the `#ERROR!` error."]
+        Error,
+        #[doc = "The default error type, do not use this."]
+        ErrorTypeUnspecified,
         #[doc = "Corresponds to the `Loading...` state."]
         Loading,
+        #[doc = "Corresponds to the `#N/A` error."]
+        NA,
+        #[doc = "Corresponds to the `#NAME?` error."]
+        Name,
+        #[doc = "Corresponds to the `#NULL!` error."]
+        NullValue,
+        #[doc = "Corresponds to the `#NUM`! error."]
+        Num,
+        #[doc = "Corresponds to the `#REF!` error."]
+        Ref,
+        #[doc = "Corresponds to the `#VALUE!` error."]
+        Value,
     }
     impl ErrorValueType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ErrorValueType::ErrorTypeUnspecified => "ERROR_TYPE_UNSPECIFIED",
-                ErrorValueType::Error => "ERROR",
-                ErrorValueType::NullValue => "NULL_VALUE",
                 ErrorValueType::DivideByZero => "DIVIDE_BY_ZERO",
-                ErrorValueType::Value => "VALUE",
-                ErrorValueType::Ref => "REF",
-                ErrorValueType::Name => "NAME",
-                ErrorValueType::Num => "NUM",
-                ErrorValueType::NA => "N_A",
+                ErrorValueType::Error => "ERROR",
+                ErrorValueType::ErrorTypeUnspecified => "ERROR_TYPE_UNSPECIFIED",
                 ErrorValueType::Loading => "LOADING",
+                ErrorValueType::NA => "N_A",
+                ErrorValueType::Name => "NAME",
+                ErrorValueType::NullValue => "NULL_VALUE",
+                ErrorValueType::Num => "NUM",
+                ErrorValueType::Ref => "REF",
+                ErrorValueType::Value => "VALUE",
             }
         }
     }
     impl ::std::fmt::Display for ErrorValueType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ErrorValueType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -5636,22 +5636,22 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ErrorValueType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ERROR_TYPE_UNSPECIFIED" => ErrorValueType::ErrorTypeUnspecified,
-                "ERROR" => ErrorValueType::Error,
-                "NULL_VALUE" => ErrorValueType::NullValue,
                 "DIVIDE_BY_ZERO" => ErrorValueType::DivideByZero,
-                "VALUE" => ErrorValueType::Value,
-                "REF" => ErrorValueType::Ref,
-                "NAME" => ErrorValueType::Name,
-                "NUM" => ErrorValueType::Num,
-                "N_A" => ErrorValueType::NA,
+                "ERROR" => ErrorValueType::Error,
+                "ERROR_TYPE_UNSPECIFIED" => ErrorValueType::ErrorTypeUnspecified,
                 "LOADING" => ErrorValueType::Loading,
+                "N_A" => ErrorValueType::NA,
+                "NAME" => ErrorValueType::Name,
+                "NULL_VALUE" => ErrorValueType::NullValue,
+                "NUM" => ErrorValueType::Num,
+                "REF" => ErrorValueType::Ref,
+                "VALUE" => ErrorValueType::Value,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6085,43 +6085,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum HistogramChartSpecLegendPosition {
-        #[doc = "Default value, do not use."]
-        HistogramChartLegendPositionUnspecified,
         #[doc = "The legend is rendered on the bottom of the chart."]
         BottomLegend,
+        #[doc = "Default value, do not use."]
+        HistogramChartLegendPositionUnspecified,
+        #[doc = "The legend is rendered inside the chart area."]
+        InsideLegend,
         #[doc = "The legend is rendered on the left of the chart."]
         LeftLegend,
+        #[doc = "No legend is rendered."]
+        NoLegend,
         #[doc = "The legend is rendered on the right of the chart."]
         RightLegend,
         #[doc = "The legend is rendered on the top of the chart."]
         TopLegend,
-        #[doc = "No legend is rendered."]
-        NoLegend,
-        #[doc = "The legend is rendered inside the chart area."]
-        InsideLegend,
     }
     impl HistogramChartSpecLegendPosition {
         pub fn as_str(self) -> &'static str {
             match self {
+                HistogramChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
                 HistogramChartSpecLegendPosition::HistogramChartLegendPositionUnspecified => {
                     "HISTOGRAM_CHART_LEGEND_POSITION_UNSPECIFIED"
                 }
-                HistogramChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
+                HistogramChartSpecLegendPosition::InsideLegend => "INSIDE_LEGEND",
                 HistogramChartSpecLegendPosition::LeftLegend => "LEFT_LEGEND",
+                HistogramChartSpecLegendPosition::NoLegend => "NO_LEGEND",
                 HistogramChartSpecLegendPosition::RightLegend => "RIGHT_LEGEND",
                 HistogramChartSpecLegendPosition::TopLegend => "TOP_LEGEND",
-                HistogramChartSpecLegendPosition::NoLegend => "NO_LEGEND",
-                HistogramChartSpecLegendPosition::InsideLegend => "INSIDE_LEGEND",
             }
         }
     }
     impl ::std::fmt::Display for HistogramChartSpecLegendPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for HistogramChartSpecLegendPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6129,21 +6129,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for HistogramChartSpecLegendPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM_LEGEND" => HistogramChartSpecLegendPosition::BottomLegend,
                 "HISTOGRAM_CHART_LEGEND_POSITION_UNSPECIFIED" => {
                     HistogramChartSpecLegendPosition::HistogramChartLegendPositionUnspecified
                 }
-                "BOTTOM_LEGEND" => HistogramChartSpecLegendPosition::BottomLegend,
+                "INSIDE_LEGEND" => HistogramChartSpecLegendPosition::InsideLegend,
                 "LEFT_LEGEND" => HistogramChartSpecLegendPosition::LeftLegend,
+                "NO_LEGEND" => HistogramChartSpecLegendPosition::NoLegend,
                 "RIGHT_LEGEND" => HistogramChartSpecLegendPosition::RightLegend,
                 "TOP_LEGEND" => HistogramChartSpecLegendPosition::TopLegend,
-                "NO_LEGEND" => HistogramChartSpecLegendPosition::NoLegend,
-                "INSIDE_LEGEND" => HistogramChartSpecLegendPosition::InsideLegend,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6266,29 +6266,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InsertRangeRequestShiftDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl InsertRangeRequestShiftDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                InsertRangeRequestShiftDimension::Columns => "COLUMNS",
                 InsertRangeRequestShiftDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 InsertRangeRequestShiftDimension::Rows => "ROWS",
-                InsertRangeRequestShiftDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for InsertRangeRequestShiftDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for InsertRangeRequestShiftDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6296,15 +6296,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for InsertRangeRequestShiftDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => InsertRangeRequestShiftDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => InsertRangeRequestShiftDimension::DimensionUnspecified,
                 "ROWS" => InsertRangeRequestShiftDimension::Rows,
-                "COLUMNS" => InsertRangeRequestShiftDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6357,10 +6357,10 @@ pub mod schemas {
     pub enum InterpolationPointType {
         #[doc = "The default value, do not use."]
         InterpolationPointTypeUnspecified,
-        #[doc = "The interpolation point uses the minimum value in the\ncells over the range of the conditional format."]
-        Min,
         #[doc = "The interpolation point uses the maximum value in the\ncells over the range of the conditional format."]
         Max,
+        #[doc = "The interpolation point uses the minimum value in the\ncells over the range of the conditional format."]
+        Min,
         #[doc = "The interpolation point uses exactly the value in\nInterpolationPoint.value."]
         Number,
         #[doc = "The interpolation point is the given percentage over\nall the cells in the range of the conditional format.\nThis is equivalent to NUMBER if the value was:\n`=(MAX(FLATTEN(range)) * (value / 100)) + (MIN(FLATTEN(range)) * (1 - (value / 100)))`\n(where errors in the range are ignored when flattening)."]
@@ -6374,8 +6374,8 @@ pub mod schemas {
                 InterpolationPointType::InterpolationPointTypeUnspecified => {
                     "INTERPOLATION_POINT_TYPE_UNSPECIFIED"
                 }
-                InterpolationPointType::Min => "MIN",
                 InterpolationPointType::Max => "MAX",
+                InterpolationPointType::Min => "MIN",
                 InterpolationPointType::Number => "NUMBER",
                 InterpolationPointType::Percent => "PERCENT",
                 InterpolationPointType::Percentile => "PERCENTILE",
@@ -6383,12 +6383,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for InterpolationPointType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for InterpolationPointType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6396,7 +6396,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for InterpolationPointType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -6405,8 +6405,8 @@ pub mod schemas {
                 "INTERPOLATION_POINT_TYPE_UNSPECIFIED" => {
                     InterpolationPointType::InterpolationPointTypeUnspecified
                 }
-                "MIN" => InterpolationPointType::Min,
                 "MAX" => InterpolationPointType::Max,
+                "MIN" => InterpolationPointType::Min,
                 "NUMBER" => InterpolationPointType::Number,
                 "PERCENT" => InterpolationPointType::Percent,
                 "PERCENTILE" => InterpolationPointType::Percentile,
@@ -6473,47 +6473,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LineStyleType {
-        #[doc = "Default value, do not use."]
-        LineDashTypeUnspecified,
-        #[doc = "No dash type, which is equivalent to a non-visible line."]
-        Invisible,
         #[doc = "A custom dash for a line. Modifying the exact custom dash style is\ncurrently unsupported."]
         Custom,
-        #[doc = "A solid line."]
-        Solid,
         #[doc = "A dotted line."]
         Dotted,
-        #[doc = "A dashed line where the dashes have \"medium\" length."]
-        MediumDashed,
-        #[doc = "A line that alternates between a \"medium\" dash and a dot."]
-        MediumDashedDotted,
+        #[doc = "No dash type, which is equivalent to a non-visible line."]
+        Invisible,
+        #[doc = "Default value, do not use."]
+        LineDashTypeUnspecified,
         #[doc = "A dashed line where the dashes have \"long\" length."]
         LongDashed,
         #[doc = "A line that alternates between a \"long\" dash and a dot."]
         LongDashedDotted,
+        #[doc = "A dashed line where the dashes have \"medium\" length."]
+        MediumDashed,
+        #[doc = "A line that alternates between a \"medium\" dash and a dot."]
+        MediumDashedDotted,
+        #[doc = "A solid line."]
+        Solid,
     }
     impl LineStyleType {
         pub fn as_str(self) -> &'static str {
             match self {
-                LineStyleType::LineDashTypeUnspecified => "LINE_DASH_TYPE_UNSPECIFIED",
-                LineStyleType::Invisible => "INVISIBLE",
                 LineStyleType::Custom => "CUSTOM",
-                LineStyleType::Solid => "SOLID",
                 LineStyleType::Dotted => "DOTTED",
-                LineStyleType::MediumDashed => "MEDIUM_DASHED",
-                LineStyleType::MediumDashedDotted => "MEDIUM_DASHED_DOTTED",
+                LineStyleType::Invisible => "INVISIBLE",
+                LineStyleType::LineDashTypeUnspecified => "LINE_DASH_TYPE_UNSPECIFIED",
                 LineStyleType::LongDashed => "LONG_DASHED",
                 LineStyleType::LongDashedDotted => "LONG_DASHED_DOTTED",
+                LineStyleType::MediumDashed => "MEDIUM_DASHED",
+                LineStyleType::MediumDashedDotted => "MEDIUM_DASHED_DOTTED",
+                LineStyleType::Solid => "SOLID",
             }
         }
     }
     impl ::std::fmt::Display for LineStyleType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for LineStyleType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6521,21 +6521,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for LineStyleType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "LINE_DASH_TYPE_UNSPECIFIED" => LineStyleType::LineDashTypeUnspecified,
-                "INVISIBLE" => LineStyleType::Invisible,
                 "CUSTOM" => LineStyleType::Custom,
-                "SOLID" => LineStyleType::Solid,
                 "DOTTED" => LineStyleType::Dotted,
-                "MEDIUM_DASHED" => LineStyleType::MediumDashed,
-                "MEDIUM_DASHED_DOTTED" => LineStyleType::MediumDashedDotted,
+                "INVISIBLE" => LineStyleType::Invisible,
+                "LINE_DASH_TYPE_UNSPECIFIED" => LineStyleType::LineDashTypeUnspecified,
                 "LONG_DASHED" => LineStyleType::LongDashed,
                 "LONG_DASHED_DOTTED" => LineStyleType::LongDashedDotted,
+                "MEDIUM_DASHED" => LineStyleType::MediumDashed,
+                "MEDIUM_DASHED_DOTTED" => LineStyleType::MediumDashedDotted,
+                "SOLID" => LineStyleType::Solid,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6686,12 +6686,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for MergeCellsRequestMergeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for MergeCellsRequestMergeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6699,7 +6699,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for MergeCellsRequestMergeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -6818,47 +6818,47 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NumberFormatType {
-        #[doc = "The number format is not specified\nand is based on the contents of the cell.\nDo not explicitly use this."]
-        NumberFormatTypeUnspecified,
-        #[doc = "Text formatting, e.g `1000.12`"]
-        Text,
-        #[doc = "Number formatting, e.g, `1,000.12`"]
-        Number,
-        #[doc = "Percent formatting, e.g `10.12%`"]
-        Percent,
         #[doc = "Currency formatting, e.g `$1,000.12`"]
         Currency,
         #[doc = "Date formatting, e.g `9/26/2008`"]
         Date,
-        #[doc = "Time formatting, e.g `3:59:00 PM`"]
-        Time,
         #[doc = "Date+Time formatting, e.g `9/26/08 15:59:00`"]
         DateTime,
+        #[doc = "Number formatting, e.g, `1,000.12`"]
+        Number,
+        #[doc = "The number format is not specified\nand is based on the contents of the cell.\nDo not explicitly use this."]
+        NumberFormatTypeUnspecified,
+        #[doc = "Percent formatting, e.g `10.12%`"]
+        Percent,
         #[doc = "Scientific number formatting, e.g `1.01E+03`"]
         Scientific,
+        #[doc = "Text formatting, e.g `1000.12`"]
+        Text,
+        #[doc = "Time formatting, e.g `3:59:00 PM`"]
+        Time,
     }
     impl NumberFormatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                NumberFormatType::NumberFormatTypeUnspecified => "NUMBER_FORMAT_TYPE_UNSPECIFIED",
-                NumberFormatType::Text => "TEXT",
-                NumberFormatType::Number => "NUMBER",
-                NumberFormatType::Percent => "PERCENT",
                 NumberFormatType::Currency => "CURRENCY",
                 NumberFormatType::Date => "DATE",
-                NumberFormatType::Time => "TIME",
                 NumberFormatType::DateTime => "DATE_TIME",
+                NumberFormatType::Number => "NUMBER",
+                NumberFormatType::NumberFormatTypeUnspecified => "NUMBER_FORMAT_TYPE_UNSPECIFIED",
+                NumberFormatType::Percent => "PERCENT",
                 NumberFormatType::Scientific => "SCIENTIFIC",
+                NumberFormatType::Text => "TEXT",
+                NumberFormatType::Time => "TIME",
             }
         }
     }
     impl ::std::fmt::Display for NumberFormatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for NumberFormatType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6866,21 +6866,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for NumberFormatType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "NUMBER_FORMAT_TYPE_UNSPECIFIED" => NumberFormatType::NumberFormatTypeUnspecified,
-                "TEXT" => NumberFormatType::Text,
-                "NUMBER" => NumberFormatType::Number,
-                "PERCENT" => NumberFormatType::Percent,
                 "CURRENCY" => NumberFormatType::Currency,
                 "DATE" => NumberFormatType::Date,
-                "TIME" => NumberFormatType::Time,
                 "DATE_TIME" => NumberFormatType::DateTime,
+                "NUMBER" => NumberFormatType::Number,
+                "NUMBER_FORMAT_TYPE_UNSPECIFIED" => NumberFormatType::NumberFormatTypeUnspecified,
+                "PERCENT" => NumberFormatType::Percent,
                 "SCIENTIFIC" => NumberFormatType::Scientific,
+                "TEXT" => NumberFormatType::Text,
+                "TIME" => NumberFormatType::Time,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6930,34 +6930,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OrgChartSpecNodeSize {
+        #[doc = "The large org chart node size."]
+        Large,
+        #[doc = "The medium org chart node size."]
+        Medium,
         #[doc = "Default value, do not use."]
         OrgChartLabelSizeUnspecified,
         #[doc = "The small org chart node size."]
         Small,
-        #[doc = "The medium org chart node size."]
-        Medium,
-        #[doc = "The large org chart node size."]
-        Large,
     }
     impl OrgChartSpecNodeSize {
         pub fn as_str(self) -> &'static str {
             match self {
+                OrgChartSpecNodeSize::Large => "LARGE",
+                OrgChartSpecNodeSize::Medium => "MEDIUM",
                 OrgChartSpecNodeSize::OrgChartLabelSizeUnspecified => {
                     "ORG_CHART_LABEL_SIZE_UNSPECIFIED"
                 }
                 OrgChartSpecNodeSize::Small => "SMALL",
-                OrgChartSpecNodeSize::Medium => "MEDIUM",
-                OrgChartSpecNodeSize::Large => "LARGE",
             }
         }
     }
     impl ::std::fmt::Display for OrgChartSpecNodeSize {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for OrgChartSpecNodeSize {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -6965,18 +6965,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for OrgChartSpecNodeSize {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "LARGE" => OrgChartSpecNodeSize::Large,
+                "MEDIUM" => OrgChartSpecNodeSize::Medium,
                 "ORG_CHART_LABEL_SIZE_UNSPECIFIED" => {
                     OrgChartSpecNodeSize::OrgChartLabelSizeUnspecified
                 }
                 "SMALL" => OrgChartSpecNodeSize::Small,
-                "MEDIUM" => OrgChartSpecNodeSize::Medium,
-                "LARGE" => OrgChartSpecNodeSize::Large,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7102,41 +7102,41 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PasteDataRequestType {
+        #[doc = "Paste the conditional formatting rules only."]
+        PasteConditionalFormatting,
+        #[doc = "Paste the data validation only."]
+        PasteDataValidation,
+        #[doc = "Paste the format and data validation only."]
+        PasteFormat,
+        #[doc = "Paste the formulas only."]
+        PasteFormula,
+        #[doc = "Like PASTE_NORMAL but without borders."]
+        PasteNoBorders,
         #[doc = "Paste values, formulas, formats, and merges."]
         PasteNormal,
         #[doc = "Paste the values ONLY without formats, formulas, or merges."]
         PasteValues,
-        #[doc = "Paste the format and data validation only."]
-        PasteFormat,
-        #[doc = "Like PASTE_NORMAL but without borders."]
-        PasteNoBorders,
-        #[doc = "Paste the formulas only."]
-        PasteFormula,
-        #[doc = "Paste the data validation only."]
-        PasteDataValidation,
-        #[doc = "Paste the conditional formatting rules only."]
-        PasteConditionalFormatting,
     }
     impl PasteDataRequestType {
         pub fn as_str(self) -> &'static str {
             match self {
+                PasteDataRequestType::PasteConditionalFormatting => "PASTE_CONDITIONAL_FORMATTING",
+                PasteDataRequestType::PasteDataValidation => "PASTE_DATA_VALIDATION",
+                PasteDataRequestType::PasteFormat => "PASTE_FORMAT",
+                PasteDataRequestType::PasteFormula => "PASTE_FORMULA",
+                PasteDataRequestType::PasteNoBorders => "PASTE_NO_BORDERS",
                 PasteDataRequestType::PasteNormal => "PASTE_NORMAL",
                 PasteDataRequestType::PasteValues => "PASTE_VALUES",
-                PasteDataRequestType::PasteFormat => "PASTE_FORMAT",
-                PasteDataRequestType::PasteNoBorders => "PASTE_NO_BORDERS",
-                PasteDataRequestType::PasteFormula => "PASTE_FORMULA",
-                PasteDataRequestType::PasteDataValidation => "PASTE_DATA_VALIDATION",
-                PasteDataRequestType::PasteConditionalFormatting => "PASTE_CONDITIONAL_FORMATTING",
             }
         }
     }
     impl ::std::fmt::Display for PasteDataRequestType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PasteDataRequestType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7144,19 +7144,19 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PasteDataRequestType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "PASTE_CONDITIONAL_FORMATTING" => PasteDataRequestType::PasteConditionalFormatting,
+                "PASTE_DATA_VALIDATION" => PasteDataRequestType::PasteDataValidation,
+                "PASTE_FORMAT" => PasteDataRequestType::PasteFormat,
+                "PASTE_FORMULA" => PasteDataRequestType::PasteFormula,
+                "PASTE_NO_BORDERS" => PasteDataRequestType::PasteNoBorders,
                 "PASTE_NORMAL" => PasteDataRequestType::PasteNormal,
                 "PASTE_VALUES" => PasteDataRequestType::PasteValues,
-                "PASTE_FORMAT" => PasteDataRequestType::PasteFormat,
-                "PASTE_NO_BORDERS" => PasteDataRequestType::PasteNoBorders,
-                "PASTE_FORMULA" => PasteDataRequestType::PasteFormula,
-                "PASTE_DATA_VALIDATION" => PasteDataRequestType::PasteDataValidation,
-                "PASTE_CONDITIONAL_FORMATTING" => PasteDataRequestType::PasteConditionalFormatting,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7215,43 +7215,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PieChartSpecLegendPosition {
-        #[doc = "Default value, do not use."]
-        PieChartLegendPositionUnspecified,
         #[doc = "The legend is rendered on the bottom of the chart."]
         BottomLegend,
+        #[doc = "Each pie slice has a label attached to it."]
+        LabeledLegend,
         #[doc = "The legend is rendered on the left of the chart."]
         LeftLegend,
+        #[doc = "No legend is rendered."]
+        NoLegend,
+        #[doc = "Default value, do not use."]
+        PieChartLegendPositionUnspecified,
         #[doc = "The legend is rendered on the right of the chart."]
         RightLegend,
         #[doc = "The legend is rendered on the top of the chart."]
         TopLegend,
-        #[doc = "No legend is rendered."]
-        NoLegend,
-        #[doc = "Each pie slice has a label attached to it."]
-        LabeledLegend,
     }
     impl PieChartSpecLegendPosition {
         pub fn as_str(self) -> &'static str {
             match self {
+                PieChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
+                PieChartSpecLegendPosition::LabeledLegend => "LABELED_LEGEND",
+                PieChartSpecLegendPosition::LeftLegend => "LEFT_LEGEND",
+                PieChartSpecLegendPosition::NoLegend => "NO_LEGEND",
                 PieChartSpecLegendPosition::PieChartLegendPositionUnspecified => {
                     "PIE_CHART_LEGEND_POSITION_UNSPECIFIED"
                 }
-                PieChartSpecLegendPosition::BottomLegend => "BOTTOM_LEGEND",
-                PieChartSpecLegendPosition::LeftLegend => "LEFT_LEGEND",
                 PieChartSpecLegendPosition::RightLegend => "RIGHT_LEGEND",
                 PieChartSpecLegendPosition::TopLegend => "TOP_LEGEND",
-                PieChartSpecLegendPosition::NoLegend => "NO_LEGEND",
-                PieChartSpecLegendPosition::LabeledLegend => "LABELED_LEGEND",
             }
         }
     }
     impl ::std::fmt::Display for PieChartSpecLegendPosition {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PieChartSpecLegendPosition {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7259,21 +7259,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PieChartSpecLegendPosition {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BOTTOM_LEGEND" => PieChartSpecLegendPosition::BottomLegend,
+                "LABELED_LEGEND" => PieChartSpecLegendPosition::LabeledLegend,
+                "LEFT_LEGEND" => PieChartSpecLegendPosition::LeftLegend,
+                "NO_LEGEND" => PieChartSpecLegendPosition::NoLegend,
                 "PIE_CHART_LEGEND_POSITION_UNSPECIFIED" => {
                     PieChartSpecLegendPosition::PieChartLegendPositionUnspecified
                 }
-                "BOTTOM_LEGEND" => PieChartSpecLegendPosition::BottomLegend,
-                "LEFT_LEGEND" => PieChartSpecLegendPosition::LeftLegend,
                 "RIGHT_LEGEND" => PieChartSpecLegendPosition::RightLegend,
                 "TOP_LEGEND" => PieChartSpecLegendPosition::TopLegend,
-                "NO_LEGEND" => PieChartSpecLegendPosition::NoLegend,
-                "LABELED_LEGEND" => PieChartSpecLegendPosition::LabeledLegend,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7349,29 +7349,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PivotGroupSortOrder {
-        #[doc = "Default value, do not use this."]
-        SortOrderUnspecified,
         #[doc = "Sort ascending."]
         Ascending,
         #[doc = "Sort descending."]
         Descending,
+        #[doc = "Default value, do not use this."]
+        SortOrderUnspecified,
     }
     impl PivotGroupSortOrder {
         pub fn as_str(self) -> &'static str {
             match self {
-                PivotGroupSortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
                 PivotGroupSortOrder::Ascending => "ASCENDING",
                 PivotGroupSortOrder::Descending => "DESCENDING",
+                PivotGroupSortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for PivotGroupSortOrder {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PivotGroupSortOrder {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7379,15 +7379,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PivotGroupSortOrder {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SORT_ORDER_UNSPECIFIED" => PivotGroupSortOrder::SortOrderUnspecified,
                 "ASCENDING" => PivotGroupSortOrder::Ascending,
                 "DESCENDING" => PivotGroupSortOrder::Descending,
+                "SORT_ORDER_UNSPECIFIED" => PivotGroupSortOrder::SortOrderUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7523,12 +7523,12 @@ pub mod schemas {
         }
     }
     impl ::std::fmt::Display for PivotTableValueLayout {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PivotTableValueLayout {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7536,7 +7536,7 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PivotTableValueLayout {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -7598,34 +7598,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PivotValueCalculatedDisplayType {
-        #[doc = "Default value, do not use."]
-        PivotValueCalculatedDisplayTypeUnspecified,
-        #[doc = "Shows the pivot values as percentage of the row total values."]
-        PercentOfRowTotal,
         #[doc = "Shows the pivot values as percentage of the column total values."]
         PercentOfColumnTotal,
         #[doc = "Shows the pivot values as percentage of the grand total values."]
         PercentOfGrandTotal,
+        #[doc = "Shows the pivot values as percentage of the row total values."]
+        PercentOfRowTotal,
+        #[doc = "Default value, do not use."]
+        PivotValueCalculatedDisplayTypeUnspecified,
     }
     impl PivotValueCalculatedDisplayType {
         pub fn as_str(self) -> &'static str {
             match self {
+                PivotValueCalculatedDisplayType::PercentOfColumnTotal => "PERCENT_OF_COLUMN_TOTAL",
+                PivotValueCalculatedDisplayType::PercentOfGrandTotal => "PERCENT_OF_GRAND_TOTAL",
+                PivotValueCalculatedDisplayType::PercentOfRowTotal => "PERCENT_OF_ROW_TOTAL",
                 PivotValueCalculatedDisplayType::PivotValueCalculatedDisplayTypeUnspecified => {
                     "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED"
                 }
-                PivotValueCalculatedDisplayType::PercentOfRowTotal => "PERCENT_OF_ROW_TOTAL",
-                PivotValueCalculatedDisplayType::PercentOfColumnTotal => "PERCENT_OF_COLUMN_TOTAL",
-                PivotValueCalculatedDisplayType::PercentOfGrandTotal => "PERCENT_OF_GRAND_TOTAL",
             }
         }
     }
     impl ::std::fmt::Display for PivotValueCalculatedDisplayType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PivotValueCalculatedDisplayType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7633,18 +7633,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PivotValueCalculatedDisplayType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "PERCENT_OF_COLUMN_TOTAL" => PivotValueCalculatedDisplayType::PercentOfColumnTotal,
+                "PERCENT_OF_GRAND_TOTAL" => PivotValueCalculatedDisplayType::PercentOfGrandTotal,
+                "PERCENT_OF_ROW_TOTAL" => PivotValueCalculatedDisplayType::PercentOfRowTotal,
                 "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED" => {
                     PivotValueCalculatedDisplayType::PivotValueCalculatedDisplayTypeUnspecified
                 }
-                "PERCENT_OF_ROW_TOTAL" => PivotValueCalculatedDisplayType::PercentOfRowTotal,
-                "PERCENT_OF_COLUMN_TOTAL" => PivotValueCalculatedDisplayType::PercentOfColumnTotal,
-                "PERCENT_OF_GRAND_TOTAL" => PivotValueCalculatedDisplayType::PercentOfGrandTotal,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -7665,67 +7665,67 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PivotValueSummarizeFunction {
-        #[doc = "The default, do not use."]
-        PivotStandardValueFunctionUnspecified,
-        #[doc = "Corresponds to the `SUM` function."]
-        Sum,
-        #[doc = "Corresponds to the `COUNTA` function."]
-        Counta,
-        #[doc = "Corresponds to the `COUNT` function."]
-        Count,
-        #[doc = "Corresponds to the `COUNTUNIQUE` function."]
-        Countunique,
         #[doc = "Corresponds to the `AVERAGE` function."]
         Average,
+        #[doc = "Corresponds to the `COUNT` function."]
+        Count,
+        #[doc = "Corresponds to the `COUNTA` function."]
+        Counta,
+        #[doc = "Corresponds to the `COUNTUNIQUE` function."]
+        Countunique,
+        #[doc = "Indicates the formula should be used as-is.\nOnly valid if PivotValue.formula was set."]
+        Custom,
         #[doc = "Corresponds to the `MAX` function."]
         Max,
-        #[doc = "Corresponds to the `MIN` function."]
-        Min,
         #[doc = "Corresponds to the `MEDIAN` function."]
         Median,
+        #[doc = "Corresponds to the `MIN` function."]
+        Min,
+        #[doc = "The default, do not use."]
+        PivotStandardValueFunctionUnspecified,
         #[doc = "Corresponds to the `PRODUCT` function."]
         Product,
         #[doc = "Corresponds to the `STDEV` function."]
         Stdev,
         #[doc = "Corresponds to the `STDEVP` function."]
         Stdevp,
+        #[doc = "Corresponds to the `SUM` function."]
+        Sum,
         #[doc = "Corresponds to the `VAR` function."]
         Var,
         #[doc = "Corresponds to the `VARP` function."]
         Varp,
-        #[doc = "Indicates the formula should be used as-is.\nOnly valid if PivotValue.formula was set."]
-        Custom,
     }
     impl PivotValueSummarizeFunction {
         pub fn as_str(self) -> &'static str {
             match self {
+                PivotValueSummarizeFunction::Average => "AVERAGE",
+                PivotValueSummarizeFunction::Count => "COUNT",
+                PivotValueSummarizeFunction::Counta => "COUNTA",
+                PivotValueSummarizeFunction::Countunique => "COUNTUNIQUE",
+                PivotValueSummarizeFunction::Custom => "CUSTOM",
+                PivotValueSummarizeFunction::Max => "MAX",
+                PivotValueSummarizeFunction::Median => "MEDIAN",
+                PivotValueSummarizeFunction::Min => "MIN",
                 PivotValueSummarizeFunction::PivotStandardValueFunctionUnspecified => {
                     "PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED"
                 }
-                PivotValueSummarizeFunction::Sum => "SUM",
-                PivotValueSummarizeFunction::Counta => "COUNTA",
-                PivotValueSummarizeFunction::Count => "COUNT",
-                PivotValueSummarizeFunction::Countunique => "COUNTUNIQUE",
-                PivotValueSummarizeFunction::Average => "AVERAGE",
-                PivotValueSummarizeFunction::Max => "MAX",
-                PivotValueSummarizeFunction::Min => "MIN",
-                PivotValueSummarizeFunction::Median => "MEDIAN",
                 PivotValueSummarizeFunction::Product => "PRODUCT",
                 PivotValueSummarizeFunction::Stdev => "STDEV",
                 PivotValueSummarizeFunction::Stdevp => "STDEVP",
+                PivotValueSummarizeFunction::Sum => "SUM",
                 PivotValueSummarizeFunction::Var => "VAR",
                 PivotValueSummarizeFunction::Varp => "VARP",
-                PivotValueSummarizeFunction::Custom => "CUSTOM",
             }
         }
     }
     impl ::std::fmt::Display for PivotValueSummarizeFunction {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for PivotValueSummarizeFunction {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -7733,29 +7733,29 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for PivotValueSummarizeFunction {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AVERAGE" => PivotValueSummarizeFunction::Average,
+                "COUNT" => PivotValueSummarizeFunction::Count,
+                "COUNTA" => PivotValueSummarizeFunction::Counta,
+                "COUNTUNIQUE" => PivotValueSummarizeFunction::Countunique,
+                "CUSTOM" => PivotValueSummarizeFunction::Custom,
+                "MAX" => PivotValueSummarizeFunction::Max,
+                "MEDIAN" => PivotValueSummarizeFunction::Median,
+                "MIN" => PivotValueSummarizeFunction::Min,
                 "PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED" => {
                     PivotValueSummarizeFunction::PivotStandardValueFunctionUnspecified
                 }
-                "SUM" => PivotValueSummarizeFunction::Sum,
-                "COUNTA" => PivotValueSummarizeFunction::Counta,
-                "COUNT" => PivotValueSummarizeFunction::Count,
-                "COUNTUNIQUE" => PivotValueSummarizeFunction::Countunique,
-                "AVERAGE" => PivotValueSummarizeFunction::Average,
-                "MAX" => PivotValueSummarizeFunction::Max,
-                "MIN" => PivotValueSummarizeFunction::Min,
-                "MEDIAN" => PivotValueSummarizeFunction::Median,
                 "PRODUCT" => PivotValueSummarizeFunction::Product,
                 "STDEV" => PivotValueSummarizeFunction::Stdev,
                 "STDEVP" => PivotValueSummarizeFunction::Stdevp,
+                "SUM" => PivotValueSummarizeFunction::Sum,
                 "VAR" => PivotValueSummarizeFunction::Var,
                 "VARP" => PivotValueSummarizeFunction::Varp,
-                "CUSTOM" => PivotValueSummarizeFunction::Custom,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8370,29 +8370,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SheetPropertiesSheetType {
-        #[doc = "Default value, do not use."]
-        SheetTypeUnspecified,
         #[doc = "The sheet is a grid."]
         Grid,
         #[doc = "The sheet has no grid and instead has an object like a chart or image."]
         Object,
+        #[doc = "Default value, do not use."]
+        SheetTypeUnspecified,
     }
     impl SheetPropertiesSheetType {
         pub fn as_str(self) -> &'static str {
             match self {
-                SheetPropertiesSheetType::SheetTypeUnspecified => "SHEET_TYPE_UNSPECIFIED",
                 SheetPropertiesSheetType::Grid => "GRID",
                 SheetPropertiesSheetType::Object => "OBJECT",
+                SheetPropertiesSheetType::SheetTypeUnspecified => "SHEET_TYPE_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SheetPropertiesSheetType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SheetPropertiesSheetType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8400,15 +8400,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SheetPropertiesSheetType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SHEET_TYPE_UNSPECIFIED" => SheetPropertiesSheetType::SheetTypeUnspecified,
                 "GRID" => SheetPropertiesSheetType::Grid,
                 "OBJECT" => SheetPropertiesSheetType::Object,
+                "SHEET_TYPE_UNSPECIFIED" => SheetPropertiesSheetType::SheetTypeUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8496,29 +8496,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SortSpecSortOrder {
-        #[doc = "Default value, do not use this."]
-        SortOrderUnspecified,
         #[doc = "Sort ascending."]
         Ascending,
         #[doc = "Sort descending."]
         Descending,
+        #[doc = "Default value, do not use this."]
+        SortOrderUnspecified,
     }
     impl SortSpecSortOrder {
         pub fn as_str(self) -> &'static str {
             match self {
-                SortSpecSortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
                 SortSpecSortOrder::Ascending => "ASCENDING",
                 SortSpecSortOrder::Descending => "DESCENDING",
+                SortSpecSortOrder::SortOrderUnspecified => "SORT_ORDER_UNSPECIFIED",
             }
         }
     }
     impl ::std::fmt::Display for SortSpecSortOrder {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SortSpecSortOrder {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8526,15 +8526,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SortSpecSortOrder {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SORT_ORDER_UNSPECIFIED" => SortSpecSortOrder::SortOrderUnspecified,
                 "ASCENDING" => SortSpecSortOrder::Ascending,
                 "DESCENDING" => SortSpecSortOrder::Descending,
+                "SORT_ORDER_UNSPECIFIED" => SortSpecSortOrder::SortOrderUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8584,29 +8584,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SourceAndDestinationDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl SourceAndDestinationDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                SourceAndDestinationDimension::Columns => "COLUMNS",
                 SourceAndDestinationDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 SourceAndDestinationDimension::Rows => "ROWS",
-                SourceAndDestinationDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for SourceAndDestinationDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SourceAndDestinationDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8614,15 +8614,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SourceAndDestinationDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => SourceAndDestinationDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => SourceAndDestinationDimension::DimensionUnspecified,
                 "ROWS" => SourceAndDestinationDimension::Rows,
-                "COLUMNS" => SourceAndDestinationDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8707,34 +8707,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SpreadsheetPropertiesAutoRecalc {
-        #[doc = "Default value. This value must not be used."]
-        RecalculationIntervalUnspecified,
-        #[doc = "Volatile functions are updated on every change."]
-        OnChange,
-        #[doc = "Volatile functions are updated on every change and every minute."]
-        Minute,
         #[doc = "Volatile functions are updated on every change and hourly."]
         Hour,
+        #[doc = "Volatile functions are updated on every change and every minute."]
+        Minute,
+        #[doc = "Volatile functions are updated on every change."]
+        OnChange,
+        #[doc = "Default value. This value must not be used."]
+        RecalculationIntervalUnspecified,
     }
     impl SpreadsheetPropertiesAutoRecalc {
         pub fn as_str(self) -> &'static str {
             match self {
+                SpreadsheetPropertiesAutoRecalc::Hour => "HOUR",
+                SpreadsheetPropertiesAutoRecalc::Minute => "MINUTE",
+                SpreadsheetPropertiesAutoRecalc::OnChange => "ON_CHANGE",
                 SpreadsheetPropertiesAutoRecalc::RecalculationIntervalUnspecified => {
                     "RECALCULATION_INTERVAL_UNSPECIFIED"
                 }
-                SpreadsheetPropertiesAutoRecalc::OnChange => "ON_CHANGE",
-                SpreadsheetPropertiesAutoRecalc::Minute => "MINUTE",
-                SpreadsheetPropertiesAutoRecalc::Hour => "HOUR",
             }
         }
     }
     impl ::std::fmt::Display for SpreadsheetPropertiesAutoRecalc {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for SpreadsheetPropertiesAutoRecalc {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8742,18 +8742,18 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for SpreadsheetPropertiesAutoRecalc {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "HOUR" => SpreadsheetPropertiesAutoRecalc::Hour,
+                "MINUTE" => SpreadsheetPropertiesAutoRecalc::Minute,
+                "ON_CHANGE" => SpreadsheetPropertiesAutoRecalc::OnChange,
                 "RECALCULATION_INTERVAL_UNSPECIFIED" => {
                     SpreadsheetPropertiesAutoRecalc::RecalculationIntervalUnspecified
                 }
-                "ON_CHANGE" => SpreadsheetPropertiesAutoRecalc::OnChange,
-                "MINUTE" => SpreadsheetPropertiesAutoRecalc::Minute,
-                "HOUR" => SpreadsheetPropertiesAutoRecalc::Hour,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -8862,34 +8862,34 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TextPositionHorizontalAlignment {
+        #[doc = "The text is explicitly aligned to the center of the cell."]
+        Center,
         #[doc = "The horizontal alignment is not specified. Do not use this."]
         HorizontalAlignUnspecified,
         #[doc = "The text is explicitly aligned to the left of the cell."]
         Left,
-        #[doc = "The text is explicitly aligned to the center of the cell."]
-        Center,
         #[doc = "The text is explicitly aligned to the right of the cell."]
         Right,
     }
     impl TextPositionHorizontalAlignment {
         pub fn as_str(self) -> &'static str {
             match self {
+                TextPositionHorizontalAlignment::Center => "CENTER",
                 TextPositionHorizontalAlignment::HorizontalAlignUnspecified => {
                     "HORIZONTAL_ALIGN_UNSPECIFIED"
                 }
                 TextPositionHorizontalAlignment::Left => "LEFT",
-                TextPositionHorizontalAlignment::Center => "CENTER",
                 TextPositionHorizontalAlignment::Right => "RIGHT",
             }
         }
     }
     impl ::std::fmt::Display for TextPositionHorizontalAlignment {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TextPositionHorizontalAlignment {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -8897,17 +8897,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TextPositionHorizontalAlignment {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CENTER" => TextPositionHorizontalAlignment::Center,
                 "HORIZONTAL_ALIGN_UNSPECIFIED" => {
                     TextPositionHorizontalAlignment::HorizontalAlignUnspecified
                 }
                 "LEFT" => TextPositionHorizontalAlignment::Left,
-                "CENTER" => TextPositionHorizontalAlignment::Center,
                 "RIGHT" => TextPositionHorizontalAlignment::Right,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -8985,43 +8985,43 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TextToColumnsRequestDelimiterType {
-        #[doc = "Default value. This value must not be used."]
-        DelimiterTypeUnspecified,
-        #[doc = "\",\""]
-        Comma,
-        #[doc = "\";\""]
-        Semicolon,
-        #[doc = "\".\""]
-        Period,
-        #[doc = "\" \""]
-        Space,
-        #[doc = "A custom value as defined in delimiter."]
-        Custom,
         #[doc = "Automatically detect columns."]
         Autodetect,
+        #[doc = "\",\""]
+        Comma,
+        #[doc = "A custom value as defined in delimiter."]
+        Custom,
+        #[doc = "Default value. This value must not be used."]
+        DelimiterTypeUnspecified,
+        #[doc = "\".\""]
+        Period,
+        #[doc = "\";\""]
+        Semicolon,
+        #[doc = "\" \""]
+        Space,
     }
     impl TextToColumnsRequestDelimiterType {
         pub fn as_str(self) -> &'static str {
             match self {
+                TextToColumnsRequestDelimiterType::Autodetect => "AUTODETECT",
+                TextToColumnsRequestDelimiterType::Comma => "COMMA",
+                TextToColumnsRequestDelimiterType::Custom => "CUSTOM",
                 TextToColumnsRequestDelimiterType::DelimiterTypeUnspecified => {
                     "DELIMITER_TYPE_UNSPECIFIED"
                 }
-                TextToColumnsRequestDelimiterType::Comma => "COMMA",
-                TextToColumnsRequestDelimiterType::Semicolon => "SEMICOLON",
                 TextToColumnsRequestDelimiterType::Period => "PERIOD",
+                TextToColumnsRequestDelimiterType::Semicolon => "SEMICOLON",
                 TextToColumnsRequestDelimiterType::Space => "SPACE",
-                TextToColumnsRequestDelimiterType::Custom => "CUSTOM",
-                TextToColumnsRequestDelimiterType::Autodetect => "AUTODETECT",
             }
         }
     }
     impl ::std::fmt::Display for TextToColumnsRequestDelimiterType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for TextToColumnsRequestDelimiterType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9029,21 +9029,21 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for TextToColumnsRequestDelimiterType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AUTODETECT" => TextToColumnsRequestDelimiterType::Autodetect,
+                "COMMA" => TextToColumnsRequestDelimiterType::Comma,
+                "CUSTOM" => TextToColumnsRequestDelimiterType::Custom,
                 "DELIMITER_TYPE_UNSPECIFIED" => {
                     TextToColumnsRequestDelimiterType::DelimiterTypeUnspecified
                 }
-                "COMMA" => TextToColumnsRequestDelimiterType::Comma,
-                "SEMICOLON" => TextToColumnsRequestDelimiterType::Semicolon,
                 "PERIOD" => TextToColumnsRequestDelimiterType::Period,
+                "SEMICOLON" => TextToColumnsRequestDelimiterType::Semicolon,
                 "SPACE" => TextToColumnsRequestDelimiterType::Space,
-                "CUSTOM" => TextToColumnsRequestDelimiterType::Custom,
-                "AUTODETECT" => TextToColumnsRequestDelimiterType::Autodetect,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9768,29 +9768,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ValueRangeMajorDimension {
+        #[doc = "Operates on the columns of a sheet."]
+        Columns,
         #[doc = "The default value, do not use."]
         DimensionUnspecified,
         #[doc = "Operates on the rows of a sheet."]
         Rows,
-        #[doc = "Operates on the columns of a sheet."]
-        Columns,
     }
     impl ValueRangeMajorDimension {
         pub fn as_str(self) -> &'static str {
             match self {
+                ValueRangeMajorDimension::Columns => "COLUMNS",
                 ValueRangeMajorDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                 ValueRangeMajorDimension::Rows => "ROWS",
-                ValueRangeMajorDimension::Columns => "COLUMNS",
             }
         }
     }
     impl ::std::fmt::Display for ValueRangeMajorDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for ValueRangeMajorDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9798,15 +9798,15 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for ValueRangeMajorDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "COLUMNS" => ValueRangeMajorDimension::Columns,
                 "DIMENSION_UNSPECIFIED" => ValueRangeMajorDimension::DimensionUnspecified,
                 "ROWS" => ValueRangeMajorDimension::Rows,
-                "COLUMNS" => ValueRangeMajorDimension::Columns,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -9965,31 +9965,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WaterfallChartSpecStackedType {
-        #[doc = "Default value, do not use."]
-        WaterfallStackedTypeUnspecified,
-        #[doc = "Values corresponding to the same domain (horizontal axis) value will be\nstacked vertically."]
-        Stacked,
         #[doc = "Series will spread out along the horizontal axis."]
         Sequential,
+        #[doc = "Values corresponding to the same domain (horizontal axis) value will be\nstacked vertically."]
+        Stacked,
+        #[doc = "Default value, do not use."]
+        WaterfallStackedTypeUnspecified,
     }
     impl WaterfallChartSpecStackedType {
         pub fn as_str(self) -> &'static str {
             match self {
+                WaterfallChartSpecStackedType::Sequential => "SEQUENTIAL",
+                WaterfallChartSpecStackedType::Stacked => "STACKED",
                 WaterfallChartSpecStackedType::WaterfallStackedTypeUnspecified => {
                     "WATERFALL_STACKED_TYPE_UNSPECIFIED"
                 }
-                WaterfallChartSpecStackedType::Stacked => "STACKED",
-                WaterfallChartSpecStackedType::Sequential => "SEQUENTIAL",
             }
         }
     }
     impl ::std::fmt::Display for WaterfallChartSpecStackedType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for WaterfallChartSpecStackedType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -9997,17 +9997,17 @@ pub mod schemas {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for WaterfallChartSpecStackedType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "SEQUENTIAL" => WaterfallChartSpecStackedType::Sequential,
+                "STACKED" => WaterfallChartSpecStackedType::Stacked,
                 "WATERFALL_STACKED_TYPE_UNSPECIFIED" => {
                     WaterfallChartSpecStackedType::WaterfallStackedTypeUnspecified
                 }
-                "STACKED" => WaterfallChartSpecStackedType::Stacked,
-                "SEQUENTIAL" => WaterfallChartSpecStackedType::Sequential,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -10079,12 +10079,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Alt {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Alt {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10092,7 +10092,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Alt {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -10135,12 +10135,12 @@ pub mod params {
         }
     }
     impl ::std::fmt::Display for Xgafv {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
     impl ::serde::Serialize for Xgafv {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
         {
@@ -10148,7 +10148,7 @@ pub mod params {
         }
     }
     impl<'de> ::serde::Deserialize<'de> for Xgafv {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
@@ -10194,7 +10194,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
 }
-mod resources {
+pub mod resources {
     pub mod spreadsheets {
         pub mod params {}
         pub struct SpreadsheetsActions<'a, A> {
@@ -10339,19 +10339,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10508,19 +10498,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10679,19 +10659,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10847,19 +10817,9 @@ mod resources {
                 self.access_token = Some(value.into());
                 self
             }
-            #[doc = "Data format for response."]
-            pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                self.alt = Some(value);
-                self
-            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(mut self, value: impl Into<String>) -> Self {
-                self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11071,19 +11031,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11248,19 +11198,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11458,19 +11398,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -11618,24 +11548,24 @@ mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendInsertDataOption {
-                    Overwrite,
                     InsertRows,
+                    Overwrite,
                 }
                 impl AppendInsertDataOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            AppendInsertDataOption::Overwrite => "OVERWRITE",
                             AppendInsertDataOption::InsertRows => "INSERT_ROWS",
+                            AppendInsertDataOption::Overwrite => "OVERWRITE",
                         }
                     }
                 }
                 impl ::std::fmt::Display for AppendInsertDataOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AppendInsertDataOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11643,14 +11573,14 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AppendInsertDataOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "OVERWRITE" => AppendInsertDataOption::Overwrite,
                             "INSERT_ROWS" => AppendInsertDataOption::InsertRows,
+                            "OVERWRITE" => AppendInsertDataOption::Overwrite,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -11671,26 +11601,26 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendResponseDateTimeRenderOption {
-                    SerialNumber,
                     FormattedString,
+                    SerialNumber,
                 }
                 impl AppendResponseDateTimeRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            AppendResponseDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                             AppendResponseDateTimeRenderOption::FormattedString => {
                                 "FORMATTED_STRING"
                             }
+                            AppendResponseDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                         }
                     }
                 }
                 impl ::std::fmt::Display for AppendResponseDateTimeRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AppendResponseDateTimeRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11698,16 +11628,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AppendResponseDateTimeRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "SERIAL_NUMBER" => AppendResponseDateTimeRenderOption::SerialNumber,
                             "FORMATTED_STRING" => {
                                 AppendResponseDateTimeRenderOption::FormattedString
                             }
+                            "SERIAL_NUMBER" => AppendResponseDateTimeRenderOption::SerialNumber,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -11729,27 +11659,27 @@ mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendResponseValueRenderOption {
                     FormattedValue,
-                    UnformattedValue,
                     Formula,
+                    UnformattedValue,
                 }
                 impl AppendResponseValueRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             AppendResponseValueRenderOption::FormattedValue => "FORMATTED_VALUE",
+                            AppendResponseValueRenderOption::Formula => "FORMULA",
                             AppendResponseValueRenderOption::UnformattedValue => {
                                 "UNFORMATTED_VALUE"
                             }
-                            AppendResponseValueRenderOption::Formula => "FORMULA",
                         }
                     }
                 }
                 impl ::std::fmt::Display for AppendResponseValueRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AppendResponseValueRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11757,17 +11687,17 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AppendResponseValueRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
                             "FORMATTED_VALUE" => AppendResponseValueRenderOption::FormattedValue,
+                            "FORMULA" => AppendResponseValueRenderOption::Formula,
                             "UNFORMATTED_VALUE" => {
                                 AppendResponseValueRenderOption::UnformattedValue
                             }
-                            "FORMULA" => AppendResponseValueRenderOption::Formula,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -11804,12 +11734,12 @@ mod resources {
                     }
                 }
                 impl ::std::fmt::Display for AppendValueInputOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for AppendValueInputOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11817,7 +11747,7 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for AppendValueInputOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
@@ -11848,24 +11778,24 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetDateTimeRenderOption {
-                    SerialNumber,
                     FormattedString,
+                    SerialNumber,
                 }
                 impl BatchGetDateTimeRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            BatchGetDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                             BatchGetDateTimeRenderOption::FormattedString => "FORMATTED_STRING",
+                            BatchGetDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                         }
                     }
                 }
                 impl ::std::fmt::Display for BatchGetDateTimeRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for BatchGetDateTimeRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11873,14 +11803,14 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for BatchGetDateTimeRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "SERIAL_NUMBER" => BatchGetDateTimeRenderOption::SerialNumber,
                             "FORMATTED_STRING" => BatchGetDateTimeRenderOption::FormattedString,
+                            "SERIAL_NUMBER" => BatchGetDateTimeRenderOption::SerialNumber,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -11901,26 +11831,26 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetMajorDimension {
+                    Columns,
                     DimensionUnspecified,
                     Rows,
-                    Columns,
                 }
                 impl BatchGetMajorDimension {
                     pub fn as_str(self) -> &'static str {
                         match self {
+                            BatchGetMajorDimension::Columns => "COLUMNS",
                             BatchGetMajorDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                             BatchGetMajorDimension::Rows => "ROWS",
-                            BatchGetMajorDimension::Columns => "COLUMNS",
                         }
                     }
                 }
                 impl ::std::fmt::Display for BatchGetMajorDimension {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for BatchGetMajorDimension {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11928,15 +11858,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for BatchGetMajorDimension {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
+                            "COLUMNS" => BatchGetMajorDimension::Columns,
                             "DIMENSION_UNSPECIFIED" => BatchGetMajorDimension::DimensionUnspecified,
                             "ROWS" => BatchGetMajorDimension::Rows,
-                            "COLUMNS" => BatchGetMajorDimension::Columns,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -11958,25 +11888,25 @@ mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetValueRenderOption {
                     FormattedValue,
-                    UnformattedValue,
                     Formula,
+                    UnformattedValue,
                 }
                 impl BatchGetValueRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             BatchGetValueRenderOption::FormattedValue => "FORMATTED_VALUE",
-                            BatchGetValueRenderOption::UnformattedValue => "UNFORMATTED_VALUE",
                             BatchGetValueRenderOption::Formula => "FORMULA",
+                            BatchGetValueRenderOption::UnformattedValue => "UNFORMATTED_VALUE",
                         }
                     }
                 }
                 impl ::std::fmt::Display for BatchGetValueRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for BatchGetValueRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -11984,15 +11914,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for BatchGetValueRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
                             "FORMATTED_VALUE" => BatchGetValueRenderOption::FormattedValue,
-                            "UNFORMATTED_VALUE" => BatchGetValueRenderOption::UnformattedValue,
                             "FORMULA" => BatchGetValueRenderOption::Formula,
+                            "UNFORMATTED_VALUE" => BatchGetValueRenderOption::UnformattedValue,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12013,24 +11943,24 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetDateTimeRenderOption {
-                    SerialNumber,
                     FormattedString,
+                    SerialNumber,
                 }
                 impl GetDateTimeRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            GetDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                             GetDateTimeRenderOption::FormattedString => "FORMATTED_STRING",
+                            GetDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                         }
                     }
                 }
                 impl ::std::fmt::Display for GetDateTimeRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetDateTimeRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12038,14 +11968,14 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetDateTimeRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "SERIAL_NUMBER" => GetDateTimeRenderOption::SerialNumber,
                             "FORMATTED_STRING" => GetDateTimeRenderOption::FormattedString,
+                            "SERIAL_NUMBER" => GetDateTimeRenderOption::SerialNumber,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12066,26 +11996,26 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetMajorDimension {
+                    Columns,
                     DimensionUnspecified,
                     Rows,
-                    Columns,
                 }
                 impl GetMajorDimension {
                     pub fn as_str(self) -> &'static str {
                         match self {
+                            GetMajorDimension::Columns => "COLUMNS",
                             GetMajorDimension::DimensionUnspecified => "DIMENSION_UNSPECIFIED",
                             GetMajorDimension::Rows => "ROWS",
-                            GetMajorDimension::Columns => "COLUMNS",
                         }
                     }
                 }
                 impl ::std::fmt::Display for GetMajorDimension {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetMajorDimension {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12093,15 +12023,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetMajorDimension {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
+                            "COLUMNS" => GetMajorDimension::Columns,
                             "DIMENSION_UNSPECIFIED" => GetMajorDimension::DimensionUnspecified,
                             "ROWS" => GetMajorDimension::Rows,
-                            "COLUMNS" => GetMajorDimension::Columns,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12123,25 +12053,25 @@ mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetValueRenderOption {
                     FormattedValue,
-                    UnformattedValue,
                     Formula,
+                    UnformattedValue,
                 }
                 impl GetValueRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             GetValueRenderOption::FormattedValue => "FORMATTED_VALUE",
-                            GetValueRenderOption::UnformattedValue => "UNFORMATTED_VALUE",
                             GetValueRenderOption::Formula => "FORMULA",
+                            GetValueRenderOption::UnformattedValue => "UNFORMATTED_VALUE",
                         }
                     }
                 }
                 impl ::std::fmt::Display for GetValueRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for GetValueRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12149,15 +12079,15 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for GetValueRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
                             "FORMATTED_VALUE" => GetValueRenderOption::FormattedValue,
-                            "UNFORMATTED_VALUE" => GetValueRenderOption::UnformattedValue,
                             "FORMULA" => GetValueRenderOption::Formula,
+                            "UNFORMATTED_VALUE" => GetValueRenderOption::UnformattedValue,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12178,26 +12108,26 @@ mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateResponseDateTimeRenderOption {
-                    SerialNumber,
                     FormattedString,
+                    SerialNumber,
                 }
                 impl UpdateResponseDateTimeRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            UpdateResponseDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                             UpdateResponseDateTimeRenderOption::FormattedString => {
                                 "FORMATTED_STRING"
                             }
+                            UpdateResponseDateTimeRenderOption::SerialNumber => "SERIAL_NUMBER",
                         }
                     }
                 }
                 impl ::std::fmt::Display for UpdateResponseDateTimeRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for UpdateResponseDateTimeRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12205,16 +12135,16 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for UpdateResponseDateTimeRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "SERIAL_NUMBER" => UpdateResponseDateTimeRenderOption::SerialNumber,
                             "FORMATTED_STRING" => {
                                 UpdateResponseDateTimeRenderOption::FormattedString
                             }
+                            "SERIAL_NUMBER" => UpdateResponseDateTimeRenderOption::SerialNumber,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12236,27 +12166,27 @@ mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateResponseValueRenderOption {
                     FormattedValue,
-                    UnformattedValue,
                     Formula,
+                    UnformattedValue,
                 }
                 impl UpdateResponseValueRenderOption {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             UpdateResponseValueRenderOption::FormattedValue => "FORMATTED_VALUE",
+                            UpdateResponseValueRenderOption::Formula => "FORMULA",
                             UpdateResponseValueRenderOption::UnformattedValue => {
                                 "UNFORMATTED_VALUE"
                             }
-                            UpdateResponseValueRenderOption::Formula => "FORMULA",
                         }
                     }
                 }
                 impl ::std::fmt::Display for UpdateResponseValueRenderOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for UpdateResponseValueRenderOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12264,17 +12194,17 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for UpdateResponseValueRenderOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
                             "FORMATTED_VALUE" => UpdateResponseValueRenderOption::FormattedValue,
+                            "FORMULA" => UpdateResponseValueRenderOption::Formula,
                             "UNFORMATTED_VALUE" => {
                                 UpdateResponseValueRenderOption::UnformattedValue
                             }
-                            "FORMULA" => UpdateResponseValueRenderOption::Formula,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -12311,12 +12241,12 @@ mod resources {
                     }
                 }
                 impl ::std::fmt::Display for UpdateValueInputOption {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
                     }
                 }
                 impl ::serde::Serialize for UpdateValueInputOption {
-                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                     where
                         S: ::serde::ser::Serializer,
                     {
@@ -12324,7 +12254,7 @@ mod resources {
                     }
                 }
                 impl<'de> ::serde::Deserialize<'de> for UpdateValueInputOption {
-                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                     where
                         D: ::serde::de::Deserializer<'de>,
                     {
@@ -12665,19 +12595,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -12855,19 +12775,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13025,19 +12935,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13236,19 +13136,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13409,19 +13299,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13583,19 +13463,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13753,19 +13623,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -13928,19 +13788,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14136,19 +13986,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14328,19 +14168,9 @@ mod resources {
                     self.access_token = Some(value.into());
                     self
                 }
-                #[doc = "Data format for response."]
-                pub fn alt(mut self, value: crate::params::Alt) -> Self {
-                    self.alt = Some(value);
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(mut self, value: impl Into<String>) -> Self {
-                    self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -14753,7 +14583,10 @@ fn parse_range_header(
 // strings.
 #[allow(dead_code)]
 mod parsed_string {
-    pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
     where
         T: ::std::fmt::Display,
         S: ::serde::Serializer,
@@ -14762,7 +14595,7 @@ mod parsed_string {
         value.as_ref().map(|x| x.to_string()).serialize(serializer)
     }
 
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<Option<T>, D::Error>
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
     where
         T: ::std::str::FromStr,
         T::Err: ::std::fmt::Display,
@@ -14775,58 +14608,128 @@ mod parsed_string {
         }
     }
 }
-
-trait IterableMethod {
-    fn set_page_token(&mut self, value: String);
-    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-    where
-        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
-}
-
 #[allow(dead_code)]
-struct PageIter<M, T> {
-    method: M,
-    finished: bool,
-    _phantom: ::std::marker::PhantomData<T>,
-}
-
-impl<M, T> Iterator for PageIter<M, T>
-where
-    M: IterableMethod,
-    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-{
-    type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-        use ::field_selector::FieldSelector;
-        #[derive(::serde::Deserialize, FieldSelector)]
-        struct PaginatedResult<T>
+pub mod iter {
+    pub trait IterableMethod {
+        fn set_page_token(&mut self, value: String);
+        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
         where
-            T: FieldSelector,
-        {
-            #[serde(rename = "nextPageToken")]
-            next_page_token: Option<String>,
+            T: ::serde::de::DeserializeOwned;
+    }
 
-            #[serde(flatten)]
-            page_contents: T,
+    pub struct PageIter<M, T> {
+        pub method: M,
+        pub finished: bool,
+        pub _phantom: ::std::marker::PhantomData<T>,
+    }
+
+    impl<M, T> PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M) -> Self {
+            PageIter {
+                method,
+                finished: false,
+                _phantom: ::std::marker::PhantomData,
+            }
         }
+    }
 
-        if self.finished {
-            return None;
+    impl<M, T> Iterator for PageIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            if self.finished {
+                return None;
+            }
+            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
+                match self.method.execute() {
+                    Ok(r) => r,
+                    Err(err) => return Some(Err(err)),
+                };
+            if let Some(next_page_token) = paginated_result
+                .get("nextPageToken")
+                .and_then(|t| t.as_str())
+            {
+                self.method.set_page_token(next_page_token.to_owned());
+            } else {
+                self.finished = true;
+            }
+
+            Some(
+                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
+                    Ok(resp) => Ok(resp),
+                    Err(err) => Err(err.into()),
+                },
+            )
         }
+    }
 
-        let paginated_result: PaginatedResult<T> = match self.method.execute() {
-            Ok(r) => r,
-            Err(err) => return Some(Err(err)),
-        };
+    pub struct PageItemIter<M, T> {
+        items_field: &'static str,
+        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
+        items: ::std::vec::IntoIter<T>,
+    }
 
-        if let Some(next_page_token) = paginated_result.next_page_token {
-            self.method.set_page_token(next_page_token);
-        } else {
-            self.finished = true;
+    impl<M, T> PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
+            PageItemIter {
+                items_field,
+                page_iter: PageIter::new(method),
+                items: Vec::new().into_iter(),
+            }
         }
+    }
 
-        Some(Ok(paginated_result.page_contents))
+    impl<M, T> Iterator for PageItemIter<M, T>
+    where
+        M: IterableMethod,
+        T: ::serde::de::DeserializeOwned,
+    {
+        type Item = Result<T, Box<dyn ::std::error::Error>>;
+
+        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+            loop {
+                if let Some(v) = self.items.next() {
+                    return Some(Ok(v));
+                }
+
+                let next_page = self.page_iter.next();
+                match next_page {
+                    None => return None,
+                    Some(Err(err)) => return Some(Err(err)),
+                    Some(Ok(next_page)) => {
+                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
+                            next_page;
+                        let items_array = match next_page.remove(self.items_field) {
+                            Some(items) => items,
+                            None => {
+                                return Some(Err(format!(
+                                    "no {} field found in iter response",
+                                    self.items_field
+                                )
+                                .into()))
+                            }
+                        };
+                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
+                        match items_vec {
+                            Ok(items) => self.items = items.into_iter(),
+                            Err(err) => return Some(Err(err.into())),
+                        }
+                    }
+                }
+            }
+        }
     }
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
