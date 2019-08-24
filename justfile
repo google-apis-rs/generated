@@ -96,9 +96,9 @@ show-errors prefix=any_error:
 # Best after 'refresh-all', it generates all code and runs cargo against it, collecting errors
 collect-errors:
     just mcp 
-    just gen-check  || true
+    just gen-cargo-errors check
     just update-drivers
-    just gen-doc  || true
+    just gen-cargo-errors doc
     just update-drivers
 
 # generate as many APIs as possible, in parallel, and one by one (use it if generator changed)
@@ -109,6 +109,10 @@ check := "check"
 # Run cargo on the workspace with all projects
 gen-cargo +arguments=check:
     cd {{OUTPUT_DIR}} && cargo {{arguments}}
+
+# Run MCP to control Cargo to efficiently run it and store errors accordingly
+gen-cargo-errors +arguments=check:
+    {{MCP}} cargo-errors {{API_INDEX_MAPPED_JSON}} {{GEN_CARGO_TOML}} {{OUTPUT_DIR}} {{arguments}}
 
 # Run make on the given target
 gen-make target +arguments=check:
