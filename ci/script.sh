@@ -2,11 +2,8 @@
 
 set -eux
 
-# TODO: wait for https://github.com/casey/just/pull/465 and a new release, then use 
-# the following lines instead
-# curl -LSfs https://japaric.github.io/trust/install.sh | \
-#   sh -s -- --git casey/just --force
-cargo install just
+curl -LSfs https://japaric.github.io/trust/install.sh | \
+  sh -s -- --git casey/just --target x86_64-unknown-linux-musl --force
 
 just refresh-pruned-specs
 
