@@ -18,13 +18,8 @@ help:
     Run 'just --list' for more details, here is an overview
     -- Used most often... ---------------------------------------------------------------------------)
     'refresh-pruned-specs' and 'refresh-all'
-    'gen/all' and 'gen/cargo check'
-    -- The source of it all -- first mentioned serve as input for these mentioned later -------------)
-    'refresh-google-api-index'  and 'fetch-api-specs-pruned' and 'fetch-api-specs-google'
-    -- Drive the generator and update its inputs ----------------------------------------------------)
-    'update-drivers'
     -- Operations on the gen/ directory  ------------------------------------------------------------)
-    'gen-all' and 'gen-check' and 'gen-doc' and 'gen-cargo <+arguments>' and 'gen-make <target> <+arguments>'
+    'gen-cargo-errors' and 'gen-cargo <+arguments>' and 'gen-make <target> <+arguments>'
     -- Developer Targets ----------------------------------------------------------------------------)
     'mcp' and 'show-errors' and 'clear-errors' and 
     EOF
@@ -101,10 +96,6 @@ collect-errors:
     just gen-cargo-errors doc
     just update-drivers
 
-# generate as many APIs as possible, in parallel, and one by one (use it if generator changed)
-gen-all:
-    make -C {{OUTPUT_DIR}} gen-all -kj8
-
 check := "check"
 # Run cargo on the workspace with all projects
 gen-cargo +arguments=check:
@@ -117,11 +108,3 @@ gen-cargo-errors +arguments=check:
 # Run make on the given target
 gen-make target +arguments=check:
     make -C {{OUTPUT_DIR}} {{target}}-cargo ARGS={{arguments}}
-
-# Run cargo via Make, one by one, and collect errors when checking
-gen-check:
-    make -C {{OUTPUT_DIR}} cargo-all ARGS=check  -k
-
-# Run cargo via Make, one by one, and collect errors when making docs
-gen-doc:
-    make -C {{OUTPUT_DIR}} cargo-all ARGS=doc  -k
