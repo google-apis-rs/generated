@@ -31,6 +31,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AssetDiscoveryConfig {
+        #[doc = "The mode to use for filtering asset discovery."]
+        #[serde(rename = "inclusionMode", default)]
+        pub inclusion_mode:
+            ::std::option::Option<crate::schemas::AssetDiscoveryConfigInclusionMode>,
+        #[doc = "The project ids to use for filtering asset discovery."]
+        #[serde(rename = "projectIds", default)]
+        pub project_ids: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for AssetDiscoveryConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetDiscoveryConfigInclusionMode {
         #[doc = "Asset Discovery will ignore all resources under the projects specified.\nAll other resources will be retrieved."]
@@ -106,16 +136,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AssetDiscoveryConfig {
-        #[doc = "The mode to use for filtering asset discovery."]
-        #[serde(rename = "inclusionMode", default)]
-        pub inclusion_mode:
-            ::std::option::Option<crate::schemas::AssetDiscoveryConfigInclusionMode>,
-        #[doc = "The project ids to use for filtering asset discovery."]
-        #[serde(rename = "projectIds", default)]
-        pub project_ids: ::std::option::Option<Vec<String>>,
+    pub struct AuditConfig {
+        #[doc = "The configuration for logging of each type of permission."]
+        #[serde(rename = "auditLogConfigs", default)]
+        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
+        #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
+        #[serde(rename = "service", default)]
+        pub service: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for AssetDiscoveryConfig {
+    impl ::field_selector::FieldSelector for AuditConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -136,15 +165,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuditConfig {
-        #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
-        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
-        pub service: ::std::option::Option<String>,
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
-    impl ::field_selector::FieldSelector for AuditConfig {
+    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -208,35 +237,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -346,6 +346,49 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Finding {
+        #[doc = "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\""]
+        #[serde(rename = "category", default)]
+        pub category: ::std::option::Option<String>,
+        #[doc = "The time at which the finding was created in Cloud SCC."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector."]
+        #[serde(rename = "eventTime", default)]
+        pub event_time: ::std::option::Option<String>,
+        #[doc = "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL."]
+        #[serde(rename = "externalUri", default)]
+        pub external_uri: ::std::option::Option<String>,
+        #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456/findings/789\""]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/123/sources/456\""]
+        #[serde(rename = "parent", default)]
+        pub parent: ::std::option::Option<String>,
+        #[doc = "The full resource name of the Google Cloud Platform (GCP) resource this\nfinding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nThis field is immutable after creation time."]
+        #[serde(rename = "resourceName", default)]
+        pub resource_name: ::std::option::Option<String>,
+        #[doc = "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding."]
+        #[serde(rename = "securityMarks", default)]
+        pub security_marks: ::std::option::Option<crate::schemas::SecurityMarks>,
+        #[doc = "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only."]
+        #[serde(rename = "sourceProperties", default)]
+        pub source_properties:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The state of the finding."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::FindingState>,
+    }
+    impl ::field_selector::FieldSelector for Finding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FindingState {
         #[doc = "The finding requires attention and has not been addressed yet."]
@@ -405,49 +448,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Finding {
-        #[doc = "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\""]
-        #[serde(rename = "category", default)]
-        pub category: ::std::option::Option<String>,
-        #[doc = "The time at which the finding was created in Cloud SCC."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector."]
-        #[serde(rename = "eventTime", default)]
-        pub event_time: ::std::option::Option<String>,
-        #[doc = "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL."]
-        #[serde(rename = "externalUri", default)]
-        pub external_uri: ::std::option::Option<String>,
-        #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456/findings/789\""]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/123/sources/456\""]
-        #[serde(rename = "parent", default)]
-        pub parent: ::std::option::Option<String>,
-        #[doc = "The full resource name of the Google Cloud Platform (GCP) resource this\nfinding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nThis field is immutable after creation time."]
-        #[serde(rename = "resourceName", default)]
-        pub resource_name: ::std::option::Option<String>,
-        #[doc = "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding."]
-        #[serde(rename = "securityMarks", default)]
-        pub security_marks: ::std::option::Option<crate::schemas::SecurityMarks>,
-        #[doc = "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only."]
-        #[serde(rename = "sourceProperties", default)]
-        pub source_properties:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The state of the finding."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::FindingState>,
-    }
-    impl ::field_selector::FieldSelector for Finding {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -492,6 +492,37 @@ pub mod schemas {
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GetPolicyOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
+        #[doc = "The duration between asset discovery run start and end"]
+        #[serde(rename = "duration", default)]
+        pub duration: ::std::option::Option<String>,
+        #[doc = "The state of an asset discovery run."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -582,17 +613,17 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
+    pub struct GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
         #[doc = "The duration between asset discovery run start and end"]
         #[serde(rename = "duration", default)]
         pub duration: ::std::option::Option<String>,
         #[doc = "The state of an asset discovery run."]
         #[serde(rename = "state", default)]
         pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState,
+            crate::schemas::GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
+    impl ::field_selector::FieldSelector for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -668,37 +699,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
-        #[doc = "The duration between asset discovery run start and end"]
-        #[serde(rename = "duration", default)]
-        pub duration: ::std::option::Option<String>,
-        #[doc = "The state of an asset discovery run."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -872,6 +872,24 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ListAssetsResult {
+        #[doc = "Asset matching the search request."]
+        #[serde(rename = "asset", default)]
+        pub asset: ::std::option::Option<crate::schemas::Asset>,
+        #[doc = "State of the asset."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::ListAssetsResultState>,
+    }
+    impl ::field_selector::FieldSelector for ListAssetsResult {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListAssetsResultState {
         #[doc = "Asset was active at both point(s) in time."]
@@ -931,24 +949,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ListAssetsResultState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct ListAssetsResult {
-        #[doc = "Asset matching the search request."]
-        #[serde(rename = "asset", default)]
-        pub asset: ::std::option::Option<crate::schemas::Asset>,
-        #[doc = "State of the asset."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::ListAssetsResultState>,
-    }
-    impl ::field_selector::FieldSelector for ListAssetsResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1208,6 +1208,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SetFindingStateRequest {
+        #[doc = "The time at which the updated state takes effect."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "The desired State of the finding."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::SetFindingStateRequestState>,
+    }
+    impl ::field_selector::FieldSelector for SetFindingStateRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SetFindingStateRequestState {
         #[doc = "The finding requires attention and has not been addressed yet."]
@@ -1259,35 +1288,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SetFindingStateRequestState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SetFindingStateRequest {
-        #[doc = "The time at which the updated state takes effect."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "The desired State of the finding."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::SetFindingStateRequestState>,
-    }
-    impl ::field_selector::FieldSelector for SetFindingStateRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6515,84 +6515,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -6624,7 +6546,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -6750,8 +6671,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

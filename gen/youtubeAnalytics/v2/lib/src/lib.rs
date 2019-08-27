@@ -25,6 +25,49 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ErrorProto {
+        #[doc = "Error arguments, to be used when building user-friendly error messages\ngiven the error domain and code.  Different error codes require different\narguments."]
+        #[serde(rename = "argument", default)]
+        pub argument: ::std::option::Option<Vec<String>>,
+        #[doc = "Error code in the error domain. This should correspond to\na value of the enum type whose name is in domain. See\nthe core error domain in error_domain.proto."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "Debugging information, which should not be\nshared externally."]
+        #[serde(rename = "debugInfo", default)]
+        pub debug_info: ::std::option::Option<String>,
+        #[doc = "Error domain. RoSy services can define their own\ndomain and error codes. This should normally be\nthe name of an enum type, such as: gdata.CoreErrorDomain"]
+        #[serde(rename = "domain", default)]
+        pub domain: ::std::option::Option<String>,
+        #[doc = "A short explanation for the error, which can be shared outside Google.\n\nPlease set domain, code and arguments whenever possible instead of this\nerror message so that external APIs can build safe error messages\nthemselves.\n\nExternal messages built in a RoSy interface will most likely refer to\ninformation and concepts that are not available externally and should not\nbe exposed. It is safer if external APIs can understand the errors and\ndecide what the error message should look like."]
+        #[serde(rename = "externalErrorMessage", default)]
+        pub external_error_message: ::std::option::Option<String>,
+        #[doc = "Location of the error, as specified by the location type.\n\nIf location_type is PATH, this should be a path to a field that's\nrelative to the request, using FieldPath notation\n(net/proto2/util/public/field_path.h).\n\nExamples:\nauthenticated_user.gaia_id\nresource.address[2].country"]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[serde(rename = "locationType", default)]
+        pub location_type: ::std::option::Option<crate::schemas::ErrorProtoLocationType>,
+    }
+    impl ::field_selector::FieldSelector for ErrorProto {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ErrorProtoLocationType {
         #[doc = "other location type which can safely be shared\nexternally."]
@@ -96,29 +139,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ErrorProto {
-        #[doc = "Error arguments, to be used when building user-friendly error messages\ngiven the error domain and code.  Different error codes require different\narguments."]
-        #[serde(rename = "argument", default)]
-        pub argument: ::std::option::Option<Vec<String>>,
-        #[doc = "Error code in the error domain. This should correspond to\na value of the enum type whose name is in domain. See\nthe core error domain in error_domain.proto."]
+    pub struct Errors {
+        #[doc = "Global error code. Deprecated and ignored.\nSet custom error codes in ErrorProto.domain and ErrorProto.code\ninstead."]
         #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "Debugging information, which should not be\nshared externally."]
-        #[serde(rename = "debugInfo", default)]
-        pub debug_info: ::std::option::Option<String>,
-        #[doc = "Error domain. RoSy services can define their own\ndomain and error codes. This should normally be\nthe name of an enum type, such as: gdata.CoreErrorDomain"]
-        #[serde(rename = "domain", default)]
-        pub domain: ::std::option::Option<String>,
-        #[doc = "A short explanation for the error, which can be shared outside Google.\n\nPlease set domain, code and arguments whenever possible instead of this\nerror message so that external APIs can build safe error messages\nthemselves.\n\nExternal messages built in a RoSy interface will most likely refer to\ninformation and concepts that are not available externally and should not\nbe exposed. It is safer if external APIs can understand the errors and\ndecide what the error message should look like."]
-        #[serde(rename = "externalErrorMessage", default)]
-        pub external_error_message: ::std::option::Option<String>,
-        #[doc = "Location of the error, as specified by the location type.\n\nIf location_type is PATH, this should be a path to a field that's\nrelative to the request, using FieldPath notation\n(net/proto2/util/public/field_path.h).\n\nExamples:\nauthenticated_user.gaia_id\nresource.address[2].country"]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[serde(rename = "locationType", default)]
-        pub location_type: ::std::option::Option<crate::schemas::ErrorProtoLocationType>,
+        pub code: ::std::option::Option<crate::schemas::ErrorsCode>,
+        #[doc = "Specific error description and codes"]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<Vec<crate::schemas::ErrorProto>>,
+        #[doc = "Request identifier generated by the service, which can be\nused to identify the error in the logs"]
+        #[serde(rename = "requestId", default)]
+        pub request_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ErrorProto {
+    impl ::field_selector::FieldSelector for Errors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -190,38 +222,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ErrorsCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Errors {
-        #[doc = "Global error code. Deprecated and ignored.\nSet custom error codes in ErrorProto.domain and ErrorProto.code\ninstead."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::ErrorsCode>,
-        #[doc = "Specific error description and codes"]
-        #[serde(rename = "error", default)]
-        pub error: ::std::option::Option<Vec<crate::schemas::ErrorProto>>,
-        #[doc = "Request identifier generated by the service, which can be\nused to identify the error in the logs"]
-        #[serde(rename = "requestId", default)]
-        pub request_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Errors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2495,84 +2495,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2604,7 +2526,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -2725,50 +2646,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

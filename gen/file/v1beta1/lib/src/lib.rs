@@ -63,6 +63,88 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSaasacceleratorManagementProvidersV1Instance {
+        #[doc = "consumer_defined_name is the name that is set by the consumer. On the other\nhand Name field represents system-assigned id of an instance so consumers\nare not necessarily aware of it.\nconsumer_defined_name is used for notification/UI purposes for consumer to\nrecognize their instances."]
+        #[serde(rename = "consumerDefinedName", default)]
+        pub consumer_defined_name: ::std::option::Option<String>,
+        #[doc = "Output only. Timestamp when the resource was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional. Resource labels to represent user provided metadata. Each label\nis a key-value pair, where both the key and the value are arbitrary strings\nprovided by the user."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The MaintenancePolicies that have been attached to the instance.\nThe key must be of the type name of the oneof policy name defined in\nMaintenancePolicy, and the referenced policy must define the same policy\ntype. For complete details of MaintenancePolicy, please refer to\ngo/cloud-saas-mw-ug."]
+        #[serde(rename = "maintenancePolicyNames", default)]
+        pub maintenance_policy_names:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The MaintenanceSchedule contains the scheduling information of published\nmaintenance schedule."]
+        #[serde(rename = "maintenanceSchedules", default)]
+        pub maintenance_schedules: ::std::option::Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
+            >,
+        >,
+        #[doc = "Unique name of the resource. It uses the form:\n`projects/{project_id}/locations/{location_id}/instances/{instance_id}`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. Custom string attributes used primarily to expose\nproducer-specific information in monitoring dashboards.\nSee go/get-instance-metadata."]
+        #[serde(rename = "producerMetadata", default)]
+        pub producer_metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. The list of data plane resources provisioned for this\ninstance, e.g. compute VMs. See go/get-instance-metadata."]
+        #[serde(rename = "provisionedResources", default)]
+        pub provisioned_resources: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>,
+        >,
+        #[doc = "The map between RolloutType and the corresponding RolloutMetadata.\nThis is only mutated by rollout service. For actuation implementation,\nthis information is pass-through for Rollout management. Producer shall\nnot modify by itself.\nFor update of a single entry in this map, the update field mask shall\nfollow this sementics: go/advanced-field-masks"]
+        #[serde(rename = "rolloutMetadata", default)]
+        pub rollout_metadata: ::std::option::Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata,
+            >,
+        >,
+        #[doc = "Output only. SLO metadata for instance classification in the\nStandardized dataplane SLO platform.\nSee go/cloud-ssa-standard-slo for feature description."]
+        #[serde(rename = "sloMetadata", default)]
+        pub slo_metadata: ::std::option::Option<
+            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata,
+        >,
+        #[doc = "Software versions that are used to deploy this instance. This can be\nmutated by rollout services."]
+        #[serde(rename = "softwareVersions", default)]
+        pub software_versions: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. Current lifecycle state of the resource (e.g. if it's being\ncreated or ready to use)."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1InstanceState,
+        >,
+        #[doc = "Output only. ID of the associated GCP tenant project.\nSee go/get-instance-metadata."]
+        #[serde(rename = "tenantProjectId", default)]
+        pub tenant_project_id: ::std::option::Option<String>,
+        #[doc = "Output only. Timestamp when the resource was last modified."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudSaasacceleratorManagementProvidersV1Instance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudSaasacceleratorManagementProvidersV1InstanceState {
         #[doc = "Instance is being created."]
@@ -150,88 +232,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudSaasacceleratorManagementProvidersV1InstanceState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudSaasacceleratorManagementProvidersV1Instance {
-        #[doc = "consumer_defined_name is the name that is set by the consumer. On the other\nhand Name field represents system-assigned id of an instance so consumers\nare not necessarily aware of it.\nconsumer_defined_name is used for notification/UI purposes for consumer to\nrecognize their instances."]
-        #[serde(rename = "consumerDefinedName", default)]
-        pub consumer_defined_name: ::std::option::Option<String>,
-        #[doc = "Output only. Timestamp when the resource was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. Resource labels to represent user provided metadata. Each label\nis a key-value pair, where both the key and the value are arbitrary strings\nprovided by the user."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The MaintenancePolicies that have been attached to the instance.\nThe key must be of the type name of the oneof policy name defined in\nMaintenancePolicy, and the referenced policy must define the same policy\ntype. For complete details of MaintenancePolicy, please refer to\ngo/cloud-saas-mw-ug."]
-        #[serde(rename = "maintenancePolicyNames", default)]
-        pub maintenance_policy_names:
-            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The MaintenanceSchedule contains the scheduling information of published\nmaintenance schedule."]
-        #[serde(rename = "maintenanceSchedules", default)]
-        pub maintenance_schedules: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
-            >,
-        >,
-        #[doc = "Unique name of the resource. It uses the form:\n`projects/{project_id}/locations/{location_id}/instances/{instance_id}`"]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. Custom string attributes used primarily to expose\nproducer-specific information in monitoring dashboards.\nSee go/get-instance-metadata."]
-        #[serde(rename = "producerMetadata", default)]
-        pub producer_metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The list of data plane resources provisioned for this\ninstance, e.g. compute VMs. See go/get-instance-metadata."]
-        #[serde(rename = "provisionedResources", default)]
-        pub provisioned_resources: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>,
-        >,
-        #[doc = "The map between RolloutType and the corresponding RolloutMetadata.\nThis is only mutated by rollout service. For actuation implementation,\nthis information is pass-through for Rollout management. Producer shall\nnot modify by itself.\nFor update of a single entry in this map, the update field mask shall\nfollow this sementics: go/advanced-field-masks"]
-        #[serde(rename = "rolloutMetadata", default)]
-        pub rollout_metadata: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata,
-            >,
-        >,
-        #[doc = "Output only. SLO metadata for instance classification in the\nStandardized dataplane SLO platform.\nSee go/cloud-ssa-standard-slo for feature description."]
-        #[serde(rename = "sloMetadata", default)]
-        pub slo_metadata: ::std::option::Option<
-            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata,
-        >,
-        #[doc = "Software versions that are used to deploy this instance. This can be\nmutated by rollout services."]
-        #[serde(rename = "softwareVersions", default)]
-        pub software_versions: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. Current lifecycle state of the resource (e.g. if it's being\ncreated or ready to use)."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1InstanceState,
-        >,
-        #[doc = "Output only. ID of the associated GCP tenant project.\nSee go/get-instance-metadata."]
-        #[serde(rename = "tenantProjectId", default)]
-        pub tenant_project_id: ::std::option::Option<String>,
-        #[doc = "Output only. Timestamp when the resource was last modified."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudSaasacceleratorManagementProvidersV1Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -489,6 +489,59 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Instance {
+        #[doc = "Output only. The time when the instance was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional. A description of the instance (2048 characters or less)."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Server-specified ETag for the instance resource to prevent simultaneous\nupdates from overwriting each other."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "File system shares on the instance.\nFor this version, only a single file share is supported."]
+        #[serde(rename = "fileShares", default)]
+        pub file_shares: ::std::option::Option<Vec<crate::schemas::FileShareConfig>>,
+        #[doc = "Resource labels to represent user provided metadata."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. The resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "VPC networks to which the instance is connected.\nFor this version, only a single network is supported."]
+        #[serde(rename = "networks", default)]
+        pub networks: ::std::option::Option<Vec<crate::schemas::NetworkConfig>>,
+        #[doc = "Output only. The instance state."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::InstanceState>,
+        #[doc = "Output only. Additional information about the instance state, if available."]
+        #[serde(rename = "statusMessage", default)]
+        pub status_message: ::std::option::Option<String>,
+        #[doc = "The service tier of the instance."]
+        #[serde(rename = "tier", default)]
+        pub tier: ::std::option::Option<crate::schemas::InstanceTier>,
+    }
+    impl ::field_selector::FieldSelector for Instance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
         #[doc = "The instance is being created."]
@@ -631,59 +684,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Instance {
-        #[doc = "Output only. The time when the instance was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. A description of the instance (2048 characters or less)."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Server-specified ETag for the instance resource to prevent simultaneous\nupdates from overwriting each other."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "File system shares on the instance.\nFor this version, only a single file share is supported."]
-        #[serde(rename = "fileShares", default)]
-        pub file_shares: ::std::option::Option<Vec<crate::schemas::FileShareConfig>>,
-        #[doc = "Resource labels to represent user provided metadata."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "VPC networks to which the instance is connected.\nFor this version, only a single network is supported."]
-        #[serde(rename = "networks", default)]
-        pub networks: ::std::option::Option<Vec<crate::schemas::NetworkConfig>>,
-        #[doc = "Output only. The instance state."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::InstanceState>,
-        #[doc = "Output only. Additional information about the instance state, if available."]
-        #[serde(rename = "statusMessage", default)]
-        pub status_message: ::std::option::Option<String>,
-        #[doc = "The service tier of the instance."]
-        #[serde(rename = "tier", default)]
-        pub tier: ::std::option::Option<crate::schemas::InstanceTier>,
-    }
-    impl ::field_selector::FieldSelector for Instance {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ListInstancesResponse {
         #[doc = "A list of instances in the project for the specified location.\n\nIf the {location} value in the request is \"-\", the response contains a list\nof instances from all locations. If any location is unreachable, the\nresponse will only return instances in reachable locations and the\n\"unreachable\" field will be populated with a list of unreachable locations."]
         #[serde(rename = "instances", default)]
@@ -768,6 +768,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NetworkConfig {
+        #[doc = "Output only. IPv4 addresses in the format\n{octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format\n{block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block\n7}:{block 8}."]
+        #[serde(rename = "ipAddresses", default)]
+        pub ip_addresses: ::std::option::Option<Vec<String>>,
+        #[doc = "Internet protocol versions for which the instance has IP addresses\nassigned. For this version, only MODE_IPV4 is supported."]
+        #[serde(rename = "modes", default)]
+        pub modes: ::std::option::Option<Vec<crate::schemas::NetworkConfigModesItems>>,
+        #[doc = "The name of the Google Compute Engine\n[VPC network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected."]
+        #[serde(rename = "network", default)]
+        pub network: ::std::option::Option<String>,
+        #[doc = "A /29 CIDR block in one of the\n[internal IP address\nranges](https://www.arin.net/knowledge/address_filters.html) that\nidentifies the range of IP addresses reserved for this instance. For\nexample, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap\nwith either existing subnets or assigned IP address ranges for other Cloud\nFilestore instances in the selected VPC network."]
+        #[serde(rename = "reservedIpRange", default)]
+        pub reserved_ip_range: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for NetworkConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkConfigModesItems {
         AddressModeUnspecified,
@@ -813,41 +848,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NetworkConfigModesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NetworkConfig {
-        #[doc = "Output only. IPv4 addresses in the format\n{octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format\n{block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block\n7}:{block 8}."]
-        #[serde(rename = "ipAddresses", default)]
-        pub ip_addresses: ::std::option::Option<Vec<String>>,
-        #[doc = "Internet protocol versions for which the instance has IP addresses\nassigned. For this version, only MODE_IPV4 is supported."]
-        #[serde(rename = "modes", default)]
-        pub modes: ::std::option::Option<Vec<crate::schemas::NetworkConfigModesItems>>,
-        #[doc = "The name of the Google Compute Engine\n[VPC network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected."]
-        #[serde(rename = "network", default)]
-        pub network: ::std::option::Option<String>,
-        #[doc = "A /29 CIDR block in one of the\n[internal IP address\nranges](https://www.arin.net/knowledge/address_filters.html) that\nidentifies the range of IP addresses reserved for this instance. For\nexample, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap\nwith either existing subnets or assigned IP address ranges for other Cloud\nFilestore instances in the selected VPC network."]
-        #[serde(rename = "reservedIpRange", default)]
-        pub reserved_ip_range: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for NetworkConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3681,84 +3681,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3790,7 +3712,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -3911,50 +3832,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

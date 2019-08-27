@@ -46,6 +46,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Api {
+        #[doc = "The methods of this interface, in unspecified order."]
+        #[serde(rename = "methods", default)]
+        pub methods: ::std::option::Option<Vec<crate::schemas::Method>>,
+        #[doc = "Included interfaces. See Mixin."]
+        #[serde(rename = "mixins", default)]
+        pub mixins: ::std::option::Option<Vec<crate::schemas::Mixin>>,
+        #[doc = "The fully qualified name of this interface, including package name\nfollowed by the interface's simple name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Any metadata attached to the interface."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "Source context for the protocol buffer service represented by this\nmessage."]
+        #[serde(rename = "sourceContext", default)]
+        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
+        #[doc = "The source syntax of the service."]
+        #[serde(rename = "syntax", default)]
+        pub syntax: ::std::option::Option<crate::schemas::ApiSyntax>,
+        #[doc = "A version string for this interface. If specified, must have the form\n`major-version.minor-version`, as in `1.10`. If the minor version is\nomitted, it defaults to zero. If the entire version field is empty, the\nmajor version is derived from the package name, as outlined below. If the\nfield is not empty, the version in the package name will be verified to be\nconsistent with what is provided here.\n\nThe versioning schema uses [semantic\nversioning](http://semver.org) where the major version number\nindicates a breaking change and the minor version an additive,\nnon-breaking change. Both version numbers are signals to users\nwhat to expect from different versions, and should be carefully\nchosen based on the product plan.\n\nThe major version is also reflected in the package name of the\ninterface, which must end in `v<major-version>`, as in\n`google.feature.v1`. For major versions 0 and 1, the suffix can\nbe omitted. Zero major versions must only be used for\nexperimental, non-GA interfaces."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Api {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApiSyntax {
         #[doc = "Syntax `proto2`."]
@@ -93,39 +126,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ApiSyntax {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Api {
-        #[doc = "The methods of this interface, in unspecified order."]
-        #[serde(rename = "methods", default)]
-        pub methods: ::std::option::Option<Vec<crate::schemas::Method>>,
-        #[doc = "Included interfaces. See Mixin."]
-        #[serde(rename = "mixins", default)]
-        pub mixins: ::std::option::Option<Vec<crate::schemas::Mixin>>,
-        #[doc = "The fully qualified name of this interface, including package name\nfollowed by the interface's simple name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Any metadata attached to the interface."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "Source context for the protocol buffer service represented by this\nmessage."]
-        #[serde(rename = "sourceContext", default)]
-        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
-        #[doc = "The source syntax of the service."]
-        #[serde(rename = "syntax", default)]
-        pub syntax: ::std::option::Option<crate::schemas::ApiSyntax>,
-        #[doc = "A version string for this interface. If specified, must have the form\n`major-version.minor-version`, as in `1.10`. If the minor version is\nomitted, it defaults to zero. If the entire version field is empty, the\nmajor version is derived from the package name, as outlined below. If the\nfield is not empty, the version in the package name will be verified to be\nconsistent with what is provided here.\n\nThe versioning schema uses [semantic\nversioning](http://semver.org) where the major version number\nindicates a breaking change and the minor version an additive,\nnon-breaking change. Both version numbers are signals to users\nwhat to expect from different versions, and should be carefully\nchosen based on the product plan.\n\nThe major version is also reflected in the package name of the\ninterface, which must end in `v<major-version>`, as in\n`google.feature.v1`. For major versions 0 and 1, the suffix can\nbe omitted. Zero major versions must only be used for\nexperimental, non-GA interfaces."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Api {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -282,6 +282,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct BackendRule {
+        #[doc = "The address of the API backend."]
+        #[serde(rename = "address", default)]
+        pub address: ::std::option::Option<String>,
+        #[doc = "The number of seconds to wait for a response from a request.  The default\ndeadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds."]
+        #[serde(rename = "deadline", default)]
+        pub deadline: ::std::option::Option<f64>,
+        #[doc = "The JWT audience is used when generating a JWT id token for the backend."]
+        #[serde(rename = "jwtAudience", default)]
+        pub jwt_audience: ::std::option::Option<String>,
+        #[doc = "Minimum deadline in seconds needed for this method. Calls having deadline\nvalue lower than this will be rejected."]
+        #[serde(rename = "minDeadline", default)]
+        pub min_deadline: ::std::option::Option<f64>,
+        #[doc = "The number of seconds to wait for the completion of a long running\noperation. The default is no deadline."]
+        #[serde(rename = "operationDeadline", default)]
+        pub operation_deadline: ::std::option::Option<f64>,
+        #[serde(rename = "pathTranslation", default)]
+        pub path_translation: ::std::option::Option<crate::schemas::BackendRulePathTranslation>,
+        #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
+        #[serde(rename = "selector", default)]
+        pub selector: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BackendRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BackendRulePathTranslation {
         #[doc = "The request path will be appended to the backend address.\n\n# Examples\n\nGiven the following operation config:\n\n````text\nMethod path:        /api/company/{cid}/user/{uid}\nBackend address:    https://example.appspot.com\n````\n\nRequests to the following request paths will call the backend at the\ntranslated path:\n\n````text\nRequest path: /api/company/widgetworks/user/johndoe\nTranslated:\nhttps://example.appspot.com/api/company/widgetworks/user/johndoe\n\nRequest path: /api/company/widgetworks/user/johndoe?timezone=EST\nTranslated:\nhttps://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST````"]
@@ -336,40 +370,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for BackendRulePathTranslation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct BackendRule {
-        #[doc = "The address of the API backend."]
-        #[serde(rename = "address", default)]
-        pub address: ::std::option::Option<String>,
-        #[doc = "The number of seconds to wait for a response from a request.  The default\ndeadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds."]
-        #[serde(rename = "deadline", default)]
-        pub deadline: ::std::option::Option<f64>,
-        #[doc = "The JWT audience is used when generating a JWT id token for the backend."]
-        #[serde(rename = "jwtAudience", default)]
-        pub jwt_audience: ::std::option::Option<String>,
-        #[doc = "Minimum deadline in seconds needed for this method. Calls having deadline\nvalue lower than this will be rejected."]
-        #[serde(rename = "minDeadline", default)]
-        pub min_deadline: ::std::option::Option<f64>,
-        #[doc = "The number of seconds to wait for the completion of a long running\noperation. The default is no deadline."]
-        #[serde(rename = "operationDeadline", default)]
-        pub operation_deadline: ::std::option::Option<f64>,
-        #[serde(rename = "pathTranslation", default)]
-        pub path_translation: ::std::option::Option<crate::schemas::BackendRulePathTranslation>,
-        #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
-        pub selector: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BackendRule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -756,6 +756,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Enum {
+        #[doc = "Enum value definitions."]
+        #[serde(rename = "enumvalue", default)]
+        pub enumvalue: ::std::option::Option<Vec<crate::schemas::EnumValue>>,
+        #[doc = "Enum type name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Protocol buffer options."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "The source context."]
+        #[serde(rename = "sourceContext", default)]
+        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
+        #[doc = "The source syntax."]
+        #[serde(rename = "syntax", default)]
+        pub syntax: ::std::option::Option<crate::schemas::EnumSyntax>,
+    }
+    impl ::field_selector::FieldSelector for Enum {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnumSyntax {
         #[doc = "Syntax `proto2`."]
@@ -812,33 +839,6 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Enum {
-        #[doc = "Enum value definitions."]
-        #[serde(rename = "enumvalue", default)]
-        pub enumvalue: ::std::option::Option<Vec<crate::schemas::EnumValue>>,
-        #[doc = "Enum type name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Protocol buffer options."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "The source context."]
-        #[serde(rename = "sourceContext", default)]
-        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
-        #[doc = "The source syntax."]
-        #[serde(rename = "syntax", default)]
-        pub syntax: ::std::option::Option<crate::schemas::EnumSyntax>,
-    }
-    impl ::field_selector::FieldSelector for Enum {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct EnumValue {
         #[doc = "Enum value name."]
         #[serde(rename = "name", default)]
@@ -851,6 +851,48 @@ pub mod schemas {
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
     }
     impl ::field_selector::FieldSelector for EnumValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Field {
+        #[doc = "The field cardinality."]
+        #[serde(rename = "cardinality", default)]
+        pub cardinality: ::std::option::Option<crate::schemas::FieldCardinality>,
+        #[doc = "The string value of the default value of this field. Proto2 syntax only."]
+        #[serde(rename = "defaultValue", default)]
+        pub default_value: ::std::option::Option<String>,
+        #[doc = "The field JSON name."]
+        #[serde(rename = "jsonName", default)]
+        pub json_name: ::std::option::Option<String>,
+        #[doc = "The field type."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::FieldKind>,
+        #[doc = "The field name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The field number."]
+        #[serde(rename = "number", default)]
+        pub number: ::std::option::Option<i32>,
+        #[doc = "The index of the field type in `Type.oneofs`, for message or enumeration\ntypes. The first type has index 1; zero means the type is not in the list."]
+        #[serde(rename = "oneofIndex", default)]
+        pub oneof_index: ::std::option::Option<i32>,
+        #[doc = "The protocol buffer options."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "Whether to use alternative packed wire representation."]
+        #[serde(rename = "packed", default)]
+        pub packed: ::std::option::Option<bool>,
+        #[doc = "The field type URL, without the scheme, for message or enumeration\ntypes. Example: `\"type.googleapis.com/google.protobuf.Timestamp\"`."]
+        #[serde(rename = "typeUrl", default)]
+        pub type_url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Field {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1045,48 +1087,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Field {
-        #[doc = "The field cardinality."]
-        #[serde(rename = "cardinality", default)]
-        pub cardinality: ::std::option::Option<crate::schemas::FieldCardinality>,
-        #[doc = "The string value of the default value of this field. Proto2 syntax only."]
-        #[serde(rename = "defaultValue", default)]
-        pub default_value: ::std::option::Option<String>,
-        #[doc = "The field JSON name."]
-        #[serde(rename = "jsonName", default)]
-        pub json_name: ::std::option::Option<String>,
-        #[doc = "The field type."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::FieldKind>,
-        #[doc = "The field name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The field number."]
-        #[serde(rename = "number", default)]
-        pub number: ::std::option::Option<i32>,
-        #[doc = "The index of the field type in `Type.oneofs`, for message or enumeration\ntypes. The first type has index 1; zero means the type is not in the list."]
-        #[serde(rename = "oneofIndex", default)]
-        pub oneof_index: ::std::option::Option<i32>,
-        #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "Whether to use alternative packed wire representation."]
-        #[serde(rename = "packed", default)]
-        pub packed: ::std::option::Option<bool>,
-        #[doc = "The field type URL, without the scheme, for message or enumeration\ntypes. Example: `\"type.googleapis.com/google.protobuf.Timestamp\"`."]
-        #[serde(rename = "typeUrl", default)]
-        pub type_url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Field {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -1204,6 +1204,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LabelDescriptor {
+        #[doc = "A human-readable description for the label."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The label key."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "The type of data that can be assigned to the label."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
+    }
+    impl ::field_selector::FieldSelector for LabelDescriptor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LabelDescriptorValueType {
         #[doc = "Boolean; true or false."]
@@ -1255,38 +1287,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LabelDescriptorValueType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LabelDescriptor {
-        #[doc = "A human-readable description for the label."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The label key."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "The type of data that can be assigned to the label."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
-    }
-    impl ::field_selector::FieldSelector for LabelDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1414,6 +1414,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Method {
+        #[doc = "The simple name of this method."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Any metadata attached to the method."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "If true, the request is streamed."]
+        #[serde(rename = "requestStreaming", default)]
+        pub request_streaming: ::std::option::Option<bool>,
+        #[doc = "A URL of the input message type."]
+        #[serde(rename = "requestTypeUrl", default)]
+        pub request_type_url: ::std::option::Option<String>,
+        #[doc = "If true, the response is streamed."]
+        #[serde(rename = "responseStreaming", default)]
+        pub response_streaming: ::std::option::Option<bool>,
+        #[doc = "The URL of the output message type."]
+        #[serde(rename = "responseTypeUrl", default)]
+        pub response_type_url: ::std::option::Option<String>,
+        #[doc = "The source syntax of this method."]
+        #[serde(rename = "syntax", default)]
+        pub syntax: ::std::option::Option<crate::schemas::MethodSyntax>,
+    }
+    impl ::field_selector::FieldSelector for Method {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MethodSyntax {
         #[doc = "Syntax `proto2`."]
@@ -1469,31 +1502,51 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Method {
-        #[doc = "The simple name of this method."]
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MetricDescriptor {
+        #[doc = "A detailed description of the metric, which can be used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "A concise name for the metric, which can be displayed in user interfaces.\nUse sentence case without an ending period, for example \"Request count\".\nThis field is optional but it is recommended to be set for any metrics\nassociated with user-visible concepts, such as Quota."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The set of labels that can be used to describe a specific\ninstance of this metric type. For example, the\n`appengine.googleapis.com/http/server/response_latencies` metric\ntype has a label for the HTTP response code, `response_code`, so\nyou can look at latencies for successful responses or just\nfor responses that failed."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the metric definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
+        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
+        #[doc = "Whether the metric records instantaneous values, changes to a value, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
+        #[serde(rename = "metricKind", default)]
+        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
+        #[doc = "The resource name of the metric descriptor."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "Any metadata attached to the method."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "If true, the request is streamed."]
-        #[serde(rename = "requestStreaming", default)]
-        pub request_streaming: ::std::option::Option<bool>,
-        #[doc = "A URL of the input message type."]
-        #[serde(rename = "requestTypeUrl", default)]
-        pub request_type_url: ::std::option::Option<String>,
-        #[doc = "If true, the response is streamed."]
-        #[serde(rename = "responseStreaming", default)]
-        pub response_streaming: ::std::option::Option<bool>,
-        #[doc = "The URL of the output message type."]
-        #[serde(rename = "responseTypeUrl", default)]
-        pub response_type_url: ::std::option::Option<String>,
-        #[doc = "The source syntax of this method."]
-        #[serde(rename = "syntax", default)]
-        pub syntax: ::std::option::Option<crate::schemas::MethodSyntax>,
+        #[doc = "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined metric types have the DNS name\n`custom.googleapis.com` or `external.googleapis.com`.  Metric types should\nuse a natural hierarchical grouping. For example:\n\n````text\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\"````"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The unit in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The\nsupported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10**3)\n* `M`     mega    (10**6)\n* `G`     giga    (10**9)\n* `T`     tera    (10**12)\n* `P`     peta    (10**15)\n* `E`     exa     (10**18)\n* `Z`     zetta   (10**21)\n* `Y`     yotta   (10**24)\n* `m`     milli   (10**-3)\n* `u`     micro   (10**-6)\n* `n`     nano    (10**-9)\n* `p`     pico    (10**-12)\n* `f`     femto   (10**-15)\n* `a`     atto    (10**-18)\n* `z`     zepto   (10**-21)\n* `y`     yocto   (10**-24)\n* `Ki`    kibi    (2**10)\n* `Mi`    mebi    (2**20)\n* `Gi`    gibi    (2**30)\n* `Ti`    tebi    (2**40)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division (as an infix operator, e.g. `1/s`).\n* `.`    multiplication (as an infix operator, e.g. `GBy.d`)\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT` and is\n  equivalent to `1` if it is used alone. For examples,\n  `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing '{' or '}'.\n* `1` represents dimensionless value 1, such as in `1/s`.\n* `%` represents dimensionless value 1/100, and annotates values giving\n  a percentage."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<String>,
+        #[doc = "Whether the measurement is an integer, a floating-point number, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
     }
-    impl ::field_selector::FieldSelector for Method {
+    impl ::field_selector::FieldSelector for MetricDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1723,39 +1776,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricDescriptor {
-        #[doc = "A detailed description of the metric, which can be used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "A concise name for the metric, which can be displayed in user interfaces.\nUse sentence case without an ending period, for example \"Request count\".\nThis field is optional but it is recommended to be set for any metrics\nassociated with user-visible concepts, such as Quota."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The set of labels that can be used to describe a specific\ninstance of this metric type. For example, the\n`appengine.googleapis.com/http/server/response_latencies` metric\ntype has a label for the HTTP response code, `response_code`, so\nyou can look at latencies for successful responses or just\nfor responses that failed."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the metric definition."]
+    pub struct MetricDescriptorMetadata {
+        #[doc = "The delay of data points caused by ingestion. Data points older than this\nage are guaranteed to be ingested and available to be read, excluding\ndata loss due to errors."]
+        #[serde(rename = "ingestDelay", default)]
+        pub ingest_delay: ::std::option::Option<String>,
+        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead.\nThe launch stage of the metric definition."]
         #[serde(rename = "launchStage", default)]
-        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
-        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
-        #[doc = "Whether the metric records instantaneous values, changes to a value, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
-        #[serde(rename = "metricKind", default)]
-        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
-        #[doc = "The resource name of the metric descriptor."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined metric types have the DNS name\n`custom.googleapis.com` or `external.googleapis.com`.  Metric types should\nuse a natural hierarchical grouping. For example:\n\n````text\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\"````"]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The unit in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The\nsupported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10**3)\n* `M`     mega    (10**6)\n* `G`     giga    (10**9)\n* `T`     tera    (10**12)\n* `P`     peta    (10**15)\n* `E`     exa     (10**18)\n* `Z`     zetta   (10**21)\n* `Y`     yotta   (10**24)\n* `m`     milli   (10**-3)\n* `u`     micro   (10**-6)\n* `n`     nano    (10**-9)\n* `p`     pico    (10**-12)\n* `f`     femto   (10**-15)\n* `a`     atto    (10**-18)\n* `z`     zepto   (10**-21)\n* `y`     yocto   (10**-24)\n* `Ki`    kibi    (2**10)\n* `Mi`    mebi    (2**20)\n* `Gi`    gibi    (2**30)\n* `Ti`    tebi    (2**40)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division (as an infix operator, e.g. `1/s`).\n* `.`    multiplication (as an infix operator, e.g. `GBy.d`)\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT` and is\n  equivalent to `1` if it is used alone. For examples,\n  `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing '{' or '}'.\n* `1` represents dimensionless value 1, such as in `1/s`.\n* `%` represents dimensionless value 1/100, and annotates values giving\n  a percentage."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<String>,
-        #[doc = "Whether the measurement is an integer, a floating-point number, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
+        #[doc = "The sampling period of metric data points. For metrics which are written\nperiodically, consecutive data points are stored at this time interval,\nexcluding data loss due to errors. Metrics with a higher granularity have\na smaller sampling period."]
+        #[serde(rename = "samplePeriod", default)]
+        pub sample_period: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MetricDescriptor {
+    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1851,39 +1884,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricDescriptorMetadata {
-        #[doc = "The delay of data points caused by ingestion. Data points older than this\nage are guaranteed to be ingested and available to be read, excluding\ndata loss due to errors."]
-        #[serde(rename = "ingestDelay", default)]
-        pub ingest_delay: ::std::option::Option<String>,
-        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead.\nThe launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
-        #[doc = "The sampling period of metric data points. For metrics which are written\nperiodically, consecutive data points are stored at this time interval,\nexcluding data loss due to errors. Metrics with a higher granularity have\na smaller sampling period."]
-        #[serde(rename = "samplePeriod", default)]
-        pub sample_period: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct MetricRule {
         #[doc = "Metrics to update when the selected methods are called, and the associated\ncost applied to each metric.\n\nThe key of the map is the metric name, and the values are the amount\nincreased for the metric against which the quota limits are defined.\nThe value must not be negative."]
         #[serde(rename = "metricCosts", default)]
@@ -1922,6 +1922,48 @@ pub mod schemas {
         pub root: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Mixin {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MonitoredResourceDescriptor {
+        #[doc = "Optional. A detailed description of the monitored resource type that might\nbe used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. It should be a Title Cased Noun Phrase,\nwithout any article or other determiners. For example,\n`\"Google Cloud SQL Database\"`."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Required. A set of labels used to describe instances of this monitored\nresource type. For example, an individual Google Cloud SQL database is\nidentified by values for the labels `\"database_id\"` and `\"zone\"`."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the monitored resource definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
+        #[doc = "Optional. The resource name of the monitored resource descriptor:\n`\"projects/{project_id}/monitoredResourceDescriptors/{type}\"` where\n{type} is the value of the `type` field in this object and\n{project_id} is a project ID that provides API-specific context for\naccessing the type.  APIs that do not use project information can use the\nresource name format `\"monitoredResourceDescriptors/{type}\"`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The monitored resource type. For example, the type\n`\"cloudsql_database\"` represents databases in Google Cloud SQL.\nThe maximum length of this value is 256 characters."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1997,48 +2039,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for MonitoredResourceDescriptorLaunchStage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MonitoredResourceDescriptor {
-        #[doc = "Optional. A detailed description of the monitored resource type that might\nbe used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. It should be a Title Cased Noun Phrase,\nwithout any article or other determiners. For example,\n`\"Google Cloud SQL Database\"`."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Required. A set of labels used to describe instances of this monitored\nresource type. For example, an individual Google Cloud SQL database is\nidentified by values for the labels `\"database_id\"` and `\"zone\"`."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the monitored resource definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
-        #[doc = "Optional. The resource name of the monitored resource descriptor:\n`\"projects/{project_id}/monitoredResourceDescriptors/{type}\"` where\n{type} is the value of the `type` field in this object and\n{project_id} is a project ID that provides API-specific context for\naccessing the type.  APIs that do not use project information can use the\nresource name format `\"monitoredResourceDescriptors/{type}\"`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The monitored resource type. For example, the type\n`\"cloudsql_database\"` represents databases in Google Cloud SQL.\nThe maximum length of this value is 256 characters."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2635,6 +2635,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Type {
+        #[doc = "The list of fields."]
+        #[serde(rename = "fields", default)]
+        pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
+        #[doc = "The fully qualified message name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The list of types appearing in `oneof` definitions in this type."]
+        #[serde(rename = "oneofs", default)]
+        pub oneofs: ::std::option::Option<Vec<String>>,
+        #[doc = "The protocol buffer options."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "The source context."]
+        #[serde(rename = "sourceContext", default)]
+        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
+        #[doc = "The source syntax."]
+        #[serde(rename = "syntax", default)]
+        pub syntax: ::std::option::Option<crate::schemas::TypeSyntax>,
+    }
+    impl ::field_selector::FieldSelector for Type {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TypeSyntax {
         #[doc = "Syntax `proto2`."]
@@ -2682,36 +2712,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TypeSyntax {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Type {
-        #[doc = "The list of fields."]
-        #[serde(rename = "fields", default)]
-        pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
-        #[doc = "The fully qualified message name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The list of types appearing in `oneof` definitions in this type."]
-        #[serde(rename = "oneofs", default)]
-        pub oneofs: ::std::option::Option<Vec<String>>,
-        #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "The source context."]
-        #[serde(rename = "sourceContext", default)]
-        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
-        #[doc = "The source syntax."]
-        #[serde(rename = "syntax", default)]
-        pub syntax: ::std::option::Option<crate::schemas::TypeSyntax>,
-    }
-    impl ::field_selector::FieldSelector for Type {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4244,84 +4244,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4350,174 +4272,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

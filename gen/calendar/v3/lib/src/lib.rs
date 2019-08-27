@@ -49,15 +49,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AclRuleScope {
-        #[doc = "The type of the scope. Possible values are:\n\n* \"default\" - The public scope. This is the default value. \n* \"user\" - Limits the scope to a single user. \n* \"group\" - Limits the scope to a group. \n* \"domain\" - Limits the scope to a domain.  Note: The permissions granted to the \"default\", or public, scope apply to any user, authenticated or not."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The email address of a user or group, or the name of a domain, depending on the scope type. Omitted for type \"default\"."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
+    pub struct AclRule {
+        #[doc = "ETag of the resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Identifier of the ACL rule."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Type of the resource (\"calendar#aclRule\")."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The role assigned to the scope. Possible values are:\n\n* \"none\" - Provides no access. \n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
+        #[doc = "The scope of the rule."]
+        #[serde(rename = "scope", default)]
+        pub scope: ::std::option::Option<crate::schemas::AclRuleScope>,
     }
-    impl ::field_selector::FieldSelector for AclRuleScope {
+    impl ::field_selector::FieldSelector for AclRule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -78,24 +87,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AclRule {
-        #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Identifier of the ACL rule."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Type of the resource (\"calendar#aclRule\")."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The role assigned to the scope. Possible values are:\n\n* \"none\" - Provides no access. \n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
-        #[doc = "The scope of the rule."]
-        #[serde(rename = "scope", default)]
-        pub scope: ::std::option::Option<crate::schemas::AclRuleScope>,
+    pub struct AclRuleScope {
+        #[doc = "The type of the scope. Possible values are:\n\n* \"default\" - The public scope. This is the default value. \n* \"user\" - Limits the scope to a single user. \n* \"group\" - Limits the scope to a group. \n* \"domain\" - Limits the scope to a domain.  Note: The permissions granted to the \"default\", or public, scope apply to any user, authenticated or not."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The email address of a user or group, or the name of a domain, depending on the scope type. Omitted for type \"default\"."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for AclRule {
+    impl ::field_selector::FieldSelector for AclRuleScope {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -201,32 +201,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CalendarListEntryNotificationSettings {
-        #[doc = "The list of notifications set for this calendar."]
-        #[serde(rename = "notifications", default)]
-        pub notifications: ::std::option::Option<Vec<crate::schemas::CalendarNotification>>,
-    }
-    impl ::field_selector::FieldSelector for CalendarListEntryNotificationSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct CalendarListEntry {
         #[doc = "The effective access role that the authenticated user has on the calendar. Read-only. Possible values are:\n\n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
         #[serde(rename = "accessRole", default)]
@@ -288,6 +262,32 @@ pub mod schemas {
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarListEntry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CalendarListEntryNotificationSettings {
+        #[doc = "The list of notifications set for this calendar."]
+        #[serde(rename = "notifications", default)]
+        pub notifications: ::std::option::Option<Vec<crate::schemas::CalendarNotification>>,
+    }
+    impl ::field_selector::FieldSelector for CalendarListEntryNotificationSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -779,6 +779,143 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Event {
+        #[doc = "Whether anyone can invite themselves to the event (currently works for Google+ events only). Optional. The default is False."]
+        #[serde(rename = "anyoneCanAddSelf", default)]
+        pub anyone_can_add_self: ::std::option::Option<bool>,
+        #[doc = "File attachments for the event. Currently only Google Drive attachments are supported.\nIn order to modify attachments the supportsAttachments request parameter should be set to true.\nThere can be at most 25 attachments per event,"]
+        #[serde(rename = "attachments", default)]
+        pub attachments: ::std::option::Option<Vec<crate::schemas::EventAttachment>>,
+        #[doc = "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users."]
+        #[serde(rename = "attendees", default)]
+        pub attendees: ::std::option::Option<Vec<crate::schemas::EventAttendee>>,
+        #[doc = "Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response. Optional. The default is False."]
+        #[serde(rename = "attendeesOmitted", default)]
+        pub attendees_omitted: ::std::option::Option<bool>,
+        #[doc = "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the  colors endpoint). Optional."]
+        #[serde(rename = "colorId", default)]
+        pub color_id: ::std::option::Option<String>,
+        #[doc = "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
+        #[serde(rename = "conferenceData", default)]
+        pub conference_data: ::std::option::Option<crate::schemas::ConferenceData>,
+        #[doc = "Creation time of the event (as a RFC3339 timestamp). Read-only."]
+        #[serde(rename = "created", default)]
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The creator of the event. Read-only."]
+        #[serde(rename = "creator", default)]
+        pub creator: ::std::option::Option<crate::schemas::EventCreator>,
+        #[doc = "Description of the event. Optional."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance."]
+        #[serde(rename = "end", default)]
+        pub end: ::std::option::Option<crate::schemas::EventDateTime>,
+        #[doc = "Whether the end time is actually unspecified. An end time is still provided for compatibility reasons, even if this attribute is set to True. The default is False."]
+        #[serde(rename = "endTimeUnspecified", default)]
+        pub end_time_unspecified: ::std::option::Option<bool>,
+        #[doc = "ETag of the resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Extended properties of the event."]
+        #[serde(rename = "extendedProperties", default)]
+        pub extended_properties: ::std::option::Option<crate::schemas::EventExtendedProperties>,
+        #[doc = "A gadget that extends this event."]
+        #[serde(rename = "gadget", default)]
+        pub gadget: ::std::option::Option<crate::schemas::EventGadget>,
+        #[doc = "Whether attendees other than the organizer can invite others to the event. Optional. The default is True."]
+        #[serde(rename = "guestsCanInviteOthers", default)]
+        pub guests_can_invite_others: ::std::option::Option<bool>,
+        #[doc = "Whether attendees other than the organizer can modify the event. Optional. The default is False."]
+        #[serde(rename = "guestsCanModify", default)]
+        pub guests_can_modify: ::std::option::Option<bool>,
+        #[doc = "Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."]
+        #[serde(rename = "guestsCanSeeOtherGuests", default)]
+        pub guests_can_see_other_guests: ::std::option::Option<bool>,
+        #[doc = "An absolute link to the Google+ hangout associated with this event. Read-only."]
+        #[serde(rename = "hangoutLink", default)]
+        pub hangout_link: ::std::option::Option<String>,
+        #[doc = "An absolute link to this event in the Google Calendar Web UI. Read-only."]
+        #[serde(rename = "htmlLink", default)]
+        pub html_link: ::std::option::Option<String>,
+        #[doc = "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
+        #[serde(rename = "iCalUID", default)]
+        pub i_cal_uid: ::std::option::Option<String>,
+        #[doc = "Opaque identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:\n\n* characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n* the length of the ID must be between 5 and 1024 characters \n* the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.\n  If you do not specify an ID, it will be automatically generated by the server.\n  Note that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Type of the resource (\"calendar#event\")."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Geographic location of the event as free-form text. Optional."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "Whether this is a locked event copy where no changes can be made to the main event fields \"summary\", \"description\", \"location\", \"start\", \"end\" or \"recurrence\". The default is False. Read-Only."]
+        #[serde(rename = "locked", default)]
+        pub locked: ::std::option::Option<bool>,
+        #[doc = "The organizer of the event. If the organizer is also an attendee, this is indicated with a separate entry in attendees with the organizer field set to True. To change the organizer, use the move operation. Read-only, except when importing an event."]
+        #[serde(rename = "organizer", default)]
+        pub organizer: ::std::option::Option<crate::schemas::EventOrganizer>,
+        #[doc = "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."]
+        #[serde(rename = "originalStartTime", default)]
+        pub original_start_time: ::std::option::Option<crate::schemas::EventDateTime>,
+        #[doc = "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False."]
+        #[serde(rename = "privateCopy", default)]
+        pub private_copy: ::std::option::Option<bool>,
+        #[doc = "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events."]
+        #[serde(rename = "recurrence", default)]
+        pub recurrence: ::std::option::Option<Vec<String>>,
+        #[doc = "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs. Immutable."]
+        #[serde(rename = "recurringEventId", default)]
+        pub recurring_event_id: ::std::option::Option<String>,
+        #[doc = "Information about the event's reminders for the authenticated user."]
+        #[serde(rename = "reminders", default)]
+        pub reminders: ::std::option::Option<crate::schemas::EventReminders>,
+        #[doc = "Sequence number as per iCalendar."]
+        #[serde(rename = "sequence", default)]
+        pub sequence: ::std::option::Option<i32>,
+        #[doc = "Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<crate::schemas::EventSource>,
+        #[doc = "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance."]
+        #[serde(rename = "start", default)]
+        pub start: ::std::option::Option<crate::schemas::EventDateTime>,
+        #[doc = "Status of the event. Optional. Possible values are:\n\n* \"confirmed\" - The event is confirmed. This is the default status. \n* \"tentative\" - The event is tentatively confirmed. \n* \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\n  A cancelled status represents two different states depending on the event type:\n* Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\n  Cancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.\n* All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\n  Deleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\n  If an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<String>,
+        #[doc = "Title of the event."]
+        #[serde(rename = "summary", default)]
+        pub summary: ::std::option::Option<String>,
+        #[doc = "Whether the event blocks time on the calendar. Optional. Possible values are:\n\n* \"opaque\" - Default value. The event does block time on the calendar. This is equivalent to setting Show me as to Busy in the Calendar UI. \n* \"transparent\" - The event does not block time on the calendar. This is equivalent to setting Show me as to Available in the Calendar UI."]
+        #[serde(rename = "transparency", default)]
+        pub transparency: ::std::option::Option<String>,
+        #[doc = "Last modification time of the event (as a RFC3339 timestamp). Read-only."]
+        #[serde(rename = "updated", default)]
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Visibility of the event. Optional. Possible values are:\n\n* \"default\" - Uses the default visibility for events on the calendar. This is the default value. \n* \"public\" - The event is public and event details are visible to all readers of the calendar. \n* \"private\" - The event is private and only event attendees may view event details. \n* \"confidential\" - The event is private. This value is provided for compatibility reasons."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Event {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct EventCreator {
         #[doc = "Whether the creator corresponds to the calendar on which this copy of the event appears. Read-only. The default is False."]
         #[serde(rename = "self", default)]
@@ -963,143 +1100,6 @@ pub mod schemas {
         pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Event {
-        #[doc = "Whether anyone can invite themselves to the event (currently works for Google+ events only). Optional. The default is False."]
-        #[serde(rename = "anyoneCanAddSelf", default)]
-        pub anyone_can_add_self: ::std::option::Option<bool>,
-        #[doc = "File attachments for the event. Currently only Google Drive attachments are supported.\nIn order to modify attachments the supportsAttachments request parameter should be set to true.\nThere can be at most 25 attachments per event,"]
-        #[serde(rename = "attachments", default)]
-        pub attachments: ::std::option::Option<Vec<crate::schemas::EventAttachment>>,
-        #[doc = "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users."]
-        #[serde(rename = "attendees", default)]
-        pub attendees: ::std::option::Option<Vec<crate::schemas::EventAttendee>>,
-        #[doc = "Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response. Optional. The default is False."]
-        #[serde(rename = "attendeesOmitted", default)]
-        pub attendees_omitted: ::std::option::Option<bool>,
-        #[doc = "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the  colors endpoint). Optional."]
-        #[serde(rename = "colorId", default)]
-        pub color_id: ::std::option::Option<String>,
-        #[doc = "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
-        #[serde(rename = "conferenceData", default)]
-        pub conference_data: ::std::option::Option<crate::schemas::ConferenceData>,
-        #[doc = "Creation time of the event (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "created", default)]
-        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The creator of the event. Read-only."]
-        #[serde(rename = "creator", default)]
-        pub creator: ::std::option::Option<crate::schemas::EventCreator>,
-        #[doc = "Description of the event. Optional."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance."]
-        #[serde(rename = "end", default)]
-        pub end: ::std::option::Option<crate::schemas::EventDateTime>,
-        #[doc = "Whether the end time is actually unspecified. An end time is still provided for compatibility reasons, even if this attribute is set to True. The default is False."]
-        #[serde(rename = "endTimeUnspecified", default)]
-        pub end_time_unspecified: ::std::option::Option<bool>,
-        #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Extended properties of the event."]
-        #[serde(rename = "extendedProperties", default)]
-        pub extended_properties: ::std::option::Option<crate::schemas::EventExtendedProperties>,
-        #[doc = "A gadget that extends this event."]
-        #[serde(rename = "gadget", default)]
-        pub gadget: ::std::option::Option<crate::schemas::EventGadget>,
-        #[doc = "Whether attendees other than the organizer can invite others to the event. Optional. The default is True."]
-        #[serde(rename = "guestsCanInviteOthers", default)]
-        pub guests_can_invite_others: ::std::option::Option<bool>,
-        #[doc = "Whether attendees other than the organizer can modify the event. Optional. The default is False."]
-        #[serde(rename = "guestsCanModify", default)]
-        pub guests_can_modify: ::std::option::Option<bool>,
-        #[doc = "Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."]
-        #[serde(rename = "guestsCanSeeOtherGuests", default)]
-        pub guests_can_see_other_guests: ::std::option::Option<bool>,
-        #[doc = "An absolute link to the Google+ hangout associated with this event. Read-only."]
-        #[serde(rename = "hangoutLink", default)]
-        pub hangout_link: ::std::option::Option<String>,
-        #[doc = "An absolute link to this event in the Google Calendar Web UI. Read-only."]
-        #[serde(rename = "htmlLink", default)]
-        pub html_link: ::std::option::Option<String>,
-        #[doc = "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
-        #[serde(rename = "iCalUID", default)]
-        pub i_cal_uid: ::std::option::Option<String>,
-        #[doc = "Opaque identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:\n\n* characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n* the length of the ID must be between 5 and 1024 characters \n* the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.\n  If you do not specify an ID, it will be automatically generated by the server.\n  Note that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Type of the resource (\"calendar#event\")."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Geographic location of the event as free-form text. Optional."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "Whether this is a locked event copy where no changes can be made to the main event fields \"summary\", \"description\", \"location\", \"start\", \"end\" or \"recurrence\". The default is False. Read-Only."]
-        #[serde(rename = "locked", default)]
-        pub locked: ::std::option::Option<bool>,
-        #[doc = "The organizer of the event. If the organizer is also an attendee, this is indicated with a separate entry in attendees with the organizer field set to True. To change the organizer, use the move operation. Read-only, except when importing an event."]
-        #[serde(rename = "organizer", default)]
-        pub organizer: ::std::option::Option<crate::schemas::EventOrganizer>,
-        #[doc = "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."]
-        #[serde(rename = "originalStartTime", default)]
-        pub original_start_time: ::std::option::Option<crate::schemas::EventDateTime>,
-        #[doc = "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False."]
-        #[serde(rename = "privateCopy", default)]
-        pub private_copy: ::std::option::Option<bool>,
-        #[doc = "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events."]
-        #[serde(rename = "recurrence", default)]
-        pub recurrence: ::std::option::Option<Vec<String>>,
-        #[doc = "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs. Immutable."]
-        #[serde(rename = "recurringEventId", default)]
-        pub recurring_event_id: ::std::option::Option<String>,
-        #[doc = "Information about the event's reminders for the authenticated user."]
-        #[serde(rename = "reminders", default)]
-        pub reminders: ::std::option::Option<crate::schemas::EventReminders>,
-        #[doc = "Sequence number as per iCalendar."]
-        #[serde(rename = "sequence", default)]
-        pub sequence: ::std::option::Option<i32>,
-        #[doc = "Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<crate::schemas::EventSource>,
-        #[doc = "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance."]
-        #[serde(rename = "start", default)]
-        pub start: ::std::option::Option<crate::schemas::EventDateTime>,
-        #[doc = "Status of the event. Optional. Possible values are:\n\n* \"confirmed\" - The event is confirmed. This is the default status. \n* \"tentative\" - The event is tentatively confirmed. \n* \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\n  A cancelled status represents two different states depending on the event type:\n* Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\n  Cancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.\n* All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\n  Deleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\n  If an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<String>,
-        #[doc = "Title of the event."]
-        #[serde(rename = "summary", default)]
-        pub summary: ::std::option::Option<String>,
-        #[doc = "Whether the event blocks time on the calendar. Optional. Possible values are:\n\n* \"opaque\" - Default value. The event does block time on the calendar. This is equivalent to setting Show me as to Busy in the Calendar UI. \n* \"transparent\" - The event does not block time on the calendar. This is equivalent to setting Show me as to Available in the Calendar UI."]
-        #[serde(rename = "transparency", default)]
-        pub transparency: ::std::option::Option<String>,
-        #[doc = "Last modification time of the event (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "updated", default)]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Visibility of the event. Optional. Possible values are:\n\n* \"default\" - Uses the default visibility for events on the calendar. This is the default value. \n* \"public\" - The event is public and event details are visible to all readers of the calendar. \n* \"private\" - The event is private and only event attendees may view event details. \n* \"confidential\" - The event is private. This value is provided for compatibility reasons."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Event {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8989,84 +8989,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9098,7 +9020,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9219,50 +9140,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

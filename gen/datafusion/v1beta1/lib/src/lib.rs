@@ -30,6 +30,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -105,15 +134,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    pub struct AuthorizationLoggingOptions {
+        #[doc = "The type of the permission that was checked."]
+        #[serde(rename = "permissionType", default)]
+        pub permission_type:
+            ::std::option::Option<crate::schemas::AuthorizationLoggingOptionsPermissionType>,
     }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
+    impl ::field_selector::FieldSelector for AuthorizationLoggingOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -205,33 +232,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuthorizationLoggingOptions {
-        #[doc = "The type of the permission that was checked."]
-        #[serde(rename = "permissionType", default)]
-        pub permission_type:
-            ::std::option::Option<crate::schemas::AuthorizationLoggingOptionsPermissionType>,
-    }
-    impl ::field_selector::FieldSelector for AuthorizationLoggingOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
@@ -268,6 +268,36 @@ pub mod schemas {
     pub struct CancelOperationRequest;
     impl ::field_selector::FieldSelector for CancelOperationRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CloudAuditOptions {
+        #[doc = "Information used by the Cloud Audit Logging pipeline."]
+        #[serde(rename = "authorizationLoggingOptions", default)]
+        pub authorization_logging_options:
+            ::std::option::Option<crate::schemas::AuthorizationLoggingOptions>,
+        #[doc = "The log_name to populate in the Cloud Audit Record."]
+        #[serde(rename = "logName", default)]
+        pub log_name: ::std::option::Option<crate::schemas::CloudAuditOptionsLogName>,
+    }
+    impl ::field_selector::FieldSelector for CloudAuditOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CloudAuditOptionsLogName {
@@ -340,16 +370,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CloudAuditOptions {
-        #[doc = "Information used by the Cloud Audit Logging pipeline."]
-        #[serde(rename = "authorizationLoggingOptions", default)]
-        pub authorization_logging_options:
-            ::std::option::Option<crate::schemas::AuthorizationLoggingOptions>,
-        #[doc = "The log_name to populate in the Cloud Audit Record."]
-        #[serde(rename = "logName", default)]
-        pub log_name: ::std::option::Option<crate::schemas::CloudAuditOptionsLogName>,
+    pub struct Condition {
+        #[doc = "Trusted attributes supplied by the IAM system."]
+        #[serde(rename = "iam", default)]
+        pub iam: ::std::option::Option<crate::schemas::ConditionIam>,
+        #[doc = "An operator to apply the subject with."]
+        #[serde(rename = "op", default)]
+        pub op: ::std::option::Option<crate::schemas::ConditionOp>,
+        #[doc = "Trusted attributes discharged by the service."]
+        #[serde(rename = "svc", default)]
+        pub svc: ::std::option::Option<String>,
+        #[doc = "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control."]
+        #[serde(rename = "sys", default)]
+        pub sys: ::std::option::Option<crate::schemas::ConditionSys>,
+        #[doc = "The objects of the condition."]
+        #[serde(rename = "values", default)]
+        pub values: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for CloudAuditOptions {
+    impl ::field_selector::FieldSelector for Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -583,24 +621,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Condition {
-        #[doc = "Trusted attributes supplied by the IAM system."]
-        #[serde(rename = "iam", default)]
-        pub iam: ::std::option::Option<crate::schemas::ConditionIam>,
-        #[doc = "An operator to apply the subject with."]
-        #[serde(rename = "op", default)]
-        pub op: ::std::option::Option<crate::schemas::ConditionOp>,
-        #[doc = "Trusted attributes discharged by the service."]
-        #[serde(rename = "svc", default)]
-        pub svc: ::std::option::Option<String>,
-        #[doc = "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control."]
-        #[serde(rename = "sys", default)]
-        pub sys: ::std::option::Option<crate::schemas::ConditionSys>,
-        #[doc = "The objects of the condition."]
-        #[serde(rename = "values", default)]
-        pub values: ::std::option::Option<Vec<String>>,
+    pub struct CounterOptions {
+        #[doc = "The field value to attribute."]
+        #[serde(rename = "field", default)]
+        pub field: ::std::option::Option<String>,
+        #[doc = "The metric to update."]
+        #[serde(rename = "metric", default)]
+        pub metric: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Condition {
+    impl ::field_selector::FieldSelector for CounterOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -621,15 +650,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CounterOptions {
-        #[doc = "The field value to attribute."]
-        #[serde(rename = "field", default)]
-        pub field: ::std::option::Option<String>,
-        #[doc = "The metric to update."]
-        #[serde(rename = "metric", default)]
-        pub metric: ::std::option::Option<String>,
+    pub struct DataAccessOptions {
+        #[doc = "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now."]
+        #[serde(rename = "logMode", default)]
+        pub log_mode: ::std::option::Option<crate::schemas::DataAccessOptionsLogMode>,
     }
-    impl ::field_selector::FieldSelector for CounterOptions {
+    impl ::field_selector::FieldSelector for DataAccessOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -701,32 +727,6 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DataAccessOptions {
-        #[doc = "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now."]
-        #[serde(rename = "logMode", default)]
-        pub log_mode: ::std::option::Option<crate::schemas::DataAccessOptionsLogMode>,
-    }
-    impl ::field_selector::FieldSelector for DataAccessOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -763,6 +763,83 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Instance {
+        #[doc = "Output only. The time the instance was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "An optional description of this instance."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Display name for an instance."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Option to enable Stackdriver Logging."]
+        #[serde(rename = "enableStackdriverLogging", default)]
+        pub enable_stackdriver_logging: ::std::option::Option<bool>,
+        #[doc = "Option to enable Stackdriver Monitoring."]
+        #[serde(rename = "enableStackdriverMonitoring", default)]
+        pub enable_stackdriver_monitoring: ::std::option::Option<bool>,
+        #[doc = "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Network configuration options. These are required when a private Data\nFusion instance is to be created."]
+        #[serde(rename = "networkConfig", default)]
+        pub network_config: ::std::option::Option<crate::schemas::NetworkConfig>,
+        #[doc = "Map of additional options used to configure the behavior of\nData Fusion instance."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet."]
+        #[serde(rename = "privateInstance", default)]
+        pub private_instance: ::std::option::Option<bool>,
+        #[doc = "Required. Instance type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::InstanceType>,
+        #[doc = "Output only. Service account which will be used to access resources in\nthe customer project.\""]
+        #[serde(rename = "serviceAccount", default)]
+        pub service_account: ::std::option::Option<String>,
+        #[doc = "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible."]
+        #[serde(rename = "serviceEndpoint", default)]
+        pub service_endpoint: ::std::option::Option<String>,
+        #[doc = "Output only. The current state of this Data Fusion instance."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::InstanceState>,
+        #[doc = "Output only. Additional information about the current state of this Data\nFusion instance if available."]
+        #[serde(rename = "stateMessage", default)]
+        pub state_message: ::std::option::Option<String>,
+        #[doc = "Output only. The time the instance was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Output only. Current version of the Data Fusion."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<String>,
+        #[doc = "Name of the zone in which the Data Fusion instance will be created."]
+        #[serde(rename = "zone", default)]
+        pub zone: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -901,83 +978,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for InstanceState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Instance {
-        #[doc = "Output only. The time the instance was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "An optional description of this instance."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Display name for an instance."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Option to enable Stackdriver Logging."]
-        #[serde(rename = "enableStackdriverLogging", default)]
-        pub enable_stackdriver_logging: ::std::option::Option<bool>,
-        #[doc = "Option to enable Stackdriver Monitoring."]
-        #[serde(rename = "enableStackdriverMonitoring", default)]
-        pub enable_stackdriver_monitoring: ::std::option::Option<bool>,
-        #[doc = "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Network configuration options. These are required when a private Data\nFusion instance is to be created."]
-        #[serde(rename = "networkConfig", default)]
-        pub network_config: ::std::option::Option<crate::schemas::NetworkConfig>,
-        #[doc = "Map of additional options used to configure the behavior of\nData Fusion instance."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet."]
-        #[serde(rename = "privateInstance", default)]
-        pub private_instance: ::std::option::Option<bool>,
-        #[doc = "Required. Instance type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::InstanceType>,
-        #[doc = "Output only. Service account which will be used to access resources in\nthe customer project.\""]
-        #[serde(rename = "serviceAccount", default)]
-        pub service_account: ::std::option::Option<String>,
-        #[doc = "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible."]
-        #[serde(rename = "serviceEndpoint", default)]
-        pub service_endpoint: ::std::option::Option<String>,
-        #[doc = "Output only. The current state of this Data Fusion instance."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::InstanceState>,
-        #[doc = "Output only. Additional information about the current state of this Data\nFusion instance if available."]
-        #[serde(rename = "stateMessage", default)]
-        pub state_message: ::std::option::Option<String>,
-        #[doc = "Output only. The time the instance was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Output only. Current version of the Data Fusion."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<String>,
-        #[doc = "Name of the zone in which the Data Fusion instance will be created."]
-        #[serde(rename = "zone", default)]
-        pub zone: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1273,6 +1273,50 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for RestartInstanceRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Rule {
+        #[doc = "Required"]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::RuleAction>,
+        #[doc = "Additional restrictions that must be met. All conditions must pass for the\nrule to match."]
+        #[serde(rename = "conditions", default)]
+        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
+        #[doc = "Human-readable description of the rule."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action."]
+        #[serde(rename = "logConfig", default)]
+        pub log_config: ::std::option::Option<Vec<crate::schemas::LogConfig>>,
+        #[doc = "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features)."]
+        #[serde(rename = "notIn", default)]
+        pub not_in: ::std::option::Option<Vec<String>>,
+        #[doc = "A permission is a string of form '<service>.<resource type>.<verb>'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs."]
+        #[serde(rename = "permissions", default)]
+        pub permissions: ::std::option::Option<Vec<String>>,
+        #[doc = "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries."]
+        #[serde(rename = "in", default)]
+        pub r#in: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for Rule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RuleAction {
         #[doc = "Matching 'Entries' grant access."]
@@ -1336,50 +1380,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for RuleAction {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Rule {
-        #[doc = "Required"]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::RuleAction>,
-        #[doc = "Additional restrictions that must be met. All conditions must pass for the\nrule to match."]
-        #[serde(rename = "conditions", default)]
-        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Human-readable description of the rule."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action."]
-        #[serde(rename = "logConfig", default)]
-        pub log_config: ::std::option::Option<Vec<crate::schemas::LogConfig>>,
-        #[doc = "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features)."]
-        #[serde(rename = "notIn", default)]
-        pub not_in: ::std::option::Option<Vec<String>>,
-        #[doc = "A permission is a string of form '<service>.<resource type>.<verb>'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs."]
-        #[serde(rename = "permissions", default)]
-        pub permissions: ::std::option::Option<Vec<String>>,
-        #[doc = "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries."]
-        #[serde(rename = "in", default)]
-        pub r#in: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for Rule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5163,84 +5163,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -5272,7 +5194,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -5398,8 +5319,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

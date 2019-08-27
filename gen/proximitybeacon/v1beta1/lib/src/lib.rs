@@ -1,4 +1,33 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdvertisedId {
+        #[doc = "The actual beacon identifier, as broadcast by the beacon hardware. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses. The base64\nencoding should be of the binary byte-stream and not any textual (such as\nhex) representation thereof.\nRequired."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Specifies the identifier type.\nRequired."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::AdvertisedIdType>,
+    }
+    impl ::field_selector::FieldSelector for AdvertisedId {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdvertisedIdType {
         #[doc = "See http://altbeacon.org and/or https://github.com/AltBeacon/spec."]
@@ -67,35 +96,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdvertisedId {
-        #[doc = "The actual beacon identifier, as broadcast by the beacon hardware. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses. The base64\nencoding should be of the binary byte-stream and not any textual (such as\nhex) representation thereof.\nRequired."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Specifies the identifier type.\nRequired."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::AdvertisedIdType>,
-    }
-    impl ::field_selector::FieldSelector for AdvertisedId {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AttachmentInfo {
@@ -110,6 +110,54 @@ pub mod schemas {
         pub namespaced_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AttachmentInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Beacon {
+        #[doc = "The identifier of a beacon as advertised by it. This field must be\npopulated when registering. It may be empty when updating a beacon\nrecord because it is ignored in updates.\n\nWhen registering a beacon that broadcasts Eddystone-EID, this field\nshould contain a \"stable\" Eddystone-UID that identifies the beacon and\nlinks it to its attachments. The stable Eddystone-UID is only used for\nadministering the beacon."]
+        #[serde(rename = "advertisedId", default)]
+        pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
+        #[doc = "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations."]
+        #[serde(rename = "beaconName", default)]
+        pub beacon_name: ::std::option::Option<String>,
+        #[doc = "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Write-only registration parameters for beacons using Eddystone-EID\n(remotely resolved ephemeral ID) format. This information will not be\npopulated in API responses. When submitting this data, the `advertised_id`\nfield must contain an ID of type Eddystone-UID. Any other ID type will\nresult in an error."]
+        #[serde(rename = "ephemeralIdRegistration", default)]
+        pub ephemeral_id_registration:
+            ::std::option::Option<crate::schemas::EphemeralIdRegistration>,
+        #[doc = "Expected location stability. This is set when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
+        #[serde(rename = "expectedStability", default)]
+        pub expected_stability: ::std::option::Option<crate::schemas::BeaconExpectedStability>,
+        #[doc = "The indoor level information for this beacon, if known. As returned by the\nGoogle Maps API.\nOptional."]
+        #[serde(rename = "indoorLevel", default)]
+        pub indoor_level: ::std::option::Option<crate::schemas::IndoorLevel>,
+        #[doc = "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."]
+        #[serde(rename = "latLng", default)]
+        pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
+        #[doc = "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
+        #[serde(rename = "placeId", default)]
+        pub place_id: ::std::option::Option<String>,
+        #[doc = "Properties of the beacon device, for example battery type or firmware\nversion.\nOptional."]
+        #[serde(rename = "properties", default)]
+        pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Some beacons may require a user to provide an authorization key before\nchanging any of its configuration (e.g. broadcast frames, transmit power).\nThis field provides a place to store and control access to that key.\nThis field is populated in responses to `GET /v1beta1/beacons/3!beaconId`\nfrom users with write access to the given beacon. That is to say: If the\nuser is authorized to write the beacon's confidential data in the service,\nthe service considers them authorized to configure the beacon. Note\nthat this key grants nothing on the service, only on the beacon itself."]
+        #[serde(rename = "provisioningKey", default)]
+        pub provisioning_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Current status of the beacon.\nRequired."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::BeaconStatus>,
+    }
+    impl ::field_selector::FieldSelector for Beacon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -251,54 +299,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Beacon {
-        #[doc = "The identifier of a beacon as advertised by it. This field must be\npopulated when registering. It may be empty when updating a beacon\nrecord because it is ignored in updates.\n\nWhen registering a beacon that broadcasts Eddystone-EID, this field\nshould contain a \"stable\" Eddystone-UID that identifies the beacon and\nlinks it to its attachments. The stable Eddystone-UID is only used for\nadministering the beacon."]
-        #[serde(rename = "advertisedId", default)]
-        pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
-        #[doc = "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations."]
-        #[serde(rename = "beaconName", default)]
-        pub beacon_name: ::std::option::Option<String>,
-        #[doc = "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Write-only registration parameters for beacons using Eddystone-EID\n(remotely resolved ephemeral ID) format. This information will not be\npopulated in API responses. When submitting this data, the `advertised_id`\nfield must contain an ID of type Eddystone-UID. Any other ID type will\nresult in an error."]
-        #[serde(rename = "ephemeralIdRegistration", default)]
-        pub ephemeral_id_registration:
-            ::std::option::Option<crate::schemas::EphemeralIdRegistration>,
-        #[doc = "Expected location stability. This is set when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
-        #[serde(rename = "expectedStability", default)]
-        pub expected_stability: ::std::option::Option<crate::schemas::BeaconExpectedStability>,
-        #[doc = "The indoor level information for this beacon, if known. As returned by the\nGoogle Maps API.\nOptional."]
-        #[serde(rename = "indoorLevel", default)]
-        pub indoor_level: ::std::option::Option<crate::schemas::IndoorLevel>,
-        #[doc = "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."]
-        #[serde(rename = "latLng", default)]
-        pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
-        #[doc = "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
-        #[serde(rename = "placeId", default)]
-        pub place_id: ::std::option::Option<String>,
-        #[doc = "Properties of the beacon device, for example battery type or firmware\nversion.\nOptional."]
-        #[serde(rename = "properties", default)]
-        pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Some beacons may require a user to provide an authorization key before\nchanging any of its configuration (e.g. broadcast frames, transmit power).\nThis field provides a place to store and control access to that key.\nThis field is populated in responses to `GET /v1beta1/beacons/3!beaconId`\nfrom users with write access to the given beacon. That is to say: If the\nuser is authorized to write the beacon's confidential data in the service,\nthe service considers them authorized to configure the beacon. Note\nthat this key grants nothing on the service, only on the beacon itself."]
-        #[serde(rename = "provisioningKey", default)]
-        pub provisioning_key: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Current status of the beacon.\nRequired."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::BeaconStatus>,
-    }
-    impl ::field_selector::FieldSelector for Beacon {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct BeaconAttachment {
         #[doc = "Resource name of this attachment. Attachment names have the format:\n<code>beacons/<var>beacon_id</var>/attachments/<var>attachment_id</var></code>.\nLeave this empty on creation."]
         #[serde(rename = "attachmentName", default)]
@@ -406,6 +406,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Diagnostics {
+        #[doc = "An unordered list of Alerts that the beacon has."]
+        #[serde(rename = "alerts", default)]
+        pub alerts: ::std::option::Option<Vec<crate::schemas::DiagnosticsAlertsItems>>,
+        #[doc = "Resource name of the beacon. For Eddystone-EID beacons, this may\nbe the beacon's current EID, or the beacon's \"stable\" Eddystone-UID."]
+        #[serde(rename = "beaconName", default)]
+        pub beacon_name: ::std::option::Option<String>,
+        #[doc = "The date when the battery is expected to be low. If the value is missing\nthen there is no estimate for when the battery will be low.\nThis value is only an estimate, not an exact date."]
+        #[serde(rename = "estimatedLowBatteryDate", default)]
+        pub estimated_low_battery_date: ::std::option::Option<crate::schemas::Date>,
+    }
+    impl ::field_selector::FieldSelector for Diagnostics {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DiagnosticsAlertsItems {
         AlertUnspecified,
@@ -457,38 +489,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DiagnosticsAlertsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Diagnostics {
-        #[doc = "An unordered list of Alerts that the beacon has."]
-        #[serde(rename = "alerts", default)]
-        pub alerts: ::std::option::Option<Vec<crate::schemas::DiagnosticsAlertsItems>>,
-        #[doc = "Resource name of the beacon. For Eddystone-EID beacons, this may\nbe the beacon's current EID, or the beacon's \"stable\" Eddystone-UID."]
-        #[serde(rename = "beaconName", default)]
-        pub beacon_name: ::std::option::Option<String>,
-        #[doc = "The date when the battery is expected to be low. If the value is missing\nthen there is no estimate for when the battery will be low.\nThis value is only an estimate, not an exact date."]
-        #[serde(rename = "estimatedLowBatteryDate", default)]
-        pub estimated_low_battery_date: ::std::option::Option<crate::schemas::Date>,
-    }
-    impl ::field_selector::FieldSelector for Diagnostics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -776,6 +776,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Namespace {
+        #[doc = "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>."]
+        #[serde(rename = "namespaceName", default)]
+        pub namespace_name: ::std::option::Option<String>,
+        #[doc = "Specifies what clients may receive attachments under this namespace\nvia `beaconinfo.getforobserved`."]
+        #[serde(rename = "servingVisibility", default)]
+        pub serving_visibility: ::std::option::Option<crate::schemas::NamespaceServingVisibility>,
+    }
+    impl ::field_selector::FieldSelector for Namespace {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NamespaceServingVisibility {
         #[doc = "Any project can subscribe to attachments under the namespace."]
@@ -827,35 +856,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NamespaceServingVisibility {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Namespace {
-        #[doc = "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>."]
-        #[serde(rename = "namespaceName", default)]
-        pub namespace_name: ::std::option::Option<String>,
-        #[doc = "Specifies what clients may receive attachments under this namespace\nvia `beaconinfo.getforobserved`."]
-        #[serde(rename = "servingVisibility", default)]
-        pub serving_visibility: ::std::option::Option<crate::schemas::NamespaceServingVisibility>,
-    }
-    impl ::field_selector::FieldSelector for Namespace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4720,84 +4720,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4829,7 +4751,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4955,8 +4876,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

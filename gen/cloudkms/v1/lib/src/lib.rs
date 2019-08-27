@@ -135,6 +135,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -210,15 +239,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    pub struct Binding {
+        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
+        #[serde(rename = "condition", default)]
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[serde(rename = "members", default)]
+        pub members: ::std::option::Option<Vec<String>>,
+        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
+    impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -239,18 +271,33 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
-        pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
-        pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
+    pub struct CryptoKey {
+        #[doc = "Output only. The time at which this CryptoKey was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys)."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n1. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
+        #[serde(rename = "nextRotationTime", default)]
+        pub next_rotation_time: ::std::option::Option<String>,
+        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nAll keys with purpose\nENCRYPT_DECRYPT have a\nprimary. For other keys, this field will be omitted."]
+        #[serde(rename = "primary", default)]
+        pub primary: ::std::option::Option<crate::schemas::CryptoKeyVersion>,
+        #[doc = "The immutable purpose of this CryptoKey."]
+        #[serde(rename = "purpose", default)]
+        pub purpose: ::std::option::Option<crate::schemas::CryptoKeyPurpose>,
+        #[doc = "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least 24 hours and at most\n876,000 hours.\n\nIf rotation_period is set, next_rotation_time must also be set.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
+        #[serde(rename = "rotationPeriod", default)]
+        pub rotation_period: ::std::option::Option<String>,
+        #[doc = "A template describing settings for new CryptoKeyVersion instances.\nThe properties of new CryptoKeyVersion instances created by either\nCreateCryptoKeyVersion or\nauto-rotation are controlled by this template."]
+        #[serde(rename = "versionTemplate", default)]
+        pub version_template: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplate>,
     }
-    impl ::field_selector::FieldSelector for Binding {
+    impl ::field_selector::FieldSelector for CryptoKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -334,33 +381,46 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CryptoKey {
-        #[doc = "Output only. The time at which this CryptoKey was created."]
+    pub struct CryptoKeyVersion {
+        #[doc = "Output only. The CryptoKeyVersionAlgorithm that this\nCryptoKeyVersion supports."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionAlgorithm>,
+        #[doc = "Output only. Statement that was generated and signed by the HSM at key\ncreation time. Use this statement to verify attributes of the key as stored\non the HSM, independently of Google. Only provided for key versions with\nprotection_level HSM."]
+        #[serde(rename = "attestation", default)]
+        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
+        #[doc = "Output only. The time at which this CryptoKeyVersion was created."]
         #[serde(rename = "createTime", default)]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys)."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
+        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ndestroyed. Only present if state is\nDESTROYED."]
+        #[serde(rename = "destroyEventTime", default)]
+        pub destroy_event_time: ::std::option::Option<String>,
+        #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled\nfor destruction. Only present if state is\nDESTROY_SCHEDULED."]
+        #[serde(rename = "destroyTime", default)]
+        pub destroy_time: ::std::option::Option<String>,
+        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
+        #[serde(rename = "generateTime", default)]
+        pub generate_time: ::std::option::Option<String>,
+        #[doc = "Output only. The root cause of an import failure. Only present if\nstate is\nIMPORT_FAILED."]
+        #[serde(rename = "importFailureReason", default)]
+        pub import_failure_reason: ::std::option::Option<String>,
+        #[doc = "Output only. The name of the ImportJob used to import this\nCryptoKeyVersion. Only present if the underlying key material was\nimported."]
+        #[serde(rename = "importJob", default)]
+        pub import_job: ::std::option::Option<String>,
+        #[doc = "Output only. The time at which this CryptoKeyVersion's key material\nwas imported."]
+        #[serde(rename = "importTime", default)]
+        pub import_time: ::std::option::Option<String>,
+        #[doc = "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n1. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
-        #[serde(rename = "nextRotationTime", default)]
-        pub next_rotation_time: ::std::option::Option<String>,
-        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nAll keys with purpose\nENCRYPT_DECRYPT have a\nprimary. For other keys, this field will be omitted."]
-        #[serde(rename = "primary", default)]
-        pub primary: ::std::option::Option<crate::schemas::CryptoKeyVersion>,
-        #[doc = "The immutable purpose of this CryptoKey."]
-        #[serde(rename = "purpose", default)]
-        pub purpose: ::std::option::Option<crate::schemas::CryptoKeyPurpose>,
-        #[doc = "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least 24 hours and at most\n876,000 hours.\n\nIf rotation_period is set, next_rotation_time must also be set.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
-        #[serde(rename = "rotationPeriod", default)]
-        pub rotation_period: ::std::option::Option<String>,
-        #[doc = "A template describing settings for new CryptoKeyVersion instances.\nThe properties of new CryptoKeyVersion instances created by either\nCreateCryptoKeyVersion or\nauto-rotation are controlled by this template."]
-        #[serde(rename = "versionTemplate", default)]
-        pub version_template: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplate>,
+        #[doc = "Output only. The ProtectionLevel describing how crypto operations are\nperformed with this CryptoKeyVersion."]
+        #[serde(rename = "protectionLevel", default)]
+        pub protection_level:
+            ::std::option::Option<crate::schemas::CryptoKeyVersionProtectionLevel>,
+        #[doc = "The current state of the CryptoKeyVersion."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::CryptoKeyVersionState>,
     }
-    impl ::field_selector::FieldSelector for CryptoKey {
+    impl ::field_selector::FieldSelector for CryptoKeyVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -662,46 +722,16 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CryptoKeyVersion {
-        #[doc = "Output only. The CryptoKeyVersionAlgorithm that this\nCryptoKeyVersion supports."]
+    pub struct CryptoKeyVersionTemplate {
+        #[doc = "Required. Algorithm to use\nwhen creating a CryptoKeyVersion based on this template.\n\nFor backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both\nthis field is omitted and CryptoKey.purpose is\nENCRYPT_DECRYPT."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionAlgorithm>,
-        #[doc = "Output only. Statement that was generated and signed by the HSM at key\ncreation time. Use this statement to verify attributes of the key as stored\non the HSM, independently of Google. Only provided for key versions with\nprotection_level HSM."]
-        #[serde(rename = "attestation", default)]
-        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
-        #[doc = "Output only. The time at which this CryptoKeyVersion was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ndestroyed. Only present if state is\nDESTROYED."]
-        #[serde(rename = "destroyEventTime", default)]
-        pub destroy_event_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled\nfor destruction. Only present if state is\nDESTROY_SCHEDULED."]
-        #[serde(rename = "destroyTime", default)]
-        pub destroy_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
-        #[serde(rename = "generateTime", default)]
-        pub generate_time: ::std::option::Option<String>,
-        #[doc = "Output only. The root cause of an import failure. Only present if\nstate is\nIMPORT_FAILED."]
-        #[serde(rename = "importFailureReason", default)]
-        pub import_failure_reason: ::std::option::Option<String>,
-        #[doc = "Output only. The name of the ImportJob used to import this\nCryptoKeyVersion. Only present if the underlying key material was\nimported."]
-        #[serde(rename = "importJob", default)]
-        pub import_job: ::std::option::Option<String>,
-        #[doc = "Output only. The time at which this CryptoKeyVersion's key material\nwas imported."]
-        #[serde(rename = "importTime", default)]
-        pub import_time: ::std::option::Option<String>,
-        #[doc = "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The ProtectionLevel describing how crypto operations are\nperformed with this CryptoKeyVersion."]
+        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
+        #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on\nthis template. Immutable. Defaults to SOFTWARE."]
         #[serde(rename = "protectionLevel", default)]
         pub protection_level:
-            ::std::option::Option<crate::schemas::CryptoKeyVersionProtectionLevel>,
-        #[doc = "The current state of the CryptoKeyVersion."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::CryptoKeyVersionState>,
+            ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateProtectionLevel>,
     }
-    impl ::field_selector::FieldSelector for CryptoKeyVersion {
+    impl ::field_selector::FieldSelector for CryptoKeyVersionTemplate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -952,36 +982,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CryptoKeyVersionTemplate {
-        #[doc = "Required. Algorithm to use\nwhen creating a CryptoKeyVersion based on this template.\n\nFor backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both\nthis field is omitted and CryptoKey.purpose is\nENCRYPT_DECRYPT."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
-        #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on\nthis template. Immutable. Defaults to SOFTWARE."]
-        #[serde(rename = "protectionLevel", default)]
-        pub protection_level:
-            ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateProtectionLevel>,
-    }
-    impl ::field_selector::FieldSelector for CryptoKeyVersionTemplate {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct DecryptRequest {
         #[doc = "Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
         #[serde(rename = "additionalAuthenticatedData", default)]
@@ -1159,6 +1159,39 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportCryptoKeyVersionRequest {
+        #[doc = "Required. The algorithm of\nthe key being imported. This does not need to match the\nversion_template of the CryptoKey this\nversion imports into."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm:
+            ::std::option::Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
+        #[doc = "Required. The name of the ImportJob that was used to\nwrap this key material."]
+        #[serde(rename = "importJob", default)]
+        pub import_job: ::std::option::Option<String>,
+        #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
+        #[serde(rename = "rsaAesWrappedKey", default)]
+        pub rsa_aes_wrapped_key: ::std::option::Option<crate::bytes::Bytes>,
+    }
+    impl ::field_selector::FieldSelector for ImportCryptoKeyVersionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1346,19 +1379,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ImportCryptoKeyVersionRequest {
-        #[doc = "Required. The algorithm of\nthe key being imported. This does not need to match the\nversion_template of the CryptoKey this\nversion imports into."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm:
-            ::std::option::Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
-        #[doc = "Required. The name of the ImportJob that was used to\nwrap this key material."]
-        #[serde(rename = "importJob", default)]
-        pub import_job: ::std::option::Option<String>,
-        #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
-        #[serde(rename = "rsaAesWrappedKey", default)]
-        pub rsa_aes_wrapped_key: ::std::option::Option<crate::bytes::Bytes>,
+    pub struct ImportJob {
+        #[doc = "Output only. Statement that was generated and signed by the key creator\n(for example, an HSM) at key creation time. Use this statement to verify\nattributes of the key as stored on the HSM, independently of Google.\nOnly present if the chosen ImportMethod is one with a protection\nlevel of HSM."]
+        #[serde(rename = "attestation", default)]
+        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
+        #[doc = "Output only. The time at which this ImportJob was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. The time this ImportJob expired. Only present if\nstate is EXPIRED."]
+        #[serde(rename = "expireEventTime", default)]
+        pub expire_event_time: ::std::option::Option<String>,
+        #[doc = "Output only. The time at which this ImportJob is scheduled for\nexpiration and can no longer be used to import key material."]
+        #[serde(rename = "expireTime", default)]
+        pub expire_time: ::std::option::Option<String>,
+        #[doc = "Output only. The time this ImportJob's key material was generated."]
+        #[serde(rename = "generateTime", default)]
+        pub generate_time: ::std::option::Option<String>,
+        #[doc = "Required and immutable. The wrapping method to be used for incoming\nkey material."]
+        #[serde(rename = "importMethod", default)]
+        pub import_method: ::std::option::Option<crate::schemas::ImportJobImportMethod>,
+        #[doc = "Output only. The resource name for this ImportJob in the format\n`projects/*/locations/*/keyRings/*/importJobs/*`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required and immutable. The protection level of the ImportJob. This\nmust match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
+        #[serde(rename = "protectionLevel", default)]
+        pub protection_level: ::std::option::Option<crate::schemas::ImportJobProtectionLevel>,
+        #[doc = "Output only. The public key with which to wrap key material prior to\nimport. Only returned if state is\nACTIVE."]
+        #[serde(rename = "publicKey", default)]
+        pub public_key: ::std::option::Option<crate::schemas::WrappingPublicKey>,
+        #[doc = "Output only. The current state of the ImportJob, indicating if it can\nbe used."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::ImportJobState>,
     }
-    impl ::field_selector::FieldSelector for ImportCryptoKeyVersionRequest {
+    impl ::field_selector::FieldSelector for ImportJob {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1564,39 +1617,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ImportJob {
-        #[doc = "Output only. Statement that was generated and signed by the key creator\n(for example, an HSM) at key creation time. Use this statement to verify\nattributes of the key as stored on the HSM, independently of Google.\nOnly present if the chosen ImportMethod is one with a protection\nlevel of HSM."]
-        #[serde(rename = "attestation", default)]
-        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
-        #[doc = "Output only. The time at which this ImportJob was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this ImportJob expired. Only present if\nstate is EXPIRED."]
-        #[serde(rename = "expireEventTime", default)]
-        pub expire_event_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time at which this ImportJob is scheduled for\nexpiration and can no longer be used to import key material."]
-        #[serde(rename = "expireTime", default)]
-        pub expire_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this ImportJob's key material was generated."]
-        #[serde(rename = "generateTime", default)]
-        pub generate_time: ::std::option::Option<String>,
-        #[doc = "Required and immutable. The wrapping method to be used for incoming\nkey material."]
-        #[serde(rename = "importMethod", default)]
-        pub import_method: ::std::option::Option<crate::schemas::ImportJobImportMethod>,
-        #[doc = "Output only. The resource name for this ImportJob in the format\n`projects/*/locations/*/keyRings/*/importJobs/*`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required and immutable. The protection level of the ImportJob. This\nmust match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
-        #[serde(rename = "protectionLevel", default)]
-        pub protection_level: ::std::option::Option<crate::schemas::ImportJobProtectionLevel>,
-        #[doc = "Output only. The public key with which to wrap key material prior to\nimport. Only returned if state is\nACTIVE."]
-        #[serde(rename = "publicKey", default)]
-        pub public_key: ::std::option::Option<crate::schemas::WrappingPublicKey>,
-        #[doc = "Output only. The current state of the ImportJob, indicating if it can\nbe used."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::ImportJobState>,
+    pub struct KeyOperationAttestation {
+        #[doc = "Output only. The attestation data provided by the HSM when the key\noperation was performed."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Output only. The format of the attestation data."]
+        #[serde(rename = "format", default)]
+        pub format: ::std::option::Option<crate::schemas::KeyOperationAttestationFormat>,
     }
-    impl ::field_selector::FieldSelector for ImportJob {
+    impl ::field_selector::FieldSelector for KeyOperationAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1660,35 +1689,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for KeyOperationAttestationFormat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct KeyOperationAttestation {
-        #[doc = "Output only. The attestation data provided by the HSM when the key\noperation was performed."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Output only. The format of the attestation data."]
-        #[serde(rename = "format", default)]
-        pub format: ::std::option::Option<crate::schemas::KeyOperationAttestationFormat>,
-    }
-    impl ::field_selector::FieldSelector for KeyOperationAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1961,6 +1961,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PublicKey {
+        #[doc = "The Algorithm associated\nwith this key."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
+        #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
+        #[serde(rename = "pem", default)]
+        pub pem: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PublicKey {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PublicKeyAlgorithm {
         #[doc = "Not specified."]
@@ -2068,38 +2100,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PublicKeyAlgorithm {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PublicKey {
-        #[doc = "The Algorithm associated\nwith this key."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
-        #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
-        #[serde(rename = "pem", default)]
-        pub pem: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9669,84 +9669,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9778,7 +9700,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9904,8 +9825,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

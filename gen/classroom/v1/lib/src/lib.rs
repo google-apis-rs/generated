@@ -1,4 +1,64 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Announcement {
+        #[doc = "Absolute link to this announcement in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
+        #[serde(rename = "alternateLink", default)]
+        pub alternate_link: ::std::option::Option<String>,
+        #[doc = "Assignee mode of the announcement.\nIf unspecified, the default value is `ALL_STUDENTS`."]
+        #[serde(rename = "assigneeMode", default)]
+        pub assignee_mode: ::std::option::Option<crate::schemas::AnnouncementAssigneeMode>,
+        #[doc = "Identifier of the course.\n\nRead-only."]
+        #[serde(rename = "courseId", default)]
+        pub course_id: ::std::option::Option<String>,
+        #[doc = "Timestamp when this announcement was created.\n\nRead-only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Identifier for the user that created the announcement.\n\nRead-only."]
+        #[serde(rename = "creatorUserId", default)]
+        pub creator_user_id: ::std::option::Option<String>,
+        #[doc = "Classroom-assigned identifier of this announcement, unique per course.\n\nRead-only."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Identifiers of students with access to the announcement.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be able to see the announcement."]
+        #[serde(rename = "individualStudentsOptions", default)]
+        pub individual_students_options:
+            ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
+        #[doc = "Additional materials.\n\nAnnouncements must have no more than 20 material items."]
+        #[serde(rename = "materials", default)]
+        pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
+        #[doc = "Optional timestamp when this announcement is scheduled to be published."]
+        #[serde(rename = "scheduledTime", default)]
+        pub scheduled_time: ::std::option::Option<String>,
+        #[doc = "Status of this announcement.\nIf unspecified, the default state is `DRAFT`."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::AnnouncementState>,
+        #[doc = "Description of this announcement.\nThe text must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
+        #[serde(rename = "text", default)]
+        pub text: ::std::option::Option<String>,
+        #[doc = "Timestamp of the most recent change to this announcement.\n\nRead-only."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Announcement {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnnouncementAssigneeMode {
         #[doc = "All students can see the item.\nThis is the default state."]
@@ -133,66 +193,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Announcement {
-        #[doc = "Absolute link to this announcement in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
-        pub alternate_link: ::std::option::Option<String>,
-        #[doc = "Assignee mode of the announcement.\nIf unspecified, the default value is `ALL_STUDENTS`."]
-        #[serde(rename = "assigneeMode", default)]
-        pub assignee_mode: ::std::option::Option<crate::schemas::AnnouncementAssigneeMode>,
-        #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
-        pub course_id: ::std::option::Option<String>,
-        #[doc = "Timestamp when this announcement was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "Identifier for the user that created the announcement.\n\nRead-only."]
-        #[serde(rename = "creatorUserId", default)]
-        pub creator_user_id: ::std::option::Option<String>,
-        #[doc = "Classroom-assigned identifier of this announcement, unique per course.\n\nRead-only."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifiers of students with access to the announcement.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be able to see the announcement."]
-        #[serde(rename = "individualStudentsOptions", default)]
-        pub individual_students_options:
-            ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
-        #[doc = "Additional materials.\n\nAnnouncements must have no more than 20 material items."]
-        #[serde(rename = "materials", default)]
-        pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
-        #[doc = "Optional timestamp when this announcement is scheduled to be published."]
-        #[serde(rename = "scheduledTime", default)]
-        pub scheduled_time: ::std::option::Option<String>,
-        #[doc = "Status of this announcement.\nIf unspecified, the default state is `DRAFT`."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::AnnouncementState>,
-        #[doc = "Description of this announcement.\nThe text must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
-        #[serde(rename = "text", default)]
-        pub text: ::std::option::Option<String>,
-        #[doc = "Timestamp of the most recent change to this announcement.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Announcement {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Assignment {
         #[doc = "Drive folder where attachments from student submissions are placed.\nThis is only populated for course teachers and administrators."]
         #[serde(rename = "studentWorkFolder", default)]
@@ -294,77 +294,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum CourseCourseState {
-        #[doc = "The course is active."]
-        Active,
-        #[doc = "The course has been archived. You cannot modify it except to change it\nto a different state."]
-        Archived,
-        #[doc = "No course state. No returned Course message will use this value."]
-        CourseStateUnspecified,
-        #[doc = "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate."]
-        Declined,
-        #[doc = "The course has been created, but not yet activated. It is accessible by\nthe primary teacher and domain administrators, who may modify it or\nchange it to the `ACTIVE` or `DECLINED` states.\nA course may only be changed to `PROVISIONED` if it is in the `DECLINED`\nstate."]
-        Provisioned,
-        #[doc = "The course has been suspended. You cannot modify the course, and only the\nuser identified by the `owner_id` can view the course.\nA course may be placed in this state if it potentially violates the\nTerms of Service."]
-        Suspended,
-    }
-    impl CourseCourseState {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CourseCourseState::Active => "ACTIVE",
-                CourseCourseState::Archived => "ARCHIVED",
-                CourseCourseState::CourseStateUnspecified => "COURSE_STATE_UNSPECIFIED",
-                CourseCourseState::Declined => "DECLINED",
-                CourseCourseState::Provisioned => "PROVISIONED",
-                CourseCourseState::Suspended => "SUSPENDED",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CourseCourseState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CourseCourseState {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CourseCourseState {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ACTIVE" => CourseCourseState::Active,
-                "ARCHIVED" => CourseCourseState::Archived,
-                "COURSE_STATE_UNSPECIFIED" => CourseCourseState::CourseStateUnspecified,
-                "DECLINED" => CourseCourseState::Declined,
-                "PROVISIONED" => CourseCourseState::Provisioned,
-                "SUSPENDED" => CourseCourseState::Suspended,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for CourseCourseState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -434,6 +363,77 @@ pub mod schemas {
         pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Course {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CourseCourseState {
+        #[doc = "The course is active."]
+        Active,
+        #[doc = "The course has been archived. You cannot modify it except to change it\nto a different state."]
+        Archived,
+        #[doc = "No course state. No returned Course message will use this value."]
+        CourseStateUnspecified,
+        #[doc = "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate."]
+        Declined,
+        #[doc = "The course has been created, but not yet activated. It is accessible by\nthe primary teacher and domain administrators, who may modify it or\nchange it to the `ACTIVE` or `DECLINED` states.\nA course may only be changed to `PROVISIONED` if it is in the `DECLINED`\nstate."]
+        Provisioned,
+        #[doc = "The course has been suspended. You cannot modify the course, and only the\nuser identified by the `owner_id` can view the course.\nA course may be placed in this state if it potentially violates the\nTerms of Service."]
+        Suspended,
+    }
+    impl CourseCourseState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CourseCourseState::Active => "ACTIVE",
+                CourseCourseState::Archived => "ARCHIVED",
+                CourseCourseState::CourseStateUnspecified => "COURSE_STATE_UNSPECIFIED",
+                CourseCourseState::Declined => "DECLINED",
+                CourseCourseState::Provisioned => "PROVISIONED",
+                CourseCourseState::Suspended => "SUSPENDED",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CourseCourseState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CourseCourseState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CourseCourseState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTIVE" => CourseCourseState::Active,
+                "ARCHIVED" => CourseCourseState::Archived,
+                "COURSE_STATE_UNSPECIFIED" => CourseCourseState::CourseStateUnspecified,
+                "DECLINED" => CourseCourseState::Declined,
+                "PROVISIONED" => CourseCourseState::Provisioned,
+                "SUSPENDED" => CourseCourseState::Suspended,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for CourseCourseState {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -550,6 +550,88 @@ pub mod schemas {
         pub course_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CourseRosterChangesInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CourseWork {
+        #[doc = "Absolute link to this course work in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
+        #[serde(rename = "alternateLink", default)]
+        pub alternate_link: ::std::option::Option<String>,
+        #[doc = "Assignee mode of the coursework.\nIf unspecified, the default value is `ALL_STUDENTS`."]
+        #[serde(rename = "assigneeMode", default)]
+        pub assignee_mode: ::std::option::Option<crate::schemas::CourseWorkAssigneeMode>,
+        #[doc = "Assignment details.\nThis is populated only when `work_type` is `ASSIGNMENT`.\n\nRead-only."]
+        #[serde(rename = "assignment", default)]
+        pub assignment: ::std::option::Option<crate::schemas::Assignment>,
+        #[doc = "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
+        #[serde(rename = "associatedWithDeveloper", default)]
+        pub associated_with_developer: ::std::option::Option<bool>,
+        #[doc = "Identifier of the course.\n\nRead-only."]
+        #[serde(rename = "courseId", default)]
+        pub course_id: ::std::option::Option<String>,
+        #[doc = "Timestamp when this course work was created.\n\nRead-only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Identifier for the user that created the coursework.\n\nRead-only."]
+        #[serde(rename = "creatorUserId", default)]
+        pub creator_user_id: ::std::option::Option<String>,
+        #[doc = "Optional description of this course work.\nIf set, the description must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional date, in UTC, that submissions for this course work are due.\nThis must be specified if `due_time` is specified."]
+        #[serde(rename = "dueDate", default)]
+        pub due_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "Optional time of day, in UTC, that submissions for this course work\nare due.\nThis must be specified if `due_date` is specified."]
+        #[serde(rename = "dueTime", default)]
+        pub due_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+        #[doc = "Classroom-assigned identifier of this course work, unique per course.\n\nRead-only."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Identifiers of students with access to the coursework.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be assigned the coursework."]
+        #[serde(rename = "individualStudentsOptions", default)]
+        pub individual_students_options:
+            ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
+        #[doc = "Additional materials.\n\nCourseWork must have no more than 20 material items."]
+        #[serde(rename = "materials", default)]
+        pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
+        #[doc = "Maximum grade for this course work.\nIf zero or unspecified, this assignment is considered ungraded.\nThis must be a non-negative integer value."]
+        #[serde(rename = "maxPoints", default)]
+        pub max_points: ::std::option::Option<f64>,
+        #[doc = "Multiple choice question details.\nFor read operations, this field is populated only when `work_type` is\n`MULTIPLE_CHOICE_QUESTION`.\nFor write operations, this field must be specified when creating course\nwork with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be\nset otherwise."]
+        #[serde(rename = "multipleChoiceQuestion", default)]
+        pub multiple_choice_question: ::std::option::Option<crate::schemas::MultipleChoiceQuestion>,
+        #[doc = "Optional timestamp when this course work is scheduled to be published."]
+        #[serde(rename = "scheduledTime", default)]
+        pub scheduled_time: ::std::option::Option<String>,
+        #[doc = "Status of this course work.\nIf unspecified, the default state is `DRAFT`."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::CourseWorkState>,
+        #[doc = "Setting to determine when students are allowed to modify submissions.\nIf unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`."]
+        #[serde(rename = "submissionModificationMode", default)]
+        pub submission_modification_mode:
+            ::std::option::Option<crate::schemas::CourseWorkSubmissionModificationMode>,
+        #[doc = "Title of this course work.\nThe title must be a valid UTF-8 string containing between 1 and 3000\ncharacters."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Identifier for the topic that this coursework is associated with.\nMust match an existing topic in the course."]
+        #[serde(rename = "topicId", default)]
+        pub topic_id: ::std::option::Option<String>,
+        #[doc = "Timestamp of the most recent change to this course work.\n\nRead-only."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Type of this course work.\n\nThe type is set when the course work is created and cannot be changed."]
+        #[serde(rename = "workType", default)]
+        pub work_type: ::std::option::Option<crate::schemas::CourseWorkWorkType>,
+    }
+    impl ::field_selector::FieldSelector for CourseWork {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -811,88 +893,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CourseWork {
-        #[doc = "Absolute link to this course work in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
-        pub alternate_link: ::std::option::Option<String>,
-        #[doc = "Assignee mode of the coursework.\nIf unspecified, the default value is `ALL_STUDENTS`."]
-        #[serde(rename = "assigneeMode", default)]
-        pub assignee_mode: ::std::option::Option<crate::schemas::CourseWorkAssigneeMode>,
-        #[doc = "Assignment details.\nThis is populated only when `work_type` is `ASSIGNMENT`.\n\nRead-only."]
-        #[serde(rename = "assignment", default)]
-        pub assignment: ::std::option::Option<crate::schemas::Assignment>,
-        #[doc = "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
-        #[serde(rename = "associatedWithDeveloper", default)]
-        pub associated_with_developer: ::std::option::Option<bool>,
-        #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
-        pub course_id: ::std::option::Option<String>,
-        #[doc = "Timestamp when this course work was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "Identifier for the user that created the coursework.\n\nRead-only."]
-        #[serde(rename = "creatorUserId", default)]
-        pub creator_user_id: ::std::option::Option<String>,
-        #[doc = "Optional description of this course work.\nIf set, the description must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional date, in UTC, that submissions for this course work are due.\nThis must be specified if `due_time` is specified."]
-        #[serde(rename = "dueDate", default)]
-        pub due_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Optional time of day, in UTC, that submissions for this course work\nare due.\nThis must be specified if `due_date` is specified."]
-        #[serde(rename = "dueTime", default)]
-        pub due_time: ::std::option::Option<crate::schemas::TimeOfDay>,
-        #[doc = "Classroom-assigned identifier of this course work, unique per course.\n\nRead-only."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifiers of students with access to the coursework.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be assigned the coursework."]
-        #[serde(rename = "individualStudentsOptions", default)]
-        pub individual_students_options:
-            ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
-        #[doc = "Additional materials.\n\nCourseWork must have no more than 20 material items."]
-        #[serde(rename = "materials", default)]
-        pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
-        #[doc = "Maximum grade for this course work.\nIf zero or unspecified, this assignment is considered ungraded.\nThis must be a non-negative integer value."]
-        #[serde(rename = "maxPoints", default)]
-        pub max_points: ::std::option::Option<f64>,
-        #[doc = "Multiple choice question details.\nFor read operations, this field is populated only when `work_type` is\n`MULTIPLE_CHOICE_QUESTION`.\nFor write operations, this field must be specified when creating course\nwork with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be\nset otherwise."]
-        #[serde(rename = "multipleChoiceQuestion", default)]
-        pub multiple_choice_question: ::std::option::Option<crate::schemas::MultipleChoiceQuestion>,
-        #[doc = "Optional timestamp when this course work is scheduled to be published."]
-        #[serde(rename = "scheduledTime", default)]
-        pub scheduled_time: ::std::option::Option<String>,
-        #[doc = "Status of this course work.\nIf unspecified, the default state is `DRAFT`."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::CourseWorkState>,
-        #[doc = "Setting to determine when students are allowed to modify submissions.\nIf unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`."]
-        #[serde(rename = "submissionModificationMode", default)]
-        pub submission_modification_mode:
-            ::std::option::Option<crate::schemas::CourseWorkSubmissionModificationMode>,
-        #[doc = "Title of this course work.\nThe title must be a valid UTF-8 string containing between 1 and 3000\ncharacters."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-        #[doc = "Identifier for the topic that this coursework is associated with.\nMust match an existing topic in the course."]
-        #[serde(rename = "topicId", default)]
-        pub topic_id: ::std::option::Option<String>,
-        #[doc = "Timestamp of the most recent change to this course work.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Type of this course work.\n\nThe type is set when the course work is created and cannot be changed."]
-        #[serde(rename = "workType", default)]
-        pub work_type: ::std::option::Option<crate::schemas::CourseWorkWorkType>,
-    }
-    impl ::field_selector::FieldSelector for CourseWork {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1034,6 +1034,39 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for Empty {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Feed {
+        #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`."]
+        #[serde(rename = "courseRosterChangesInfo", default)]
+        pub course_roster_changes_info:
+            ::std::option::Option<crate::schemas::CourseRosterChangesInfo>,
+        #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_WORK_CHANGES`."]
+        #[serde(rename = "courseWorkChangesInfo", default)]
+        pub course_work_changes_info: ::std::option::Option<crate::schemas::CourseWorkChangesInfo>,
+        #[doc = "The type of feed."]
+        #[serde(rename = "feedType", default)]
+        pub feed_type: ::std::option::Option<crate::schemas::FeedFeedType>,
+    }
+    impl ::field_selector::FieldSelector for Feed {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FeedFeedType {
         #[doc = "All roster changes for a particular course.\n\nNotifications will be generated whenever a user joins or leaves a course.\n\nNo notifications will be generated when an invitation is created or\ndeleted, but notifications will be generated when a user joins a course\nby accepting an invitation."]
@@ -1109,19 +1142,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Feed {
-        #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`."]
-        #[serde(rename = "courseRosterChangesInfo", default)]
-        pub course_roster_changes_info:
-            ::std::option::Option<crate::schemas::CourseRosterChangesInfo>,
-        #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_WORK_CHANGES`."]
-        #[serde(rename = "courseWorkChangesInfo", default)]
-        pub course_work_changes_info: ::std::option::Option<crate::schemas::CourseWorkChangesInfo>,
-        #[doc = "The type of feed."]
-        #[serde(rename = "feedType", default)]
-        pub feed_type: ::std::option::Option<crate::schemas::FeedFeedType>,
+    pub struct Form {
+        #[doc = "URL of the form."]
+        #[serde(rename = "formUrl", default)]
+        pub form_url: ::std::option::Option<String>,
+        #[doc = "URL of the form responses document.\nOnly set if respsonses have been recorded and only when the\nrequesting user is an editor of the form.\n\nRead-only."]
+        #[serde(rename = "responseUrl", default)]
+        pub response_url: ::std::option::Option<String>,
+        #[doc = "URL of a thumbnail image of the Form.\n\nRead-only."]
+        #[serde(rename = "thumbnailUrl", default)]
+        pub thumbnail_url: ::std::option::Option<String>,
+        #[doc = "Title of the Form.\n\nRead-only."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Feed {
+    impl ::field_selector::FieldSelector for Form {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1142,21 +1177,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Form {
-        #[doc = "URL of the form."]
-        #[serde(rename = "formUrl", default)]
-        pub form_url: ::std::option::Option<String>,
-        #[doc = "URL of the form responses document.\nOnly set if respsonses have been recorded and only when the\nrequesting user is an editor of the form.\n\nRead-only."]
-        #[serde(rename = "responseUrl", default)]
-        pub response_url: ::std::option::Option<String>,
-        #[doc = "URL of a thumbnail image of the Form.\n\nRead-only."]
-        #[serde(rename = "thumbnailUrl", default)]
-        pub thumbnail_url: ::std::option::Option<String>,
-        #[doc = "Title of the Form.\n\nRead-only."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
+    pub struct GlobalPermission {
+        #[doc = "Permission value."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<crate::schemas::GlobalPermissionPermission>,
     }
-    impl ::field_selector::FieldSelector for Form {
+    impl ::field_selector::FieldSelector for GlobalPermission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1221,23 +1247,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GlobalPermission {
-        #[doc = "Permission value."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<crate::schemas::GlobalPermissionPermission>,
+    pub struct GradeHistory {
+        #[doc = "The teacher who made the grade change."]
+        #[serde(rename = "actorUserId", default)]
+        pub actor_user_id: ::std::option::Option<String>,
+        #[doc = "The type of grade change at this time in the submission grade history."]
+        #[serde(rename = "gradeChangeType", default)]
+        pub grade_change_type: ::std::option::Option<crate::schemas::GradeHistoryGradeChangeType>,
+        #[doc = "When the grade of the submission was changed."]
+        #[serde(rename = "gradeTimestamp", default)]
+        pub grade_timestamp: ::std::option::Option<String>,
+        #[doc = "The denominator of the grade at this time in the submission grade\nhistory."]
+        #[serde(rename = "maxPoints", default)]
+        pub max_points: ::std::option::Option<f64>,
+        #[doc = "The numerator of the grade at this time in the submission grade history."]
+        #[serde(rename = "pointsEarned", default)]
+        pub points_earned: ::std::option::Option<f64>,
     }
-    impl ::field_selector::FieldSelector for GlobalPermission {
+    impl ::field_selector::FieldSelector for GradeHistory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1318,35 +1347,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GradeHistory {
-        #[doc = "The teacher who made the grade change."]
-        #[serde(rename = "actorUserId", default)]
-        pub actor_user_id: ::std::option::Option<String>,
-        #[doc = "The type of grade change at this time in the submission grade history."]
-        #[serde(rename = "gradeChangeType", default)]
-        pub grade_change_type: ::std::option::Option<crate::schemas::GradeHistoryGradeChangeType>,
-        #[doc = "When the grade of the submission was changed."]
-        #[serde(rename = "gradeTimestamp", default)]
-        pub grade_timestamp: ::std::option::Option<String>,
-        #[doc = "The denominator of the grade at this time in the submission grade\nhistory."]
-        #[serde(rename = "maxPoints", default)]
-        pub max_points: ::std::option::Option<f64>,
-        #[doc = "The numerator of the grade at this time in the submission grade history."]
-        #[serde(rename = "pointsEarned", default)]
-        pub points_earned: ::std::option::Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for GradeHistory {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1373,6 +1373,44 @@ pub mod schemas {
         pub student_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Guardian {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GuardianInvitation {
+        #[doc = "The time that this invitation was created.\n\nRead-only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Unique identifier for this invitation.\n\nRead-only."]
+        #[serde(rename = "invitationId", default)]
+        pub invitation_id: ::std::option::Option<String>,
+        #[doc = "Email address that the invitation was sent to.\nThis field is only visible to domain administrators."]
+        #[serde(rename = "invitedEmailAddress", default)]
+        pub invited_email_address: ::std::option::Option<String>,
+        #[doc = "The state that this invitation is in."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::GuardianInvitationState>,
+        #[doc = "ID of the student (in standard format)"]
+        #[serde(rename = "studentId", default)]
+        pub student_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GuardianInvitation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1456,24 +1494,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GuardianInvitation {
-        #[doc = "The time that this invitation was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "Unique identifier for this invitation.\n\nRead-only."]
-        #[serde(rename = "invitationId", default)]
-        pub invitation_id: ::std::option::Option<String>,
-        #[doc = "Email address that the invitation was sent to.\nThis field is only visible to domain administrators."]
-        #[serde(rename = "invitedEmailAddress", default)]
-        pub invited_email_address: ::std::option::Option<String>,
-        #[doc = "The state that this invitation is in."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::GuardianInvitationState>,
-        #[doc = "ID of the student (in standard format)"]
-        #[serde(rename = "studentId", default)]
-        pub student_id: ::std::option::Option<String>,
+    pub struct IndividualStudentsOptions {
+        #[doc = "Identifiers for the students that have access to the\ncoursework/announcement."]
+        #[serde(rename = "studentIds", default)]
+        pub student_ids: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for GuardianInvitation {
+    impl ::field_selector::FieldSelector for IndividualStudentsOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1494,12 +1520,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct IndividualStudentsOptions {
-        #[doc = "Identifiers for the students that have access to the\ncoursework/announcement."]
-        #[serde(rename = "studentIds", default)]
-        pub student_ids: ::std::option::Option<Vec<String>>,
+    pub struct Invitation {
+        #[doc = "Identifier of the course to invite the user to."]
+        #[serde(rename = "courseId", default)]
+        pub course_id: ::std::option::Option<String>,
+        #[doc = "Identifier assigned by Classroom.\n\nRead-only."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Role to invite the user to have.\nMust not be `COURSE_ROLE_UNSPECIFIED`."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<crate::schemas::InvitationRole>,
+        #[doc = "Identifier of the invited user.\n\nWhen specified as a parameter of a request, this identifier can be set to\none of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user"]
+        #[serde(rename = "userId", default)]
+        pub user_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for IndividualStudentsOptions {
+    impl ::field_selector::FieldSelector for Invitation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1563,41 +1598,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for InvitationRole {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Invitation {
-        #[doc = "Identifier of the course to invite the user to."]
-        #[serde(rename = "courseId", default)]
-        pub course_id: ::std::option::Option<String>,
-        #[doc = "Identifier assigned by Classroom.\n\nRead-only."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Role to invite the user to have.\nMust not be `COURSE_ROLE_UNSPECIFIED`."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<crate::schemas::InvitationRole>,
-        #[doc = "Identifier of the invited user.\n\nWhen specified as a parameter of a request, this identifier can be set to\none of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user"]
-        #[serde(rename = "userId", default)]
-        pub user_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Invitation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1974,6 +1974,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ModifyAnnouncementAssigneesRequest {
+        #[doc = "Mode of the announcement describing whether it will be accessible by all\nstudents or specified individual students."]
+        #[serde(rename = "assigneeMode", default)]
+        pub assignee_mode:
+            ::std::option::Option<crate::schemas::ModifyAnnouncementAssigneesRequestAssigneeMode>,
+        #[doc = "Set which students can view or cannot view the announcement.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
+        #[serde(rename = "modifyIndividualStudentsOptions", default)]
+        pub modify_individual_students_options:
+            ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
+    }
+    impl ::field_selector::FieldSelector for ModifyAnnouncementAssigneesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ModifyAnnouncementAssigneesRequestAssigneeMode {
         #[doc = "All students can see the item.\nThis is the default state."]
@@ -2053,17 +2084,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ModifyAnnouncementAssigneesRequest {
-        #[doc = "Mode of the announcement describing whether it will be accessible by all\nstudents or specified individual students."]
-        #[serde(rename = "assigneeMode", default)]
-        pub assignee_mode:
-            ::std::option::Option<crate::schemas::ModifyAnnouncementAssigneesRequestAssigneeMode>,
-        #[doc = "Set which students can view or cannot view the announcement.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
-        #[serde(rename = "modifyIndividualStudentsOptions", default)]
-        pub modify_individual_students_options:
-            ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
+    pub struct ModifyAttachmentsRequest {
+        #[doc = "Attachments to add.\nA student submission may not have more than 20 attachments.\n\nForm attachments are not supported."]
+        #[serde(rename = "addAttachments", default)]
+        pub add_attachments: ::std::option::Option<Vec<crate::schemas::Attachment>>,
     }
-    impl ::field_selector::FieldSelector for ModifyAnnouncementAssigneesRequest {
+    impl ::field_selector::FieldSelector for ModifyAttachmentsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2084,12 +2110,17 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ModifyAttachmentsRequest {
-        #[doc = "Attachments to add.\nA student submission may not have more than 20 attachments.\n\nForm attachments are not supported."]
-        #[serde(rename = "addAttachments", default)]
-        pub add_attachments: ::std::option::Option<Vec<crate::schemas::Attachment>>,
+    pub struct ModifyCourseWorkAssigneesRequest {
+        #[doc = "Mode of the coursework describing whether it will be assigned to all\nstudents or specified individual students."]
+        #[serde(rename = "assigneeMode", default)]
+        pub assignee_mode:
+            ::std::option::Option<crate::schemas::ModifyCourseWorkAssigneesRequestAssigneeMode>,
+        #[doc = "Set which students are assigned or not assigned to the coursework.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
+        #[serde(rename = "modifyIndividualStudentsOptions", default)]
+        pub modify_individual_students_options:
+            ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
     }
-    impl ::field_selector::FieldSelector for ModifyAttachmentsRequest {
+    impl ::field_selector::FieldSelector for ModifyCourseWorkAssigneesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2157,37 +2188,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ModifyCourseWorkAssigneesRequestAssigneeMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ModifyCourseWorkAssigneesRequest {
-        #[doc = "Mode of the coursework describing whether it will be assigned to all\nstudents or specified individual students."]
-        #[serde(rename = "assigneeMode", default)]
-        pub assignee_mode:
-            ::std::option::Option<crate::schemas::ModifyCourseWorkAssigneesRequestAssigneeMode>,
-        #[doc = "Set which students are assigned or not assigned to the coursework.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
-        #[serde(rename = "modifyIndividualStudentsOptions", default)]
-        pub modify_individual_students_options:
-            ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
-    }
-    impl ::field_selector::FieldSelector for ModifyCourseWorkAssigneesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2378,6 +2378,35 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for ReturnStudentSubmissionRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SharedDriveFile {
+        #[doc = "Drive file details."]
+        #[serde(rename = "driveFile", default)]
+        pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
+        #[doc = "Mechanism by which students access the Drive item."]
+        #[serde(rename = "shareMode", default)]
+        pub share_mode: ::std::option::Option<crate::schemas::SharedDriveFileShareMode>,
+    }
+    impl ::field_selector::FieldSelector for SharedDriveFile {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SharedDriveFileShareMode {
         #[doc = "Students can edit the shared file."]
@@ -2453,15 +2482,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SharedDriveFile {
-        #[doc = "Drive file details."]
-        #[serde(rename = "driveFile", default)]
-        pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
-        #[doc = "Mechanism by which students access the Drive item."]
-        #[serde(rename = "shareMode", default)]
-        pub share_mode: ::std::option::Option<crate::schemas::SharedDriveFileShareMode>,
+    pub struct ShortAnswerSubmission {
+        #[doc = "Student response to a short-answer question."]
+        #[serde(rename = "answer", default)]
+        pub answer: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for SharedDriveFile {
+    impl ::field_selector::FieldSelector for ShortAnswerSubmission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2482,12 +2508,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ShortAnswerSubmission {
-        #[doc = "Student response to a short-answer question."]
-        #[serde(rename = "answer", default)]
-        pub answer: ::std::option::Option<String>,
+    pub struct StateHistory {
+        #[doc = "The teacher or student who made the change"]
+        #[serde(rename = "actorUserId", default)]
+        pub actor_user_id: ::std::option::Option<String>,
+        #[doc = "The workflow pipeline stage."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::StateHistoryState>,
+        #[doc = "When the submission entered this state."]
+        #[serde(rename = "stateTimestamp", default)]
+        pub state_timestamp: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ShortAnswerSubmission {
+    impl ::field_selector::FieldSelector for StateHistory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2579,38 +2611,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct StateHistory {
-        #[doc = "The teacher or student who made the change"]
-        #[serde(rename = "actorUserId", default)]
-        pub actor_user_id: ::std::option::Option<String>,
-        #[doc = "The workflow pipeline stage."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::StateHistoryState>,
-        #[doc = "When the submission entered this state."]
-        #[serde(rename = "stateTimestamp", default)]
-        pub state_timestamp: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for StateHistory {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Student {
         #[doc = "Identifier of the course.\n\nRead-only."]
         #[serde(rename = "courseId", default)]
@@ -2626,6 +2626,73 @@ pub mod schemas {
         pub user_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Student {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct StudentSubmission {
+        #[doc = "Absolute link to the submission in the Classroom web UI.\n\nRead-only."]
+        #[serde(rename = "alternateLink", default)]
+        pub alternate_link: ::std::option::Option<String>,
+        #[doc = "Optional grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis may be modified only by course teachers."]
+        #[serde(rename = "assignedGrade", default)]
+        pub assigned_grade: ::std::option::Option<f64>,
+        #[doc = "Submission content when course_work_type is ASSIGNMENT.\n\nStudents can modify this content using\ngoogle.classroom.Work.ModifyAttachments."]
+        #[serde(rename = "assignmentSubmission", default)]
+        pub assignment_submission: ::std::option::Option<crate::schemas::AssignmentSubmission>,
+        #[doc = "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
+        #[serde(rename = "associatedWithDeveloper", default)]
+        pub associated_with_developer: ::std::option::Option<bool>,
+        #[doc = "Identifier of the course.\n\nRead-only."]
+        #[serde(rename = "courseId", default)]
+        pub course_id: ::std::option::Option<String>,
+        #[doc = "Identifier for the course work this corresponds to.\n\nRead-only."]
+        #[serde(rename = "courseWorkId", default)]
+        pub course_work_id: ::std::option::Option<String>,
+        #[doc = "Type of course work this submission is for.\n\nRead-only."]
+        #[serde(rename = "courseWorkType", default)]
+        pub course_work_type:
+            ::std::option::Option<crate::schemas::StudentSubmissionCourseWorkType>,
+        #[doc = "Creation time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Optional pending grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis is only visible to and modifiable by course teachers."]
+        #[serde(rename = "draftGrade", default)]
+        pub draft_grade: ::std::option::Option<f64>,
+        #[doc = "Classroom-assigned Identifier for the student submission.\nThis is unique among submissions for the relevant course work.\n\nRead-only."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Whether this submission is late.\n\nRead-only."]
+        #[serde(rename = "late", default)]
+        pub late: ::std::option::Option<bool>,
+        #[doc = "Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION."]
+        #[serde(rename = "multipleChoiceSubmission", default)]
+        pub multiple_choice_submission:
+            ::std::option::Option<crate::schemas::MultipleChoiceSubmission>,
+        #[doc = "Submission content when course_work_type is SHORT_ANSWER_QUESTION."]
+        #[serde(rename = "shortAnswerSubmission", default)]
+        pub short_answer_submission: ::std::option::Option<crate::schemas::ShortAnswerSubmission>,
+        #[doc = "State of this submission.\n\nRead-only."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::StudentSubmissionState>,
+        #[doc = "The history of the submission (includes state and grade histories).\n\nRead-only."]
+        #[serde(rename = "submissionHistory", default)]
+        pub submission_history: ::std::option::Option<Vec<crate::schemas::SubmissionHistory>>,
+        #[doc = "Last update time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Identifier for the student that owns this submission.\n\nRead-only."]
+        #[serde(rename = "userId", default)]
+        pub user_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for StudentSubmission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2772,73 +2839,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for StudentSubmissionState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct StudentSubmission {
-        #[doc = "Absolute link to the submission in the Classroom web UI.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
-        pub alternate_link: ::std::option::Option<String>,
-        #[doc = "Optional grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis may be modified only by course teachers."]
-        #[serde(rename = "assignedGrade", default)]
-        pub assigned_grade: ::std::option::Option<f64>,
-        #[doc = "Submission content when course_work_type is ASSIGNMENT.\n\nStudents can modify this content using\ngoogle.classroom.Work.ModifyAttachments."]
-        #[serde(rename = "assignmentSubmission", default)]
-        pub assignment_submission: ::std::option::Option<crate::schemas::AssignmentSubmission>,
-        #[doc = "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
-        #[serde(rename = "associatedWithDeveloper", default)]
-        pub associated_with_developer: ::std::option::Option<bool>,
-        #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
-        pub course_id: ::std::option::Option<String>,
-        #[doc = "Identifier for the course work this corresponds to.\n\nRead-only."]
-        #[serde(rename = "courseWorkId", default)]
-        pub course_work_id: ::std::option::Option<String>,
-        #[doc = "Type of course work this submission is for.\n\nRead-only."]
-        #[serde(rename = "courseWorkType", default)]
-        pub course_work_type:
-            ::std::option::Option<crate::schemas::StudentSubmissionCourseWorkType>,
-        #[doc = "Creation time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "Optional pending grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis is only visible to and modifiable by course teachers."]
-        #[serde(rename = "draftGrade", default)]
-        pub draft_grade: ::std::option::Option<f64>,
-        #[doc = "Classroom-assigned Identifier for the student submission.\nThis is unique among submissions for the relevant course work.\n\nRead-only."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Whether this submission is late.\n\nRead-only."]
-        #[serde(rename = "late", default)]
-        pub late: ::std::option::Option<bool>,
-        #[doc = "Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION."]
-        #[serde(rename = "multipleChoiceSubmission", default)]
-        pub multiple_choice_submission:
-            ::std::option::Option<crate::schemas::MultipleChoiceSubmission>,
-        #[doc = "Submission content when course_work_type is SHORT_ANSWER_QUESTION."]
-        #[serde(rename = "shortAnswerSubmission", default)]
-        pub short_answer_submission: ::std::option::Option<crate::schemas::ShortAnswerSubmission>,
-        #[doc = "State of this submission.\n\nRead-only."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::StudentSubmissionState>,
-        #[doc = "The history of the submission (includes state and grade histories).\n\nRead-only."]
-        #[serde(rename = "submissionHistory", default)]
-        pub submission_history: ::std::option::Option<Vec<crate::schemas::SubmissionHistory>>,
-        #[doc = "Last update time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Identifier for the student that owns this submission.\n\nRead-only."]
-        #[serde(rename = "userId", default)]
-        pub user_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for StudentSubmission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -15600,84 +15600,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -15709,7 +15631,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -15830,50 +15751,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

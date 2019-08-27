@@ -77,6 +77,70 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Device {
+        #[doc = "If a device is blocked, connections or requests from this device will fail.\nCan be used to temporarily prevent the device from connecting if, for\nexample, the sensor is generating bad data and needs maintenance."]
+        #[serde(rename = "blocked", default)]
+        pub blocked: ::std::option::Option<bool>,
+        #[doc = "The most recent device configuration, which is eventually sent from\nCloud IoT Core to the device. If not present on creation, the\nconfiguration will be initialized with an empty payload and version value\nof `1`. To update this field after creation, use the\n`DeviceManager.ModifyCloudToDeviceConfig` method."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<crate::schemas::DeviceConfig>,
+        #[doc = "The credentials used to authenticate this device. To allow credential\nrotation without interruption, multiple device credentials can be bound to\nthis device. No more than 3 credentials can be bound to a single device at\na time. When new credentials are added to a device, they are verified\nagainst the registry credentials. For details, see the description of the\n`DeviceRegistry.credentials` field."]
+        #[serde(rename = "credentials", default)]
+        pub credentials: ::std::option::Option<Vec<crate::schemas::DeviceCredential>>,
+        #[doc = "Gateway-related configuration and state."]
+        #[serde(rename = "gatewayConfig", default)]
+        pub gateway_config: ::std::option::Option<crate::schemas::GatewayConfig>,
+        #[doc = "The user-defined device identifier. The device ID must be unique\nwithin a device registry."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "[Output only] The last time a cloud-to-device config version acknowledgment\nwas received from the device. This field is only for configurations\nsent through MQTT."]
+        #[serde(rename = "lastConfigAckTime", default)]
+        pub last_config_ack_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The last time a cloud-to-device config version was sent to\nthe device."]
+        #[serde(rename = "lastConfigSendTime", default)]
+        pub last_config_send_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The error message of the most recent error, such as a failure\nto publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this\nfield. If no errors have occurred, this field has an empty message\nand the status code 0 == OK. Otherwise, this field is expected to have a\nstatus code other than OK."]
+        #[serde(rename = "lastErrorStatus", default)]
+        pub last_error_status: ::std::option::Option<crate::schemas::Status>,
+        #[doc = "[Output only] The time the most recent error occurred, such as a failure to\npublish to Cloud Pub/Sub. This field is the timestamp of\n'last_error_status'."]
+        #[serde(rename = "lastErrorTime", default)]
+        pub last_error_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The last time a telemetry event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
+        #[serde(rename = "lastEventTime", default)]
+        pub last_event_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The last time an MQTT `PINGREQ` was received. This field\napplies only to devices connecting through MQTT. MQTT clients usually only\nsend `PINGREQ` messages if the connection is idle, and no other messages\nhave been sent. Timestamps are periodically collected and written to\nstorage; they may be stale by a few minutes."]
+        #[serde(rename = "lastHeartbeatTime", default)]
+        pub last_heartbeat_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The last time a state event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
+        #[serde(rename = "lastStateTime", default)]
+        pub last_state_time: ::std::option::Option<String>,
+        #[doc = "**Beta Feature**\n\nThe logging verbosity for device activity. If unspecified,\nDeviceRegistry.log_level will be used."]
+        #[serde(rename = "logLevel", default)]
+        pub log_level: ::std::option::Option<crate::schemas::DeviceLogLevel>,
+        #[doc = "The metadata key-value pairs assigned to the device. This metadata is not\ninterpreted or indexed by Cloud IoT Core. It can be used to add contextual\ninformation for the device.\n\nKeys must conform to the regular expression a-zA-Z+ and\nbe less than 128 bytes in length.\n\nValues are free-form strings. Each value must be less than or equal to 32\nKB in size.\n\nThe total size of all keys and values must be less than 256 KB, and the\nmaximum number of key-value pairs is 500."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "[Output only] A server-defined unique numeric ID for the device. This is a\nmore compact way to identify devices, and it is globally unique."]
+        #[serde(rename = "numId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub num_id: ::std::option::Option<u64>,
+        #[doc = "[Output only] The state most recently received from the device. If no state\nhas been reported, this field is not present."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::DeviceState>,
+    }
+    impl ::field_selector::FieldSelector for Device {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceLogLevel {
         #[doc = "All events will be logged."]
@@ -136,70 +200,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DeviceLogLevel {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Device {
-        #[doc = "If a device is blocked, connections or requests from this device will fail.\nCan be used to temporarily prevent the device from connecting if, for\nexample, the sensor is generating bad data and needs maintenance."]
-        #[serde(rename = "blocked", default)]
-        pub blocked: ::std::option::Option<bool>,
-        #[doc = "The most recent device configuration, which is eventually sent from\nCloud IoT Core to the device. If not present on creation, the\nconfiguration will be initialized with an empty payload and version value\nof `1`. To update this field after creation, use the\n`DeviceManager.ModifyCloudToDeviceConfig` method."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<crate::schemas::DeviceConfig>,
-        #[doc = "The credentials used to authenticate this device. To allow credential\nrotation without interruption, multiple device credentials can be bound to\nthis device. No more than 3 credentials can be bound to a single device at\na time. When new credentials are added to a device, they are verified\nagainst the registry credentials. For details, see the description of the\n`DeviceRegistry.credentials` field."]
-        #[serde(rename = "credentials", default)]
-        pub credentials: ::std::option::Option<Vec<crate::schemas::DeviceCredential>>,
-        #[doc = "Gateway-related configuration and state."]
-        #[serde(rename = "gatewayConfig", default)]
-        pub gateway_config: ::std::option::Option<crate::schemas::GatewayConfig>,
-        #[doc = "The user-defined device identifier. The device ID must be unique\nwithin a device registry."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "[Output only] The last time a cloud-to-device config version acknowledgment\nwas received from the device. This field is only for configurations\nsent through MQTT."]
-        #[serde(rename = "lastConfigAckTime", default)]
-        pub last_config_ack_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The last time a cloud-to-device config version was sent to\nthe device."]
-        #[serde(rename = "lastConfigSendTime", default)]
-        pub last_config_send_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The error message of the most recent error, such as a failure\nto publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this\nfield. If no errors have occurred, this field has an empty message\nand the status code 0 == OK. Otherwise, this field is expected to have a\nstatus code other than OK."]
-        #[serde(rename = "lastErrorStatus", default)]
-        pub last_error_status: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "[Output only] The time the most recent error occurred, such as a failure to\npublish to Cloud Pub/Sub. This field is the timestamp of\n'last_error_status'."]
-        #[serde(rename = "lastErrorTime", default)]
-        pub last_error_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The last time a telemetry event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
-        #[serde(rename = "lastEventTime", default)]
-        pub last_event_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The last time an MQTT `PINGREQ` was received. This field\napplies only to devices connecting through MQTT. MQTT clients usually only\nsend `PINGREQ` messages if the connection is idle, and no other messages\nhave been sent. Timestamps are periodically collected and written to\nstorage; they may be stale by a few minutes."]
-        #[serde(rename = "lastHeartbeatTime", default)]
-        pub last_heartbeat_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The last time a state event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
-        #[serde(rename = "lastStateTime", default)]
-        pub last_state_time: ::std::option::Option<String>,
-        #[doc = "**Beta Feature**\n\nThe logging verbosity for device activity. If unspecified,\nDeviceRegistry.log_level will be used."]
-        #[serde(rename = "logLevel", default)]
-        pub log_level: ::std::option::Option<crate::schemas::DeviceLogLevel>,
-        #[doc = "The metadata key-value pairs assigned to the device. This metadata is not\ninterpreted or indexed by Cloud IoT Core. It can be used to add contextual\ninformation for the device.\n\nKeys must conform to the regular expression a-zA-Z+ and\nbe less than 128 bytes in length.\n\nValues are free-form strings. Each value must be less than or equal to 32\nKB in size.\n\nThe total size of all keys and values must be less than 256 KB, and the\nmaximum number of key-value pairs is 500."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "[Output only] A server-defined unique numeric ID for the device. This is a\nmore compact way to identify devices, and it is globally unique."]
-        #[serde(rename = "numId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub num_id: ::std::option::Option<u64>,
-        #[doc = "[Output only] The state most recently received from the device. If no state\nhas been reported, this field is not present."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::DeviceState>,
-    }
-    impl ::field_selector::FieldSelector for Device {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -273,6 +273,55 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeviceRegistry {
+        #[doc = "The credentials used to verify the device credentials. No more than 10\ncredentials can be bound to a single registry at a time. The verification\nprocess occurs at the time of device creation or update. If this field is\nempty, no verification is performed. Otherwise, the credentials of a newly\ncreated device or added credentials of an updated device should be signed\nwith one of these registry credentials.\n\nNote, however, that existing devices will never be affected by\nmodifications to this list of credentials: after a device has been\nsuccessfully created in a registry, it should be able to connect even if\nits registry credentials are revoked, deleted, or modified."]
+        #[serde(rename = "credentials", default)]
+        pub credentials: ::std::option::Option<Vec<crate::schemas::RegistryCredential>>,
+        #[doc = "The configuration for notification of telemetry events received from the\ndevice. All telemetry events that were successfully published by the\ndevice and acknowledged by Cloud IoT Core are guaranteed to be\ndelivered to Cloud Pub/Sub. If multiple configurations match a message,\nonly the first matching configuration is used. If you try to publish a\ndevice telemetry event using MQTT without specifying a Cloud Pub/Sub topic\nfor the device's registry, the connection closes automatically. If you try\nto do so using an HTTP connection, an error is returned. Up to 10\nconfigurations may be provided."]
+        #[serde(rename = "eventNotificationConfigs", default)]
+        pub event_notification_configs:
+            ::std::option::Option<Vec<crate::schemas::EventNotificationConfig>>,
+        #[doc = "The DeviceService (HTTP) configuration for this device registry."]
+        #[serde(rename = "httpConfig", default)]
+        pub http_config: ::std::option::Option<crate::schemas::HttpConfig>,
+        #[doc = "The identifier of this device registry. For example, `myRegistry`."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "**Beta Feature**\n\nThe default logging verbosity for activity from devices in this registry.\nThe verbosity level can be overridden by Device.log_level."]
+        #[serde(rename = "logLevel", default)]
+        pub log_level: ::std::option::Option<crate::schemas::DeviceRegistryLogLevel>,
+        #[doc = "The MQTT configuration for this device registry."]
+        #[serde(rename = "mqttConfig", default)]
+        pub mqtt_config: ::std::option::Option<crate::schemas::MqttConfig>,
+        #[doc = "The resource path name. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The configuration for notification of new states received from the device.\nState updates are guaranteed to be stored in the state history, but\nnotifications to Cloud Pub/Sub are not guaranteed. For example, if\npermissions are misconfigured or the specified topic doesn't exist, no\nnotification will be published but the state will still be stored in Cloud\nIoT Core."]
+        #[serde(rename = "stateNotificationConfig", default)]
+        pub state_notification_config:
+            ::std::option::Option<crate::schemas::StateNotificationConfig>,
+    }
+    impl ::field_selector::FieldSelector for DeviceRegistry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceRegistryLogLevel {
         #[doc = "All events will be logged."]
@@ -332,55 +381,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DeviceRegistryLogLevel {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DeviceRegistry {
-        #[doc = "The credentials used to verify the device credentials. No more than 10\ncredentials can be bound to a single registry at a time. The verification\nprocess occurs at the time of device creation or update. If this field is\nempty, no verification is performed. Otherwise, the credentials of a newly\ncreated device or added credentials of an updated device should be signed\nwith one of these registry credentials.\n\nNote, however, that existing devices will never be affected by\nmodifications to this list of credentials: after a device has been\nsuccessfully created in a registry, it should be able to connect even if\nits registry credentials are revoked, deleted, or modified."]
-        #[serde(rename = "credentials", default)]
-        pub credentials: ::std::option::Option<Vec<crate::schemas::RegistryCredential>>,
-        #[doc = "The configuration for notification of telemetry events received from the\ndevice. All telemetry events that were successfully published by the\ndevice and acknowledged by Cloud IoT Core are guaranteed to be\ndelivered to Cloud Pub/Sub. If multiple configurations match a message,\nonly the first matching configuration is used. If you try to publish a\ndevice telemetry event using MQTT without specifying a Cloud Pub/Sub topic\nfor the device's registry, the connection closes automatically. If you try\nto do so using an HTTP connection, an error is returned. Up to 10\nconfigurations may be provided."]
-        #[serde(rename = "eventNotificationConfigs", default)]
-        pub event_notification_configs:
-            ::std::option::Option<Vec<crate::schemas::EventNotificationConfig>>,
-        #[doc = "The DeviceService (HTTP) configuration for this device registry."]
-        #[serde(rename = "httpConfig", default)]
-        pub http_config: ::std::option::Option<crate::schemas::HttpConfig>,
-        #[doc = "The identifier of this device registry. For example, `myRegistry`."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "**Beta Feature**\n\nThe default logging verbosity for activity from devices in this registry.\nThe verbosity level can be overridden by Device.log_level."]
-        #[serde(rename = "logLevel", default)]
-        pub log_level: ::std::option::Option<crate::schemas::DeviceRegistryLogLevel>,
-        #[doc = "The MQTT configuration for this device registry."]
-        #[serde(rename = "mqttConfig", default)]
-        pub mqtt_config: ::std::option::Option<crate::schemas::MqttConfig>,
-        #[doc = "The resource path name. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The configuration for notification of new states received from the device.\nState updates are guaranteed to be stored in the state history, but\nnotifications to Cloud Pub/Sub are not guaranteed. For example, if\npermissions are misconfigured or the specified topic doesn't exist, no\nnotification will be published but the state will still be stored in Cloud\nIoT Core."]
-        #[serde(rename = "stateNotificationConfig", default)]
-        pub state_notification_config:
-            ::std::option::Option<crate::schemas::StateNotificationConfig>,
-    }
-    impl ::field_selector::FieldSelector for DeviceRegistry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -491,6 +491,42 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GatewayConfig {
+        #[doc = "Indicates how to authorize and/or authenticate devices to access the\ngateway."]
+        #[serde(rename = "gatewayAuthMethod", default)]
+        pub gateway_auth_method:
+            ::std::option::Option<crate::schemas::GatewayConfigGatewayAuthMethod>,
+        #[doc = "Indicates whether the device is a gateway."]
+        #[serde(rename = "gatewayType", default)]
+        pub gateway_type: ::std::option::Option<crate::schemas::GatewayConfigGatewayType>,
+        #[doc = "[Output only] The ID of the gateway the device accessed most recently."]
+        #[serde(rename = "lastAccessedGatewayId", default)]
+        pub last_accessed_gateway_id: ::std::option::Option<String>,
+        #[doc = "[Output only] The most recent time at which the device accessed the gateway\nspecified in `last_accessed_gateway`."]
+        #[serde(rename = "lastAccessedGatewayTime", default)]
+        pub last_accessed_gateway_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GatewayConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -641,42 +677,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GatewayConfig {
-        #[doc = "Indicates how to authorize and/or authenticate devices to access the\ngateway."]
-        #[serde(rename = "gatewayAuthMethod", default)]
-        pub gateway_auth_method:
-            ::std::option::Option<crate::schemas::GatewayConfigGatewayAuthMethod>,
-        #[doc = "Indicates whether the device is a gateway."]
-        #[serde(rename = "gatewayType", default)]
-        pub gateway_type: ::std::option::Option<crate::schemas::GatewayConfigGatewayType>,
-        #[doc = "[Output only] The ID of the gateway the device accessed most recently."]
-        #[serde(rename = "lastAccessedGatewayId", default)]
-        pub last_accessed_gateway_id: ::std::option::Option<String>,
-        #[doc = "[Output only] The most recent time at which the device accessed the gateway\nspecified in `last_accessed_gateway`."]
-        #[serde(rename = "lastAccessedGatewayTime", default)]
-        pub last_accessed_gateway_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GatewayConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
         #[serde(rename = "options", default)]
@@ -709,6 +709,32 @@ pub mod schemas {
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GetPolicyOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct HttpConfig {
+        #[doc = "If enabled, allows devices to use DeviceService via the HTTP protocol.\nOtherwise, any requests to DeviceService will fail for this registry."]
+        #[serde(rename = "httpEnabledState", default)]
+        pub http_enabled_state: ::std::option::Option<crate::schemas::HttpConfigHttpEnabledState>,
+    }
+    impl ::field_selector::FieldSelector for HttpConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -768,32 +794,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for HttpConfigHttpEnabledState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct HttpConfig {
-        #[doc = "If enabled, allows devices to use DeviceService via the HTTP protocol.\nOtherwise, any requests to DeviceService will fail for this registry."]
-        #[serde(rename = "httpEnabledState", default)]
-        pub http_enabled_state: ::std::option::Option<crate::schemas::HttpConfigHttpEnabledState>,
-    }
-    impl ::field_selector::FieldSelector for HttpConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -931,6 +931,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MqttConfig {
+        #[doc = "If enabled, allows connections using the MQTT protocol. Otherwise, MQTT\nconnections to this registry will fail."]
+        #[serde(rename = "mqttEnabledState", default)]
+        pub mqtt_enabled_state: ::std::option::Option<crate::schemas::MqttConfigMqttEnabledState>,
+    }
+    impl ::field_selector::FieldSelector for MqttConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MqttConfigMqttEnabledState {
         #[doc = "Disables a MQTT connection."]
@@ -1002,12 +1028,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MqttConfig {
-        #[doc = "If enabled, allows connections using the MQTT protocol. Otherwise, MQTT\nconnections to this registry will fail."]
-        #[serde(rename = "mqttEnabledState", default)]
-        pub mqtt_enabled_state: ::std::option::Option<crate::schemas::MqttConfigMqttEnabledState>,
+    pub struct Policy {
+        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[serde(rename = "bindings", default)]
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Deprecated."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for MqttConfig {
+    impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1028,18 +1060,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Policy {
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
-        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<i32>,
+    pub struct PublicKeyCertificate {
+        #[doc = "The certificate data."]
+        #[serde(rename = "certificate", default)]
+        pub certificate: ::std::option::Option<String>,
+        #[doc = "The certificate format."]
+        #[serde(rename = "format", default)]
+        pub format: ::std::option::Option<crate::schemas::PublicKeyCertificateFormat>,
+        #[doc = "[Output only] The certificate details. Used only for X.509 certificates."]
+        #[serde(rename = "x509Details", default)]
+        pub x_509_details: ::std::option::Option<crate::schemas::X509CertificateDetails>,
     }
-    impl ::field_selector::FieldSelector for Policy {
+    impl ::field_selector::FieldSelector for PublicKeyCertificate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1119,18 +1151,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PublicKeyCertificate {
-        #[doc = "The certificate data."]
-        #[serde(rename = "certificate", default)]
-        pub certificate: ::std::option::Option<String>,
-        #[doc = "The certificate format."]
+    pub struct PublicKeyCredential {
+        #[doc = "The format of the key."]
         #[serde(rename = "format", default)]
-        pub format: ::std::option::Option<crate::schemas::PublicKeyCertificateFormat>,
-        #[doc = "[Output only] The certificate details. Used only for X.509 certificates."]
-        #[serde(rename = "x509Details", default)]
-        pub x_509_details: ::std::option::Option<crate::schemas::X509CertificateDetails>,
+        pub format: ::std::option::Option<crate::schemas::PublicKeyCredentialFormat>,
+        #[doc = "The key data."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for PublicKeyCertificate {
+    impl ::field_selector::FieldSelector for PublicKeyCredential {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1202,35 +1231,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PublicKeyCredentialFormat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PublicKeyCredential {
-        #[doc = "The format of the key."]
-        #[serde(rename = "format", default)]
-        pub format: ::std::option::Option<crate::schemas::PublicKeyCredentialFormat>,
-        #[doc = "The key data."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PublicKeyCredential {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6719,84 +6719,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -6828,7 +6750,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -6954,8 +6875,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

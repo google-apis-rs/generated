@@ -1388,41 +1388,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SetAccountInfoResponseProviderUserInfoItems {
-        #[doc = "The user's display name at the IDP."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "User's identifier at IDP."]
-        #[serde(rename = "federatedId", default)]
-        pub federated_id: ::std::option::Option<String>,
-        #[doc = "The user's photo url at the IDP."]
-        #[serde(rename = "photoUrl", default)]
-        pub photo_url: ::std::option::Option<String>,
-        #[doc = "The IdP ID. For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
-        #[serde(rename = "providerId", default)]
-        pub provider_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SetAccountInfoResponseProviderUserInfoItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct SetAccountInfoResponse {
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
@@ -1464,6 +1429,41 @@ pub mod schemas {
         pub refresh_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetAccountInfoResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SetAccountInfoResponseProviderUserInfoItems {
+        #[doc = "The user's display name at the IDP."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "User's identifier at IDP."]
+        #[serde(rename = "federatedId", default)]
+        pub federated_id: ::std::option::Option<String>,
+        #[doc = "The user's photo url at the IDP."]
+        #[serde(rename = "photoUrl", default)]
+        pub photo_url: ::std::option::Option<String>,
+        #[doc = "The IdP ID. For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
+        #[serde(rename = "providerId", default)]
+        pub provider_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SetAccountInfoResponseProviderUserInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1529,35 +1529,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UploadAccountResponseErrorItems {
-        #[doc = "The index of the malformed account, starting from 0."]
-        #[serde(rename = "index", default)]
-        pub index: ::std::option::Option<i32>,
-        #[doc = "Detailed error message for the account info."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UploadAccountResponseErrorItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct UploadAccountResponse {
         #[doc = "The error encountered while processing the account info."]
         #[serde(rename = "error", default)]
@@ -1587,33 +1558,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UserInfoProviderUserInfoItems {
-        #[doc = "The user's display name at the IDP."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "User's email at IDP."]
-        #[serde(rename = "email", default)]
-        pub email: ::std::option::Option<String>,
-        #[doc = "User's identifier at IDP."]
-        #[serde(rename = "federatedId", default)]
-        pub federated_id: ::std::option::Option<String>,
-        #[doc = "User's phone number."]
-        #[serde(rename = "phoneNumber", default)]
-        pub phone_number: ::std::option::Option<String>,
-        #[doc = "The user's photo url at the IDP."]
-        #[serde(rename = "photoUrl", default)]
-        pub photo_url: ::std::option::Option<String>,
-        #[doc = "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
-        #[serde(rename = "providerId", default)]
-        pub provider_id: ::std::option::Option<String>,
-        #[doc = "User's raw identifier directly returned from IDP."]
-        #[serde(rename = "rawId", default)]
-        pub raw_id: ::std::option::Option<String>,
-        #[doc = "User's screen name at Twitter or login name at Github."]
-        #[serde(rename = "screenName", default)]
-        pub screen_name: ::std::option::Option<String>,
+    pub struct UploadAccountResponseErrorItems {
+        #[doc = "The index of the malformed account, starting from 0."]
+        #[serde(rename = "index", default)]
+        pub index: ::std::option::Option<i32>,
+        #[doc = "Detailed error message for the account info."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for UserInfoProviderUserInfoItems {
+    impl ::field_selector::FieldSelector for UploadAccountResponseErrorItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1689,6 +1642,53 @@ pub mod schemas {
         pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for UserInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserInfoProviderUserInfoItems {
+        #[doc = "The user's display name at the IDP."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "User's email at IDP."]
+        #[serde(rename = "email", default)]
+        pub email: ::std::option::Option<String>,
+        #[doc = "User's identifier at IDP."]
+        #[serde(rename = "federatedId", default)]
+        pub federated_id: ::std::option::Option<String>,
+        #[doc = "User's phone number."]
+        #[serde(rename = "phoneNumber", default)]
+        pub phone_number: ::std::option::Option<String>,
+        #[doc = "The user's photo url at the IDP."]
+        #[serde(rename = "photoUrl", default)]
+        pub photo_url: ::std::option::Option<String>,
+        #[doc = "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
+        #[serde(rename = "providerId", default)]
+        pub provider_id: ::std::option::Option<String>,
+        #[doc = "User's raw identifier directly returned from IDP."]
+        #[serde(rename = "rawId", default)]
+        pub raw_id: ::std::option::Option<String>,
+        #[doc = "User's screen name at Twitter or login name at Github."]
+        #[serde(rename = "screenName", default)]
+        pub screen_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UserInfoProviderUserInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5057,84 +5057,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -5166,134 +5088,10 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+// Bytes in google apis are represented as urlsafe base64 encoded strings.
+// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+// internally to handle byte fields in google apis.
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

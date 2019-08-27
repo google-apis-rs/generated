@@ -34,6 +34,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Argument {
+        #[doc = "Optional. Defaults to FIXED_TYPE."]
+        #[serde(rename = "argumentKind", default)]
+        pub argument_kind: ::std::option::Option<crate::schemas::ArgumentArgumentKind>,
+        #[doc = "Required unless argument_kind = ANY_TYPE."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: ::std::option::Option<crate::schemas::StandardSqlDataType>,
+        #[doc = "Optional. Specifies whether the argument is input or output.\nCan be set for procedures only."]
+        #[serde(rename = "mode", default)]
+        pub mode: ::std::option::Option<crate::schemas::ArgumentMode>,
+        #[doc = "Optional. The name of this argument. Can be absent for function return\nargument."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Argument {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ArgumentArgumentKind {
         #[doc = "The argument is any type, including struct or array, but not a table.\nTo be added: FIXED_TABLE, ANY_TABLE"]
@@ -146,41 +181,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ArgumentMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Argument {
-        #[doc = "Optional. Defaults to FIXED_TYPE."]
-        #[serde(rename = "argumentKind", default)]
-        pub argument_kind: ::std::option::Option<crate::schemas::ArgumentArgumentKind>,
-        #[doc = "Required unless argument_kind = ANY_TYPE."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: ::std::option::Option<crate::schemas::StandardSqlDataType>,
-        #[doc = "Optional. Specifies whether the argument is input or output.\nCan be set for procedures only."]
-        #[serde(rename = "mode", default)]
-        pub mode: ::std::option::Option<crate::schemas::ArgumentMode>,
-        #[doc = "Optional. The name of this argument. Can be absent for function return\nargument."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Argument {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -435,6 +435,32 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct BqmlTrainingRun {
+        #[doc = "[Output-only, Beta] List of each iteration results."]
+        #[serde(rename = "iterationResults", default)]
+        pub iteration_results: ::std::option::Option<Vec<crate::schemas::BqmlIterationResult>>,
+        #[doc = "[Output-only, Beta] Training run start time in milliseconds since the epoch."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<String>,
+        #[doc = "[Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run."]
+        #[serde(rename = "trainingOptions", default)]
+        pub training_options: ::std::option::Option<crate::schemas::BqmlTrainingRunTrainingOptions>,
+    }
+    impl ::field_selector::FieldSelector for BqmlTrainingRun {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct BqmlTrainingRunTrainingOptions {
         #[serde(rename = "earlyStop", default)]
         pub early_stop: ::std::option::Option<bool>,
@@ -457,32 +483,6 @@ pub mod schemas {
         pub warm_start: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for BqmlTrainingRunTrainingOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct BqmlTrainingRun {
-        #[doc = "[Output-only, Beta] List of each iteration results."]
-        #[serde(rename = "iterationResults", default)]
-        pub iteration_results: ::std::option::Option<Vec<crate::schemas::BqmlIterationResult>>,
-        #[doc = "[Output-only, Beta] Training run start time in milliseconds since the epoch."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<String>,
-        #[doc = "[Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run."]
-        #[serde(rename = "trainingOptions", default)]
-        pub training_options: ::std::option::Option<crate::schemas::BqmlTrainingRunTrainingOptions>,
-    }
-    impl ::field_selector::FieldSelector for BqmlTrainingRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -720,50 +720,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DatasetAccessItems {
-        #[doc = "[Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: \"example.com\". Maps to IAM policy member \"domain:DOMAIN\"."]
-        #[serde(rename = "domain", default)]
-        pub domain: ::std::option::Option<String>,
-        #[doc = "[Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member \"group:GROUP\"."]
-        #[serde(rename = "groupByEmail", default)]
-        pub group_by_email: ::std::option::Option<String>,
-        #[doc = "[Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group."]
-        #[serde(rename = "iamMember", default)]
-        pub iam_member: ::std::option::Option<String>,
-        #[doc = "[Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to \"roles/bigquery.dataOwner\", it will be returned back as \"OWNER\"."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
-        #[doc = "[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members."]
-        #[serde(rename = "specialGroup", default)]
-        pub special_group: ::std::option::Option<String>,
-        #[doc = "[Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member \"user:EMAIL\" or \"serviceAccount:EMAIL\"."]
-        #[serde(rename = "userByEmail", default)]
-        pub user_by_email: ::std::option::Option<String>,
-        #[doc = "[Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation."]
-        #[serde(rename = "view", default)]
-        pub view: ::std::option::Option<crate::schemas::TableReference>,
-    }
-    impl ::field_selector::FieldSelector for DatasetAccessItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Dataset {
         #[doc = "[Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;"]
         #[serde(rename = "access", default)]
@@ -836,27 +792,30 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DatasetListDatasetsItems {
-        #[doc = "The dataset reference. Use this property to access specific parts of the dataset's ID, such as project ID or dataset ID."]
-        #[serde(rename = "datasetReference", default)]
-        pub dataset_reference: ::std::option::Option<crate::schemas::DatasetReference>,
-        #[doc = "A descriptive name for the dataset, if one exists."]
-        #[serde(rename = "friendlyName", default)]
-        pub friendly_name: ::std::option::Option<String>,
-        #[doc = "The fully-qualified, unique, opaque ID of the dataset."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The resource type. This property always returns the value \"bigquery#dataset\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The labels associated with this dataset. You can use these to organize and group your datasets."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The geographic location where the data resides."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
+    pub struct DatasetAccessItems {
+        #[doc = "[Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: \"example.com\". Maps to IAM policy member \"domain:DOMAIN\"."]
+        #[serde(rename = "domain", default)]
+        pub domain: ::std::option::Option<String>,
+        #[doc = "[Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member \"group:GROUP\"."]
+        #[serde(rename = "groupByEmail", default)]
+        pub group_by_email: ::std::option::Option<String>,
+        #[doc = "[Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group."]
+        #[serde(rename = "iamMember", default)]
+        pub iam_member: ::std::option::Option<String>,
+        #[doc = "[Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to \"roles/bigquery.dataOwner\", it will be returned back as \"OWNER\"."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
+        #[doc = "[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members."]
+        #[serde(rename = "specialGroup", default)]
+        pub special_group: ::std::option::Option<String>,
+        #[doc = "[Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member \"user:EMAIL\" or \"serviceAccount:EMAIL\"."]
+        #[serde(rename = "userByEmail", default)]
+        pub user_by_email: ::std::option::Option<String>,
+        #[doc = "[Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation."]
+        #[serde(rename = "view", default)]
+        pub view: ::std::option::Option<crate::schemas::TableReference>,
     }
-    impl ::field_selector::FieldSelector for DatasetListDatasetsItems {
+    impl ::field_selector::FieldSelector for DatasetAccessItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -892,6 +851,47 @@ pub mod schemas {
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DatasetList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatasetListDatasetsItems {
+        #[doc = "The dataset reference. Use this property to access specific parts of the dataset's ID, such as project ID or dataset ID."]
+        #[serde(rename = "datasetReference", default)]
+        pub dataset_reference: ::std::option::Option<crate::schemas::DatasetReference>,
+        #[doc = "A descriptive name for the dataset, if one exists."]
+        #[serde(rename = "friendlyName", default)]
+        pub friendly_name: ::std::option::Option<String>,
+        #[doc = "The fully-qualified, unique, opaque ID of the dataset."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The resource type. This property always returns the value \"bigquery#dataset\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The labels associated with this dataset. You can use these to organize and group your datasets."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The geographic location where the data resides."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DatasetListDatasetsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1884,6 +1884,32 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct JobList {
+        #[doc = "A hash of this page of results."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "List of jobs that were requested."]
+        #[serde(rename = "jobs", default)]
+        pub jobs: ::std::option::Option<Vec<crate::schemas::JobListJobsItems>>,
+        #[doc = "The resource type of the response."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "A token to request the next page of results."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for JobList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct JobListJobsItems {
         #[doc = "[Full-projection-only] Specifies the job configuration."]
         #[serde(rename = "configuration", default)]
@@ -1923,32 +1949,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct JobList {
-        #[doc = "A hash of this page of results."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "List of jobs that were requested."]
-        #[serde(rename = "jobs", default)]
-        pub jobs: ::std::option::Option<Vec<crate::schemas::JobListJobsItems>>,
-        #[doc = "The resource type of the response."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "A token to request the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for JobList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1972,36 +1972,6 @@ pub mod schemas {
         pub project_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for JobReference {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct JobStatisticsReservationUsageItems {
-        #[doc = "[Output-only] Reservation name or \"unreserved\" for on-demand resources usage."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "[Output-only] Slot-milliseconds the job spent in the given reservation."]
-        #[serde(rename = "slotMs", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub slot_ms: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for JobStatisticsReservationUsageItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2085,7 +2055,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct JobStatistics2ReservationUsageItems {
+    pub struct JobStatisticsReservationUsageItems {
         #[doc = "[Output-only] Reservation name or \"unreserved\" for on-demand resources usage."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
@@ -2094,7 +2064,7 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub slot_ms: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for JobStatistics2ReservationUsageItems {
+    impl ::field_selector::FieldSelector for JobStatisticsReservationUsageItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2186,6 +2156,36 @@ pub mod schemas {
         pub undeclared_query_parameters: ::std::option::Option<Vec<crate::schemas::QueryParameter>>,
     }
     impl ::field_selector::FieldSelector for JobStatistics2 {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct JobStatistics2ReservationUsageItems {
+        #[doc = "[Output-only] Reservation name or \"unreserved\" for on-demand resources usage."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "[Output-only] Slot-milliseconds the job spent in the given reservation."]
+        #[serde(rename = "slotMs", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub slot_ms: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for JobStatistics2ReservationUsageItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2406,6 +2406,62 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Model {
+        #[doc = "Output only. The time when this model was created, in millisecs since the\nepoch."]
+        #[serde(rename = "creationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub creation_time: ::std::option::Option<i64>,
+        #[doc = "[Optional] A user-friendly description of this model."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Output only. A hash of this resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "[Optional] The time when this model expires, in milliseconds since the\nepoch. If not present, the model will persist indefinitely. Expired models\nwill be deleted and their storage reclaimed.  The defaultTableExpirationMs\nproperty of the encapsulating dataset can be used to set a default\nexpirationTime on newly created models."]
+        #[serde(rename = "expirationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub expiration_time: ::std::option::Option<i64>,
+        #[doc = "Output only. Input feature columns that were used to train this model."]
+        #[serde(rename = "featureColumns", default)]
+        pub feature_columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
+        #[doc = "[Optional] A descriptive name for this model."]
+        #[serde(rename = "friendlyName", default)]
+        pub friendly_name: ::std::option::Option<String>,
+        #[doc = "Output only. Label columns that were used to train this model.\nThe output of the model will have a \"predicted_\" prefix to these columns."]
+        #[serde(rename = "labelColumns", default)]
+        pub label_columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
+        #[doc = "[Optional] The labels associated with this model. You can use these to\norganize and group your models. Label keys and values can be no longer\nthan 63 characters, can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter and each\nlabel in the list must have a different key."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. The time when this model was last modified, in millisecs\nsince the epoch."]
+        #[serde(rename = "lastModifiedTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub last_modified_time: ::std::option::Option<i64>,
+        #[doc = "Output only. The geographic location where the model resides. This value\nis inherited from the dataset."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "Required. Unique identifier for this model."]
+        #[serde(rename = "modelReference", default)]
+        pub model_reference: ::std::option::Option<crate::schemas::ModelReference>,
+        #[doc = "Output only. Type of the model resource."]
+        #[serde(rename = "modelType", default)]
+        pub model_type: ::std::option::Option<crate::schemas::ModelModelType>,
+        #[doc = "Output only. Information for all training runs in increasing order of\nstart_time."]
+        #[serde(rename = "trainingRuns", default)]
+        pub training_runs: ::std::option::Option<Vec<crate::schemas::TrainingRun>>,
+    }
+    impl ::field_selector::FieldSelector for Model {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ModelModelType {
         #[doc = "K-means clustering model."]
@@ -2475,51 +2531,15 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Model {
-        #[doc = "Output only. The time when this model was created, in millisecs since the\nepoch."]
-        #[serde(rename = "creationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub creation_time: ::std::option::Option<i64>,
-        #[doc = "[Optional] A user-friendly description of this model."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Output only. A hash of this resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "[Optional] The time when this model expires, in milliseconds since the\nepoch. If not present, the model will persist indefinitely. Expired models\nwill be deleted and their storage reclaimed.  The defaultTableExpirationMs\nproperty of the encapsulating dataset can be used to set a default\nexpirationTime on newly created models."]
-        #[serde(rename = "expirationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub expiration_time: ::std::option::Option<i64>,
-        #[doc = "Output only. Input feature columns that were used to train this model."]
-        #[serde(rename = "featureColumns", default)]
-        pub feature_columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
-        #[doc = "[Optional] A descriptive name for this model."]
-        #[serde(rename = "friendlyName", default)]
-        pub friendly_name: ::std::option::Option<String>,
-        #[doc = "Output only. Label columns that were used to train this model.\nThe output of the model will have a \"predicted_\" prefix to these columns."]
-        #[serde(rename = "labelColumns", default)]
-        pub label_columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
-        #[doc = "[Optional] The labels associated with this model. You can use these to\norganize and group your models. Label keys and values can be no longer\nthan 63 characters, can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter and each\nlabel in the list must have a different key."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The time when this model was last modified, in millisecs\nsince the epoch."]
-        #[serde(rename = "lastModifiedTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub last_modified_time: ::std::option::Option<i64>,
-        #[doc = "Output only. The geographic location where the model resides. This value\nis inherited from the dataset."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "Required. Unique identifier for this model."]
-        #[serde(rename = "modelReference", default)]
-        pub model_reference: ::std::option::Option<crate::schemas::ModelReference>,
-        #[doc = "Output only. Type of the model resource."]
-        #[serde(rename = "modelType", default)]
-        pub model_type: ::std::option::Option<crate::schemas::ModelModelType>,
-        #[doc = "Output only. Information for all training runs in increasing order of\nstart_time."]
+    pub struct ModelDefinition {
+        #[doc = "[Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query."]
+        #[serde(rename = "modelOptions", default)]
+        pub model_options: ::std::option::Option<crate::schemas::ModelDefinitionModelOptions>,
+        #[doc = "[Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query."]
         #[serde(rename = "trainingRuns", default)]
-        pub training_runs: ::std::option::Option<Vec<crate::schemas::TrainingRun>>,
+        pub training_runs: ::std::option::Option<Vec<crate::schemas::BqmlTrainingRun>>,
     }
-    impl ::field_selector::FieldSelector for Model {
+    impl ::field_selector::FieldSelector for ModelDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2549,26 +2569,6 @@ pub mod schemas {
         pub model_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ModelDefinitionModelOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ModelDefinition {
-        #[doc = "[Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query."]
-        #[serde(rename = "modelOptions", default)]
-        pub model_options: ::std::option::Option<crate::schemas::ModelDefinitionModelOptions>,
-        #[doc = "[Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query."]
-        #[serde(rename = "trainingRuns", default)]
-        pub training_runs: ::std::option::Option<Vec<crate::schemas::BqmlTrainingRun>>,
-    }
-    impl ::field_selector::FieldSelector for ModelDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2642,25 +2642,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ProjectListProjectsItems {
-        #[doc = "A descriptive name for this project."]
-        #[serde(rename = "friendlyName", default)]
-        pub friendly_name: ::std::option::Option<String>,
-        #[doc = "An opaque ID of this project."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The resource type."]
+    pub struct ProjectList {
+        #[doc = "A hash of the page of results"]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The type of list."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The numeric ID of this project."]
-        #[serde(rename = "numericId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub numeric_id: ::std::option::Option<u64>,
-        #[doc = "A unique reference to this project."]
-        #[serde(rename = "projectReference", default)]
-        pub project_reference: ::std::option::Option<crate::schemas::ProjectReference>,
+        #[doc = "A token to request the next page of results."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Projects to which you have at least READ access."]
+        #[serde(rename = "projects", default)]
+        pub projects: ::std::option::Option<Vec<crate::schemas::ProjectListProjectsItems>>,
+        #[doc = "The total number of projects in the list."]
+        #[serde(rename = "totalItems", default)]
+        pub total_items: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for ProjectListProjectsItems {
+    impl ::field_selector::FieldSelector for ProjectList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2681,24 +2680,25 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ProjectList {
-        #[doc = "A hash of the page of results"]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The type of list."]
+    pub struct ProjectListProjectsItems {
+        #[doc = "A descriptive name for this project."]
+        #[serde(rename = "friendlyName", default)]
+        pub friendly_name: ::std::option::Option<String>,
+        #[doc = "An opaque ID of this project."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The resource type."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "A token to request the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-        #[doc = "Projects to which you have at least READ access."]
-        #[serde(rename = "projects", default)]
-        pub projects: ::std::option::Option<Vec<crate::schemas::ProjectListProjectsItems>>,
-        #[doc = "The total number of projects in the list."]
-        #[serde(rename = "totalItems", default)]
-        pub total_items: ::std::option::Option<i32>,
+        #[doc = "The numeric ID of this project."]
+        #[serde(rename = "numericId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub numeric_id: ::std::option::Option<u64>,
+        #[doc = "A unique reference to this project."]
+        #[serde(rename = "projectReference", default)]
+        pub project_reference: ::std::option::Option<crate::schemas::ProjectReference>,
     }
-    impl ::field_selector::FieldSelector for ProjectList {
+    impl ::field_selector::FieldSelector for ProjectListProjectsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2777,18 +2777,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct QueryParameterTypeStructTypesItems {
-        #[doc = "[Optional] Human-oriented description of the field."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "[Optional] The name of this field."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "[Required] The type of this field."]
+    pub struct QueryParameterType {
+        #[doc = "[Optional] The type of the array's elements, if this is an array."]
+        #[serde(rename = "arrayType", default)]
+        pub array_type: ::std::option::Option<Box<crate::schemas::QueryParameterType>>,
+        #[doc = "[Required] The top level type of this field."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::QueryParameterType>,
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "[Optional] The types of the fields of this struct, in order, if this is a struct."]
+        #[serde(rename = "structTypes", default)]
+        pub struct_types:
+            ::std::option::Option<Vec<crate::schemas::QueryParameterTypeStructTypesItems>>,
     }
-    impl ::field_selector::FieldSelector for QueryParameterTypeStructTypesItems {
+    impl ::field_selector::FieldSelector for QueryParameterType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2809,19 +2810,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct QueryParameterType {
-        #[doc = "[Optional] The type of the array's elements, if this is an array."]
-        #[serde(rename = "arrayType", default)]
-        pub array_type: ::std::option::Option<Box<crate::schemas::QueryParameterType>>,
-        #[doc = "[Required] The top level type of this field."]
+    pub struct QueryParameterTypeStructTypesItems {
+        #[doc = "[Optional] Human-oriented description of the field."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "[Optional] The name of this field."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "[Required] The type of this field."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "[Optional] The types of the fields of this struct, in order, if this is a struct."]
-        #[serde(rename = "structTypes", default)]
-        pub struct_types:
-            ::std::option::Option<Vec<crate::schemas::QueryParameterTypeStructTypesItems>>,
+        pub r#type: ::std::option::Option<crate::schemas::QueryParameterType>,
     }
-    impl ::field_selector::FieldSelector for QueryParameterType {
+    impl ::field_selector::FieldSelector for QueryParameterTypeStructTypesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3026,21 +3026,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RangePartitioningRange {
-        #[doc = "[TrustedTester] [Required] The end of range partitioning, exclusive."]
-        #[serde(rename = "end", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub end: ::std::option::Option<i64>,
-        #[doc = "[TrustedTester] [Required] The width of each interval."]
-        #[serde(rename = "interval", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub interval: ::std::option::Option<i64>,
-        #[doc = "[TrustedTester] [Required] The start of range partitioning, inclusive."]
-        #[serde(rename = "start", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub start: ::std::option::Option<i64>,
+    pub struct RangePartitioning {
+        #[doc = "[TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64."]
+        #[serde(rename = "field", default)]
+        pub field: ::std::option::Option<String>,
+        #[doc = "[TrustedTester] [Required] Defines the ranges for range partitioning."]
+        #[serde(rename = "range", default)]
+        pub range: ::std::option::Option<crate::schemas::RangePartitioningRange>,
     }
-    impl ::field_selector::FieldSelector for RangePartitioningRange {
+    impl ::field_selector::FieldSelector for RangePartitioning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3061,15 +3055,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RangePartitioning {
-        #[doc = "[TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64."]
-        #[serde(rename = "field", default)]
-        pub field: ::std::option::Option<String>,
-        #[doc = "[TrustedTester] [Required] Defines the ranges for range partitioning."]
-        #[serde(rename = "range", default)]
-        pub range: ::std::option::Option<crate::schemas::RangePartitioningRange>,
+    pub struct RangePartitioningRange {
+        #[doc = "[TrustedTester] [Required] The end of range partitioning, exclusive."]
+        #[serde(rename = "end", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub end: ::std::option::Option<i64>,
+        #[doc = "[TrustedTester] [Required] The width of each interval."]
+        #[serde(rename = "interval", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub interval: ::std::option::Option<i64>,
+        #[doc = "[TrustedTester] [Required] The start of range partitioning, inclusive."]
+        #[serde(rename = "start", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub start: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for RangePartitioning {
+    impl ::field_selector::FieldSelector for RangePartitioningRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3099,6 +3099,61 @@ pub mod schemas {
         pub r_squared: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for RegressionMetrics {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Routine {
+        #[doc = "Optional."]
+        #[serde(rename = "arguments", default)]
+        pub arguments: ::std::option::Option<Vec<crate::schemas::Argument>>,
+        #[doc = "Output only. The time when this routine was created, in milliseconds since\nthe epoch."]
+        #[serde(rename = "creationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub creation_time: ::std::option::Option<i64>,
+        #[doc = "Required. The body of the routine.\n\nFor functions, this is the expression in the AS clause.\n\nIf language=SQL, it is the substring inside (but excluding) the\nparentheses. For example, for the function created with the following\nstatement:\n\n`CREATE FUNCTION JoinLines(x string, y string) as (concat(x, \"\\n\", y))`\n\nThe definition_body is `concat(x, \"\\n\", y)` (\\n is not replaced with\nlinebreak).\n\nIf language=JAVASCRIPT, it is the evaluated string in the AS clause.\nFor example, for the function created with the following statement:\n\n`CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return \"\\n\";\\n'`\n\nThe definition_body is\n\n`return \"\\n\";\\n`\n\nNote that both \\n are replaced with linebreaks."]
+        #[serde(rename = "definitionBody", default)]
+        pub definition_body: ::std::option::Option<String>,
+        #[doc = "Output only. A hash of this resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Optional. If language = \"JAVASCRIPT\", this field stores the path of the\nimported JAVASCRIPT libraries."]
+        #[serde(rename = "importedLibraries", default)]
+        pub imported_libraries: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. Defaults to \"SQL\"."]
+        #[serde(rename = "language", default)]
+        pub language: ::std::option::Option<crate::schemas::RoutineLanguage>,
+        #[doc = "Output only. The time when this routine was last modified, in milliseconds\nsince the epoch."]
+        #[serde(rename = "lastModifiedTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub last_modified_time: ::std::option::Option<i64>,
+        #[doc = "Optional if language = \"SQL\"; required otherwise.\n\nIf absent, the return type is inferred from definition_body at query time\nin each query that references this routine. If present, then the evaluated\nresult will be cast to the specified returned type at query time.\n\nFor example, for the functions created with the following statements:\n\n* `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);`\n\n* `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));`\n\n* `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));`\n\nThe return_type is `{type_kind: \"FLOAT64\"}` for `Add` and `Decrement`, and\nis absent for `Increment` (inferred as FLOAT64 at query time).\n\nSuppose the function `Add` is replaced by\n`CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`\n\nThen the inferred return type of `Increment` is automatically changed to\nINT64 at query time, while the return type of `Decrement` remains FLOAT64."]
+        #[serde(rename = "returnType", default)]
+        pub return_type: ::std::option::Option<crate::schemas::StandardSqlDataType>,
+        #[doc = "Required. Reference describing the ID of this routine."]
+        #[serde(rename = "routineReference", default)]
+        pub routine_reference: ::std::option::Option<crate::schemas::RoutineReference>,
+        #[doc = "Required."]
+        #[serde(rename = "routineType", default)]
+        pub routine_type: ::std::option::Option<crate::schemas::RoutineRoutineType>,
+    }
+    impl ::field_selector::FieldSelector for Routine {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3235,61 +3290,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Routine {
-        #[doc = "Optional."]
-        #[serde(rename = "arguments", default)]
-        pub arguments: ::std::option::Option<Vec<crate::schemas::Argument>>,
-        #[doc = "Output only. The time when this routine was created, in milliseconds since\nthe epoch."]
-        #[serde(rename = "creationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub creation_time: ::std::option::Option<i64>,
-        #[doc = "Required. The body of the routine.\n\nFor functions, this is the expression in the AS clause.\n\nIf language=SQL, it is the substring inside (but excluding) the\nparentheses. For example, for the function created with the following\nstatement:\n\n`CREATE FUNCTION JoinLines(x string, y string) as (concat(x, \"\\n\", y))`\n\nThe definition_body is `concat(x, \"\\n\", y)` (\\n is not replaced with\nlinebreak).\n\nIf language=JAVASCRIPT, it is the evaluated string in the AS clause.\nFor example, for the function created with the following statement:\n\n`CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return \"\\n\";\\n'`\n\nThe definition_body is\n\n`return \"\\n\";\\n`\n\nNote that both \\n are replaced with linebreaks."]
-        #[serde(rename = "definitionBody", default)]
-        pub definition_body: ::std::option::Option<String>,
-        #[doc = "Output only. A hash of this resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Optional. If language = \"JAVASCRIPT\", this field stores the path of the\nimported JAVASCRIPT libraries."]
-        #[serde(rename = "importedLibraries", default)]
-        pub imported_libraries: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. Defaults to \"SQL\"."]
-        #[serde(rename = "language", default)]
-        pub language: ::std::option::Option<crate::schemas::RoutineLanguage>,
-        #[doc = "Output only. The time when this routine was last modified, in milliseconds\nsince the epoch."]
-        #[serde(rename = "lastModifiedTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub last_modified_time: ::std::option::Option<i64>,
-        #[doc = "Optional if language = \"SQL\"; required otherwise.\n\nIf absent, the return type is inferred from definition_body at query time\nin each query that references this routine. If present, then the evaluated\nresult will be cast to the specified returned type at query time.\n\nFor example, for the functions created with the following statements:\n\n* `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);`\n\n* `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));`\n\n* `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));`\n\nThe return_type is `{type_kind: \"FLOAT64\"}` for `Add` and `Decrement`, and\nis absent for `Increment` (inferred as FLOAT64 at query time).\n\nSuppose the function `Add` is replaced by\n`CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`\n\nThen the inferred return type of `Increment` is automatically changed to\nINT64 at query time, while the return type of `Decrement` remains FLOAT64."]
-        #[serde(rename = "returnType", default)]
-        pub return_type: ::std::option::Option<crate::schemas::StandardSqlDataType>,
-        #[doc = "Required. Reference describing the ID of this routine."]
-        #[serde(rename = "routineReference", default)]
-        pub routine_reference: ::std::option::Option<crate::schemas::RoutineReference>,
-        #[doc = "Required."]
-        #[serde(rename = "routineType", default)]
-        pub routine_type: ::std::option::Option<crate::schemas::RoutineRoutineType>,
-    }
-    impl ::field_selector::FieldSelector for Routine {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct RoutineReference {
         #[doc = "[Required] The ID of the dataset containing this routine."]
         #[serde(rename = "datasetId", default)]
@@ -3331,6 +3331,38 @@ pub mod schemas {
         pub entries: ::std::option::Option<Vec<crate::schemas::Entry>>,
     }
     impl ::field_selector::FieldSelector for Row {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StandardSqlDataType {
+        #[doc = "The type of the array's elements, if type_kind = \"ARRAY\"."]
+        #[serde(rename = "arrayElementType", default)]
+        pub array_element_type: ::std::option::Option<Box<crate::schemas::StandardSqlDataType>>,
+        #[doc = "The fields of this struct, in order, if type_kind = \"STRUCT\"."]
+        #[serde(rename = "structType", default)]
+        pub struct_type: ::std::option::Option<crate::schemas::StandardSqlStructType>,
+        #[doc = "Required. The top level type of this field.\nCan be any standard SQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\")."]
+        #[serde(rename = "typeKind", default)]
+        pub type_kind: ::std::option::Option<crate::schemas::StandardSqlDataTypeTypeKind>,
+    }
+    impl ::field_selector::FieldSelector for StandardSqlDataType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3434,38 +3466,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for StandardSqlDataTypeTypeKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct StandardSqlDataType {
-        #[doc = "The type of the array's elements, if type_kind = \"ARRAY\"."]
-        #[serde(rename = "arrayElementType", default)]
-        pub array_element_type: ::std::option::Option<Box<crate::schemas::StandardSqlDataType>>,
-        #[doc = "The fields of this struct, in order, if type_kind = \"STRUCT\"."]
-        #[serde(rename = "structType", default)]
-        pub struct_type: ::std::option::Option<crate::schemas::StandardSqlStructType>,
-        #[doc = "Required. The top level type of this field.\nCan be any standard SQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\")."]
-        #[serde(rename = "typeKind", default)]
-        pub type_kind: ::std::option::Option<crate::schemas::StandardSqlDataTypeTypeKind>,
-    }
-    impl ::field_selector::FieldSelector for StandardSqlDataType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3685,25 +3685,6 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct TableDataInsertAllRequestRowsItems {
-        #[doc = "[Optional] A unique ID for each row. BigQuery uses this property to detect duplicate insertion requests on a best-effort basis."]
-        #[serde(rename = "insertId", default)]
-        pub insert_id: ::std::option::Option<String>,
-        #[doc = "[Required] A JSON object that contains a row of data. The object's properties and values must match the destination table's schema."]
-        #[serde(rename = "json", default)]
-        pub json:
-            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonValue>>,
-    }
-    impl ::field_selector::FieldSelector for TableDataInsertAllRequestRowsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TableDataInsertAllRequest {
         #[doc = "[Optional] Accept rows that contain values that do not match the schema. The unknown values are ignored. Default is false, which treats unknown values as errors."]
         #[serde(rename = "ignoreUnknownValues", default)]
@@ -3730,27 +3711,17 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TableDataInsertAllResponseInsertErrorsItems {
-        #[doc = "Error information for the row indicated by the index property."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::ErrorProto>>,
-        #[doc = "The index of the row that error applies to."]
-        #[serde(rename = "index", default)]
-        pub index: ::std::option::Option<u32>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TableDataInsertAllRequestRowsItems {
+        #[doc = "[Optional] A unique ID for each row. BigQuery uses this property to detect duplicate insertion requests on a best-effort basis."]
+        #[serde(rename = "insertId", default)]
+        pub insert_id: ::std::option::Option<String>,
+        #[doc = "[Required] A JSON object that contains a row of data. The object's properties and values must match the destination table's schema."]
+        #[serde(rename = "json", default)]
+        pub json:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonValue>>,
     }
-    impl ::field_selector::FieldSelector for TableDataInsertAllResponseInsertErrorsItems {
+    impl ::field_selector::FieldSelector for TableDataInsertAllRequestRowsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3789,6 +3760,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TableDataInsertAllResponseInsertErrorsItems {
+        #[doc = "Error information for the row indicated by the index property."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::ErrorProto>>,
+        #[doc = "The index of the row that error applies to."]
+        #[serde(rename = "index", default)]
+        pub index: ::std::option::Option<u32>,
+    }
+    impl ::field_selector::FieldSelector for TableDataInsertAllResponseInsertErrorsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TableDataList {
         #[doc = "A hash of this page of results."]
@@ -3809,32 +3809,6 @@ pub mod schemas {
         pub total_rows: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for TableDataList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TableFieldSchemaCategories {
-        #[doc = "A list of category resource names. For example, \"projects/1/taxonomies/2/categories/3\". At most 5 categories are allowed."]
-        #[serde(rename = "names", default)]
-        pub names: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for TableFieldSchemaCategories {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3896,12 +3870,50 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TableListTablesItemsView {
-        #[doc = "True if view is defined in legacy SQL dialect, false if in standard SQL."]
-        #[serde(rename = "useLegacySql", default)]
-        pub use_legacy_sql: ::std::option::Option<bool>,
+    pub struct TableFieldSchemaCategories {
+        #[doc = "A list of category resource names. For example, \"projects/1/taxonomies/2/categories/3\". At most 5 categories are allowed."]
+        #[serde(rename = "names", default)]
+        pub names: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for TableListTablesItemsView {
+    impl ::field_selector::FieldSelector for TableFieldSchemaCategories {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TableList {
+        #[doc = "A hash of this page of results."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The type of list."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "A token to request the next page of results."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Tables in the requested dataset."]
+        #[serde(rename = "tables", default)]
+        pub tables: ::std::option::Option<Vec<crate::schemas::TableListTablesItems>>,
+        #[doc = "The total number of tables in the dataset."]
+        #[serde(rename = "totalItems", default)]
+        pub total_items: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for TableList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3980,24 +3992,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TableList {
-        #[doc = "A hash of this page of results."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The type of list."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "A token to request the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-        #[doc = "Tables in the requested dataset."]
-        #[serde(rename = "tables", default)]
-        pub tables: ::std::option::Option<Vec<crate::schemas::TableListTablesItems>>,
-        #[doc = "The total number of tables in the dataset."]
-        #[serde(rename = "totalItems", default)]
-        pub total_items: ::std::option::Option<i32>,
+    pub struct TableListTablesItemsView {
+        #[doc = "True if view is defined in legacy SQL dialect, false if in standard SQL."]
+        #[serde(rename = "useLegacySql", default)]
+        pub use_legacy_sql: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for TableList {
+    impl ::field_selector::FieldSelector for TableListTablesItemsView {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4106,6 +4106,89 @@ pub mod schemas {
         pub require_partition_filter: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for TimePartitioning {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TrainingOptions {
+        #[doc = "The column to split data with. This column won't be used as a\nfeature.\n\n1. When data_split_method is CUSTOM, the corresponding column should\n   be boolean. The rows with true value tag are eval data, and the false\n   are training data.\n1. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION\n   rows (from smallest to largest) in the corresponding column are used\n   as training data, and the rest are eval data. It respects the order\n   in Orderable data types:\n   https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties"]
+        #[serde(rename = "dataSplitColumn", default)]
+        pub data_split_column: ::std::option::Option<String>,
+        #[doc = "The fraction of evaluation data over the whole input data. The rest\nof data will be used as training data. The format should be double.\nAccurate to two decimal places.\nDefault value is 0.2."]
+        #[serde(rename = "dataSplitEvalFraction", default)]
+        pub data_split_eval_fraction: ::std::option::Option<f64>,
+        #[doc = "The data split type for training and evaluation, e.g. RANDOM."]
+        #[serde(rename = "dataSplitMethod", default)]
+        pub data_split_method:
+            ::std::option::Option<crate::schemas::TrainingOptionsDataSplitMethod>,
+        #[doc = "Distance type for clustering models."]
+        #[serde(rename = "distanceType", default)]
+        pub distance_type: ::std::option::Option<crate::schemas::TrainingOptionsDistanceType>,
+        #[doc = "Whether to stop early when the loss doesn't improve significantly\nany more (compared to min_relative_progress). Used only for iterative\ntraining algorithms."]
+        #[serde(rename = "earlyStop", default)]
+        pub early_stop: ::std::option::Option<bool>,
+        #[doc = "Specifies the initial learning rate for the line search learn rate\nstrategy."]
+        #[serde(rename = "initialLearnRate", default)]
+        pub initial_learn_rate: ::std::option::Option<f64>,
+        #[doc = "Name of input label columns in training data."]
+        #[serde(rename = "inputLabelColumns", default)]
+        pub input_label_columns: ::std::option::Option<Vec<String>>,
+        #[doc = "The column used to provide the initial centroids for kmeans algorithm\nwhen kmeans_initialization_method is CUSTOM."]
+        #[serde(rename = "kmeansInitializationColumn", default)]
+        pub kmeans_initialization_column: ::std::option::Option<String>,
+        #[doc = "The method used to initialize the centroids for kmeans algorithm."]
+        #[serde(rename = "kmeansInitializationMethod", default)]
+        pub kmeans_initialization_method:
+            ::std::option::Option<crate::schemas::TrainingOptionsKmeansInitializationMethod>,
+        #[doc = "L1 regularization coefficient."]
+        #[serde(rename = "l1Regularization", default)]
+        pub l_1_regularization: ::std::option::Option<f64>,
+        #[doc = "L2 regularization coefficient."]
+        #[serde(rename = "l2Regularization", default)]
+        pub l_2_regularization: ::std::option::Option<f64>,
+        #[doc = "Weights associated with each label class, for rebalancing the\ntraining data. Only applicable for classification models."]
+        #[serde(rename = "labelClassWeights", default)]
+        pub label_class_weights: ::std::option::Option<::std::collections::BTreeMap<String, f64>>,
+        #[doc = "Learning rate in training. Used only for iterative training algorithms."]
+        #[serde(rename = "learnRate", default)]
+        pub learn_rate: ::std::option::Option<f64>,
+        #[doc = "The strategy to determine learn rate for the current iteration."]
+        #[serde(rename = "learnRateStrategy", default)]
+        pub learn_rate_strategy:
+            ::std::option::Option<crate::schemas::TrainingOptionsLearnRateStrategy>,
+        #[doc = "Type of loss function used during training run."]
+        #[serde(rename = "lossType", default)]
+        pub loss_type: ::std::option::Option<crate::schemas::TrainingOptionsLossType>,
+        #[doc = "The maximum number of iterations in training. Used only for iterative\ntraining algorithms."]
+        #[serde(rename = "maxIterations", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub max_iterations: ::std::option::Option<i64>,
+        #[doc = "When early_stop is true, stops training when accuracy improvement is\nless than 'min_relative_progress'. Used only for iterative training\nalgorithms."]
+        #[serde(rename = "minRelativeProgress", default)]
+        pub min_relative_progress: ::std::option::Option<f64>,
+        #[doc = "[Beta] Google Cloud Storage URI from which the model was imported. Only\napplicable for imported models."]
+        #[serde(rename = "modelUri", default)]
+        pub model_uri: ::std::option::Option<String>,
+        #[doc = "Number of clusters for clustering models."]
+        #[serde(rename = "numClusters", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub num_clusters: ::std::option::Option<i64>,
+        #[doc = "Optimization strategy for training linear regression models."]
+        #[serde(rename = "optimizationStrategy", default)]
+        pub optimization_strategy:
+            ::std::option::Option<crate::schemas::TrainingOptionsOptimizationStrategy>,
+        #[doc = "Whether to train a model from the last checkpoint."]
+        #[serde(rename = "warmStart", default)]
+        pub warm_start: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for TrainingOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4480,89 +4563,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TrainingOptionsOptimizationStrategy {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TrainingOptions {
-        #[doc = "The column to split data with. This column won't be used as a\nfeature.\n\n1. When data_split_method is CUSTOM, the corresponding column should\n   be boolean. The rows with true value tag are eval data, and the false\n   are training data.\n1. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION\n   rows (from smallest to largest) in the corresponding column are used\n   as training data, and the rest are eval data. It respects the order\n   in Orderable data types:\n   https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties"]
-        #[serde(rename = "dataSplitColumn", default)]
-        pub data_split_column: ::std::option::Option<String>,
-        #[doc = "The fraction of evaluation data over the whole input data. The rest\nof data will be used as training data. The format should be double.\nAccurate to two decimal places.\nDefault value is 0.2."]
-        #[serde(rename = "dataSplitEvalFraction", default)]
-        pub data_split_eval_fraction: ::std::option::Option<f64>,
-        #[doc = "The data split type for training and evaluation, e.g. RANDOM."]
-        #[serde(rename = "dataSplitMethod", default)]
-        pub data_split_method:
-            ::std::option::Option<crate::schemas::TrainingOptionsDataSplitMethod>,
-        #[doc = "Distance type for clustering models."]
-        #[serde(rename = "distanceType", default)]
-        pub distance_type: ::std::option::Option<crate::schemas::TrainingOptionsDistanceType>,
-        #[doc = "Whether to stop early when the loss doesn't improve significantly\nany more (compared to min_relative_progress). Used only for iterative\ntraining algorithms."]
-        #[serde(rename = "earlyStop", default)]
-        pub early_stop: ::std::option::Option<bool>,
-        #[doc = "Specifies the initial learning rate for the line search learn rate\nstrategy."]
-        #[serde(rename = "initialLearnRate", default)]
-        pub initial_learn_rate: ::std::option::Option<f64>,
-        #[doc = "Name of input label columns in training data."]
-        #[serde(rename = "inputLabelColumns", default)]
-        pub input_label_columns: ::std::option::Option<Vec<String>>,
-        #[doc = "The column used to provide the initial centroids for kmeans algorithm\nwhen kmeans_initialization_method is CUSTOM."]
-        #[serde(rename = "kmeansInitializationColumn", default)]
-        pub kmeans_initialization_column: ::std::option::Option<String>,
-        #[doc = "The method used to initialize the centroids for kmeans algorithm."]
-        #[serde(rename = "kmeansInitializationMethod", default)]
-        pub kmeans_initialization_method:
-            ::std::option::Option<crate::schemas::TrainingOptionsKmeansInitializationMethod>,
-        #[doc = "L1 regularization coefficient."]
-        #[serde(rename = "l1Regularization", default)]
-        pub l_1_regularization: ::std::option::Option<f64>,
-        #[doc = "L2 regularization coefficient."]
-        #[serde(rename = "l2Regularization", default)]
-        pub l_2_regularization: ::std::option::Option<f64>,
-        #[doc = "Weights associated with each label class, for rebalancing the\ntraining data. Only applicable for classification models."]
-        #[serde(rename = "labelClassWeights", default)]
-        pub label_class_weights: ::std::option::Option<::std::collections::BTreeMap<String, f64>>,
-        #[doc = "Learning rate in training. Used only for iterative training algorithms."]
-        #[serde(rename = "learnRate", default)]
-        pub learn_rate: ::std::option::Option<f64>,
-        #[doc = "The strategy to determine learn rate for the current iteration."]
-        #[serde(rename = "learnRateStrategy", default)]
-        pub learn_rate_strategy:
-            ::std::option::Option<crate::schemas::TrainingOptionsLearnRateStrategy>,
-        #[doc = "Type of loss function used during training run."]
-        #[serde(rename = "lossType", default)]
-        pub loss_type: ::std::option::Option<crate::schemas::TrainingOptionsLossType>,
-        #[doc = "The maximum number of iterations in training. Used only for iterative\ntraining algorithms."]
-        #[serde(rename = "maxIterations", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub max_iterations: ::std::option::Option<i64>,
-        #[doc = "When early_stop is true, stops training when accuracy improvement is\nless than 'min_relative_progress'. Used only for iterative training\nalgorithms."]
-        #[serde(rename = "minRelativeProgress", default)]
-        pub min_relative_progress: ::std::option::Option<f64>,
-        #[doc = "[Beta] Google Cloud Storage URI from which the model was imported. Only\napplicable for imported models."]
-        #[serde(rename = "modelUri", default)]
-        pub model_uri: ::std::option::Option<String>,
-        #[doc = "Number of clusters for clustering models."]
-        #[serde(rename = "numClusters", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub num_clusters: ::std::option::Option<i64>,
-        #[doc = "Optimization strategy for training linear regression models."]
-        #[serde(rename = "optimizationStrategy", default)]
-        pub optimization_strategy:
-            ::std::option::Option<crate::schemas::TrainingOptionsOptimizationStrategy>,
-        #[doc = "Whether to train a model from the last checkpoint."]
-        #[serde(rename = "warmStart", default)]
-        pub warm_start: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for TrainingOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10680,6 +10680,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -10758,38 +10789,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -10915,8 +10914,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

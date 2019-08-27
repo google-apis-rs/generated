@@ -187,6 +187,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DestinationStatus {
+        #[doc = "The name of the destination."]
+        #[serde(rename = "destination", default)]
+        pub destination: ::std::option::Option<String>,
+        #[doc = "The status of the destination."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::DestinationStatusStatus>,
+    }
+    impl ::field_selector::FieldSelector for DestinationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DestinationStatusStatus {
         #[doc = "The product is used for this destination."]
@@ -258,35 +287,6 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DestinationStatus {
-        #[doc = "The name of the destination."]
-        #[serde(rename = "destination", default)]
-        pub destination: ::std::option::Option<String>,
-        #[doc = "The status of the destination."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::DestinationStatusStatus>,
-    }
-    impl ::field_selector::FieldSelector for DestinationStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -320,6 +320,38 @@ pub mod schemas {
         pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FeatureDescription {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Image {
+        #[doc = "The URL of the image. For crawled images, this is the provided URL. For\nuploaded images, this is a serving URL from Google if the image has been\nprocessed successfully."]
+        #[serde(rename = "imageUrl", default)]
+        pub image_url: ::std::option::Option<String>,
+        #[doc = "The type of the image, i.e., crawled or uploaded.\n@OutputOnly"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ImageType>,
+        #[doc = "The status of the image.\n@OutputOnly"]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::ImageStatus>,
+    }
+    impl ::field_selector::FieldSelector for Image {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -498,18 +530,33 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Image {
-        #[doc = "The URL of the image. For crawled images, this is the provided URL. For\nuploaded images, this is a serving URL from Google if the image has been\nprocessed successfully."]
-        #[serde(rename = "imageUrl", default)]
-        pub image_url: ::std::option::Option<String>,
-        #[doc = "The type of the image, i.e., crawled or uploaded.\n@OutputOnly"]
+    pub struct Issue {
+        #[doc = "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116."]
+        #[serde(rename = "attribute", default)]
+        pub attribute: ::std::option::Option<String>,
+        #[doc = "Longer description of the issue focused on how to resolve it."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The destination this issue applies to."]
+        #[serde(rename = "destination", default)]
+        pub destination: ::std::option::Option<String>,
+        #[doc = "The server-generated type of the issue, for example,\n\u{201c}INCORRECT_TEXT_FORMATTING\u{201d}, \u{201c}IMAGE_NOT_SERVEABLE\u{201d}, etc."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ImageType>,
-        #[doc = "The status of the image.\n@OutputOnly"]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ImageStatus>,
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "What needs to happen to resolve the issue."]
+        #[serde(rename = "resolution", default)]
+        pub resolution: ::std::option::Option<crate::schemas::IssueResolution>,
+        #[doc = "The severity of the issue."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
+        #[doc = "The timestamp when this issue appeared."]
+        #[serde(rename = "timestamp", default)]
+        pub timestamp: ::std::option::Option<String>,
+        #[doc = "Short title describing the nature of the issue."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Image {
+    impl ::field_selector::FieldSelector for Issue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -632,53 +679,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for IssueSeverity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Issue {
-        #[doc = "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116."]
-        #[serde(rename = "attribute", default)]
-        pub attribute: ::std::option::Option<String>,
-        #[doc = "Longer description of the issue focused on how to resolve it."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The destination this issue applies to."]
-        #[serde(rename = "destination", default)]
-        pub destination: ::std::option::Option<String>,
-        #[doc = "The server-generated type of the issue, for example,\n\u{201c}INCORRECT_TEXT_FORMATTING\u{201d}, \u{201c}IMAGE_NOT_SERVEABLE\u{201d}, etc."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "What needs to happen to resolve the issue."]
-        #[serde(rename = "resolution", default)]
-        pub resolution: ::std::option::Option<crate::schemas::IssueResolution>,
-        #[doc = "The severity of the issue."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
-        #[doc = "The timestamp when this issue appeared."]
-        #[serde(rename = "timestamp", default)]
-        pub timestamp: ::std::option::Option<String>,
-        #[doc = "Short title describing the nature of the issue."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Issue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2150,84 +2150,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2259,7 +2181,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -2380,50 +2301,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

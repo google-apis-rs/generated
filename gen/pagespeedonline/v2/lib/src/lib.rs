@@ -11,6 +11,77 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PagespeedApiFormatStringV2 {
+        #[doc = "List of arguments for the format string."]
+        #[serde(rename = "args", default)]
+        pub args: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItems>>,
+        #[doc = "A localized format string with {{FOO}} placeholders, where 'FOO' is the key of the argument whose value should be substituted. For HYPERLINK arguments, the format string will instead contain {{BEGIN_FOO}} and {{END_FOO}} for the argument with key 'FOO'."]
+        #[serde(rename = "format", default)]
+        pub format: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV2 {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PagespeedApiFormatStringV2ArgsItems {
+        #[doc = "The placeholder key for this arg, as a string."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION, VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot."]
+        #[serde(rename = "rects", default)]
+        pub rects: ::std::option::Option<
+            Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItemsRectsItems>,
+        >,
+        #[doc = "Secondary screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments."]
+        #[serde(rename = "secondary_rects", default)]
+        pub secondary_rects: ::std::option::Option<
+            Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItemsSecondaryRectsItems>,
+        >,
+        #[doc = "Argument value, as a localized string."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV2ArgsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct PagespeedApiFormatStringV2ArgsItemsRectsItems {
         #[doc = "The height of the rect."]
         #[serde(rename = "height", default)]
@@ -81,57 +152,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PagespeedApiFormatStringV2ArgsItems {
-        #[doc = "The placeholder key for this arg, as a string."]
+    pub struct PagespeedApiImageV2 {
+        #[doc = "Image data base64 encoded."]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Height of screenshot in pixels."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[doc = "Unique string key, if any, identifying this image."]
         #[serde(rename = "key", default)]
         pub key: ::std::option::Option<String>,
-        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION, VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot."]
-        #[serde(rename = "rects", default)]
-        pub rects: ::std::option::Option<
-            Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItemsRectsItems>,
-        >,
-        #[doc = "Secondary screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments."]
-        #[serde(rename = "secondary_rects", default)]
-        pub secondary_rects: ::std::option::Option<
-            Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItemsSecondaryRectsItems>,
-        >,
-        #[doc = "Argument value, as a localized string."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
+        #[doc = "Mime type of image data (e.g. \"image/jpeg\")."]
+        #[serde(rename = "mime_type", default)]
+        pub mime_type: ::std::option::Option<String>,
+        #[doc = "The region of the page that is captured by this image, with dimensions measured in CSS pixels."]
+        #[serde(rename = "page_rect", default)]
+        pub page_rect: ::std::option::Option<crate::schemas::PagespeedApiImageV2PageRect>,
+        #[doc = "Width of screenshot in pixels."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV2ArgsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PagespeedApiFormatStringV2 {
-        #[doc = "List of arguments for the format string."]
-        #[serde(rename = "args", default)]
-        pub args: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV2ArgsItems>>,
-        #[doc = "A localized format string with {{FOO}} placeholders, where 'FOO' is the key of the argument whose value should be substituted. For HYPERLINK arguments, the format string will instead contain {{BEGIN_FOO}} and {{END_FOO}} for the argument with key 'FOO'."]
-        #[serde(rename = "format", default)]
-        pub format: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV2 {
+    impl ::field_selector::FieldSelector for PagespeedApiImageV2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -176,38 +217,49 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiImageV2 {
-        #[doc = "Image data base64 encoded."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Height of screenshot in pixels."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[doc = "Unique string key, if any, identifying this image."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "Mime type of image data (e.g. \"image/jpeg\")."]
-        #[serde(rename = "mime_type", default)]
-        pub mime_type: ::std::option::Option<String>,
-        #[doc = "The region of the page that is captured by this image, with dimensions measured in CSS pixels."]
-        #[serde(rename = "page_rect", default)]
-        pub page_rect: ::std::option::Option<crate::schemas::PagespeedApiImageV2PageRect>,
-        #[doc = "Width of screenshot in pixels."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
+    pub struct Result {
+        #[doc = "The captcha verify result"]
+        #[serde(rename = "captchaResult", default)]
+        pub captcha_result: ::std::option::Option<String>,
+        #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
+        #[serde(rename = "formattedResults", default)]
+        pub formatted_results: ::std::option::Option<crate::schemas::ResultFormattedResults>,
+        #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
+        #[serde(rename = "invalidRules", default)]
+        pub invalid_rules: ::std::option::Option<Vec<String>>,
+        #[doc = "Kind of result."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
+        #[serde(rename = "pageStats", default)]
+        pub page_stats: ::std::option::Option<crate::schemas::ResultPageStats>,
+        #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
+        #[serde(rename = "responseCode", default)]
+        pub response_code: ::std::option::Option<i32>,
+        #[doc = "A map with one entry for each rule group in these results."]
+        #[serde(rename = "ruleGroups", default)]
+        pub rule_groups: ::std::option::Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::ResultRuleGroupsAdditionalProperties,
+            >,
+        >,
+        #[doc = "Base64-encoded screenshot of the page that was analyzed."]
+        #[serde(rename = "screenshot", default)]
+        pub screenshot: ::std::option::Option<crate::schemas::PagespeedApiImageV2>,
+        #[doc = "Title of the page, as displayed in the browser's title bar."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "The version of PageSpeed used to generate these results."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<crate::schemas::ResultVersion>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiImageV2 {
+    impl ::field_selector::FieldSelector for Result {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -217,52 +269,22 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems {
-        #[doc = "List of entries that provide additional details about a single URL. Optional."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV2>>,
-        #[doc = "A format string that gives information about the URL, and a list of arguments for that format string."]
-        #[serde(rename = "result", default)]
-        pub result: ::std::option::Option<crate::schemas::PagespeedApiFormatStringV2>,
+    pub struct ResultFormattedResults {
+        #[doc = "The locale of the formattedResults, e.g. \"en_US\"."]
+        #[serde(rename = "locale", default)]
+        pub locale: ::std::option::Option<String>,
+        #[doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server."]
+        #[serde(rename = "ruleResults", default)]
+        pub rule_results: ::std::option::Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::ResultFormattedResultsRuleResultsAdditionalProperties,
+            >,
+        >,
     }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV2 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems
-    {
+    impl ::field_selector::FieldSelector for ResultFormattedResults {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -305,22 +327,52 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResults {
-        #[doc = "The locale of the formattedResults, e.g. \"en_US\"."]
-        #[serde(rename = "locale", default)]
-        pub locale: ::std::option::Option<String>,
-        #[doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server."]
-        #[serde(rename = "ruleResults", default)]
-        pub rule_results: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::ResultFormattedResultsRuleResultsAdditionalProperties,
-            >,
-        >,
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV2 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
-    impl ::field_selector::FieldSelector for ResultFormattedResults {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems {
+        #[doc = "List of entries that provide additional details about a single URL. Optional."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV2>>,
+        #[doc = "A format string that gives information about the URL, and a list of arguments for that format string."]
+        #[serde(rename = "result", default)]
+        pub result: ::std::option::Option<crate::schemas::PagespeedApiFormatStringV2>,
+    }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -446,58 +498,6 @@ pub mod schemas {
         pub minor: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ResultVersion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Result {
-        #[doc = "The captcha verify result"]
-        #[serde(rename = "captchaResult", default)]
-        pub captcha_result: ::std::option::Option<String>,
-        #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
-        #[serde(rename = "formattedResults", default)]
-        pub formatted_results: ::std::option::Option<crate::schemas::ResultFormattedResults>,
-        #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
-        #[serde(rename = "invalidRules", default)]
-        pub invalid_rules: ::std::option::Option<Vec<String>>,
-        #[doc = "Kind of result."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
-        #[serde(rename = "pageStats", default)]
-        pub page_stats: ::std::option::Option<crate::schemas::ResultPageStats>,
-        #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
-        #[serde(rename = "responseCode", default)]
-        pub response_code: ::std::option::Option<i32>,
-        #[doc = "A map with one entry for each rule group in these results."]
-        #[serde(rename = "ruleGroups", default)]
-        pub rule_groups: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::ResultRuleGroupsAdditionalProperties,
-            >,
-        >,
-        #[doc = "Base64-encoded screenshot of the page that was analyzed."]
-        #[serde(rename = "screenshot", default)]
-        pub screenshot: ::std::option::Option<crate::schemas::PagespeedApiImageV2>,
-        #[doc = "Title of the page, as displayed in the browser's title bar."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-        #[doc = "The version of PageSpeed used to generate these results."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<crate::schemas::ResultVersion>,
-    }
-    impl ::field_selector::FieldSelector for Result {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -997,84 +997,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -1106,134 +1028,10 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+// Bytes in google apis are represented as urlsafe base64 encoded strings.
+// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+// internally to handle byte fields in google apis.
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

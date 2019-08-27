@@ -213,6 +213,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Disk {
+        #[doc = "Deprecated. Disks created by the Pipelines API will be deleted at the end\nof the pipeline run, regardless of what this field is set to."]
+        #[serde(rename = "autoDelete", default)]
+        pub auto_delete: ::std::option::Option<bool>,
+        #[doc = "Required at create time and cannot be overridden at run time.\nSpecifies the path in the docker container where files on\nthis disk should be located. For example, if `mountPoint`\nis `/mnt/disk`, and the parameter has `localPath`\n`inputs/file.txt`, the docker container can access the data at\n`/mnt/disk/inputs/file.txt`."]
+        #[serde(rename = "mountPoint", default)]
+        pub mount_point: ::std::option::Option<String>,
+        #[doc = "Required. The name of the disk that can be used in the pipeline\nparameters. Must be 1 - 63 characters.\nThe name \"boot\" is reserved for system use."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The type of the disk to create."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DiskType>,
+        #[doc = "Specifies how a sourced-base persistent disk will be mounted. See\nhttps://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances\nfor more details.\nCan only be set at create time."]
+        #[serde(rename = "readOnly", default)]
+        pub read_only: ::std::option::Option<bool>,
+        #[doc = "The size of the disk. Defaults to 500 (GB).\nThis field is not applicable for local SSD."]
+        #[serde(rename = "sizeGb", default)]
+        pub size_gb: ::std::option::Option<i32>,
+        #[doc = "The full or partial URL of the persistent disk to attach. See\nhttps://cloud.google.com/compute/docs/reference/latest/instances#resource\nand\nhttps://cloud.google.com/compute/docs/disks/persistent-disks#snapshots\nfor more details."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Disk {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DiskType {
         #[doc = "Specifies a Google Compute Engine local SSD.\nSee https://cloud.google.com/compute/docs/disks/local-ssd for details."]
@@ -288,50 +332,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Disk {
-        #[doc = "Deprecated. Disks created by the Pipelines API will be deleted at the end\nof the pipeline run, regardless of what this field is set to."]
-        #[serde(rename = "autoDelete", default)]
-        pub auto_delete: ::std::option::Option<bool>,
-        #[doc = "Required at create time and cannot be overridden at run time.\nSpecifies the path in the docker container where files on\nthis disk should be located. For example, if `mountPoint`\nis `/mnt/disk`, and the parameter has `localPath`\n`inputs/file.txt`, the docker container can access the data at\n`/mnt/disk/inputs/file.txt`."]
-        #[serde(rename = "mountPoint", default)]
-        pub mount_point: ::std::option::Option<String>,
-        #[doc = "Required. The name of the disk that can be used in the pipeline\nparameters. Must be 1 - 63 characters.\nThe name \"boot\" is reserved for system use."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The type of the disk to create."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DiskType>,
-        #[doc = "Specifies how a sourced-base persistent disk will be mounted. See\nhttps://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances\nfor more details.\nCan only be set at create time."]
-        #[serde(rename = "readOnly", default)]
-        pub read_only: ::std::option::Option<bool>,
-        #[doc = "The size of the disk. Defaults to 500 (GB).\nThis field is not applicable for local SSD."]
-        #[serde(rename = "sizeGb", default)]
-        pub size_gb: ::std::option::Option<i32>,
-        #[doc = "The full or partial URL of the persistent disk to attach. See\nhttps://cloud.google.com/compute/docs/reference/latest/instances#resource\nand\nhttps://cloud.google.com/compute/docs/disks/persistent-disks#snapshots\nfor more details."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Disk {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct DockerExecutor {
         #[doc = "Required. The command or newline delimited script to run. The command\nstring will be executed within a bash shell.\n\nIf the command exits with a non-zero exit code, output parameter\nde-localization will be skipped and the pipeline operation's\n`error` field will be populated.\n\nMaximum command string length is 16384."]
         #[serde(rename = "cmd", default)]
@@ -380,6 +380,35 @@ pub mod schemas {
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Event {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FailedEvent {
+        #[doc = "The human-readable description of the cause of the failure."]
+        #[serde(rename = "cause", default)]
+        pub cause: ::std::option::Option<String>,
+        #[doc = "The Google standard error code that best describes this failure."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::FailedEventCode>,
+    }
+    impl ::field_selector::FieldSelector for FailedEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -495,35 +524,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for FailedEventCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FailedEvent {
-        #[doc = "The human-readable description of the cause of the failure."]
-        #[serde(rename = "cause", default)]
-        pub cause: ::std::option::Option<String>,
-        #[doc = "The Google standard error code that best describes this failure."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::FailedEventCode>,
-    }
-    impl ::field_selector::FieldSelector for FailedEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1055,6 +1055,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SetOperationStatusRequest {
+        #[serde(rename = "errorCode", default)]
+        pub error_code: ::std::option::Option<crate::schemas::SetOperationStatusRequestErrorCode>,
+        #[serde(rename = "errorMessage", default)]
+        pub error_message: ::std::option::Option<String>,
+        #[serde(rename = "operationId", default)]
+        pub operation_id: ::std::option::Option<String>,
+        #[serde(rename = "timestampEvents", default)]
+        pub timestamp_events: ::std::option::Option<Vec<crate::schemas::TimestampEvent>>,
+        #[serde(rename = "validationToken", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub validation_token: ::std::option::Option<u64>,
+    }
+    impl ::field_selector::FieldSelector for SetOperationStatusRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SetOperationStatusRequestErrorCode {
         #[doc = "The operation was aborted, typically due to a concurrency issue such as\na sequencer check failure or transaction abort.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 409 Conflict"]
@@ -1162,40 +1196,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SetOperationStatusRequestErrorCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SetOperationStatusRequest {
-        #[serde(rename = "errorCode", default)]
-        pub error_code: ::std::option::Option<crate::schemas::SetOperationStatusRequestErrorCode>,
-        #[serde(rename = "errorMessage", default)]
-        pub error_message: ::std::option::Option<String>,
-        #[serde(rename = "operationId", default)]
-        pub operation_id: ::std::option::Option<String>,
-        #[serde(rename = "timestampEvents", default)]
-        pub timestamp_events: ::std::option::Option<Vec<crate::schemas::TimestampEvent>>,
-        #[serde(rename = "validationToken", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub validation_token: ::std::option::Option<u64>,
-    }
-    impl ::field_selector::FieldSelector for SetOperationStatusRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3631,84 +3631,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3740,7 +3662,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -3861,50 +3782,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

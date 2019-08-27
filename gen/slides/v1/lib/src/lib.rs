@@ -1,4 +1,39 @@
 pub mod schemas {
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AffineTransform {
+        #[doc = "The X coordinate scaling element."]
+        #[serde(rename = "scaleX", default)]
+        pub scale_x: ::std::option::Option<f64>,
+        #[doc = "The Y coordinate scaling element."]
+        #[serde(rename = "scaleY", default)]
+        pub scale_y: ::std::option::Option<f64>,
+        #[doc = "The X coordinate shearing element."]
+        #[serde(rename = "shearX", default)]
+        pub shear_x: ::std::option::Option<f64>,
+        #[doc = "The Y coordinate shearing element."]
+        #[serde(rename = "shearY", default)]
+        pub shear_y: ::std::option::Option<f64>,
+        #[doc = "The X coordinate translation element."]
+        #[serde(rename = "translateX", default)]
+        pub translate_x: ::std::option::Option<f64>,
+        #[doc = "The Y coordinate translation element."]
+        #[serde(rename = "translateY", default)]
+        pub translate_y: ::std::option::Option<f64>,
+        #[doc = "The units for translate elements."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<crate::schemas::AffineTransformUnit>,
+    }
+    impl ::field_selector::FieldSelector for AffineTransform {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AffineTransformUnit {
         #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
@@ -61,30 +96,18 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct AffineTransform {
-        #[doc = "The X coordinate scaling element."]
-        #[serde(rename = "scaleX", default)]
-        pub scale_x: ::std::option::Option<f64>,
-        #[doc = "The Y coordinate scaling element."]
-        #[serde(rename = "scaleY", default)]
-        pub scale_y: ::std::option::Option<f64>,
-        #[doc = "The X coordinate shearing element."]
-        #[serde(rename = "shearX", default)]
-        pub shear_x: ::std::option::Option<f64>,
-        #[doc = "The Y coordinate shearing element."]
-        #[serde(rename = "shearY", default)]
-        pub shear_y: ::std::option::Option<f64>,
-        #[doc = "The X coordinate translation element."]
-        #[serde(rename = "translateX", default)]
-        pub translate_x: ::std::option::Option<f64>,
-        #[doc = "The Y coordinate translation element."]
-        #[serde(rename = "translateY", default)]
-        pub translate_y: ::std::option::Option<f64>,
-        #[doc = "The units for translate elements."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<crate::schemas::AffineTransformUnit>,
+    pub struct AutoText {
+        #[doc = "The rendered content of this auto text, if available."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "The type of this auto text."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::AutoTextType>,
+        #[doc = "The styling applied to this auto text."]
+        #[serde(rename = "style", default)]
+        pub style: ::std::option::Option<crate::schemas::TextStyle>,
     }
-    impl ::field_selector::FieldSelector for AffineTransform {
+    impl ::field_selector::FieldSelector for AutoText {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -140,29 +163,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AutoTextType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct AutoText {
-        #[doc = "The rendered content of this auto text, if available."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "The type of this auto text."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::AutoTextType>,
-        #[doc = "The styling applied to this auto text."]
-        #[serde(rename = "style", default)]
-        pub style: ::std::option::Option<crate::schemas::TextStyle>,
-    }
-    impl ::field_selector::FieldSelector for AutoText {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -338,6 +338,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreateLineRequest {
+        #[doc = "The category of the line to be created.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence.\n\nIf you do not specify a value for `category`, but specify a value for\n`line_category`, then the specified `line_category` value is used.\n\nIf you do not specify either, then STRAIGHT is used."]
+        #[serde(rename = "category", default)]
+        pub category: ::std::option::Option<crate::schemas::CreateLineRequestCategory>,
+        #[doc = "The element properties for the line."]
+        #[serde(rename = "elementProperties", default)]
+        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
+        #[doc = "The category of the line to be created.\n\n<b>Deprecated</b>: use `category` instead.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence."]
+        #[serde(rename = "lineCategory", default)]
+        pub line_category: ::std::option::Option<crate::schemas::CreateLineRequestLineCategory>,
+        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreateLineRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateLineRequestCategory {
         #[doc = "Bent connectors, including bent connector 2 to 5."]
@@ -461,23 +487,23 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct CreateLineRequest {
-        #[doc = "The category of the line to be created.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence.\n\nIf you do not specify a value for `category`, but specify a value for\n`line_category`, then the specified `line_category` value is used.\n\nIf you do not specify either, then STRAIGHT is used."]
-        #[serde(rename = "category", default)]
-        pub category: ::std::option::Option<crate::schemas::CreateLineRequestCategory>,
-        #[doc = "The element properties for the line."]
-        #[serde(rename = "elementProperties", default)]
-        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The category of the line to be created.\n\n<b>Deprecated</b>: use `category` instead.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence."]
-        #[serde(rename = "lineCategory", default)]
-        pub line_category: ::std::option::Option<crate::schemas::CreateLineRequestLineCategory>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+    pub struct CreateLineResponse {
+        #[doc = "The object ID of the created line."]
         #[serde(rename = "objectId", default)]
         pub object_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for CreateLineRequest {
+    impl ::field_selector::FieldSelector for CreateLineResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -498,12 +524,22 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreateLineResponse {
-        #[doc = "The object ID of the created line."]
+    pub struct CreateParagraphBulletsRequest {
+        #[doc = "The kinds of bullet glyphs to be used. Defaults to the\n`BULLET_DISC_CIRCLE_SQUARE` preset."]
+        #[serde(rename = "bulletPreset", default)]
+        pub bullet_preset:
+            ::std::option::Option<crate::schemas::CreateParagraphBulletsRequestBulletPreset>,
+        #[doc = "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."]
+        #[serde(rename = "cellLocation", default)]
+        pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
+        #[doc = "The object ID of the shape or table containing the text to add bullets to."]
         #[serde(rename = "objectId", default)]
         pub object_id: ::std::option::Option<String>,
+        #[doc = "The range of text to apply the bullet presets to, based on TextElement indexes."]
+        #[serde(rename = "textRange", default)]
+        pub text_range: ::std::option::Option<crate::schemas::Range>,
     }
-    impl ::field_selector::FieldSelector for CreateLineResponse {
+    impl ::field_selector::FieldSelector for CreateParagraphBulletsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -676,33 +712,20 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CreateParagraphBulletsRequest {
-        #[doc = "The kinds of bullet glyphs to be used. Defaults to the\n`BULLET_DISC_CIRCLE_SQUARE` preset."]
-        #[serde(rename = "bulletPreset", default)]
-        pub bullet_preset:
-            ::std::option::Option<crate::schemas::CreateParagraphBulletsRequestBulletPreset>,
-        #[doc = "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."]
-        #[serde(rename = "cellLocation", default)]
-        pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "The object ID of the shape or table containing the text to add bullets to."]
+    pub struct CreateShapeRequest {
+        #[doc = "The element properties for the shape."]
+        #[serde(rename = "elementProperties", default)]
+        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
+        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
         #[serde(rename = "objectId", default)]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The range of text to apply the bullet presets to, based on TextElement indexes."]
-        #[serde(rename = "textRange", default)]
-        pub text_range: ::std::option::Option<crate::schemas::Range>,
+        #[doc = "The shape type."]
+        #[serde(rename = "shapeType", default)]
+        pub shape_type: ::std::option::Option<crate::schemas::CreateShapeRequestShapeType>,
     }
-    impl ::field_selector::FieldSelector for CreateParagraphBulletsRequest {
+    impl ::field_selector::FieldSelector for CreateShapeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1367,29 +1390,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreateShapeRequest {
-        #[doc = "The element properties for the shape."]
-        #[serde(rename = "elementProperties", default)]
-        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The shape type."]
-        #[serde(rename = "shapeType", default)]
-        pub shape_type: ::std::option::Option<crate::schemas::CreateShapeRequestShapeType>,
-    }
-    impl ::field_selector::FieldSelector for CreateShapeRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1407,6 +1407,36 @@ pub mod schemas {
         pub object_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateShapeResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreateSheetsChartRequest {
+        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet."]
+        #[serde(rename = "chartId", default)]
+        pub chart_id: ::std::option::Option<i32>,
+        #[doc = "The element properties for the chart.\n\nWhen the aspect ratio of the provided size does not match the chart aspect\nratio, the chart is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation."]
+        #[serde(rename = "elementProperties", default)]
+        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
+        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
+        #[serde(rename = "linkingMode", default)]
+        pub linking_mode:
+            ::std::option::Option<crate::schemas::CreateSheetsChartRequestLinkingMode>,
+        #[doc = "A user-supplied object ID.\n\nIf specified, the ID must be unique among all pages and page elements in\nthe presentation. The ID should start with a word character [a-zA-Z0-9_]\nand then followed by any number of the following characters [a-zA-Z0-9_-:].\nThe length of the ID should not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+        #[doc = "The ID of the Google Sheets spreadsheet that contains the chart."]
+        #[serde(rename = "spreadsheetId", default)]
+        pub spreadsheet_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreateSheetsChartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1462,36 +1492,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CreateSheetsChartRequestLinkingMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreateSheetsChartRequest {
-        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet."]
-        #[serde(rename = "chartId", default)]
-        pub chart_id: ::std::option::Option<i32>,
-        #[doc = "The element properties for the chart.\n\nWhen the aspect ratio of the provided size does not match the chart aspect\nratio, the chart is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation."]
-        #[serde(rename = "elementProperties", default)]
-        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
-        #[serde(rename = "linkingMode", default)]
-        pub linking_mode:
-            ::std::option::Option<crate::schemas::CreateSheetsChartRequestLinkingMode>,
-        #[doc = "A user-supplied object ID.\n\nIf specified, the ID must be unique among all pages and page elements in\nthe presentation. The ID should start with a word character [a-zA-Z0-9_]\nand then followed by any number of the following characters [a-zA-Z0-9_-:].\nThe length of the ID should not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The ID of the Google Sheets spreadsheet that contains the chart."]
-        #[serde(rename = "spreadsheetId", default)]
-        pub spreadsheet_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreateSheetsChartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1640,6 +1640,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreateVideoRequest {
+        #[doc = "The element properties for the video.\n\nThe PageElementProperties.size property is\noptional. If you don't specify a size, a default size is chosen by the\nserver.\n\nThe PageElementProperties.transform property is\noptional. The transform must not have shear components.\nIf you don't specify a transform, the video will be placed at the top left\ncorner of the page."]
+        #[serde(rename = "elementProperties", default)]
+        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
+        #[doc = "The video source's unique identifier for this video.\n\ne.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,\nthe ID is 7U3axjORYZ0. For a Google Drive video\nhttps://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID\nis 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+        #[doc = "The video source."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<crate::schemas::CreateVideoRequestSource>,
+    }
+    impl ::field_selector::FieldSelector for CreateVideoRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateVideoRequestSource {
         #[doc = "The video source is Google Drive."]
@@ -1691,32 +1717,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CreateVideoRequestSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreateVideoRequest {
-        #[doc = "The element properties for the video.\n\nThe PageElementProperties.size property is\noptional. If you don't specify a size, a default size is chosen by the\nserver.\n\nThe PageElementProperties.transform property is\noptional. The transform must not have shear components.\nIf you don't specify a transform, the video will be placed at the top left\ncorner of the page."]
-        #[serde(rename = "elementProperties", default)]
-        pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The video source's unique identifier for this video.\n\ne.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,\nthe ID is 7U3axjORYZ0. For a Google Drive video\nhttps://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID\nis 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The video source."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<crate::schemas::CreateVideoRequestSource>,
-    }
-    impl ::field_selector::FieldSelector for CreateVideoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1928,6 +1928,26 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Dimension {
+        #[doc = "The magnitude."]
+        #[serde(rename = "magnitude", default)]
+        pub magnitude: ::std::option::Option<f64>,
+        #[doc = "The units for magnitude."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<crate::schemas::DimensionUnit>,
+    }
+    impl ::field_selector::FieldSelector for Dimension {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionUnit {
         #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
@@ -1979,26 +1999,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DimensionUnit {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Dimension {
-        #[doc = "The magnitude."]
-        #[serde(rename = "magnitude", default)]
-        pub magnitude: ::std::option::Option<f64>,
-        #[doc = "The units for magnitude."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<crate::schemas::DimensionUnit>,
-    }
-    impl ::field_selector::FieldSelector for Dimension {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2364,6 +2364,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LayoutReference {
+        #[doc = "Layout ID: the object ID of one of the layouts in the presentation."]
+        #[serde(rename = "layoutId", default)]
+        pub layout_id: ::std::option::Option<String>,
+        #[doc = "Predefined layout."]
+        #[serde(rename = "predefinedLayout", default)]
+        pub predefined_layout:
+            ::std::option::Option<crate::schemas::LayoutReferencePredefinedLayout>,
+    }
+    impl ::field_selector::FieldSelector for LayoutReference {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LayoutReferencePredefinedLayout {
         #[doc = "Layout with a big number heading."]
@@ -2468,27 +2498,20 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct LayoutReference {
-        #[doc = "Layout ID: the object ID of one of the layouts in the presentation."]
-        #[serde(rename = "layoutId", default)]
-        pub layout_id: ::std::option::Option<String>,
-        #[doc = "Predefined layout."]
-        #[serde(rename = "predefinedLayout", default)]
-        pub predefined_layout:
-            ::std::option::Option<crate::schemas::LayoutReferencePredefinedLayout>,
+    pub struct Line {
+        #[doc = "The category of the line.\n\nIt matches the `category` specified in CreateLineRequest, and can be updated with\nUpdateLineCategoryRequest."]
+        #[serde(rename = "lineCategory", default)]
+        pub line_category: ::std::option::Option<crate::schemas::LineLineCategory>,
+        #[doc = "The properties of the line."]
+        #[serde(rename = "lineProperties", default)]
+        pub line_properties: ::std::option::Option<crate::schemas::LineProperties>,
+        #[doc = "The type of the line."]
+        #[serde(rename = "lineType", default)]
+        pub line_type: ::std::option::Option<crate::schemas::LineLineType>,
     }
-    impl ::field_selector::FieldSelector for LayoutReference {
+    impl ::field_selector::FieldSelector for Line {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2652,29 +2675,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Line {
-        #[doc = "The category of the line.\n\nIt matches the `category` specified in CreateLineRequest, and can be updated with\nUpdateLineCategoryRequest."]
-        #[serde(rename = "lineCategory", default)]
-        pub line_category: ::std::option::Option<crate::schemas::LineLineCategory>,
-        #[doc = "The properties of the line."]
-        #[serde(rename = "lineProperties", default)]
-        pub line_properties: ::std::option::Option<crate::schemas::LineProperties>,
-        #[doc = "The type of the line."]
-        #[serde(rename = "lineType", default)]
-        pub line_type: ::std::option::Option<crate::schemas::LineLineType>,
-    }
-    impl ::field_selector::FieldSelector for Line {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2712,6 +2712,44 @@ pub mod schemas {
         pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
     }
     impl ::field_selector::FieldSelector for LineFill {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct LineProperties {
+        #[doc = "The dash style of the line."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::LinePropertiesDashStyle>,
+        #[doc = "The style of the arrow at the end of the line."]
+        #[serde(rename = "endArrow", default)]
+        pub end_arrow: ::std::option::Option<crate::schemas::LinePropertiesEndArrow>,
+        #[doc = "The connection at the end of the line. If unset, there is no connection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have an `end_connection`."]
+        #[serde(rename = "endConnection", default)]
+        pub end_connection: ::std::option::Option<crate::schemas::LineConnection>,
+        #[doc = "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor."]
+        #[serde(rename = "lineFill", default)]
+        pub line_fill: ::std::option::Option<crate::schemas::LineFill>,
+        #[doc = "The hyperlink destination of the line. If unset, there is no link."]
+        #[serde(rename = "link", default)]
+        pub link: ::std::option::Option<crate::schemas::Link>,
+        #[doc = "The style of the arrow at the beginning of the line."]
+        #[serde(rename = "startArrow", default)]
+        pub start_arrow: ::std::option::Option<crate::schemas::LinePropertiesStartArrow>,
+        #[doc = "The connection at the beginning of the line. If unset, there is no\nconnection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have a `start_connection`."]
+        #[serde(rename = "startConnection", default)]
+        pub start_connection: ::std::option::Option<crate::schemas::LineConnection>,
+        #[doc = "The thickness of the line."]
+        #[serde(rename = "weight", default)]
+        pub weight: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for LineProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2978,35 +3016,32 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct LineProperties {
-        #[doc = "The dash style of the line."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::LinePropertiesDashStyle>,
-        #[doc = "The style of the arrow at the end of the line."]
-        #[serde(rename = "endArrow", default)]
-        pub end_arrow: ::std::option::Option<crate::schemas::LinePropertiesEndArrow>,
-        #[doc = "The connection at the end of the line. If unset, there is no connection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have an `end_connection`."]
-        #[serde(rename = "endConnection", default)]
-        pub end_connection: ::std::option::Option<crate::schemas::LineConnection>,
-        #[doc = "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor."]
-        #[serde(rename = "lineFill", default)]
-        pub line_fill: ::std::option::Option<crate::schemas::LineFill>,
-        #[doc = "The hyperlink destination of the line. If unset, there is no link."]
-        #[serde(rename = "link", default)]
-        pub link: ::std::option::Option<crate::schemas::Link>,
-        #[doc = "The style of the arrow at the beginning of the line."]
-        #[serde(rename = "startArrow", default)]
-        pub start_arrow: ::std::option::Option<crate::schemas::LinePropertiesStartArrow>,
-        #[doc = "The connection at the beginning of the line. If unset, there is no\nconnection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have a `start_connection`."]
-        #[serde(rename = "startConnection", default)]
-        pub start_connection: ::std::option::Option<crate::schemas::LineConnection>,
-        #[doc = "The thickness of the line."]
-        #[serde(rename = "weight", default)]
-        pub weight: ::std::option::Option<crate::schemas::Dimension>,
+    pub struct Link {
+        #[doc = "If set, indicates this is a link to the specific page in this\npresentation with this ID. A page with this ID may not exist."]
+        #[serde(rename = "pageObjectId", default)]
+        pub page_object_id: ::std::option::Option<String>,
+        #[doc = "If set, indicates this is a link to a slide in this presentation,\naddressed by its position."]
+        #[serde(rename = "relativeLink", default)]
+        pub relative_link: ::std::option::Option<crate::schemas::LinkRelativeLink>,
+        #[doc = "If set, indicates this is a link to the slide at this zero-based index\nin the presentation. There may not be a slide at this index."]
+        #[serde(rename = "slideIndex", default)]
+        pub slide_index: ::std::option::Option<i32>,
+        #[doc = "If set, indicates this is a link to the external web page at this URL."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for LineProperties {
+    impl ::field_selector::FieldSelector for Link {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3074,41 +3109,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LinkRelativeLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Link {
-        #[doc = "If set, indicates this is a link to the specific page in this\npresentation with this ID. A page with this ID may not exist."]
-        #[serde(rename = "pageObjectId", default)]
-        pub page_object_id: ::std::option::Option<String>,
-        #[doc = "If set, indicates this is a link to a slide in this presentation,\naddressed by its position."]
-        #[serde(rename = "relativeLink", default)]
-        pub relative_link: ::std::option::Option<crate::schemas::LinkRelativeLink>,
-        #[doc = "If set, indicates this is a link to the slide at this zero-based index\nin the presentation. There may not be a slide at this index."]
-        #[serde(rename = "slideIndex", default)]
-        pub slide_index: ::std::option::Option<i32>,
-        #[doc = "If set, indicates this is a link to the external web page at this URL."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Link {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3237,6 +3237,26 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct OpaqueColor {
+        #[doc = "An opaque RGB color."]
+        #[serde(rename = "rgbColor", default)]
+        pub rgb_color: ::std::option::Option<crate::schemas::RgbColor>,
+        #[doc = "An opaque theme color."]
+        #[serde(rename = "themeColor", default)]
+        pub theme_color: ::std::option::Option<crate::schemas::OpaqueColorThemeColor>,
+    }
+    impl ::field_selector::FieldSelector for OpaqueColor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OpaqueColorThemeColor {
         #[doc = "Represents the first accent color."]
@@ -3355,15 +3375,12 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct OpaqueColor {
-        #[doc = "An opaque RGB color."]
-        #[serde(rename = "rgbColor", default)]
-        pub rgb_color: ::std::option::Option<crate::schemas::RgbColor>,
-        #[doc = "An opaque theme color."]
-        #[serde(rename = "themeColor", default)]
-        pub theme_color: ::std::option::Option<crate::schemas::OpaqueColorThemeColor>,
+    pub struct OptionalColor {
+        #[doc = "If set, this will be used as an opaque color. If unset, this represents\na transparent color."]
+        #[serde(rename = "opaqueColor", default)]
+        pub opaque_color: ::std::option::Option<crate::schemas::OpaqueColor>,
     }
-    impl ::field_selector::FieldSelector for OpaqueColor {
+    impl ::field_selector::FieldSelector for OptionalColor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3375,12 +3392,21 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct OptionalColor {
-        #[doc = "If set, this will be used as an opaque color. If unset, this represents\na transparent color."]
-        #[serde(rename = "opaqueColor", default)]
-        pub opaque_color: ::std::option::Option<crate::schemas::OpaqueColor>,
+    pub struct Outline {
+        #[doc = "The dash style of the outline."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::OutlineDashStyle>,
+        #[doc = "The fill of the outline."]
+        #[serde(rename = "outlineFill", default)]
+        pub outline_fill: ::std::option::Option<crate::schemas::OutlineFill>,
+        #[doc = "The outline property state.\n\nUpdating the outline on a page element will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no outline on a page element, set this field to `NOT_RENDERED`. In\nthis case, any other outline fields set in the same request will be\nignored."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state: ::std::option::Option<crate::schemas::OutlinePropertyState>,
+        #[doc = "The thickness of the outline."]
+        #[serde(rename = "weight", default)]
+        pub weight: ::std::option::Option<crate::schemas::Dimension>,
     }
-    impl ::field_selector::FieldSelector for OptionalColor {
+    impl ::field_selector::FieldSelector for Outline {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3526,21 +3552,12 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Outline {
-        #[doc = "The dash style of the outline."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::OutlineDashStyle>,
-        #[doc = "The fill of the outline."]
-        #[serde(rename = "outlineFill", default)]
-        pub outline_fill: ::std::option::Option<crate::schemas::OutlineFill>,
-        #[doc = "The outline property state.\n\nUpdating the outline on a page element will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no outline on a page element, set this field to `NOT_RENDERED`. In\nthis case, any other outline fields set in the same request will be\nignored."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state: ::std::option::Option<crate::schemas::OutlinePropertyState>,
-        #[doc = "The thickness of the outline."]
-        #[serde(rename = "weight", default)]
-        pub weight: ::std::option::Option<crate::schemas::Dimension>,
+    pub struct OutlineFill {
+        #[doc = "Solid color fill."]
+        #[serde(rename = "solidFill", default)]
+        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
     }
-    impl ::field_selector::FieldSelector for Outline {
+    impl ::field_selector::FieldSelector for OutlineFill {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3552,12 +3569,36 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct OutlineFill {
-        #[doc = "Solid color fill."]
-        #[serde(rename = "solidFill", default)]
-        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
+    pub struct Page {
+        #[doc = "Layout specific properties. Only set if page_type = LAYOUT."]
+        #[serde(rename = "layoutProperties", default)]
+        pub layout_properties: ::std::option::Option<crate::schemas::LayoutProperties>,
+        #[doc = "Master specific properties. Only set if page_type = MASTER."]
+        #[serde(rename = "masterProperties", default)]
+        pub master_properties: ::std::option::Option<crate::schemas::MasterProperties>,
+        #[doc = "Notes specific properties. Only set if page_type = NOTES."]
+        #[serde(rename = "notesProperties", default)]
+        pub notes_properties: ::std::option::Option<crate::schemas::NotesProperties>,
+        #[doc = "The object ID for this page. Object IDs used by\nPage and\nPageElement share the same namespace."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+        #[doc = "The page elements rendered on the page."]
+        #[serde(rename = "pageElements", default)]
+        pub page_elements: ::std::option::Option<Vec<crate::schemas::PageElement>>,
+        #[doc = "The properties of the page."]
+        #[serde(rename = "pageProperties", default)]
+        pub page_properties: ::std::option::Option<crate::schemas::PageProperties>,
+        #[doc = "The type of the page."]
+        #[serde(rename = "pageType", default)]
+        pub page_type: ::std::option::Option<crate::schemas::PagePageType>,
+        #[doc = "The revision ID of the presentation containing this page. Can be used in\nupdate requests to assert that the presentation revision hasn't changed\nsince the last read operation. Only populated if the user has edit access\nto the presentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes."]
+        #[serde(rename = "revisionId", default)]
+        pub revision_id: ::std::option::Option<String>,
+        #[doc = "Slide specific properties. Only set if page_type = SLIDE."]
+        #[serde(rename = "slideProperties", default)]
+        pub slide_properties: ::std::option::Option<Box<crate::schemas::SlideProperties>>,
     }
-    impl ::field_selector::FieldSelector for OutlineFill {
+    impl ::field_selector::FieldSelector for Page {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3636,36 +3677,18 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Page {
-        #[doc = "Layout specific properties. Only set if page_type = LAYOUT."]
-        #[serde(rename = "layoutProperties", default)]
-        pub layout_properties: ::std::option::Option<crate::schemas::LayoutProperties>,
-        #[doc = "Master specific properties. Only set if page_type = MASTER."]
-        #[serde(rename = "masterProperties", default)]
-        pub master_properties: ::std::option::Option<crate::schemas::MasterProperties>,
-        #[doc = "Notes specific properties. Only set if page_type = NOTES."]
-        #[serde(rename = "notesProperties", default)]
-        pub notes_properties: ::std::option::Option<crate::schemas::NotesProperties>,
-        #[doc = "The object ID for this page. Object IDs used by\nPage and\nPageElement share the same namespace."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The page elements rendered on the page."]
-        #[serde(rename = "pageElements", default)]
-        pub page_elements: ::std::option::Option<Vec<crate::schemas::PageElement>>,
-        #[doc = "The properties of the page."]
-        #[serde(rename = "pageProperties", default)]
-        pub page_properties: ::std::option::Option<crate::schemas::PageProperties>,
-        #[doc = "The type of the page."]
-        #[serde(rename = "pageType", default)]
-        pub page_type: ::std::option::Option<crate::schemas::PagePageType>,
-        #[doc = "The revision ID of the presentation containing this page. Can be used in\nupdate requests to assert that the presentation revision hasn't changed\nsince the last read operation. Only populated if the user has edit access\nto the presentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes."]
-        #[serde(rename = "revisionId", default)]
-        pub revision_id: ::std::option::Option<String>,
-        #[doc = "Slide specific properties. Only set if page_type = SLIDE."]
-        #[serde(rename = "slideProperties", default)]
-        pub slide_properties: ::std::option::Option<Box<crate::schemas::SlideProperties>>,
+    pub struct PageBackgroundFill {
+        #[doc = "The background fill property state.\n\nUpdating the fill on a page will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a page, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state: ::std::option::Option<crate::schemas::PageBackgroundFillPropertyState>,
+        #[doc = "Solid color fill."]
+        #[serde(rename = "solidFill", default)]
+        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
+        #[doc = "Stretched picture fill."]
+        #[serde(rename = "stretchedPictureFill", default)]
+        pub stretched_picture_fill: ::std::option::Option<crate::schemas::StretchedPictureFill>,
     }
-    impl ::field_selector::FieldSelector for Page {
+    impl ::field_selector::FieldSelector for PageBackgroundFill {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3725,29 +3748,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PageBackgroundFillPropertyState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PageBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a page will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a page, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state: ::std::option::Option<crate::schemas::PageBackgroundFillPropertyState>,
-        #[doc = "Solid color fill."]
-        #[serde(rename = "solidFill", default)]
-        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
-        #[doc = "Stretched picture fill."]
-        #[serde(rename = "stretchedPictureFill", default)]
-        pub stretched_picture_fill: ::std::option::Option<crate::schemas::StretchedPictureFill>,
-    }
-    impl ::field_selector::FieldSelector for PageBackgroundFill {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3864,6 +3864,47 @@ pub mod schemas {
         pub style: ::std::option::Option<crate::schemas::ParagraphStyle>,
     }
     impl ::field_selector::FieldSelector for ParagraphMarker {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ParagraphStyle {
+        #[doc = "The text alignment for this paragraph."]
+        #[serde(rename = "alignment", default)]
+        pub alignment: ::std::option::Option<crate::schemas::ParagraphStyleAlignment>,
+        #[doc = "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\ntext direction is not inherited."]
+        #[serde(rename = "direction", default)]
+        pub direction: ::std::option::Option<crate::schemas::ParagraphStyleDirection>,
+        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
+        #[serde(rename = "indentEnd", default)]
+        pub indent_end: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of indentation for the start of the first line of the paragraph.\nIf unset, the value is inherited from the parent."]
+        #[serde(rename = "indentFirstLine", default)]
+        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
+        #[serde(rename = "indentStart", default)]
+        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent."]
+        #[serde(rename = "lineSpacing", default)]
+        pub line_spacing: ::std::option::Option<f32>,
+        #[doc = "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."]
+        #[serde(rename = "spaceAbove", default)]
+        pub space_above: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent."]
+        #[serde(rename = "spaceBelow", default)]
+        pub space_below: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The spacing mode for the paragraph."]
+        #[serde(rename = "spacingMode", default)]
+        pub spacing_mode: ::std::option::Option<crate::schemas::ParagraphStyleSpacingMode>,
+    }
+    impl ::field_selector::FieldSelector for ParagraphStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4058,38 +4099,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct ParagraphStyle {
-        #[doc = "The text alignment for this paragraph."]
-        #[serde(rename = "alignment", default)]
-        pub alignment: ::std::option::Option<crate::schemas::ParagraphStyleAlignment>,
-        #[doc = "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\ntext direction is not inherited."]
-        #[serde(rename = "direction", default)]
-        pub direction: ::std::option::Option<crate::schemas::ParagraphStyleDirection>,
-        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
-        #[serde(rename = "indentEnd", default)]
-        pub indent_end: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of indentation for the start of the first line of the paragraph.\nIf unset, the value is inherited from the parent."]
-        #[serde(rename = "indentFirstLine", default)]
-        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
-        #[serde(rename = "indentStart", default)]
-        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent."]
-        #[serde(rename = "lineSpacing", default)]
-        pub line_spacing: ::std::option::Option<f32>,
-        #[doc = "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."]
-        #[serde(rename = "spaceAbove", default)]
-        pub space_above: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent."]
-        #[serde(rename = "spaceBelow", default)]
-        pub space_below: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The spacing mode for the paragraph."]
-        #[serde(rename = "spacingMode", default)]
-        pub spacing_mode: ::std::option::Option<crate::schemas::ParagraphStyleSpacingMode>,
+    pub struct Placeholder {
+        #[doc = "The index of the placeholder. If the same placeholder types are present in\nthe same page, they would have different index values."]
+        #[serde(rename = "index", default)]
+        pub index: ::std::option::Option<i32>,
+        #[doc = "The object ID of this shape's parent placeholder.\nIf unset, the parent placeholder shape does not exist, so the shape does\nnot inherit properties from any other shape."]
+        #[serde(rename = "parentObjectId", default)]
+        pub parent_object_id: ::std::option::Option<String>,
+        #[doc = "The type of the placeholder."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::PlaceholderType>,
     }
-    impl ::field_selector::FieldSelector for ParagraphStyle {
+    impl ::field_selector::FieldSelector for Placeholder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4214,38 +4246,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Placeholder {
-        #[doc = "The index of the placeholder. If the same placeholder types are present in\nthe same page, they would have different index values."]
-        #[serde(rename = "index", default)]
-        pub index: ::std::option::Option<i32>,
-        #[doc = "The object ID of this shape's parent placeholder.\nIf unset, the parent placeholder shape does not exist, so the shape does\nnot inherit properties from any other shape."]
-        #[serde(rename = "parentObjectId", default)]
-        pub parent_object_id: ::std::option::Option<String>,
-        #[doc = "The type of the placeholder."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::PlaceholderType>,
-    }
-    impl ::field_selector::FieldSelector for Placeholder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Presentation {
@@ -4278,6 +4278,38 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Presentation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Range {
+        #[doc = "The optional zero-based index of the end of the collection.\nRequired for `FIXED_RANGE` ranges."]
+        #[serde(rename = "endIndex", default)]
+        pub end_index: ::std::option::Option<i32>,
+        #[doc = "The type of range."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::RangeType>,
+        #[doc = "The optional zero-based index of the beginning of the collection.\nRequired for `FIXED_RANGE` and `FROM_START_INDEX` ranges."]
+        #[serde(rename = "startIndex", default)]
+        pub start_index: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for Range {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4350,29 +4382,17 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Range {
-        #[doc = "The optional zero-based index of the end of the collection.\nRequired for `FIXED_RANGE` ranges."]
-        #[serde(rename = "endIndex", default)]
-        pub end_index: ::std::option::Option<i32>,
-        #[doc = "The type of range."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::RangeType>,
-        #[doc = "The optional zero-based index of the beginning of the collection.\nRequired for `FIXED_RANGE` and `FROM_START_INDEX` ranges."]
-        #[serde(rename = "startIndex", default)]
-        pub start_index: ::std::option::Option<i32>,
+    pub struct Recolor {
+        #[doc = "The name of the recolor effect.\n\nThe name is determined from the `recolor_stops` by matching the gradient\nagainst the colors in the page's current color scheme. This property is\nread-only."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<crate::schemas::RecolorName>,
+        #[doc = "The recolor effect is represented by a gradient, which is a list of color\nstops.\n\nThe colors in the gradient will replace the corresponding colors at\nthe same position in the color palette and apply to the image. This\nproperty is read-only."]
+        #[serde(rename = "recolorStops", default)]
+        pub recolor_stops: ::std::option::Option<Vec<crate::schemas::ColorStop>>,
     }
-    impl ::field_selector::FieldSelector for Range {
+    impl ::field_selector::FieldSelector for Recolor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4529,17 +4549,23 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Recolor {
-        #[doc = "The name of the recolor effect.\n\nThe name is determined from the `recolor_stops` by matching the gradient\nagainst the colors in the page's current color scheme. This property is\nread-only."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<crate::schemas::RecolorName>,
-        #[doc = "The recolor effect is represented by a gradient, which is a list of color\nstops.\n\nThe colors in the gradient will replace the corresponding colors at\nthe same position in the color palette and apply to the image. This\nproperty is read-only."]
-        #[serde(rename = "recolorStops", default)]
-        pub recolor_stops: ::std::option::Option<Vec<crate::schemas::ColorStop>>,
+    pub struct RefreshSheetsChartRequest {
+        #[doc = "The object ID of the chart to refresh."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Recolor {
+    impl ::field_selector::FieldSelector for RefreshSheetsChartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4560,12 +4586,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RefreshSheetsChartRequest {
-        #[doc = "The object ID of the chart to refresh."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
+    pub struct ReplaceAllShapesWithImageRequest {
+        #[doc = "If set, this request will replace all of the shapes that contain the\ngiven text."]
+        #[serde(rename = "containsText", default)]
+        pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
+        #[doc = "The image replace method.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence.\n\nIf you do not specify a value for `image_replace_method`, but specify a\nvalue for `replace_method`, then the specified `replace_method` value is\nused.\n\nIf you do not specify either, then CENTER_INSIDE is used."]
+        #[serde(rename = "imageReplaceMethod", default)]
+        pub image_replace_method: ::std::option::Option<
+            crate::schemas::ReplaceAllShapesWithImageRequestImageReplaceMethod,
+        >,
+        #[doc = "The image URL.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
+        #[serde(rename = "imageUrl", default)]
+        pub image_url: ::std::option::Option<String>,
+        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
+        #[serde(rename = "pageObjectIds", default)]
+        pub page_object_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "The replace method.\n\n<b>Deprecated</b>: use `image_replace_method` instead.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence."]
+        #[serde(rename = "replaceMethod", default)]
+        pub replace_method:
+            ::std::option::Option<crate::schemas::ReplaceAllShapesWithImageRequestReplaceMethod>,
     }
-    impl ::field_selector::FieldSelector for RefreshSheetsChartRequest {
+    impl ::field_selector::FieldSelector for ReplaceAllShapesWithImageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4686,27 +4727,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReplaceAllShapesWithImageRequest {
-        #[doc = "If set, this request will replace all of the shapes that contain the\ngiven text."]
-        #[serde(rename = "containsText", default)]
-        pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
-        #[doc = "The image replace method.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence.\n\nIf you do not specify a value for `image_replace_method`, but specify a\nvalue for `replace_method`, then the specified `replace_method` value is\nused.\n\nIf you do not specify either, then CENTER_INSIDE is used."]
-        #[serde(rename = "imageReplaceMethod", default)]
-        pub image_replace_method: ::std::option::Option<
-            crate::schemas::ReplaceAllShapesWithImageRequestImageReplaceMethod,
-        >,
-        #[doc = "The image URL.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
-        #[serde(rename = "imageUrl", default)]
-        pub image_url: ::std::option::Option<String>,
-        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
-        #[serde(rename = "pageObjectIds", default)]
-        pub page_object_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The replace method.\n\n<b>Deprecated</b>: use `image_replace_method` instead.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence."]
-        #[serde(rename = "replaceMethod", default)]
-        pub replace_method:
-            ::std::option::Option<crate::schemas::ReplaceAllShapesWithImageRequestReplaceMethod>,
+    pub struct ReplaceAllShapesWithImageResponse {
+        #[doc = "The number of shapes replaced with images."]
+        #[serde(rename = "occurrencesChanged", default)]
+        pub occurrences_changed: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for ReplaceAllShapesWithImageRequest {
+    impl ::field_selector::FieldSelector for ReplaceAllShapesWithImageResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4727,12 +4753,26 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReplaceAllShapesWithImageResponse {
-        #[doc = "The number of shapes replaced with images."]
-        #[serde(rename = "occurrencesChanged", default)]
-        pub occurrences_changed: ::std::option::Option<i32>,
+    pub struct ReplaceAllShapesWithSheetsChartRequest {
+        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet."]
+        #[serde(rename = "chartId", default)]
+        pub chart_id: ::std::option::Option<i32>,
+        #[doc = "The criteria that the shapes must match in order to be replaced. The\nrequest will replace all of the shapes that contain the given text."]
+        #[serde(rename = "containsText", default)]
+        pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
+        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
+        #[serde(rename = "linkingMode", default)]
+        pub linking_mode: ::std::option::Option<
+            crate::schemas::ReplaceAllShapesWithSheetsChartRequestLinkingMode,
+        >,
+        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
+        #[serde(rename = "pageObjectIds", default)]
+        pub page_object_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "The ID of the Google Sheets spreadsheet that contains the chart."]
+        #[serde(rename = "spreadsheetId", default)]
+        pub spreadsheet_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ReplaceAllShapesWithImageResponse {
+    impl ::field_selector::FieldSelector for ReplaceAllShapesWithSheetsChartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4792,46 +4832,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReplaceAllShapesWithSheetsChartRequest {
-        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet."]
-        #[serde(rename = "chartId", default)]
-        pub chart_id: ::std::option::Option<i32>,
-        #[doc = "The criteria that the shapes must match in order to be replaced. The\nrequest will replace all of the shapes that contain the given text."]
-        #[serde(rename = "containsText", default)]
-        pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
-        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
-        #[serde(rename = "linkingMode", default)]
-        pub linking_mode: ::std::option::Option<
-            crate::schemas::ReplaceAllShapesWithSheetsChartRequestLinkingMode,
-        >,
-        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
-        #[serde(rename = "pageObjectIds", default)]
-        pub page_object_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The ID of the Google Sheets spreadsheet that contains the chart."]
-        #[serde(rename = "spreadsheetId", default)]
-        pub spreadsheet_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReplaceAllShapesWithSheetsChartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4924,6 +4924,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplaceImageRequest {
+        #[doc = "The ID of the existing image that will be replaced."]
+        #[serde(rename = "imageObjectId", default)]
+        pub image_object_id: ::std::option::Option<String>,
+        #[doc = "The replacement method."]
+        #[serde(rename = "imageReplaceMethod", default)]
+        pub image_replace_method:
+            ::std::option::Option<crate::schemas::ReplaceImageRequestImageReplaceMethod>,
+        #[doc = "The URL of the new image.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReplaceImageRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceImageRequestImageReplaceMethod {
         #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
@@ -4979,39 +5012,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ReplaceImageRequestImageReplaceMethod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReplaceImageRequest {
-        #[doc = "The ID of the existing image that will be replaced."]
-        #[serde(rename = "imageObjectId", default)]
-        pub image_object_id: ::std::option::Option<String>,
-        #[doc = "The replacement method."]
-        #[serde(rename = "imageReplaceMethod", default)]
-        pub image_replace_method:
-            ::std::option::Option<crate::schemas::ReplaceImageRequestImageReplaceMethod>,
-        #[doc = "The URL of the new image.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReplaceImageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5291,6 +5291,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Shadow {
+        #[doc = "The alignment point of the shadow, that sets the origin for translate,\nscale and skew of the shadow. This property is read-only."]
+        #[serde(rename = "alignment", default)]
+        pub alignment: ::std::option::Option<crate::schemas::ShadowAlignment>,
+        #[doc = "The alpha of the shadow's color, from 0.0 to 1.0."]
+        #[serde(rename = "alpha", default)]
+        pub alpha: ::std::option::Option<f32>,
+        #[doc = "The radius of the shadow blur. The larger the radius, the more diffuse the\nshadow becomes."]
+        #[serde(rename = "blurRadius", default)]
+        pub blur_radius: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The shadow color value."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::OpaqueColor>,
+        #[doc = "The shadow property state.\n\nUpdating the shadow on a page element will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To have\nno shadow on a page element, set this field to `NOT_RENDERED`. In this\ncase, any other shadow fields set in the same request will be ignored."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state: ::std::option::Option<crate::schemas::ShadowPropertyState>,
+        #[doc = "The type of the shadow. This property is read-only."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ShadowType>,
+        #[doc = "Whether the shadow should rotate with the shape. This property is\nread-only."]
+        #[serde(rename = "rotateWithShape", default)]
+        pub rotate_with_shape: ::std::option::Option<bool>,
+        #[doc = "Transform that encodes the translate, scale, and skew of the shadow,\nrelative to the alignment position."]
+        #[serde(rename = "transform", default)]
+        pub transform: ::std::option::Option<crate::schemas::AffineTransform>,
+    }
+    impl ::field_selector::FieldSelector for Shadow {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShadowAlignment {
         #[doc = "Bottom center."]
@@ -5495,33 +5533,21 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Shadow {
-        #[doc = "The alignment point of the shadow, that sets the origin for translate,\nscale and skew of the shadow. This property is read-only."]
-        #[serde(rename = "alignment", default)]
-        pub alignment: ::std::option::Option<crate::schemas::ShadowAlignment>,
-        #[doc = "The alpha of the shadow's color, from 0.0 to 1.0."]
-        #[serde(rename = "alpha", default)]
-        pub alpha: ::std::option::Option<f32>,
-        #[doc = "The radius of the shadow blur. The larger the radius, the more diffuse the\nshadow becomes."]
-        #[serde(rename = "blurRadius", default)]
-        pub blur_radius: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The shadow color value."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::OpaqueColor>,
-        #[doc = "The shadow property state.\n\nUpdating the shadow on a page element will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To have\nno shadow on a page element, set this field to `NOT_RENDERED`. In this\ncase, any other shadow fields set in the same request will be ignored."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state: ::std::option::Option<crate::schemas::ShadowPropertyState>,
-        #[doc = "The type of the shadow. This property is read-only."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ShadowType>,
-        #[doc = "Whether the shadow should rotate with the shape. This property is\nread-only."]
-        #[serde(rename = "rotateWithShape", default)]
-        pub rotate_with_shape: ::std::option::Option<bool>,
-        #[doc = "Transform that encodes the translate, scale, and skew of the shadow,\nrelative to the alignment position."]
-        #[serde(rename = "transform", default)]
-        pub transform: ::std::option::Option<crate::schemas::AffineTransform>,
+    pub struct Shape {
+        #[doc = "Placeholders are shapes that are inherit from corresponding placeholders on\nlayouts and masters.\n\nIf set, the shape is a placeholder shape and any inherited properties\ncan be resolved by looking at the parent placeholder identified by the\nPlaceholder.parent_object_id field."]
+        #[serde(rename = "placeholder", default)]
+        pub placeholder: ::std::option::Option<crate::schemas::Placeholder>,
+        #[doc = "The properties of the shape."]
+        #[serde(rename = "shapeProperties", default)]
+        pub shape_properties: ::std::option::Option<crate::schemas::ShapeProperties>,
+        #[doc = "The type of the shape."]
+        #[serde(rename = "shapeType", default)]
+        pub shape_type: ::std::option::Option<crate::schemas::ShapeShapeType>,
+        #[doc = "The text content of the shape."]
+        #[serde(rename = "text", default)]
+        pub text: ::std::option::Option<crate::schemas::TextContent>,
     }
-    impl ::field_selector::FieldSelector for Shadow {
+    impl ::field_selector::FieldSelector for Shape {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6152,21 +6178,15 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Shape {
-        #[doc = "Placeholders are shapes that are inherit from corresponding placeholders on\nlayouts and masters.\n\nIf set, the shape is a placeholder shape and any inherited properties\ncan be resolved by looking at the parent placeholder identified by the\nPlaceholder.parent_object_id field."]
-        #[serde(rename = "placeholder", default)]
-        pub placeholder: ::std::option::Option<crate::schemas::Placeholder>,
-        #[doc = "The properties of the shape."]
-        #[serde(rename = "shapeProperties", default)]
-        pub shape_properties: ::std::option::Option<crate::schemas::ShapeProperties>,
-        #[doc = "The type of the shape."]
-        #[serde(rename = "shapeType", default)]
-        pub shape_type: ::std::option::Option<crate::schemas::ShapeShapeType>,
-        #[doc = "The text content of the shape."]
-        #[serde(rename = "text", default)]
-        pub text: ::std::option::Option<crate::schemas::TextContent>,
+    pub struct ShapeBackgroundFill {
+        #[doc = "The background fill property state.\n\nUpdating the fill on a shape will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a shape, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state: ::std::option::Option<crate::schemas::ShapeBackgroundFillPropertyState>,
+        #[doc = "Solid color fill."]
+        #[serde(rename = "solidFill", default)]
+        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
     }
-    impl ::field_selector::FieldSelector for Shape {
+    impl ::field_selector::FieldSelector for ShapeBackgroundFill {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6237,15 +6257,25 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ShapeBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a shape will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a shape, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state: ::std::option::Option<crate::schemas::ShapeBackgroundFillPropertyState>,
-        #[doc = "Solid color fill."]
-        #[serde(rename = "solidFill", default)]
-        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
+    pub struct ShapeProperties {
+        #[doc = "The alignment of the content in the shape. If unspecified,\nthe alignment is inherited from a parent placeholder if it exists. If the\nshape has no parent, the default alignment matches the alignment for new\nshapes created in the Slides editor."]
+        #[serde(rename = "contentAlignment", default)]
+        pub content_alignment:
+            ::std::option::Option<crate::schemas::ShapePropertiesContentAlignment>,
+        #[doc = "The hyperlink destination of the shape. If unset, there is no link. Links\nare not inherited from parent placeholders."]
+        #[serde(rename = "link", default)]
+        pub link: ::std::option::Option<crate::schemas::Link>,
+        #[doc = "The outline of the shape. If unset, the outline is inherited from a\nparent placeholder if it exists. If the shape has no parent, then the\ndefault outline depends on the shape type, matching the defaults for\nnew shapes created in the Slides editor."]
+        #[serde(rename = "outline", default)]
+        pub outline: ::std::option::Option<crate::schemas::Outline>,
+        #[doc = "The shadow properties of the shape. If unset, the shadow is inherited from\na parent placeholder if it exists. If the shape has no parent, then the\ndefault shadow matches the defaults for new shapes created in the Slides\neditor. This property is read-only."]
+        #[serde(rename = "shadow", default)]
+        pub shadow: ::std::option::Option<crate::schemas::Shadow>,
+        #[doc = "The background fill of the shape. If unset, the background fill is\ninherited from a parent placeholder if it exists. If the shape has no\nparent, then the default background fill depends on the shape type,\nmatching the defaults for new shapes created in the Slides editor."]
+        #[serde(rename = "shapeBackgroundFill", default)]
+        pub shape_background_fill: ::std::option::Option<crate::schemas::ShapeBackgroundFill>,
     }
-    impl ::field_selector::FieldSelector for ShapeBackgroundFill {
+    impl ::field_selector::FieldSelector for ShapeProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6321,36 +6351,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ShapePropertiesContentAlignment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ShapeProperties {
-        #[doc = "The alignment of the content in the shape. If unspecified,\nthe alignment is inherited from a parent placeholder if it exists. If the\nshape has no parent, the default alignment matches the alignment for new\nshapes created in the Slides editor."]
-        #[serde(rename = "contentAlignment", default)]
-        pub content_alignment:
-            ::std::option::Option<crate::schemas::ShapePropertiesContentAlignment>,
-        #[doc = "The hyperlink destination of the shape. If unset, there is no link. Links\nare not inherited from parent placeholders."]
-        #[serde(rename = "link", default)]
-        pub link: ::std::option::Option<crate::schemas::Link>,
-        #[doc = "The outline of the shape. If unset, the outline is inherited from a\nparent placeholder if it exists. If the shape has no parent, then the\ndefault outline depends on the shape type, matching the defaults for\nnew shapes created in the Slides editor."]
-        #[serde(rename = "outline", default)]
-        pub outline: ::std::option::Option<crate::schemas::Outline>,
-        #[doc = "The shadow properties of the shape. If unset, the shadow is inherited from\na parent placeholder if it exists. If the shape has no parent, then the\ndefault shadow matches the defaults for new shapes created in the Slides\neditor. This property is read-only."]
-        #[serde(rename = "shadow", default)]
-        pub shadow: ::std::option::Option<crate::schemas::Shadow>,
-        #[doc = "The background fill of the shape. If unset, the background fill is\ninherited from a parent placeholder if it exists. If the shape has no\nparent, then the default background fill depends on the shape type,\nmatching the defaults for new shapes created in the Slides editor."]
-        #[serde(rename = "shapeBackgroundFill", default)]
-        pub shape_background_fill: ::std::option::Option<crate::schemas::ShapeBackgroundFill>,
-    }
-    impl ::field_selector::FieldSelector for ShapeProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6583,6 +6583,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableBorderProperties {
+        #[doc = "The dash style of the border."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::TableBorderPropertiesDashStyle>,
+        #[doc = "The fill of the table border."]
+        #[serde(rename = "tableBorderFill", default)]
+        pub table_border_fill: ::std::option::Option<crate::schemas::TableBorderFill>,
+        #[doc = "The thickness of the border."]
+        #[serde(rename = "weight", default)]
+        pub weight: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for TableBorderProperties {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableBorderPropertiesDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
@@ -6661,29 +6684,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct TableBorderProperties {
-        #[doc = "The dash style of the border."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::TableBorderPropertiesDashStyle>,
-        #[doc = "The fill of the table border."]
-        #[serde(rename = "tableBorderFill", default)]
-        pub table_border_fill: ::std::option::Option<crate::schemas::TableBorderFill>,
-        #[doc = "The thickness of the border."]
-        #[serde(rename = "weight", default)]
-        pub weight: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for TableBorderProperties {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct TableBorderRow {
         #[doc = "Properties of each border cell. When a border's adjacent table cells are\nmerged, it is not included in the response."]
         #[serde(rename = "tableBorderCells", default)]
@@ -6719,6 +6719,27 @@ pub mod schemas {
         pub text: ::std::option::Option<crate::schemas::TextContent>,
     }
     impl ::field_selector::FieldSelector for TableCell {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableCellBackgroundFill {
+        #[doc = "The background fill property state.\n\nUpdating the fill on a table cell will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no fill on a table cell, set this field to `NOT_RENDERED`. In this\ncase, any other fill fields set in the same request will be ignored."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state:
+            ::std::option::Option<crate::schemas::TableCellBackgroundFillPropertyState>,
+        #[doc = "Solid color fill."]
+        #[serde(rename = "solidFill", default)]
+        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
+    }
+    impl ::field_selector::FieldSelector for TableCellBackgroundFill {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6787,27 +6808,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TableCellBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a table cell will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no fill on a table cell, set this field to `NOT_RENDERED`. In this\ncase, any other fill fields set in the same request will be ignored."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state:
-            ::std::option::Option<crate::schemas::TableCellBackgroundFillPropertyState>,
-        #[doc = "Solid color fill."]
-        #[serde(rename = "solidFill", default)]
-        pub solid_fill: ::std::option::Option<crate::schemas::SolidFill>,
-    }
-    impl ::field_selector::FieldSelector for TableCellBackgroundFill {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -6828,6 +6828,28 @@ pub mod schemas {
         pub row_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for TableCellLocation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableCellProperties {
+        #[doc = "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Slides editor."]
+        #[serde(rename = "contentAlignment", default)]
+        pub content_alignment:
+            ::std::option::Option<crate::schemas::TableCellPropertiesContentAlignment>,
+        #[doc = "The background fill of the table cell. The default fill matches the fill\nfor newly created table cells in the Slides editor."]
+        #[serde(rename = "tableCellBackgroundFill", default)]
+        pub table_cell_background_fill:
+            ::std::option::Option<crate::schemas::TableCellBackgroundFill>,
+    }
+    impl ::field_selector::FieldSelector for TableCellProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6903,28 +6925,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TableCellPropertiesContentAlignment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TableCellProperties {
-        #[doc = "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Slides editor."]
-        #[serde(rename = "contentAlignment", default)]
-        pub content_alignment:
-            ::std::option::Option<crate::schemas::TableCellPropertiesContentAlignment>,
-        #[doc = "The background fill of the table cell. The default fill matches the fill\nfor newly created table cells in the Slides editor."]
-        #[serde(rename = "tableCellBackgroundFill", default)]
-        pub table_cell_background_fill:
-            ::std::option::Option<crate::schemas::TableCellBackgroundFill>,
-    }
-    impl ::field_selector::FieldSelector for TableCellProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7092,6 +7092,56 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TextStyle {
+        #[doc = "The background color of the text. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
+        #[serde(rename = "backgroundColor", default)]
+        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The text's vertical offset from its normal position.\n\nText with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically\nrendered in a smaller font size, computed based on the `font_size` field.\nThe `font_size` itself is not affected by changes in this field."]
+        #[serde(rename = "baselineOffset", default)]
+        pub baseline_offset: ::std::option::Option<crate::schemas::TextStyleBaselineOffset>,
+        #[doc = "Whether or not the text is rendered as bold."]
+        #[serde(rename = "bold", default)]
+        pub bold: ::std::option::Option<bool>,
+        #[doc = "The font family of the text.\n\nThe font family can be any font from the Font menu in Slides or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`.\n\nSome fonts can affect the weight of the text. If an update request\nspecifies values for both `font_family` and `bold`, the explicitly-set\n`bold` value is used."]
+        #[serde(rename = "fontFamily", default)]
+        pub font_family: ::std::option::Option<String>,
+        #[doc = "The size of the text's font. When read, the `font_size` will specified in\npoints."]
+        #[serde(rename = "fontSize", default)]
+        pub font_size: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The color of the text itself. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
+        #[serde(rename = "foregroundColor", default)]
+        pub foreground_color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "Whether or not the text is italicized."]
+        #[serde(rename = "italic", default)]
+        pub italic: ::std::option::Option<bool>,
+        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be set to\n  ThemeColorType.HYPERLINK and the text will\n  be underlined. If these fields are modified in the same\n  request, those values will be used instead of the link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."]
+        #[serde(rename = "link", default)]
+        pub link: ::std::option::Option<crate::schemas::Link>,
+        #[doc = "Whether or not the text is in small capital letters."]
+        #[serde(rename = "smallCaps", default)]
+        pub small_caps: ::std::option::Option<bool>,
+        #[doc = "Whether or not the text is struck through."]
+        #[serde(rename = "strikethrough", default)]
+        pub strikethrough: ::std::option::Option<bool>,
+        #[doc = "Whether or not the text is underlined."]
+        #[serde(rename = "underline", default)]
+        pub underline: ::std::option::Option<bool>,
+        #[doc = "The font family and rendered weight of the text.\n\nThis field is an extension of `font_family` meant to support explicit font\nweights without breaking backwards compatibility. As such, when reading the\nstyle of a range of text, the value of `weighted_font_family#font_family`\nwill always be equal to that of `font_family`. However, when writing, if\nboth fields are included in the field mask (either explicitly or through\nthe wildcard `\"*\"`), their values are reconciled as follows:\n\n* If `font_family` is set and `weighted_font_family` is not, the value of\n  `font_family` is applied with weight `400` (\"normal\").\n* If both fields are set, the value of `font_family` must match that of\n  `weighted_font_family#font_family`. If so, the font family and weight of\n  `weighted_font_family` is applied. Otherwise, a 400 bad request error is\n  returned.\n* If `weighted_font_family` is set and `font_family` is not, the font\n  family and weight of `weighted_font_family` is applied.\n* If neither field is set, the font family and weight of the text inherit\n  from the parent. Note that these properties cannot inherit separately\n  from each other.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."]
+        #[serde(rename = "weightedFontFamily", default)]
+        pub weighted_font_family: ::std::option::Option<crate::schemas::WeightedFontFamily>,
+    }
+    impl ::field_selector::FieldSelector for TextStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TextStyleBaselineOffset {
         #[doc = "The text's baseline offset is inherited from the parent."]
@@ -7158,45 +7208,15 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct TextStyle {
-        #[doc = "The background color of the text. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
-        #[serde(rename = "backgroundColor", default)]
-        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The text's vertical offset from its normal position.\n\nText with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically\nrendered in a smaller font size, computed based on the `font_size` field.\nThe `font_size` itself is not affected by changes in this field."]
-        #[serde(rename = "baselineOffset", default)]
-        pub baseline_offset: ::std::option::Option<crate::schemas::TextStyleBaselineOffset>,
-        #[doc = "Whether or not the text is rendered as bold."]
-        #[serde(rename = "bold", default)]
-        pub bold: ::std::option::Option<bool>,
-        #[doc = "The font family of the text.\n\nThe font family can be any font from the Font menu in Slides or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`.\n\nSome fonts can affect the weight of the text. If an update request\nspecifies values for both `font_family` and `bold`, the explicitly-set\n`bold` value is used."]
-        #[serde(rename = "fontFamily", default)]
-        pub font_family: ::std::option::Option<String>,
-        #[doc = "The size of the text's font. When read, the `font_size` will specified in\npoints."]
-        #[serde(rename = "fontSize", default)]
-        pub font_size: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The color of the text itself. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
-        #[serde(rename = "foregroundColor", default)]
-        pub foreground_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "Whether or not the text is italicized."]
-        #[serde(rename = "italic", default)]
-        pub italic: ::std::option::Option<bool>,
-        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be set to\n  ThemeColorType.HYPERLINK and the text will\n  be underlined. If these fields are modified in the same\n  request, those values will be used instead of the link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."]
-        #[serde(rename = "link", default)]
-        pub link: ::std::option::Option<crate::schemas::Link>,
-        #[doc = "Whether or not the text is in small capital letters."]
-        #[serde(rename = "smallCaps", default)]
-        pub small_caps: ::std::option::Option<bool>,
-        #[doc = "Whether or not the text is struck through."]
-        #[serde(rename = "strikethrough", default)]
-        pub strikethrough: ::std::option::Option<bool>,
-        #[doc = "Whether or not the text is underlined."]
-        #[serde(rename = "underline", default)]
-        pub underline: ::std::option::Option<bool>,
-        #[doc = "The font family and rendered weight of the text.\n\nThis field is an extension of `font_family` meant to support explicit font\nweights without breaking backwards compatibility. As such, when reading the\nstyle of a range of text, the value of `weighted_font_family#font_family`\nwill always be equal to that of `font_family`. However, when writing, if\nboth fields are included in the field mask (either explicitly or through\nthe wildcard `\"*\"`), their values are reconciled as follows:\n\n* If `font_family` is set and `weighted_font_family` is not, the value of\n  `font_family` is applied with weight `400` (\"normal\").\n* If both fields are set, the value of `font_family` must match that of\n  `weighted_font_family#font_family`. If so, the font family and weight of\n  `weighted_font_family` is applied. Otherwise, a 400 bad request error is\n  returned.\n* If `weighted_font_family` is set and `font_family` is not, the font\n  family and weight of `weighted_font_family` is applied.\n* If neither field is set, the font family and weight of the text inherit\n  from the parent. Note that these properties cannot inherit separately\n  from each other.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."]
-        #[serde(rename = "weightedFontFamily", default)]
-        pub weighted_font_family: ::std::option::Option<crate::schemas::WeightedFontFamily>,
+    pub struct ThemeColorPair {
+        #[doc = "The concrete color corresponding to the theme color type above."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::RgbColor>,
+        #[doc = "The type of the theme color."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ThemeColorPairType>,
     }
-    impl ::field_selector::FieldSelector for TextStyle {
+    impl ::field_selector::FieldSelector for ThemeColorPair {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7321,26 +7341,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ThemeColorPair {
-        #[doc = "The concrete color corresponding to the theme color type above."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::RgbColor>,
-        #[doc = "The type of the theme color."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ThemeColorPairType>,
-    }
-    impl ::field_selector::FieldSelector for ThemeColorPair {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -7450,6 +7450,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UpdateLineCategoryRequest {
+        #[doc = "The line category to update to.\n\nThe exact line type is determined based\non the category to update to and how it's routed to connect to other page\nelements."]
+        #[serde(rename = "lineCategory", default)]
+        pub line_category:
+            ::std::option::Option<crate::schemas::UpdateLineCategoryRequestLineCategory>,
+        #[doc = "The object ID of the line the update is applied to.\n\nOnly a line with a category\nindicating it is a \"connector\" can be updated.\n\nThe line may be rerouted after updating its category."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UpdateLineCategoryRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdateLineCategoryRequestLineCategory {
         #[doc = "Bent connectors, including bent connector 2 to 5."]
@@ -7518,36 +7548,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UpdateLineCategoryRequest {
-        #[doc = "The line category to update to.\n\nThe exact line type is determined based\non the category to update to and how it's routed to connect to other page\nelements."]
-        #[serde(rename = "lineCategory", default)]
-        pub line_category:
-            ::std::option::Option<crate::schemas::UpdateLineCategoryRequestLineCategory>,
-        #[doc = "The object ID of the line the update is applied to.\n\nOnly a line with a category\nindicating it is a \"connector\" can be updated.\n\nThe line may be rerouted after updating its category."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UpdateLineCategoryRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateLinePropertiesRequest {
@@ -7594,6 +7594,30 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdatePageElementAltTextRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct UpdatePageElementTransformRequest {
+        #[doc = "The apply mode of the transform update."]
+        #[serde(rename = "applyMode", default)]
+        pub apply_mode:
+            ::std::option::Option<crate::schemas::UpdatePageElementTransformRequestApplyMode>,
+        #[doc = "The object ID of the page element to update."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+        #[doc = "The input transform matrix used to update the page element."]
+        #[serde(rename = "transform", default)]
+        pub transform: ::std::option::Option<crate::schemas::AffineTransform>,
+    }
+    impl ::field_selector::FieldSelector for UpdatePageElementTransformRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7666,21 +7690,27 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct UpdatePageElementTransformRequest {
-        #[doc = "The apply mode of the transform update."]
-        #[serde(rename = "applyMode", default)]
-        pub apply_mode:
-            ::std::option::Option<crate::schemas::UpdatePageElementTransformRequestApplyMode>,
-        #[doc = "The object ID of the page element to update."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The input transform matrix used to update the page element."]
-        #[serde(rename = "transform", default)]
-        pub transform: ::std::option::Option<crate::schemas::AffineTransform>,
+    pub struct UpdatePageElementsZOrderRequest {
+        #[doc = "The Z-order operation to apply on the page elements.\n\nWhen applying the operation on multiple page elements, the relative\nZ-orders within these page elements before the operation is maintained."]
+        #[serde(rename = "operation", default)]
+        pub operation:
+            ::std::option::Option<crate::schemas::UpdatePageElementsZOrderRequestOperation>,
+        #[doc = "The object IDs of the page elements to update.\n\nAll the page elements must be on the same page and must not be grouped."]
+        #[serde(rename = "pageElementObjectIds", default)]
+        pub page_element_object_ids: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for UpdatePageElementTransformRequest {
+    impl ::field_selector::FieldSelector for UpdatePageElementsZOrderRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7752,36 +7782,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for UpdatePageElementsZOrderRequestOperation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UpdatePageElementsZOrderRequest {
-        #[doc = "The Z-order operation to apply on the page elements.\n\nWhen applying the operation on multiple page elements, the relative\nZ-orders within these page elements before the operation is maintained."]
-        #[serde(rename = "operation", default)]
-        pub operation:
-            ::std::option::Option<crate::schemas::UpdatePageElementsZOrderRequestOperation>,
-        #[doc = "The object IDs of the page elements to update.\n\nAll the page elements must be on the same page and must not be grouped."]
-        #[serde(rename = "pageElementObjectIds", default)]
-        pub page_element_object_ids: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for UpdatePageElementsZOrderRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7894,6 +7894,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct UpdateTableBorderPropertiesRequest {
+        #[doc = "The border position in the table range the updates should apply to. If a\nborder position is not specified, the updates will apply to all borders in\nthe table range."]
+        #[serde(rename = "borderPosition", default)]
+        pub border_position:
+            ::std::option::Option<crate::schemas::UpdateTableBorderPropertiesRequestBorderPosition>,
+        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableBorderProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the table border solid fill color, set\n`fields` to `\"tableBorderFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[serde(rename = "fields", default)]
+        pub fields: ::std::option::Option<String>,
+        #[doc = "The object ID of the table."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<String>,
+        #[doc = "The table border properties to update."]
+        #[serde(rename = "tableBorderProperties", default)]
+        pub table_border_properties: ::std::option::Option<crate::schemas::TableBorderProperties>,
+        #[doc = "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."]
+        #[serde(rename = "tableRange", default)]
+        pub table_range: ::std::option::Option<crate::schemas::TableRange>,
+    }
+    impl ::field_selector::FieldSelector for UpdateTableBorderPropertiesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdateTableBorderPropertiesRequestBorderPosition {
         #[doc = "All borders in the range."]
@@ -7973,36 +8003,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for UpdateTableBorderPropertiesRequestBorderPosition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct UpdateTableBorderPropertiesRequest {
-        #[doc = "The border position in the table range the updates should apply to. If a\nborder position is not specified, the updates will apply to all borders in\nthe table range."]
-        #[serde(rename = "borderPosition", default)]
-        pub border_position:
-            ::std::option::Option<crate::schemas::UpdateTableBorderPropertiesRequestBorderPosition>,
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableBorderProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the table border solid fill color, set\n`fields` to `\"tableBorderFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
-        #[serde(rename = "fields", default)]
-        pub fields: ::std::option::Option<String>,
-        #[doc = "The object ID of the table."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<String>,
-        #[doc = "The table border properties to update."]
-        #[serde(rename = "tableBorderProperties", default)]
-        pub table_border_properties: ::std::option::Option<crate::schemas::TableBorderProperties>,
-        #[doc = "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."]
-        #[serde(rename = "tableRange", default)]
-        pub table_range: ::std::option::Option<crate::schemas::TableRange>,
-    }
-    impl ::field_selector::FieldSelector for UpdateTableBorderPropertiesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8141,6 +8141,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Video {
+        #[doc = "The video source's unique identifier for this video."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The video source."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<crate::schemas::VideoSource>,
+        #[doc = "An URL to a video. The URL is valid as long as the source video exists and\nsharing settings do not change."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "The properties of the video."]
+        #[serde(rename = "videoProperties", default)]
+        pub video_properties: ::std::option::Option<crate::schemas::VideoProperties>,
+    }
+    impl ::field_selector::FieldSelector for Video {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSource {
         #[doc = "The video source is Google Drive."]
@@ -8192,32 +8218,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for VideoSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Video {
-        #[doc = "The video source's unique identifier for this video."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The video source."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<crate::schemas::VideoSource>,
-        #[doc = "An URL to a video. The URL is valid as long as the source video exists and\nsharing settings do not change."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "The properties of the video."]
-        #[serde(rename = "videoProperties", default)]
-        pub video_properties: ::std::option::Option<crate::schemas::VideoProperties>,
-    }
-    impl ::field_selector::FieldSelector for Video {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9682,84 +9682,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9788,174 +9710,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

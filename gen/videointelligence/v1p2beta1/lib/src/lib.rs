@@ -151,6 +151,28 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
@@ -202,28 +224,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -546,6 +546,52 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress {
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[serde(rename = "feature", default)]
+        pub feature: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature,
+        >,
+        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[serde(rename = "inputUri", default)]
+        pub input_uri: ::std::option::Option<String>,
+        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
+        #[serde(rename = "progressPercent", default)]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[serde(rename = "segment", default)]
+        pub segment:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
+        #[doc = "Time when the request was received."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Time of the most recent update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
         #[doc = "Explicit content detection."]
@@ -594,52 +640,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
-        #[serde(rename = "feature", default)]
-        pub feature: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature,
-        >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
-        #[serde(rename = "inputUri", default)]
-        pub input_uri: ::std::option::Option<String>,
-        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
-        #[serde(rename = "progressPercent", default)]
-        pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
-        #[serde(rename = "segment", default)]
-        pub segment:
-            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
-        #[doc = "Time when the request was received."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Time of the most recent update."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -829,6 +829,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1ExplicitContentFrame {
+        #[doc = "Likelihood of the pornography content.."]
+        #[serde(rename = "pornographyLikelihood", default)]
+        pub pornography_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood,
+        >,
+        #[doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location."]
+        #[serde(rename = "timeOffset", default)]
+        pub time_offset: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ExplicitContentFrame {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
@@ -880,37 +911,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1ExplicitContentFrame {
-        #[doc = "Likelihood of the pornography content.."]
-        #[serde(rename = "pornographyLikelihood", default)]
-        pub pornography_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood,
-        >,
-        #[doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location."]
-        #[serde(rename = "timeOffset", default)]
-        pub time_offset: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ExplicitContentFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1220,6 +1220,28 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
@@ -1271,28 +1293,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1623,6 +1623,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress {
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[serde(rename = "feature", default)]
+        pub feature: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature,
+        >,
+        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[serde(rename = "inputUri", default)]
+        pub input_uri: ::std::option::Option<String>,
+        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
+        #[serde(rename = "progressPercent", default)]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[serde(rename = "segment", default)]
+        pub segment: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
+        >,
+        #[doc = "Time when the request was received."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Time of the most recent update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
         #[doc = "Explicit content detection."]
@@ -1671,53 +1718,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
-        #[serde(rename = "feature", default)]
-        pub feature: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature,
-        >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
-        #[serde(rename = "inputUri", default)]
-        pub input_uri: ::std::option::Option<String>,
-        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
-        #[serde(rename = "progressPercent", default)]
-        pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
-        #[serde(rename = "segment", default)]
-        pub segment: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
-        >,
-        #[doc = "Time when the request was received."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Time of the most recent update."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -1880,6 +1880,19 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequest { # [ doc = "Requested video annotation features." ] # [ serde ( rename = "features" , default ) ] pub features : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequestFeaturesItems > > , # [ doc = "The video data bytes.\nIf unset, the input video(s) should be specified via `input_uri`.\nIf set, `input_uri` should be unset." ] # [ serde ( rename = "inputContent" , default ) ] pub input_content : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset." ] # [ serde ( rename = "inputUri" , default ) ] pub input_uri : :: std :: option :: Option < String > , # [ doc = "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location." ] # [ serde ( rename = "locationId" , default ) ] pub location_id : :: std :: option :: Option < String > , # [ doc = "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris)." ] # [ serde ( rename = "outputUri" , default ) ] pub output_uri : :: std :: option :: Option < String > , # [ doc = "Additional video context and/or feature-specific parameters." ] # [ serde ( rename = "videoContext" , default ) ] pub video_context : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1VideoContext > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequestFeaturesItems {
         ExplicitContentDetection,
@@ -1924,19 +1937,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequestFeaturesItems
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequest { # [ doc = "Requested video annotation features." ] # [ serde ( rename = "features" , default ) ] pub features : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequestFeaturesItems > > , # [ doc = "The video data bytes.\nIf unset, the input video(s) should be specified via `input_uri`.\nIf set, `input_uri` should be unset." ] # [ serde ( rename = "inputContent" , default ) ] pub input_content : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset." ] # [ serde ( rename = "inputUri" , default ) ] pub input_uri : :: std :: option :: Option < String > , # [ doc = "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location." ] # [ serde ( rename = "locationId" , default ) ] pub location_id : :: std :: option :: Option < String > , # [ doc = "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris)." ] # [ serde ( rename = "outputUri" , default ) ] pub output_uri : :: std :: option :: Option < String > , # [ doc = "Additional video context and/or feature-specific parameters." ] # [ serde ( rename = "videoContext" , default ) ] pub video_context : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1VideoContext > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2054,6 +2054,28 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
@@ -2114,28 +2136,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation {
@@ -2159,6 +2159,19 @@ pub mod schemas {
         >,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfig { # [ doc = "The confidence threshold we perform filtering on the labels from\nframe-level detection. If not set, it is set to 0.4 by default. The valid\nrange for this threshold is [0.1, 0.9]. Any value set outside of this\nrange will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "frameConfidenceThreshold" , default ) ] pub frame_confidence_threshold : :: std :: option :: Option < f32 > , # [ doc = "What labels should be detected with LABEL_DETECTION, in addition to\nvideo-level labels or segment-level labels.\nIf unspecified, defaults to `SHOT_MODE`." ] # [ serde ( rename = "labelDetectionMode" , default ) ] pub label_detection_mode : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfigLabelDetectionMode > , # [ doc = "Model to use for label detection.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"." ] # [ serde ( rename = "model" , default ) ] pub model : :: std :: option :: Option < String > , # [ doc = "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects.\nShould be used with `SHOT_AND_FRAME_MODE` enabled." ] # [ serde ( rename = "stationaryCamera" , default ) ] pub stationary_camera : :: std :: option :: Option < bool > , # [ doc = "The confidence threshold we perform filtering on the labels from\nvideo-level and shot-level detections. If not set, it is set to 0.3 by\ndefault. The valid range for this threshold is [0.1, 0.9]. Any value set\noutside of this range will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "videoConfidenceThreshold" , default ) ] pub video_confidence_threshold : :: std :: option :: Option < f32 > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2214,19 +2227,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfigLabelDetectionMode
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfig { # [ doc = "The confidence threshold we perform filtering on the labels from\nframe-level detection. If not set, it is set to 0.4 by default. The valid\nrange for this threshold is [0.1, 0.9]. Any value set outside of this\nrange will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "frameConfidenceThreshold" , default ) ] pub frame_confidence_threshold : :: std :: option :: Option < f32 > , # [ doc = "What labels should be detected with LABEL_DETECTION, in addition to\nvideo-level labels or segment-level labels.\nIf unspecified, defaults to `SHOT_MODE`." ] # [ serde ( rename = "labelDetectionMode" , default ) ] pub label_detection_mode : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfigLabelDetectionMode > , # [ doc = "Model to use for label detection.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"." ] # [ serde ( rename = "model" , default ) ] pub model : :: std :: option :: Option < String > , # [ doc = "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects.\nShould be used with `SHOT_AND_FRAME_MODE` enabled." ] # [ serde ( rename = "stationaryCamera" , default ) ] pub stationary_camera : :: std :: option :: Option < bool > , # [ doc = "The confidence threshold we perform filtering on the labels from\nvideo-level and shot-level detections. If not set, it is set to 0.3 by\ndefault. The valid range for this threshold is [0.1, 0.9]. Any value set\noutside of this range will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "videoConfidenceThreshold" , default ) ] pub video_confidence_threshold : :: std :: option :: Option < f32 > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelDetectionConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2688,6 +2688,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress {
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[serde(rename = "feature", default)]
+        pub feature: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature,
+        >,
+        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[serde(rename = "inputUri", default)]
+        pub input_uri: ::std::option::Option<String>,
+        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
+        #[serde(rename = "progressPercent", default)]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[serde(rename = "segment", default)]
+        pub segment: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
+        >,
+        #[doc = "Time when the request was received."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Time of the most recent update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
         #[doc = "Explicit content detection."]
@@ -2736,53 +2783,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
-        #[serde(rename = "feature", default)]
-        pub feature: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature,
-        >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
-        #[serde(rename = "inputUri", default)]
-        pub input_uri: ::std::option::Option<String>,
-        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
-        #[serde(rename = "progressPercent", default)]
-        pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
-        #[serde(rename = "segment", default)]
-        pub segment: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
-        >,
-        #[doc = "Time when the request was received."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Time of the most recent update."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -3098,6 +3098,28 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood {
         #[doc = "Unspecified likelihood."]
@@ -3149,28 +3171,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3650,6 +3650,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress {
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[serde(rename = "feature", default)]
+        pub feature: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature,
+        >,
+        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[serde(rename = "inputUri", default)]
+        pub input_uri: ::std::option::Option<String>,
+        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
+        #[serde(rename = "progressPercent", default)]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[serde(rename = "segment", default)]
+        pub segment: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment,
+        >,
+        #[doc = "Time when the request was received."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Time of the most recent update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
         #[doc = "Explicit content detection."]
@@ -3700,53 +3747,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
-        #[serde(rename = "feature", default)]
-        pub feature: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature,
-        >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
-        #[serde(rename = "inputUri", default)]
-        pub input_uri: ::std::option::Option<String>,
-        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
-        #[serde(rename = "progressPercent", default)]
-        pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
-        #[serde(rename = "segment", default)]
-        pub segment: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment,
-        >,
-        #[doc = "Time when the request was received."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Time of the most recent update."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -4000,6 +4000,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1VideoAnnotationProgress {
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[serde(rename = "feature", default)]
+        pub feature: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature,
+        >,
+        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[serde(rename = "inputUri", default)]
+        pub input_uri: ::std::option::Option<String>,
+        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
+        #[serde(rename = "progressPercent", default)]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[serde(rename = "segment", default)]
+        pub segment:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
+        #[doc = "Time when the request was received."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Time of the most recent update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoAnnotationProgress {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
         #[doc = "Explicit content detection."]
@@ -4049,50 +4093,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVideointelligenceV1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
-        #[serde(rename = "feature", default)]
-        pub feature: ::std::option::Option<
-            crate::schemas::GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature,
-        >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
-        #[serde(rename = "inputUri", default)]
-        pub input_uri: ::std::option::Option<String>,
-        #[doc = "Approximate percentage processed thus far. Guaranteed to be\n100 when fully processed."]
-        #[serde(rename = "progressPercent", default)]
-        pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
-        #[serde(rename = "segment", default)]
-        pub segment:
-            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
-        #[doc = "Time when the request was received."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Time of the most recent update."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoAnnotationProgress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4765,84 +4765,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4874,134 +4796,10 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+// Bytes in google apis are represented as urlsafe base64 encoded strings.
+// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+// internally to handle byte fields in google apis.
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

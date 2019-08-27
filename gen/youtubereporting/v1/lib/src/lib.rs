@@ -55,6 +55,63 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GdataCompositeMedia {
+        #[doc = "gdata"]
+        #[serde(rename = "blobRef", default)]
+        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "gdata"]
+        #[serde(rename = "blobstore2Info", default)]
+        pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
+        #[doc = "gdata"]
+        #[serde(rename = "cosmoBinaryReference", default)]
+        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "gdata"]
+        #[serde(rename = "crc32cHash", default)]
+        pub crc_3_2c_hash: ::std::option::Option<u32>,
+        #[doc = "gdata"]
+        #[serde(rename = "inline", default)]
+        pub inline: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "gdata"]
+        #[serde(rename = "length", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub length: ::std::option::Option<i64>,
+        #[doc = "gdata"]
+        #[serde(rename = "md5Hash", default)]
+        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "gdata"]
+        #[serde(rename = "objectId", default)]
+        pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
+        #[doc = "gdata"]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "gdata"]
+        #[serde(rename = "referenceType", default)]
+        pub reference_type: ::std::option::Option<crate::schemas::GdataCompositeMediaReferenceType>,
+        #[doc = "gdata"]
+        #[serde(rename = "sha1Hash", default)]
+        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
+    }
+    impl ::field_selector::FieldSelector for GdataCompositeMedia {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GdataCompositeMediaReferenceType {
         #[doc = "gdata"]
@@ -114,63 +171,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GdataCompositeMediaReferenceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GdataCompositeMedia {
-        #[doc = "gdata"]
-        #[serde(rename = "blobRef", default)]
-        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "gdata"]
-        #[serde(rename = "blobstore2Info", default)]
-        pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
-        #[doc = "gdata"]
-        #[serde(rename = "cosmoBinaryReference", default)]
-        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "gdata"]
-        #[serde(rename = "crc32cHash", default)]
-        pub crc_3_2c_hash: ::std::option::Option<u32>,
-        #[doc = "gdata"]
-        #[serde(rename = "inline", default)]
-        pub inline: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "gdata"]
-        #[serde(rename = "length", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub length: ::std::option::Option<i64>,
-        #[doc = "gdata"]
-        #[serde(rename = "md5Hash", default)]
-        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "gdata"]
-        #[serde(rename = "objectId", default)]
-        pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
-        #[doc = "gdata"]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "gdata"]
-        #[serde(rename = "referenceType", default)]
-        pub reference_type: ::std::option::Option<crate::schemas::GdataCompositeMediaReferenceType>,
-        #[doc = "gdata"]
-        #[serde(rename = "sha1Hash", default)]
-        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
-    }
-    impl ::field_selector::FieldSelector for GdataCompositeMedia {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -403,105 +403,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GdataMediaReferenceType {
-        #[doc = "gdata"]
-        ArbitraryBytes,
-        #[doc = "gdata"]
-        BigstoreRef,
-        #[doc = "gdata"]
-        BlobRef,
-        #[doc = "gdata"]
-        CompositeMedia,
-        #[doc = "gdata"]
-        CosmoBinaryReference,
-        #[doc = "gdata"]
-        DiffChecksumsResponse,
-        #[doc = "gdata"]
-        DiffDownloadResponse,
-        #[doc = "gdata"]
-        DiffUploadRequest,
-        #[doc = "gdata"]
-        DiffUploadResponse,
-        #[doc = "gdata"]
-        DiffVersionResponse,
-        #[doc = "gdata"]
-        GetMedia,
-        #[doc = "gdata"]
-        Inline,
-        #[doc = "gdata"]
-        Path,
-    }
-    impl GdataMediaReferenceType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GdataMediaReferenceType::ArbitraryBytes => "ARBITRARY_BYTES",
-                GdataMediaReferenceType::BigstoreRef => "BIGSTORE_REF",
-                GdataMediaReferenceType::BlobRef => "BLOB_REF",
-                GdataMediaReferenceType::CompositeMedia => "COMPOSITE_MEDIA",
-                GdataMediaReferenceType::CosmoBinaryReference => "COSMO_BINARY_REFERENCE",
-                GdataMediaReferenceType::DiffChecksumsResponse => "DIFF_CHECKSUMS_RESPONSE",
-                GdataMediaReferenceType::DiffDownloadResponse => "DIFF_DOWNLOAD_RESPONSE",
-                GdataMediaReferenceType::DiffUploadRequest => "DIFF_UPLOAD_REQUEST",
-                GdataMediaReferenceType::DiffUploadResponse => "DIFF_UPLOAD_RESPONSE",
-                GdataMediaReferenceType::DiffVersionResponse => "DIFF_VERSION_RESPONSE",
-                GdataMediaReferenceType::GetMedia => "GET_MEDIA",
-                GdataMediaReferenceType::Inline => "INLINE",
-                GdataMediaReferenceType::Path => "PATH",
-            }
-        }
-    }
-    impl ::std::fmt::Display for GdataMediaReferenceType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GdataMediaReferenceType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GdataMediaReferenceType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ARBITRARY_BYTES" => GdataMediaReferenceType::ArbitraryBytes,
-                "BIGSTORE_REF" => GdataMediaReferenceType::BigstoreRef,
-                "BLOB_REF" => GdataMediaReferenceType::BlobRef,
-                "COMPOSITE_MEDIA" => GdataMediaReferenceType::CompositeMedia,
-                "COSMO_BINARY_REFERENCE" => GdataMediaReferenceType::CosmoBinaryReference,
-                "DIFF_CHECKSUMS_RESPONSE" => GdataMediaReferenceType::DiffChecksumsResponse,
-                "DIFF_DOWNLOAD_RESPONSE" => GdataMediaReferenceType::DiffDownloadResponse,
-                "DIFF_UPLOAD_REQUEST" => GdataMediaReferenceType::DiffUploadRequest,
-                "DIFF_UPLOAD_RESPONSE" => GdataMediaReferenceType::DiffUploadResponse,
-                "DIFF_VERSION_RESPONSE" => GdataMediaReferenceType::DiffVersionResponse,
-                "GET_MEDIA" => GdataMediaReferenceType::GetMedia,
-                "INLINE" => GdataMediaReferenceType::Inline,
-                "PATH" => GdataMediaReferenceType::Path,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for GdataMediaReferenceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -611,6 +512,105 @@ pub mod schemas {
         pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataMedia {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GdataMediaReferenceType {
+        #[doc = "gdata"]
+        ArbitraryBytes,
+        #[doc = "gdata"]
+        BigstoreRef,
+        #[doc = "gdata"]
+        BlobRef,
+        #[doc = "gdata"]
+        CompositeMedia,
+        #[doc = "gdata"]
+        CosmoBinaryReference,
+        #[doc = "gdata"]
+        DiffChecksumsResponse,
+        #[doc = "gdata"]
+        DiffDownloadResponse,
+        #[doc = "gdata"]
+        DiffUploadRequest,
+        #[doc = "gdata"]
+        DiffUploadResponse,
+        #[doc = "gdata"]
+        DiffVersionResponse,
+        #[doc = "gdata"]
+        GetMedia,
+        #[doc = "gdata"]
+        Inline,
+        #[doc = "gdata"]
+        Path,
+    }
+    impl GdataMediaReferenceType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GdataMediaReferenceType::ArbitraryBytes => "ARBITRARY_BYTES",
+                GdataMediaReferenceType::BigstoreRef => "BIGSTORE_REF",
+                GdataMediaReferenceType::BlobRef => "BLOB_REF",
+                GdataMediaReferenceType::CompositeMedia => "COMPOSITE_MEDIA",
+                GdataMediaReferenceType::CosmoBinaryReference => "COSMO_BINARY_REFERENCE",
+                GdataMediaReferenceType::DiffChecksumsResponse => "DIFF_CHECKSUMS_RESPONSE",
+                GdataMediaReferenceType::DiffDownloadResponse => "DIFF_DOWNLOAD_RESPONSE",
+                GdataMediaReferenceType::DiffUploadRequest => "DIFF_UPLOAD_REQUEST",
+                GdataMediaReferenceType::DiffUploadResponse => "DIFF_UPLOAD_RESPONSE",
+                GdataMediaReferenceType::DiffVersionResponse => "DIFF_VERSION_RESPONSE",
+                GdataMediaReferenceType::GetMedia => "GET_MEDIA",
+                GdataMediaReferenceType::Inline => "INLINE",
+                GdataMediaReferenceType::Path => "PATH",
+            }
+        }
+    }
+    impl ::std::fmt::Display for GdataMediaReferenceType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GdataMediaReferenceType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GdataMediaReferenceType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ARBITRARY_BYTES" => GdataMediaReferenceType::ArbitraryBytes,
+                "BIGSTORE_REF" => GdataMediaReferenceType::BigstoreRef,
+                "BLOB_REF" => GdataMediaReferenceType::BlobRef,
+                "COMPOSITE_MEDIA" => GdataMediaReferenceType::CompositeMedia,
+                "COSMO_BINARY_REFERENCE" => GdataMediaReferenceType::CosmoBinaryReference,
+                "DIFF_CHECKSUMS_RESPONSE" => GdataMediaReferenceType::DiffChecksumsResponse,
+                "DIFF_DOWNLOAD_RESPONSE" => GdataMediaReferenceType::DiffDownloadResponse,
+                "DIFF_UPLOAD_REQUEST" => GdataMediaReferenceType::DiffUploadRequest,
+                "DIFF_UPLOAD_RESPONSE" => GdataMediaReferenceType::DiffUploadResponse,
+                "DIFF_VERSION_RESPONSE" => GdataMediaReferenceType::DiffVersionResponse,
+                "GET_MEDIA" => GdataMediaReferenceType::GetMedia,
+                "INLINE" => GdataMediaReferenceType::Inline,
+                "PATH" => GdataMediaReferenceType::Path,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for GdataMediaReferenceType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3046,84 +3046,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3155,7 +3077,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -3281,8 +3202,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

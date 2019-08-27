@@ -120,6 +120,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CommitRequest {
+        #[doc = "The type of commit to perform. Defaults to `TRANSACTIONAL`."]
+        #[serde(rename = "mode", default)]
+        pub mode: ::std::option::Option<crate::schemas::CommitRequestMode>,
+        #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n* `insert` followed by `insert`\n* `update` followed by `insert`\n* `upsert` followed by `insert`\n* `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
+        #[serde(rename = "mutations", default)]
+        pub mutations: ::std::option::Option<Vec<crate::schemas::Mutation>>,
+        #[doc = "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
+        #[serde(rename = "transaction", default)]
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+    }
+    impl ::field_selector::FieldSelector for CommitRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommitRequestMode {
         #[doc = "Unspecified. This value must not be used."]
@@ -180,29 +203,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CommitRequest {
-        #[doc = "The type of commit to perform. Defaults to `TRANSACTIONAL`."]
-        #[serde(rename = "mode", default)]
-        pub mode: ::std::option::Option<crate::schemas::CommitRequestMode>,
-        #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n* `insert` followed by `insert`\n* `update` followed by `insert`\n* `upsert` followed by `insert`\n* `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
-        #[serde(rename = "mutations", default)]
-        pub mutations: ::std::option::Option<Vec<crate::schemas::Mutation>>,
-        #[doc = "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
-    }
-    impl ::field_selector::FieldSelector for CommitRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -223,6 +223,26 @@ pub mod schemas {
         pub mutation_results: ::std::option::Option<Vec<crate::schemas::MutationResult>>,
     }
     impl ::field_selector::FieldSelector for CommitResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CompositeFilter {
+        #[doc = "The list of filters to combine.\nMust contain at least one filter."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<Vec<crate::schemas::Filter>>,
+        #[doc = "The operator for combining multiple filters."]
+        #[serde(rename = "op", default)]
+        pub op: ::std::option::Option<crate::schemas::CompositeFilterOp>,
+    }
+    impl ::field_selector::FieldSelector for CompositeFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -278,26 +298,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CompositeFilterOp {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CompositeFilter {
-        #[doc = "The list of filters to combine.\nMust contain at least one filter."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<Vec<crate::schemas::Filter>>,
-        #[doc = "The operator for combining multiple filters."]
-        #[serde(rename = "op", default)]
-        pub op: ::std::option::Option<crate::schemas::CompositeFilterOp>,
-    }
-    impl ::field_selector::FieldSelector for CompositeFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -380,6 +380,47 @@ pub mod schemas {
         pub property_filter: ::std::option::Option<crate::schemas::PropertyFilter>,
     }
     impl ::field_selector::FieldSelector for Filter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDatastoreAdminV1Beta1CommonMetadata {
+        #[doc = "The time the operation ended, either successfully or otherwise."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type: ::std::option::Option<
+            crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType,
+        >,
+        #[doc = "The time that work began on the operation."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "The current state of the Operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -524,47 +565,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDatastoreAdminV1Beta1CommonMetadata {
-        #[doc = "The time the operation ended, either successfully or otherwise."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type: ::std::option::Option<
-            crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType,
-        >,
-        #[doc = "The time that work began on the operation."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "The current state of the Operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -743,6 +743,46 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDatastoreAdminV1CommonMetadata {
+        #[doc = "The time the operation ended, either successfully or otherwise."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type: ::std::option::Option<
+            crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType,
+        >,
+        #[doc = "The time that work began on the operation."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "The current state of the Operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataOperationType {
         #[doc = "CreateIndex."]
@@ -893,46 +933,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDatastoreAdminV1CommonMetadata {
-        #[doc = "The time the operation ended, either successfully or otherwise."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type: ::std::option::Option<
-            crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType,
-        >,
-        #[doc = "The time that work began on the operation."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "The current state of the Operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1142,6 +1142,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDatastoreAdminV1Index {
+        #[doc = "The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.\nRequired."]
+        #[serde(rename = "ancestor", default)]
+        pub ancestor: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexAncestor>,
+        #[doc = "The resource ID of the index.\nOutput only."]
+        #[serde(rename = "indexId", default)]
+        pub index_id: ::std::option::Option<String>,
+        #[doc = "The entity kind to which this index applies.\nRequired."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Project ID.\nOutput only."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "An ordered sequence of property names and their index attributes.\nRequired."]
+        #[serde(rename = "properties", default)]
+        pub properties:
+            ::std::option::Option<Vec<crate::schemas::GoogleDatastoreAdminV1IndexedProperty>>,
+        #[doc = "The state of the index.\nOutput only."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Index {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1IndexAncestor {
         #[doc = "Include all the entity's ancestors in the index."]
@@ -1284,28 +1326,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleDatastoreAdminV1Index {
-        #[doc = "The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.\nRequired."]
-        #[serde(rename = "ancestor", default)]
-        pub ancestor: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexAncestor>,
-        #[doc = "The resource ID of the index.\nOutput only."]
+    pub struct GoogleDatastoreAdminV1IndexOperationMetadata {
+        #[doc = "Metadata common to all Datastore Admin operations."]
+        #[serde(rename = "common", default)]
+        pub common: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
+        #[doc = "The index resource ID that this operation is acting on."]
         #[serde(rename = "indexId", default)]
         pub index_id: ::std::option::Option<String>,
-        #[doc = "The entity kind to which this index applies.\nRequired."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Project ID.\nOutput only."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "An ordered sequence of property names and their index attributes.\nRequired."]
-        #[serde(rename = "properties", default)]
-        pub properties:
-            ::std::option::Option<Vec<crate::schemas::GoogleDatastoreAdminV1IndexedProperty>>,
-        #[doc = "The state of the index.\nOutput only."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexState>,
+        #[doc = "An estimate of the number of entities processed."]
+        #[serde(rename = "progressEntities", default)]
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
     }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Index {
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1326,19 +1359,16 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleDatastoreAdminV1IndexOperationMetadata {
-        #[doc = "Metadata common to all Datastore Admin operations."]
-        #[serde(rename = "common", default)]
-        pub common: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
-        #[doc = "The index resource ID that this operation is acting on."]
-        #[serde(rename = "indexId", default)]
-        pub index_id: ::std::option::Option<String>,
-        #[doc = "An estimate of the number of entities processed."]
-        #[serde(rename = "progressEntities", default)]
-        pub progress_entities:
-            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+    pub struct GoogleDatastoreAdminV1IndexedProperty {
+        #[doc = "The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.\nRequired."]
+        #[serde(rename = "direction", default)]
+        pub direction:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexedPropertyDirection>,
+        #[doc = "The property name to index.\nRequired."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexOperationMetadata {
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1402,36 +1432,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexedPropertyDirection {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDatastoreAdminV1IndexedProperty {
-        #[doc = "The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.\nRequired."]
-        #[serde(rename = "direction", default)]
-        pub direction:
-            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexedPropertyDirection>,
-        #[doc = "The property name to index.\nRequired."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1873,6 +1873,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PropertyFilter {
+        #[doc = "The operator to filter by."]
+        #[serde(rename = "op", default)]
+        pub op: ::std::option::Option<crate::schemas::PropertyFilterOp>,
+        #[doc = "The property to filter by."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<crate::schemas::PropertyReference>,
+        #[doc = "The value to compare the property to."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<crate::schemas::Value>,
+    }
+    impl ::field_selector::FieldSelector for PropertyFilter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PropertyFilterOp {
         #[doc = "Equal."]
@@ -1949,20 +1972,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct PropertyFilter {
-        #[doc = "The operator to filter by."]
-        #[serde(rename = "op", default)]
-        pub op: ::std::option::Option<crate::schemas::PropertyFilterOp>,
-        #[doc = "The property to filter by."]
+    pub struct PropertyOrder {
+        #[doc = "The direction to order by. Defaults to `ASCENDING`."]
+        #[serde(rename = "direction", default)]
+        pub direction: ::std::option::Option<crate::schemas::PropertyOrderDirection>,
+        #[doc = "The property to order by."]
         #[serde(rename = "property", default)]
         pub property: ::std::option::Option<crate::schemas::PropertyReference>,
-        #[doc = "The value to compare the property to."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::schemas::Value>,
     }
-    impl ::field_selector::FieldSelector for PropertyFilter {
+    impl ::field_selector::FieldSelector for PropertyOrder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2042,35 +2071,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PropertyOrder {
-        #[doc = "The direction to order by. Defaults to `ASCENDING`."]
-        #[serde(rename = "direction", default)]
-        pub direction: ::std::option::Option<crate::schemas::PropertyOrderDirection>,
-        #[doc = "The property to order by."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<crate::schemas::PropertyReference>,
-    }
-    impl ::field_selector::FieldSelector for PropertyOrder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct PropertyReference {
         #[doc = "The name of the property.\nIf name includes \".\"s, it may be interpreted as a property name path."]
         #[serde(rename = "name", default)]
@@ -2118,6 +2118,43 @@ pub mod schemas {
         pub start_cursor: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for Query {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct QueryResultBatch {
+        #[doc = "A cursor that points to the position after the last result in the batch."]
+        #[serde(rename = "endCursor", default)]
+        pub end_cursor: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The result type for every entity in `entity_results`."]
+        #[serde(rename = "entityResultType", default)]
+        pub entity_result_type:
+            ::std::option::Option<crate::schemas::QueryResultBatchEntityResultType>,
+        #[doc = "The results for this batch."]
+        #[serde(rename = "entityResults", default)]
+        pub entity_results: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
+        #[doc = "The state of the query after the current batch."]
+        #[serde(rename = "moreResults", default)]
+        pub more_results: ::std::option::Option<crate::schemas::QueryResultBatchMoreResults>,
+        #[doc = "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0."]
+        #[serde(rename = "skippedCursor", default)]
+        pub skipped_cursor: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The number of results skipped, typically because of an offset."]
+        #[serde(rename = "skippedResults", default)]
+        pub skipped_results: ::std::option::Option<i32>,
+        #[doc = "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries."]
+        #[serde(rename = "snapshotVersion", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub snapshot_version: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for QueryResultBatch {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2265,43 +2302,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct QueryResultBatch {
-        #[doc = "A cursor that points to the position after the last result in the batch."]
-        #[serde(rename = "endCursor", default)]
-        pub end_cursor: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The result type for every entity in `entity_results`."]
-        #[serde(rename = "entityResultType", default)]
-        pub entity_result_type:
-            ::std::option::Option<crate::schemas::QueryResultBatchEntityResultType>,
-        #[doc = "The results for this batch."]
-        #[serde(rename = "entityResults", default)]
-        pub entity_results: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
-        #[doc = "The state of the query after the current batch."]
-        #[serde(rename = "moreResults", default)]
-        pub more_results: ::std::option::Option<crate::schemas::QueryResultBatchMoreResults>,
-        #[doc = "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0."]
-        #[serde(rename = "skippedCursor", default)]
-        pub skipped_cursor: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The number of results skipped, typically because of an offset."]
-        #[serde(rename = "skippedResults", default)]
-        pub skipped_results: ::std::option::Option<i32>,
-        #[doc = "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries."]
-        #[serde(rename = "snapshotVersion", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub snapshot_version: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for QueryResultBatch {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2317,6 +2317,35 @@ pub mod schemas {
     pub struct ReadOnly;
     impl ::field_selector::FieldSelector for ReadOnly {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReadOptions {
+        #[doc = "The non-transactional read consistency to use.\nCannot be set to `STRONG` for global queries."]
+        #[serde(rename = "readConsistency", default)]
+        pub read_consistency: ::std::option::Option<crate::schemas::ReadOptionsReadConsistency>,
+        #[doc = "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
+        #[serde(rename = "transaction", default)]
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+    }
+    impl ::field_selector::FieldSelector for ReadOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReadOptionsReadConsistency {
@@ -2373,35 +2402,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ReadOptionsReadConsistency {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReadOptions {
-        #[doc = "The non-transactional read consistency to use.\nCannot be set to `STRONG` for global queries."]
-        #[serde(rename = "readConsistency", default)]
-        pub read_consistency: ::std::option::Option<crate::schemas::ReadOptionsReadConsistency>,
-        #[doc = "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
-    }
-    impl ::field_selector::FieldSelector for ReadOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2622,57 +2622,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ValueNullValue {
-        #[doc = "Null value."]
-        NullValue,
-    }
-    impl ValueNullValue {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ValueNullValue::NullValue => "NULL_VALUE",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ValueNullValue {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ValueNullValue {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ValueNullValue {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "NULL_VALUE" => ValueNullValue::NullValue,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for ValueNullValue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
@@ -2719,6 +2668,57 @@ pub mod schemas {
         pub timestamp_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Value {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ValueNullValue {
+        #[doc = "Null value."]
+        NullValue,
+    }
+    impl ValueNullValue {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ValueNullValue::NullValue => "NULL_VALUE",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ValueNullValue {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ValueNullValue {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ValueNullValue {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NULL_VALUE" => ValueNullValue::NullValue,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for ValueNullValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6031,84 +6031,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -6140,7 +6062,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -6266,8 +6187,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

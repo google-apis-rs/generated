@@ -35,6 +35,80 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Activity {
+        #[doc = "Identifies who has access to see this activity."]
+        #[serde(rename = "access", default)]
+        pub access: ::std::option::Option<crate::schemas::Acl>,
+        #[doc = "The person who performed this activity."]
+        #[serde(rename = "actor", default)]
+        pub actor: ::std::option::Option<crate::schemas::ActivityActor>,
+        #[doc = "Street address where this activity occurred."]
+        #[serde(rename = "address", default)]
+        pub address: ::std::option::Option<String>,
+        #[doc = "Additional content added by the person who shared this activity, applicable only when resharing an activity."]
+        #[serde(rename = "annotation", default)]
+        pub annotation: ::std::option::Option<String>,
+        #[doc = "If this activity is a crosspost from another system, this property specifies the ID of the original activity."]
+        #[serde(rename = "crosspostSource", default)]
+        pub crosspost_source: ::std::option::Option<String>,
+        #[doc = "ETag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Latitude and longitude where this activity occurred. Format is latitude followed by longitude, space separated."]
+        #[serde(rename = "geocode", default)]
+        pub geocode: ::std::option::Option<String>,
+        #[doc = "The ID of this activity."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Identifies this resource as an activity. Value: \"plus#activity\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The location where this activity occurred."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<crate::schemas::Place>,
+        #[doc = "The object of this activity."]
+        #[serde(rename = "object", default)]
+        pub object: ::std::option::Option<crate::schemas::ActivityObject>,
+        #[doc = "ID of the place where this activity occurred."]
+        #[serde(rename = "placeId", default)]
+        pub place_id: ::std::option::Option<String>,
+        #[doc = "Name of the place where this activity occurred."]
+        #[serde(rename = "placeName", default)]
+        pub place_name: ::std::option::Option<String>,
+        #[doc = "The service provider that initially published this activity."]
+        #[serde(rename = "provider", default)]
+        pub provider: ::std::option::Option<crate::schemas::ActivityProvider>,
+        #[doc = "The time at which this activity was initially published. Formatted as an RFC 3339 timestamp."]
+        #[serde(rename = "published", default)]
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Radius, in meters, of the region where this activity occurred, centered at the latitude and longitude identified in geocode."]
+        #[serde(rename = "radius", default)]
+        pub radius: ::std::option::Option<String>,
+        #[doc = "Title of this activity."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "The time at which this activity was last updated. Formatted as an RFC 3339 timestamp."]
+        #[serde(rename = "updated", default)]
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The link to this activity."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "This activity's verb, which indicates the action that was performed. Possible values include, but are not limited to, the following values:\n\n* \"post\" - Publish content to the stream. \n* \"share\" - Reshare an activity."]
+        #[serde(rename = "verb", default)]
+        pub verb: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Activity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -46,12 +120,31 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityActorClientSpecificActorInfoYoutubeActorInfo {
-        #[doc = "ID of the YouTube channel owned by the Actor."]
-        #[serde(rename = "channelId", default)]
-        pub channel_id: ::std::option::Option<String>,
+    pub struct ActivityActor {
+        #[doc = "Actor info specific to particular clients."]
+        #[serde(rename = "clientSpecificActorInfo", default)]
+        pub client_specific_actor_info:
+            ::std::option::Option<crate::schemas::ActivityActorClientSpecificActorInfo>,
+        #[doc = "The name of the actor, suitable for display."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The ID of the actor's Person resource."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The image representation of the actor."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::ActivityActorImage>,
+        #[doc = "An object representation of the individual components of name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<crate::schemas::ActivityActorName>,
+        #[doc = "The link to the actor's Google profile."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "Verification status of actor."]
+        #[serde(rename = "verification", default)]
+        pub verification: ::std::option::Option<crate::schemas::ActivityActorVerification>,
     }
-    impl ::field_selector::FieldSelector for ActivityActorClientSpecificActorInfoYoutubeActorInfo {
+    impl ::field_selector::FieldSelector for ActivityActor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -80,6 +173,32 @@ pub mod schemas {
         >,
     }
     impl ::field_selector::FieldSelector for ActivityActorClientSpecificActorInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActivityActorClientSpecificActorInfoYoutubeActorInfo {
+        #[doc = "ID of the YouTube channel owned by the Actor."]
+        #[serde(rename = "channelId", default)]
+        pub channel_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ActivityActorClientSpecificActorInfoYoutubeActorInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -181,31 +300,42 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityActor {
-        #[doc = "Actor info specific to particular clients."]
-        #[serde(rename = "clientSpecificActorInfo", default)]
-        pub client_specific_actor_info:
-            ::std::option::Option<crate::schemas::ActivityActorClientSpecificActorInfo>,
-        #[doc = "The name of the actor, suitable for display."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The ID of the actor's Person resource."]
+    pub struct ActivityObject {
+        #[doc = "If this activity's object is itself another activity, such as when a person reshares an activity, this property specifies the original activity's actor."]
+        #[serde(rename = "actor", default)]
+        pub actor: ::std::option::Option<crate::schemas::ActivityObjectActor>,
+        #[doc = "The media objects attached to this activity."]
+        #[serde(rename = "attachments", default)]
+        pub attachments: ::std::option::Option<Vec<crate::schemas::ActivityObjectAttachmentsItems>>,
+        #[doc = "The HTML-formatted content, which is suitable for display."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "The ID of the object. When resharing an activity, this is the ID of the activity that is being reshared."]
         #[serde(rename = "id", default)]
         pub id: ::std::option::Option<String>,
-        #[doc = "The image representation of the actor."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::ActivityActorImage>,
-        #[doc = "An object representation of the individual components of name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<crate::schemas::ActivityActorName>,
-        #[doc = "The link to the actor's Google profile."]
+        #[doc = "The type of the object. Possible values include, but are not limited to, the following values:\n\n* \"note\" - Textual content. \n* \"activity\" - A Google+ activity."]
+        #[serde(rename = "objectType", default)]
+        pub object_type: ::std::option::Option<String>,
+        #[doc = "The content (text) as provided by the author, which is stored without any HTML formatting. When creating or updating an activity, this value must be supplied as plain text in the request."]
+        #[serde(rename = "originalContent", default)]
+        pub original_content: ::std::option::Option<String>,
+        #[doc = "People who +1'd this activity."]
+        #[serde(rename = "plusoners", default)]
+        pub plusoners: ::std::option::Option<crate::schemas::ActivityObjectPlusoners>,
+        #[doc = "Comments in reply to this activity."]
+        #[serde(rename = "replies", default)]
+        pub replies: ::std::option::Option<crate::schemas::ActivityObjectReplies>,
+        #[doc = "People who reshared this activity."]
+        #[serde(rename = "resharers", default)]
+        pub resharers: ::std::option::Option<crate::schemas::ActivityObjectResharers>,
+        #[doc = "Status of the activity as seen by the viewer."]
+        #[serde(rename = "statusForViewer", default)]
+        pub status_for_viewer: ::std::option::Option<crate::schemas::ActivityObjectStatusForViewer>,
+        #[doc = "The URL that points to the linked resource."]
         #[serde(rename = "url", default)]
         pub url: ::std::option::Option<String>,
-        #[doc = "Verification status of actor."]
-        #[serde(rename = "verification", default)]
-        pub verification: ::std::option::Option<crate::schemas::ActivityActorVerification>,
     }
-    impl ::field_selector::FieldSelector for ActivityActor {
+    impl ::field_selector::FieldSelector for ActivityObject {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -226,14 +356,28 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo {
-        #[doc = "ID of the YouTube channel owned by the Actor."]
-        #[serde(rename = "channelId", default)]
-        pub channel_id: ::std::option::Option<String>,
+    pub struct ActivityObjectActor {
+        #[doc = "Actor info specific to particular clients."]
+        #[serde(rename = "clientSpecificActorInfo", default)]
+        pub client_specific_actor_info:
+            ::std::option::Option<crate::schemas::ActivityObjectActorClientSpecificActorInfo>,
+        #[doc = "The original actor's name, which is suitable for display."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "ID of the original actor."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The image representation of the original actor."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::ActivityObjectActorImage>,
+        #[doc = "A link to the original actor's Google profile."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "Verification status of actor."]
+        #[serde(rename = "verification", default)]
+        pub verification: ::std::option::Option<crate::schemas::ActivityObjectActorVerification>,
     }
-    impl ::field_selector::FieldSelector
-        for ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
-    {
+    impl ::field_selector::FieldSelector for ActivityObjectActor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -262,6 +406,34 @@ pub mod schemas {
         >,
     }
     impl ::field_selector::FieldSelector for ActivityObjectActorClientSpecificActorInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo {
+        #[doc = "ID of the YouTube channel owned by the Actor."]
+        #[serde(rename = "channelId", default)]
+        pub channel_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -334,28 +506,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityObjectActor {
-        #[doc = "Actor info specific to particular clients."]
-        #[serde(rename = "clientSpecificActorInfo", default)]
-        pub client_specific_actor_info:
-            ::std::option::Option<crate::schemas::ActivityObjectActorClientSpecificActorInfo>,
-        #[doc = "The original actor's name, which is suitable for display."]
+    pub struct ActivityObjectAttachmentsItems {
+        #[doc = "If the attachment is an article, this property contains a snippet of text from the article. It can also include descriptions for other types."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "The title of the attachment, such as a photo caption or an article title."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "ID of the original actor."]
+        #[doc = "If the attachment is a video, the embeddable link."]
+        #[serde(rename = "embed", default)]
+        pub embed: ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsEmbed>,
+        #[doc = "The full image URL for photo attachments."]
+        #[serde(rename = "fullImage", default)]
+        pub full_image:
+            ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsFullImage>,
+        #[doc = "The ID of the attachment."]
         #[serde(rename = "id", default)]
         pub id: ::std::option::Option<String>,
-        #[doc = "The image representation of the original actor."]
+        #[doc = "The preview image for photos or videos."]
         #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::ActivityObjectActorImage>,
-        #[doc = "A link to the original actor's Google profile."]
+        pub image: ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsImage>,
+        #[doc = "The type of media object. Possible values include, but are not limited to, the following values:\n\n* \"photo\" - A photo. \n* \"album\" - A photo album. \n* \"video\" - A video. \n* \"article\" - An article, specified by a link."]
+        #[serde(rename = "objectType", default)]
+        pub object_type: ::std::option::Option<String>,
+        #[doc = "When previewing, these are the optional thumbnails for the post. When posting an article, choose one by setting the attachment.image.url property. If you don't choose one, one will be chosen for you."]
+        #[serde(rename = "previewThumbnails", default)]
+        pub preview_thumbnails: ::std::option::Option<
+            Vec<crate::schemas::ActivityObjectAttachmentsItemsPreviewThumbnailsItems>,
+        >,
+        #[doc = "If the attachment is an album, this property is a list of potential additional thumbnails from the album."]
+        #[serde(rename = "thumbnails", default)]
+        pub thumbnails: ::std::option::Option<
+            Vec<crate::schemas::ActivityObjectAttachmentsItemsThumbnailsItems>,
+        >,
+        #[doc = "The link to the attachment, which should be of type text/html."]
         #[serde(rename = "url", default)]
         pub url: ::std::option::Option<String>,
-        #[doc = "Verification status of actor."]
-        #[serde(rename = "verification", default)]
-        pub verification: ::std::option::Option<crate::schemas::ActivityObjectActorVerification>,
     }
-    impl ::field_selector::FieldSelector for ActivityObjectActor {
+    impl ::field_selector::FieldSelector for ActivityObjectAttachmentsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -501,41 +689,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityObjectAttachmentsItemsThumbnailsItemsImage {
-        #[doc = "The height, in pixels, of the linked resource."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<u32>,
-        #[doc = "Media type of the link."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "Image url."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "The width, in pixels, of the linked resource."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<u32>,
-    }
-    impl ::field_selector::FieldSelector for ActivityObjectAttachmentsItemsThumbnailsItemsImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ActivityObjectAttachmentsItemsThumbnailsItems {
         #[doc = "Potential name of the thumbnail."]
         #[serde(rename = "description", default)]
@@ -570,44 +723,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityObjectAttachmentsItems {
-        #[doc = "If the attachment is an article, this property contains a snippet of text from the article. It can also include descriptions for other types."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "The title of the attachment, such as a photo caption or an article title."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "If the attachment is a video, the embeddable link."]
-        #[serde(rename = "embed", default)]
-        pub embed: ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsEmbed>,
-        #[doc = "The full image URL for photo attachments."]
-        #[serde(rename = "fullImage", default)]
-        pub full_image:
-            ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsFullImage>,
-        #[doc = "The ID of the attachment."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The preview image for photos or videos."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::ActivityObjectAttachmentsItemsImage>,
-        #[doc = "The type of media object. Possible values include, but are not limited to, the following values:\n\n* \"photo\" - A photo. \n* \"album\" - A photo album. \n* \"video\" - A video. \n* \"article\" - An article, specified by a link."]
-        #[serde(rename = "objectType", default)]
-        pub object_type: ::std::option::Option<String>,
-        #[doc = "When previewing, these are the optional thumbnails for the post. When posting an article, choose one by setting the attachment.image.url property. If you don't choose one, one will be chosen for you."]
-        #[serde(rename = "previewThumbnails", default)]
-        pub preview_thumbnails: ::std::option::Option<
-            Vec<crate::schemas::ActivityObjectAttachmentsItemsPreviewThumbnailsItems>,
-        >,
-        #[doc = "If the attachment is an album, this property is a list of potential additional thumbnails from the album."]
-        #[serde(rename = "thumbnails", default)]
-        pub thumbnails: ::std::option::Option<
-            Vec<crate::schemas::ActivityObjectAttachmentsItemsThumbnailsItems>,
-        >,
-        #[doc = "The link to the attachment, which should be of type text/html."]
+    pub struct ActivityObjectAttachmentsItemsThumbnailsItemsImage {
+        #[doc = "The height, in pixels, of the linked resource."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<u32>,
+        #[doc = "Media type of the link."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "Image url."]
         #[serde(rename = "url", default)]
         pub url: ::std::option::Option<String>,
+        #[doc = "The width, in pixels, of the linked resource."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<u32>,
     }
-    impl ::field_selector::FieldSelector for ActivityObjectAttachmentsItems {
+    impl ::field_selector::FieldSelector for ActivityObjectAttachmentsItemsThumbnailsItemsImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -753,142 +883,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityObject {
-        #[doc = "If this activity's object is itself another activity, such as when a person reshares an activity, this property specifies the original activity's actor."]
-        #[serde(rename = "actor", default)]
-        pub actor: ::std::option::Option<crate::schemas::ActivityObjectActor>,
-        #[doc = "The media objects attached to this activity."]
-        #[serde(rename = "attachments", default)]
-        pub attachments: ::std::option::Option<Vec<crate::schemas::ActivityObjectAttachmentsItems>>,
-        #[doc = "The HTML-formatted content, which is suitable for display."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "The ID of the object. When resharing an activity, this is the ID of the activity that is being reshared."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The type of the object. Possible values include, but are not limited to, the following values:\n\n* \"note\" - Textual content. \n* \"activity\" - A Google+ activity."]
-        #[serde(rename = "objectType", default)]
-        pub object_type: ::std::option::Option<String>,
-        #[doc = "The content (text) as provided by the author, which is stored without any HTML formatting. When creating or updating an activity, this value must be supplied as plain text in the request."]
-        #[serde(rename = "originalContent", default)]
-        pub original_content: ::std::option::Option<String>,
-        #[doc = "People who +1'd this activity."]
-        #[serde(rename = "plusoners", default)]
-        pub plusoners: ::std::option::Option<crate::schemas::ActivityObjectPlusoners>,
-        #[doc = "Comments in reply to this activity."]
-        #[serde(rename = "replies", default)]
-        pub replies: ::std::option::Option<crate::schemas::ActivityObjectReplies>,
-        #[doc = "People who reshared this activity."]
-        #[serde(rename = "resharers", default)]
-        pub resharers: ::std::option::Option<crate::schemas::ActivityObjectResharers>,
-        #[doc = "Status of the activity as seen by the viewer."]
-        #[serde(rename = "statusForViewer", default)]
-        pub status_for_viewer: ::std::option::Option<crate::schemas::ActivityObjectStatusForViewer>,
-        #[doc = "The URL that points to the linked resource."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ActivityObject {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ActivityProvider {
         #[doc = "Name of the service provider."]
         #[serde(rename = "title", default)]
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivityProvider {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Activity {
-        #[doc = "Identifies who has access to see this activity."]
-        #[serde(rename = "access", default)]
-        pub access: ::std::option::Option<crate::schemas::Acl>,
-        #[doc = "The person who performed this activity."]
-        #[serde(rename = "actor", default)]
-        pub actor: ::std::option::Option<crate::schemas::ActivityActor>,
-        #[doc = "Street address where this activity occurred."]
-        #[serde(rename = "address", default)]
-        pub address: ::std::option::Option<String>,
-        #[doc = "Additional content added by the person who shared this activity, applicable only when resharing an activity."]
-        #[serde(rename = "annotation", default)]
-        pub annotation: ::std::option::Option<String>,
-        #[doc = "If this activity is a crosspost from another system, this property specifies the ID of the original activity."]
-        #[serde(rename = "crosspostSource", default)]
-        pub crosspost_source: ::std::option::Option<String>,
-        #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Latitude and longitude where this activity occurred. Format is latitude followed by longitude, space separated."]
-        #[serde(rename = "geocode", default)]
-        pub geocode: ::std::option::Option<String>,
-        #[doc = "The ID of this activity."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifies this resource as an activity. Value: \"plus#activity\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The location where this activity occurred."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<crate::schemas::Place>,
-        #[doc = "The object of this activity."]
-        #[serde(rename = "object", default)]
-        pub object: ::std::option::Option<crate::schemas::ActivityObject>,
-        #[doc = "ID of the place where this activity occurred."]
-        #[serde(rename = "placeId", default)]
-        pub place_id: ::std::option::Option<String>,
-        #[doc = "Name of the place where this activity occurred."]
-        #[serde(rename = "placeName", default)]
-        pub place_name: ::std::option::Option<String>,
-        #[doc = "The service provider that initially published this activity."]
-        #[serde(rename = "provider", default)]
-        pub provider: ::std::option::Option<crate::schemas::ActivityProvider>,
-        #[doc = "The time at which this activity was initially published. Formatted as an RFC 3339 timestamp."]
-        #[serde(rename = "published", default)]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Radius, in meters, of the region where this activity occurred, centered at the latitude and longitude identified in geocode."]
-        #[serde(rename = "radius", default)]
-        pub radius: ::std::option::Option<String>,
-        #[doc = "Title of this activity."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-        #[doc = "The time at which this activity was last updated. Formatted as an RFC 3339 timestamp."]
-        #[serde(rename = "updated", default)]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The link to this activity."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "This activity's verb, which indicates the action that was performed. Possible values include, but are not limited to, the following values:\n\n* \"post\" - Publish content to the stream. \n* \"share\" - Reshare an activity."]
-        #[serde(rename = "verb", default)]
-        pub verb: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Activity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1026,32 +1026,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CirclePeople {
-        #[doc = "The total number of people in this circle."]
-        #[serde(rename = "totalItems", default)]
-        pub total_items: ::std::option::Option<u32>,
-    }
-    impl ::field_selector::FieldSelector for CirclePeople {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Circle {
         #[doc = "The description of this circle."]
         #[serde(rename = "description", default)]
@@ -1076,6 +1050,32 @@ pub mod schemas {
         pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Circle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CirclePeople {
+        #[doc = "The total number of people in this circle."]
+        #[serde(rename = "totalItems", default)]
+        pub total_items: ::std::option::Option<u32>,
+    }
+    impl ::field_selector::FieldSelector for CirclePeople {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1143,12 +1143,84 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CommentActorClientSpecificActorInfoYoutubeActorInfo {
-        #[doc = "ID of the YouTube channel owned by the Actor."]
-        #[serde(rename = "channelId", default)]
-        pub channel_id: ::std::option::Option<String>,
+    pub struct Comment {
+        #[doc = "The person who posted this comment."]
+        #[serde(rename = "actor", default)]
+        pub actor: ::std::option::Option<crate::schemas::CommentActor>,
+        #[doc = "ETag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The ID of this comment."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The activity this comment replied to."]
+        #[serde(rename = "inReplyTo", default)]
+        pub in_reply_to: ::std::option::Option<Vec<crate::schemas::CommentInReplyToItems>>,
+        #[doc = "Identifies this resource as a comment. Value: \"plus#comment\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The object of this comment."]
+        #[serde(rename = "object", default)]
+        pub object: ::std::option::Option<crate::schemas::CommentObject>,
+        #[doc = "People who +1'd this comment."]
+        #[serde(rename = "plusoners", default)]
+        pub plusoners: ::std::option::Option<crate::schemas::CommentPlusoners>,
+        #[doc = "The time at which this comment was initially published. Formatted as an RFC 3339 timestamp."]
+        #[serde(rename = "published", default)]
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Link to this comment resource."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "The time at which this comment was last updated. Formatted as an RFC 3339 timestamp."]
+        #[serde(rename = "updated", default)]
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "This comment's verb, indicating what action was performed. Possible values are:\n\n* \"post\" - Publish content to the stream."]
+        #[serde(rename = "verb", default)]
+        pub verb: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for CommentActorClientSpecificActorInfoYoutubeActorInfo {
+    impl ::field_selector::FieldSelector for Comment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentActor {
+        #[doc = "Actor info specific to particular clients."]
+        #[serde(rename = "clientSpecificActorInfo", default)]
+        pub client_specific_actor_info:
+            ::std::option::Option<crate::schemas::CommentActorClientSpecificActorInfo>,
+        #[doc = "The name of this actor, suitable for display."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The ID of the actor."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The image representation of this actor."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::CommentActorImage>,
+        #[doc = "A link to the Person resource for this actor."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "Verification status of actor."]
+        #[serde(rename = "verification", default)]
+        pub verification: ::std::option::Option<crate::schemas::CommentActorVerification>,
+    }
+    impl ::field_selector::FieldSelector for CommentActor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1177,6 +1249,32 @@ pub mod schemas {
         >,
     }
     impl ::field_selector::FieldSelector for CommentActorClientSpecificActorInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentActorClientSpecificActorInfoYoutubeActorInfo {
+        #[doc = "ID of the YouTube channel owned by the Actor."]
+        #[serde(rename = "channelId", default)]
+        pub channel_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentActorClientSpecificActorInfoYoutubeActorInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1229,48 +1327,6 @@ pub mod schemas {
         pub ad_hoc_verified: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentActorVerification {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CommentActor {
-        #[doc = "Actor info specific to particular clients."]
-        #[serde(rename = "clientSpecificActorInfo", default)]
-        pub client_specific_actor_info:
-            ::std::option::Option<crate::schemas::CommentActorClientSpecificActorInfo>,
-        #[doc = "The name of this actor, suitable for display."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The ID of the actor."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The image representation of this actor."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::CommentActorImage>,
-        #[doc = "A link to the Person resource for this actor."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "Verification status of actor."]
-        #[serde(rename = "verification", default)]
-        pub verification: ::std::option::Option<crate::schemas::CommentActorVerification>,
-    }
-    impl ::field_selector::FieldSelector for CommentActor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1378,62 +1434,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Comment {
-        #[doc = "The person who posted this comment."]
-        #[serde(rename = "actor", default)]
-        pub actor: ::std::option::Option<crate::schemas::CommentActor>,
-        #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The ID of this comment."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The activity this comment replied to."]
-        #[serde(rename = "inReplyTo", default)]
-        pub in_reply_to: ::std::option::Option<Vec<crate::schemas::CommentInReplyToItems>>,
-        #[doc = "Identifies this resource as a comment. Value: \"plus#comment\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The object of this comment."]
-        #[serde(rename = "object", default)]
-        pub object: ::std::option::Option<crate::schemas::CommentObject>,
-        #[doc = "People who +1'd this comment."]
-        #[serde(rename = "plusoners", default)]
-        pub plusoners: ::std::option::Option<crate::schemas::CommentPlusoners>,
-        #[doc = "The time at which this comment was initially published. Formatted as an RFC 3339 timestamp."]
-        #[serde(rename = "published", default)]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Link to this comment resource."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "The time at which this comment was last updated. Formatted as an RFC 3339 timestamp."]
-        #[serde(rename = "updated", default)]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "This comment's verb, indicating what action was performed. Possible values are:\n\n* \"post\" - Publish content to the stream."]
-        #[serde(rename = "verb", default)]
-        pub verb: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Comment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct CommentFeed {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
@@ -1461,93 +1461,6 @@ pub mod schemas {
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for CommentFeed {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MediaAuthorImage {
-        #[doc = "The URL of the author's profile photo. To resize the image and crop it to a square, append the query string ?sz=x, where x is the dimension in pixels of each side."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MediaAuthorImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MediaAuthor {
-        #[doc = "The author's name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "ID of the author."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The author's Google profile image."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::MediaAuthorImage>,
-        #[doc = "A link to the author's Google profile."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MediaAuthor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MediaExif {
-        #[doc = "The time the media was captured. Formatted as an RFC 3339 timestamp."]
-        #[serde(rename = "time", default)]
-        pub time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for MediaExif {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1647,6 +1560,93 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct MediaAuthor {
+        #[doc = "The author's name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "ID of the author."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The author's Google profile image."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::MediaAuthorImage>,
+        #[doc = "A link to the author's Google profile."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MediaAuthor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MediaAuthorImage {
+        #[doc = "The URL of the author's profile photo. To resize the image and crop it to a square, append the query string ?sz=x, where x is the dimension in pixels of each side."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MediaAuthorImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MediaExif {
+        #[doc = "The time the media was captured. Formatted as an RFC 3339 timestamp."]
+        #[serde(rename = "time", default)]
+        pub time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for MediaExif {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct PeopleFeed {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
@@ -1671,6 +1671,145 @@ pub mod schemas {
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PeopleFeed {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Person {
+        #[doc = "A short biography for this person."]
+        #[serde(rename = "aboutMe", default)]
+        pub about_me: ::std::option::Option<String>,
+        #[doc = "The person's date of birth, represented as YYYY-MM-DD."]
+        #[serde(rename = "birthday", default)]
+        pub birthday: ::std::option::Option<String>,
+        #[doc = "The \"bragging rights\" line of this person."]
+        #[serde(rename = "braggingRights", default)]
+        pub bragging_rights: ::std::option::Option<String>,
+        #[doc = "For followers who are visible, the number of people who have added this person or page to a circle."]
+        #[serde(rename = "circledByCount", default)]
+        pub circled_by_count: ::std::option::Option<i32>,
+        #[doc = "The cover photo content."]
+        #[serde(rename = "cover", default)]
+        pub cover: ::std::option::Option<crate::schemas::PersonCover>,
+        #[doc = "(this field is not currently used)"]
+        #[serde(rename = "currentLocation", default)]
+        pub current_location: ::std::option::Option<String>,
+        #[doc = "The name of this person, which is suitable for display."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The hosted domain name for the user's Google Apps account. For instance, example.com. The plus.profile.emails.read or email scope is needed to get this domain name."]
+        #[serde(rename = "domain", default)]
+        pub domain: ::std::option::Option<String>,
+        #[doc = "A list of email addresses that this person has, including their Google account email address, and the public verified email addresses on their Google+ profile. The plus.profile.emails.read scope is needed to retrieve these email addresses, or the email scope can be used to retrieve just the Google account email address."]
+        #[serde(rename = "emails", default)]
+        pub emails: ::std::option::Option<Vec<crate::schemas::PersonEmailsItems>>,
+        #[doc = "ETag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The person's gender. Possible values include, but are not limited to, the following values:\n\n* \"male\" - Male gender. \n* \"female\" - Female gender. \n* \"other\" - Other."]
+        #[serde(rename = "gender", default)]
+        pub gender: ::std::option::Option<String>,
+        #[doc = "The ID of this person."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The representation of the person's profile photo."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::PersonImage>,
+        #[doc = "Whether this user has signed up for Google+."]
+        #[serde(rename = "isPlusUser", default)]
+        pub is_plus_user: ::std::option::Option<bool>,
+        #[doc = "Identifies this resource as a person. Value: \"plus#person\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "An object representation of the individual components of a person's name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<crate::schemas::PersonName>,
+        #[doc = "The nickname of this person."]
+        #[serde(rename = "nickname", default)]
+        pub nickname: ::std::option::Option<String>,
+        #[doc = "Type of person within Google+. Possible values include, but are not limited to, the following values:\n\n* \"person\" - represents an actual person. \n* \"page\" - represents a page."]
+        #[serde(rename = "objectType", default)]
+        pub object_type: ::std::option::Option<String>,
+        #[doc = "The occupation of this person."]
+        #[serde(rename = "occupation", default)]
+        pub occupation: ::std::option::Option<String>,
+        #[doc = "A list of current or past organizations with which this person is associated."]
+        #[serde(rename = "organizations", default)]
+        pub organizations: ::std::option::Option<Vec<crate::schemas::PersonOrganizationsItems>>,
+        #[doc = "A list of places where this person has lived."]
+        #[serde(rename = "placesLived", default)]
+        pub places_lived: ::std::option::Option<Vec<crate::schemas::PersonPlacesLivedItems>>,
+        #[doc = "If a Google+ Page, the number of people who have +1'd this page."]
+        #[serde(rename = "plusOneCount", default)]
+        pub plus_one_count: ::std::option::Option<i32>,
+        #[doc = "The person's relationship status. Possible values include, but are not limited to, the following values:\n\n* \"single\" - Person is single. \n* \"in_a_relationship\" - Person is in a relationship. \n* \"engaged\" - Person is engaged. \n* \"married\" - Person is married. \n* \"its_complicated\" - The relationship is complicated. \n* \"open_relationship\" - Person is in an open relationship. \n* \"widowed\" - Person is widowed. \n* \"in_domestic_partnership\" - Person is in a domestic partnership. \n* \"in_civil_union\" - Person is in a civil union."]
+        #[serde(rename = "relationshipStatus", default)]
+        pub relationship_status: ::std::option::Option<String>,
+        #[doc = "The person's skills."]
+        #[serde(rename = "skills", default)]
+        pub skills: ::std::option::Option<String>,
+        #[doc = "The brief description (tagline) of this person."]
+        #[serde(rename = "tagline", default)]
+        pub tagline: ::std::option::Option<String>,
+        #[doc = "The URL of this person's profile."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "A list of URLs for this person."]
+        #[serde(rename = "urls", default)]
+        pub urls: ::std::option::Option<Vec<crate::schemas::PersonUrlsItems>>,
+        #[doc = "Whether the person or Google+ Page has been verified."]
+        #[serde(rename = "verified", default)]
+        pub verified: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for Person {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PersonCover {
+        #[doc = "Extra information about the cover photo."]
+        #[serde(rename = "coverInfo", default)]
+        pub cover_info: ::std::option::Option<crate::schemas::PersonCoverCoverInfo>,
+        #[doc = "The person's primary cover image."]
+        #[serde(rename = "coverPhoto", default)]
+        pub cover_photo: ::std::option::Option<crate::schemas::PersonCoverCoverPhoto>,
+        #[doc = "The layout of the cover art. Possible values include, but are not limited to, the following values:\n\n* \"banner\" - One large image banner."]
+        #[serde(rename = "layout", default)]
+        pub layout: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PersonCover {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1732,38 +1871,6 @@ pub mod schemas {
         pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PersonCoverCoverPhoto {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PersonCover {
-        #[doc = "Extra information about the cover photo."]
-        #[serde(rename = "coverInfo", default)]
-        pub cover_info: ::std::option::Option<crate::schemas::PersonCoverCoverInfo>,
-        #[doc = "The person's primary cover image."]
-        #[serde(rename = "coverPhoto", default)]
-        pub cover_photo: ::std::option::Option<crate::schemas::PersonCoverCoverPhoto>,
-        #[doc = "The layout of the cover art. Possible values include, but are not limited to, the following values:\n\n* \"banner\" - One large image banner."]
-        #[serde(rename = "layout", default)]
-        pub layout: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PersonCover {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1983,104 +2090,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Person {
-        #[doc = "A short biography for this person."]
-        #[serde(rename = "aboutMe", default)]
-        pub about_me: ::std::option::Option<String>,
-        #[doc = "The person's date of birth, represented as YYYY-MM-DD."]
-        #[serde(rename = "birthday", default)]
-        pub birthday: ::std::option::Option<String>,
-        #[doc = "The \"bragging rights\" line of this person."]
-        #[serde(rename = "braggingRights", default)]
-        pub bragging_rights: ::std::option::Option<String>,
-        #[doc = "For followers who are visible, the number of people who have added this person or page to a circle."]
-        #[serde(rename = "circledByCount", default)]
-        pub circled_by_count: ::std::option::Option<i32>,
-        #[doc = "The cover photo content."]
-        #[serde(rename = "cover", default)]
-        pub cover: ::std::option::Option<crate::schemas::PersonCover>,
-        #[doc = "(this field is not currently used)"]
-        #[serde(rename = "currentLocation", default)]
-        pub current_location: ::std::option::Option<String>,
-        #[doc = "The name of this person, which is suitable for display."]
+    pub struct Place {
+        #[doc = "The physical address of the place."]
+        #[serde(rename = "address", default)]
+        pub address: ::std::option::Option<crate::schemas::PlaceAddress>,
+        #[doc = "The display name of the place."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The hosted domain name for the user's Google Apps account. For instance, example.com. The plus.profile.emails.read or email scope is needed to get this domain name."]
-        #[serde(rename = "domain", default)]
-        pub domain: ::std::option::Option<String>,
-        #[doc = "A list of email addresses that this person has, including their Google account email address, and the public verified email addresses on their Google+ profile. The plus.profile.emails.read scope is needed to retrieve these email addresses, or the email scope can be used to retrieve just the Google account email address."]
-        #[serde(rename = "emails", default)]
-        pub emails: ::std::option::Option<Vec<crate::schemas::PersonEmailsItems>>,
-        #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The person's gender. Possible values include, but are not limited to, the following values:\n\n* \"male\" - Male gender. \n* \"female\" - Female gender. \n* \"other\" - Other."]
-        #[serde(rename = "gender", default)]
-        pub gender: ::std::option::Option<String>,
-        #[doc = "The ID of this person."]
+        #[doc = "The id of the place."]
         #[serde(rename = "id", default)]
         pub id: ::std::option::Option<String>,
-        #[doc = "The representation of the person's profile photo."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::PersonImage>,
-        #[doc = "Whether this user has signed up for Google+."]
-        #[serde(rename = "isPlusUser", default)]
-        pub is_plus_user: ::std::option::Option<bool>,
-        #[doc = "Identifies this resource as a person. Value: \"plus#person\"."]
+        #[doc = "Identifies this resource as a place. Value: \"plus#place\"."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "An object representation of the individual components of a person's name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<crate::schemas::PersonName>,
-        #[doc = "The nickname of this person."]
-        #[serde(rename = "nickname", default)]
-        pub nickname: ::std::option::Option<String>,
-        #[doc = "Type of person within Google+. Possible values include, but are not limited to, the following values:\n\n* \"person\" - represents an actual person. \n* \"page\" - represents a page."]
-        #[serde(rename = "objectType", default)]
-        pub object_type: ::std::option::Option<String>,
-        #[doc = "The occupation of this person."]
-        #[serde(rename = "occupation", default)]
-        pub occupation: ::std::option::Option<String>,
-        #[doc = "A list of current or past organizations with which this person is associated."]
-        #[serde(rename = "organizations", default)]
-        pub organizations: ::std::option::Option<Vec<crate::schemas::PersonOrganizationsItems>>,
-        #[doc = "A list of places where this person has lived."]
-        #[serde(rename = "placesLived", default)]
-        pub places_lived: ::std::option::Option<Vec<crate::schemas::PersonPlacesLivedItems>>,
-        #[doc = "If a Google+ Page, the number of people who have +1'd this page."]
-        #[serde(rename = "plusOneCount", default)]
-        pub plus_one_count: ::std::option::Option<i32>,
-        #[doc = "The person's relationship status. Possible values include, but are not limited to, the following values:\n\n* \"single\" - Person is single. \n* \"in_a_relationship\" - Person is in a relationship. \n* \"engaged\" - Person is engaged. \n* \"married\" - Person is married. \n* \"its_complicated\" - The relationship is complicated. \n* \"open_relationship\" - Person is in an open relationship. \n* \"widowed\" - Person is widowed. \n* \"in_domestic_partnership\" - Person is in a domestic partnership. \n* \"in_civil_union\" - Person is in a civil union."]
-        #[serde(rename = "relationshipStatus", default)]
-        pub relationship_status: ::std::option::Option<String>,
-        #[doc = "The person's skills."]
-        #[serde(rename = "skills", default)]
-        pub skills: ::std::option::Option<String>,
-        #[doc = "The brief description (tagline) of this person."]
-        #[serde(rename = "tagline", default)]
-        pub tagline: ::std::option::Option<String>,
-        #[doc = "The URL of this person's profile."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "A list of URLs for this person."]
-        #[serde(rename = "urls", default)]
-        pub urls: ::std::option::Option<Vec<crate::schemas::PersonUrlsItems>>,
-        #[doc = "Whether the person or Google+ Page has been verified."]
-        #[serde(rename = "verified", default)]
-        pub verified: ::std::option::Option<bool>,
+        #[doc = "The position of the place."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::PlacePosition>,
     }
-    impl ::field_selector::FieldSelector for Person {
+    impl ::field_selector::FieldSelector for Place {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2127,35 +2156,6 @@ pub mod schemas {
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for PlacePosition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Place {
-        #[doc = "The physical address of the place."]
-        #[serde(rename = "address", default)]
-        pub address: ::std::option::Option<crate::schemas::PlaceAddress>,
-        #[doc = "The display name of the place."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The id of the place."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifies this resource as a place. Value: \"plus#place\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The position of the place."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::PlacePosition>,
-    }
-    impl ::field_selector::FieldSelector for Place {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5055,6 +5055,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -5133,38 +5164,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -5285,50 +5284,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -336,6 +336,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Database {
+        #[doc = "Required. The name of the database. Values are of the form\n`projects/<project>/instances/<instance>/databases/<database>`,\nwhere `<database>` is as specified in the `CREATE DATABASE`\nstatement. This name can be passed to other API methods to\nidentify the database."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The current database state."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::DatabaseState>,
+    }
+    impl ::field_selector::FieldSelector for Database {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DatabaseState {
         #[doc = "The database is still being created. Operations on the database may fail\nwith `FAILED_PRECONDITION` in this state."]
@@ -387,35 +416,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DatabaseState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Database {
-        #[doc = "Required. The name of the database. Values are of the form\n`projects/<project>/instances/<instance>/databases/<database>`,\nwhere `<database>` is as specified in the `CREATE DATABASE`\nstatement. This name can be passed to other API methods to\nidentify the database."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The current database state."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::DatabaseState>,
-    }
-    impl ::field_selector::FieldSelector for Database {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -499,6 +499,45 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ExecuteSqlRequest {
+        #[doc = "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL statement parameters. See the\ndefinition of Type for more information\nabout SQL types."]
+        #[serde(rename = "paramTypes", default)]
+        pub param_types:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Type>>,
+        #[doc = "Parameter names and values that bind to placeholders in the SQL string.\n\nA parameter placeholder consists of the `@` character followed by the\nparameter name (for example, `@firstName`). Parameter names can contain\nletters, numbers, and underscores.\n\nParameters can appear anywhere that a literal value is expected.  The same\nparameter name can be used more than once, for example:\n\n`\"WHERE id > @msg_id AND id < @msg_id + 100\"`\n\nIt is an error to execute a SQL statement with unbound parameters."]
+        #[serde(rename = "params", default)]
+        pub params:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "If present, results will be restricted to the specified partition\npreviously created using PartitionQuery().  There must be an exact\nmatch for the values of fields common to this message and the\nPartitionQueryRequest message used to create this partition_token."]
+        #[serde(rename = "partitionToken", default)]
+        pub partition_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "Used to control the amount of debugging information returned in\nResultSetStats. If partition_token is set, query_mode can only\nbe set to QueryMode.NORMAL."]
+        #[serde(rename = "queryMode", default)]
+        pub query_mode: ::std::option::Option<crate::schemas::ExecuteSqlRequestQueryMode>,
+        #[doc = "If this request is resuming a previously interrupted SQL statement\nexecution, `resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new SQL statement execution to resume where the last one left\noff. The rest of the request parameters must exactly match the\nrequest that yielded this token."]
+        #[serde(rename = "resumeToken", default)]
+        pub resume_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "A per-transaction sequence number used to identify this request. This field\nmakes each request idempotent such that if the request is received multiple\ntimes, at most one will succeed.\n\nThe sequence number must be monotonically increasing within the\ntransaction. If a request arrives for the first time with an out-of-order\nsequence number, the transaction may be aborted. Replays of previously\nhandled requests will yield the same response as the first execution.\n\nRequired for DML statements. Ignored for queries."]
+        #[serde(rename = "seqno", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub seqno: ::std::option::Option<i64>,
+        #[doc = "Required. The SQL string."]
+        #[serde(rename = "sql", default)]
+        pub sql: ::std::option::Option<String>,
+        #[doc = "The transaction to use.\n\nFor queries, if none is provided, the default is a temporary read-only\ntransaction with strong concurrency.\n\nStandard DML statements require a read-write transaction. To protect\nagainst replays, single-use transactions are not supported.  The caller\nmust either supply an existing transaction ID or begin a new transaction.\n\nPartitioned DML requires an existing Partitioned DML transaction ID."]
+        #[serde(rename = "transaction", default)]
+        pub transaction: ::std::option::Option<crate::schemas::TransactionSelector>,
+    }
+    impl ::field_selector::FieldSelector for ExecuteSqlRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecuteSqlRequestQueryMode {
         #[doc = "The default mode. Only the statement results are returned."]
@@ -550,45 +589,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ExecuteSqlRequestQueryMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct ExecuteSqlRequest {
-        #[doc = "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL statement parameters. See the\ndefinition of Type for more information\nabout SQL types."]
-        #[serde(rename = "paramTypes", default)]
-        pub param_types:
-            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Type>>,
-        #[doc = "Parameter names and values that bind to placeholders in the SQL string.\n\nA parameter placeholder consists of the `@` character followed by the\nparameter name (for example, `@firstName`). Parameter names can contain\nletters, numbers, and underscores.\n\nParameters can appear anywhere that a literal value is expected.  The same\nparameter name can be used more than once, for example:\n\n`\"WHERE id > @msg_id AND id < @msg_id + 100\"`\n\nIt is an error to execute a SQL statement with unbound parameters."]
-        #[serde(rename = "params", default)]
-        pub params:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "If present, results will be restricted to the specified partition\npreviously created using PartitionQuery().  There must be an exact\nmatch for the values of fields common to this message and the\nPartitionQueryRequest message used to create this partition_token."]
-        #[serde(rename = "partitionToken", default)]
-        pub partition_token: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Used to control the amount of debugging information returned in\nResultSetStats. If partition_token is set, query_mode can only\nbe set to QueryMode.NORMAL."]
-        #[serde(rename = "queryMode", default)]
-        pub query_mode: ::std::option::Option<crate::schemas::ExecuteSqlRequestQueryMode>,
-        #[doc = "If this request is resuming a previously interrupted SQL statement\nexecution, `resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new SQL statement execution to resume where the last one left\noff. The rest of the request parameters must exactly match the\nrequest that yielded this token."]
-        #[serde(rename = "resumeToken", default)]
-        pub resume_token: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "A per-transaction sequence number used to identify this request. This field\nmakes each request idempotent such that if the request is received multiple\ntimes, at most one will succeed.\n\nThe sequence number must be monotonically increasing within the\ntransaction. If a request arrives for the first time with an out-of-order\nsequence number, the transaction may be aborted. Replays of previously\nhandled requests will yield the same response as the first execution.\n\nRequired for DML statements. Ignored for queries."]
-        #[serde(rename = "seqno", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub seqno: ::std::option::Option<i64>,
-        #[doc = "Required. The SQL string."]
-        #[serde(rename = "sql", default)]
-        pub sql: ::std::option::Option<String>,
-        #[doc = "The transaction to use.\n\nFor queries, if none is provided, the default is a temporary read-only\ntransaction with strong concurrency.\n\nStandard DML statements require a read-write transaction. To protect\nagainst replays, single-use transactions are not supported.  The caller\nmust either supply an existing transaction ID or begin a new transaction.\n\nPartitioned DML requires an existing Partitioned DML transaction ID."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::schemas::TransactionSelector>,
-    }
-    impl ::field_selector::FieldSelector for ExecuteSqlRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -739,6 +739,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Instance {
+        #[doc = "Required. The name of the instance's configuration. Values are of the form\n`projects/<project>/instanceConfigs/<configuration>`. See\nalso InstanceConfig and\nListInstanceConfigs."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<String>,
+        #[doc = "Required. The descriptive name for this instance as it appears in UIs.\nMust be unique per project and between 4 and 30 characters in length."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Cloud Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. Cloud Labels can be used to filter collections of\nresources. They can be used to control how resource metrics are aggregated.\nAnd they can be used as arguments to policy management rules (e.g. route,\nfirewall, load balancing, etc.).\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n* Label values must be between 0 and 63 characters long and must conform\n  to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n* No more than 64 labels can be associated with a given resource.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.\n\nIf you plan to use labels in your own code, please note that additional\ncharacters may be allowed in the future. And so you are advised to use an\ninternal label representation, such as JSON, which doesn't rely upon\nspecific characters being disallowed.  For example, representing labels\nas the string:  name + \"*\" + value  would prove problematic if we were to\nallow \"*\" in a future release."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Required. A unique identifier for the instance, which cannot be changed\nafter the instance is created. Values are of the form\n`projects/<project>/instances/a-z*[a-z0-9]`. The final\nsegment of the name must be between 2 and 64 characters in length."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The number of nodes allocated to this instance. This may be zero\nin API responses for instances that are not yet in state `READY`.\n\nSee [the\ndocumentation](https://cloud.google.com/spanner/docs/instances#node_count)\nfor more information about nodes."]
+        #[serde(rename = "nodeCount", default)]
+        pub node_count: ::std::option::Option<i32>,
+        #[doc = "Output only. The current instance state. For\nCreateInstance, the state must be\neither omitted or set to `CREATING`. For\nUpdateInstance, the state must be\neither omitted or set to `READY`."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::InstanceState>,
+    }
+    impl ::field_selector::FieldSelector for Instance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
         #[doc = "The instance is still being created. Resources may not be\navailable yet, and operations such as database creation may not\nwork."]
@@ -790,47 +831,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for InstanceState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Instance {
-        #[doc = "Required. The name of the instance's configuration. Values are of the form\n`projects/<project>/instanceConfigs/<configuration>`. See\nalso InstanceConfig and\nListInstanceConfigs."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<String>,
-        #[doc = "Required. The descriptive name for this instance as it appears in UIs.\nMust be unique per project and between 4 and 30 characters in length."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Cloud Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. Cloud Labels can be used to filter collections of\nresources. They can be used to control how resource metrics are aggregated.\nAnd they can be used as arguments to policy management rules (e.g. route,\nfirewall, load balancing, etc.).\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n* Label values must be between 0 and 63 characters long and must conform\n  to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n* No more than 64 labels can be associated with a given resource.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.\n\nIf you plan to use labels in your own code, please note that additional\ncharacters may be allowed in the future. And so you are advised to use an\ninternal label representation, such as JSON, which doesn't rely upon\nspecific characters being disallowed.  For example, representing labels\nas the string:  name + \"*\" + value  would prove problematic if we were to\nallow \"*\" in a future release."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Required. A unique identifier for the instance, which cannot be changed\nafter the instance is created. Values are of the form\n`projects/<project>/instances/a-z*[a-z0-9]`. The final\nsegment of the name must be between 2 and 64 characters in length."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The number of nodes allocated to this instance. This may be zero\nin API responses for instances that are not yet in state `READY`.\n\nSee [the\ndocumentation](https://cloud.google.com/spanner/docs/instances#node_count)\nfor more information about nodes."]
-        #[serde(rename = "nodeCount", default)]
-        pub node_count: ::std::option::Option<i32>,
-        #[doc = "Output only. The current instance state. For\nCreateInstance, the state must be\neither omitted or set to `CREATING`. For\nUpdateInstance, the state must be\neither omitted or set to `READY`."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::InstanceState>,
-    }
-    impl ::field_selector::FieldSelector for Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1295,6 +1295,41 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for PartitionedDml {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct PlanNode {
+        #[doc = "List of child node `index`es and their relationship to this parent."]
+        #[serde(rename = "childLinks", default)]
+        pub child_links: ::std::option::Option<Vec<crate::schemas::ChildLink>>,
+        #[doc = "The display name for the node."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The execution statistics associated with the node, contained in a group of\nkey-value pairs. Only present if the plan was returned as a result of a\nprofile query. For example, number of executions, number of rows/time per\nexecution etc."]
+        #[serde(rename = "executionStats", default)]
+        pub execution_stats:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The `PlanNode`'s index in node list."]
+        #[serde(rename = "index", default)]
+        pub index: ::std::option::Option<i32>,
+        #[doc = "Used to determine the type of node. May be needed for visualizing\ndifferent kinds of nodes differently. For example, If the node is a\nSCALAR node, it will have a condensed representation\nwhich can be used to directly embed a description of the node in its\nparent."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::PlanNodeKind>,
+        #[doc = "Attributes relevant to the node contained in a group of key-value pairs.\nFor example, a Parameter Reference node could have the following\ninformation in its metadata:\n\n````text\n{\n  \"parameter_reference\": \"param1\",\n  \"parameter_type\": \"array\"\n}````"]
+        #[serde(rename = "metadata", default)]
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Condensed representation for SCALAR nodes."]
+        #[serde(rename = "shortRepresentation", default)]
+        pub short_representation: ::std::option::Option<crate::schemas::ShortRepresentation>,
+    }
+    impl ::field_selector::FieldSelector for PlanNode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlanNodeKind {
         #[doc = "Not specified."]
@@ -1346,41 +1381,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PlanNodeKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct PlanNode {
-        #[doc = "List of child node `index`es and their relationship to this parent."]
-        #[serde(rename = "childLinks", default)]
-        pub child_links: ::std::option::Option<Vec<crate::schemas::ChildLink>>,
-        #[doc = "The display name for the node."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The execution statistics associated with the node, contained in a group of\nkey-value pairs. Only present if the plan was returned as a result of a\nprofile query. For example, number of executions, number of rows/time per\nexecution etc."]
-        #[serde(rename = "executionStats", default)]
-        pub execution_stats:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The `PlanNode`'s index in node list."]
-        #[serde(rename = "index", default)]
-        pub index: ::std::option::Option<i32>,
-        #[doc = "Used to determine the type of node. May be needed for visualizing\ndifferent kinds of nodes differently. For example, If the node is a\nSCALAR node, it will have a condensed representation\nwhich can be used to directly embed a description of the node in its\nparent."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::PlanNodeKind>,
-        #[doc = "Attributes relevant to the node contained in a group of key-value pairs.\nFor example, a Parameter Reference node could have the following\ninformation in its metadata:\n\n````text\n{\n  \"parameter_reference\": \"param1\",\n  \"parameter_type\": \"array\"\n}````"]
-        #[serde(rename = "metadata", default)]
-        pub metadata:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Condensed representation for SCALAR nodes."]
-        #[serde(rename = "shortRepresentation", default)]
-        pub short_representation: ::std::option::Option<crate::schemas::ShortRepresentation>,
-    }
-    impl ::field_selector::FieldSelector for PlanNode {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1531,6 +1531,38 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for ReadWrite {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplicaInfo {
+        #[doc = "If true, this location is designated as the default leader location where\nleader replicas are placed. See the [region types\ndocumentation](https://cloud.google.com/spanner/docs/instances#region_types)\nfor more details."]
+        #[serde(rename = "defaultLeaderLocation", default)]
+        pub default_leader_location: ::std::option::Option<bool>,
+        #[doc = "The location of the serving resources, e.g. \"us-central1\"."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The type of replica."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ReplicaInfoType>,
+    }
+    impl ::field_selector::FieldSelector for ReplicaInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplicaInfoType {
         #[doc = "Read-only replicas only support reads (not writes). Read-only replicas:\n\n* Maintain a full copy of your data.\n* Serve reads.\n* Do not participate in voting to commit writes.\n* Are not eligible to become a leader."]
@@ -1586,38 +1618,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ReplicaInfoType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReplicaInfo {
-        #[doc = "If true, this location is designated as the default leader location where\nleader replicas are placed. See the [region types\ndocumentation](https://cloud.google.com/spanner/docs/instances#region_types)\nfor more details."]
-        #[serde(rename = "defaultLeaderLocation", default)]
-        pub default_leader_location: ::std::option::Option<bool>,
-        #[doc = "The location of the serving resources, e.g. \"us-central1\"."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The type of replica."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ReplicaInfoType>,
-    }
-    impl ::field_selector::FieldSelector for ReplicaInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2035,6 +2035,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Type {
+        #[doc = "If code == ARRAY, then `array_element_type`\nis the type of the array elements."]
+        #[serde(rename = "arrayElementType", default)]
+        pub array_element_type: ::std::option::Option<Box<crate::schemas::Type>>,
+        #[doc = "Required. The TypeCode for this type."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::TypeCode>,
+        #[doc = "If code == STRUCT, then `struct_type`\nprovides type information for the struct's fields."]
+        #[serde(rename = "structType", default)]
+        pub struct_type: ::std::option::Option<crate::schemas::StructType>,
+    }
+    impl ::field_selector::FieldSelector for Type {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TypeCode {
         #[doc = "Encoded as `list`, where the list elements are represented\naccording to\narray_element_type."]
@@ -2114,38 +2146,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TypeCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Type {
-        #[doc = "If code == ARRAY, then `array_element_type`\nis the type of the array elements."]
-        #[serde(rename = "arrayElementType", default)]
-        pub array_element_type: ::std::option::Option<Box<crate::schemas::Type>>,
-        #[doc = "Required. The TypeCode for this type."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::TypeCode>,
-        #[doc = "If code == STRUCT, then `struct_type`\nprovides type information for the struct's fields."]
-        #[serde(rename = "structType", default)]
-        pub struct_type: ::std::option::Option<crate::schemas::StructType>,
-    }
-    impl ::field_selector::FieldSelector for Type {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10964,84 +10964,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -11073,7 +10995,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -11199,8 +11120,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

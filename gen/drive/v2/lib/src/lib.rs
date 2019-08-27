@@ -1,25 +1,103 @@
 pub mod schemas {
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct AboutAdditionalRoleInfoItemsRoleSetsItems {
-        #[doc = "The supported additional roles with the primary role."]
-        #[serde(rename = "additionalRoles", default)]
-        pub additional_roles: ::std::option::Option<Vec<String>>,
-        #[doc = "A primary permission role."]
-        #[serde(rename = "primaryRole", default)]
-        pub primary_role: ::std::option::Option<String>,
+    pub struct About {
+        #[doc = "Information about supported additional roles per file type. The most specific type takes precedence."]
+        #[serde(rename = "additionalRoleInfo", default)]
+        pub additional_role_info:
+            ::std::option::Option<Vec<crate::schemas::AboutAdditionalRoleInfoItems>>,
+        #[doc = "Whether the user can create shared drives."]
+        #[serde(rename = "canCreateDrives", default)]
+        pub can_create_drives: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canCreateDrives instead."]
+        #[serde(rename = "canCreateTeamDrives", default)]
+        pub can_create_team_drives: ::std::option::Option<bool>,
+        #[doc = "The domain sharing policy for the current user. Possible values are:\n\n* allowed \n* allowedWithWarning \n* incomingOnly \n* disallowed"]
+        #[serde(rename = "domainSharingPolicy", default)]
+        pub domain_sharing_policy: ::std::option::Option<String>,
+        #[doc = "A list of themes that are supported for shared drives."]
+        #[serde(rename = "driveThemes", default)]
+        pub drive_themes: ::std::option::Option<Vec<crate::schemas::AboutDriveThemesItems>>,
+        #[doc = "The ETag of the item."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The allowable export formats."]
+        #[serde(rename = "exportFormats", default)]
+        pub export_formats: ::std::option::Option<Vec<crate::schemas::AboutExportFormatsItems>>,
+        #[doc = "List of additional features enabled on this account."]
+        #[serde(rename = "features", default)]
+        pub features: ::std::option::Option<Vec<crate::schemas::AboutFeaturesItems>>,
+        #[doc = "The palette of allowable folder colors as RGB hex strings."]
+        #[serde(rename = "folderColorPalette", default)]
+        pub folder_color_palette: ::std::option::Option<Vec<String>>,
+        #[doc = "The allowable import formats."]
+        #[serde(rename = "importFormats", default)]
+        pub import_formats: ::std::option::Option<Vec<crate::schemas::AboutImportFormatsItems>>,
+        #[doc = "A boolean indicating whether the authenticated app is installed by the authenticated user."]
+        #[serde(rename = "isCurrentAppInstalled", default)]
+        pub is_current_app_installed: ::std::option::Option<bool>,
+        #[doc = "This is always drive#about."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The user's language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/)."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "The largest change id."]
+        #[serde(rename = "largestChangeId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub largest_change_id: ::std::option::Option<i64>,
+        #[doc = "List of max upload sizes for each file type. The most specific type takes precedence."]
+        #[serde(rename = "maxUploadSizes", default)]
+        pub max_upload_sizes: ::std::option::Option<Vec<crate::schemas::AboutMaxUploadSizesItems>>,
+        #[doc = "The name of the current user."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The current user's ID as visible in the permissions collection."]
+        #[serde(rename = "permissionId", default)]
+        pub permission_id: ::std::option::Option<String>,
+        #[doc = "The amount of storage quota used by different Google services."]
+        #[serde(rename = "quotaBytesByService", default)]
+        pub quota_bytes_by_service:
+            ::std::option::Option<Vec<crate::schemas::AboutQuotaBytesByServiceItems>>,
+        #[doc = "The total number of quota bytes."]
+        #[serde(rename = "quotaBytesTotal", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub quota_bytes_total: ::std::option::Option<i64>,
+        #[doc = "The number of quota bytes used by Google Drive."]
+        #[serde(rename = "quotaBytesUsed", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub quota_bytes_used: ::std::option::Option<i64>,
+        #[doc = "The number of quota bytes used by all Google apps (Drive, Picasa, etc.)."]
+        #[serde(rename = "quotaBytesUsedAggregate", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub quota_bytes_used_aggregate: ::std::option::Option<i64>,
+        #[doc = "The number of quota bytes used by trashed items."]
+        #[serde(rename = "quotaBytesUsedInTrash", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub quota_bytes_used_in_trash: ::std::option::Option<i64>,
+        #[doc = "The type of the user's storage quota. Possible values are:\n\n* LIMITED \n* UNLIMITED"]
+        #[serde(rename = "quotaType", default)]
+        pub quota_type: ::std::option::Option<String>,
+        #[doc = "The number of remaining change ids, limited to no more than 2500."]
+        #[serde(rename = "remainingChangeIds", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub remaining_change_ids: ::std::option::Option<i64>,
+        #[doc = "The id of the root folder."]
+        #[serde(rename = "rootFolderId", default)]
+        pub root_folder_id: ::std::option::Option<String>,
+        #[doc = "A link back to this item."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "Deprecated - use driveThemes instead."]
+        #[serde(rename = "teamDriveThemes", default)]
+        pub team_drive_themes:
+            ::std::option::Option<Vec<crate::schemas::AboutTeamDriveThemesItems>>,
+        #[doc = "The authenticated user."]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
-    impl ::field_selector::FieldSelector for AboutAdditionalRoleInfoItemsRoleSetsItems {
+    impl ::field_selector::FieldSelector for About {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -50,6 +128,35 @@ pub mod schemas {
             ::std::option::Option<Vec<crate::schemas::AboutAdditionalRoleInfoItemsRoleSetsItems>>,
     }
     impl ::field_selector::FieldSelector for AboutAdditionalRoleInfoItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AboutAdditionalRoleInfoItemsRoleSetsItems {
+        #[doc = "The supported additional roles with the primary role."]
+        #[serde(rename = "additionalRoles", default)]
+        pub additional_roles: ::std::option::Option<Vec<String>>,
+        #[doc = "A primary permission role."]
+        #[serde(rename = "primaryRole", default)]
+        pub primary_role: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AboutAdditionalRoleInfoItemsRoleSetsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -261,145 +368,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct About {
-        #[doc = "Information about supported additional roles per file type. The most specific type takes precedence."]
-        #[serde(rename = "additionalRoleInfo", default)]
-        pub additional_role_info:
-            ::std::option::Option<Vec<crate::schemas::AboutAdditionalRoleInfoItems>>,
-        #[doc = "Whether the user can create shared drives."]
-        #[serde(rename = "canCreateDrives", default)]
-        pub can_create_drives: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canCreateDrives instead."]
-        #[serde(rename = "canCreateTeamDrives", default)]
-        pub can_create_team_drives: ::std::option::Option<bool>,
-        #[doc = "The domain sharing policy for the current user. Possible values are:\n\n* allowed \n* allowedWithWarning \n* incomingOnly \n* disallowed"]
-        #[serde(rename = "domainSharingPolicy", default)]
-        pub domain_sharing_policy: ::std::option::Option<String>,
-        #[doc = "A list of themes that are supported for shared drives."]
-        #[serde(rename = "driveThemes", default)]
-        pub drive_themes: ::std::option::Option<Vec<crate::schemas::AboutDriveThemesItems>>,
-        #[doc = "The ETag of the item."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The allowable export formats."]
-        #[serde(rename = "exportFormats", default)]
-        pub export_formats: ::std::option::Option<Vec<crate::schemas::AboutExportFormatsItems>>,
-        #[doc = "List of additional features enabled on this account."]
-        #[serde(rename = "features", default)]
-        pub features: ::std::option::Option<Vec<crate::schemas::AboutFeaturesItems>>,
-        #[doc = "The palette of allowable folder colors as RGB hex strings."]
-        #[serde(rename = "folderColorPalette", default)]
-        pub folder_color_palette: ::std::option::Option<Vec<String>>,
-        #[doc = "The allowable import formats."]
-        #[serde(rename = "importFormats", default)]
-        pub import_formats: ::std::option::Option<Vec<crate::schemas::AboutImportFormatsItems>>,
-        #[doc = "A boolean indicating whether the authenticated app is installed by the authenticated user."]
-        #[serde(rename = "isCurrentAppInstalled", default)]
-        pub is_current_app_installed: ::std::option::Option<bool>,
-        #[doc = "This is always drive#about."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The user's language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/)."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: ::std::option::Option<String>,
-        #[doc = "The largest change id."]
-        #[serde(rename = "largestChangeId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub largest_change_id: ::std::option::Option<i64>,
-        #[doc = "List of max upload sizes for each file type. The most specific type takes precedence."]
-        #[serde(rename = "maxUploadSizes", default)]
-        pub max_upload_sizes: ::std::option::Option<Vec<crate::schemas::AboutMaxUploadSizesItems>>,
-        #[doc = "The name of the current user."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The current user's ID as visible in the permissions collection."]
-        #[serde(rename = "permissionId", default)]
-        pub permission_id: ::std::option::Option<String>,
-        #[doc = "The amount of storage quota used by different Google services."]
-        #[serde(rename = "quotaBytesByService", default)]
-        pub quota_bytes_by_service:
-            ::std::option::Option<Vec<crate::schemas::AboutQuotaBytesByServiceItems>>,
-        #[doc = "The total number of quota bytes."]
-        #[serde(rename = "quotaBytesTotal", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub quota_bytes_total: ::std::option::Option<i64>,
-        #[doc = "The number of quota bytes used by Google Drive."]
-        #[serde(rename = "quotaBytesUsed", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub quota_bytes_used: ::std::option::Option<i64>,
-        #[doc = "The number of quota bytes used by all Google apps (Drive, Picasa, etc.)."]
-        #[serde(rename = "quotaBytesUsedAggregate", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub quota_bytes_used_aggregate: ::std::option::Option<i64>,
-        #[doc = "The number of quota bytes used by trashed items."]
-        #[serde(rename = "quotaBytesUsedInTrash", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub quota_bytes_used_in_trash: ::std::option::Option<i64>,
-        #[doc = "The type of the user's storage quota. Possible values are:\n\n* LIMITED \n* UNLIMITED"]
-        #[serde(rename = "quotaType", default)]
-        pub quota_type: ::std::option::Option<String>,
-        #[doc = "The number of remaining change ids, limited to no more than 2500."]
-        #[serde(rename = "remainingChangeIds", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub remaining_change_ids: ::std::option::Option<i64>,
-        #[doc = "The id of the root folder."]
-        #[serde(rename = "rootFolderId", default)]
-        pub root_folder_id: ::std::option::Option<String>,
-        #[doc = "A link back to this item."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "Deprecated - use driveThemes instead."]
-        #[serde(rename = "teamDriveThemes", default)]
-        pub team_drive_themes:
-            ::std::option::Option<Vec<crate::schemas::AboutTeamDriveThemesItems>>,
-        #[doc = "The authenticated user."]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<crate::schemas::User>,
-    }
-    impl ::field_selector::FieldSelector for About {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AppIconsItems {
-        #[doc = "Category of the icon. Allowed values are:\n\n* application - icon for the application \n* document - icon for a file associated with the app \n* documentShared - icon for a shared file associated with the app"]
-        #[serde(rename = "category", default)]
-        pub category: ::std::option::Option<String>,
-        #[doc = "URL for the icon."]
-        #[serde(rename = "iconUrl", default)]
-        pub icon_url: ::std::option::Option<String>,
-        #[doc = "Size of the icon. Represented as the maximum of the width and height."]
-        #[serde(rename = "size", default)]
-        pub size: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for AppIconsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -486,6 +454,38 @@ pub mod schemas {
         pub use_by_default: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for App {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AppIconsItems {
+        #[doc = "Category of the icon. Allowed values are:\n\n* application - icon for the application \n* document - icon for a file associated with the app \n* documentShared - icon for a shared file associated with the app"]
+        #[serde(rename = "category", default)]
+        pub category: ::std::option::Option<String>,
+        #[doc = "URL for the icon."]
+        #[serde(rename = "iconUrl", default)]
+        pub icon_url: ::std::option::Option<String>,
+        #[doc = "Size of the icon. Represented as the maximum of the width and height."]
+        #[serde(rename = "size", default)]
+        pub size: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for AppIconsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -767,35 +767,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CommentContext {
-        #[doc = "The MIME type of the context snippet."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "Data representation of the segment of the file being commented on. In the case of a text file for example, this would be the actual text that the comment is about."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CommentContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Comment {
         #[doc = "A region of the document represented as a JSON string. See anchor documentation for details on how to define and interpret anchor properties."]
         #[serde(rename = "anchor", default)]
@@ -844,6 +815,35 @@ pub mod schemas {
         pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Comment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentContext {
+        #[doc = "The MIME type of the context snippet."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "Data representation of the segment of the file being commented on. In the case of a text file for example, this would be the actual text that the comment is about."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -970,6 +970,53 @@ pub mod schemas {
         pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentReplyList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Drive {
+        #[doc = "An image file and cropping parameters from which a background image for this shared drive is set. This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When specified, all fields of the backgroundImageFile must be set."]
+        #[serde(rename = "backgroundImageFile", default)]
+        pub background_image_file: ::std::option::Option<crate::schemas::DriveBackgroundImageFile>,
+        #[doc = "A short-lived link to this shared drive's background image."]
+        #[serde(rename = "backgroundImageLink", default)]
+        pub background_image_link: ::std::option::Option<String>,
+        #[doc = "Capabilities the current user has on this shared drive."]
+        #[serde(rename = "capabilities", default)]
+        pub capabilities: ::std::option::Option<crate::schemas::DriveCapabilities>,
+        #[doc = "The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update request that does not set themeId."]
+        #[serde(rename = "colorRgb", default)]
+        pub color_rgb: ::std::option::Option<String>,
+        #[doc = "The time at which the shared drive was created (RFC 3339 date-time)."]
+        #[serde(rename = "createdDate", default)]
+        pub created_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Whether the shared drive is hidden from default view."]
+        #[serde(rename = "hidden", default)]
+        pub hidden: ::std::option::Option<bool>,
+        #[doc = "The ID of this shared drive which is also the ID of the top level folder of this shared drive."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "This is always drive#drive"]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The name of this shared drive."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A set of restrictions that apply to this shared drive or items inside this shared drive."]
+        #[serde(rename = "restrictions", default)]
+        pub restrictions: ::std::option::Option<crate::schemas::DriveRestrictions>,
+        #[doc = "The ID of the theme from which the background image and color will be set. The set of possible driveThemes can be retrieved from a drive.about.get response. When not specified on a drive.drives.insert request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set colorRgb or backgroundImageFile."]
+        #[serde(rename = "themeId", default)]
+        pub theme_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Drive {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1119,53 +1166,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Drive {
-        #[doc = "An image file and cropping parameters from which a background image for this shared drive is set. This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When specified, all fields of the backgroundImageFile must be set."]
-        #[serde(rename = "backgroundImageFile", default)]
-        pub background_image_file: ::std::option::Option<crate::schemas::DriveBackgroundImageFile>,
-        #[doc = "A short-lived link to this shared drive's background image."]
-        #[serde(rename = "backgroundImageLink", default)]
-        pub background_image_link: ::std::option::Option<String>,
-        #[doc = "Capabilities the current user has on this shared drive."]
-        #[serde(rename = "capabilities", default)]
-        pub capabilities: ::std::option::Option<crate::schemas::DriveCapabilities>,
-        #[doc = "The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update request that does not set themeId."]
-        #[serde(rename = "colorRgb", default)]
-        pub color_rgb: ::std::option::Option<String>,
-        #[doc = "The time at which the shared drive was created (RFC 3339 date-time)."]
-        #[serde(rename = "createdDate", default)]
-        pub created_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Whether the shared drive is hidden from default view."]
-        #[serde(rename = "hidden", default)]
-        pub hidden: ::std::option::Option<bool>,
-        #[doc = "The ID of this shared drive which is also the ID of the top level folder of this shared drive."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "This is always drive#drive"]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The name of this shared drive."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "A set of restrictions that apply to this shared drive or items inside this shared drive."]
-        #[serde(rename = "restrictions", default)]
-        pub restrictions: ::std::option::Option<crate::schemas::DriveRestrictions>,
-        #[doc = "The ID of the theme from which the background image and color will be set. The set of possible driveThemes can be retrieved from a drive.about.get response. When not specified on a drive.drives.insert request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set colorRgb or backgroundImageFile."]
-        #[serde(rename = "themeId", default)]
-        pub theme_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Drive {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct DriveList {
         #[doc = "The list of shared drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched."]
         #[serde(rename = "items", default)]
@@ -1178,345 +1178,6 @@ pub mod schemas {
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DriveList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileCapabilities {
-        #[doc = "Whether the current user can add children to this folder. This is always false when the item is not a folder."]
-        #[serde(rename = "canAddChildren", default)]
-        pub can_add_children: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can change the copyRequiresWriterPermission restriction of this file."]
-        #[serde(rename = "canChangeCopyRequiresWriterPermission", default)]
-        pub can_change_copy_requires_writer_permission: ::std::option::Option<bool>,
-        #[doc = "Deprecated"]
-        #[serde(rename = "canChangeRestrictedDownload", default)]
-        pub can_change_restricted_download: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can comment on this file."]
-        #[serde(rename = "canComment", default)]
-        pub can_comment: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can copy this file. For an item in a shared drive, whether the current user can copy non-folder descendants of this item, or this item itself if it is not a folder."]
-        #[serde(rename = "canCopy", default)]
-        pub can_copy: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can delete this file."]
-        #[serde(rename = "canDelete", default)]
-        pub can_delete: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can delete children of this folder. This is false when the item is not a folder. Only populated for items in shared drives."]
-        #[serde(rename = "canDeleteChildren", default)]
-        pub can_delete_children: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can download this file."]
-        #[serde(rename = "canDownload", default)]
-        pub can_download: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can edit this file."]
-        #[serde(rename = "canEdit", default)]
-        pub can_edit: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can list the children of this folder. This is always false when the item is not a folder."]
-        #[serde(rename = "canListChildren", default)]
-        pub can_list_children: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move children of this folder outside of the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
-        #[serde(rename = "canMoveChildrenOutOfDrive", default)]
-        pub can_move_children_out_of_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveChildrenOutOfDrive instead."]
-        #[serde(rename = "canMoveChildrenOutOfTeamDrive", default)]
-        pub can_move_children_out_of_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
-        #[serde(rename = "canMoveChildrenWithinDrive", default)]
-        pub can_move_children_within_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveChildrenWithinDrive instead."]
-        #[serde(rename = "canMoveChildrenWithinTeamDrive", default)]
-        pub can_move_children_within_team_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveItemOutOfDrive instead."]
-        #[serde(rename = "canMoveItemIntoTeamDrive", default)]
-        pub can_move_item_into_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move this item outside of this drive by changing its parent. Note that a request to change the parent of the item may still fail depending on the new parent that is being added."]
-        #[serde(rename = "canMoveItemOutOfDrive", default)]
-        pub can_move_item_out_of_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveItemOutOfDrive instead."]
-        #[serde(rename = "canMoveItemOutOfTeamDrive", default)]
-        pub can_move_item_out_of_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives."]
-        #[serde(rename = "canMoveItemWithinDrive", default)]
-        pub can_move_item_within_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveItemWithinDrive instead."]
-        #[serde(rename = "canMoveItemWithinTeamDrive", default)]
-        pub can_move_item_within_team_drive: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead."]
-        #[serde(rename = "canMoveTeamDriveItem", default)]
-        pub can_move_team_drive_item: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can read the shared drive to which this file belongs. Only populated for items in shared drives."]
-        #[serde(rename = "canReadDrive", default)]
-        pub can_read_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can read the revisions resource of this file. For a shared drive item, whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can be read."]
-        #[serde(rename = "canReadRevisions", default)]
-        pub can_read_revisions: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use canReadDrive instead."]
-        #[serde(rename = "canReadTeamDrive", default)]
-        pub can_read_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can remove children from this folder. This is always false when the item is not a folder. For a folder in a shared drive, use canDeleteChildren or canTrashChildren instead."]
-        #[serde(rename = "canRemoveChildren", default)]
-        pub can_remove_children: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can rename this file."]
-        #[serde(rename = "canRename", default)]
-        pub can_rename: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can modify the sharing settings for this file."]
-        #[serde(rename = "canShare", default)]
-        pub can_share: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move this file to trash."]
-        #[serde(rename = "canTrash", default)]
-        pub can_trash: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can trash children of this folder. This is false when the item is not a folder. Only populated for items in shared drives."]
-        #[serde(rename = "canTrashChildren", default)]
-        pub can_trash_children: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can restore this file from trash."]
-        #[serde(rename = "canUntrash", default)]
-        pub can_untrash: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for FileCapabilities {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct FileImageMediaMetadataLocation {
-        #[doc = "The altitude stored in the image."]
-        #[serde(rename = "altitude", default)]
-        pub altitude: ::std::option::Option<f64>,
-        #[doc = "The latitude stored in the image."]
-        #[serde(rename = "latitude", default)]
-        pub latitude: ::std::option::Option<f64>,
-        #[doc = "The longitude stored in the image."]
-        #[serde(rename = "longitude", default)]
-        pub longitude: ::std::option::Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for FileImageMediaMetadataLocation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct FileImageMediaMetadata {
-        #[doc = "The aperture used to create the photo (f-number)."]
-        #[serde(rename = "aperture", default)]
-        pub aperture: ::std::option::Option<f32>,
-        #[doc = "The make of the camera used to create the photo."]
-        #[serde(rename = "cameraMake", default)]
-        pub camera_make: ::std::option::Option<String>,
-        #[doc = "The model of the camera used to create the photo."]
-        #[serde(rename = "cameraModel", default)]
-        pub camera_model: ::std::option::Option<String>,
-        #[doc = "The color space of the photo."]
-        #[serde(rename = "colorSpace", default)]
-        pub color_space: ::std::option::Option<String>,
-        #[doc = "The date and time the photo was taken (EXIF format timestamp)."]
-        #[serde(rename = "date", default)]
-        pub date: ::std::option::Option<String>,
-        #[doc = "The exposure bias of the photo (APEX value)."]
-        #[serde(rename = "exposureBias", default)]
-        pub exposure_bias: ::std::option::Option<f32>,
-        #[doc = "The exposure mode used to create the photo."]
-        #[serde(rename = "exposureMode", default)]
-        pub exposure_mode: ::std::option::Option<String>,
-        #[doc = "The length of the exposure, in seconds."]
-        #[serde(rename = "exposureTime", default)]
-        pub exposure_time: ::std::option::Option<f32>,
-        #[doc = "Whether a flash was used to create the photo."]
-        #[serde(rename = "flashUsed", default)]
-        pub flash_used: ::std::option::Option<bool>,
-        #[doc = "The focal length used to create the photo, in millimeters."]
-        #[serde(rename = "focalLength", default)]
-        pub focal_length: ::std::option::Option<f32>,
-        #[doc = "The height of the image in pixels."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[doc = "The ISO speed used to create the photo."]
-        #[serde(rename = "isoSpeed", default)]
-        pub iso_speed: ::std::option::Option<i32>,
-        #[doc = "The lens used to create the photo."]
-        #[serde(rename = "lens", default)]
-        pub lens: ::std::option::Option<String>,
-        #[doc = "Geographic location information stored in the image."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<crate::schemas::FileImageMediaMetadataLocation>,
-        #[doc = "The smallest f-number of the lens at the focal length used to create the photo (APEX value)."]
-        #[serde(rename = "maxApertureValue", default)]
-        pub max_aperture_value: ::std::option::Option<f32>,
-        #[doc = "The metering mode used to create the photo."]
-        #[serde(rename = "meteringMode", default)]
-        pub metering_mode: ::std::option::Option<String>,
-        #[doc = "The rotation in clockwise degrees from the image's original orientation."]
-        #[serde(rename = "rotation", default)]
-        pub rotation: ::std::option::Option<i32>,
-        #[doc = "The type of sensor used to create the photo."]
-        #[serde(rename = "sensor", default)]
-        pub sensor: ::std::option::Option<String>,
-        #[doc = "The distance to the subject of the photo, in meters."]
-        #[serde(rename = "subjectDistance", default)]
-        pub subject_distance: ::std::option::Option<i32>,
-        #[doc = "The white balance mode used to create the photo."]
-        #[serde(rename = "whiteBalance", default)]
-        pub white_balance: ::std::option::Option<String>,
-        #[doc = "The width of the image in pixels."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for FileImageMediaMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileIndexableText {
-        #[doc = "The text to be indexed for this file."]
-        #[serde(rename = "text", default)]
-        pub text: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FileIndexableText {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileLabels {
-        #[doc = "Deprecated."]
-        #[serde(rename = "hidden", default)]
-        pub hidden: ::std::option::Option<bool>,
-        #[doc = "Whether the file has been modified by this user."]
-        #[serde(rename = "modified", default)]
-        pub modified: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use copyRequiresWriterPermission instead."]
-        #[serde(rename = "restricted", default)]
-        pub restricted: ::std::option::Option<bool>,
-        #[doc = "Whether this file is starred by the user."]
-        #[serde(rename = "starred", default)]
-        pub starred: ::std::option::Option<bool>,
-        #[doc = "Whether this file has been trashed. This label applies to all users accessing the file; however, only owners are allowed to see and untrash files."]
-        #[serde(rename = "trashed", default)]
-        pub trashed: ::std::option::Option<bool>,
-        #[doc = "Whether this file has been viewed by this user."]
-        #[serde(rename = "viewed", default)]
-        pub viewed: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for FileLabels {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileThumbnail {
-        #[doc = "The URL-safe Base64 encoded bytes of the thumbnail image. It should conform to RFC 4648 section 5."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The MIME type of the thumbnail."]
-        #[serde(rename = "mimeType", default)]
-        pub mime_type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FileThumbnail {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileVideoMediaMetadata {
-        #[doc = "The duration of the video in milliseconds."]
-        #[serde(rename = "durationMillis", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub duration_millis: ::std::option::Option<i64>,
-        #[doc = "The height of the video in pixels."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[doc = "The width of the video in pixels."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for FileVideoMediaMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1749,6 +1410,345 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileCapabilities {
+        #[doc = "Whether the current user can add children to this folder. This is always false when the item is not a folder."]
+        #[serde(rename = "canAddChildren", default)]
+        pub can_add_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can change the copyRequiresWriterPermission restriction of this file."]
+        #[serde(rename = "canChangeCopyRequiresWriterPermission", default)]
+        pub can_change_copy_requires_writer_permission: ::std::option::Option<bool>,
+        #[doc = "Deprecated"]
+        #[serde(rename = "canChangeRestrictedDownload", default)]
+        pub can_change_restricted_download: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can comment on this file."]
+        #[serde(rename = "canComment", default)]
+        pub can_comment: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can copy this file. For an item in a shared drive, whether the current user can copy non-folder descendants of this item, or this item itself if it is not a folder."]
+        #[serde(rename = "canCopy", default)]
+        pub can_copy: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can delete this file."]
+        #[serde(rename = "canDelete", default)]
+        pub can_delete: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can delete children of this folder. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[serde(rename = "canDeleteChildren", default)]
+        pub can_delete_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can download this file."]
+        #[serde(rename = "canDownload", default)]
+        pub can_download: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can edit this file."]
+        #[serde(rename = "canEdit", default)]
+        pub can_edit: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can list the children of this folder. This is always false when the item is not a folder."]
+        #[serde(rename = "canListChildren", default)]
+        pub can_list_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can move children of this folder outside of the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[serde(rename = "canMoveChildrenOutOfDrive", default)]
+        pub can_move_children_out_of_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveChildrenOutOfDrive instead."]
+        #[serde(rename = "canMoveChildrenOutOfTeamDrive", default)]
+        pub can_move_children_out_of_team_drive: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[serde(rename = "canMoveChildrenWithinDrive", default)]
+        pub can_move_children_within_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveChildrenWithinDrive instead."]
+        #[serde(rename = "canMoveChildrenWithinTeamDrive", default)]
+        pub can_move_children_within_team_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveItemOutOfDrive instead."]
+        #[serde(rename = "canMoveItemIntoTeamDrive", default)]
+        pub can_move_item_into_team_drive: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can move this item outside of this drive by changing its parent. Note that a request to change the parent of the item may still fail depending on the new parent that is being added."]
+        #[serde(rename = "canMoveItemOutOfDrive", default)]
+        pub can_move_item_out_of_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveItemOutOfDrive instead."]
+        #[serde(rename = "canMoveItemOutOfTeamDrive", default)]
+        pub can_move_item_out_of_team_drive: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives."]
+        #[serde(rename = "canMoveItemWithinDrive", default)]
+        pub can_move_item_within_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveItemWithinDrive instead."]
+        #[serde(rename = "canMoveItemWithinTeamDrive", default)]
+        pub can_move_item_within_team_drive: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead."]
+        #[serde(rename = "canMoveTeamDriveItem", default)]
+        pub can_move_team_drive_item: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can read the shared drive to which this file belongs. Only populated for items in shared drives."]
+        #[serde(rename = "canReadDrive", default)]
+        pub can_read_drive: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can read the revisions resource of this file. For a shared drive item, whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can be read."]
+        #[serde(rename = "canReadRevisions", default)]
+        pub can_read_revisions: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use canReadDrive instead."]
+        #[serde(rename = "canReadTeamDrive", default)]
+        pub can_read_team_drive: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can remove children from this folder. This is always false when the item is not a folder. For a folder in a shared drive, use canDeleteChildren or canTrashChildren instead."]
+        #[serde(rename = "canRemoveChildren", default)]
+        pub can_remove_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can rename this file."]
+        #[serde(rename = "canRename", default)]
+        pub can_rename: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can modify the sharing settings for this file."]
+        #[serde(rename = "canShare", default)]
+        pub can_share: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can move this file to trash."]
+        #[serde(rename = "canTrash", default)]
+        pub can_trash: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can trash children of this folder. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[serde(rename = "canTrashChildren", default)]
+        pub can_trash_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can restore this file from trash."]
+        #[serde(rename = "canUntrash", default)]
+        pub can_untrash: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for FileCapabilities {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct FileImageMediaMetadata {
+        #[doc = "The aperture used to create the photo (f-number)."]
+        #[serde(rename = "aperture", default)]
+        pub aperture: ::std::option::Option<f32>,
+        #[doc = "The make of the camera used to create the photo."]
+        #[serde(rename = "cameraMake", default)]
+        pub camera_make: ::std::option::Option<String>,
+        #[doc = "The model of the camera used to create the photo."]
+        #[serde(rename = "cameraModel", default)]
+        pub camera_model: ::std::option::Option<String>,
+        #[doc = "The color space of the photo."]
+        #[serde(rename = "colorSpace", default)]
+        pub color_space: ::std::option::Option<String>,
+        #[doc = "The date and time the photo was taken (EXIF format timestamp)."]
+        #[serde(rename = "date", default)]
+        pub date: ::std::option::Option<String>,
+        #[doc = "The exposure bias of the photo (APEX value)."]
+        #[serde(rename = "exposureBias", default)]
+        pub exposure_bias: ::std::option::Option<f32>,
+        #[doc = "The exposure mode used to create the photo."]
+        #[serde(rename = "exposureMode", default)]
+        pub exposure_mode: ::std::option::Option<String>,
+        #[doc = "The length of the exposure, in seconds."]
+        #[serde(rename = "exposureTime", default)]
+        pub exposure_time: ::std::option::Option<f32>,
+        #[doc = "Whether a flash was used to create the photo."]
+        #[serde(rename = "flashUsed", default)]
+        pub flash_used: ::std::option::Option<bool>,
+        #[doc = "The focal length used to create the photo, in millimeters."]
+        #[serde(rename = "focalLength", default)]
+        pub focal_length: ::std::option::Option<f32>,
+        #[doc = "The height of the image in pixels."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[doc = "The ISO speed used to create the photo."]
+        #[serde(rename = "isoSpeed", default)]
+        pub iso_speed: ::std::option::Option<i32>,
+        #[doc = "The lens used to create the photo."]
+        #[serde(rename = "lens", default)]
+        pub lens: ::std::option::Option<String>,
+        #[doc = "Geographic location information stored in the image."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<crate::schemas::FileImageMediaMetadataLocation>,
+        #[doc = "The smallest f-number of the lens at the focal length used to create the photo (APEX value)."]
+        #[serde(rename = "maxApertureValue", default)]
+        pub max_aperture_value: ::std::option::Option<f32>,
+        #[doc = "The metering mode used to create the photo."]
+        #[serde(rename = "meteringMode", default)]
+        pub metering_mode: ::std::option::Option<String>,
+        #[doc = "The rotation in clockwise degrees from the image's original orientation."]
+        #[serde(rename = "rotation", default)]
+        pub rotation: ::std::option::Option<i32>,
+        #[doc = "The type of sensor used to create the photo."]
+        #[serde(rename = "sensor", default)]
+        pub sensor: ::std::option::Option<String>,
+        #[doc = "The distance to the subject of the photo, in meters."]
+        #[serde(rename = "subjectDistance", default)]
+        pub subject_distance: ::std::option::Option<i32>,
+        #[doc = "The white balance mode used to create the photo."]
+        #[serde(rename = "whiteBalance", default)]
+        pub white_balance: ::std::option::Option<String>,
+        #[doc = "The width of the image in pixels."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for FileImageMediaMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct FileImageMediaMetadataLocation {
+        #[doc = "The altitude stored in the image."]
+        #[serde(rename = "altitude", default)]
+        pub altitude: ::std::option::Option<f64>,
+        #[doc = "The latitude stored in the image."]
+        #[serde(rename = "latitude", default)]
+        pub latitude: ::std::option::Option<f64>,
+        #[doc = "The longitude stored in the image."]
+        #[serde(rename = "longitude", default)]
+        pub longitude: ::std::option::Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for FileImageMediaMetadataLocation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileIndexableText {
+        #[doc = "The text to be indexed for this file."]
+        #[serde(rename = "text", default)]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FileIndexableText {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileLabels {
+        #[doc = "Deprecated."]
+        #[serde(rename = "hidden", default)]
+        pub hidden: ::std::option::Option<bool>,
+        #[doc = "Whether the file has been modified by this user."]
+        #[serde(rename = "modified", default)]
+        pub modified: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use copyRequiresWriterPermission instead."]
+        #[serde(rename = "restricted", default)]
+        pub restricted: ::std::option::Option<bool>,
+        #[doc = "Whether this file is starred by the user."]
+        #[serde(rename = "starred", default)]
+        pub starred: ::std::option::Option<bool>,
+        #[doc = "Whether this file has been trashed. This label applies to all users accessing the file; however, only owners are allowed to see and untrash files."]
+        #[serde(rename = "trashed", default)]
+        pub trashed: ::std::option::Option<bool>,
+        #[doc = "Whether this file has been viewed by this user."]
+        #[serde(rename = "viewed", default)]
+        pub viewed: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for FileLabels {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileThumbnail {
+        #[doc = "The URL-safe Base64 encoded bytes of the thumbnail image. It should conform to RFC 4648 section 5."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The MIME type of the thumbnail."]
+        #[serde(rename = "mimeType", default)]
+        pub mime_type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FileThumbnail {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileVideoMediaMetadata {
+        #[doc = "The duration of the video in milliseconds."]
+        #[serde(rename = "durationMillis", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub duration_millis: ::std::option::Option<i64>,
+        #[doc = "The height of the video in pixels."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[doc = "The width of the video in pixels."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for FileVideoMediaMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct FileList {
@@ -1900,82 +1900,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PermissionPermissionDetailsItems {
-        #[doc = "Additional roles for this user. Only commenter is currently possible, though more may be supported in the future."]
-        #[serde(rename = "additionalRoles", default)]
-        pub additional_roles: ::std::option::Option<Vec<String>>,
-        #[doc = "Whether this permission is inherited. This field is always populated. This is an output-only field."]
-        #[serde(rename = "inherited", default)]
-        pub inherited: ::std::option::Option<bool>,
-        #[doc = "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the shared drive."]
-        #[serde(rename = "inheritedFrom", default)]
-        pub inherited_from: ::std::option::Option<String>,
-        #[doc = "The permission type for this user. While new values may be added in future, the following are currently possible:\n\n* file \n* member"]
-        #[serde(rename = "permissionType", default)]
-        pub permission_type: ::std::option::Option<String>,
-        #[doc = "The primary role for this user. While new values may be added in the future, the following are currently possible:\n\n* organizer \n* fileOrganizer \n* writer \n* reader"]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PermissionPermissionDetailsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PermissionTeamDrivePermissionDetailsItems {
-        #[doc = "Deprecated - use permissionDetails/additionalRoles instead."]
-        #[serde(rename = "additionalRoles", default)]
-        pub additional_roles: ::std::option::Option<Vec<String>>,
-        #[doc = "Deprecated - use permissionDetails/inherited instead."]
-        #[serde(rename = "inherited", default)]
-        pub inherited: ::std::option::Option<bool>,
-        #[doc = "Deprecated - use permissionDetails/inheritedFrom instead."]
-        #[serde(rename = "inheritedFrom", default)]
-        pub inherited_from: ::std::option::Option<String>,
-        #[doc = "Deprecated - use permissionDetails/role instead."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
-        #[doc = "Deprecated - use permissionDetails/permissionType instead."]
-        #[serde(rename = "teamDrivePermissionType", default)]
-        pub team_drive_permission_type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PermissionTeamDrivePermissionDetailsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Permission {
         #[doc = "Additional roles for this user. Only commenter is currently allowed, though more may be supported in the future."]
         #[serde(rename = "additionalRoles", default)]
@@ -2035,6 +1959,82 @@ pub mod schemas {
         pub with_link: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Permission {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PermissionPermissionDetailsItems {
+        #[doc = "Additional roles for this user. Only commenter is currently possible, though more may be supported in the future."]
+        #[serde(rename = "additionalRoles", default)]
+        pub additional_roles: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether this permission is inherited. This field is always populated. This is an output-only field."]
+        #[serde(rename = "inherited", default)]
+        pub inherited: ::std::option::Option<bool>,
+        #[doc = "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the shared drive."]
+        #[serde(rename = "inheritedFrom", default)]
+        pub inherited_from: ::std::option::Option<String>,
+        #[doc = "The permission type for this user. While new values may be added in future, the following are currently possible:\n\n* file \n* member"]
+        #[serde(rename = "permissionType", default)]
+        pub permission_type: ::std::option::Option<String>,
+        #[doc = "The primary role for this user. While new values may be added in the future, the following are currently possible:\n\n* organizer \n* fileOrganizer \n* writer \n* reader"]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PermissionPermissionDetailsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PermissionTeamDrivePermissionDetailsItems {
+        #[doc = "Deprecated - use permissionDetails/additionalRoles instead."]
+        #[serde(rename = "additionalRoles", default)]
+        pub additional_roles: ::std::option::Option<Vec<String>>,
+        #[doc = "Deprecated - use permissionDetails/inherited instead."]
+        #[serde(rename = "inherited", default)]
+        pub inherited: ::std::option::Option<bool>,
+        #[doc = "Deprecated - use permissionDetails/inheritedFrom instead."]
+        #[serde(rename = "inheritedFrom", default)]
+        pub inherited_from: ::std::option::Option<String>,
+        #[doc = "Deprecated - use permissionDetails/role instead."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
+        #[doc = "Deprecated - use permissionDetails/permissionType instead."]
+        #[serde(rename = "teamDrivePermissionType", default)]
+        pub team_drive_permission_type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PermissionTeamDrivePermissionDetailsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2334,6 +2334,51 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct TeamDrive {
+        #[doc = "An image file and cropping parameters from which a background image for this Team Drive is set. This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId. When specified, all fields of the backgroundImageFile must be set."]
+        #[serde(rename = "backgroundImageFile", default)]
+        pub background_image_file:
+            ::std::option::Option<crate::schemas::TeamDriveBackgroundImageFile>,
+        #[doc = "A short-lived link to this Team Drive's background image."]
+        #[serde(rename = "backgroundImageLink", default)]
+        pub background_image_link: ::std::option::Option<String>,
+        #[doc = "Capabilities the current user has on this Team Drive."]
+        #[serde(rename = "capabilities", default)]
+        pub capabilities: ::std::option::Option<crate::schemas::TeamDriveCapabilities>,
+        #[doc = "The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update request that does not set themeId."]
+        #[serde(rename = "colorRgb", default)]
+        pub color_rgb: ::std::option::Option<String>,
+        #[doc = "The time at which the Team Drive was created (RFC 3339 date-time)."]
+        #[serde(rename = "createdDate", default)]
+        pub created_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The ID of this Team Drive which is also the ID of the top level folder of this Team Drive."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "This is always drive#teamDrive"]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The name of this Team Drive."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A set of restrictions that apply to this Team Drive or items inside this Team Drive."]
+        #[serde(rename = "restrictions", default)]
+        pub restrictions: ::std::option::Option<crate::schemas::TeamDriveRestrictions>,
+        #[doc = "The ID of the theme from which the background image and color will be set. The set of possible teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a drive.teamdrives.insert request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set colorRgb or backgroundImageFile."]
+        #[serde(rename = "themeId", default)]
+        pub theme_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for TeamDrive {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct TeamDriveBackgroundImageFile {
         #[doc = "The ID of an image file in Drive to use for the background image."]
         #[serde(rename = "id", default)]
@@ -2475,51 +2520,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct TeamDrive {
-        #[doc = "An image file and cropping parameters from which a background image for this Team Drive is set. This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId. When specified, all fields of the backgroundImageFile must be set."]
-        #[serde(rename = "backgroundImageFile", default)]
-        pub background_image_file:
-            ::std::option::Option<crate::schemas::TeamDriveBackgroundImageFile>,
-        #[doc = "A short-lived link to this Team Drive's background image."]
-        #[serde(rename = "backgroundImageLink", default)]
-        pub background_image_link: ::std::option::Option<String>,
-        #[doc = "Capabilities the current user has on this Team Drive."]
-        #[serde(rename = "capabilities", default)]
-        pub capabilities: ::std::option::Option<crate::schemas::TeamDriveCapabilities>,
-        #[doc = "The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update request that does not set themeId."]
-        #[serde(rename = "colorRgb", default)]
-        pub color_rgb: ::std::option::Option<String>,
-        #[doc = "The time at which the Team Drive was created (RFC 3339 date-time)."]
-        #[serde(rename = "createdDate", default)]
-        pub created_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The ID of this Team Drive which is also the ID of the top level folder of this Team Drive."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "This is always drive#teamDrive"]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The name of this Team Drive."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "A set of restrictions that apply to this Team Drive or items inside this Team Drive."]
-        #[serde(rename = "restrictions", default)]
-        pub restrictions: ::std::option::Option<crate::schemas::TeamDriveRestrictions>,
-        #[doc = "The ID of the theme from which the background image and color will be set. The set of possible teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a drive.teamdrives.insert request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set colorRgb or backgroundImageFile."]
-        #[serde(rename = "themeId", default)]
-        pub theme_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for TeamDrive {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct TeamDriveList {
         #[doc = "The list of Team Drives."]
         #[serde(rename = "items", default)]
@@ -2532,32 +2532,6 @@ pub mod schemas {
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TeamDriveList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserPicture {
-        #[doc = "A URL that points to a profile picture of this user."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UserPicture {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2599,6 +2573,32 @@ pub mod schemas {
         pub picture: ::std::option::Option<crate::schemas::UserPicture>,
     }
     impl ::field_selector::FieldSelector for User {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserPicture {
+        #[doc = "A URL that points to a profile picture of this user."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UserPicture {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16301,6 +16301,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -16379,38 +16410,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -16536,8 +16535,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

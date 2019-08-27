@@ -11,6 +11,60 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Bucket {
+        #[doc = "Access controls on the bucket."]
+        #[serde(rename = "acl", default)]
+        pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
+        #[doc = "Default access controls to apply to new objects when no ACL is provided."]
+        #[serde(rename = "defaultObjectAcl", default)]
+        pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
+        #[doc = "The name of the bucket."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage in this location. Can be US or EU. Defaults to US."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The owner of the bucket. This will always be the project team's owner group."]
+        #[serde(rename = "owner", default)]
+        pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
+        #[doc = "The project the bucket belongs to."]
+        #[serde(rename = "projectId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub project_id: ::std::option::Option<u64>,
+        #[doc = "The URI of this bucket."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "Creation time of the bucket in RFC 3339 format."]
+        #[serde(rename = "timeCreated", default)]
+        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The bucket's website configuration."]
+        #[serde(rename = "website", default)]
+        pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
+    }
+    impl ::field_selector::FieldSelector for Bucket {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct BucketOwner {
         #[doc = "The entity, in the form group-groupId."]
         #[serde(rename = "entity", default)]
@@ -49,60 +103,6 @@ pub mod schemas {
         pub not_found_page: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketWebsite {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Bucket {
-        #[doc = "Access controls on the bucket."]
-        #[serde(rename = "acl", default)]
-        pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
-        #[doc = "Default access controls to apply to new objects when no ACL is provided."]
-        #[serde(rename = "defaultObjectAcl", default)]
-        pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
-        #[doc = "The name of the bucket."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage in this location. Can be US or EU. Defaults to US."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The owner of the bucket. This will always be the project team's owner group."]
-        #[serde(rename = "owner", default)]
-        pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
-        #[doc = "The project the bucket belongs to."]
-        #[serde(rename = "projectId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub project_id: ::std::option::Option<u64>,
-        #[doc = "The URI of this bucket."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "Creation time of the bucket in RFC 3339 format."]
-        #[serde(rename = "timeCreated", default)]
-        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The bucket's website configuration."]
-        #[serde(rename = "website", default)]
-        pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
-    }
-    impl ::field_selector::FieldSelector for Bucket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -234,6 +234,68 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Object {
+        #[doc = "Access controls on the object."]
+        #[serde(rename = "acl", default)]
+        pub acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
+        #[doc = "The bucket containing this object."]
+        #[serde(rename = "bucket", default)]
+        pub bucket: ::std::option::Option<String>,
+        #[doc = "Cache-Control directive for the object data."]
+        #[serde(rename = "cacheControl", default)]
+        pub cache_control: ::std::option::Option<String>,
+        #[doc = "Content-Disposition of the object data."]
+        #[serde(rename = "contentDisposition", default)]
+        pub content_disposition: ::std::option::Option<String>,
+        #[doc = "Content-Encoding of the object data."]
+        #[serde(rename = "contentEncoding", default)]
+        pub content_encoding: ::std::option::Option<String>,
+        #[doc = "Content-Language of the object data."]
+        #[serde(rename = "contentLanguage", default)]
+        pub content_language: ::std::option::Option<String>,
+        #[doc = "The ID of the object."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The kind of item this is. For objects, this is always storage#object."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Object media data. Provided on your behalf when uploading raw media or multipart/related with an auxiliary media part."]
+        #[serde(rename = "media", default)]
+        pub media: ::std::option::Option<crate::schemas::ObjectMedia>,
+        #[doc = "User-provided metadata, in key/value pairs."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The name of this object. Required if not specified by URL parameter."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The owner of the object. This will always be the uploader of the object."]
+        #[serde(rename = "owner", default)]
+        pub owner: ::std::option::Option<crate::schemas::ObjectOwner>,
+        #[doc = "The link to this object."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Object {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ObjectMedia {
         #[doc = "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided."]
         #[serde(rename = "algorithm", default)]
@@ -288,68 +350,6 @@ pub mod schemas {
         pub entity_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Object {
-        #[doc = "Access controls on the object."]
-        #[serde(rename = "acl", default)]
-        pub acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
-        #[doc = "The bucket containing this object."]
-        #[serde(rename = "bucket", default)]
-        pub bucket: ::std::option::Option<String>,
-        #[doc = "Cache-Control directive for the object data."]
-        #[serde(rename = "cacheControl", default)]
-        pub cache_control: ::std::option::Option<String>,
-        #[doc = "Content-Disposition of the object data."]
-        #[serde(rename = "contentDisposition", default)]
-        pub content_disposition: ::std::option::Option<String>,
-        #[doc = "Content-Encoding of the object data."]
-        #[serde(rename = "contentEncoding", default)]
-        pub content_encoding: ::std::option::Option<String>,
-        #[doc = "Content-Language of the object data."]
-        #[serde(rename = "contentLanguage", default)]
-        pub content_language: ::std::option::Option<String>,
-        #[doc = "The ID of the object."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The kind of item this is. For objects, this is always storage#object."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Object media data. Provided on your behalf when uploading raw media or multipart/related with an auxiliary media part."]
-        #[serde(rename = "media", default)]
-        pub media: ::std::option::Option<crate::schemas::ObjectMedia>,
-        #[doc = "User-provided metadata, in key/value pairs."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The name of this object. Required if not specified by URL parameter."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The owner of the object. This will always be the uploader of the object."]
-        #[serde(rename = "owner", default)]
-        pub owner: ::std::option::Option<crate::schemas::ObjectOwner>,
-        #[doc = "The link to this object."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Object {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5416,6 +5416,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -5494,38 +5525,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -5651,8 +5650,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

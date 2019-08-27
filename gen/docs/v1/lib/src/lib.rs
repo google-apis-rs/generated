@@ -1,4 +1,35 @@
 pub mod schemas {
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AutoText {
+        #[doc = "The type of this auto text."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::AutoTextType>,
+        #[doc = "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content."]
+        #[serde(rename = "suggestedDeletionIds", default)]
+        pub suggested_deletion_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "The suggested insertion IDs. An AutoText\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion."]
+        #[serde(rename = "suggestedInsertionIds", default)]
+        pub suggested_insertion_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "The suggested text style changes to this AutoText, keyed by suggestion ID."]
+        #[serde(rename = "suggestedTextStyleChanges", default)]
+        pub suggested_text_style_changes: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::SuggestedTextStyle>,
+        >,
+        #[doc = "The text style of this AutoText."]
+        #[serde(rename = "textStyle", default)]
+        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
+    }
+    impl ::field_selector::FieldSelector for AutoText {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoTextType {
         #[doc = "Type for auto text that represents the total number of pages in the\ndocument."]
@@ -50,37 +81,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AutoTextType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct AutoText {
-        #[doc = "The type of this auto text."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::AutoTextType>,
-        #[doc = "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content."]
-        #[serde(rename = "suggestedDeletionIds", default)]
-        pub suggested_deletion_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The suggested insertion IDs. An AutoText\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion."]
-        #[serde(rename = "suggestedInsertionIds", default)]
-        pub suggested_insertion_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The suggested text style changes to this AutoText, keyed by suggestion ID."]
-        #[serde(rename = "suggestedTextStyleChanges", default)]
-        pub suggested_text_style_changes: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::SuggestedTextStyle>,
-        >,
-        #[doc = "The text style of this AutoText."]
-        #[serde(rename = "textStyle", default)]
-        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
-    }
-    impl ::field_selector::FieldSelector for AutoText {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -357,6 +357,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateParagraphBulletsRequest {
+        #[doc = "The kinds of bullet glyphs to be used."]
+        #[serde(rename = "bulletPreset", default)]
+        pub bullet_preset:
+            ::std::option::Option<crate::schemas::CreateParagraphBulletsRequestBulletPreset>,
+        #[doc = "The range to apply the bullet preset to."]
+        #[serde(rename = "range", default)]
+        pub range: ::std::option::Option<crate::schemas::Range>,
+    }
+    impl ::field_selector::FieldSelector for CreateParagraphBulletsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateParagraphBulletsRequestBulletPreset {
         #[doc = "A bulleted list with a `ARROW3D`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
@@ -520,36 +550,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CreateParagraphBulletsRequestBulletPreset {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreateParagraphBulletsRequest {
-        #[doc = "The kinds of bullet glyphs to be used."]
-        #[serde(rename = "bulletPreset", default)]
-        pub bullet_preset:
-            ::std::option::Option<crate::schemas::CreateParagraphBulletsRequestBulletPreset>,
-        #[doc = "The range to apply the bullet preset to."]
-        #[serde(rename = "range", default)]
-        pub range: ::std::option::Option<crate::schemas::Range>,
-    }
-    impl ::field_selector::FieldSelector for CreateParagraphBulletsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -784,6 +784,26 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Dimension {
+        #[doc = "The magnitude."]
+        #[serde(rename = "magnitude", default)]
+        pub magnitude: ::std::option::Option<f64>,
+        #[doc = "The units for magnitude."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<crate::schemas::DimensionUnit>,
+    }
+    impl ::field_selector::FieldSelector for Dimension {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionUnit {
         #[doc = "A point, 1/72 of an inch."]
@@ -831,101 +851,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DimensionUnit {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Dimension {
-        #[doc = "The magnitude."]
-        #[serde(rename = "magnitude", default)]
-        pub magnitude: ::std::option::Option<f64>,
-        #[doc = "The units for magnitude."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<crate::schemas::DimensionUnit>,
-    }
-    impl ::field_selector::FieldSelector for Dimension {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum DocumentSuggestionsViewMode {
-        #[doc = "The SuggestionsViewMode applied to the returned document depends on the\nuser's current access level. If the user only has view access,\nPREVIEW_WITHOUT_SUGGESTIONS is\napplied. Otherwise, SUGGESTIONS_INLINE is applied.\nThis is the default suggestions view mode."]
-        DefaultForCurrentAccess,
-        #[doc = "The returned document is a preview with all suggested changes accepted.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
-        PreviewSuggestionsAccepted,
-        #[doc = "The returned document is a preview with all suggested changes rejected if\nthere are any suggestions in the document."]
-        PreviewWithoutSuggestions,
-        #[doc = "The returned document has suggestions inline. Suggested changes will be\ndifferentiated from base content within the document.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
-        SuggestionsInline,
-    }
-    impl DocumentSuggestionsViewMode {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                DocumentSuggestionsViewMode::DefaultForCurrentAccess => {
-                    "DEFAULT_FOR_CURRENT_ACCESS"
-                }
-                DocumentSuggestionsViewMode::PreviewSuggestionsAccepted => {
-                    "PREVIEW_SUGGESTIONS_ACCEPTED"
-                }
-                DocumentSuggestionsViewMode::PreviewWithoutSuggestions => {
-                    "PREVIEW_WITHOUT_SUGGESTIONS"
-                }
-                DocumentSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
-            }
-        }
-    }
-    impl ::std::fmt::Display for DocumentSuggestionsViewMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for DocumentSuggestionsViewMode {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for DocumentSuggestionsViewMode {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DEFAULT_FOR_CURRENT_ACCESS" => {
-                    DocumentSuggestionsViewMode::DefaultForCurrentAccess
-                }
-                "PREVIEW_SUGGESTIONS_ACCEPTED" => {
-                    DocumentSuggestionsViewMode::PreviewSuggestionsAccepted
-                }
-                "PREVIEW_WITHOUT_SUGGESTIONS" => {
-                    DocumentSuggestionsViewMode::PreviewWithoutSuggestions
-                }
-                "SUGGESTIONS_INLINE" => DocumentSuggestionsViewMode::SuggestionsInline,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for DocumentSuggestionsViewMode {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1003,6 +928,81 @@ pub mod schemas {
         pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Document {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DocumentSuggestionsViewMode {
+        #[doc = "The SuggestionsViewMode applied to the returned document depends on the\nuser's current access level. If the user only has view access,\nPREVIEW_WITHOUT_SUGGESTIONS is\napplied. Otherwise, SUGGESTIONS_INLINE is applied.\nThis is the default suggestions view mode."]
+        DefaultForCurrentAccess,
+        #[doc = "The returned document is a preview with all suggested changes accepted.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
+        PreviewSuggestionsAccepted,
+        #[doc = "The returned document is a preview with all suggested changes rejected if\nthere are any suggestions in the document."]
+        PreviewWithoutSuggestions,
+        #[doc = "The returned document has suggestions inline. Suggested changes will be\ndifferentiated from base content within the document.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes."]
+        SuggestionsInline,
+    }
+    impl DocumentSuggestionsViewMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DocumentSuggestionsViewMode::DefaultForCurrentAccess => {
+                    "DEFAULT_FOR_CURRENT_ACCESS"
+                }
+                DocumentSuggestionsViewMode::PreviewSuggestionsAccepted => {
+                    "PREVIEW_SUGGESTIONS_ACCEPTED"
+                }
+                DocumentSuggestionsViewMode::PreviewWithoutSuggestions => {
+                    "PREVIEW_WITHOUT_SUGGESTIONS"
+                }
+                DocumentSuggestionsViewMode::SuggestionsInline => "SUGGESTIONS_INLINE",
+            }
+        }
+    }
+    impl ::std::fmt::Display for DocumentSuggestionsViewMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DocumentSuggestionsViewMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DocumentSuggestionsViewMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEFAULT_FOR_CURRENT_ACCESS" => {
+                    DocumentSuggestionsViewMode::DefaultForCurrentAccess
+                }
+                "PREVIEW_SUGGESTIONS_ACCEPTED" => {
+                    DocumentSuggestionsViewMode::PreviewSuggestionsAccepted
+                }
+                "PREVIEW_WITHOUT_SUGGESTIONS" => {
+                    DocumentSuggestionsViewMode::PreviewWithoutSuggestions
+                }
+                "SUGGESTIONS_INLINE" => DocumentSuggestionsViewMode::SuggestionsInline,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for DocumentSuggestionsViewMode {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1221,6 +1221,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct EmbeddedObjectBorder {
+        #[doc = "The color of the border."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The dash style of the border."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::EmbeddedObjectBorderDashStyle>,
+        #[doc = "The property state of the border property."]
+        #[serde(rename = "propertyState", default)]
+        pub property_state:
+            ::std::option::Option<crate::schemas::EmbeddedObjectBorderPropertyState>,
+        #[doc = "The width of the border."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for EmbeddedObjectBorder {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EmbeddedObjectBorderDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
@@ -1331,33 +1358,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for EmbeddedObjectBorderPropertyState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct EmbeddedObjectBorder {
-        #[doc = "The color of the border."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The dash style of the border."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::EmbeddedObjectBorderDashStyle>,
-        #[doc = "The property state of the border property."]
-        #[serde(rename = "propertyState", default)]
-        pub property_state:
-            ::std::option::Option<crate::schemas::EmbeddedObjectBorderPropertyState>,
-        #[doc = "The width of the border."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for EmbeddedObjectBorder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2303,6 +2303,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct NamedStyle {
+        #[doc = "The type of this named style."]
+        #[serde(rename = "namedStyleType", default)]
+        pub named_style_type: ::std::option::Option<crate::schemas::NamedStyleNamedStyleType>,
+        #[doc = "The paragraph style of this named style."]
+        #[serde(rename = "paragraphStyle", default)]
+        pub paragraph_style: ::std::option::Option<crate::schemas::ParagraphStyle>,
+        #[doc = "The text style of this named style."]
+        #[serde(rename = "textStyle", default)]
+        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
+    }
+    impl ::field_selector::FieldSelector for NamedStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NamedStyleNamedStyleType {
         #[doc = "Heading 1."]
@@ -2395,20 +2418,32 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct NamedStyle {
-        #[doc = "The type of this named style."]
+    pub struct NamedStyleSuggestionState {
+        #[doc = "The named style type that this suggestion state corresponds to.\n\nThis field is provided as a convenience for matching the\nNamedStyleSuggestionState with its corresponding NamedStyle."]
         #[serde(rename = "namedStyleType", default)]
-        pub named_style_type: ::std::option::Option<crate::schemas::NamedStyleNamedStyleType>,
-        #[doc = "The paragraph style of this named style."]
-        #[serde(rename = "paragraphStyle", default)]
-        pub paragraph_style: ::std::option::Option<crate::schemas::ParagraphStyle>,
-        #[doc = "The text style of this named style."]
-        #[serde(rename = "textStyle", default)]
-        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
+        pub named_style_type:
+            ::std::option::Option<crate::schemas::NamedStyleSuggestionStateNamedStyleType>,
+        #[doc = "A mask that indicates which of the fields in paragraph style have been changed in this\nsuggestion."]
+        #[serde(rename = "paragraphStyleSuggestionState", default)]
+        pub paragraph_style_suggestion_state:
+            ::std::option::Option<crate::schemas::ParagraphStyleSuggestionState>,
+        #[doc = "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."]
+        #[serde(rename = "textStyleSuggestionState", default)]
+        pub text_style_suggestion_state:
+            ::std::option::Option<crate::schemas::TextStyleSuggestionState>,
     }
-    impl ::field_selector::FieldSelector for NamedStyle {
+    impl ::field_selector::FieldSelector for NamedStyleSuggestionState {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2509,41 +2544,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NamedStyleSuggestionState {
-        #[doc = "The named style type that this suggestion state corresponds to.\n\nThis field is provided as a convenience for matching the\nNamedStyleSuggestionState with its corresponding NamedStyle."]
-        #[serde(rename = "namedStyleType", default)]
-        pub named_style_type:
-            ::std::option::Option<crate::schemas::NamedStyleSuggestionStateNamedStyleType>,
-        #[doc = "A mask that indicates which of the fields in paragraph style have been changed in this\nsuggestion."]
-        #[serde(rename = "paragraphStyleSuggestionState", default)]
-        pub paragraph_style_suggestion_state:
-            ::std::option::Option<crate::schemas::ParagraphStyleSuggestionState>,
-        #[doc = "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."]
-        #[serde(rename = "textStyleSuggestionState", default)]
-        pub text_style_suggestion_state:
-            ::std::option::Option<crate::schemas::TextStyleSuggestionState>,
-    }
-    impl ::field_selector::FieldSelector for NamedStyleSuggestionState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct NamedStyles {
@@ -2579,6 +2579,44 @@ pub mod schemas {
             ::std::option::Option<Vec<crate::schemas::NamedStyleSuggestionState>>,
     }
     impl ::field_selector::FieldSelector for NamedStylesSuggestionState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct NestingLevel {
+        #[doc = "The alignment of the bullet within the space allotted for rendering the\nbullet."]
+        #[serde(rename = "bulletAlignment", default)]
+        pub bullet_alignment: ::std::option::Option<crate::schemas::NestingLevelBulletAlignment>,
+        #[doc = "The format string used by bullets at this level of nesting.\n\nThe glyph format contains one or more placeholders, and these placeholder\nare replaced with the appropriate values depending on the glyph_type or glyph_symbol. The placeholders follow\nthe pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes\nand suffixes. Thus, the glyph format follows the pattern\n`<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are\noptional and can be arbitrary strings.\n\nFor example, the glyph format `%0.` indicates that the rendered glyph will\nreplace the placeholder with the corresponding glyph for nesting level 0\nfollowed by a period as the suffix. So a list with a glyph type of\nUPPER_ALPHA and\nglyph format `%0.` at nesting level 0 will result in a list with rendered\nglyphs\n\n<p>`A.`\n<p>`B.`\n<p>`C.`\n\nThe glyph format can contain placeholders for the current nesting level as\nwell as placeholders for parent nesting levels. For example, a\nlist can have a glyph format of `%0.` at nesting level 0 and a\nglyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels\nhave DECIMAL glyph\ntypes, this would result in a list with rendered glyphs\n\n<p>`1.`\n<p>`2.`\n<p>`  2.1.`\n<p>`  2.2.`\n<p>`3.`\n\nFor nesting levels that are ordered, the string that replaces a placeholder\nin the glyph format for a particular paragraph depends on the paragraph's\norder within the list."]
+        #[serde(rename = "glyphFormat", default)]
+        pub glyph_format: ::std::option::Option<String>,
+        #[doc = "A custom glyph symbol used by bullets when paragraphs at this level of\nnesting are unordered.\n\nThe glyph symbol replaces placeholders within the glyph_format. For example, if the\nglyph_symbol is the solid circle corresponding to Unicode U+25cf code\npoint and the glyph_format is `%0`, the rendered\nglyph would be the solid circle."]
+        #[serde(rename = "glyphSymbol", default)]
+        pub glyph_symbol: ::std::option::Option<String>,
+        #[doc = "The type of glyph used by bullets when paragraphs at this level of\nnesting are ordered.\n\nThe glyph type determines the type of glyph used to replace placeholders\nwithin the glyph_format\nwhen paragraphs at this level of nesting are ordered. For example, if the\nnesting level is 0, the glyph_format is `%0.` and the glyph\ntype is DECIMAL,\nthen the rendered glyph would replace the placeholder `%0` in the glyph\nformat with a number corresponding to list item's order within the list."]
+        #[serde(rename = "glyphType", default)]
+        pub glyph_type: ::std::option::Option<crate::schemas::NestingLevelGlyphType>,
+        #[doc = "The amount of indentation for the first line of paragraphs at this level of\nnesting."]
+        #[serde(rename = "indentFirstLine", default)]
+        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of indentation for paragraphs at this level of nesting. Applied\nto the side that corresponds to the start of the text, based on the\nparagraph's content direction."]
+        #[serde(rename = "indentStart", default)]
+        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The number of the first list item at this nesting level.\n\nA value of 0 is treated as a value of 1 for lettered lists and roman\nnumeraled lists, i.e. for values of both 0 and 1, lettered and roman\nnumeraled lists will begin at `a` and `i` respectively.\n\nThis value is ignored for nesting levels with unordered glyphs."]
+        #[serde(rename = "startNumber", default)]
+        pub start_number: ::std::option::Option<i32>,
+        #[doc = "The text style of bullets at this level of nesting."]
+        #[serde(rename = "textStyle", default)]
+        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
+    }
+    impl ::field_selector::FieldSelector for NestingLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2725,44 +2763,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NestingLevelGlyphType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct NestingLevel {
-        #[doc = "The alignment of the bullet within the space allotted for rendering the\nbullet."]
-        #[serde(rename = "bulletAlignment", default)]
-        pub bullet_alignment: ::std::option::Option<crate::schemas::NestingLevelBulletAlignment>,
-        #[doc = "The format string used by bullets at this level of nesting.\n\nThe glyph format contains one or more placeholders, and these placeholder\nare replaced with the appropriate values depending on the glyph_type or glyph_symbol. The placeholders follow\nthe pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes\nand suffixes. Thus, the glyph format follows the pattern\n`<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are\noptional and can be arbitrary strings.\n\nFor example, the glyph format `%0.` indicates that the rendered glyph will\nreplace the placeholder with the corresponding glyph for nesting level 0\nfollowed by a period as the suffix. So a list with a glyph type of\nUPPER_ALPHA and\nglyph format `%0.` at nesting level 0 will result in a list with rendered\nglyphs\n\n<p>`A.`\n<p>`B.`\n<p>`C.`\n\nThe glyph format can contain placeholders for the current nesting level as\nwell as placeholders for parent nesting levels. For example, a\nlist can have a glyph format of `%0.` at nesting level 0 and a\nglyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels\nhave DECIMAL glyph\ntypes, this would result in a list with rendered glyphs\n\n<p>`1.`\n<p>`2.`\n<p>`  2.1.`\n<p>`  2.2.`\n<p>`3.`\n\nFor nesting levels that are ordered, the string that replaces a placeholder\nin the glyph format for a particular paragraph depends on the paragraph's\norder within the list."]
-        #[serde(rename = "glyphFormat", default)]
-        pub glyph_format: ::std::option::Option<String>,
-        #[doc = "A custom glyph symbol used by bullets when paragraphs at this level of\nnesting are unordered.\n\nThe glyph symbol replaces placeholders within the glyph_format. For example, if the\nglyph_symbol is the solid circle corresponding to Unicode U+25cf code\npoint and the glyph_format is `%0`, the rendered\nglyph would be the solid circle."]
-        #[serde(rename = "glyphSymbol", default)]
-        pub glyph_symbol: ::std::option::Option<String>,
-        #[doc = "The type of glyph used by bullets when paragraphs at this level of\nnesting are ordered.\n\nThe glyph type determines the type of glyph used to replace placeholders\nwithin the glyph_format\nwhen paragraphs at this level of nesting are ordered. For example, if the\nnesting level is 0, the glyph_format is `%0.` and the glyph\ntype is DECIMAL,\nthen the rendered glyph would replace the placeholder `%0` in the glyph\nformat with a number corresponding to list item's order within the list."]
-        #[serde(rename = "glyphType", default)]
-        pub glyph_type: ::std::option::Option<crate::schemas::NestingLevelGlyphType>,
-        #[doc = "The amount of indentation for the first line of paragraphs at this level of\nnesting."]
-        #[serde(rename = "indentFirstLine", default)]
-        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of indentation for paragraphs at this level of nesting. Applied\nto the side that corresponds to the start of the text, based on the\nparagraph's content direction."]
-        #[serde(rename = "indentStart", default)]
-        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The number of the first list item at this nesting level.\n\nA value of 0 is treated as a value of 1 for lettered lists and roman\nnumeraled lists, i.e. for values of both 0 and 1, lettered and roman\nnumeraled lists will begin at `a` and `i` respectively.\n\nThis value is ignored for nesting levels with unordered glyphs."]
-        #[serde(rename = "startNumber", default)]
-        pub start_number: ::std::option::Option<i32>,
-        #[doc = "The text style of bullets at this level of nesting."]
-        #[serde(rename = "textStyle", default)]
-        pub text_style: ::std::option::Option<crate::schemas::TextStyle>,
-    }
-    impl ::field_selector::FieldSelector for NestingLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2931,6 +2931,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ParagraphBorder {
+        #[doc = "The color of the border."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The dash style of the border."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::ParagraphBorderDashStyle>,
+        #[doc = "The padding of the border."]
+        #[serde(rename = "padding", default)]
+        pub padding: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The width of the border."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for ParagraphBorder {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParagraphBorderDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
@@ -2997,32 +3023,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ParagraphBorder {
-        #[doc = "The color of the border."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The dash style of the border."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::ParagraphBorderDashStyle>,
-        #[doc = "The padding of the border."]
-        #[serde(rename = "padding", default)]
-        pub padding: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The width of the border."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for ParagraphBorder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct ParagraphElement {
         #[doc = "An auto text paragraph element."]
         #[serde(rename = "autoText", default)]
@@ -3056,6 +3056,83 @@ pub mod schemas {
         pub text_run: ::std::option::Option<crate::schemas::TextRun>,
     }
     impl ::field_selector::FieldSelector for ParagraphElement {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ParagraphStyle {
+        #[doc = "The text alignment for this paragraph."]
+        #[serde(rename = "alignment", default)]
+        pub alignment: ::std::option::Option<crate::schemas::ParagraphStyleAlignment>,
+        #[doc = "Whether to avoid widows and orphans for the paragraph. If unset, the value\nis inherited from the parent."]
+        #[serde(rename = "avoidWidowAndOrphan", default)]
+        pub avoid_widow_and_orphan: ::std::option::Option<bool>,
+        #[doc = "The border between this paragraph and the next and previous paragraphs.\nIf unset, the value is inherited from the parent.\n\nThe between border is rendered when the adjacent paragraph has the same\nborder and indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
+        #[serde(rename = "borderBetween", default)]
+        pub border_between: ::std::option::Option<crate::schemas::ParagraphBorder>,
+        #[doc = "The border at the bottom of this paragraph. If unset, the value is\ninherited from the parent.\n\nThe bottom border is rendered when the paragraph below has different border\nand indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
+        #[serde(rename = "borderBottom", default)]
+        pub border_bottom: ::std::option::Option<crate::schemas::ParagraphBorder>,
+        #[doc = "The border to the left of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
+        #[serde(rename = "borderLeft", default)]
+        pub border_left: ::std::option::Option<crate::schemas::ParagraphBorder>,
+        #[doc = "The border to the right of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
+        #[serde(rename = "borderRight", default)]
+        pub border_right: ::std::option::Option<crate::schemas::ParagraphBorder>,
+        #[doc = "The border at the top of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nThe top border is rendered when the paragraph above has different border\nand indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
+        #[serde(rename = "borderTop", default)]
+        pub border_top: ::std::option::Option<crate::schemas::ParagraphBorder>,
+        #[doc = "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\nparagraph direction is not inherited."]
+        #[serde(rename = "direction", default)]
+        pub direction: ::std::option::Option<crate::schemas::ParagraphStyleDirection>,
+        #[doc = "The heading ID of the paragraph. If empty, then this paragraph is not a\nheading.\n\nThis property is read-only."]
+        #[serde(rename = "headingId", default)]
+        pub heading_id: ::std::option::Option<String>,
+        #[doc = "The amount of indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent."]
+        #[serde(rename = "indentEnd", default)]
+        pub indent_end: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of indentation for the first line of the paragraph. If unset,\nthe value is inherited from the parent."]
+        #[serde(rename = "indentFirstLine", default)]
+        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent."]
+        #[serde(rename = "indentStart", default)]
+        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "Whether all lines of the paragraph should be laid out on the same page or\ncolumn if possible. If unset, the value is inherited from the parent."]
+        #[serde(rename = "keepLinesTogether", default)]
+        pub keep_lines_together: ::std::option::Option<bool>,
+        #[doc = "Whether at least a part of this paragraph should be laid out on the same\npage or column as the next paragraph if possible. If unset, the value is\ninherited from the parent."]
+        #[serde(rename = "keepWithNext", default)]
+        pub keep_with_next: ::std::option::Option<bool>,
+        #[doc = "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent."]
+        #[serde(rename = "lineSpacing", default)]
+        pub line_spacing: ::std::option::Option<f32>,
+        #[doc = "The named style type of the paragraph.\n\nSince updating the named style type affects other properties within\nParagraphStyle, the named style type is applied before the other properties\nare updated."]
+        #[serde(rename = "namedStyleType", default)]
+        pub named_style_type: ::std::option::Option<crate::schemas::ParagraphStyleNamedStyleType>,
+        #[doc = "The shading of the paragraph. If unset, the value is inherited from the\nparent."]
+        #[serde(rename = "shading", default)]
+        pub shading: ::std::option::Option<crate::schemas::Shading>,
+        #[doc = "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."]
+        #[serde(rename = "spaceAbove", default)]
+        pub space_above: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent."]
+        #[serde(rename = "spaceBelow", default)]
+        pub space_below: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The spacing mode for the paragraph."]
+        #[serde(rename = "spacingMode", default)]
+        pub spacing_mode: ::std::option::Option<crate::schemas::ParagraphStyleSpacingMode>,
+        #[doc = "A list of the tab stops for this paragraph. The list of tab stops is not\ninherited.\n\nThis property is read-only."]
+        #[serde(rename = "tabStops", default)]
+        pub tab_stops: ::std::option::Option<Vec<crate::schemas::TabStop>>,
+    }
+    impl ::field_selector::FieldSelector for ParagraphStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3345,83 +3422,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ParagraphStyle {
-        #[doc = "The text alignment for this paragraph."]
-        #[serde(rename = "alignment", default)]
-        pub alignment: ::std::option::Option<crate::schemas::ParagraphStyleAlignment>,
-        #[doc = "Whether to avoid widows and orphans for the paragraph. If unset, the value\nis inherited from the parent."]
-        #[serde(rename = "avoidWidowAndOrphan", default)]
-        pub avoid_widow_and_orphan: ::std::option::Option<bool>,
-        #[doc = "The border between this paragraph and the next and previous paragraphs.\nIf unset, the value is inherited from the parent.\n\nThe between border is rendered when the adjacent paragraph has the same\nborder and indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
-        #[serde(rename = "borderBetween", default)]
-        pub border_between: ::std::option::Option<crate::schemas::ParagraphBorder>,
-        #[doc = "The border at the bottom of this paragraph. If unset, the value is\ninherited from the parent.\n\nThe bottom border is rendered when the paragraph below has different border\nand indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
-        #[serde(rename = "borderBottom", default)]
-        pub border_bottom: ::std::option::Option<crate::schemas::ParagraphBorder>,
-        #[doc = "The border to the left of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
-        #[serde(rename = "borderLeft", default)]
-        pub border_left: ::std::option::Option<crate::schemas::ParagraphBorder>,
-        #[doc = "The border to the right of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
-        #[serde(rename = "borderRight", default)]
-        pub border_right: ::std::option::Option<crate::schemas::ParagraphBorder>,
-        #[doc = "The border at the top of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nThe top border is rendered when the paragraph above has different border\nand indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."]
-        #[serde(rename = "borderTop", default)]
-        pub border_top: ::std::option::Option<crate::schemas::ParagraphBorder>,
-        #[doc = "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\nparagraph direction is not inherited."]
-        #[serde(rename = "direction", default)]
-        pub direction: ::std::option::Option<crate::schemas::ParagraphStyleDirection>,
-        #[doc = "The heading ID of the paragraph. If empty, then this paragraph is not a\nheading.\n\nThis property is read-only."]
-        #[serde(rename = "headingId", default)]
-        pub heading_id: ::std::option::Option<String>,
-        #[doc = "The amount of indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent."]
-        #[serde(rename = "indentEnd", default)]
-        pub indent_end: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of indentation for the first line of the paragraph. If unset,\nthe value is inherited from the parent."]
-        #[serde(rename = "indentFirstLine", default)]
-        pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent."]
-        #[serde(rename = "indentStart", default)]
-        pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "Whether all lines of the paragraph should be laid out on the same page or\ncolumn if possible. If unset, the value is inherited from the parent."]
-        #[serde(rename = "keepLinesTogether", default)]
-        pub keep_lines_together: ::std::option::Option<bool>,
-        #[doc = "Whether at least a part of this paragraph should be laid out on the same\npage or column as the next paragraph if possible. If unset, the value is\ninherited from the parent."]
-        #[serde(rename = "keepWithNext", default)]
-        pub keep_with_next: ::std::option::Option<bool>,
-        #[doc = "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent."]
-        #[serde(rename = "lineSpacing", default)]
-        pub line_spacing: ::std::option::Option<f32>,
-        #[doc = "The named style type of the paragraph.\n\nSince updating the named style type affects other properties within\nParagraphStyle, the named style type is applied before the other properties\nare updated."]
-        #[serde(rename = "namedStyleType", default)]
-        pub named_style_type: ::std::option::Option<crate::schemas::ParagraphStyleNamedStyleType>,
-        #[doc = "The shading of the paragraph. If unset, the value is inherited from the\nparent."]
-        #[serde(rename = "shading", default)]
-        pub shading: ::std::option::Option<crate::schemas::Shading>,
-        #[doc = "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."]
-        #[serde(rename = "spaceAbove", default)]
-        pub space_above: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent."]
-        #[serde(rename = "spaceBelow", default)]
-        pub space_below: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The spacing mode for the paragraph."]
-        #[serde(rename = "spacingMode", default)]
-        pub spacing_mode: ::std::option::Option<crate::schemas::ParagraphStyleSpacingMode>,
-        #[doc = "A list of the tab stops for this paragraph. The list of tab stops is not\ninherited.\n\nThis property is read-only."]
-        #[serde(rename = "tabStops", default)]
-        pub tab_stops: ::std::option::Option<Vec<crate::schemas::TabStop>>,
-    }
-    impl ::field_selector::FieldSelector for ParagraphStyle {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -3539,6 +3539,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PositionedObjectPositioning {
+        #[doc = "The layout of this positioned object."]
+        #[serde(rename = "layout", default)]
+        pub layout: ::std::option::Option<crate::schemas::PositionedObjectPositioningLayout>,
+        #[doc = "The offset of the left edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."]
+        #[serde(rename = "leftOffset", default)]
+        pub left_offset: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The offset of the top edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."]
+        #[serde(rename = "topOffset", default)]
+        pub top_offset: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for PositionedObjectPositioning {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PositionedObjectPositioningLayout {
         #[doc = "Breaks text such that the positioned object is on the left and text is on\nthe right."]
@@ -3606,29 +3629,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PositionedObjectPositioningLayout {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PositionedObjectPositioning {
-        #[doc = "The layout of this positioned object."]
-        #[serde(rename = "layout", default)]
-        pub layout: ::std::option::Option<crate::schemas::PositionedObjectPositioningLayout>,
-        #[doc = "The offset of the left edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."]
-        #[serde(rename = "leftOffset", default)]
-        pub left_offset: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The offset of the top edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."]
-        #[serde(rename = "topOffset", default)]
-        pub top_offset: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for PositionedObjectPositioning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3994,6 +3994,30 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SectionStyle {
+        #[doc = "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor."]
+        #[serde(rename = "columnProperties", default)]
+        pub column_properties: ::std::option::Option<Vec<crate::schemas::SectionColumnProperties>>,
+        #[doc = "The style of column separators.\n\nThis style can be set even when there is one column in the section."]
+        #[serde(rename = "columnSeparatorStyle", default)]
+        pub column_separator_style:
+            ::std::option::Option<crate::schemas::SectionStyleColumnSeparatorStyle>,
+        #[doc = "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT."]
+        #[serde(rename = "contentDirection", default)]
+        pub content_direction: ::std::option::Option<crate::schemas::SectionStyleContentDirection>,
+    }
+    impl ::field_selector::FieldSelector for SectionStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SectionStyleColumnSeparatorStyle {
         #[doc = "Renders a column separator line between each column."]
@@ -4112,30 +4136,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SectionStyleContentDirection {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct SectionStyle {
-        #[doc = "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor."]
-        #[serde(rename = "columnProperties", default)]
-        pub column_properties: ::std::option::Option<Vec<crate::schemas::SectionColumnProperties>>,
-        #[doc = "The style of column separators.\n\nThis style can be set even when there is one column in the section."]
-        #[serde(rename = "columnSeparatorStyle", default)]
-        pub column_separator_style:
-            ::std::option::Option<crate::schemas::SectionStyleColumnSeparatorStyle>,
-        #[doc = "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT."]
-        #[serde(rename = "contentDirection", default)]
-        pub content_direction: ::std::option::Option<crate::schemas::SectionStyleContentDirection>,
-    }
-    impl ::field_selector::FieldSelector for SectionStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4565,6 +4565,26 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TabStop {
+        #[doc = "The alignment of this tab stop. If unset, the value defaults to START."]
+        #[serde(rename = "alignment", default)]
+        pub alignment: ::std::option::Option<crate::schemas::TabStopAlignment>,
+        #[doc = "The offset between this tab stop and the start margin."]
+        #[serde(rename = "offset", default)]
+        pub offset: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for TabStop {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TabStopAlignment {
         #[doc = "The tab stop is aligned to the center of the line."]
@@ -4620,26 +4640,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TabStopAlignment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TabStop {
-        #[doc = "The alignment of this tab stop. If unset, the value defaults to START."]
-        #[serde(rename = "alignment", default)]
-        pub alignment: ::std::option::Option<crate::schemas::TabStopAlignment>,
-        #[doc = "The offset between this tab stop and the start margin."]
-        #[serde(rename = "offset", default)]
-        pub offset: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for TabStop {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4717,6 +4717,29 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableCellBorder {
+        #[doc = "The color of the border."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The dash style of the border."]
+        #[serde(rename = "dashStyle", default)]
+        pub dash_style: ::std::option::Option<crate::schemas::TableCellBorderDashStyle>,
+        #[doc = "The width of the border."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<crate::schemas::Dimension>,
+    }
+    impl ::field_selector::FieldSelector for TableCellBorder {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellBorderDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
@@ -4781,29 +4804,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TableCellBorder {
-        #[doc = "The color of the border."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The dash style of the border."]
-        #[serde(rename = "dashStyle", default)]
-        pub dash_style: ::std::option::Option<crate::schemas::TableCellBorderDashStyle>,
-        #[doc = "The width of the border."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<crate::schemas::Dimension>,
-    }
-    impl ::field_selector::FieldSelector for TableCellBorder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -4827,6 +4827,57 @@ pub mod schemas {
         pub table_start_location: ::std::option::Option<crate::schemas::Location>,
     }
     impl ::field_selector::FieldSelector for TableCellLocation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableCellStyle {
+        #[doc = "The background color of the cell."]
+        #[serde(rename = "backgroundColor", default)]
+        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The bottom border of the cell."]
+        #[serde(rename = "borderBottom", default)]
+        pub border_bottom: ::std::option::Option<crate::schemas::TableCellBorder>,
+        #[doc = "The left border of the cell."]
+        #[serde(rename = "borderLeft", default)]
+        pub border_left: ::std::option::Option<crate::schemas::TableCellBorder>,
+        #[doc = "The right border of the cell."]
+        #[serde(rename = "borderRight", default)]
+        pub border_right: ::std::option::Option<crate::schemas::TableCellBorder>,
+        #[doc = "The top border of the cell."]
+        #[serde(rename = "borderTop", default)]
+        pub border_top: ::std::option::Option<crate::schemas::TableCellBorder>,
+        #[doc = "The column span of the cell.\n\nThis property is read-only."]
+        #[serde(rename = "columnSpan", default)]
+        pub column_span: ::std::option::Option<i32>,
+        #[doc = "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Docs editor."]
+        #[serde(rename = "contentAlignment", default)]
+        pub content_alignment:
+            ::std::option::Option<crate::schemas::TableCellStyleContentAlignment>,
+        #[doc = "The bottom padding of the cell."]
+        #[serde(rename = "paddingBottom", default)]
+        pub padding_bottom: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The left padding of the cell."]
+        #[serde(rename = "paddingLeft", default)]
+        pub padding_left: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The right padding of the cell."]
+        #[serde(rename = "paddingRight", default)]
+        pub padding_right: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The top padding of the cell."]
+        #[serde(rename = "paddingTop", default)]
+        pub padding_top: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The row span of the cell.\n\nThis property is read-only."]
+        #[serde(rename = "rowSpan", default)]
+        pub row_span: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for TableCellStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4911,57 +4962,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TableCellStyle {
-        #[doc = "The background color of the cell."]
-        #[serde(rename = "backgroundColor", default)]
-        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The bottom border of the cell."]
-        #[serde(rename = "borderBottom", default)]
-        pub border_bottom: ::std::option::Option<crate::schemas::TableCellBorder>,
-        #[doc = "The left border of the cell."]
-        #[serde(rename = "borderLeft", default)]
-        pub border_left: ::std::option::Option<crate::schemas::TableCellBorder>,
-        #[doc = "The right border of the cell."]
-        #[serde(rename = "borderRight", default)]
-        pub border_right: ::std::option::Option<crate::schemas::TableCellBorder>,
-        #[doc = "The top border of the cell."]
-        #[serde(rename = "borderTop", default)]
-        pub border_top: ::std::option::Option<crate::schemas::TableCellBorder>,
-        #[doc = "The column span of the cell.\n\nThis property is read-only."]
-        #[serde(rename = "columnSpan", default)]
-        pub column_span: ::std::option::Option<i32>,
-        #[doc = "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Docs editor."]
-        #[serde(rename = "contentAlignment", default)]
-        pub content_alignment:
-            ::std::option::Option<crate::schemas::TableCellStyleContentAlignment>,
-        #[doc = "The bottom padding of the cell."]
-        #[serde(rename = "paddingBottom", default)]
-        pub padding_bottom: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The left padding of the cell."]
-        #[serde(rename = "paddingLeft", default)]
-        pub padding_left: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The right padding of the cell."]
-        #[serde(rename = "paddingRight", default)]
-        pub padding_right: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The top padding of the cell."]
-        #[serde(rename = "paddingTop", default)]
-        pub padding_top: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The row span of the cell.\n\nThis property is read-only."]
-        #[serde(rename = "rowSpan", default)]
-        pub row_span: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for TableCellStyle {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -5012,6 +5012,26 @@ pub mod schemas {
         pub row_span_suggested: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for TableCellStyleSuggestionState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TableColumnProperties {
+        #[doc = "The width of the column. Set when the column's `width_type` is\nFIXED_WIDTH."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The width type of the column."]
+        #[serde(rename = "widthType", default)]
+        pub width_type: ::std::option::Option<crate::schemas::TableColumnPropertiesWidthType>,
+    }
+    impl ::field_selector::FieldSelector for TableColumnProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5071,26 +5091,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TableColumnPropertiesWidthType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TableColumnProperties {
-        #[doc = "The width of the column. Set when the column's `width_type` is\nFIXED_WIDTH."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The width type of the column."]
-        #[serde(rename = "widthType", default)]
-        pub width_type: ::std::option::Option<crate::schemas::TableColumnPropertiesWidthType>,
-    }
-    impl ::field_selector::FieldSelector for TableColumnProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5283,6 +5283,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TextStyle {
+        #[doc = "The background color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."]
+        #[serde(rename = "backgroundColor", default)]
+        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "The text's vertical offset from its normal position.\n\nText with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically\nrendered in a smaller font size, computed based on the `font_size` field.\nThe `font_size` itself is not affected by changes in this field."]
+        #[serde(rename = "baselineOffset", default)]
+        pub baseline_offset: ::std::option::Option<crate::schemas::TextStyleBaselineOffset>,
+        #[doc = "Whether or not the text is rendered as bold."]
+        #[serde(rename = "bold", default)]
+        pub bold: ::std::option::Option<bool>,
+        #[doc = "The size of the text's font."]
+        #[serde(rename = "fontSize", default)]
+        pub font_size: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The foreground color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."]
+        #[serde(rename = "foregroundColor", default)]
+        pub foreground_color: ::std::option::Option<crate::schemas::OptionalColor>,
+        #[doc = "Whether or not the text is italicized."]
+        #[serde(rename = "italic", default)]
+        pub italic: ::std::option::Option<bool>,
+        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be updated to the\n  default link color and the text will be underlined. If these fields are\n  modified in the same request, those values will be used instead of the\n  link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."]
+        #[serde(rename = "link", default)]
+        pub link: ::std::option::Option<crate::schemas::Link>,
+        #[doc = "Whether or not the text is in small capital letters."]
+        #[serde(rename = "smallCaps", default)]
+        pub small_caps: ::std::option::Option<bool>,
+        #[doc = "Whether or not the text is struck through."]
+        #[serde(rename = "strikethrough", default)]
+        pub strikethrough: ::std::option::Option<bool>,
+        #[doc = "Whether or not the text is underlined."]
+        #[serde(rename = "underline", default)]
+        pub underline: ::std::option::Option<bool>,
+        #[doc = "The font family and rendered weight of the text.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."]
+        #[serde(rename = "weightedFontFamily", default)]
+        pub weighted_font_family: ::std::option::Option<crate::schemas::WeightedFontFamily>,
+    }
+    impl ::field_selector::FieldSelector for TextStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TextStyleBaselineOffset {
         #[doc = "The text's baseline offset is inherited from the parent."]
@@ -5338,53 +5385,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TextStyleBaselineOffset {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TextStyle {
-        #[doc = "The background color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."]
-        #[serde(rename = "backgroundColor", default)]
-        pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The text's vertical offset from its normal position.\n\nText with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically\nrendered in a smaller font size, computed based on the `font_size` field.\nThe `font_size` itself is not affected by changes in this field."]
-        #[serde(rename = "baselineOffset", default)]
-        pub baseline_offset: ::std::option::Option<crate::schemas::TextStyleBaselineOffset>,
-        #[doc = "Whether or not the text is rendered as bold."]
-        #[serde(rename = "bold", default)]
-        pub bold: ::std::option::Option<bool>,
-        #[doc = "The size of the text's font."]
-        #[serde(rename = "fontSize", default)]
-        pub font_size: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The foreground color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."]
-        #[serde(rename = "foregroundColor", default)]
-        pub foreground_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "Whether or not the text is italicized."]
-        #[serde(rename = "italic", default)]
-        pub italic: ::std::option::Option<bool>,
-        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be updated to the\n  default link color and the text will be underlined. If these fields are\n  modified in the same request, those values will be used instead of the\n  link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."]
-        #[serde(rename = "link", default)]
-        pub link: ::std::option::Option<crate::schemas::Link>,
-        #[doc = "Whether or not the text is in small capital letters."]
-        #[serde(rename = "smallCaps", default)]
-        pub small_caps: ::std::option::Option<bool>,
-        #[doc = "Whether or not the text is struck through."]
-        #[serde(rename = "strikethrough", default)]
-        pub strikethrough: ::std::option::Option<bool>,
-        #[doc = "Whether or not the text is underlined."]
-        #[serde(rename = "underline", default)]
-        pub underline: ::std::option::Option<bool>,
-        #[doc = "The font family and rendered weight of the text.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."]
-        #[serde(rename = "weightedFontFamily", default)]
-        pub weighted_font_family: ::std::option::Option<crate::schemas::WeightedFontFamily>,
-    }
-    impl ::field_selector::FieldSelector for TextStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6582,84 +6582,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -6688,174 +6610,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

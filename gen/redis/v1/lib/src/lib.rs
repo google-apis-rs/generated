@@ -42,6 +42,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FailoverInstanceRequest {
+        #[doc = "Optional. Available data protection modes that the user can choose. If it's\nunspecified, data protection mode will be LIMITED_DATA_LOSS by default."]
+        #[serde(rename = "dataProtectionMode", default)]
+        pub data_protection_mode:
+            ::std::option::Option<crate::schemas::FailoverInstanceRequestDataProtectionMode>,
+    }
+    impl ::field_selector::FieldSelector for FailoverInstanceRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FailoverInstanceRequestDataProtectionMode {
         #[doc = "Defaults to LIMITED_DATA_LOSS if a data protection mode is not\nspecified."]
@@ -97,33 +124,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for FailoverInstanceRequestDataProtectionMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FailoverInstanceRequest {
-        #[doc = "Optional. Available data protection modes that the user can choose. If it's\nunspecified, data protection mode will be LIMITED_DATA_LOSS by default."]
-        #[serde(rename = "dataProtectionMode", default)]
-        pub data_protection_mode:
-            ::std::option::Option<crate::schemas::FailoverInstanceRequestDataProtectionMode>,
-    }
-    impl ::field_selector::FieldSelector for FailoverInstanceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -325,6 +325,83 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Instance {
+        #[doc = "Optional. Only applicable to STANDARD_HA tier which protects the instance\nagainst zonal failures by provisioning it across two zones. If provided, it\nmust be a different zone from the one provided in [location_id]."]
+        #[serde(rename = "alternativeLocationId", default)]
+        pub alternative_location_id: ::std::option::Option<String>,
+        #[doc = "Optional. The full name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected. If left unspecified, the `default` network\nwill be used."]
+        #[serde(rename = "authorizedNetwork", default)]
+        pub authorized_network: ::std::option::Option<String>,
+        #[doc = "Output only. The time the instance was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. The current zone where the Redis endpoint is placed. For Basic\nTier instances, this will always be the same as the [location_id]\nprovided by the user at creation time. For Standard Tier instances,\nthis can be either [location_id] or [alternative_location_id] and can\nchange after a failover event."]
+        #[serde(rename = "currentLocationId", default)]
+        pub current_location_id: ::std::option::Option<String>,
+        #[doc = "An arbitrary and optional user-provided name for the instance."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Output only. Hostname or IP address of the exposed Redis endpoint used by\nclients to connect to the service."]
+        #[serde(rename = "host", default)]
+        pub host: ::std::option::Option<String>,
+        #[doc = "Resource labels to represent user provided metadata"]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Optional. The zone where the instance will be provisioned. If not provided,\nthe service will choose a zone for the instance. For STANDARD_HA tier,\ninstances will be created across two zones for protection against zonal\nfailures. If [alternative_location_id] is also provided, it must be\ndifferent from [location_id]."]
+        #[serde(rename = "locationId", default)]
+        pub location_id: ::std::option::Option<String>,
+        #[doc = "Required. Redis memory size in GiB."]
+        #[serde(rename = "memorySizeGb", default)]
+        pub memory_size_gb: ::std::option::Option<i32>,
+        #[doc = "Required. Unique name of the resource in this scope including project and\nlocation using the form:\n`projects/{project_id}/locations/{location_id}/instances/{instance_id}`\n\nNote: Redis instances are managed and addressed at regional level so\nlocation_id here refers to a GCP region; however, users may choose which\nspecific zone (or collection of zones for cross-zone instances) an instance\nshould be provisioned in. Refer to [location_id] and\n[alternative_location_id] fields for more details."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. Cloud IAM identity used by import / export operations to\ntransfer data to/from Cloud Storage. Format is\n\"serviceAccount:<service_account_email>\". The value may change over time\nfor a given instance so should be checked before each import/export\noperation."]
+        #[serde(rename = "persistenceIamIdentity", default)]
+        pub persistence_iam_identity: ::std::option::Option<String>,
+        #[doc = "Output only. The port number of the exposed Redis endpoint."]
+        #[serde(rename = "port", default)]
+        pub port: ::std::option::Option<i32>,
+        #[doc = "Optional. Redis configuration parameters, according to\nhttp://redis.io/topics/config. Currently, the only supported parameters\nare:\n\nRedis 3.2 and above:\n\n* maxmemory-policy\n* notify-keyspace-events\n\nRedis 4.0 and above:\n\n* activedefrag\n* lfu-log-factor\n* lfu-decay-time"]
+        #[serde(rename = "redisConfigs", default)]
+        pub redis_configs: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Optional. The version of Redis software.\nIf not provided, latest supported version will be used. Updating the\nversion will perform an upgrade/downgrade to the new version. Currently,\nthe supported values are:\n\n* `REDIS_4_0` for Redis 4.0 compatibility (default)\n* `REDIS_3_2` for Redis 3.2 compatibility"]
+        #[serde(rename = "redisVersion", default)]
+        pub redis_version: ::std::option::Option<String>,
+        #[doc = "Optional. The CIDR range of internal addresses that are reserved for this\ninstance. If not provided, the service will choose an unused /29 block,\nfor example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique\nand non-overlapping with existing subnets in an authorized network."]
+        #[serde(rename = "reservedIpRange", default)]
+        pub reserved_ip_range: ::std::option::Option<String>,
+        #[doc = "Output only. The current state of this instance."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::InstanceState>,
+        #[doc = "Output only. Additional information about the current status of this\ninstance, if available."]
+        #[serde(rename = "statusMessage", default)]
+        pub status_message: ::std::option::Option<String>,
+        #[doc = "Required. The service tier of the instance."]
+        #[serde(rename = "tier", default)]
+        pub tier: ::std::option::Option<crate::schemas::InstanceTier>,
+    }
+    impl ::field_selector::FieldSelector for Instance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
         #[doc = "Redis instance is being created."]
@@ -459,83 +536,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for InstanceTier {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Instance {
-        #[doc = "Optional. Only applicable to STANDARD_HA tier which protects the instance\nagainst zonal failures by provisioning it across two zones. If provided, it\nmust be a different zone from the one provided in [location_id]."]
-        #[serde(rename = "alternativeLocationId", default)]
-        pub alternative_location_id: ::std::option::Option<String>,
-        #[doc = "Optional. The full name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected. If left unspecified, the `default` network\nwill be used."]
-        #[serde(rename = "authorizedNetwork", default)]
-        pub authorized_network: ::std::option::Option<String>,
-        #[doc = "Output only. The time the instance was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The current zone where the Redis endpoint is placed. For Basic\nTier instances, this will always be the same as the [location_id]\nprovided by the user at creation time. For Standard Tier instances,\nthis can be either [location_id] or [alternative_location_id] and can\nchange after a failover event."]
-        #[serde(rename = "currentLocationId", default)]
-        pub current_location_id: ::std::option::Option<String>,
-        #[doc = "An arbitrary and optional user-provided name for the instance."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. Hostname or IP address of the exposed Redis endpoint used by\nclients to connect to the service."]
-        #[serde(rename = "host", default)]
-        pub host: ::std::option::Option<String>,
-        #[doc = "Resource labels to represent user provided metadata"]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Optional. The zone where the instance will be provisioned. If not provided,\nthe service will choose a zone for the instance. For STANDARD_HA tier,\ninstances will be created across two zones for protection against zonal\nfailures. If [alternative_location_id] is also provided, it must be\ndifferent from [location_id]."]
-        #[serde(rename = "locationId", default)]
-        pub location_id: ::std::option::Option<String>,
-        #[doc = "Required. Redis memory size in GiB."]
-        #[serde(rename = "memorySizeGb", default)]
-        pub memory_size_gb: ::std::option::Option<i32>,
-        #[doc = "Required. Unique name of the resource in this scope including project and\nlocation using the form:\n`projects/{project_id}/locations/{location_id}/instances/{instance_id}`\n\nNote: Redis instances are managed and addressed at regional level so\nlocation_id here refers to a GCP region; however, users may choose which\nspecific zone (or collection of zones for cross-zone instances) an instance\nshould be provisioned in. Refer to [location_id] and\n[alternative_location_id] fields for more details."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. Cloud IAM identity used by import / export operations to\ntransfer data to/from Cloud Storage. Format is\n\"serviceAccount:<service_account_email>\". The value may change over time\nfor a given instance so should be checked before each import/export\noperation."]
-        #[serde(rename = "persistenceIamIdentity", default)]
-        pub persistence_iam_identity: ::std::option::Option<String>,
-        #[doc = "Output only. The port number of the exposed Redis endpoint."]
-        #[serde(rename = "port", default)]
-        pub port: ::std::option::Option<i32>,
-        #[doc = "Optional. Redis configuration parameters, according to\nhttp://redis.io/topics/config. Currently, the only supported parameters\nare:\n\nRedis 3.2 and above:\n\n* maxmemory-policy\n* notify-keyspace-events\n\nRedis 4.0 and above:\n\n* activedefrag\n* lfu-log-factor\n* lfu-decay-time"]
-        #[serde(rename = "redisConfigs", default)]
-        pub redis_configs: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Optional. The version of Redis software.\nIf not provided, latest supported version will be used. Updating the\nversion will perform an upgrade/downgrade to the new version. Currently,\nthe supported values are:\n\n* `REDIS_4_0` for Redis 4.0 compatibility (default)\n* `REDIS_3_2` for Redis 3.2 compatibility"]
-        #[serde(rename = "redisVersion", default)]
-        pub redis_version: ::std::option::Option<String>,
-        #[doc = "Optional. The CIDR range of internal addresses that are reserved for this\ninstance. If not provided, the service will choose an unused /29 block,\nfor example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique\nand non-overlapping with existing subnets in an authorized network."]
-        #[serde(rename = "reservedIpRange", default)]
-        pub reserved_ip_range: ::std::option::Option<String>,
-        #[doc = "Output only. The current state of this instance."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::InstanceState>,
-        #[doc = "Output only. Additional information about the current status of this\ninstance, if available."]
-        #[serde(rename = "statusMessage", default)]
-        pub status_message: ::std::option::Option<String>,
-        #[doc = "Required. The service tier of the instance."]
-        #[serde(rename = "tier", default)]
-        pub tier: ::std::option::Option<crate::schemas::InstanceTier>,
-    }
-    impl ::field_selector::FieldSelector for Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3979,84 +3979,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4088,7 +4010,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4209,50 +4130,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

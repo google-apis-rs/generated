@@ -1,4 +1,60 @@
 pub mod schemas {
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Asset {
+        #[doc = "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing)."]
+        #[serde(rename = "authorName", default)]
+        pub author_name: ::std::option::Option<String>,
+        #[doc = "For published assets, the time when the asset was published.\nFor unpublished assets, the time when the asset was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The human-readable description, set by the asset's author."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The human-readable name, set by the asset's author."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "A list of Formats where each\nformat describes one representation of the asset."]
+        #[serde(rename = "formats", default)]
+        pub formats: ::std::option::Option<Vec<crate::schemas::Format>>,
+        #[doc = "Whether this asset has been curated by the Poly team."]
+        #[serde(rename = "isCurated", default)]
+        pub is_curated: ::std::option::Option<bool>,
+        #[doc = "The license under which the author has made the asset available\nfor use, if any."]
+        #[serde(rename = "license", default)]
+        pub license: ::std::option::Option<crate::schemas::AssetLicense>,
+        #[doc = "Application-defined opaque metadata for this asset. This field is only\nreturned when querying for the signed-in user's own assets, not for public\nassets. This string is limited to 1K chars. It is up to the creator of\nthe asset to define the format for this string (for example, JSON)."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<String>,
+        #[doc = "The unique identifier for the asset in the form:\n`assets/{ASSET_ID}`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."]
+        #[serde(rename = "presentationParams", default)]
+        pub presentation_params: ::std::option::Option<crate::schemas::PresentationParams>,
+        #[doc = "The remix info for the asset."]
+        #[serde(rename = "remixInfo", default)]
+        pub remix_info: ::std::option::Option<crate::schemas::RemixInfo>,
+        #[doc = "The thumbnail image for the asset."]
+        #[serde(rename = "thumbnail", default)]
+        pub thumbnail: ::std::option::Option<crate::schemas::File>,
+        #[doc = "The time when the asset was last modified. For published assets, whose\ncontents are immutable, the update time changes only when metadata\nproperties, such as visibility, are updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "The visibility of the asset and who can access it."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: ::std::option::Option<crate::schemas::AssetVisibility>,
+    }
+    impl ::field_selector::FieldSelector for Asset {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetLicense {
         #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are\n**not** returned by List Assets."]
@@ -122,53 +178,32 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Asset {
-        #[doc = "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing)."]
-        #[serde(rename = "authorName", default)]
-        pub author_name: ::std::option::Option<String>,
-        #[doc = "For published assets, the time when the asset was published.\nFor unpublished assets, the time when the asset was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "The human-readable description, set by the asset's author."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The human-readable name, set by the asset's author."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "A list of Formats where each\nformat describes one representation of the asset."]
-        #[serde(rename = "formats", default)]
-        pub formats: ::std::option::Option<Vec<crate::schemas::Format>>,
-        #[doc = "Whether this asset has been curated by the Poly team."]
-        #[serde(rename = "isCurated", default)]
-        pub is_curated: ::std::option::Option<bool>,
-        #[doc = "The license under which the author has made the asset available\nfor use, if any."]
-        #[serde(rename = "license", default)]
-        pub license: ::std::option::Option<crate::schemas::AssetLicense>,
-        #[doc = "Application-defined opaque metadata for this asset. This field is only\nreturned when querying for the signed-in user's own assets, not for public\nassets. This string is limited to 1K chars. It is up to the creator of\nthe asset to define the format for this string (for example, JSON)."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<String>,
-        #[doc = "The unique identifier for the asset in the form:\n`assets/{ASSET_ID}`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."]
-        #[serde(rename = "presentationParams", default)]
-        pub presentation_params: ::std::option::Option<crate::schemas::PresentationParams>,
-        #[doc = "The remix info for the asset."]
-        #[serde(rename = "remixInfo", default)]
-        pub remix_info: ::std::option::Option<crate::schemas::RemixInfo>,
-        #[doc = "The thumbnail image for the asset."]
-        #[serde(rename = "thumbnail", default)]
-        pub thumbnail: ::std::option::Option<crate::schemas::File>,
-        #[doc = "The time when the asset was last modified. For published assets, whose\ncontents are immutable, the update time changes only when metadata\nproperties, such as visibility, are updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "The visibility of the asset and who can access it."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: ::std::option::Option<crate::schemas::AssetVisibility>,
+    pub struct AssetImportMessage {
+        #[doc = "The code associated with this message."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::AssetImportMessageCode>,
+        #[doc = "An optional file path. Only present for those error codes that specify it."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: ::std::option::Option<String>,
+        #[doc = "An optional image error. Only present for INVALID_IMAGE_FILE."]
+        #[serde(rename = "imageError", default)]
+        pub image_error: ::std::option::Option<crate::schemas::ImageError>,
+        #[doc = "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."]
+        #[serde(rename = "objParseError", default)]
+        pub obj_parse_error: ::std::option::Option<crate::schemas::ObjParseError>,
     }
-    impl ::field_selector::FieldSelector for Asset {
+    impl ::field_selector::FieldSelector for AssetImportMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -276,41 +311,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AssetImportMessage {
-        #[doc = "The code associated with this message."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::AssetImportMessageCode>,
-        #[doc = "An optional file path. Only present for those error codes that specify it."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: ::std::option::Option<String>,
-        #[doc = "An optional image error. Only present for INVALID_IMAGE_FILE."]
-        #[serde(rename = "imageError", default)]
-        pub image_error: ::std::option::Option<crate::schemas::ImageError>,
-        #[doc = "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."]
-        #[serde(rename = "objParseError", default)]
-        pub obj_parse_error: ::std::option::Option<crate::schemas::ObjParseError>,
-    }
-    impl ::field_selector::FieldSelector for AssetImportMessage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct File {
         #[doc = "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME\ntypes](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)."]
         #[serde(rename = "contentType", default)]
@@ -396,6 +396,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImageError {
+        #[doc = "The type of image error encountered. Optional for older image errors."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::ImageErrorCode>,
+        #[doc = "The file path in the import of the image that was rejected."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ImageError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImageErrorCode {
         #[doc = "Unknown error code."]
@@ -451,35 +480,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ImageErrorCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ImageError {
-        #[doc = "The type of image error encountered. Optional for older image errors."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::ImageErrorCode>,
-        #[doc = "The file path in the import of the image that was rejected."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ImageError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -549,6 +549,47 @@ pub mod schemas {
         pub user_assets: ::std::option::Option<Vec<crate::schemas::UserAsset>>,
     }
     impl ::field_selector::FieldSelector for ListUserAssetsResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjParseError {
+        #[doc = "The type of problem found (required)."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::ObjParseErrorCode>,
+        #[doc = "The ending character index at which the problem was found."]
+        #[serde(rename = "endIndex", default)]
+        pub end_index: ::std::option::Option<i32>,
+        #[doc = "The file path in which the problem was found."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: ::std::option::Option<String>,
+        #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
+        #[serde(rename = "line", default)]
+        pub line: ::std::option::Option<String>,
+        #[doc = "Line number at which the problem was found."]
+        #[serde(rename = "lineNumber", default)]
+        pub line_number: ::std::option::Option<i32>,
+        #[doc = "The starting character index at which the problem was found."]
+        #[serde(rename = "startIndex", default)]
+        pub start_index: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for ObjParseError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -709,38 +750,20 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ObjParseError {
-        #[doc = "The type of problem found (required)."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::ObjParseErrorCode>,
-        #[doc = "The ending character index at which the problem was found."]
-        #[serde(rename = "endIndex", default)]
-        pub end_index: ::std::option::Option<i32>,
-        #[doc = "The file path in which the problem was found."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: ::std::option::Option<String>,
-        #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
-        #[serde(rename = "line", default)]
-        pub line: ::std::option::Option<String>,
-        #[doc = "Line number at which the problem was found."]
-        #[serde(rename = "lineNumber", default)]
-        pub line_number: ::std::option::Option<i32>,
-        #[doc = "The starting character index at which the problem was found."]
-        #[serde(rename = "startIndex", default)]
-        pub start_index: ::std::option::Option<i32>,
+    pub struct PresentationParams {
+        #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
+        #[serde(rename = "backgroundColor", default)]
+        pub background_color: ::std::option::Option<String>,
+        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
+        #[serde(rename = "colorSpace", default)]
+        pub color_space: ::std::option::Option<crate::schemas::PresentationParamsColorSpace>,
+        #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
+        #[serde(rename = "orientingRotation", default)]
+        pub orienting_rotation: ::std::option::Option<crate::schemas::Quaternion>,
     }
-    impl ::field_selector::FieldSelector for ObjParseError {
+    impl ::field_selector::FieldSelector for PresentationParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -800,29 +823,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PresentationParamsColorSpace {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PresentationParams {
-        #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
-        #[serde(rename = "backgroundColor", default)]
-        pub background_color: ::std::option::Option<String>,
-        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
-        #[serde(rename = "colorSpace", default)]
-        pub color_space: ::std::option::Option<crate::schemas::PresentationParamsColorSpace>,
-        #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
-        #[serde(rename = "orientingRotation", default)]
-        pub orienting_rotation: ::std::option::Option<crate::schemas::Quaternion>,
-    }
-    impl ::field_selector::FieldSelector for PresentationParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2478,84 +2478,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2587,7 +2509,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -2708,50 +2629,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

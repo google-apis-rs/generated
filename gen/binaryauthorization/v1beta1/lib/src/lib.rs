@@ -1,4 +1,36 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdmissionRule {
+        #[doc = "Required. The action when a pod creation is denied by the admission rule."]
+        #[serde(rename = "enforcementMode", default)]
+        pub enforcement_mode: ::std::option::Option<crate::schemas::AdmissionRuleEnforcementMode>,
+        #[doc = "Required. How this admission rule will be evaluated."]
+        #[serde(rename = "evaluationMode", default)]
+        pub evaluation_mode: ::std::option::Option<crate::schemas::AdmissionRuleEvaluationMode>,
+        #[doc = "Optional. The resource names of the attestors that must attest to\na container image, in the format `projects/*/attestors/*`. Each\nattestor must exist before a policy can reference it.  To add an attestor\nto a policy the principal issuing the policy change request must be able\nto read the attestor resource.\n\nNote: this field must be non-empty when the evaluation_mode field specifies\nREQUIRE_ATTESTATION, otherwise it must be empty."]
+        #[serde(rename = "requireAttestationsBy", default)]
+        pub require_attestations_by: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for AdmissionRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdmissionRuleEnforcementMode {
         #[doc = "Dryrun mode: Audit logging only.  This will allow the pod creation as if\nthe admission request had specified break-glass."]
@@ -125,38 +157,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AdmissionRuleEvaluationMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdmissionRule {
-        #[doc = "Required. The action when a pod creation is denied by the admission rule."]
-        #[serde(rename = "enforcementMode", default)]
-        pub enforcement_mode: ::std::option::Option<crate::schemas::AdmissionRuleEnforcementMode>,
-        #[doc = "Required. How this admission rule will be evaluated."]
-        #[serde(rename = "evaluationMode", default)]
-        pub evaluation_mode: ::std::option::Option<crate::schemas::AdmissionRuleEvaluationMode>,
-        #[doc = "Optional. The resource names of the attestors that must attest to\na container image, in the format `projects/*/attestors/*`. Each\nattestor must exist before a policy can reference it.  To add an attestor\nto a policy the principal issuing the policy change request must be able\nto read the attestor resource.\n\nNote: this field must be non-empty when the evaluation_mode field specifies\nREQUIRE_ATTESTATION, otherwise it must be empty."]
-        #[serde(rename = "requireAttestationsBy", default)]
-        pub require_attestations_by: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for AdmissionRule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -406,6 +406,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PkixPublicKey {
+        #[doc = "A PEM-encoded public key, as described in\nhttps://tools.ietf.org/html/rfc7468#section-13"]
+        #[serde(rename = "publicKeyPem", default)]
+        pub public_key_pem: ::std::option::Option<String>,
+        #[doc = "The signature algorithm used to verify a message against a signature using\nthis key.\nThese signature algorithm must match the structure and any object\nidentifiers encoded in `public_key_pem` (i.e. this algorithm must match\nthat of the public key)."]
+        #[serde(rename = "signatureAlgorithm", default)]
+        pub signature_algorithm:
+            ::std::option::Option<crate::schemas::PkixPublicKeySignatureAlgorithm>,
+    }
+    impl ::field_selector::FieldSelector for PkixPublicKey {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PkixPublicKeySignatureAlgorithm {
         #[doc = "ECDSA on the NIST P-256 curve with a SHA256 digest."]
@@ -533,16 +563,34 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PkixPublicKey {
-        #[doc = "A PEM-encoded public key, as described in\nhttps://tools.ietf.org/html/rfc7468#section-13"]
-        #[serde(rename = "publicKeyPem", default)]
-        pub public_key_pem: ::std::option::Option<String>,
-        #[doc = "The signature algorithm used to verify a message against a signature using\nthis key.\nThese signature algorithm must match the structure and any object\nidentifiers encoded in `public_key_pem` (i.e. this algorithm must match\nthat of the public key)."]
-        #[serde(rename = "signatureAlgorithm", default)]
-        pub signature_algorithm:
-            ::std::option::Option<crate::schemas::PkixPublicKeySignatureAlgorithm>,
+    pub struct Policy {
+        #[doc = "Optional. Admission policy whitelisting. A matching admission request will\nalways be permitted. This feature is typically used to exclude Google or\nthird-party infrastructure images from Binary Authorization policies."]
+        #[serde(rename = "admissionWhitelistPatterns", default)]
+        pub admission_whitelist_patterns:
+            ::std::option::Option<Vec<crate::schemas::AdmissionWhitelistPattern>>,
+        #[doc = "Optional. Per-cluster admission rules. Cluster spec format:\n`location.clusterId`. There can be at most one admission rule per cluster\nspec.\nA `location` is either a compute zone (e.g. us-central1-a) or a region\n(e.g. us-central1).\nFor `clusterId` syntax restrictions see\nhttps://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters."]
+        #[serde(rename = "clusterAdmissionRules", default)]
+        pub cluster_admission_rules: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AdmissionRule>,
+        >,
+        #[doc = "Required. Default admission rule for a cluster without a per-cluster, per-\nkubernetes-service-account, or per-istio-service-identity admission rule."]
+        #[serde(rename = "defaultAdmissionRule", default)]
+        pub default_admission_rule: ::std::option::Option<crate::schemas::AdmissionRule>,
+        #[doc = "Optional. A descriptive comment."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. Controls the evaluation of a Google-maintained global admission\npolicy for common system-level images. Images not covered by the global\npolicy will be subject to the project admission policy. This setting\nhas no effect when specified inside a global admission policy."]
+        #[serde(rename = "globalPolicyEvaluationMode", default)]
+        pub global_policy_evaluation_mode:
+            ::std::option::Option<crate::schemas::PolicyGlobalPolicyEvaluationMode>,
+        #[doc = "Output only. The resource name, in the format `projects/*/policy`. There is\nat most one policy per project."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. Time when the policy was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for PkixPublicKey {
+    impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -606,54 +654,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PolicyGlobalPolicyEvaluationMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Policy {
-        #[doc = "Optional. Admission policy whitelisting. A matching admission request will\nalways be permitted. This feature is typically used to exclude Google or\nthird-party infrastructure images from Binary Authorization policies."]
-        #[serde(rename = "admissionWhitelistPatterns", default)]
-        pub admission_whitelist_patterns:
-            ::std::option::Option<Vec<crate::schemas::AdmissionWhitelistPattern>>,
-        #[doc = "Optional. Per-cluster admission rules. Cluster spec format:\n`location.clusterId`. There can be at most one admission rule per cluster\nspec.\nA `location` is either a compute zone (e.g. us-central1-a) or a region\n(e.g. us-central1).\nFor `clusterId` syntax restrictions see\nhttps://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters."]
-        #[serde(rename = "clusterAdmissionRules", default)]
-        pub cluster_admission_rules: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::AdmissionRule>,
-        >,
-        #[doc = "Required. Default admission rule for a cluster without a per-cluster, per-\nkubernetes-service-account, or per-istio-service-identity admission rule."]
-        #[serde(rename = "defaultAdmissionRule", default)]
-        pub default_admission_rule: ::std::option::Option<crate::schemas::AdmissionRule>,
-        #[doc = "Optional. A descriptive comment."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. Controls the evaluation of a Google-maintained global admission\npolicy for common system-level images. Images not covered by the global\npolicy will be subject to the project admission policy. This setting\nhas no effect when specified inside a global admission policy."]
-        #[serde(rename = "globalPolicyEvaluationMode", default)]
-        pub global_policy_evaluation_mode:
-            ::std::option::Option<crate::schemas::PolicyGlobalPolicyEvaluationMode>,
-        #[doc = "Output only. The resource name, in the format `projects/*/policy`. There is\nat most one policy per project."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. Time when the policy was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3596,84 +3596,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3705,7 +3627,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -3831,8 +3752,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

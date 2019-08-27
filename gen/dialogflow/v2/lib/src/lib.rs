@@ -1,4 +1,56 @@
 pub mod schemas {
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Agent {
+        #[doc = "Optional. API version displayed in Dialogflow console. If not specified,\nV2 API is assumed. Clients are free to query different service endpoints\nfor different API versions. However, bots connectors and webhook calls will\nfollow the specified API version."]
+        #[serde(rename = "apiVersion", default)]
+        pub api_version:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentApiVersion>,
+        #[doc = "Optional. The URI of the agent's avatar.\nAvatars are used throughout the Dialogflow console and in the self-hosted\n[Web\nDemo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)\nintegration."]
+        #[serde(rename = "avatarUri", default)]
+        pub avatar_uri: ::std::option::Option<String>,
+        #[doc = "Optional. To filter out false positive results and still get variety in\nmatched natural language inputs for your agent, you can tune the machine\nlearning classification threshold. If the returned score value is less than\nthe threshold value, then a fallback intent will be triggered or, if there\nare no fallback intents defined, no intent will be triggered. The score\nvalues range from 0.0 (completely uncertain) to 1.0 (completely certain).\nIf set to 0.0, the default of 0.3 is used."]
+        #[serde(rename = "classificationThreshold", default)]
+        pub classification_threshold: ::std::option::Option<f32>,
+        #[doc = "Required. The default language of the agent as a language tag. See\n[Language\nSupport](https://cloud.google.com/dialogflow/docs/reference/language)\nfor a list of the currently supported language codes. This field cannot be\nset by the `Update` method."]
+        #[serde(rename = "defaultLanguageCode", default)]
+        pub default_language_code: ::std::option::Option<String>,
+        #[doc = "Optional. The description of this agent.\nThe maximum length is 500 characters. If exceeded, the request is rejected."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. The name of this agent."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. Determines whether this agent should log conversation queries."]
+        #[serde(rename = "enableLogging", default)]
+        pub enable_logging: ::std::option::Option<bool>,
+        #[doc = "Optional. Determines how intents are detected from user queries."]
+        #[serde(rename = "matchMode", default)]
+        pub match_mode:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentMatchMode>,
+        #[doc = "Required. The project of this agent.\nFormat: `projects/<Project ID>`."]
+        #[serde(rename = "parent", default)]
+        pub parent: ::std::option::Option<String>,
+        #[doc = "Optional. The list of all languages supported by this agent (except for the\n`default_language_code`)."]
+        #[serde(rename = "supportedLanguageCodes", default)]
+        pub supported_language_codes: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The agent tier. If not specified, TIER_STANDARD is assumed."]
+        #[serde(rename = "tier", default)]
+        pub tier: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentTier>,
+        #[doc = "Required. The time zone of this agent from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris."]
+        #[serde(rename = "timeZone", default)]
+        pub time_zone: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Agent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2AgentApiVersion {
         #[doc = "Not specified."]
@@ -188,58 +240,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2AgentTier {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Agent {
-        #[doc = "Optional. API version displayed in Dialogflow console. If not specified,\nV2 API is assumed. Clients are free to query different service endpoints\nfor different API versions. However, bots connectors and webhook calls will\nfollow the specified API version."]
-        #[serde(rename = "apiVersion", default)]
-        pub api_version:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentApiVersion>,
-        #[doc = "Optional. The URI of the agent's avatar.\nAvatars are used throughout the Dialogflow console and in the self-hosted\n[Web\nDemo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)\nintegration."]
-        #[serde(rename = "avatarUri", default)]
-        pub avatar_uri: ::std::option::Option<String>,
-        #[doc = "Optional. To filter out false positive results and still get variety in\nmatched natural language inputs for your agent, you can tune the machine\nlearning classification threshold. If the returned score value is less than\nthe threshold value, then a fallback intent will be triggered or, if there\nare no fallback intents defined, no intent will be triggered. The score\nvalues range from 0.0 (completely uncertain) to 1.0 (completely certain).\nIf set to 0.0, the default of 0.3 is used."]
-        #[serde(rename = "classificationThreshold", default)]
-        pub classification_threshold: ::std::option::Option<f32>,
-        #[doc = "Required. The default language of the agent as a language tag. See\n[Language\nSupport](https://cloud.google.com/dialogflow/docs/reference/language)\nfor a list of the currently supported language codes. This field cannot be\nset by the `Update` method."]
-        #[serde(rename = "defaultLanguageCode", default)]
-        pub default_language_code: ::std::option::Option<String>,
-        #[doc = "Optional. The description of this agent.\nThe maximum length is 500 characters. If exceeded, the request is rejected."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Required. The name of this agent."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. Determines whether this agent should log conversation queries."]
-        #[serde(rename = "enableLogging", default)]
-        pub enable_logging: ::std::option::Option<bool>,
-        #[doc = "Optional. Determines how intents are detected from user queries."]
-        #[serde(rename = "matchMode", default)]
-        pub match_mode:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentMatchMode>,
-        #[doc = "Required. The project of this agent.\nFormat: `projects/<Project ID>`."]
-        #[serde(rename = "parent", default)]
-        pub parent: ::std::option::Option<String>,
-        #[doc = "Optional. The list of all languages supported by this agent (except for the\n`default_language_code`)."]
-        #[serde(rename = "supportedLanguageCodes", default)]
-        pub supported_language_codes: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The agent tier. If not specified, TIER_STANDARD is assumed."]
-        #[serde(rename = "tier", default)]
-        pub tier: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2AgentTier>,
-        #[doc = "Required. The time zone of this agent from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris."]
-        #[serde(rename = "timeZone", default)]
-        pub time_zone: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Agent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -444,6 +444,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
+        #[doc = "The collection of intents to update or create."]
+        #[serde(rename = "intentBatchInline", default)]
+        pub intent_batch_inline:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentBatch>,
+        #[doc = "The URI to a Google Cloud Storage file containing intents to update or\ncreate. The file format can either be a serialized proto (of IntentBatch\ntype) or JSON object. Note: The URI must start with \"gs://\"."]
+        #[serde(rename = "intentBatchUri", default)]
+        pub intent_batch_uri: ::std::option::Option<String>,
+        #[doc = "Optional. The resource view to apply to the returned intent."]
+        #[serde(rename = "intentView", default)]
+        pub intent_view: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView,
+        >,
+        #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intents`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Optional. The mask to control which fields get updated."]
+        #[serde(rename = "updateMask", default)]
+        pub update_mask: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView {
         #[doc = "All fields are populated."]
@@ -481,36 +511,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
-        #[doc = "The collection of intents to update or create."]
-        #[serde(rename = "intentBatchInline", default)]
-        pub intent_batch_inline:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentBatch>,
-        #[doc = "The URI to a Google Cloud Storage file containing intents to update or\ncreate. The file format can either be a serialized proto (of IntentBatch\ntype) or JSON object. Note: The URI must start with \"gs://\"."]
-        #[serde(rename = "intentBatchUri", default)]
-        pub intent_batch_uri: ::std::option::Option<String>,
-        #[doc = "Optional. The resource view to apply to the returned intent."]
-        #[serde(rename = "intentView", default)]
-        pub intent_view: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2BatchUpdateIntentsRequestIntentView,
-        >,
-        #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intents`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: ::std::option::Option<String>,
-        #[doc = "Optional. The mask to control which fields get updated."]
-        #[serde(rename = "updateMask", default)]
-        pub update_mask: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -674,6 +674,52 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1ConversationModel {
+        #[doc = "Metadata for article suggestion models."]
+        #[serde(rename = "articleSuggestionModelMetadata", default)]
+        pub article_suggestion_model_metadata: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata,
+        >,
+        #[doc = "Output only. Creation time of this model."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Required. Datasets used to create model."]
+        #[serde(rename = "datasets", default)]
+        pub datasets:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1InputDataset>>,
+        #[doc = "Required. The display name of the model. At most 64 bytes long."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Output only. ConversationModel resource name. Format:\n`projects/<Project ID>/conversationModels/<Conversation Model ID>`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. State of the model. A model can only serve prediction requests\nafter it gets deployed."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1ConversationModelState,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1ConversationModel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1ConversationModelState {
         #[doc = "Model is creating."]
@@ -769,32 +815,28 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1ConversationModel {
-        #[doc = "Metadata for article suggestion models."]
-        #[serde(rename = "articleSuggestionModelMetadata", default)]
-        pub article_suggestion_model_metadata: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata,
+    pub struct GoogleCloudDialogflowV2Beta1EntityType {
+        #[doc = "Optional. Indicates whether the entity type can be automatically\nexpanded."]
+        #[serde(rename = "autoExpansionMode", default)]
+        pub auto_expansion_mode: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode,
         >,
-        #[doc = "Output only. Creation time of this model."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Required. Datasets used to create model."]
-        #[serde(rename = "datasets", default)]
-        pub datasets:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1InputDataset>>,
-        #[doc = "Required. The display name of the model. At most 64 bytes long."]
+        #[doc = "Required. The name of the entity type."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. ConversationModel resource name. Format:\n`projects/<Project ID>/conversationModels/<Conversation Model ID>`"]
+        #[doc = "Optional. The collection of entity entries associated with the entity type."]
+        #[serde(rename = "entities", default)]
+        pub entities: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeEntity>,
+        >,
+        #[doc = "Required. Indicates the kind of entity type."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeKind>,
+        #[doc = "The unique identifier of the entity type.\nRequired for EntityTypes.UpdateEntityType and\nEntityTypes.BatchUpdateEntityTypes methods.\nFormat: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "Output only. State of the model. A model can only serve prediction requests\nafter it gets deployed."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1ConversationModelState,
-        >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1ConversationModel {
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1EntityType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -917,48 +959,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1EntityType {
-        #[doc = "Optional. Indicates whether the entity type can be automatically\nexpanded."]
-        #[serde(rename = "autoExpansionMode", default)]
-        pub auto_expansion_mode: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeAutoExpansionMode,
-        >,
-        #[doc = "Required. The name of the entity type."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of entity entries associated with the entity type."]
-        #[serde(rename = "entities", default)]
-        pub entities: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeEntity>,
-        >,
-        #[doc = "Required. Indicates the kind of entity type."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeKind>,
-        #[doc = "The unique identifier of the entity type.\nRequired for EntityTypes.UpdateEntityType and\nEntityTypes.BatchUpdateEntityTypes methods.\nFormat: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1EntityType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GoogleCloudDialogflowV2Beta1EntityTypeEntity {
         #[doc = "Required. A collection of value synonyms. For example, if the entity type\nis *vegetable*, and `value` is *scallions*, a synonym could be *green\nonions*.\n\nFor `KIND_LIST` entity types:\n\n* This collection must contain exactly one synonym equal to `value`."]
         #[serde(rename = "synonyms", default)]
@@ -1045,6 +1045,88 @@ pub mod schemas {
         pub dataset: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1InputDataset {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2Beta1Intent {
+        #[doc = "Optional. The name of the action associated with the intent.\nNote: The action name must not contain whitespaces."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<String>,
+        #[doc = "Optional. The list of platforms for which the first responses will be\ncopied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform)."]
+        #[serde(rename = "defaultResponsePlatforms", default)]
+        pub default_response_platforms: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems>,
+        >,
+        #[doc = "Required. The name of this intent."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. Indicates that this intent ends an interaction. Some integrations\n(e.g., Actions on Google or Dialogflow phone gateway) use this information\nto close interaction with an end user. Default is false."]
+        #[serde(rename = "endInteraction", default)]
+        pub end_interaction: ::std::option::Option<bool>,
+        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
+        #[serde(rename = "events", default)]
+        pub events: ::std::option::Option<Vec<String>>,
+        #[doc = "Read-only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
+        #[serde(rename = "followupIntentInfo", default)]
+        pub followup_intent_info: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentFollowupIntentInfo>,
+        >,
+        #[doc = "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
+        #[serde(rename = "inputContextNames", default)]
+        pub input_context_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. Indicates whether this is a fallback intent."]
+        #[serde(rename = "isFallback", default)]
+        pub is_fallback: ::std::option::Option<bool>,
+        #[doc = "Optional. The collection of rich messages corresponding to the\n`Response` field in the Dialogflow console."]
+        #[serde(rename = "messages", default)]
+        pub messages:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessage>>,
+        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_disabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
+        #[serde(rename = "mlDisabled", default)]
+        pub ml_disabled: ::std::option::Option<bool>,
+        #[doc = "Optional. Indicates whether Machine Learning is enabled for the intent.\nNote: If `ml_enabled` setting is set to false, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off.\nDEPRECATED! Please use `ml_disabled` field instead.\nNOTE: If both `ml_enabled` and `ml_disabled` are either not set or false,\nthen the default value is determined as follows:\n\n* Before April 15th, 2018 the default is:\n  ml_enabled = false / ml_disabled = true.\n* After April 15th, 2018 the default is:\n  ml_enabled = true / ml_disabled = false."]
+        #[serde(rename = "mlEnabled", default)]
+        pub ml_enabled: ::std::option::Option<bool>,
+        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
+        #[serde(rename = "outputContexts", default)]
+        pub output_contexts:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Context>>,
+        #[doc = "Optional. The collection of parameters associated with the intent."]
+        #[serde(rename = "parameters", default)]
+        pub parameters:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentParameter>>,
+        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "parentFollowupIntentName", default)]
+        pub parent_followup_intent_name: ::std::option::Option<String>,
+        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
+        #[serde(rename = "priority", default)]
+        pub priority: ::std::option::Option<i32>,
+        #[doc = "Optional. Indicates whether to delete all contexts in the current\nsession when this intent is matched."]
+        #[serde(rename = "resetContexts", default)]
+        pub reset_contexts: ::std::option::Option<bool>,
+        #[doc = "Read-only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent. We populate this field only in the output.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "rootFollowupIntentName", default)]
+        pub root_followup_intent_name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of examples that the agent is\ntrained on."]
+        #[serde(rename = "trainingPhrases", default)]
+        pub training_phrases: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhrase>,
+        >,
+        #[doc = "Optional. Indicates whether webhooks are enabled for the intent."]
+        #[serde(rename = "webhookState", default)]
+        pub webhook_state:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentWebhookState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1Intent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1152,88 +1234,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleCloudDialogflowV2Beta1Intent {
-        #[doc = "Optional. The name of the action associated with the intent.\nNote: The action name must not contain whitespaces."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<String>,
-        #[doc = "Optional. The list of platforms for which the first responses will be\ncopied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform)."]
-        #[serde(rename = "defaultResponsePlatforms", default)]
-        pub default_response_platforms: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentDefaultResponsePlatformsItems>,
-        >,
-        #[doc = "Required. The name of this intent."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. Indicates that this intent ends an interaction. Some integrations\n(e.g., Actions on Google or Dialogflow phone gateway) use this information\nto close interaction with an end user. Default is false."]
-        #[serde(rename = "endInteraction", default)]
-        pub end_interaction: ::std::option::Option<bool>,
-        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
-        #[serde(rename = "events", default)]
-        pub events: ::std::option::Option<Vec<String>>,
-        #[doc = "Read-only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
-        #[serde(rename = "followupIntentInfo", default)]
-        pub followup_intent_info: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentFollowupIntentInfo>,
-        >,
-        #[doc = "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
-        #[serde(rename = "inputContextNames", default)]
-        pub input_context_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. Indicates whether this is a fallback intent."]
-        #[serde(rename = "isFallback", default)]
-        pub is_fallback: ::std::option::Option<bool>,
-        #[doc = "Optional. The collection of rich messages corresponding to the\n`Response` field in the Dialogflow console."]
-        #[serde(rename = "messages", default)]
-        pub messages:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessage>>,
-        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_disabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
-        #[serde(rename = "mlDisabled", default)]
-        pub ml_disabled: ::std::option::Option<bool>,
-        #[doc = "Optional. Indicates whether Machine Learning is enabled for the intent.\nNote: If `ml_enabled` setting is set to false, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off.\nDEPRECATED! Please use `ml_disabled` field instead.\nNOTE: If both `ml_enabled` and `ml_disabled` are either not set or false,\nthen the default value is determined as follows:\n\n* Before April 15th, 2018 the default is:\n  ml_enabled = false / ml_disabled = true.\n* After April 15th, 2018 the default is:\n  ml_enabled = true / ml_disabled = false."]
-        #[serde(rename = "mlEnabled", default)]
-        pub ml_enabled: ::std::option::Option<bool>,
-        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
-        #[serde(rename = "outputContexts", default)]
-        pub output_contexts:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Context>>,
-        #[doc = "Optional. The collection of parameters associated with the intent."]
-        #[serde(rename = "parameters", default)]
-        pub parameters:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentParameter>>,
-        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "parentFollowupIntentName", default)]
-        pub parent_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
-        #[serde(rename = "priority", default)]
-        pub priority: ::std::option::Option<i32>,
-        #[doc = "Optional. Indicates whether to delete all contexts in the current\nsession when this intent is matched."]
-        #[serde(rename = "resetContexts", default)]
-        pub reset_contexts: ::std::option::Option<bool>,
-        #[doc = "Read-only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent. We populate this field only in the output.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "rootFollowupIntentName", default)]
-        pub root_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of examples that the agent is\ntrained on."]
-        #[serde(rename = "trainingPhrases", default)]
-        pub training_phrases: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhrase>,
-        >,
-        #[doc = "Optional. Indicates whether webhooks are enabled for the intent."]
-        #[serde(rename = "webhookState", default)]
-        pub webhook_state:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentWebhookState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1Intent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -1255,6 +1255,103 @@ pub mod schemas {
         pub parent_followup_intent_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentFollowupIntentInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessage {
+        #[doc = "Displays a basic card for Actions on Google."]
+        #[serde(rename = "basicCard", default)]
+        pub basic_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageBasicCard,
+        >,
+        #[doc = "Displays a card."]
+        #[serde(rename = "card", default)]
+        pub card:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageCard>,
+        #[doc = "Displays a carousel card for Actions on Google."]
+        #[serde(rename = "carouselSelect", default)]
+        pub carousel_select: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageCarouselSelect,
+        >,
+        #[doc = "Displays an image."]
+        #[serde(rename = "image", default)]
+        pub image:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageImage>,
+        #[doc = "Displays a link out suggestion chip for Actions on Google."]
+        #[serde(rename = "linkOutSuggestion", default)]
+        pub link_out_suggestion: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageLinkOutSuggestion,
+        >,
+        #[doc = "Displays a list card for Actions on Google."]
+        #[serde(rename = "listSelect", default)]
+        pub list_select: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageListSelect,
+        >,
+        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
+        #[serde(rename = "payload", default)]
+        pub payload:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Optional. The platform that this message is intended for."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessagePlatform,
+        >,
+        #[doc = "Displays quick replies."]
+        #[serde(rename = "quickReplies", default)]
+        pub quick_replies: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageQuickReplies,
+        >,
+        #[doc = "Rich Business Messaging (RBM) carousel rich card response."]
+        #[serde(rename = "rbmCarouselRichCard", default)]
+        pub rbm_carousel_rich_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard,
+        >,
+        #[doc = "Standalone Rich Business Messaging (RBM) rich card response."]
+        #[serde(rename = "rbmStandaloneRichCard", default)]
+        pub rbm_standalone_rich_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard,
+        >,
+        #[doc = "Rich Business Messaging (RBM) text response.\n\nRBM allows businesses to send enriched and branded versions of SMS. See\nhttps://jibe.google.com/business-messaging."]
+        #[serde(rename = "rbmText", default)]
+        pub rbm_text:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmText>,
+        #[doc = "Returns a voice or text-only response for Actions on Google."]
+        #[serde(rename = "simpleResponses", default)]
+        pub simple_responses: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageSimpleResponses,
+        >,
+        #[doc = "Displays suggestion chips for Actions on Google."]
+        #[serde(rename = "suggestions", default)]
+        pub suggestions: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageSuggestions,
+        >,
+        #[doc = "Plays audio from a file in Telephony Gateway."]
+        #[serde(rename = "telephonyPlayAudio", default)]
+        pub telephony_play_audio: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonyPlayAudio,
+        >,
+        #[doc = "Synthesizes speech in Telephony Gateway."]
+        #[serde(rename = "telephonySynthesizeSpeech", default)]
+        pub telephony_synthesize_speech: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonySynthesizeSpeech,
+        >,
+        #[doc = "Transfers the call in Telephony Gateway."]
+        #[serde(rename = "telephonyTransferCall", default)]
+        pub telephony_transfer_call: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonyTransferCall,
+        >,
+        #[doc = "Returns a text response."]
+        #[serde(rename = "text", default)]
+        pub text:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageText>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1358,103 +1455,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleCloudDialogflowV2Beta1IntentMessage {
-        #[doc = "Displays a basic card for Actions on Google."]
-        #[serde(rename = "basicCard", default)]
-        pub basic_card: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageBasicCard,
-        >,
-        #[doc = "Displays a card."]
-        #[serde(rename = "card", default)]
-        pub card:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageCard>,
-        #[doc = "Displays a carousel card for Actions on Google."]
-        #[serde(rename = "carouselSelect", default)]
-        pub carousel_select: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageCarouselSelect,
-        >,
-        #[doc = "Displays an image."]
-        #[serde(rename = "image", default)]
-        pub image:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageImage>,
-        #[doc = "Displays a link out suggestion chip for Actions on Google."]
-        #[serde(rename = "linkOutSuggestion", default)]
-        pub link_out_suggestion: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageLinkOutSuggestion,
-        >,
-        #[doc = "Displays a list card for Actions on Google."]
-        #[serde(rename = "listSelect", default)]
-        pub list_select: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageListSelect,
-        >,
-        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
-        #[serde(rename = "payload", default)]
-        pub payload:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. The platform that this message is intended for."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessagePlatform,
-        >,
-        #[doc = "Displays quick replies."]
-        #[serde(rename = "quickReplies", default)]
-        pub quick_replies: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageQuickReplies,
-        >,
-        #[doc = "Rich Business Messaging (RBM) carousel rich card response."]
-        #[serde(rename = "rbmCarouselRichCard", default)]
-        pub rbm_carousel_rich_card: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard,
-        >,
-        #[doc = "Standalone Rich Business Messaging (RBM) rich card response."]
-        #[serde(rename = "rbmStandaloneRichCard", default)]
-        pub rbm_standalone_rich_card: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard,
-        >,
-        #[doc = "Rich Business Messaging (RBM) text response.\n\nRBM allows businesses to send enriched and branded versions of SMS. See\nhttps://jibe.google.com/business-messaging."]
-        #[serde(rename = "rbmText", default)]
-        pub rbm_text:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmText>,
-        #[doc = "Returns a voice or text-only response for Actions on Google."]
-        #[serde(rename = "simpleResponses", default)]
-        pub simple_responses: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageSimpleResponses,
-        >,
-        #[doc = "Displays suggestion chips for Actions on Google."]
-        #[serde(rename = "suggestions", default)]
-        pub suggestions: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageSuggestions,
-        >,
-        #[doc = "Plays audio from a file in Telephony Gateway."]
-        #[serde(rename = "telephonyPlayAudio", default)]
-        pub telephony_play_audio: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonyPlayAudio,
-        >,
-        #[doc = "Synthesizes speech in Telephony Gateway."]
-        #[serde(rename = "telephonySynthesizeSpeech", default)]
-        pub telephony_synthesize_speech: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonySynthesizeSpeech,
-        >,
-        #[doc = "Transfers the call in Telephony Gateway."]
-        #[serde(rename = "telephonyTransferCall", default)]
-        pub telephony_transfer_call: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTelephonyTransferCall,
-        >,
-        #[doc = "Returns a text response."]
-        #[serde(rename = "text", default)]
-        pub text:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageText>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1894,6 +1894,42 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMedia {
+        #[doc = "Required. Publicly reachable URI of the file. The RBM platform\ndetermines the MIME type of the file from the content-type field in\nthe HTTP headers when the platform fetches the file. The content-type\nfield must be present and accurate in the HTTP response from the URL."]
+        #[serde(rename = "fileUri", default)]
+        pub file_uri: ::std::option::Option<String>,
+        #[doc = "Required for cards with vertical orientation. The height of the media\nwithin a rich card with a vertical layout. (https://goo.gl/NeFCjz).\nFor a standalone card with horizontal layout, height is not\ncustomizable, and this field is ignored."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight,
+        >,
+        #[doc = "Optional. Publicly reachable URI of the thumbnail.If you don't\nprovide a thumbnail URI, the RBM platform displays a blank\nplaceholder thumbnail until the user's device downloads the file.\nDepending on the user's setting, the file may not download\nautomatically and may require the user to tap a download button."]
+        #[serde(rename = "thumbnailUri", default)]
+        pub thumbnail_uri: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMedia
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight {
         #[doc = "Not specified."]
@@ -1957,22 +1993,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMedia {
-        #[doc = "Required. Publicly reachable URI of the file. The RBM platform\ndetermines the MIME type of the file from the content-type field in\nthe HTTP headers when the platform fetches the file. The content-type\nfield must be present and accurate in the HTTP response from the URL."]
-        #[serde(rename = "fileUri", default)]
-        pub file_uri: ::std::option::Option<String>,
-        #[doc = "Required for cards with vertical orientation. The height of the media\nwithin a rich card with a vertical layout. (https://goo.gl/NeFCjz).\nFor a standalone card with horizontal layout, height is not\ncustomizable, and this field is ignored."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMediaHeight,
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard {
+        #[doc = "Required. The cards in the carousel. A carousel must have at least\n2 cards and at most 10."]
+        #[serde(rename = "cardContents", default)]
+        pub card_contents: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContent>,
         >,
-        #[doc = "Optional. Publicly reachable URI of the thumbnail.If you don't\nprovide a thumbnail URI, the RBM platform displays a blank\nplaceholder thumbnail until the user's device downloads the file.\nDepending on the user's setting, the file may not download\nautomatically and may require the user to tap a download button."]
-        #[serde(rename = "thumbnailUri", default)]
-        pub thumbnail_uri: ::std::option::Option<String>,
+        #[doc = "Required. The width of the cards in the carousel."]
+        #[serde(rename = "cardWidth", default)]
+        pub card_width: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth,
+        >,
     }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContentRbmMedia
-    {
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2042,19 +2075,10 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard {
-        #[doc = "Required. The cards in the carousel. A carousel must have at least\n2 cards and at most 10."]
-        #[serde(rename = "cardContents", default)]
-        pub card_contents: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContent>,
-        >,
-        #[doc = "Required. The width of the cards in the carousel."]
-        #[serde(rename = "cardWidth", default)]
-        pub card_width: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCardCardWidth,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageRbmCarouselCard {
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard { # [ doc = "Required. Card content." ] # [ serde ( rename = "cardContent" , default ) ] pub card_content : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContent > , # [ doc = "Required. Orientation of the card." ] # [ serde ( rename = "cardOrientation" , default ) ] pub card_orientation : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardCardOrientation > , # [ doc = "Required if orientation is horizontal.\nImage preview alignment for standalone cards with horizontal layout." ] # [ serde ( rename = "thumbnailImageAlignment" , default ) ] pub thumbnail_image_alignment : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment > , }
+    impl ::field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2160,30 +2184,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard { # [ doc = "Required. Card content." ] # [ serde ( rename = "cardContent" , default ) ] pub card_content : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmCardContent > , # [ doc = "Required. Orientation of the card." ] # [ serde ( rename = "cardOrientation" , default ) ] pub card_orientation : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardCardOrientation > , # [ doc = "Required if orientation is horizontal.\nImage preview alignment for standalone cards with horizontal layout." ] # [ serde ( rename = "thumbnailImageAlignment" , default ) ] pub thumbnail_image_alignment : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment > , }
-    impl ::field_selector::FieldSelector
-        for GoogleCloudDialogflowV2Beta1IntentMessageRbmStandaloneCard
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -2686,6 +2686,45 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentTrainingPhrase {
+        #[doc = "Output only. The unique identifier of this training phrase."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The ordered list of training phrase parts.\nThe parts are concatenated in order to form the training phrase.\n\nNote: The API does not automatically annotate training phrases like the\nDialogflow Console does.\n\nNote: Do not forget to include whitespace at part boundaries,\nso the training phrase is well formatted when the parts are concatenated.\n\nIf the training phrase does not need to be annotated with parameters,\nyou just need a single part with only the Part.text field set.\n\nIf you want to annotate the training phrase, you must create multiple\nparts, where the fields of each part are populated in one of two ways:\n\n* `Part.text` is set to a part of the phrase that has no parameters.\n* `Part.text` is set to a part of the phrase that you want to annotate,\n  and the `entity_type`, `alias`, and `user_defined` fields are all\n  set."]
+        #[serde(rename = "parts", default)]
+        pub parts: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhrasePart>,
+        >,
+        #[doc = "Required. The type of the training phrase."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType,
+        >,
+        #[doc = "Optional. Indicates how many times this example was added to\nthe intent. Each time a developer adds an existing sample by editing an\nintent or training, this counter is increased."]
+        #[serde(rename = "timesAddedCount", default)]
+        pub times_added_count: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentTrainingPhrase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType {
         #[doc = "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types."]
@@ -2761,45 +2800,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1IntentTrainingPhrase {
-        #[doc = "Output only. The unique identifier of this training phrase."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The ordered list of training phrase parts.\nThe parts are concatenated in order to form the training phrase.\n\nNote: The API does not automatically annotate training phrases like the\nDialogflow Console does.\n\nNote: Do not forget to include whitespace at part boundaries,\nso the training phrase is well formatted when the parts are concatenated.\n\nIf the training phrase does not need to be annotated with parameters,\nyou just need a single part with only the Part.text field set.\n\nIf you want to annotate the training phrase, you must create multiple\nparts, where the fields of each part are populated in one of two ways:\n\n* `Part.text` is set to a part of the phrase that has no parameters.\n* `Part.text` is set to a part of the phrase that you want to annotate,\n  and the `entity_type`, `alias`, and `user_defined` fields are all\n  set."]
-        #[serde(rename = "parts", default)]
-        pub parts: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhrasePart>,
-        >,
-        #[doc = "Required. The type of the training phrase."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1IntentTrainingPhraseType,
-        >,
-        #[doc = "Optional. Indicates how many times this example was added to\nthe intent. Each time a developer adds an existing sample by editing an\nintent or training, this counter is increased."]
-        #[serde(rename = "timesAddedCount", default)]
-        pub times_added_count: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentTrainingPhrase {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GoogleCloudDialogflowV2Beta1IntentTrainingPhrasePart {
         #[doc = "Optional. The parameter name for the value extracted from the\nannotated part of the example.\nThis field is required for annotated parts of the training phrase."]
         #[serde(rename = "alias", default)]
@@ -2834,6 +2834,37 @@ pub mod schemas {
         >,
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1KnowledgeAnswers {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswer {
+        #[doc = "The piece of text from the `source` knowledge base document that answers\nthis conversational query."]
+        #[serde(rename = "answer", default)]
+        pub answer: ::std::option::Option<String>,
+        #[doc = "The corresponding FAQ question if the answer was extracted from a FAQ\nDocument, empty otherwise."]
+        #[serde(rename = "faqQuestion", default)]
+        pub faq_question: ::std::option::Option<String>,
+        #[doc = "The system's confidence score that this Knowledge answer is a good match\nfor this conversational query.\nThe range is from 0.0 (completely uncertain) to 1.0 (completely certain).\nNote: The confidence score is likely to vary somewhat (possibly even for\nidentical requests), as the underlying model is under constant\nimprovement. It may be deprecated in the future. We recommend using\n`match_confidence_level` which should be generally more stable."]
+        #[serde(rename = "matchConfidence", default)]
+        pub match_confidence: ::std::option::Option<f32>,
+        #[doc = "The system's confidence level that this knowledge answer is a good match\nfor this conversational query.\nNOTE: The confidence level for a given `<query, answer>` pair may change\nwithout notice, as it depends on models that are constantly being\nimproved. However, it will change less frequently than the confidence\nscore below, and should be preferred for referencing the quality of an\nanswer."]
+        #[serde(rename = "matchConfidenceLevel", default)]
+        pub match_confidence_level: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel,
+        >,
+        #[doc = "Indicates which Knowledge Document this answer was extracted from.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>/documents/<Document ID>`."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2896,28 +2927,25 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswer {
-        #[doc = "The piece of text from the `source` knowledge base document that answers\nthis conversational query."]
-        #[serde(rename = "answer", default)]
-        pub answer: ::std::option::Option<String>,
-        #[doc = "The corresponding FAQ question if the answer was extracted from a FAQ\nDocument, empty otherwise."]
-        #[serde(rename = "faqQuestion", default)]
-        pub faq_question: ::std::option::Option<String>,
-        #[doc = "The system's confidence score that this Knowledge answer is a good match\nfor this conversational query.\nThe range is from 0.0 (completely uncertain) to 1.0 (completely certain).\nNote: The confidence score is likely to vary somewhat (possibly even for\nidentical requests), as the underlying model is under constant\nimprovement. It may be deprecated in the future. We recommend using\n`match_confidence_level` which should be generally more stable."]
-        #[serde(rename = "matchConfidence", default)]
-        pub match_confidence: ::std::option::Option<f32>,
-        #[doc = "The system's confidence level that this knowledge answer is a good match\nfor this conversational query.\nNOTE: The confidence level for a given `<query, answer>` pair may change\nwithout notice, as it depends on models that are constantly being\nimproved. However, it will change less frequently than the confidence\nscore below, and should be preferred for referencing the quality of an\nanswer."]
-        #[serde(rename = "matchConfidenceLevel", default)]
-        pub match_confidence_level: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswerMatchConfidenceLevel,
+    pub struct GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadata {
+        #[doc = "Required. The current state of this operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState,
         >,
-        #[doc = "Indicates which Knowledge Document this answer was extracted from.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>/documents/<Document ID>`."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1KnowledgeAnswersAnswer {
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2989,34 +3017,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadata {
-        #[doc = "Required. The current state of this operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadataState,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3325,6 +3325,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2EntityType {
+        #[doc = "Optional. Indicates whether the entity type can be automatically\nexpanded."]
+        #[serde(rename = "autoExpansionMode", default)]
+        pub auto_expansion_mode: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2EntityTypeAutoExpansionMode,
+        >,
+        #[doc = "Required. The name of the entity type."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of entity entries associated with the entity type."]
+        #[serde(rename = "entities", default)]
+        pub entities:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2EntityTypeEntity>>,
+        #[doc = "Required. Indicates the kind of entity type."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2EntityTypeKind>,
+        #[doc = "The unique identifier of the entity type.\nRequired for EntityTypes.UpdateEntityType and\nEntityTypes.BatchUpdateEntityTypes methods.\nFormat: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2EntityType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2EntityTypeAutoExpansionMode {
         #[doc = "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."]
@@ -3432,47 +3473,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2EntityTypeKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2EntityType {
-        #[doc = "Optional. Indicates whether the entity type can be automatically\nexpanded."]
-        #[serde(rename = "autoExpansionMode", default)]
-        pub auto_expansion_mode: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2EntityTypeAutoExpansionMode,
-        >,
-        #[doc = "Required. The name of the entity type."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of entity entries associated with the entity type."]
-        #[serde(rename = "entities", default)]
-        pub entities:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2EntityTypeEntity>>,
-        #[doc = "Required. Indicates the kind of entity type."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2EntityTypeKind>,
-        #[doc = "The unique identifier of the entity type.\nRequired for EntityTypes.UpdateEntityType and\nEntityTypes.BatchUpdateEntityTypes methods.\nFormat: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2EntityType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3643,6 +3643,51 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2InputAudioConfig {
+        #[doc = "Required. Audio encoding of the audio content to process."]
+        #[serde(rename = "audioEncoding", default)]
+        pub audio_encoding: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2InputAudioConfigAudioEncoding,
+        >,
+        #[doc = "Required. The language of the supplied audio. Dialogflow does not do\ntranslations. See [Language\nSupport](https://cloud.google.com/dialogflow/docs/reference/language)\nfor a list of the currently supported language codes. Note that queries in\nthe same session do not necessarily need to specify the same language."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Optional. Which variant of the Speech model to use."]
+        #[serde(rename = "modelVariant", default)]
+        pub model_variant: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2InputAudioConfigModelVariant,
+        >,
+        #[doc = "Optional. A list of strings containing words and phrases that the speech\nrecognizer should recognize with higher likelihood.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details."]
+        #[serde(rename = "phraseHints", default)]
+        pub phrase_hints: ::std::option::Option<Vec<String>>,
+        #[doc = "Required. Sample rate (in Hertz) of the audio content sent in the query.\nRefer to\n[Cloud Speech API\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics) for\nmore details."]
+        #[serde(rename = "sampleRateHertz", default)]
+        pub sample_rate_hertz: ::std::option::Option<i32>,
+        #[doc = "Optional. If `false` (default), recognition does not cease until the\nclient closes the stream.\nIf `true`, the recognizer will detect a single spoken utterance in input\naudio. Recognition ceases when it detects the audio's voice has\nstopped or paused. In this case, once a detected intent is received, the\nclient should close the stream and start a new request with a new stream as\nneeded.\nNote: This setting is relevant only for streaming methods.\nNote: When specified, InputAudioConfig.single_utterance takes precedence\nover StreamingDetectIntentRequest.single_utterance."]
+        #[serde(rename = "singleUtterance", default)]
+        pub single_utterance: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2InputAudioConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2InputAudioConfigAudioEncoding {
         #[doc = "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000."]
@@ -3745,43 +3790,73 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2InputAudioConfig {
-        #[doc = "Required. Audio encoding of the audio content to process."]
-        #[serde(rename = "audioEncoding", default)]
-        pub audio_encoding: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2InputAudioConfigAudioEncoding,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2Intent {
+        #[doc = "Optional. The name of the action associated with the intent.\nNote: The action name must not contain whitespaces."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<String>,
+        #[doc = "Optional. The list of platforms for which the first responses will be\ncopied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform)."]
+        #[serde(rename = "defaultResponsePlatforms", default)]
+        pub default_response_platforms: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems>,
         >,
-        #[doc = "Required. The language of the supplied audio. Dialogflow does not do\ntranslations. See [Language\nSupport](https://cloud.google.com/dialogflow/docs/reference/language)\nfor a list of the currently supported language codes. Note that queries in\nthe same session do not necessarily need to specify the same language."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: ::std::option::Option<String>,
-        #[doc = "Optional. Which variant of the Speech model to use."]
-        #[serde(rename = "modelVariant", default)]
-        pub model_variant: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2InputAudioConfigModelVariant,
+        #[doc = "Required. The name of this intent."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
+        #[serde(rename = "events", default)]
+        pub events: ::std::option::Option<Vec<String>>,
+        #[doc = "Read-only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
+        #[serde(rename = "followupIntentInfo", default)]
+        pub followup_intent_info: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentFollowupIntentInfo>,
         >,
-        #[doc = "Optional. A list of strings containing words and phrases that the speech\nrecognizer should recognize with higher likelihood.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details."]
-        #[serde(rename = "phraseHints", default)]
-        pub phrase_hints: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. Sample rate (in Hertz) of the audio content sent in the query.\nRefer to\n[Cloud Speech API\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics) for\nmore details."]
-        #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: ::std::option::Option<i32>,
-        #[doc = "Optional. If `false` (default), recognition does not cease until the\nclient closes the stream.\nIf `true`, the recognizer will detect a single spoken utterance in input\naudio. Recognition ceases when it detects the audio's voice has\nstopped or paused. In this case, once a detected intent is received, the\nclient should close the stream and start a new request with a new stream as\nneeded.\nNote: This setting is relevant only for streaming methods.\nNote: When specified, InputAudioConfig.single_utterance takes precedence\nover StreamingDetectIntentRequest.single_utterance."]
-        #[serde(rename = "singleUtterance", default)]
-        pub single_utterance: ::std::option::Option<bool>,
+        #[doc = "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
+        #[serde(rename = "inputContextNames", default)]
+        pub input_context_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. Indicates whether this is a fallback intent."]
+        #[serde(rename = "isFallback", default)]
+        pub is_fallback: ::std::option::Option<bool>,
+        #[doc = "Optional. The collection of rich messages corresponding to the\n`Response` field in the Dialogflow console."]
+        #[serde(rename = "messages", default)]
+        pub messages:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessage>>,
+        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_diabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
+        #[serde(rename = "mlDisabled", default)]
+        pub ml_disabled: ::std::option::Option<bool>,
+        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
+        #[serde(rename = "outputContexts", default)]
+        pub output_contexts:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Context>>,
+        #[doc = "Optional. The collection of parameters associated with the intent."]
+        #[serde(rename = "parameters", default)]
+        pub parameters:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentParameter>>,
+        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "parentFollowupIntentName", default)]
+        pub parent_followup_intent_name: ::std::option::Option<String>,
+        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
+        #[serde(rename = "priority", default)]
+        pub priority: ::std::option::Option<i32>,
+        #[doc = "Optional. Indicates whether to delete all contexts in the current\nsession when this intent is matched."]
+        #[serde(rename = "resetContexts", default)]
+        pub reset_contexts: ::std::option::Option<bool>,
+        #[doc = "Read-only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent. We populate this field only in the output.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[serde(rename = "rootFollowupIntentName", default)]
+        pub root_followup_intent_name: ::std::option::Option<String>,
+        #[doc = "Optional. The collection of examples that the agent is\ntrained on."]
+        #[serde(rename = "trainingPhrases", default)]
+        pub training_phrases:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhrase>>,
+        #[doc = "Optional. Indicates whether webhooks are enabled for the intent."]
+        #[serde(rename = "webhookState", default)]
+        pub webhook_state:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentWebhookState>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2InputAudioConfig {
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Intent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3953,81 +4028,6 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleCloudDialogflowV2Intent {
-        #[doc = "Optional. The name of the action associated with the intent.\nNote: The action name must not contain whitespaces."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<String>,
-        #[doc = "Optional. The list of platforms for which the first responses will be\ncopied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform)."]
-        #[serde(rename = "defaultResponsePlatforms", default)]
-        pub default_response_platforms: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItems>,
-        >,
-        #[doc = "Required. The name of this intent."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
-        #[serde(rename = "events", default)]
-        pub events: ::std::option::Option<Vec<String>>,
-        #[doc = "Read-only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
-        #[serde(rename = "followupIntentInfo", default)]
-        pub followup_intent_info: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2IntentFollowupIntentInfo>,
-        >,
-        #[doc = "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
-        #[serde(rename = "inputContextNames", default)]
-        pub input_context_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. Indicates whether this is a fallback intent."]
-        #[serde(rename = "isFallback", default)]
-        pub is_fallback: ::std::option::Option<bool>,
-        #[doc = "Optional. The collection of rich messages corresponding to the\n`Response` field in the Dialogflow console."]
-        #[serde(rename = "messages", default)]
-        pub messages:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessage>>,
-        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_diabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
-        #[serde(rename = "mlDisabled", default)]
-        pub ml_disabled: ::std::option::Option<bool>,
-        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`."]
-        #[serde(rename = "outputContexts", default)]
-        pub output_contexts:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Context>>,
-        #[doc = "Optional. The collection of parameters associated with the intent."]
-        #[serde(rename = "parameters", default)]
-        pub parameters:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentParameter>>,
-        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "parentFollowupIntentName", default)]
-        pub parent_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
-        #[serde(rename = "priority", default)]
-        pub priority: ::std::option::Option<i32>,
-        #[doc = "Optional. Indicates whether to delete all contexts in the current\nsession when this intent is matched."]
-        #[serde(rename = "resetContexts", default)]
-        pub reset_contexts: ::std::option::Option<bool>,
-        #[doc = "Read-only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent. We populate this field only in the output.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
-        #[serde(rename = "rootFollowupIntentName", default)]
-        pub root_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of examples that the agent is\ntrained on."]
-        #[serde(rename = "trainingPhrases", default)]
-        pub training_phrases:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhrase>>,
-        #[doc = "Optional. Indicates whether webhooks are enabled for the intent."]
-        #[serde(rename = "webhookState", default)]
-        pub webhook_state:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentWebhookState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2Intent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2IntentBatch {
         #[doc = "A collection of intents."]
         #[serde(rename = "intents", default)]
@@ -4063,6 +4063,66 @@ pub mod schemas {
         pub parent_followup_intent_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentFollowupIntentInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2IntentMessage {
+        #[doc = "The basic card response for Actions on Google."]
+        #[serde(rename = "basicCard", default)]
+        pub basic_card:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageBasicCard>,
+        #[doc = "The card response."]
+        #[serde(rename = "card", default)]
+        pub card: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageCard>,
+        #[doc = "The carousel card response for Actions on Google."]
+        #[serde(rename = "carouselSelect", default)]
+        pub carousel_select: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageCarouselSelect,
+        >,
+        #[doc = "The image response."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageImage>,
+        #[doc = "The link out suggestion chip for Actions on Google."]
+        #[serde(rename = "linkOutSuggestion", default)]
+        pub link_out_suggestion: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion,
+        >,
+        #[doc = "The list card response for Actions on Google."]
+        #[serde(rename = "listSelect", default)]
+        pub list_select:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageListSelect>,
+        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
+        #[serde(rename = "payload", default)]
+        pub payload:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Optional. The platform that this message is intended for."]
+        #[serde(rename = "platform", default)]
+        pub platform:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessagePlatform>,
+        #[doc = "The quick replies response."]
+        #[serde(rename = "quickReplies", default)]
+        pub quick_replies:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageQuickReplies>,
+        #[doc = "The voice and text-only responses for Actions on Google."]
+        #[serde(rename = "simpleResponses", default)]
+        pub simple_responses: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageSimpleResponses,
+        >,
+        #[doc = "The suggestion chips for Actions on Google."]
+        #[serde(rename = "suggestions", default)]
+        pub suggestions:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageSuggestions>,
+        #[doc = "The text response."]
+        #[serde(rename = "text", default)]
+        pub text: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageText>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4158,66 +4218,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessagePlatform {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleCloudDialogflowV2IntentMessage {
-        #[doc = "The basic card response for Actions on Google."]
-        #[serde(rename = "basicCard", default)]
-        pub basic_card:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageBasicCard>,
-        #[doc = "The card response."]
-        #[serde(rename = "card", default)]
-        pub card: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageCard>,
-        #[doc = "The carousel card response for Actions on Google."]
-        #[serde(rename = "carouselSelect", default)]
-        pub carousel_select: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2IntentMessageCarouselSelect,
-        >,
-        #[doc = "The image response."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageImage>,
-        #[doc = "The link out suggestion chip for Actions on Google."]
-        #[serde(rename = "linkOutSuggestion", default)]
-        pub link_out_suggestion: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion,
-        >,
-        #[doc = "The list card response for Actions on Google."]
-        #[serde(rename = "listSelect", default)]
-        pub list_select:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageListSelect>,
-        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
-        #[serde(rename = "payload", default)]
-        pub payload:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. The platform that this message is intended for."]
-        #[serde(rename = "platform", default)]
-        pub platform:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessagePlatform>,
-        #[doc = "The quick replies response."]
-        #[serde(rename = "quickReplies", default)]
-        pub quick_replies:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageQuickReplies>,
-        #[doc = "The voice and text-only responses for Actions on Google."]
-        #[serde(rename = "simpleResponses", default)]
-        pub simple_responses: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2IntentMessageSimpleResponses,
-        >,
-        #[doc = "The suggestion chips for Actions on Google."]
-        #[serde(rename = "suggestions", default)]
-        pub suggestions:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageSuggestions>,
-        #[doc = "The text response."]
-        #[serde(rename = "text", default)]
-        pub text: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageText>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4827,6 +4827,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentTrainingPhrase {
+        #[doc = "Output only. The unique identifier of this training phrase."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The ordered list of training phrase parts.\nThe parts are concatenated in order to form the training phrase.\n\nNote: The API does not automatically annotate training phrases like the\nDialogflow Console does.\n\nNote: Do not forget to include whitespace at part boundaries,\nso the training phrase is well formatted when the parts are concatenated.\n\nIf the training phrase does not need to be annotated with parameters,\nyou just need a single part with only the Part.text field set.\n\nIf you want to annotate the training phrase, you must create multiple\nparts, where the fields of each part are populated in one of two ways:\n\n* `Part.text` is set to a part of the phrase that has no parameters.\n* `Part.text` is set to a part of the phrase that you want to annotate,\n  and the `entity_type`, `alias`, and `user_defined` fields are all\n  set."]
+        #[serde(rename = "parts", default)]
+        pub parts: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhrasePart>,
+        >,
+        #[doc = "Required. The type of the training phrase."]
+        #[serde(rename = "type", default)]
+        pub r#type:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhraseType>,
+        #[doc = "Optional. Indicates how many times this example was added to\nthe intent. Each time a developer adds an existing sample by editing an\nintent or training, this counter is increased."]
+        #[serde(rename = "timesAddedCount", default)]
+        pub times_added_count: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentTrainingPhrase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentTrainingPhraseType {
         #[doc = "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types."]
@@ -4882,44 +4920,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentTrainingPhraseType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2IntentTrainingPhrase {
-        #[doc = "Output only. The unique identifier of this training phrase."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The ordered list of training phrase parts.\nThe parts are concatenated in order to form the training phrase.\n\nNote: The API does not automatically annotate training phrases like the\nDialogflow Console does.\n\nNote: Do not forget to include whitespace at part boundaries,\nso the training phrase is well formatted when the parts are concatenated.\n\nIf the training phrase does not need to be annotated with parameters,\nyou just need a single part with only the Part.text field set.\n\nIf you want to annotate the training phrase, you must create multiple\nparts, where the fields of each part are populated in one of two ways:\n\n* `Part.text` is set to a part of the phrase that has no parameters.\n* `Part.text` is set to a part of the phrase that you want to annotate,\n  and the `entity_type`, `alias`, and `user_defined` fields are all\n  set."]
-        #[serde(rename = "parts", default)]
-        pub parts: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhrasePart>,
-        >,
-        #[doc = "Required. The type of the training phrase."]
-        #[serde(rename = "type", default)]
-        pub r#type:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentTrainingPhraseType>,
-        #[doc = "Optional. Indicates how many times this example was added to\nthe intent. Each time a developer adds an existing sample by editing an\nintent or training, this counter is increased."]
-        #[serde(rename = "timesAddedCount", default)]
-        pub times_added_count: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2IntentTrainingPhrase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5081,6 +5081,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2OutputAudioConfig {
+        #[doc = "Required. Audio encoding of the synthesized audio content."]
+        #[serde(rename = "audioEncoding", default)]
+        pub audio_encoding: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding,
+        >,
+        #[doc = "Optional. The synthesis sample rate (in hertz) for this audio. If not\nprovided, then the synthesizer will use the default sample rate based on\nthe audio encoding. If this is different from the voice's natural sample\nrate, then the synthesizer will honor this request by converting to the\ndesired sample rate (which might result in worse audio quality)."]
+        #[serde(rename = "sampleRateHertz", default)]
+        pub sample_rate_hertz: ::std::option::Option<i32>,
+        #[doc = "Optional. Configuration of how speech should be synthesized."]
+        #[serde(rename = "synthesizeSpeechConfig", default)]
+        pub synthesize_speech_config:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2SynthesizeSpeechConfig>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2OutputAudioConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
         #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header."]
@@ -5120,32 +5146,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2OutputAudioConfig {
-        #[doc = "Required. Audio encoding of the synthesized audio content."]
-        #[serde(rename = "audioEncoding", default)]
-        pub audio_encoding: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2OutputAudioConfigAudioEncoding,
-        >,
-        #[doc = "Optional. The synthesis sample rate (in hertz) for this audio. If not\nprovided, then the synthesizer will use the default sample rate based on\nthe audio encoding. If this is different from the voice's natural sample\nrate, then the synthesizer will honor this request by converting to the\ndesired sample rate (which might result in worse audio quality)."]
-        #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: ::std::option::Option<i32>,
-        #[doc = "Optional. Configuration of how speech should be synthesized."]
-        #[serde(rename = "synthesizeSpeechConfig", default)]
-        pub synthesize_speech_config:
-            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2SynthesizeSpeechConfig>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2OutputAudioConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5389,6 +5389,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2SessionEntityType {
+        #[doc = "Required. The collection of entities associated with this session entity\ntype."]
+        #[serde(rename = "entities", default)]
+        pub entities:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2EntityTypeEntity>>,
+        #[doc = "Required. Indicates whether the additional data should override or\nsupplement the developer entity type definition."]
+        #[serde(rename = "entityOverrideMode", default)]
+        pub entity_override_mode: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode,
+        >,
+        #[doc = "Required. The unique identifier of this session entity type. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`.\n\n`<Entity Type Display Name>` must be the display name of an existing entity\ntype in the same agent that will be overridden or supplemented."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2SessionEntityType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
         #[doc = "The collection of session entities overrides the collection of entities\nin the corresponding developer entity type."]
@@ -5428,41 +5463,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2SessionEntityType {
-        #[doc = "Required. The collection of entities associated with this session entity\ntype."]
-        #[serde(rename = "entities", default)]
-        pub entities:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2EntityTypeEntity>>,
-        #[doc = "Required. Indicates whether the additional data should override or\nsupplement the developer entity type definition."]
-        #[serde(rename = "entityOverrideMode", default)]
-        pub entity_override_mode: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode,
-        >,
-        #[doc = "Required. The unique identifier of this session entity type. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`.\n\n`<Entity Type Display Name>` must be the display name of an existing entity\ntype in the same agent that will be overridden or supplemented."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2SessionEntityType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5547,6 +5547,37 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2TrainAgentRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2VoiceSelectionParams {
+        #[doc = "Optional. The name of the voice. If not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Optional. The preferred gender of the voice. If not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement. If a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
+        #[serde(rename = "ssmlGender", default)]
+        pub ssml_gender: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2VoiceSelectionParams {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
         #[doc = "A female voice."]
@@ -5586,37 +5617,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2VoiceSelectionParams {
-        #[doc = "Optional. The name of the voice. If not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The preferred gender of the voice. If not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement. If a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
-        #[serde(rename = "ssmlGender", default)]
-        pub ssml_gender: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudDialogflowV2VoiceSelectionParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -14451,84 +14451,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -14560,7 +14482,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -14686,8 +14607,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

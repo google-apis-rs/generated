@@ -1,4 +1,33 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AliasContext {
+        #[doc = "The alias kind."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::AliasContextKind>,
+        #[doc = "The alias name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AliasContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AliasContextKind {
         #[doc = "Git tag."]
@@ -54,35 +83,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AliasContextKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AliasContext {
-        #[doc = "The alias kind."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::AliasContextKind>,
-        #[doc = "The alias name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AliasContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -181,6 +181,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -236,35 +265,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -516,6 +516,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BuildSignature {
+        #[doc = "An ID for the key used to sign. This could be either an ID for the key\nstored in `public_key` (such as the ID or fingerprint for a PGP key, or the\nCN for a cert), or a reference to an external key (such as a reference to a\nkey in Cloud Key Management Service)."]
+        #[serde(rename = "keyId", default)]
+        pub key_id: ::std::option::Option<String>,
+        #[doc = "The type of the key, either stored in `public_key` or referenced in\n`key_id`."]
+        #[serde(rename = "keyType", default)]
+        pub key_type: ::std::option::Option<crate::schemas::BuildSignatureKeyType>,
+        #[doc = "Public key of the builder which can be used to verify that the related\nfindings are valid and unchanged. If `key_type` is empty, this defaults\nto PEM encoded public keys.\n\nThis field may be empty if `key_id` references an external key.\n\nFor Cloud Build based signatures, this is a PEM encoded public\nkey. To verify the Cloud Build signature, place the contents of\nthis field into a file (public.pem). The signature field is base64-decoded\ninto its binary representation in signature.bin, and the provenance bytes\nfrom `BuildDetails` are base64-decoded into a binary representation in\nsigned.bin. OpenSSL can then verify the signature:\n`openssl sha256 -verify public.pem -signature signature.bin signed.bin`"]
+        #[serde(rename = "publicKey", default)]
+        pub public_key: ::std::option::Option<String>,
+        #[doc = "Required. Signature of the related `BuildProvenance`. In JSON, this is\nbase-64 encoded."]
+        #[serde(rename = "signature", default)]
+        pub signature: ::std::option::Option<crate::bytes::Bytes>,
+    }
+    impl ::field_selector::FieldSelector for BuildSignature {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildSignatureKeyType {
         #[doc = "`KeyType` is not set."]
@@ -567,41 +602,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for BuildSignatureKeyType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BuildSignature {
-        #[doc = "An ID for the key used to sign. This could be either an ID for the key\nstored in `public_key` (such as the ID or fingerprint for a PGP key, or the\nCN for a cert), or a reference to an external key (such as a reference to a\nkey in Cloud Key Management Service)."]
-        #[serde(rename = "keyId", default)]
-        pub key_id: ::std::option::Option<String>,
-        #[doc = "The type of the key, either stored in `public_key` or referenced in\n`key_id`."]
-        #[serde(rename = "keyType", default)]
-        pub key_type: ::std::option::Option<crate::schemas::BuildSignatureKeyType>,
-        #[doc = "Public key of the builder which can be used to verify that the related\nfindings are valid and unchanged. If `key_type` is empty, this defaults\nto PEM encoded public keys.\n\nThis field may be empty if `key_id` references an external key.\n\nFor Cloud Build based signatures, this is a PEM encoded public\nkey. To verify the Cloud Build signature, place the contents of\nthis field into a file (public.pem). The signature field is base64-decoded\ninto its binary representation in signature.bin, and the provenance bytes\nfrom `BuildDetails` are base64-decoded into a binary representation in\nsigned.bin. OpenSSL can then verify the signature:\n`openssl sha256 -verify public.pem -signature signature.bin signed.bin`"]
-        #[serde(rename = "publicKey", default)]
-        pub public_key: ::std::option::Option<String>,
-        #[doc = "Required. Signature of the related `BuildProvenance`. In JSON, this is\nbase-64 encoded."]
-        #[serde(rename = "signature", default)]
-        pub signature: ::std::option::Option<crate::bytes::Bytes>,
-    }
-    impl ::field_selector::FieldSelector for BuildSignature {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -675,6 +675,45 @@ pub mod schemas {
         pub wait_for: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Command {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Cvssv3 {
+        #[serde(rename = "attackComplexity", default)]
+        pub attack_complexity: ::std::option::Option<crate::schemas::Cvssv3AttackComplexity>,
+        #[doc = "Base Metrics\nRepresents the intrinsic characteristics of a vulnerability that are\nconstant over time and across user environments."]
+        #[serde(rename = "attackVector", default)]
+        pub attack_vector: ::std::option::Option<crate::schemas::Cvssv3AttackVector>,
+        #[serde(rename = "availabilityImpact", default)]
+        pub availability_impact: ::std::option::Option<crate::schemas::Cvssv3AvailabilityImpact>,
+        #[doc = "The base score is a function of the base metric scores."]
+        #[serde(rename = "baseScore", default)]
+        pub base_score: ::std::option::Option<f32>,
+        #[serde(rename = "confidentialityImpact", default)]
+        pub confidentiality_impact:
+            ::std::option::Option<crate::schemas::Cvssv3ConfidentialityImpact>,
+        #[serde(rename = "exploitabilityScore", default)]
+        pub exploitability_score: ::std::option::Option<f32>,
+        #[serde(rename = "impactScore", default)]
+        pub impact_score: ::std::option::Option<f32>,
+        #[serde(rename = "integrityImpact", default)]
+        pub integrity_impact: ::std::option::Option<crate::schemas::Cvssv3IntegrityImpact>,
+        #[serde(rename = "privilegesRequired", default)]
+        pub privileges_required: ::std::option::Option<crate::schemas::Cvssv3PrivilegesRequired>,
+        #[serde(rename = "scope", default)]
+        pub scope: ::std::option::Option<crate::schemas::Cvssv3Scope>,
+        #[serde(rename = "userInteraction", default)]
+        pub user_interaction: ::std::option::Option<crate::schemas::Cvssv3UserInteraction>,
+    }
+    impl ::field_selector::FieldSelector for Cvssv3 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1158,36 +1197,23 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Cvssv3 {
-        #[serde(rename = "attackComplexity", default)]
-        pub attack_complexity: ::std::option::Option<crate::schemas::Cvssv3AttackComplexity>,
-        #[doc = "Base Metrics\nRepresents the intrinsic characteristics of a vulnerability that are\nconstant over time and across user environments."]
-        #[serde(rename = "attackVector", default)]
-        pub attack_vector: ::std::option::Option<crate::schemas::Cvssv3AttackVector>,
-        #[serde(rename = "availabilityImpact", default)]
-        pub availability_impact: ::std::option::Option<crate::schemas::Cvssv3AvailabilityImpact>,
-        #[doc = "The base score is a function of the base metric scores."]
-        #[serde(rename = "baseScore", default)]
-        pub base_score: ::std::option::Option<f32>,
-        #[serde(rename = "confidentialityImpact", default)]
-        pub confidentiality_impact:
-            ::std::option::Option<crate::schemas::Cvssv3ConfidentialityImpact>,
-        #[serde(rename = "exploitabilityScore", default)]
-        pub exploitability_score: ::std::option::Option<f32>,
-        #[serde(rename = "impactScore", default)]
-        pub impact_score: ::std::option::Option<f32>,
-        #[serde(rename = "integrityImpact", default)]
-        pub integrity_impact: ::std::option::Option<crate::schemas::Cvssv3IntegrityImpact>,
-        #[serde(rename = "privilegesRequired", default)]
-        pub privileges_required: ::std::option::Option<crate::schemas::Cvssv3PrivilegesRequired>,
-        #[serde(rename = "scope", default)]
-        pub scope: ::std::option::Option<crate::schemas::Cvssv3Scope>,
-        #[serde(rename = "userInteraction", default)]
-        pub user_interaction: ::std::option::Option<crate::schemas::Cvssv3UserInteraction>,
+    pub struct Deployable {
+        #[doc = "Required. Resource URI for the artifact being deployed."]
+        #[serde(rename = "resourceUri", default)]
+        pub resource_uri: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for Cvssv3 {
+    impl ::field_selector::FieldSelector for Deployable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1208,12 +1234,30 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Deployable {
-        #[doc = "Required. Resource URI for the artifact being deployed."]
+    pub struct Deployment {
+        #[doc = "Address of the runtime element hosting this deployment."]
+        #[serde(rename = "address", default)]
+        pub address: ::std::option::Option<String>,
+        #[doc = "Configuration used to create this deployment."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<String>,
+        #[doc = "Required. Beginning of the lifetime of this deployment."]
+        #[serde(rename = "deployTime", default)]
+        pub deploy_time: ::std::option::Option<String>,
+        #[doc = "Platform hosting this deployment."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<crate::schemas::DeploymentPlatform>,
+        #[doc = "Output only. Resource URI for the artifact being deployed taken from\nthe deployable field with the same name."]
         #[serde(rename = "resourceUri", default)]
         pub resource_uri: ::std::option::Option<Vec<String>>,
+        #[doc = "End of the lifetime of this deployment."]
+        #[serde(rename = "undeployTime", default)]
+        pub undeploy_time: ::std::option::Option<String>,
+        #[doc = "Identity of the user that triggered this deployment."]
+        #[serde(rename = "userEmail", default)]
+        pub user_email: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Deployable {
+    impl ::field_selector::FieldSelector for Deployment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1277,50 +1321,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DeploymentPlatform {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Deployment {
-        #[doc = "Address of the runtime element hosting this deployment."]
-        #[serde(rename = "address", default)]
-        pub address: ::std::option::Option<String>,
-        #[doc = "Configuration used to create this deployment."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<String>,
-        #[doc = "Required. Beginning of the lifetime of this deployment."]
-        #[serde(rename = "deployTime", default)]
-        pub deploy_time: ::std::option::Option<String>,
-        #[doc = "Platform hosting this deployment."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<crate::schemas::DeploymentPlatform>,
-        #[doc = "Output only. Resource URI for the artifact being deployed taken from\nthe deployable field with the same name."]
-        #[serde(rename = "resourceUri", default)]
-        pub resource_uri: ::std::option::Option<Vec<String>>,
-        #[doc = "End of the lifetime of this deployment."]
-        #[serde(rename = "undeployTime", default)]
-        pub undeploy_time: ::std::option::Option<String>,
-        #[doc = "Identity of the user that triggered this deployment."]
-        #[serde(rename = "userEmail", default)]
-        pub user_email: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Deployment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1435,6 +1435,31 @@ pub mod schemas {
         pub attestation: ::std::option::Option<crate::schemas::Attestation>,
     }
     impl ::field_selector::FieldSelector for Details {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Discovered {
+        #[doc = "The status of discovery for the resource."]
+        #[serde(rename = "analysisStatus", default)]
+        pub analysis_status: ::std::option::Option<crate::schemas::DiscoveredAnalysisStatus>,
+        #[doc = "When an error is encountered this will contain a LocalizedMessage under\ndetails to show to the user. The LocalizedMessage is output only and\npopulated by the API."]
+        #[serde(rename = "analysisStatusError", default)]
+        pub analysis_status_error: ::std::option::Option<crate::schemas::Status>,
+        #[doc = "Whether the resource is continuously analyzed."]
+        #[serde(rename = "continuousAnalysis", default)]
+        pub continuous_analysis:
+            ::std::option::Option<crate::schemas::DiscoveredContinuousAnalysis>,
+        #[doc = "The last time continuous analysis was done for this resource.\nDeprecated, do not use."]
+        #[serde(rename = "lastAnalysisTime", default)]
+        pub last_analysis_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Discovered {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1581,23 +1606,24 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Discovered {
-        #[doc = "The status of discovery for the resource."]
-        #[serde(rename = "analysisStatus", default)]
-        pub analysis_status: ::std::option::Option<crate::schemas::DiscoveredAnalysisStatus>,
-        #[doc = "When an error is encountered this will contain a LocalizedMessage under\ndetails to show to the user. The LocalizedMessage is output only and\npopulated by the API."]
-        #[serde(rename = "analysisStatusError", default)]
-        pub analysis_status_error: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "Whether the resource is continuously analyzed."]
-        #[serde(rename = "continuousAnalysis", default)]
-        pub continuous_analysis:
-            ::std::option::Option<crate::schemas::DiscoveredContinuousAnalysis>,
-        #[doc = "The last time continuous analysis was done for this resource.\nDeprecated, do not use."]
-        #[serde(rename = "lastAnalysisTime", default)]
-        pub last_analysis_time: ::std::option::Option<String>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Discovery {
+        #[doc = "Required. Immutable. The kind of analysis that is handled by this\ndiscovery."]
+        #[serde(rename = "analysisKind", default)]
+        pub analysis_kind: ::std::option::Option<crate::schemas::DiscoveryAnalysisKind>,
     }
-    impl ::field_selector::FieldSelector for Discovered {
+    impl ::field_selector::FieldSelector for Discovery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1697,12 +1723,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Discovery {
-        #[doc = "Required. Immutable. The kind of analysis that is handled by this\ndiscovery."]
-        #[serde(rename = "analysisKind", default)]
-        pub analysis_kind: ::std::option::Option<crate::schemas::DiscoveryAnalysisKind>,
+    pub struct Distribution {
+        #[doc = "The CPU architecture for which packages in this distribution channel were\nbuilt."]
+        #[serde(rename = "architecture", default)]
+        pub architecture: ::std::option::Option<crate::schemas::DistributionArchitecture>,
+        #[doc = "Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/)\ndenoting the package manager version distributing a package."]
+        #[serde(rename = "cpeUri", default)]
+        pub cpe_uri: ::std::option::Option<String>,
+        #[doc = "The distribution channel-specific description of this package."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The latest available version of this package in this distribution channel."]
+        #[serde(rename = "latestVersion", default)]
+        pub latest_version: ::std::option::Option<crate::schemas::Version>,
+        #[doc = "A freeform string denoting the maintainer of this package."]
+        #[serde(rename = "maintainer", default)]
+        pub maintainer: ::std::option::Option<String>,
+        #[doc = "The distribution channel-specific homepage for this package."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Discovery {
+    impl ::field_selector::FieldSelector for Distribution {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1762,47 +1803,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DistributionArchitecture {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Distribution {
-        #[doc = "The CPU architecture for which packages in this distribution channel were\nbuilt."]
-        #[serde(rename = "architecture", default)]
-        pub architecture: ::std::option::Option<crate::schemas::DistributionArchitecture>,
-        #[doc = "Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/)\ndenoting the package manager version distributing a package."]
-        #[serde(rename = "cpeUri", default)]
-        pub cpe_uri: ::std::option::Option<String>,
-        #[doc = "The distribution channel-specific description of this package."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The latest available version of this package in this distribution channel."]
-        #[serde(rename = "latestVersion", default)]
-        pub latest_version: ::std::option::Option<crate::schemas::Version>,
-        #[doc = "A freeform string denoting the maintainer of this package."]
-        #[serde(rename = "maintainer", default)]
-        pub maintainer: ::std::option::Option<String>,
-        #[doc = "The distribution channel-specific homepage for this package."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Distribution {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1921,6 +1921,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FixableTotalByDigest {
+        #[doc = "The number of fixable vulnerabilities associated with this resource."]
+        #[serde(rename = "fixableCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub fixable_count: ::std::option::Option<i64>,
+        #[doc = "The affected resource."]
+        #[serde(rename = "resource", default)]
+        pub resource: ::std::option::Option<crate::schemas::Resource>,
+        #[doc = "The severity for this count. SEVERITY_UNSPECIFIED indicates total across\nall severities."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::FixableTotalByDigestSeverity>,
+        #[doc = "The total number of vulnerabilities associated with this resource."]
+        #[serde(rename = "totalCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub total_count: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for FixableTotalByDigest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FixableTotalByDigestSeverity {
         #[doc = "Critical severity."]
@@ -2004,23 +2041,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FixableTotalByDigest {
-        #[doc = "The number of fixable vulnerabilities associated with this resource."]
-        #[serde(rename = "fixableCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub fixable_count: ::std::option::Option<i64>,
-        #[doc = "The affected resource."]
-        #[serde(rename = "resource", default)]
-        pub resource: ::std::option::Option<crate::schemas::Resource>,
-        #[doc = "The severity for this count. SEVERITY_UNSPECIFIED indicates total across\nall severities."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::FixableTotalByDigestSeverity>,
-        #[doc = "The total number of vulnerabilities associated with this resource."]
-        #[serde(rename = "totalCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub total_count: ::std::option::Option<i64>,
+    pub struct GenericSignedAttestation {
+        #[doc = "Type (for example schema) of the attestation payload that was signed.\nThe verifier must ensure that the provided type is one that the verifier\nsupports, and that the attestation payload is a valid instantiation of that\ntype (for example by validating a JSON schema)."]
+        #[serde(rename = "contentType", default)]
+        pub content_type:
+            ::std::option::Option<crate::schemas::GenericSignedAttestationContentType>,
+        #[doc = "The serialized payload that is verified by one or more `signatures`.\nThe encoding and semantic meaning of this payload must match what is set in\n`content_type`."]
+        #[serde(rename = "serializedPayload", default)]
+        pub serialized_payload: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "One or more signatures over `serialized_payload`.  Verifier implementations\nshould consider this attestation message verified if at least one\n`signature` verifies `serialized_payload`.  See `Signature` in common.proto\nfor more details on signature structure and verification."]
+        #[serde(rename = "signatures", default)]
+        pub signatures: ::std::option::Option<Vec<crate::schemas::Signature>>,
     }
-    impl ::field_selector::FieldSelector for FixableTotalByDigest {
+    impl ::field_selector::FieldSelector for GenericSignedAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2080,39 +2113,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GenericSignedAttestationContentType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GenericSignedAttestation {
-        #[doc = "Type (for example schema) of the attestation payload that was signed.\nThe verifier must ensure that the provided type is one that the verifier\nsupports, and that the attestation payload is a valid instantiation of that\ntype (for example by validating a JSON schema)."]
-        #[serde(rename = "contentType", default)]
-        pub content_type:
-            ::std::option::Option<crate::schemas::GenericSignedAttestationContentType>,
-        #[doc = "The serialized payload that is verified by one or more `signatures`.\nThe encoding and semantic meaning of this payload must match what is set in\n`content_type`."]
-        #[serde(rename = "serializedPayload", default)]
-        pub serialized_payload: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "One or more signatures over `serialized_payload`.  Verifier implementations\nshould consider this attestation message verified if at least one\n`signature` verifies `serialized_payload`.  See `Signature` in common.proto\nfor more details on signature structure and verification."]
-        #[serde(rename = "signatures", default)]
-        pub signatures: ::std::option::Option<Vec<crate::schemas::Signature>>,
-    }
-    impl ::field_selector::FieldSelector for GenericSignedAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2388,6 +2388,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GrafeasV1Beta1VulnerabilityDetails {
+        #[doc = "Output only. The CVSS score of this vulnerability. CVSS score is on a\nscale of 0-10 where 0 indicates low severity and 10 indicates high\nseverity."]
+        #[serde(rename = "cvssScore", default)]
+        pub cvss_score: ::std::option::Option<f32>,
+        #[doc = "The distro assigned severity for this vulnerability when it is\navailable, and note provider assigned severity when distro has not yet\nassigned a severity for this vulnerability."]
+        #[serde(rename = "effectiveSeverity", default)]
+        pub effective_severity: ::std::option::Option<
+            crate::schemas::GrafeasV1Beta1VulnerabilityDetailsEffectiveSeverity,
+        >,
+        #[doc = "Output only. A detailed description of this vulnerability."]
+        #[serde(rename = "longDescription", default)]
+        pub long_description: ::std::option::Option<String>,
+        #[doc = "Required. The set of affected locations and their fixes (if available)\nwithin the associated resource."]
+        #[serde(rename = "packageIssue", default)]
+        pub package_issue: ::std::option::Option<Vec<crate::schemas::PackageIssue>>,
+        #[doc = "The type of package; whether native or non native(ruby gems, node.js\npackages etc)"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "Output only. URLs related to this vulnerability."]
+        #[serde(rename = "relatedUrls", default)]
+        pub related_urls: ::std::option::Option<Vec<crate::schemas::RelatedUrl>>,
+        #[doc = "Output only. The note provider assigned Severity of the vulnerability."]
+        #[serde(rename = "severity", default)]
+        pub severity:
+            ::std::option::Option<crate::schemas::GrafeasV1Beta1VulnerabilityDetailsSeverity>,
+        #[doc = "Output only. A one sentence description of this vulnerability."]
+        #[serde(rename = "shortDescription", default)]
+        pub short_description: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GrafeasV1Beta1VulnerabilityDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GrafeasV1Beta1VulnerabilityDetailsEffectiveSeverity {
         #[doc = "Critical severity."]
@@ -2539,38 +2580,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct GrafeasV1Beta1VulnerabilityDetails {
-        #[doc = "Output only. The CVSS score of this vulnerability. CVSS score is on a\nscale of 0-10 where 0 indicates low severity and 10 indicates high\nseverity."]
-        #[serde(rename = "cvssScore", default)]
-        pub cvss_score: ::std::option::Option<f32>,
-        #[doc = "The distro assigned severity for this vulnerability when it is\navailable, and note provider assigned severity when distro has not yet\nassigned a severity for this vulnerability."]
-        #[serde(rename = "effectiveSeverity", default)]
-        pub effective_severity: ::std::option::Option<
-            crate::schemas::GrafeasV1Beta1VulnerabilityDetailsEffectiveSeverity,
-        >,
-        #[doc = "Output only. A detailed description of this vulnerability."]
-        #[serde(rename = "longDescription", default)]
-        pub long_description: ::std::option::Option<String>,
-        #[doc = "Required. The set of affected locations and their fixes (if available)\nwithin the associated resource."]
-        #[serde(rename = "packageIssue", default)]
-        pub package_issue: ::std::option::Option<Vec<crate::schemas::PackageIssue>>,
-        #[doc = "The type of package; whether native or non native(ruby gems, node.js\npackages etc)"]
+    pub struct Hash {
+        #[doc = "Required. The type of hash that was performed."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "Output only. URLs related to this vulnerability."]
-        #[serde(rename = "relatedUrls", default)]
-        pub related_urls: ::std::option::Option<Vec<crate::schemas::RelatedUrl>>,
-        #[doc = "Output only. The note provider assigned Severity of the vulnerability."]
-        #[serde(rename = "severity", default)]
-        pub severity:
-            ::std::option::Option<crate::schemas::GrafeasV1Beta1VulnerabilityDetailsSeverity>,
-        #[doc = "Output only. A one sentence description of this vulnerability."]
-        #[serde(rename = "shortDescription", default)]
-        pub short_description: ::std::option::Option<String>,
+        pub r#type: ::std::option::Option<crate::schemas::HashType>,
+        #[doc = "Required. The hash value."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<crate::bytes::Bytes>,
     }
-    impl ::field_selector::FieldSelector for GrafeasV1Beta1VulnerabilityDetails {
+    impl ::field_selector::FieldSelector for Hash {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2626,35 +2655,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for HashType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Hash {
-        #[doc = "Required. The type of hash that was performed."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::HashType>,
-        #[doc = "Required. The hash value."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::bytes::Bytes>,
-    }
-    impl ::field_selector::FieldSelector for Hash {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2739,6 +2739,35 @@ pub mod schemas {
         pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for KnowledgeBase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Layer {
+        #[doc = "The recovered arguments to the Dockerfile directive."]
+        #[serde(rename = "arguments", default)]
+        pub arguments: ::std::option::Option<String>,
+        #[doc = "Required. The recovered Dockerfile directive used to construct this layer."]
+        #[serde(rename = "directive", default)]
+        pub directive: ::std::option::Option<crate::schemas::LayerDirective>,
+    }
+    impl ::field_selector::FieldSelector for Layer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2866,35 +2895,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Layer {
-        #[doc = "The recovered arguments to the Dockerfile directive."]
-        #[serde(rename = "arguments", default)]
-        pub arguments: ::std::option::Option<String>,
-        #[doc = "Required. The recovered Dockerfile directive used to construct this layer."]
-        #[serde(rename = "directive", default)]
-        pub directive: ::std::option::Option<crate::schemas::LayerDirective>,
-    }
-    impl ::field_selector::FieldSelector for Layer {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListNoteOccurrencesResponse {
         #[doc = "Token to provide to skip to a particular spot in the list."]
@@ -3012,6 +3012,68 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Note {
+        #[doc = "A note describing an attestation role."]
+        #[serde(rename = "attestationAuthority", default)]
+        pub attestation_authority: ::std::option::Option<crate::schemas::Authority>,
+        #[doc = "A note describing a base image."]
+        #[serde(rename = "baseImage", default)]
+        pub base_image: ::std::option::Option<crate::schemas::Basis>,
+        #[doc = "A note describing build provenance for a verifiable build."]
+        #[serde(rename = "build", default)]
+        pub build: ::std::option::Option<crate::schemas::Build>,
+        #[doc = "Output only. The time this note was created. This field can be used as a\nfilter in list requests."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "A note describing something that can be deployed."]
+        #[serde(rename = "deployable", default)]
+        pub deployable: ::std::option::Option<crate::schemas::Deployable>,
+        #[doc = "A note describing the initial analysis of a resource."]
+        #[serde(rename = "discovery", default)]
+        pub discovery: ::std::option::Option<crate::schemas::Discovery>,
+        #[doc = "Time of expiration for this note. Empty if note does not expire."]
+        #[serde(rename = "expirationTime", default)]
+        pub expiration_time: ::std::option::Option<String>,
+        #[doc = "Output only. The type of analysis. This field can be used as a filter in\nlist requests."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::NoteKind>,
+        #[doc = "A detailed description of this note."]
+        #[serde(rename = "longDescription", default)]
+        pub long_description: ::std::option::Option<String>,
+        #[doc = "Output only. The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A note describing a package hosted by various package managers."]
+        #[serde(rename = "package", default)]
+        pub package: ::std::option::Option<crate::schemas::Package>,
+        #[doc = "Other notes related to this note."]
+        #[serde(rename = "relatedNoteNames", default)]
+        pub related_note_names: ::std::option::Option<Vec<String>>,
+        #[doc = "URLs associated with this note."]
+        #[serde(rename = "relatedUrl", default)]
+        pub related_url: ::std::option::Option<Vec<crate::schemas::RelatedUrl>>,
+        #[doc = "A one sentence description of this note."]
+        #[serde(rename = "shortDescription", default)]
+        pub short_description: ::std::option::Option<String>,
+        #[doc = "Output only. The time this note was last updated. This field can be used as\na filter in list requests."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "A note describing a package vulnerability."]
+        #[serde(rename = "vulnerability", default)]
+        pub vulnerability: ::std::option::Option<crate::schemas::Vulnerability>,
+    }
+    impl ::field_selector::FieldSelector for Note {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NoteKind {
         #[doc = "This represents a logical \"role\" that can attest to artifacts."]
@@ -3091,60 +3153,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Note {
-        #[doc = "A note describing an attestation role."]
-        #[serde(rename = "attestationAuthority", default)]
-        pub attestation_authority: ::std::option::Option<crate::schemas::Authority>,
-        #[doc = "A note describing a base image."]
-        #[serde(rename = "baseImage", default)]
-        pub base_image: ::std::option::Option<crate::schemas::Basis>,
-        #[doc = "A note describing build provenance for a verifiable build."]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Occurrence {
+        #[doc = "Describes an attestation of an artifact."]
+        #[serde(rename = "attestation", default)]
+        pub attestation: ::std::option::Option<crate::schemas::Details>,
+        #[doc = "Describes a verifiable build."]
         #[serde(rename = "build", default)]
-        pub build: ::std::option::Option<crate::schemas::Build>,
-        #[doc = "Output only. The time this note was created. This field can be used as a\nfilter in list requests."]
+        pub build: ::std::option::Option<crate::schemas::GrafeasV1Beta1BuildDetails>,
+        #[doc = "Output only. The time this occurrence was created."]
         #[serde(rename = "createTime", default)]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "A note describing something that can be deployed."]
-        #[serde(rename = "deployable", default)]
-        pub deployable: ::std::option::Option<crate::schemas::Deployable>,
-        #[doc = "A note describing the initial analysis of a resource."]
-        #[serde(rename = "discovery", default)]
-        pub discovery: ::std::option::Option<crate::schemas::Discovery>,
-        #[doc = "Time of expiration for this note. Empty if note does not expire."]
-        #[serde(rename = "expirationTime", default)]
-        pub expiration_time: ::std::option::Option<String>,
-        #[doc = "Output only. The type of analysis. This field can be used as a filter in\nlist requests."]
+        #[doc = "Describes the deployment of an artifact on a runtime."]
+        #[serde(rename = "deployment", default)]
+        pub deployment: ::std::option::Option<crate::schemas::GrafeasV1Beta1DeploymentDetails>,
+        #[doc = "Describes how this resource derives from the basis in the associated\nnote."]
+        #[serde(rename = "derivedImage", default)]
+        pub derived_image: ::std::option::Option<crate::schemas::GrafeasV1Beta1ImageDetails>,
+        #[doc = "Describes when a resource was discovered."]
+        #[serde(rename = "discovered", default)]
+        pub discovered: ::std::option::Option<crate::schemas::GrafeasV1Beta1DiscoveryDetails>,
+        #[doc = "Describes the installation of a package on the linked resource."]
+        #[serde(rename = "installation", default)]
+        pub installation: ::std::option::Option<crate::schemas::GrafeasV1Beta1PackageDetails>,
+        #[doc = "Output only. This explicitly denotes which of the occurrence details are\nspecified. This field can be used as a filter in list requests."]
         #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::NoteKind>,
-        #[doc = "A detailed description of this note."]
-        #[serde(rename = "longDescription", default)]
-        pub long_description: ::std::option::Option<String>,
-        #[doc = "Output only. The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`."]
+        pub kind: ::std::option::Option<crate::schemas::OccurrenceKind>,
+        #[doc = "Output only. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "A note describing a package hosted by various package managers."]
-        #[serde(rename = "package", default)]
-        pub package: ::std::option::Option<crate::schemas::Package>,
-        #[doc = "Other notes related to this note."]
-        #[serde(rename = "relatedNoteNames", default)]
-        pub related_note_names: ::std::option::Option<Vec<String>>,
-        #[doc = "URLs associated with this note."]
-        #[serde(rename = "relatedUrl", default)]
-        pub related_url: ::std::option::Option<Vec<crate::schemas::RelatedUrl>>,
-        #[doc = "A one sentence description of this note."]
-        #[serde(rename = "shortDescription", default)]
-        pub short_description: ::std::option::Option<String>,
-        #[doc = "Output only. The time this note was last updated. This field can be used as\na filter in list requests."]
+        #[doc = "Required. Immutable. The analysis note associated with this occurrence, in\nthe form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be\nused as a filter in list requests."]
+        #[serde(rename = "noteName", default)]
+        pub note_name: ::std::option::Option<String>,
+        #[doc = "A description of actions that can be taken to remedy the note."]
+        #[serde(rename = "remediation", default)]
+        pub remediation: ::std::option::Option<String>,
+        #[doc = "Required. Immutable. The resource for which the occurrence applies."]
+        #[serde(rename = "resource", default)]
+        pub resource: ::std::option::Option<crate::schemas::Resource>,
+        #[doc = "Output only. The time this occurrence was last updated."]
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
-        #[doc = "A note describing a package vulnerability."]
+        #[doc = "Describes a security vulnerability."]
         #[serde(rename = "vulnerability", default)]
-        pub vulnerability: ::std::option::Option<crate::schemas::Vulnerability>,
+        pub vulnerability:
+            ::std::option::Option<crate::schemas::GrafeasV1Beta1VulnerabilityDetails>,
     }
-    impl ::field_selector::FieldSelector for Note {
+    impl ::field_selector::FieldSelector for Occurrence {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3232,61 +3287,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Occurrence {
-        #[doc = "Describes an attestation of an artifact."]
-        #[serde(rename = "attestation", default)]
-        pub attestation: ::std::option::Option<crate::schemas::Details>,
-        #[doc = "Describes a verifiable build."]
-        #[serde(rename = "build", default)]
-        pub build: ::std::option::Option<crate::schemas::GrafeasV1Beta1BuildDetails>,
-        #[doc = "Output only. The time this occurrence was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Describes the deployment of an artifact on a runtime."]
-        #[serde(rename = "deployment", default)]
-        pub deployment: ::std::option::Option<crate::schemas::GrafeasV1Beta1DeploymentDetails>,
-        #[doc = "Describes how this resource derives from the basis in the associated\nnote."]
-        #[serde(rename = "derivedImage", default)]
-        pub derived_image: ::std::option::Option<crate::schemas::GrafeasV1Beta1ImageDetails>,
-        #[doc = "Describes when a resource was discovered."]
-        #[serde(rename = "discovered", default)]
-        pub discovered: ::std::option::Option<crate::schemas::GrafeasV1Beta1DiscoveryDetails>,
-        #[doc = "Describes the installation of a package on the linked resource."]
-        #[serde(rename = "installation", default)]
-        pub installation: ::std::option::Option<crate::schemas::GrafeasV1Beta1PackageDetails>,
-        #[doc = "Output only. This explicitly denotes which of the occurrence details are\nspecified. This field can be used as a filter in list requests."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::OccurrenceKind>,
-        #[doc = "Output only. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. Immutable. The analysis note associated with this occurrence, in\nthe form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be\nused as a filter in list requests."]
-        #[serde(rename = "noteName", default)]
-        pub note_name: ::std::option::Option<String>,
-        #[doc = "A description of actions that can be taken to remedy the note."]
-        #[serde(rename = "remediation", default)]
-        pub remediation: ::std::option::Option<String>,
-        #[doc = "Required. Immutable. The resource for which the occurrence applies."]
-        #[serde(rename = "resource", default)]
-        pub resource: ::std::option::Option<crate::schemas::Resource>,
-        #[doc = "Output only. The time this occurrence was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Describes a security vulnerability."]
-        #[serde(rename = "vulnerability", default)]
-        pub vulnerability:
-            ::std::option::Option<crate::schemas::GrafeasV1Beta1VulnerabilityDetails>,
-    }
-    impl ::field_selector::FieldSelector for Occurrence {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -3348,6 +3348,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PgpSignedAttestation {
+        #[doc = "Type (for example schema) of the attestation payload that was signed.\nThe verifier must ensure that the provided type is one that the verifier\nsupports, and that the attestation payload is a valid instantiation of that\ntype (for example by validating a JSON schema)."]
+        #[serde(rename = "contentType", default)]
+        pub content_type: ::std::option::Option<crate::schemas::PgpSignedAttestationContentType>,
+        #[doc = "The cryptographic fingerprint of the key used to generate the signature,\nas output by, e.g. `gpg --list-keys`. This should be the version 4, full\n160-bit fingerprint, expressed as a 40 character hexidecimal string. See\nhttps://tools.ietf.org/html/rfc4880#section-12.2 for details.\nImplementations may choose to acknowledge \"LONG\", \"SHORT\", or other\nabbreviated key IDs, but only the full fingerprint is guaranteed to work.\nIn gpg, the full fingerprint can be retrieved from the `fpr` field\nreturned when calling --list-keys with --with-colons.  For example:\n\n````text\ngpg --with-colons --with-fingerprint --force-v4-certs \\\n    --list-keys attester@example.com\ntru::1:1513631572:0:3:1:5\npub:...<SNIP>...\nfpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:\n````\n\nAbove, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`."]
+        #[serde(rename = "pgpKeyId", default)]
+        pub pgp_key_id: ::std::option::Option<String>,
+        #[doc = "Required. The raw content of the signature, as output by GNU Privacy Guard\n(GPG) or equivalent. Since this message only supports attached signatures,\nthe payload that was signed must be attached. While the signature format\nsupported is dependent on the verification implementation, currently only\nASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than\n`--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content\nexpected in this field in `signature.gpg` for the `payload.json`\nattestation payload."]
+        #[serde(rename = "signature", default)]
+        pub signature: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PgpSignedAttestation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PgpSignedAttestationContentType {
         #[doc = "`ContentType` is not set."]
@@ -3399,38 +3431,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PgpSignedAttestationContentType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PgpSignedAttestation {
-        #[doc = "Type (for example schema) of the attestation payload that was signed.\nThe verifier must ensure that the provided type is one that the verifier\nsupports, and that the attestation payload is a valid instantiation of that\ntype (for example by validating a JSON schema)."]
-        #[serde(rename = "contentType", default)]
-        pub content_type: ::std::option::Option<crate::schemas::PgpSignedAttestationContentType>,
-        #[doc = "The cryptographic fingerprint of the key used to generate the signature,\nas output by, e.g. `gpg --list-keys`. This should be the version 4, full\n160-bit fingerprint, expressed as a 40 character hexidecimal string. See\nhttps://tools.ietf.org/html/rfc4880#section-12.2 for details.\nImplementations may choose to acknowledge \"LONG\", \"SHORT\", or other\nabbreviated key IDs, but only the full fingerprint is guaranteed to work.\nIn gpg, the full fingerprint can be retrieved from the `fpr` field\nreturned when calling --list-keys with --with-colons.  For example:\n\n````text\ngpg --with-colons --with-fingerprint --force-v4-certs \\\n    --list-keys attester@example.com\ntru::1:1513631572:0:3:1:5\npub:...<SNIP>...\nfpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:\n````\n\nAbove, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`."]
-        #[serde(rename = "pgpKeyId", default)]
-        pub pgp_key_id: ::std::option::Option<String>,
-        #[doc = "Required. The raw content of the signature, as output by GNU Privacy Guard\n(GPG) or equivalent. Since this message only supports attached signatures,\nthe payload that was signed must be attached. While the signature format\nsupported is dependent on the verification implementation, currently only\nASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than\n`--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content\nexpected in this field in `signature.gpg` for the `payload.json`\nattestation payload."]
-        #[serde(rename = "signature", default)]
-        pub signature: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PgpSignedAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3834,6 +3834,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Version {
+        #[doc = "Used to correct mistakes in the version numbering scheme."]
+        #[serde(rename = "epoch", default)]
+        pub epoch: ::std::option::Option<i32>,
+        #[doc = "Required. Distinguishes between sentinel MIN/MAX versions and normal\nversions."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::VersionKind>,
+        #[doc = "Required only when version kind is NORMAL. The main part of the version\nname."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The iteration of the package build from the above version."]
+        #[serde(rename = "revision", default)]
+        pub revision: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Version {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VersionKind {
         #[doc = "A special version representing positive infinity."]
@@ -3898,32 +3933,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Version {
-        #[doc = "Used to correct mistakes in the version numbering scheme."]
-        #[serde(rename = "epoch", default)]
-        pub epoch: ::std::option::Option<i32>,
-        #[doc = "Required. Distinguishes between sentinel MIN/MAX versions and normal\nversions."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::VersionKind>,
-        #[doc = "Required only when version kind is NORMAL. The main part of the version\nname."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The iteration of the package build from the above version."]
-        #[serde(rename = "revision", default)]
-        pub revision: ::std::option::Option<String>,
+    pub struct Vulnerability {
+        #[doc = "The CVSS score for this vulnerability."]
+        #[serde(rename = "cvssScore", default)]
+        pub cvss_score: ::std::option::Option<f32>,
+        #[doc = "The full description of the CVSSv3."]
+        #[serde(rename = "cvssV3", default)]
+        pub cvss_v3: ::std::option::Option<crate::schemas::Cvssv3>,
+        #[doc = "All information about the package to specifically identify this\nvulnerability. One entry per (version range and cpe_uri) the package\nvulnerability has manifested in."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<crate::schemas::Detail>>,
+        #[doc = "Note provider assigned impact of the vulnerability."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::VulnerabilitySeverity>,
+        #[doc = "The time this information was last changed at the source. This is an\nupstream timestamp from the underlying information source - e.g. Ubuntu\nsecurity tracker."]
+        #[serde(rename = "sourceUpdateTime", default)]
+        pub source_update_time: ::std::option::Option<String>,
+        #[doc = "Windows details get their own format because the information format and\nmodel don't match a normal detail. Specifically Windows updates are done as\npatches, thus Windows vulnerabilities really are a missing package, rather\nthan a package being at an incorrect version."]
+        #[serde(rename = "windowsDetails", default)]
+        pub windows_details: ::std::option::Option<Vec<crate::schemas::WindowsDetail>>,
     }
-    impl ::field_selector::FieldSelector for Version {
+    impl ::field_selector::FieldSelector for Vulnerability {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3995,38 +4027,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for VulnerabilitySeverity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Vulnerability {
-        #[doc = "The CVSS score for this vulnerability."]
-        #[serde(rename = "cvssScore", default)]
-        pub cvss_score: ::std::option::Option<f32>,
-        #[doc = "The full description of the CVSSv3."]
-        #[serde(rename = "cvssV3", default)]
-        pub cvss_v3: ::std::option::Option<crate::schemas::Cvssv3>,
-        #[doc = "All information about the package to specifically identify this\nvulnerability. One entry per (version range and cpe_uri) the package\nvulnerability has manifested in."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<crate::schemas::Detail>>,
-        #[doc = "Note provider assigned impact of the vulnerability."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::VulnerabilitySeverity>,
-        #[doc = "The time this information was last changed at the source. This is an\nupstream timestamp from the underlying information source - e.g. Ubuntu\nsecurity tracker."]
-        #[serde(rename = "sourceUpdateTime", default)]
-        pub source_update_time: ::std::option::Option<String>,
-        #[doc = "Windows details get their own format because the information format and\nmodel don't match a normal detail. Specifically Windows updates are done as\npatches, thus Windows vulnerabilities really are a missing package, rather\nthan a package being at an incorrect version."]
-        #[serde(rename = "windowsDetails", default)]
-        pub windows_details: ::std::option::Option<Vec<crate::schemas::WindowsDetail>>,
-    }
-    impl ::field_selector::FieldSelector for Vulnerability {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9298,84 +9298,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9407,7 +9329,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9533,8 +9454,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

@@ -334,6 +334,59 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for Empty {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Export {
+        #[doc = "Output only. Export sink for cloud storage files."]
+        #[serde(rename = "cloudStorageSink", default)]
+        pub cloud_storage_sink: ::std::option::Option<crate::schemas::CloudStorageSink>,
+        #[doc = "Output only. The time when the export was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Advanced options of the export."]
+        #[serde(rename = "exportOptions", default)]
+        pub export_options: ::std::option::Option<crate::schemas::ExportOptions>,
+        #[doc = "Output only. The generated export ID."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Output only. The matter ID."]
+        #[serde(rename = "matterId", default)]
+        pub matter_id: ::std::option::Option<String>,
+        #[doc = "The export name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The search query being exported."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<crate::schemas::Query>,
+        #[doc = "Output only. The requester of the export."]
+        #[serde(rename = "requester", default)]
+        pub requester: ::std::option::Option<crate::schemas::UserInfo>,
+        #[doc = "Output only. Export statistics."]
+        #[serde(rename = "stats", default)]
+        pub stats: ::std::option::Option<crate::schemas::ExportStats>,
+        #[doc = "Output only. The export status."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::ExportStatus>,
+    }
+    impl ::field_selector::FieldSelector for Export {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExportStatus {
         #[doc = "The export completed."]
@@ -409,39 +462,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Export {
-        #[doc = "Output only. Export sink for cloud storage files."]
-        #[serde(rename = "cloudStorageSink", default)]
-        pub cloud_storage_sink: ::std::option::Option<crate::schemas::CloudStorageSink>,
-        #[doc = "Output only. The time when the export was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Advanced options of the export."]
-        #[serde(rename = "exportOptions", default)]
-        pub export_options: ::std::option::Option<crate::schemas::ExportOptions>,
-        #[doc = "Output only. The generated export ID."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Output only. The matter ID."]
-        #[serde(rename = "matterId", default)]
-        pub matter_id: ::std::option::Option<String>,
-        #[doc = "The export name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The search query being exported."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<crate::schemas::Query>,
-        #[doc = "Output only. The requester of the export."]
-        #[serde(rename = "requester", default)]
-        pub requester: ::std::option::Option<crate::schemas::UserInfo>,
-        #[doc = "Output only. Export statistics."]
-        #[serde(rename = "stats", default)]
-        pub stats: ::std::option::Option<crate::schemas::ExportStats>,
-        #[doc = "Output only. The export status."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ExportStatus>,
+    pub struct ExportOptions {
+        #[doc = "Option available for Drive export."]
+        #[serde(rename = "driveOptions", default)]
+        pub drive_options: ::std::option::Option<crate::schemas::DriveExportOptions>,
+        #[doc = "Option available for groups export."]
+        #[serde(rename = "groupsOptions", default)]
+        pub groups_options: ::std::option::Option<crate::schemas::GroupsExportOptions>,
+        #[doc = "Option available for hangouts chat export."]
+        #[serde(rename = "hangoutsChatOptions", default)]
+        pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatExportOptions>,
+        #[doc = "Option available for mail export."]
+        #[serde(rename = "mailOptions", default)]
+        pub mail_options: ::std::option::Option<crate::schemas::MailExportOptions>,
+        #[doc = "The requested export location."]
+        #[serde(rename = "region", default)]
+        pub region: ::std::option::Option<crate::schemas::ExportOptionsRegion>,
     }
-    impl ::field_selector::FieldSelector for Export {
+    impl ::field_selector::FieldSelector for ExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -525,24 +563,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExportOptions {
-        #[doc = "Option available for Drive export."]
-        #[serde(rename = "driveOptions", default)]
-        pub drive_options: ::std::option::Option<crate::schemas::DriveExportOptions>,
-        #[doc = "Option available for groups export."]
-        #[serde(rename = "groupsOptions", default)]
-        pub groups_options: ::std::option::Option<crate::schemas::GroupsExportOptions>,
-        #[doc = "Option available for hangouts chat export."]
-        #[serde(rename = "hangoutsChatOptions", default)]
-        pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatExportOptions>,
-        #[doc = "Option available for mail export."]
-        #[serde(rename = "mailOptions", default)]
-        pub mail_options: ::std::option::Option<crate::schemas::MailExportOptions>,
-        #[doc = "The requested export location."]
-        #[serde(rename = "region", default)]
-        pub region: ::std::option::Option<crate::schemas::ExportOptionsRegion>,
+    pub struct ExportStats {
+        #[doc = "The number of documents already processed by the export."]
+        #[serde(rename = "exportedArtifactCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub exported_artifact_count: ::std::option::Option<i64>,
+        #[doc = "The size of export in bytes."]
+        #[serde(rename = "sizeInBytes", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub size_in_bytes: ::std::option::Option<i64>,
+        #[doc = "The number of documents to be exported."]
+        #[serde(rename = "totalArtifactCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub total_artifact_count: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for ExportOptions {
+    impl ::field_selector::FieldSelector for ExportStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -563,21 +598,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExportStats {
-        #[doc = "The number of documents already processed by the export."]
-        #[serde(rename = "exportedArtifactCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub exported_artifact_count: ::std::option::Option<i64>,
-        #[doc = "The size of export in bytes."]
-        #[serde(rename = "sizeInBytes", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub size_in_bytes: ::std::option::Option<i64>,
-        #[doc = "The number of documents to be exported."]
-        #[serde(rename = "totalArtifactCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub total_artifact_count: ::std::option::Option<i64>,
+    pub struct GroupsExportOptions {
+        #[doc = "The export format for groups export."]
+        #[serde(rename = "exportFormat", default)]
+        pub export_format: ::std::option::Option<crate::schemas::GroupsExportOptionsExportFormat>,
     }
-    impl ::field_selector::FieldSelector for ExportStats {
+    impl ::field_selector::FieldSelector for GroupsExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -661,12 +687,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GroupsExportOptions {
-        #[doc = "The export format for groups export."]
+    pub struct HangoutsChatExportOptions {
+        #[doc = "The export format for hangouts chat export."]
         #[serde(rename = "exportFormat", default)]
-        pub export_format: ::std::option::Option<crate::schemas::GroupsExportOptionsExportFormat>,
+        pub export_format:
+            ::std::option::Option<crate::schemas::HangoutsChatExportOptionsExportFormat>,
     }
-    impl ::field_selector::FieldSelector for GroupsExportOptions {
+    impl ::field_selector::FieldSelector for HangoutsChatExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -730,33 +757,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for HangoutsChatExportOptionsExportFormat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct HangoutsChatExportOptions {
-        #[doc = "The export format for hangouts chat export."]
-        #[serde(rename = "exportFormat", default)]
-        pub export_format:
-            ::std::option::Option<crate::schemas::HangoutsChatExportOptionsExportFormat>,
-    }
-    impl ::field_selector::FieldSelector for HangoutsChatExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1003,6 +1003,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Hold {
+        #[doc = "If set, the hold applies to the enumerated accounts and org_unit must be\nempty."]
+        #[serde(rename = "accounts", default)]
+        pub accounts: ::std::option::Option<Vec<crate::schemas::HeldAccount>>,
+        #[doc = "The corpus to be searched."]
+        #[serde(rename = "corpus", default)]
+        pub corpus: ::std::option::Option<crate::schemas::HoldCorpus>,
+        #[doc = "The unique immutable ID of the hold. Assigned during creation."]
+        #[serde(rename = "holdId", default)]
+        pub hold_id: ::std::option::Option<String>,
+        #[doc = "The name of the hold."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field."]
+        #[serde(rename = "orgUnit", default)]
+        pub org_unit: ::std::option::Option<crate::schemas::HeldOrgUnit>,
+        #[doc = "The corpus-specific query. If set, the corpusQuery must match corpus\ntype."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<crate::schemas::CorpusQuery>,
+        #[doc = "The last time this hold was modified."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Hold {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum HoldCorpus {
         #[doc = "No corpus specified."]
@@ -1062,50 +1106,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for HoldCorpus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Hold {
-        #[doc = "If set, the hold applies to the enumerated accounts and org_unit must be\nempty."]
-        #[serde(rename = "accounts", default)]
-        pub accounts: ::std::option::Option<Vec<crate::schemas::HeldAccount>>,
-        #[doc = "The corpus to be searched."]
-        #[serde(rename = "corpus", default)]
-        pub corpus: ::std::option::Option<crate::schemas::HoldCorpus>,
-        #[doc = "The unique immutable ID of the hold. Assigned during creation."]
-        #[serde(rename = "holdId", default)]
-        pub hold_id: ::std::option::Option<String>,
-        #[doc = "The name of the hold."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field."]
-        #[serde(rename = "orgUnit", default)]
-        pub org_unit: ::std::option::Option<crate::schemas::HeldOrgUnit>,
-        #[doc = "The corpus-specific query. If set, the corpusQuery must match corpus\ntype."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<crate::schemas::CorpusQuery>,
-        #[doc = "The last time this hold was modified."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Hold {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1256,6 +1256,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MailExportOptions {
+        #[doc = "The export file format."]
+        #[serde(rename = "exportFormat", default)]
+        pub export_format: ::std::option::Option<crate::schemas::MailExportOptionsExportFormat>,
+        #[doc = "Set to true to export confidential mode content."]
+        #[serde(rename = "showConfidentialModeContent", default)]
+        pub show_confidential_mode_content: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for MailExportOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MailExportOptionsExportFormat {
         #[doc = "No export format specified."]
@@ -1331,15 +1360,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MailExportOptions {
-        #[doc = "The export file format."]
-        #[serde(rename = "exportFormat", default)]
-        pub export_format: ::std::option::Option<crate::schemas::MailExportOptionsExportFormat>,
-        #[doc = "Set to true to export confidential mode content."]
-        #[serde(rename = "showConfidentialModeContent", default)]
-        pub show_confidential_mode_content: ::std::option::Option<bool>,
+    pub struct MailOptions {
+        #[doc = "Set to true to exclude drafts."]
+        #[serde(rename = "excludeDrafts", default)]
+        pub exclude_drafts: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for MailExportOptions {
+    impl ::field_selector::FieldSelector for MailOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1360,12 +1386,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MailOptions {
-        #[doc = "Set to true to exclude drafts."]
-        #[serde(rename = "excludeDrafts", default)]
-        pub exclude_drafts: ::std::option::Option<bool>,
+    pub struct Matter {
+        #[doc = "The description of the matter."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The matter ID which is generated by the server.\nShould be blank when creating a new matter."]
+        #[serde(rename = "matterId", default)]
+        pub matter_id: ::std::option::Option<String>,
+        #[doc = "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have."]
+        #[serde(rename = "matterPermissions", default)]
+        pub matter_permissions: ::std::option::Option<Vec<crate::schemas::MatterPermission>>,
+        #[doc = "The name of the matter."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The state of the matter."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::MatterState>,
     }
-    impl ::field_selector::FieldSelector for MailOptions {
+    impl ::field_selector::FieldSelector for Matter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1449,24 +1487,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Matter {
-        #[doc = "The description of the matter."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The matter ID which is generated by the server.\nShould be blank when creating a new matter."]
-        #[serde(rename = "matterId", default)]
-        pub matter_id: ::std::option::Option<String>,
-        #[doc = "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have."]
-        #[serde(rename = "matterPermissions", default)]
-        pub matter_permissions: ::std::option::Option<Vec<crate::schemas::MatterPermission>>,
-        #[doc = "The name of the matter."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The state of the matter."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::MatterState>,
+    pub struct MatterPermission {
+        #[doc = "The account id, as provided by <a\nhref=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "The user's role in this matter."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<crate::schemas::MatterPermissionRole>,
     }
-    impl ::field_selector::FieldSelector for Matter {
+    impl ::field_selector::FieldSelector for MatterPermission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1546,15 +1575,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MatterPermission {
-        #[doc = "The account id, as provided by <a\nhref=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "The user's role in this matter."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<crate::schemas::MatterPermissionRole>,
+    pub struct OrgUnitInfo {
+        #[doc = "Org unit to search, as provided by the\n<a href=\"https://developers.google.com/admin-sdk/directory/\">Admin SDK\nDirectory API</a>."]
+        #[serde(rename = "orgUnitId", default)]
+        pub org_unit_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MatterPermission {
+    impl ::field_selector::FieldSelector for OrgUnitInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1575,12 +1601,57 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct OrgUnitInfo {
-        #[doc = "Org unit to search, as provided by the\n<a href=\"https://developers.google.com/admin-sdk/directory/\">Admin SDK\nDirectory API</a>."]
-        #[serde(rename = "orgUnitId", default)]
-        pub org_unit_id: ::std::option::Option<String>,
+    pub struct Query {
+        #[doc = "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified."]
+        #[serde(rename = "accountInfo", default)]
+        pub account_info: ::std::option::Option<crate::schemas::AccountInfo>,
+        #[doc = "The corpus to search."]
+        #[serde(rename = "corpus", default)]
+        pub corpus: ::std::option::Option<crate::schemas::QueryCorpus>,
+        #[doc = "The data source to search from."]
+        #[serde(rename = "dataScope", default)]
+        pub data_scope: ::std::option::Option<crate::schemas::QueryDataScope>,
+        #[doc = "For Drive search, specify more options in this field."]
+        #[serde(rename = "driveOptions", default)]
+        pub drive_options: ::std::option::Option<crate::schemas::DriveOptions>,
+        #[doc = "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)"]
+        #[serde(rename = "hangoutsChatInfo", default)]
+        pub hangouts_chat_info: ::std::option::Option<crate::schemas::HangoutsChatInfo>,
+        #[doc = "For hangouts chat search, specify more options in this field. (read-only)"]
+        #[serde(rename = "hangoutsChatOptions", default)]
+        pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatOptions>,
+        #[doc = "For mail search, specify more options in this field."]
+        #[serde(rename = "mailOptions", default)]
+        pub mail_options: ::std::option::Option<crate::schemas::MailOptions>,
+        #[doc = "The search method to use. This field is similar to the search_method field\nbut is introduced to support shared drives. It supports all\nsearch method types. In case the search_method is TEAM_DRIVE the response\nof this field will be SHARED_DRIVE only."]
+        #[serde(rename = "method", default)]
+        pub method: ::std::option::Option<crate::schemas::QueryMethod>,
+        #[doc = "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified."]
+        #[serde(rename = "orgUnitInfo", default)]
+        pub org_unit_info: ::std::option::Option<crate::schemas::OrgUnitInfo>,
+        #[doc = "The search method to use."]
+        #[serde(rename = "searchMethod", default)]
+        pub search_method: ::std::option::Option<crate::schemas::QuerySearchMethod>,
+        #[doc = "When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs\nto be specified."]
+        #[serde(rename = "sharedDriveInfo", default)]
+        pub shared_drive_info: ::std::option::Option<crate::schemas::SharedDriveInfo>,
+        #[doc = "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified."]
+        #[serde(rename = "teamDriveInfo", default)]
+        pub team_drive_info: ::std::option::Option<crate::schemas::TeamDriveInfo>,
+        #[doc = "The corpus-specific\n<a href=\"https://support.google.com/vault/answer/2474474\">search\noperators</a> used to generate search results."]
+        #[serde(rename = "terms", default)]
+        pub terms: ::std::option::Option<String>,
+        #[doc = "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\">Time\nZone</a>."]
+        #[serde(rename = "timeZone", default)]
+        pub time_zone: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for OrgUnitInfo {
+    impl ::field_selector::FieldSelector for Query {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1861,77 +1932,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for QuerySearchMethod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Query {
-        #[doc = "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified."]
-        #[serde(rename = "accountInfo", default)]
-        pub account_info: ::std::option::Option<crate::schemas::AccountInfo>,
-        #[doc = "The corpus to search."]
-        #[serde(rename = "corpus", default)]
-        pub corpus: ::std::option::Option<crate::schemas::QueryCorpus>,
-        #[doc = "The data source to search from."]
-        #[serde(rename = "dataScope", default)]
-        pub data_scope: ::std::option::Option<crate::schemas::QueryDataScope>,
-        #[doc = "For Drive search, specify more options in this field."]
-        #[serde(rename = "driveOptions", default)]
-        pub drive_options: ::std::option::Option<crate::schemas::DriveOptions>,
-        #[doc = "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)"]
-        #[serde(rename = "hangoutsChatInfo", default)]
-        pub hangouts_chat_info: ::std::option::Option<crate::schemas::HangoutsChatInfo>,
-        #[doc = "For hangouts chat search, specify more options in this field. (read-only)"]
-        #[serde(rename = "hangoutsChatOptions", default)]
-        pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatOptions>,
-        #[doc = "For mail search, specify more options in this field."]
-        #[serde(rename = "mailOptions", default)]
-        pub mail_options: ::std::option::Option<crate::schemas::MailOptions>,
-        #[doc = "The search method to use. This field is similar to the search_method field\nbut is introduced to support shared drives. It supports all\nsearch method types. In case the search_method is TEAM_DRIVE the response\nof this field will be SHARED_DRIVE only."]
-        #[serde(rename = "method", default)]
-        pub method: ::std::option::Option<crate::schemas::QueryMethod>,
-        #[doc = "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified."]
-        #[serde(rename = "orgUnitInfo", default)]
-        pub org_unit_info: ::std::option::Option<crate::schemas::OrgUnitInfo>,
-        #[doc = "The search method to use."]
-        #[serde(rename = "searchMethod", default)]
-        pub search_method: ::std::option::Option<crate::schemas::QuerySearchMethod>,
-        #[doc = "When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs\nto be specified."]
-        #[serde(rename = "sharedDriveInfo", default)]
-        pub shared_drive_info: ::std::option::Option<crate::schemas::SharedDriveInfo>,
-        #[doc = "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified."]
-        #[serde(rename = "teamDriveInfo", default)]
-        pub team_drive_info: ::std::option::Option<crate::schemas::TeamDriveInfo>,
-        #[doc = "The corpus-specific\n<a href=\"https://support.google.com/vault/answer/2474474\">search\noperators</a> used to generate search results."]
-        #[serde(rename = "terms", default)]
-        pub terms: ::std::option::Option<String>,
-        #[doc = "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\">Time\nZone</a>."]
-        #[serde(rename = "timeZone", default)]
-        pub time_zone: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Query {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8480,84 +8480,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -8589,7 +8511,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -8710,50 +8631,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

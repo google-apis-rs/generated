@@ -1,4 +1,63 @@
 pub mod schemas {
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Activity {
+        #[doc = "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier."]
+        #[serde(rename = "activityTime", default)]
+        pub activity_time: ::std::option::Option<String>,
+        #[doc = "Type of this activity."]
+        #[serde(rename = "activityType", default)]
+        pub activity_type: ::std::option::Option<crate::schemas::ActivityActivityType>,
+        #[doc = "This will be set if `activity_type` equals `SCREEN_VIEW`."]
+        #[serde(rename = "appview", default)]
+        pub appview: ::std::option::Option<crate::schemas::ScreenviewData>,
+        #[doc = "For manual campaign tracking, it is the value of the utm_campaign campaign\ntracking parameter. For AdWords autotagging, it is the name(s) of the\nonline ad campaign(s) you use for the property. If you use neither, its\nvalue is (not set)."]
+        #[serde(rename = "campaign", default)]
+        pub campaign: ::std::option::Option<String>,
+        #[doc = "The Channel Group associated with an end user's session for this View\n(defined by the View's Channel Groupings)."]
+        #[serde(rename = "channelGrouping", default)]
+        pub channel_grouping: ::std::option::Option<String>,
+        #[doc = "A list of all custom dimensions associated with this activity."]
+        #[serde(rename = "customDimension", default)]
+        pub custom_dimension: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
+        #[doc = "This will be set if `activity_type` equals `ECOMMERCE`."]
+        #[serde(rename = "ecommerce", default)]
+        pub ecommerce: ::std::option::Option<crate::schemas::EcommerceData>,
+        #[doc = "This field contains all the details pertaining to an event and will be\nset if `activity_type` equals `EVENT`."]
+        #[serde(rename = "event", default)]
+        pub event: ::std::option::Option<crate::schemas::EventData>,
+        #[doc = "This field contains a list of all the goals that were reached in this\nactivity when `activity_type` equals `GOAL`."]
+        #[serde(rename = "goals", default)]
+        pub goals: ::std::option::Option<crate::schemas::GoalSetData>,
+        #[doc = "The hostname from which the tracking request was made."]
+        #[serde(rename = "hostname", default)]
+        pub hostname: ::std::option::Option<String>,
+        #[doc = "For manual campaign tracking, it is the value of the utm_term campaign\ntracking parameter. For AdWords traffic, it contains the best matching\ntargeting criteria. For the display network, where multiple targeting\ncriteria could have caused the ad to show up, it returns the best matching\ntargeting criteria as selected by Ads. This could be display_keyword, site\nplacement, boomuserlist, user_interest, age, or gender. Otherwise its value\nis (not set)."]
+        #[serde(rename = "keyword", default)]
+        pub keyword: ::std::option::Option<String>,
+        #[doc = "The first page in users' sessions, or the landing page."]
+        #[serde(rename = "landingPagePath", default)]
+        pub landing_page_path: ::std::option::Option<String>,
+        #[doc = "The type of referrals. For manual campaign tracking, it is the value of the\nutm_medium campaign tracking parameter. For AdWords autotagging, it is cpc.\nIf users came from a search engine detected by Google Analytics, it is\norganic. If the referrer is not a search engine, it is referral. If users\ncame directly to the property and document.referrer is empty, its value is\n(none)."]
+        #[serde(rename = "medium", default)]
+        pub medium: ::std::option::Option<String>,
+        #[doc = "This will be set if `activity_type` equals `PAGEVIEW`. This field\ncontains all the details about the visitor and the page that was visited."]
+        #[serde(rename = "pageview", default)]
+        pub pageview: ::std::option::Option<crate::schemas::PageviewData>,
+        #[doc = "The source of referrals. For manual campaign tracking, it is the value of\nthe utm_source campaign tracking parameter. For AdWords autotagging, it is\ngoogle. If you use neither, it is the domain of the source\n(e.g., document.referrer) referring the users. It may also contain a port\naddress. If users arrived without a referrer, its value is (direct)."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Activity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ActivityActivityType {
         #[doc = "ActivityType will never have this value in the response. Using this type in\nthe request will result in an error."]
@@ -71,56 +130,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Activity {
-        #[doc = "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier."]
-        #[serde(rename = "activityTime", default)]
-        pub activity_time: ::std::option::Option<String>,
-        #[doc = "Type of this activity."]
-        #[serde(rename = "activityType", default)]
-        pub activity_type: ::std::option::Option<crate::schemas::ActivityActivityType>,
-        #[doc = "This will be set if `activity_type` equals `SCREEN_VIEW`."]
-        #[serde(rename = "appview", default)]
-        pub appview: ::std::option::Option<crate::schemas::ScreenviewData>,
-        #[doc = "For manual campaign tracking, it is the value of the utm_campaign campaign\ntracking parameter. For AdWords autotagging, it is the name(s) of the\nonline ad campaign(s) you use for the property. If you use neither, its\nvalue is (not set)."]
-        #[serde(rename = "campaign", default)]
-        pub campaign: ::std::option::Option<String>,
-        #[doc = "The Channel Group associated with an end user's session for this View\n(defined by the View's Channel Groupings)."]
-        #[serde(rename = "channelGrouping", default)]
-        pub channel_grouping: ::std::option::Option<String>,
-        #[doc = "A list of all custom dimensions associated with this activity."]
-        #[serde(rename = "customDimension", default)]
-        pub custom_dimension: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
-        #[doc = "This will be set if `activity_type` equals `ECOMMERCE`."]
-        #[serde(rename = "ecommerce", default)]
-        pub ecommerce: ::std::option::Option<crate::schemas::EcommerceData>,
-        #[doc = "This field contains all the details pertaining to an event and will be\nset if `activity_type` equals `EVENT`."]
-        #[serde(rename = "event", default)]
-        pub event: ::std::option::Option<crate::schemas::EventData>,
-        #[doc = "This field contains a list of all the goals that were reached in this\nactivity when `activity_type` equals `GOAL`."]
-        #[serde(rename = "goals", default)]
-        pub goals: ::std::option::Option<crate::schemas::GoalSetData>,
-        #[doc = "The hostname from which the tracking request was made."]
-        #[serde(rename = "hostname", default)]
-        pub hostname: ::std::option::Option<String>,
-        #[doc = "For manual campaign tracking, it is the value of the utm_term campaign\ntracking parameter. For AdWords traffic, it contains the best matching\ntargeting criteria. For the display network, where multiple targeting\ncriteria could have caused the ad to show up, it returns the best matching\ntargeting criteria as selected by Ads. This could be display_keyword, site\nplacement, boomuserlist, user_interest, age, or gender. Otherwise its value\nis (not set)."]
-        #[serde(rename = "keyword", default)]
-        pub keyword: ::std::option::Option<String>,
-        #[doc = "The first page in users' sessions, or the landing page."]
-        #[serde(rename = "landingPagePath", default)]
-        pub landing_page_path: ::std::option::Option<String>,
-        #[doc = "The type of referrals. For manual campaign tracking, it is the value of the\nutm_medium campaign tracking parameter. For AdWords autotagging, it is cpc.\nIf users came from a search engine detected by Google Analytics, it is\norganic. If the referrer is not a search engine, it is referral. If users\ncame directly to the property and document.referrer is empty, its value is\n(none)."]
-        #[serde(rename = "medium", default)]
-        pub medium: ::std::option::Option<String>,
-        #[doc = "This will be set if `activity_type` equals `PAGEVIEW`. This field\ncontains all the details about the visitor and the page that was visited."]
-        #[serde(rename = "pageview", default)]
-        pub pageview: ::std::option::Option<crate::schemas::PageviewData>,
-        #[doc = "The source of referrals. For manual campaign tracking, it is the value of\nthe utm_source campaign tracking parameter. For AdWords autotagging, it is\ngoogle. If you use neither, it is the domain of the source\n(e.g., document.referrer) referring the users. It may also contain a port\naddress. If users arrived without a referrer, its value is (direct)."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<String>,
+    pub struct Cohort {
+        #[doc = "This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users\nwhose first visit date is between start date and end date defined in the\nDateRange. The date ranges should be aligned for cohort requests. If the\nrequest contains `ga:cohortNthDay` it should be exactly one day long,\nif `ga:cohortNthWeek` it should be aligned to the week boundary (starting\nat Sunday and ending Saturday), and for `ga:cohortNthMonth` the date range\nshould be aligned to the month (starting at the first and ending on the\nlast day of the month).\nFor LTV requests there are no such restrictions.\nYou do not need to supply a date range for the\n`reportsRequest.dateRanges` field."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: ::std::option::Option<crate::schemas::DateRange>,
+        #[doc = "A unique name for the cohort. If not defined name will be auto-generated\nwith values cohort_[1234...]."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Type of the cohort. The only supported type as of now is\n`FIRST_VISIT_DATE`. If this field is unspecified the cohort is treated\nas `FIRST_VISIT_DATE` type cohort."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CohortType>,
     }
-    impl ::field_selector::FieldSelector for Activity {
+    impl ::field_selector::FieldSelector for Cohort {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -176,38 +208,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CohortType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Cohort {
-        #[doc = "This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users\nwhose first visit date is between start date and end date defined in the\nDateRange. The date ranges should be aligned for cohort requests. If the\nrequest contains `ga:cohortNthDay` it should be exactly one day long,\nif `ga:cohortNthWeek` it should be aligned to the week boundary (starting\nat Sunday and ending Saturday), and for `ga:cohortNthMonth` the date range\nshould be aligned to the month (starting at the first and ending on the\nlast day of the month).\nFor LTV requests there are no such restrictions.\nYou do not need to supply a date range for the\n`reportsRequest.dateRanges` field."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: ::std::option::Option<crate::schemas::DateRange>,
-        #[doc = "A unique name for the cohort. If not defined name will be auto-generated\nwith values cohort_[1234...]."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Type of the cohort. The only supported type as of now is\n`FIRST_VISIT_DATE`. If this field is unspecified the cohort is treated\nas `FIRST_VISIT_DATE` type cohort."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CohortType>,
-    }
-    impl ::field_selector::FieldSelector for Cohort {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -390,6 +390,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DimensionFilter {
+        #[doc = "Should the match be case sensitive? Default is false."]
+        #[serde(rename = "caseSensitive", default)]
+        pub case_sensitive: ::std::option::Option<bool>,
+        #[doc = "The dimension to filter on. A DimensionFilter must contain a dimension."]
+        #[serde(rename = "dimensionName", default)]
+        pub dimension_name: ::std::option::Option<String>,
+        #[doc = "Strings or regular expression to match against. Only the first value of\nthe list is used for comparison unless the operator is `IN_LIST`.\nIf `IN_LIST` operator, then the entire list is used to filter the\ndimensions as explained in the description of the `IN_LIST` operator."]
+        #[serde(rename = "expressions", default)]
+        pub expressions: ::std::option::Option<Vec<String>>,
+        #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\ndimension values will be excluded in the report. The default is false."]
+        #[serde(rename = "not", default)]
+        pub not: ::std::option::Option<bool>,
+        #[doc = "How to match the dimension to the expression. The default is REGEXP."]
+        #[serde(rename = "operator", default)]
+        pub operator: ::std::option::Option<crate::schemas::DimensionFilterOperator>,
+    }
+    impl ::field_selector::FieldSelector for DimensionFilter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionFilterOperator {
         #[doc = "Matches the value which begin with the match expression provided."]
@@ -489,24 +527,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DimensionFilter {
-        #[doc = "Should the match be case sensitive? Default is false."]
-        #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: ::std::option::Option<bool>,
-        #[doc = "The dimension to filter on. A DimensionFilter must contain a dimension."]
-        #[serde(rename = "dimensionName", default)]
-        pub dimension_name: ::std::option::Option<String>,
-        #[doc = "Strings or regular expression to match against. Only the first value of\nthe list is used for comparison unless the operator is `IN_LIST`.\nIf `IN_LIST` operator, then the entire list is used to filter the\ndimensions as explained in the description of the `IN_LIST` operator."]
-        #[serde(rename = "expressions", default)]
-        pub expressions: ::std::option::Option<Vec<String>>,
-        #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\ndimension values will be excluded in the report. The default is false."]
-        #[serde(rename = "not", default)]
-        pub not: ::std::option::Option<bool>,
-        #[doc = "How to match the dimension to the expression. The default is REGEXP."]
+    pub struct DimensionFilterClause {
+        #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<Vec<crate::schemas::DimensionFilter>>,
+        #[doc = "The operator for combining multiple dimension filters. If unspecified, it\nis treated as an `OR`."]
         #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::DimensionFilterOperator>,
+        pub operator: ::std::option::Option<crate::schemas::DimensionFilterClauseOperator>,
     }
-    impl ::field_selector::FieldSelector for DimensionFilter {
+    impl ::field_selector::FieldSelector for DimensionFilterClause {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -586,35 +615,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DimensionFilterClause {
-        #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<Vec<crate::schemas::DimensionFilter>>,
-        #[doc = "The operator for combining multiple dimension filters. If unspecified, it\nis treated as an `OR`."]
-        #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::DimensionFilterClauseOperator>,
-    }
-    impl ::field_selector::FieldSelector for DimensionFilterClause {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct DynamicSegment {
         #[doc = "The name of the dynamic segment."]
         #[serde(rename = "name", default)]
@@ -627,6 +627,32 @@ pub mod schemas {
         pub user_segment: ::std::option::Option<crate::schemas::SegmentDefinition>,
     }
     impl ::field_selector::FieldSelector for DynamicSegment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct EcommerceData {
+        #[doc = "Action associated with this e-commerce action."]
+        #[serde(rename = "actionType", default)]
+        pub action_type: ::std::option::Option<crate::schemas::EcommerceDataActionType>,
+        #[doc = "The type of this e-commerce activity."]
+        #[serde(rename = "ecommerceType", default)]
+        pub ecommerce_type: ::std::option::Option<crate::schemas::EcommerceDataEcommerceType>,
+        #[doc = "Details of the products in this transaction."]
+        #[serde(rename = "products", default)]
+        pub products: ::std::option::Option<Vec<crate::schemas::ProductData>>,
+        #[doc = "Transaction details of this e-commerce action."]
+        #[serde(rename = "transaction", default)]
+        pub transaction: ::std::option::Option<crate::schemas::TransactionData>,
+    }
+    impl ::field_selector::FieldSelector for EcommerceData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -773,32 +799,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for EcommerceDataEcommerceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct EcommerceData {
-        #[doc = "Action associated with this e-commerce action."]
-        #[serde(rename = "actionType", default)]
-        pub action_type: ::std::option::Option<crate::schemas::EcommerceDataActionType>,
-        #[doc = "The type of this e-commerce activity."]
-        #[serde(rename = "ecommerceType", default)]
-        pub ecommerce_type: ::std::option::Option<crate::schemas::EcommerceDataEcommerceType>,
-        #[doc = "Details of the products in this transaction."]
-        #[serde(rename = "products", default)]
-        pub products: ::std::option::Option<Vec<crate::schemas::ProductData>>,
-        #[doc = "Transaction details of this e-commerce action."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::schemas::TransactionData>,
-    }
-    impl ::field_selector::FieldSelector for EcommerceData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -965,6 +965,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Metric {
+        #[doc = "An alias for the metric expression is an alternate name for the\nexpression. The alias can be used for filtering and sorting. This field\nis optional and is useful if the expression is not a single metric but\na complex expression which cannot be used in filtering and sorting.\nThe alias is also used in the response column header."]
+        #[serde(rename = "alias", default)]
+        pub alias: ::std::option::Option<String>,
+        #[doc = "A metric expression in the request. An expression is constructed from one\nor more metrics and numbers. Accepted operators include: Plus (+), Minus\n(-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,\nPositive cardinal numbers (0-9), can include decimals and is limited to\n1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the\nmetric expression is just a single metric name like `ga:users`.\nAdding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics\nwill result in unexpected results."]
+        #[serde(rename = "expression", default)]
+        pub expression: ::std::option::Option<String>,
+        #[doc = "Specifies how the metric expression should be formatted, for example\n`INTEGER`."]
+        #[serde(rename = "formattingType", default)]
+        pub formatting_type: ::std::option::Option<crate::schemas::MetricFormattingType>,
+    }
+    impl ::field_selector::FieldSelector for Metric {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricFormattingType {
         #[doc = "Currency metric."]
@@ -1048,18 +1080,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Metric {
-        #[doc = "An alias for the metric expression is an alternate name for the\nexpression. The alias can be used for filtering and sorting. This field\nis optional and is useful if the expression is not a single metric but\na complex expression which cannot be used in filtering and sorting.\nThe alias is also used in the response column header."]
-        #[serde(rename = "alias", default)]
-        pub alias: ::std::option::Option<String>,
-        #[doc = "A metric expression in the request. An expression is constructed from one\nor more metrics and numbers. Accepted operators include: Plus (+), Minus\n(-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,\nPositive cardinal numbers (0-9), can include decimals and is limited to\n1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the\nmetric expression is just a single metric name like `ga:users`.\nAdding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics\nwill result in unexpected results."]
-        #[serde(rename = "expression", default)]
-        pub expression: ::std::option::Option<String>,
-        #[doc = "Specifies how the metric expression should be formatted, for example\n`INTEGER`."]
-        #[serde(rename = "formattingType", default)]
-        pub formatting_type: ::std::option::Option<crate::schemas::MetricFormattingType>,
+    pub struct MetricFilter {
+        #[doc = "The value to compare against."]
+        #[serde(rename = "comparisonValue", default)]
+        pub comparison_value: ::std::option::Option<String>,
+        #[doc = "The metric that will be filtered on. A metricFilter must contain a metric\nname. A metric name can be an alias earlier defined as a metric or it can\nalso be a metric expression."]
+        #[serde(rename = "metricName", default)]
+        pub metric_name: ::std::option::Option<String>,
+        #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\nmetric values will be excluded in the report. The default is false."]
+        #[serde(rename = "not", default)]
+        pub not: ::std::option::Option<bool>,
+        #[doc = "Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the\ncomparisonValue, the default is `EQUAL`. If the operator is\n`IS_MISSING`, checks if the metric is missing and would ignore the\ncomparisonValue."]
+        #[serde(rename = "operator", default)]
+        pub operator: ::std::option::Option<crate::schemas::MetricFilterOperator>,
     }
-    impl ::field_selector::FieldSelector for Metric {
+    impl ::field_selector::FieldSelector for MetricFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1147,21 +1182,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricFilter {
-        #[doc = "The value to compare against."]
-        #[serde(rename = "comparisonValue", default)]
-        pub comparison_value: ::std::option::Option<String>,
-        #[doc = "The metric that will be filtered on. A metricFilter must contain a metric\nname. A metric name can be an alias earlier defined as a metric or it can\nalso be a metric expression."]
-        #[serde(rename = "metricName", default)]
-        pub metric_name: ::std::option::Option<String>,
-        #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\nmetric values will be excluded in the report. The default is false."]
-        #[serde(rename = "not", default)]
-        pub not: ::std::option::Option<bool>,
-        #[doc = "Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the\ncomparisonValue, the default is `EQUAL`. If the operator is\n`IS_MISSING`, checks if the metric is missing and would ignore the\ncomparisonValue."]
+    pub struct MetricFilterClause {
+        #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<Vec<crate::schemas::MetricFilter>>,
+        #[doc = "The operator for combining multiple metric filters. If unspecified, it is\ntreated as an `OR`."]
         #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::MetricFilterOperator>,
+        pub operator: ::std::option::Option<crate::schemas::MetricFilterClauseOperator>,
     }
-    impl ::field_selector::FieldSelector for MetricFilter {
+    impl ::field_selector::FieldSelector for MetricFilterClause {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1241,15 +1270,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricFilterClause {
-        #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<Vec<crate::schemas::MetricFilter>>,
-        #[doc = "The operator for combining multiple metric filters. If unspecified, it is\ntreated as an `OR`."]
-        #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::MetricFilterClauseOperator>,
+    pub struct MetricHeader {
+        #[doc = "Headers for the metrics in the response."]
+        #[serde(rename = "metricHeaderEntries", default)]
+        pub metric_header_entries: ::std::option::Option<Vec<crate::schemas::MetricHeaderEntry>>,
+        #[doc = "Headers for the pivots in the response."]
+        #[serde(rename = "pivotHeaders", default)]
+        pub pivot_headers: ::std::option::Option<Vec<crate::schemas::PivotHeader>>,
     }
-    impl ::field_selector::FieldSelector for MetricFilterClause {
+    impl ::field_selector::FieldSelector for MetricHeader {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1270,15 +1299,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricHeader {
-        #[doc = "Headers for the metrics in the response."]
-        #[serde(rename = "metricHeaderEntries", default)]
-        pub metric_header_entries: ::std::option::Option<Vec<crate::schemas::MetricHeaderEntry>>,
-        #[doc = "Headers for the pivots in the response."]
-        #[serde(rename = "pivotHeaders", default)]
-        pub pivot_headers: ::std::option::Option<Vec<crate::schemas::PivotHeader>>,
+    pub struct MetricHeaderEntry {
+        #[doc = "The name of the header."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The type of the metric, for example `INTEGER`."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::MetricHeaderEntryType>,
     }
-    impl ::field_selector::FieldSelector for MetricHeader {
+    impl ::field_selector::FieldSelector for MetricHeaderEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1370,15 +1399,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricHeaderEntry {
-        #[doc = "The name of the header."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The type of the metric, for example `INTEGER`."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::MetricHeaderEntryType>,
+    pub struct OrFiltersForSegment {
+        #[doc = "List of segment filters to be combined with a `OR` operator."]
+        #[serde(rename = "segmentFilterClauses", default)]
+        pub segment_filter_clauses: ::std::option::Option<Vec<crate::schemas::SegmentFilterClause>>,
     }
-    impl ::field_selector::FieldSelector for MetricHeaderEntry {
+    impl ::field_selector::FieldSelector for OrFiltersForSegment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1399,12 +1425,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct OrFiltersForSegment {
-        #[doc = "List of segment filters to be combined with a `OR` operator."]
-        #[serde(rename = "segmentFilterClauses", default)]
-        pub segment_filter_clauses: ::std::option::Option<Vec<crate::schemas::SegmentFilterClause>>,
+    pub struct OrderBy {
+        #[doc = "The field which to sort by. The default sort order is ascending. Example:\n`ga:browser`.\nNote, that you can only specify one field for sort here. For example,\n`ga:browser, ga:city` is not valid."]
+        #[serde(rename = "fieldName", default)]
+        pub field_name: ::std::option::Option<String>,
+        #[doc = "The order type. The default orderType is `VALUE`."]
+        #[serde(rename = "orderType", default)]
+        pub order_type: ::std::option::Option<crate::schemas::OrderByOrderType>,
+        #[doc = "The sorting order for the field."]
+        #[serde(rename = "sortOrder", default)]
+        pub sort_order: ::std::option::Option<crate::schemas::OrderBySortOrder>,
     }
-    impl ::field_selector::FieldSelector for OrFiltersForSegment {
+    impl ::field_selector::FieldSelector for OrderBy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1535,38 +1567,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for OrderBySortOrder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OrderBy {
-        #[doc = "The field which to sort by. The default sort order is ascending. Example:\n`ga:browser`.\nNote, that you can only specify one field for sort here. For example,\n`ga:browser, ga:city` is not valid."]
-        #[serde(rename = "fieldName", default)]
-        pub field_name: ::std::option::Option<String>,
-        #[doc = "The order type. The default orderType is `VALUE`."]
-        #[serde(rename = "orderType", default)]
-        pub order_type: ::std::option::Option<crate::schemas::OrderByOrderType>,
-        #[doc = "The sorting order for the field."]
-        #[serde(rename = "sortOrder", default)]
-        pub sort_order: ::std::option::Option<crate::schemas::OrderBySortOrder>,
-    }
-    impl ::field_selector::FieldSelector for OrderBy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1839,69 +1839,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ReportRequestSamplingLevel {
-        #[doc = "Returns response with a sample size that balances speed and\naccuracy."]
-        Default,
-        #[doc = "Returns a more accurate response using a large sampling size. But this\nmay result in response being slower."]
-        Large,
-        #[doc = "If the `samplingLevel` field is unspecified the `DEFAULT` sampling level\nis used."]
-        SamplingUnspecified,
-        #[doc = "It returns a fast response with a smaller sampling size."]
-        Small,
-    }
-    impl ReportRequestSamplingLevel {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportRequestSamplingLevel::Default => "DEFAULT",
-                ReportRequestSamplingLevel::Large => "LARGE",
-                ReportRequestSamplingLevel::SamplingUnspecified => "SAMPLING_UNSPECIFIED",
-                ReportRequestSamplingLevel::Small => "SMALL",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportRequestSamplingLevel {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportRequestSamplingLevel {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportRequestSamplingLevel {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DEFAULT" => ReportRequestSamplingLevel::Default,
-                "LARGE" => ReportRequestSamplingLevel::Large,
-                "SAMPLING_UNSPECIFIED" => ReportRequestSamplingLevel::SamplingUnspecified,
-                "SMALL" => ReportRequestSamplingLevel::Small,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for ReportRequestSamplingLevel {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -1969,6 +1906,69 @@ pub mod schemas {
         pub view_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReportRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportRequestSamplingLevel {
+        #[doc = "Returns response with a sample size that balances speed and\naccuracy."]
+        Default,
+        #[doc = "Returns a more accurate response using a large sampling size. But this\nmay result in response being slower."]
+        Large,
+        #[doc = "If the `samplingLevel` field is unspecified the `DEFAULT` sampling level\nis used."]
+        SamplingUnspecified,
+        #[doc = "It returns a fast response with a smaller sampling size."]
+        Small,
+    }
+    impl ReportRequestSamplingLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportRequestSamplingLevel::Default => "DEFAULT",
+                ReportRequestSamplingLevel::Large => "LARGE",
+                ReportRequestSamplingLevel::SamplingUnspecified => "SAMPLING_UNSPECIFIED",
+                ReportRequestSamplingLevel::Small => "SMALL",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportRequestSamplingLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportRequestSamplingLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportRequestSamplingLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEFAULT" => ReportRequestSamplingLevel::Default,
+                "LARGE" => ReportRequestSamplingLevel::Large,
+                "SAMPLING_UNSPECIFIED" => ReportRequestSamplingLevel::SamplingUnspecified,
+                "SMALL" => ReportRequestSamplingLevel::Small,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for ReportRequestSamplingLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2070,6 +2070,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchUserActivityRequest {
+        #[doc = "Set of all activity types being requested. Only acvities matching these\ntypes will be returned in the response. If empty, all activies will be\nreturned."]
+        #[serde(rename = "activityTypes", default)]
+        pub activity_types:
+            ::std::option::Option<Vec<crate::schemas::SearchUserActivityRequestActivityTypesItems>>,
+        #[doc = "Date range for which to retrieve the user activity. If a date range is not\nprovided, the default date range is (startDate: current date - 7 days,\nendDate: current date - 1 day)."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: ::std::option::Option<crate::schemas::DateRange>,
+        #[doc = "Page size is for paging and specifies the maximum number of returned rows.\nPage size should be > 0. If the value is 0 or if the field isn't specified,\nthe request returns the default of 1000 rows per page."]
+        #[serde(rename = "pageSize", default)]
+        pub page_size: ::std::option::Option<i32>,
+        #[doc = "A continuation token to get the next page of the results. Adding this to\nthe request will return the rows after the pageToken. The pageToken should\nbe the value returned in the nextPageToken parameter in the response to\nthe [SearchUserActivityRequest](#SearchUserActivityRequest) request."]
+        #[serde(rename = "pageToken", default)]
+        pub page_token: ::std::option::Option<String>,
+        #[doc = "Required. Unique user Id to query for. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain this\nfield."]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<crate::schemas::User>,
+        #[doc = "Required. The Analytics\n[view ID](https://support.google.com/analytics/answer/1009618)\nfrom which to retrieve data. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain the\n`viewId`."]
+        #[serde(rename = "viewId", default)]
+        pub view_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SearchUserActivityRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchUserActivityRequestActivityTypesItems {
         ActivityTypeUnspecified,
@@ -2131,48 +2173,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SearchUserActivityRequestActivityTypesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SearchUserActivityRequest {
-        #[doc = "Set of all activity types being requested. Only acvities matching these\ntypes will be returned in the response. If empty, all activies will be\nreturned."]
-        #[serde(rename = "activityTypes", default)]
-        pub activity_types:
-            ::std::option::Option<Vec<crate::schemas::SearchUserActivityRequestActivityTypesItems>>,
-        #[doc = "Date range for which to retrieve the user activity. If a date range is not\nprovided, the default date range is (startDate: current date - 7 days,\nendDate: current date - 1 day)."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: ::std::option::Option<crate::schemas::DateRange>,
-        #[doc = "Page size is for paging and specifies the maximum number of returned rows.\nPage size should be > 0. If the value is 0 or if the field isn't specified,\nthe request returns the default of 1000 rows per page."]
-        #[serde(rename = "pageSize", default)]
-        pub page_size: ::std::option::Option<i32>,
-        #[doc = "A continuation token to get the next page of the results. Adding this to\nthe request will return the rows after the pageToken. The pageToken should\nbe the value returned in the nextPageToken parameter in the response to\nthe [SearchUserActivityRequest](#SearchUserActivityRequest) request."]
-        #[serde(rename = "pageToken", default)]
-        pub page_token: ::std::option::Option<String>,
-        #[doc = "Required. Unique user Id to query for. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain this\nfield."]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<crate::schemas::User>,
-        #[doc = "Required. The Analytics\n[view ID](https://support.google.com/analytics/answer/1009618)\nfrom which to retrieve data. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain the\n`viewId`."]
-        #[serde(rename = "viewId", default)]
-        pub view_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SearchUserActivityRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2254,6 +2254,47 @@ pub mod schemas {
         pub segment_filters: ::std::option::Option<Vec<crate::schemas::SegmentFilter>>,
     }
     impl ::field_selector::FieldSelector for SegmentDefinition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SegmentDimensionFilter {
+        #[doc = "Should the match be case sensitive, ignored for `IN_LIST` operator."]
+        #[serde(rename = "caseSensitive", default)]
+        pub case_sensitive: ::std::option::Option<bool>,
+        #[doc = "Name of the dimension for which the filter is being applied."]
+        #[serde(rename = "dimensionName", default)]
+        pub dimension_name: ::std::option::Option<String>,
+        #[doc = "The list of expressions, only the first element is used for all operators"]
+        #[serde(rename = "expressions", default)]
+        pub expressions: ::std::option::Option<Vec<String>>,
+        #[doc = "Maximum comparison values for `BETWEEN` match type."]
+        #[serde(rename = "maxComparisonValue", default)]
+        pub max_comparison_value: ::std::option::Option<String>,
+        #[doc = "Minimum comparison values for `BETWEEN` match type."]
+        #[serde(rename = "minComparisonValue", default)]
+        pub min_comparison_value: ::std::option::Option<String>,
+        #[doc = "The operator to use to match the dimension with the expressions."]
+        #[serde(rename = "operator", default)]
+        pub operator: ::std::option::Option<crate::schemas::SegmentDimensionFilterOperator>,
+    }
+    impl ::field_selector::FieldSelector for SegmentDimensionFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2361,47 +2402,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SegmentDimensionFilter {
-        #[doc = "Should the match be case sensitive, ignored for `IN_LIST` operator."]
-        #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: ::std::option::Option<bool>,
-        #[doc = "Name of the dimension for which the filter is being applied."]
-        #[serde(rename = "dimensionName", default)]
-        pub dimension_name: ::std::option::Option<String>,
-        #[doc = "The list of expressions, only the first element is used for all operators"]
-        #[serde(rename = "expressions", default)]
-        pub expressions: ::std::option::Option<Vec<String>>,
-        #[doc = "Maximum comparison values for `BETWEEN` match type."]
-        #[serde(rename = "maxComparisonValue", default)]
-        pub max_comparison_value: ::std::option::Option<String>,
-        #[doc = "Minimum comparison values for `BETWEEN` match type."]
-        #[serde(rename = "minComparisonValue", default)]
-        pub min_comparison_value: ::std::option::Option<String>,
-        #[doc = "The operator to use to match the dimension with the expressions."]
-        #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::SegmentDimensionFilterOperator>,
-    }
-    impl ::field_selector::FieldSelector for SegmentDimensionFilter {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct SegmentFilter {
         #[doc = "If true, match the complement of simple or sequence segment.\nFor example, to match all visits not from \"New York\", we can define the\nsegment as follows:\n\n````text\n  \"sessionSegment\": {\n    \"segmentFilters\": [{\n      \"simpleSegment\" :{\n        \"orFiltersForSegment\": [{\n          \"segmentFilterClauses\":[{\n            \"dimensionFilter\": {\n              \"dimensionName\": \"ga:city\",\n              \"expressions\": [\"New York\"]\n            }\n          }]\n        }]\n      },\n      \"not\": \"True\"\n    }]\n  },````"]
         #[serde(rename = "not", default)]
@@ -2446,6 +2446,44 @@ pub mod schemas {
         pub not: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for SegmentFilterClause {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SegmentMetricFilter {
+        #[doc = "The value to compare against. If the operator is `BETWEEN`, this value is\ntreated as minimum comparison value."]
+        #[serde(rename = "comparisonValue", default)]
+        pub comparison_value: ::std::option::Option<String>,
+        #[doc = "Max comparison value is only used for `BETWEEN` operator."]
+        #[serde(rename = "maxComparisonValue", default)]
+        pub max_comparison_value: ::std::option::Option<String>,
+        #[doc = "The metric that will be filtered on. A `metricFilter` must contain a\nmetric name."]
+        #[serde(rename = "metricName", default)]
+        pub metric_name: ::std::option::Option<String>,
+        #[doc = "Specifies is the operation to perform to compare the metric. The default\nis `EQUAL`."]
+        #[serde(rename = "operator", default)]
+        pub operator: ::std::option::Option<crate::schemas::SegmentMetricFilterOperator>,
+        #[doc = "Scope for a metric defines the level at which that metric is defined.  The\nspecified metric scope must be equal to or greater than its primary scope\nas defined in the data model. The primary scope is defined by if the\nsegment is selecting users or sessions."]
+        #[serde(rename = "scope", default)]
+        pub scope: ::std::option::Option<crate::schemas::SegmentMetricFilterScope>,
+    }
+    impl ::field_selector::FieldSelector for SegmentMetricFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2600,24 +2638,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SegmentMetricFilter {
-        #[doc = "The value to compare against. If the operator is `BETWEEN`, this value is\ntreated as minimum comparison value."]
-        #[serde(rename = "comparisonValue", default)]
-        pub comparison_value: ::std::option::Option<String>,
-        #[doc = "Max comparison value is only used for `BETWEEN` operator."]
-        #[serde(rename = "maxComparisonValue", default)]
-        pub max_comparison_value: ::std::option::Option<String>,
-        #[doc = "The metric that will be filtered on. A `metricFilter` must contain a\nmetric name."]
-        #[serde(rename = "metricName", default)]
-        pub metric_name: ::std::option::Option<String>,
-        #[doc = "Specifies is the operation to perform to compare the metric. The default\nis `EQUAL`."]
-        #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::SegmentMetricFilterOperator>,
-        #[doc = "Scope for a metric defines the level at which that metric is defined.  The\nspecified metric scope must be equal to or greater than its primary scope\nas defined in the data model. The primary scope is defined by if the\nsegment is selecting users or sessions."]
-        #[serde(rename = "scope", default)]
-        pub scope: ::std::option::Option<crate::schemas::SegmentMetricFilterScope>,
+    pub struct SegmentSequenceStep {
+        #[doc = "Specifies if the step immediately precedes or can be any time before the\nnext step."]
+        #[serde(rename = "matchType", default)]
+        pub match_type: ::std::option::Option<crate::schemas::SegmentSequenceStepMatchType>,
+        #[doc = "A sequence is specified with a list of Or grouped filters which are\ncombined with `AND` operator."]
+        #[serde(rename = "orFiltersForSegment", default)]
+        pub or_filters_for_segment: ::std::option::Option<Vec<crate::schemas::OrFiltersForSegment>>,
     }
-    impl ::field_selector::FieldSelector for SegmentMetricFilter {
+    impl ::field_selector::FieldSelector for SegmentSequenceStep {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2677,35 +2706,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SegmentSequenceStepMatchType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SegmentSequenceStep {
-        #[doc = "Specifies if the step immediately precedes or can be any time before the\nnext step."]
-        #[serde(rename = "matchType", default)]
-        pub match_type: ::std::option::Option<crate::schemas::SegmentSequenceStepMatchType>,
-        #[doc = "A sequence is specified with a list of Or grouped filters which are\ncombined with `AND` operator."]
-        #[serde(rename = "orFiltersForSegment", default)]
-        pub or_filters_for_segment: ::std::option::Option<Vec<crate::schemas::OrFiltersForSegment>>,
-    }
-    impl ::field_selector::FieldSelector for SegmentSequenceStep {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2795,6 +2795,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct User {
+        #[doc = "Type of the user in the request. The field `userId` is associated with this\ntype."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::UserType>,
+        #[doc = "Unique Id of the user for which the data is being requested."]
+        #[serde(rename = "userId", default)]
+        pub user_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for User {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserType {
         #[doc = "Analytics assigned client_id."]
@@ -2846,35 +2875,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for UserType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct User {
-        #[doc = "Type of the user in the request. The field `userId` is associated with this\ntype."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::UserType>,
-        #[doc = "Unique Id of the user for which the data is being requested."]
-        #[serde(rename = "userId", default)]
-        pub user_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3598,84 +3598,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3704,174 +3626,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

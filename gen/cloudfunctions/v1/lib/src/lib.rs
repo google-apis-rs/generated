@@ -28,6 +28,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -83,35 +112,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -210,81 +210,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum CloudFunctionStatus {
-        #[doc = "Function has been successfully deployed and is serving."]
-        Active,
-        #[doc = "Not specified. Invalid state."]
-        CloudFunctionStatusUnspecified,
-        #[doc = "Function is being deleted."]
-        DeleteInProgress,
-        #[doc = "Function is being created or updated."]
-        DeployInProgress,
-        #[doc = "Function deployment failed and the function isn\u{2019}t serving."]
-        Offline,
-        #[doc = "Function deployment failed and the function serving state is undefined.\nThe function should be updated or deleted to move it out of this state."]
-        Unknown,
-    }
-    impl CloudFunctionStatus {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CloudFunctionStatus::Active => "ACTIVE",
-                CloudFunctionStatus::CloudFunctionStatusUnspecified => {
-                    "CLOUD_FUNCTION_STATUS_UNSPECIFIED"
-                }
-                CloudFunctionStatus::DeleteInProgress => "DELETE_IN_PROGRESS",
-                CloudFunctionStatus::DeployInProgress => "DEPLOY_IN_PROGRESS",
-                CloudFunctionStatus::Offline => "OFFLINE",
-                CloudFunctionStatus::Unknown => "UNKNOWN",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CloudFunctionStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CloudFunctionStatus {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CloudFunctionStatus {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ACTIVE" => CloudFunctionStatus::Active,
-                "CLOUD_FUNCTION_STATUS_UNSPECIFIED" => {
-                    CloudFunctionStatus::CloudFunctionStatusUnspecified
-                }
-                "DELETE_IN_PROGRESS" => CloudFunctionStatus::DeleteInProgress,
-                "DEPLOY_IN_PROGRESS" => CloudFunctionStatus::DeployInProgress,
-                "OFFLINE" => CloudFunctionStatus::Offline,
-                "UNKNOWN" => CloudFunctionStatus::Unknown,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for CloudFunctionStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -362,6 +287,81 @@ pub mod schemas {
         pub vpc_connector: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CloudFunction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CloudFunctionStatus {
+        #[doc = "Function has been successfully deployed and is serving."]
+        Active,
+        #[doc = "Not specified. Invalid state."]
+        CloudFunctionStatusUnspecified,
+        #[doc = "Function is being deleted."]
+        DeleteInProgress,
+        #[doc = "Function is being created or updated."]
+        DeployInProgress,
+        #[doc = "Function deployment failed and the function isn\u{2019}t serving."]
+        Offline,
+        #[doc = "Function deployment failed and the function serving state is undefined.\nThe function should be updated or deleted to move it out of this state."]
+        Unknown,
+    }
+    impl CloudFunctionStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CloudFunctionStatus::Active => "ACTIVE",
+                CloudFunctionStatus::CloudFunctionStatusUnspecified => {
+                    "CLOUD_FUNCTION_STATUS_UNSPECIFIED"
+                }
+                CloudFunctionStatus::DeleteInProgress => "DELETE_IN_PROGRESS",
+                CloudFunctionStatus::DeployInProgress => "DEPLOY_IN_PROGRESS",
+                CloudFunctionStatus::Offline => "OFFLINE",
+                CloudFunctionStatus::Unknown => "UNKNOWN",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CloudFunctionStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CloudFunctionStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CloudFunctionStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTIVE" => CloudFunctionStatus::Active,
+                "CLOUD_FUNCTION_STATUS_UNSPECIFIED" => {
+                    CloudFunctionStatus::CloudFunctionStatusUnspecified
+                }
+                "DELETE_IN_PROGRESS" => CloudFunctionStatus::DeleteInProgress,
+                "DEPLOY_IN_PROGRESS" => CloudFunctionStatus::DeployInProgress,
+                "OFFLINE" => CloudFunctionStatus::Offline,
+                "UNKNOWN" => CloudFunctionStatus::Unknown,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for CloudFunctionStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -710,6 +710,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct OperationMetadataV1 {
+        #[doc = "Type of operation."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Type>,
+        #[doc = "The original request that started the operation."]
+        #[serde(rename = "request", default)]
+        pub request:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1"]
+        #[serde(rename = "target", default)]
+        pub target: ::std::option::Option<String>,
+        #[doc = "The last update timestamp of the operation."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Version id of the function created or updated by an API call.\nThis field is only populated for Create and Update operations."]
+        #[serde(rename = "versionId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub version_id: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for OperationMetadataV1 {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationMetadataV1Type {
         #[doc = "Triggered by CreateFunction call"]
@@ -774,10 +803,10 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct OperationMetadataV1 {
+    pub struct OperationMetadataV1Beta2 {
         #[doc = "Type of operation."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Type>,
+        pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Beta2Type>,
         #[doc = "The original request that started the operation."]
         #[serde(rename = "request", default)]
         pub request:
@@ -793,7 +822,7 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub version_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for OperationMetadataV1 {
+    impl ::field_selector::FieldSelector for OperationMetadataV1Beta2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -857,35 +886,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for OperationMetadataV1Beta2Type {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct OperationMetadataV1Beta2 {
-        #[doc = "Type of operation."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Beta2Type>,
-        #[doc = "The original request that started the operation."]
-        #[serde(rename = "request", default)]
-        pub request:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1"]
-        #[serde(rename = "target", default)]
-        pub target: ::std::option::Option<String>,
-        #[doc = "The last update timestamp of the operation."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Version id of the function created or updated by an API call.\nThis field is only populated for Create and Update operations."]
-        #[serde(rename = "versionId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub version_id: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for OperationMetadataV1Beta2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4319,84 +4319,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4428,7 +4350,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4554,8 +4475,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

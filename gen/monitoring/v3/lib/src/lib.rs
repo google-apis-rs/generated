@@ -1,4 +1,40 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Aggregation {
+        #[doc = "The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60 seconds. After per-time series alignment, each time series will contain data points only on the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an error is returned."]
+        #[serde(rename = "alignmentPeriod", default)]
+        pub alignment_period: ::std::option::Option<String>,
+        #[doc = "The approach to be used to combine time series. Not all reducer functions may be applied to all time series, depending on the metric type and the value type of the original time series. Reduction may change the metric type of value type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned."]
+        #[serde(rename = "crossSeriesReducer", default)]
+        pub cross_series_reducer:
+            ::std::option::Option<crate::schemas::AggregationCrossSeriesReducer>,
+        #[doc = "The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how the time series are partitioned into subsets prior to applying the aggregation function. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If crossSeriesReducer is not defined, this field is ignored."]
+        #[serde(rename = "groupByFields", default)]
+        pub group_by_fields: ::std::option::Option<Vec<String>>,
+        #[doc = "The approach to be used to align individual time series. Not all alignment functions may be applied to all time series, depending on the metric type and value type of the original time series. Alignment may change the metric type or the value type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned."]
+        #[serde(rename = "perSeriesAligner", default)]
+        pub per_series_aligner: ::std::option::Option<crate::schemas::AggregationPerSeriesAligner>,
+    }
+    impl ::field_selector::FieldSelector for Aggregation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AggregationCrossSeriesReducer {
         #[doc = "Reduce by computing the count of data points across time series for each alignment period. This reducer is valid for delta and gauge metrics of numeric, Boolean, distribution, and string value type. The value type of the output is INT64."]
@@ -225,34 +261,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Aggregation {
-        #[doc = "The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60 seconds. After per-time series alignment, each time series will contain data points only on the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an error is returned."]
-        #[serde(rename = "alignmentPeriod", default)]
-        pub alignment_period: ::std::option::Option<String>,
-        #[doc = "The approach to be used to combine time series. Not all reducer functions may be applied to all time series, depending on the metric type and the value type of the original time series. Reduction may change the metric type of value type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned."]
-        #[serde(rename = "crossSeriesReducer", default)]
-        pub cross_series_reducer:
-            ::std::option::Option<crate::schemas::AggregationCrossSeriesReducer>,
-        #[doc = "The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how the time series are partitioned into subsets prior to applying the aggregation function. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If crossSeriesReducer is not defined, this field is ignored."]
-        #[serde(rename = "groupByFields", default)]
-        pub group_by_fields: ::std::option::Option<Vec<String>>,
-        #[doc = "The approach to be used to align individual time series. Not all alignment functions may be applied to all time series, depending on the metric type and value type of the original time series. Alignment may change the metric type or the value type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned."]
-        #[serde(rename = "perSeriesAligner", default)]
-        pub per_series_aligner: ::std::option::Option<crate::schemas::AggregationPerSeriesAligner>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct AlertPolicy {
+        #[doc = "How to combine the results of multiple conditions to determine if an incident should be opened."]
+        #[serde(rename = "combiner", default)]
+        pub combiner: ::std::option::Option<crate::schemas::AlertPolicyCombiner>,
+        #[doc = "A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions."]
+        #[serde(rename = "conditions", default)]
+        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
+        #[doc = "A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored."]
+        #[serde(rename = "creationRecord", default)]
+        pub creation_record: ::std::option::Option<crate::schemas::MutationRecord>,
+        #[doc = "A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation."]
+        #[serde(rename = "documentation", default)]
+        pub documentation: ::std::option::Option<crate::schemas::Documentation>,
+        #[doc = "Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored."]
+        #[serde(rename = "mutationRecord", default)]
+        pub mutation_record: ::std::option::Option<crate::schemas::MutationRecord>,
+        #[doc = "Required if the policy exists. The resource name for this policy. The syntax is:\nprojects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]\n[ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The syntax of the entries in this field is:\nprojects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]"]
+        #[serde(rename = "notificationChannels", default)]
+        pub notification_channels: ::std::option::Option<Vec<String>>,
+        #[doc = "User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter."]
+        #[serde(rename = "userLabels", default)]
+        pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents."]
+        #[serde(rename = "validity", default)]
+        pub validity: ::std::option::Option<crate::schemas::Status>,
     }
-    impl ::field_selector::FieldSelector for Aggregation {
+    impl ::field_selector::FieldSelector for AlertPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -316,51 +361,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AlertPolicyCombiner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct AlertPolicy {
-        #[doc = "How to combine the results of multiple conditions to determine if an incident should be opened."]
-        #[serde(rename = "combiner", default)]
-        pub combiner: ::std::option::Option<crate::schemas::AlertPolicyCombiner>,
-        #[doc = "A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions."]
-        #[serde(rename = "conditions", default)]
-        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored."]
-        #[serde(rename = "creationRecord", default)]
-        pub creation_record: ::std::option::Option<crate::schemas::MutationRecord>,
-        #[doc = "A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation."]
-        #[serde(rename = "documentation", default)]
-        pub documentation: ::std::option::Option<crate::schemas::Documentation>,
-        #[doc = "Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-        #[doc = "A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored."]
-        #[serde(rename = "mutationRecord", default)]
-        pub mutation_record: ::std::option::Option<crate::schemas::MutationRecord>,
-        #[doc = "Required if the policy exists. The resource name for this policy. The syntax is:\nprojects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]\n[ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The syntax of the entries in this field is:\nprojects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]"]
-        #[serde(rename = "notificationChannels", default)]
-        pub notification_channels: ::std::option::Option<Vec<String>>,
-        #[doc = "User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter."]
-        #[serde(rename = "userLabels", default)]
-        pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents."]
-        #[serde(rename = "validity", default)]
-        pub validity: ::std::option::Option<crate::schemas::Status>,
-    }
-    impl ::field_selector::FieldSelector for AlertPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -479,6 +479,27 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct CollectdValue {
+        #[doc = "The data source for the collectd value. For example there are two data sources for network measurements: \"rx\" and \"tx\"."]
+        #[serde(rename = "dataSourceName", default)]
+        pub data_source_name: ::std::option::Option<String>,
+        #[doc = "The type of measurement."]
+        #[serde(rename = "dataSourceType", default)]
+        pub data_source_type: ::std::option::Option<crate::schemas::CollectdValueDataSourceType>,
+        #[doc = "The measurement value."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<crate::schemas::TypedValue>,
+    }
+    impl ::field_selector::FieldSelector for CollectdValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CollectdValueDataSourceType {
         #[doc = "An amount of change since the last measurement interval. This corresponds to google.api.MetricDescriptor.MetricKind.DELTA."]
@@ -551,27 +572,6 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct CollectdValue {
-        #[doc = "The data source for the collectd value. For example there are two data sources for network measurements: \"rx\" and \"tx\"."]
-        #[serde(rename = "dataSourceName", default)]
-        pub data_source_name: ::std::option::Option<String>,
-        #[doc = "The type of measurement."]
-        #[serde(rename = "dataSourceType", default)]
-        pub data_source_type: ::std::option::Option<crate::schemas::CollectdValueDataSourceType>,
-        #[doc = "The measurement value."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::schemas::TypedValue>,
-    }
-    impl ::field_selector::FieldSelector for CollectdValue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CollectdValueError {
         #[doc = "Records the error status for the value."]
         #[serde(rename = "error", default)]
@@ -607,6 +607,35 @@ pub mod schemas {
         pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Condition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ContentMatcher {
+        #[doc = "String or regex content to match (max 1024 bytes)"]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "The matcher representing content match options which the check will run with. If the field is not specified (in previous versions), the option is set to be CONTAINS_STRING which performs content substring matching."]
+        #[serde(rename = "matcher", default)]
+        pub matcher: ::std::option::Option<crate::schemas::ContentMatcherMatcher>,
+    }
+    impl ::field_selector::FieldSelector for ContentMatcher {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -678,35 +707,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ContentMatcherMatcher {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ContentMatcher {
-        #[doc = "String or regex content to match (max 1024 bytes)"]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "The matcher representing content match options which the check will run with. If the field is not specified (in previous versions), the option is set to be CONTAINS_STRING which performs content substring matching."]
-        #[serde(rename = "matcher", default)]
-        pub matcher: ::std::option::Option<crate::schemas::ContentMatcherMatcher>,
-    }
-    impl ::field_selector::FieldSelector for ContentMatcher {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -934,6 +934,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Field {
+        #[doc = "The field cardinality."]
+        #[serde(rename = "cardinality", default)]
+        pub cardinality: ::std::option::Option<crate::schemas::FieldCardinality>,
+        #[doc = "The string value of the default value of this field. Proto2 syntax only."]
+        #[serde(rename = "defaultValue", default)]
+        pub default_value: ::std::option::Option<String>,
+        #[doc = "The field JSON name."]
+        #[serde(rename = "jsonName", default)]
+        pub json_name: ::std::option::Option<String>,
+        #[doc = "The field type."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::FieldKind>,
+        #[doc = "The field name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The field number."]
+        #[serde(rename = "number", default)]
+        pub number: ::std::option::Option<i32>,
+        #[doc = "The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list."]
+        #[serde(rename = "oneofIndex", default)]
+        pub oneof_index: ::std::option::Option<i32>,
+        #[doc = "The protocol buffer options."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "Whether to use alternative packed wire representation."]
+        #[serde(rename = "packed", default)]
+        pub packed: ::std::option::Option<bool>,
+        #[doc = "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\"."]
+        #[serde(rename = "typeUrl", default)]
+        pub type_url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Field {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FieldCardinality {
         #[doc = "For optional fields."]
@@ -1120,48 +1162,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Field {
-        #[doc = "The field cardinality."]
-        #[serde(rename = "cardinality", default)]
-        pub cardinality: ::std::option::Option<crate::schemas::FieldCardinality>,
-        #[doc = "The string value of the default value of this field. Proto2 syntax only."]
-        #[serde(rename = "defaultValue", default)]
-        pub default_value: ::std::option::Option<String>,
-        #[doc = "The field JSON name."]
-        #[serde(rename = "jsonName", default)]
-        pub json_name: ::std::option::Option<String>,
-        #[doc = "The field type."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::FieldKind>,
-        #[doc = "The field name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The field number."]
-        #[serde(rename = "number", default)]
-        pub number: ::std::option::Option<i32>,
-        #[doc = "The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list."]
-        #[serde(rename = "oneofIndex", default)]
-        pub oneof_index: ::std::option::Option<i32>,
-        #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "Whether to use alternative packed wire representation."]
-        #[serde(rename = "packed", default)]
-        pub packed: ::std::option::Option<bool>,
-        #[doc = "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\"."]
-        #[serde(rename = "typeUrl", default)]
-        pub type_url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Field {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -1299,6 +1299,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InternalChecker {
+        #[doc = "The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The GCP zone the uptime check should egress from. Only respected for internal uptime checks, where internal_network is specified."]
+        #[serde(rename = "gcpZone", default)]
+        pub gcp_zone: ::std::option::Option<String>,
+        #[doc = "A unique resource name for this InternalChecker. The format is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID is the stackdriver workspace project for the uptime check config associated with the internal checker."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: \"default\")."]
+        #[serde(rename = "network", default)]
+        pub network: ::std::option::Option<String>,
+        #[doc = "The GCP project_id where the internal checker lives. Not necessary the same as the workspace project."]
+        #[serde(rename = "peerProjectId", default)]
+        pub peer_project_id: ::std::option::Option<String>,
+        #[doc = "The current operational state of the internal checker."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::InternalCheckerState>,
+    }
+    impl ::field_selector::FieldSelector for InternalChecker {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InternalCheckerState {
         #[doc = "The checker is being created, provisioned, and configured. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker, as well as by examining the longrunning.Operation that created it."]
@@ -1370,27 +1411,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct InternalChecker {
-        #[doc = "The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The GCP zone the uptime check should egress from. Only respected for internal uptime checks, where internal_network is specified."]
-        #[serde(rename = "gcpZone", default)]
-        pub gcp_zone: ::std::option::Option<String>,
-        #[doc = "A unique resource name for this InternalChecker. The format is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID is the stackdriver workspace project for the uptime check config associated with the internal checker."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: \"default\")."]
-        #[serde(rename = "network", default)]
-        pub network: ::std::option::Option<String>,
-        #[doc = "The GCP project_id where the internal checker lives. Not necessary the same as the workspace project."]
-        #[serde(rename = "peerProjectId", default)]
-        pub peer_project_id: ::std::option::Option<String>,
-        #[doc = "The current operational state of the internal checker."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::InternalCheckerState>,
+    pub struct LabelDescriptor {
+        #[doc = "A human-readable description for the label."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The label key."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "The type of data that can be assigned to the label."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
     }
-    impl ::field_selector::FieldSelector for InternalChecker {
+    impl ::field_selector::FieldSelector for LabelDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1450,38 +1482,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LabelDescriptorValueType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LabelDescriptor {
-        #[doc = "A human-readable description for the label."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The label key."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "The type of data that can be assigned to the label."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
-    }
-    impl ::field_selector::FieldSelector for LabelDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1847,6 +1847,59 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MetricDescriptor {
+        #[doc = "A detailed description of the metric, which can be used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the metric definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
+        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
+        #[doc = "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported."]
+        #[serde(rename = "metricKind", default)]
+        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
+        #[doc = "The resource name of the metric descriptor."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example:\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\""]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)\nbit bit\nBy byte\ns second\nmin minute\nh hour\nd dayPrefixes (PREFIX)\nk kilo (10**3)\nM mega (10**6)\nG giga (10**9)\nT tera (10**12)\nP peta (10**15)\nE exa (10**18)\nZ zetta (10**21)\nY yotta (10**24)\nm milli (10**-3)\nu micro (10**-6)\nn nano (10**-9)\np pico (10**-12)\nf femto (10**-15)\na atto (10**-18)\nz zepto (10**-21)\ny yocto (10**-24)\nKi kibi (2**10)\nMi mebi (2**20)\nGi gibi (2**30)\nTi tebi (2**40)GrammarThe grammar also includes these connectors:\n/ division (as an infix operator, e.g. 1/s).\n. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n| Annotation\n| \"1\"\n;\n\nAnnotation = \"{\" NAME \"}\" ;\nNotes:\nAnnotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.\nNAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.\n1 represents dimensionless value 1, such as in 1/s.\n% represents dimensionless value 1/100, and annotates values giving  a percentage."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<String>,
+        #[doc = "Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
+    }
+    impl ::field_selector::FieldSelector for MetricDescriptor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricDescriptorLaunchStage {
         #[doc = "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u{2019}t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases."]
@@ -2068,39 +2121,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricDescriptor {
-        #[doc = "A detailed description of the metric, which can be used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the metric definition."]
+    pub struct MetricDescriptorMetadata {
+        #[doc = "The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors."]
+        #[serde(rename = "ingestDelay", default)]
+        pub ingest_delay: ::std::option::Option<String>,
+        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric definition."]
         #[serde(rename = "launchStage", default)]
-        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
-        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
-        #[doc = "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "metricKind", default)]
-        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
-        #[doc = "The resource name of the metric descriptor."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example:\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\""]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)\nbit bit\nBy byte\ns second\nmin minute\nh hour\nd dayPrefixes (PREFIX)\nk kilo (10**3)\nM mega (10**6)\nG giga (10**9)\nT tera (10**12)\nP peta (10**15)\nE exa (10**18)\nZ zetta (10**21)\nY yotta (10**24)\nm milli (10**-3)\nu micro (10**-6)\nn nano (10**-9)\np pico (10**-12)\nf femto (10**-15)\na atto (10**-18)\nz zepto (10**-21)\ny yocto (10**-24)\nKi kibi (2**10)\nMi mebi (2**20)\nGi gibi (2**30)\nTi tebi (2**40)GrammarThe grammar also includes these connectors:\n/ division (as an infix operator, e.g. 1/s).\n. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n| Annotation\n| \"1\"\n;\n\nAnnotation = \"{\" NAME \"}\" ;\nNotes:\nAnnotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.\nNAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.\n1 represents dimensionless value 1, such as in 1/s.\n% represents dimensionless value 1/100, and annotates values giving  a percentage."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<String>,
-        #[doc = "Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
+        #[doc = "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period."]
+        #[serde(rename = "samplePeriod", default)]
+        pub sample_period: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MetricDescriptor {
+    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2185,30 +2218,35 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct MetricDescriptorMetadata {
-        #[doc = "The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors."]
-        #[serde(rename = "ingestDelay", default)]
-        pub ingest_delay: ::std::option::Option<String>,
-        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
-        #[doc = "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period."]
-        #[serde(rename = "samplePeriod", default)]
-        pub sample_period: ::std::option::Option<String>,
+    pub struct MetricThreshold {
+        #[doc = "Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field."]
+        #[serde(rename = "aggregations", default)]
+        pub aggregations: ::std::option::Option<Vec<crate::schemas::Aggregation>>,
+        #[doc = "The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently."]
+        #[serde(rename = "comparison", default)]
+        pub comparison: ::std::option::Option<crate::schemas::MetricThresholdComparison>,
+        #[doc = "Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field."]
+        #[serde(rename = "denominatorAggregations", default)]
+        pub denominator_aggregations: ::std::option::Option<Vec<crate::schemas::Aggregation>>,
+        #[doc = "A filter that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter is similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed) and must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length."]
+        #[serde(rename = "denominatorFilter", default)]
+        pub denominator_filter: ::std::option::Option<String>,
+        #[doc = "The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly."]
+        #[serde(rename = "duration", default)]
+        pub duration: ::std::option::Option<String>,
+        #[doc = "A filter that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed) and must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length."]
+        #[serde(rename = "filter", default)]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "A value against which to compare the time series."]
+        #[serde(rename = "thresholdValue", default)]
+        pub threshold_value: ::std::option::Option<f64>,
+        #[doc = "The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified."]
+        #[serde(rename = "trigger", default)]
+        pub trigger: ::std::option::Option<crate::schemas::Trigger>,
     }
-    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
+    impl ::field_selector::FieldSelector for MetricThreshold {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2293,44 +2331,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct MetricThreshold {
-        #[doc = "Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field."]
-        #[serde(rename = "aggregations", default)]
-        pub aggregations: ::std::option::Option<Vec<crate::schemas::Aggregation>>,
-        #[doc = "The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently."]
-        #[serde(rename = "comparison", default)]
-        pub comparison: ::std::option::Option<crate::schemas::MetricThresholdComparison>,
-        #[doc = "Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field."]
-        #[serde(rename = "denominatorAggregations", default)]
-        pub denominator_aggregations: ::std::option::Option<Vec<crate::schemas::Aggregation>>,
-        #[doc = "A filter that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter is similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed) and must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length."]
-        #[serde(rename = "denominatorFilter", default)]
-        pub denominator_filter: ::std::option::Option<String>,
-        #[doc = "The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly."]
-        #[serde(rename = "duration", default)]
-        pub duration: ::std::option::Option<String>,
-        #[doc = "A filter that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed) and must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length."]
-        #[serde(rename = "filter", default)]
-        pub filter: ::std::option::Option<String>,
-        #[doc = "A value against which to compare the time series."]
-        #[serde(rename = "thresholdValue", default)]
-        pub threshold_value: ::std::option::Option<f64>,
-        #[doc = "The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified."]
-        #[serde(rename = "trigger", default)]
-        pub trigger: ::std::option::Option<crate::schemas::Trigger>,
-    }
-    impl ::field_selector::FieldSelector for MetricThreshold {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2351,6 +2351,48 @@ pub mod schemas {
         pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MonitoredResource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MonitoredResourceDescriptor {
+        #[doc = "Optional. A detailed description of the monitored resource type that might be used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\"."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\"."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the monitored resource definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
+        #[doc = "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2434,48 +2476,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MonitoredResourceDescriptor {
-        #[doc = "Optional. A detailed description of the monitored resource type that might be used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\"."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\"."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the monitored resource definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
-        #[doc = "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MonitoredResourceMetadata {
         #[doc = "Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including \"machine_image\", \"vpc\", \"subnet_id\", \"security_group\", \"name\", etc. System label values can be only strings, Boolean values, or a list of strings. For example:\n{ \"name\": \"my-test-instance\",\n\"security_group\": [\"a\", \"b\", \"c\"],\n\"spot_instance\": false }"]
@@ -2516,6 +2516,54 @@ pub mod schemas {
         pub mutated_by: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MutationRecord {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NotificationChannel {
+        #[doc = "An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The full REST resource name for this channel. The syntax is:\nprojects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]\nThe [CHANNEL_ID] is automatically assigned by the server on creation."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter."]
+        #[serde(rename = "userLabels", default)]
+        pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel."]
+        #[serde(rename = "verificationStatus", default)]
+        pub verification_status:
+            ::std::option::Option<crate::schemas::NotificationChannelVerificationStatus>,
+    }
+    impl ::field_selector::FieldSelector for NotificationChannel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2599,34 +2647,29 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct NotificationChannel {
-        #[doc = "An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters."]
+    pub struct NotificationChannelDescriptor {
+        #[doc = "A human-readable description of the notification channel type. The description may include a description of the properties of the channel and pointers to external documentation."]
         #[serde(rename = "description", default)]
         pub description: ::std::option::Option<String>,
-        #[doc = "An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters."]
+        #[doc = "A human-readable name for the notification channel type. This form of the name is suitable for a user interface."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-        #[doc = "Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field."]
+        #[doc = "The set of labels that must be defined to identify a particular channel of the corresponding type. Each label includes a description for how that field should be populated."]
         #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The full REST resource name for this channel. The syntax is:\nprojects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]\nThe [CHANNEL_ID] is automatically assigned by the server on creation."]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "The full REST resource name for this descriptor. The syntax is:\nprojects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]\nIn the above, [TYPE] is the value of the type field."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field."]
+        #[doc = "The type of notification channel, such as \"email\", \"sms\", etc. Notification channel types are globally unique."]
         #[serde(rename = "type", default)]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter."]
-        #[serde(rename = "userLabels", default)]
-        pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel."]
-        #[serde(rename = "verificationStatus", default)]
-        pub verification_status:
-            ::std::option::Option<crate::schemas::NotificationChannelVerificationStatus>,
+        #[doc = "The tiers that support this notification channel; the project service tier must be one of the supported_tiers."]
+        #[serde(rename = "supportedTiers", default)]
+        pub supported_tiers: ::std::option::Option<
+            Vec<crate::schemas::NotificationChannelDescriptorSupportedTiersItems>,
+        >,
     }
-    impl ::field_selector::FieldSelector for NotificationChannel {
+    impl ::field_selector::FieldSelector for NotificationChannelDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2703,49 +2746,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NotificationChannelDescriptor {
-        #[doc = "A human-readable description of the notification channel type. The description may include a description of the properties of the channel and pointers to external documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "A human-readable name for the notification channel type. This form of the name is suitable for a user interface."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The set of labels that must be defined to identify a particular channel of the corresponding type. Each label includes a description for how that field should be populated."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "The full REST resource name for this descriptor. The syntax is:\nprojects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]\nIn the above, [TYPE] is the value of the type field."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The type of notification channel, such as \"email\", \"sms\", etc. Notification channel types are globally unique."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The tiers that support this notification channel; the project service tier must be one of the supported_tiers."]
-        #[serde(rename = "supportedTiers", default)]
-        pub supported_tiers: ::std::option::Option<
-            Vec<crate::schemas::NotificationChannelDescriptorSupportedTiersItems>,
-        >,
-    }
-    impl ::field_selector::FieldSelector for NotificationChannelDescriptor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Option {
         #[doc = "The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, \"map_entry\". For custom options, it should be the fully-qualified name. For example, \"google.api.http\"."]
@@ -2794,6 +2794,35 @@ pub mod schemas {
         pub min: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for Range {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceGroup {
+        #[doc = "The group of resources being monitored. Should be only the group_id, not projects/<project_id>/groups/<group_id>."]
+        #[serde(rename = "groupId", default)]
+        pub group_id: ::std::option::Option<String>,
+        #[doc = "The resource type of the group members."]
+        #[serde(rename = "resourceType", default)]
+        pub resource_type: ::std::option::Option<crate::schemas::ResourceGroupResourceType>,
+    }
+    impl ::field_selector::FieldSelector for ResourceGroup {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2853,35 +2882,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ResourceGroupResourceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResourceGroup {
-        #[doc = "The group of resources being monitored. Should be only the group_id, not projects/<project_id>/groups/<group_id>."]
-        #[serde(rename = "groupId", default)]
-        pub group_id: ::std::option::Option<String>,
-        #[doc = "The resource type of the group members."]
-        #[serde(rename = "resourceType", default)]
-        pub resource_type: ::std::option::Option<crate::schemas::ResourceGroupResourceType>,
-    }
-    impl ::field_selector::FieldSelector for ResourceGroup {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3036,6 +3036,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TimeSeries {
+        #[doc = "Output only. The associated monitored resource metadata. When reading a a timeseries, this field will include metadata labels that are explicitly named in the reduction. When creating a timeseries, this field is ignored."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::MonitoredResourceMetadata>,
+        #[doc = "The associated metric. A fully-specified metric used to identify the time series."]
+        #[serde(rename = "metric", default)]
+        pub metric: ::std::option::Option<crate::schemas::Metric>,
+        #[doc = "The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE."]
+        #[serde(rename = "metricKind", default)]
+        pub metric_kind: ::std::option::Option<crate::schemas::TimeSeriesMetricKind>,
+        #[doc = "The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION."]
+        #[serde(rename = "points", default)]
+        pub points: ::std::option::Option<Vec<crate::schemas::Point>>,
+        #[doc = "The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data."]
+        #[serde(rename = "resource", default)]
+        pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
+        #[doc = "The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::TimeSeriesValueType>,
+    }
+    impl ::field_selector::FieldSelector for TimeSeries {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TimeSeriesMetricKind {
         #[doc = "A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."]
@@ -3174,36 +3204,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct TimeSeries {
-        #[doc = "Output only. The associated monitored resource metadata. When reading a a timeseries, this field will include metadata labels that are explicitly named in the reduction. When creating a timeseries, this field is ignored."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::MonitoredResourceMetadata>,
-        #[doc = "The associated metric. A fully-specified metric used to identify the time series."]
-        #[serde(rename = "metric", default)]
-        pub metric: ::std::option::Option<crate::schemas::Metric>,
-        #[doc = "The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE."]
-        #[serde(rename = "metricKind", default)]
-        pub metric_kind: ::std::option::Option<crate::schemas::TimeSeriesMetricKind>,
-        #[doc = "The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION."]
-        #[serde(rename = "points", default)]
-        pub points: ::std::option::Option<Vec<crate::schemas::Point>>,
-        #[doc = "The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data."]
-        #[serde(rename = "resource", default)]
-        pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
-        #[doc = "The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::TimeSeriesValueType>,
-    }
-    impl ::field_selector::FieldSelector for TimeSeries {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
@@ -3216,6 +3216,36 @@ pub mod schemas {
         pub percent: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for Trigger {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Type {
+        #[doc = "The list of fields."]
+        #[serde(rename = "fields", default)]
+        pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
+        #[doc = "The fully qualified message name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The list of types appearing in oneof definitions in this type."]
+        #[serde(rename = "oneofs", default)]
+        pub oneofs: ::std::option::Option<Vec<String>>,
+        #[doc = "The protocol buffer options."]
+        #[serde(rename = "options", default)]
+        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
+        #[doc = "The source context."]
+        #[serde(rename = "sourceContext", default)]
+        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
+        #[doc = "The source syntax."]
+        #[serde(rename = "syntax", default)]
+        pub syntax: ::std::option::Option<crate::schemas::TypeSyntax>,
+    }
+    impl ::field_selector::FieldSelector for Type {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3280,36 +3310,6 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Type {
-        #[doc = "The list of fields."]
-        #[serde(rename = "fields", default)]
-        pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
-        #[doc = "The fully qualified message name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The list of types appearing in oneof definitions in this type."]
-        #[serde(rename = "oneofs", default)]
-        pub oneofs: ::std::option::Option<Vec<String>>,
-        #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
-        pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
-        #[doc = "The source context."]
-        #[serde(rename = "sourceContext", default)]
-        pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
-        #[doc = "The source syntax."]
-        #[serde(rename = "syntax", default)]
-        pub syntax: ::std::option::Option<crate::schemas::TypeSyntax>,
-    }
-    impl ::field_selector::FieldSelector for Type {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TypedValue {
         #[doc = "A Boolean value: true or false."]
         #[serde(rename = "boolValue", default)]
@@ -3329,6 +3329,63 @@ pub mod schemas {
         pub string_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TypedValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UptimeCheckConfig {
+        #[doc = "The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required."]
+        #[serde(rename = "contentMatchers", default)]
+        pub content_matchers: ::std::option::Option<Vec<crate::schemas::ContentMatcher>>,
+        #[doc = "A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Contains information needed to make an HTTP or HTTPS check."]
+        #[serde(rename = "httpCheck", default)]
+        pub http_check: ::std::option::Option<crate::schemas::HttpCheck>,
+        #[doc = "The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this CheckConfig."]
+        #[serde(rename = "internalCheckers", default)]
+        pub internal_checkers: ::std::option::Option<Vec<crate::schemas::InternalChecker>>,
+        #[doc = "The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer"]
+        #[serde(rename = "monitoredResource", default)]
+        pub monitored_resource: ::std::option::Option<crate::schemas::MonitoredResource>,
+        #[doc = "A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s."]
+        #[serde(rename = "period", default)]
+        pub period: ::std::option::Option<String>,
+        #[doc = "The group resource associated with the configuration."]
+        #[serde(rename = "resourceGroup", default)]
+        pub resource_group: ::std::option::Option<crate::schemas::ResourceGroup>,
+        #[doc = "The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions."]
+        #[serde(rename = "selectedRegions", default)]
+        pub selected_regions:
+            ::std::option::Option<Vec<crate::schemas::UptimeCheckConfigSelectedRegionsItems>>,
+        #[doc = "Contains information needed to make a TCP check."]
+        #[serde(rename = "tcpCheck", default)]
+        pub tcp_check: ::std::option::Option<crate::schemas::TcpCheck>,
+        #[doc = "The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required."]
+        #[serde(rename = "timeout", default)]
+        pub timeout: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UptimeCheckConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3411,43 +3468,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UptimeCheckConfig {
-        #[doc = "The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required."]
-        #[serde(rename = "contentMatchers", default)]
-        pub content_matchers: ::std::option::Option<Vec<crate::schemas::ContentMatcher>>,
-        #[doc = "A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Contains information needed to make an HTTP or HTTPS check."]
-        #[serde(rename = "httpCheck", default)]
-        pub http_check: ::std::option::Option<crate::schemas::HttpCheck>,
-        #[doc = "The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this CheckConfig."]
-        #[serde(rename = "internalCheckers", default)]
-        pub internal_checkers: ::std::option::Option<Vec<crate::schemas::InternalChecker>>,
-        #[doc = "The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer"]
-        #[serde(rename = "monitoredResource", default)]
-        pub monitored_resource: ::std::option::Option<crate::schemas::MonitoredResource>,
-        #[doc = "A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s."]
-        #[serde(rename = "period", default)]
-        pub period: ::std::option::Option<String>,
-        #[doc = "The group resource associated with the configuration."]
-        #[serde(rename = "resourceGroup", default)]
-        pub resource_group: ::std::option::Option<crate::schemas::ResourceGroup>,
-        #[doc = "The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions."]
-        #[serde(rename = "selectedRegions", default)]
-        pub selected_regions:
-            ::std::option::Option<Vec<crate::schemas::UptimeCheckConfigSelectedRegionsItems>>,
-        #[doc = "Contains information needed to make a TCP check."]
-        #[serde(rename = "tcpCheck", default)]
-        pub tcp_check: ::std::option::Option<crate::schemas::TcpCheck>,
-        #[doc = "The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required."]
-        #[serde(rename = "timeout", default)]
-        pub timeout: ::std::option::Option<String>,
+    pub struct UptimeCheckIp {
+        #[doc = "The IP address from which the uptime check originates. This is a full IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely and should support interpreting this field in either IPv4 or IPv6 format."]
+        #[serde(rename = "ipAddress", default)]
+        pub ip_address: ::std::option::Option<String>,
+        #[doc = "A more specific location within the region that typically encodes a particular city/town/metro (and its containing state/province or country) within the broader umbrella region category."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "A broad region category in which the IP address is located."]
+        #[serde(rename = "region", default)]
+        pub region: ::std::option::Option<crate::schemas::UptimeCheckIpRegion>,
     }
-    impl ::field_selector::FieldSelector for UptimeCheckConfig {
+    impl ::field_selector::FieldSelector for UptimeCheckIp {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3515,38 +3547,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for UptimeCheckIpRegion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UptimeCheckIp {
-        #[doc = "The IP address from which the uptime check originates. This is a full IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely and should support interpreting this field in either IPv4 or IPv6 format."]
-        #[serde(rename = "ipAddress", default)]
-        pub ip_address: ::std::option::Option<String>,
-        #[doc = "A more specific location within the region that typically encodes a particular city/town/metro (and its containing state/province or country) within the broader umbrella region category."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "A broad region category in which the IP address is located."]
-        #[serde(rename = "region", default)]
-        pub region: ::std::option::Option<crate::schemas::UptimeCheckIpRegion>,
-    }
-    impl ::field_selector::FieldSelector for UptimeCheckIp {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -12104,84 +12104,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -12213,7 +12135,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -12334,50 +12255,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

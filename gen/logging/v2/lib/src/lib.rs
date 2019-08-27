@@ -150,6 +150,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LabelDescriptor {
+        #[doc = "A human-readable description for the label."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The label key."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "The type of data that can be assigned to the label."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
+    }
+    impl ::field_selector::FieldSelector for LabelDescriptor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LabelDescriptorValueType {
         #[doc = "Boolean; true or false."]
@@ -201,38 +233,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LabelDescriptorValueType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LabelDescriptor {
-        #[doc = "A human-readable description for the label."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The label key."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "The type of data that can be assigned to the label."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
-    }
-    impl ::field_selector::FieldSelector for LabelDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -460,6 +460,71 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct LogEntry {
+        #[doc = "Optional. Information about the HTTP request associated with this log entry, if applicable."]
+        #[serde(rename = "httpRequest", default)]
+        pub http_request: ::std::option::Option<crate::schemas::HttpRequest>,
+        #[doc = "Optional. A unique identifier for the log entry. If you provide a value, then Logging considers other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates which can be removed. If omitted in new log entries, then Logging assigns its own unique identifier. The insert_id is also used to order log entries that have the same timestamp value."]
+        #[serde(rename = "insertId", default)]
+        pub insert_id: ::std::option::Option<String>,
+        #[doc = "The log entry payload, represented as a structure that is expressed as a JSON object."]
+        #[serde(rename = "jsonPayload", default)]
+        pub json_payload:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Optional. A set of user-defined (key, value) data that provides additional information about the log entry."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Required. The resource name of the log to which this log entry belongs:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\nA project number may optionally be used in place of PROJECT_ID. The project number is translated to its corresponding PROJECT_ID internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded within log_name. Example: \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results."]
+        #[serde(rename = "logName", default)]
+        pub log_name: ::std::option::Option<String>,
+        #[doc = "Deprecated. Output only. Additional metadata about the monitored resource.Only k8s_container, k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For GKE versions 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used to be in metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The Stackdriver system labels that were present in the metadata.systemLabels field will no longer be available in the LogEntry."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::MonitoredResourceMetadata>,
+        #[doc = "Optional. Information about an operation associated with the log entry, if applicable."]
+        #[serde(rename = "operation", default)]
+        pub operation: ::std::option::Option<crate::schemas::LogEntryOperation>,
+        #[doc = "The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads.The following protocol buffer types are supported; user-defined types are not supported:\"type.googleapis.com/google.cloud.audit.AuditLog\"  \"type.googleapis.com/google.appengine.logging.v1.RequestLog\""]
+        #[serde(rename = "protoPayload", default)]
+        pub proto_payload:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Output only. The time the log entry was received by Logging."]
+        #[serde(rename = "receiveTimestamp", default)]
+        pub receive_timestamp: ::std::option::Option<String>,
+        #[doc = "Required. The monitored resource that produced this log entry.Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error."]
+        #[serde(rename = "resource", default)]
+        pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
+        #[doc = "Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::LogEntrySeverity>,
+        #[doc = "Optional. Source code location information associated with the log entry, if any."]
+        #[serde(rename = "sourceLocation", default)]
+        pub source_location: ::std::option::Option<crate::schemas::LogEntrySourceLocation>,
+        #[doc = "Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as <code>\"000000000000004a\"</code>."]
+        #[serde(rename = "spanId", default)]
+        pub span_id: ::std::option::Option<String>,
+        #[doc = "The log entry payload, represented as a Unicode string (UTF-8)."]
+        #[serde(rename = "textPayload", default)]
+        pub text_payload: ::std::option::Option<String>,
+        #[doc = "Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in the fractional seconds might be omitted when the timestamp is displayed.Incoming log entries should have timestamps that are no more than the logs retention period in the past, and no more than 24 hours in the future. Log entries outside those time boundaries will not be available when calling entries.list, but those log entries can still be exported with LogSinks."]
+        #[serde(rename = "timestamp", default)]
+        pub timestamp: ::std::option::Option<String>,
+        #[doc = "Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824"]
+        #[serde(rename = "trace", default)]
+        pub trace: ::std::option::Option<String>,
+        #[doc = "Optional. The sampling decision of the trace associated with the log entry.True means that the trace resource name in the trace field was sampled for storage in a trace backend. False means that the trace was not sampled for storage when this log entry was written, or the sampling decision was unknown at the time. A non-sampled trace value is still useful as a request correlation identifier. The default is False."]
+        #[serde(rename = "traceSampled", default)]
+        pub trace_sampled: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for LogEntry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LogEntrySeverity {
         #[doc = "(700) A person must take an action immediately."]
@@ -535,71 +600,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LogEntrySeverity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct LogEntry {
-        #[doc = "Optional. Information about the HTTP request associated with this log entry, if applicable."]
-        #[serde(rename = "httpRequest", default)]
-        pub http_request: ::std::option::Option<crate::schemas::HttpRequest>,
-        #[doc = "Optional. A unique identifier for the log entry. If you provide a value, then Logging considers other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates which can be removed. If omitted in new log entries, then Logging assigns its own unique identifier. The insert_id is also used to order log entries that have the same timestamp value."]
-        #[serde(rename = "insertId", default)]
-        pub insert_id: ::std::option::Option<String>,
-        #[doc = "The log entry payload, represented as a structure that is expressed as a JSON object."]
-        #[serde(rename = "jsonPayload", default)]
-        pub json_payload:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. A set of user-defined (key, value) data that provides additional information about the log entry."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Required. The resource name of the log to which this log entry belongs:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\nA project number may optionally be used in place of PROJECT_ID. The project number is translated to its corresponding PROJECT_ID internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded within log_name. Example: \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results."]
-        #[serde(rename = "logName", default)]
-        pub log_name: ::std::option::Option<String>,
-        #[doc = "Deprecated. Output only. Additional metadata about the monitored resource.Only k8s_container, k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For GKE versions 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used to be in metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The Stackdriver system labels that were present in the metadata.systemLabels field will no longer be available in the LogEntry."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::MonitoredResourceMetadata>,
-        #[doc = "Optional. Information about an operation associated with the log entry, if applicable."]
-        #[serde(rename = "operation", default)]
-        pub operation: ::std::option::Option<crate::schemas::LogEntryOperation>,
-        #[doc = "The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads.The following protocol buffer types are supported; user-defined types are not supported:\"type.googleapis.com/google.cloud.audit.AuditLog\"  \"type.googleapis.com/google.appengine.logging.v1.RequestLog\""]
-        #[serde(rename = "protoPayload", default)]
-        pub proto_payload:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Output only. The time the log entry was received by Logging."]
-        #[serde(rename = "receiveTimestamp", default)]
-        pub receive_timestamp: ::std::option::Option<String>,
-        #[doc = "Required. The monitored resource that produced this log entry.Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error."]
-        #[serde(rename = "resource", default)]
-        pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
-        #[doc = "Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::LogEntrySeverity>,
-        #[doc = "Optional. Source code location information associated with the log entry, if any."]
-        #[serde(rename = "sourceLocation", default)]
-        pub source_location: ::std::option::Option<crate::schemas::LogEntrySourceLocation>,
-        #[doc = "Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as <code>\"000000000000004a\"</code>."]
-        #[serde(rename = "spanId", default)]
-        pub span_id: ::std::option::Option<String>,
-        #[doc = "The log entry payload, represented as a Unicode string (UTF-8)."]
-        #[serde(rename = "textPayload", default)]
-        pub text_payload: ::std::option::Option<String>,
-        #[doc = "Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in the fractional seconds might be omitted when the timestamp is displayed.Incoming log entries should have timestamps that are no more than the logs retention period in the past, and no more than 24 hours in the future. Log entries outside those time boundaries will not be available when calling entries.list, but those log entries can still be exported with LogSinks."]
-        #[serde(rename = "timestamp", default)]
-        pub timestamp: ::std::option::Option<String>,
-        #[doc = "Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824"]
-        #[serde(rename = "trace", default)]
-        pub trace: ::std::option::Option<String>,
-        #[doc = "Optional. The sampling decision of the trace associated with the log entry.True means that the trace resource name in the trace field was sampled for storage in a trace backend. False means that the trace was not sampled for storage when this log entry was written, or the sampling decision was unknown at the time. A non-sampled trace value is still useful as a request correlation identifier. The default is False."]
-        #[serde(rename = "traceSampled", default)]
-        pub trace_sampled: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for LogEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -717,6 +717,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LogLine {
+        #[doc = "App-provided log message."]
+        #[serde(rename = "logMessage", default)]
+        pub log_message: ::std::option::Option<String>,
+        #[doc = "Severity of this log entry."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::LogLineSeverity>,
+        #[doc = "Where in the source code this log message was written."]
+        #[serde(rename = "sourceLocation", default)]
+        pub source_location: ::std::option::Option<crate::schemas::SourceLocation>,
+        #[doc = "Approximate time when this log entry was made."]
+        #[serde(rename = "time", default)]
+        pub time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for LogLine {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LogLineSeverity {
         #[doc = "(700) A person must take an action immediately."]
@@ -801,32 +836,41 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct LogLine {
-        #[doc = "App-provided log message."]
-        #[serde(rename = "logMessage", default)]
-        pub log_message: ::std::option::Option<String>,
-        #[doc = "Severity of this log entry."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::LogLineSeverity>,
-        #[doc = "Where in the source code this log message was written."]
-        #[serde(rename = "sourceLocation", default)]
-        pub source_location: ::std::option::Option<crate::schemas::SourceLocation>,
-        #[doc = "Approximate time when this log entry was made."]
-        #[serde(rename = "time", default)]
-        pub time: ::std::option::Option<String>,
+    pub struct LogMetric {
+        #[doc = "Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values."]
+        #[serde(rename = "bucketOptions", default)]
+        pub bucket_options: ::std::option::Option<crate::schemas::BucketOptions>,
+        #[doc = "Output only. The creation timestamp of the metric.This field may not be present for older metrics."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional. A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. An advanced logs filter which is used to match log entries. Example:\n\"resource.type=gae_app AND severity>=ERROR\"\nThe maximum length of the filter is 20000 characters."]
+        #[serde(rename = "filter", default)]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project."]
+        #[serde(rename = "labelExtractors", default)]
+        pub label_extractors: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of \"1\". Such a metric counts the number of log entries matching the filter expression.The name, type, and description fields in the metric_descriptor are output only, and is constructed using the name and description field in the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be updated once initially configured. New labels can be added in the metric_descriptor, but existing labels cannot be modified except for their description."]
+        #[serde(rename = "metricDescriptor", default)]
+        pub metric_descriptor: ::std::option::Option<crate::schemas::MetricDescriptor>,
+        #[doc = "Required. The client-assigned metric identifier. Examples: \"error_count\", \"nginx/requests\".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: \"projects/my-project/metrics/nginx%2Frequests\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The last update timestamp of the metric.This field may not be present for older metrics."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified log entry field. The value  of the field is converted to a string before applying the regex.  It is an error to specify a regex that does not include exactly one  capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, \".*quantity=(\\d+).*\")"]
+        #[serde(rename = "valueExtractor", default)]
+        pub value_extractor: ::std::option::Option<String>,
+        #[doc = "Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<crate::schemas::LogMetricVersion>,
     }
-    impl ::field_selector::FieldSelector for LogLine {
+    impl ::field_selector::FieldSelector for LogMetric {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -891,41 +935,45 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct LogMetric {
-        #[doc = "Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values."]
-        #[serde(rename = "bucketOptions", default)]
-        pub bucket_options: ::std::option::Option<crate::schemas::BucketOptions>,
-        #[doc = "Output only. The creation timestamp of the metric.This field may not be present for older metrics."]
+    pub struct LogSink {
+        #[doc = "Output only. The creation timestamp of the sink.This field may not be present for older sinks."]
         #[serde(rename = "createTime", default)]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Required. An advanced logs filter which is used to match log entries. Example:\n\"resource.type=gae_app AND severity>=ERROR\"\nThe maximum length of the filter is 20000 characters."]
+        #[doc = "Required. The export destination:\n\"storage.googleapis.com/[GCS_BUCKET]\"\n\"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\"\n\"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\"\nThe sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks."]
+        #[serde(rename = "destination", default)]
+        pub destination: ::std::option::Option<String>,
+        #[doc = "Optional. An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter. For example:\nlogName=\"projects/[PROJECT_ID]/logs/[LOG_ID]\" AND severity>=ERROR"]
         #[serde(rename = "filter", default)]
         pub filter: ::std::option::Option<String>,
-        #[doc = "Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project."]
-        #[serde(rename = "labelExtractors", default)]
-        pub label_extractors: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of \"1\". Such a metric counts the number of log entries matching the filter expression.The name, type, and description fields in the metric_descriptor are output only, and is constructed using the name and description field in the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be updated once initially configured. New labels can be added in the metric_descriptor, but existing labels cannot be modified except for their description."]
-        #[serde(rename = "metricDescriptor", default)]
-        pub metric_descriptor: ::std::option::Option<crate::schemas::MetricDescriptor>,
-        #[doc = "Required. The client-assigned metric identifier. Examples: \"error_count\", \"nginx/requests\".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: \"projects/my-project/metrics/nginx%2Frequests\"."]
+        #[doc = "Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name:\nlogName:(\"projects/test-project1/\" OR \"projects/test-project2/\") AND\nresource.type=gce_instance"]
+        #[serde(rename = "includeChildren", default)]
+        pub include_children: ::std::option::Option<bool>,
+        #[doc = "Required. The client-assigned sink identifier, unique within the project. Example: \"my-syslog-errors-to-pubsub\". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The last update timestamp of the metric.This field may not be present for older metrics."]
+        #[doc = "Deprecated. The log entry format to use for this sink's exported log entries. The v2 format is used by default and cannot be changed."]
+        #[serde(rename = "outputVersionFormat", default)]
+        pub output_version_format:
+            ::std::option::Option<crate::schemas::LogSinkOutputVersionFormat>,
+        #[doc = "Output only. The last update timestamp of the sink.This field may not be present for older sinks."]
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
-        #[doc = "Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified log entry field. The value  of the field is converted to a string before applying the regex.  It is an error to specify a regex that does not include exactly one  capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, \".*quantity=(\\d+).*\")"]
-        #[serde(rename = "valueExtractor", default)]
-        pub value_extractor: ::std::option::Option<String>,
-        #[doc = "Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<crate::schemas::LogMetricVersion>,
+        #[doc = "Output only. An IAM identity\u{2014}a service account or group\u{2014}under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource. Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity."]
+        #[serde(rename = "writerIdentity", default)]
+        pub writer_identity: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for LogMetric {
+    impl ::field_selector::FieldSelector for LogSink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1009,34 +1057,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct LogSink {
-        #[doc = "Output only. The creation timestamp of the sink.This field may not be present for older sinks."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Required. The export destination:\n\"storage.googleapis.com/[GCS_BUCKET]\"\n\"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\"\n\"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\"\nThe sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks."]
-        #[serde(rename = "destination", default)]
-        pub destination: ::std::option::Option<String>,
-        #[doc = "Optional. An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter. For example:\nlogName=\"projects/[PROJECT_ID]/logs/[LOG_ID]\" AND severity>=ERROR"]
-        #[serde(rename = "filter", default)]
-        pub filter: ::std::option::Option<String>,
-        #[doc = "Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name:\nlogName:(\"projects/test-project1/\" OR \"projects/test-project2/\") AND\nresource.type=gce_instance"]
-        #[serde(rename = "includeChildren", default)]
-        pub include_children: ::std::option::Option<bool>,
-        #[doc = "Required. The client-assigned sink identifier, unique within the project. Example: \"my-syslog-errors-to-pubsub\". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods."]
+    pub struct MetricDescriptor {
+        #[doc = "A detailed description of the metric, which can be used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the metric definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
+        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
+        #[doc = "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported."]
+        #[serde(rename = "metricKind", default)]
+        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
+        #[doc = "The resource name of the metric descriptor."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "Deprecated. The log entry format to use for this sink's exported log entries. The v2 format is used by default and cannot be changed."]
-        #[serde(rename = "outputVersionFormat", default)]
-        pub output_version_format:
-            ::std::option::Option<crate::schemas::LogSinkOutputVersionFormat>,
-        #[doc = "Output only. The last update timestamp of the sink.This field may not be present for older sinks."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Output only. An IAM identity\u{2014}a service account or group\u{2014}under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource. Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity."]
-        #[serde(rename = "writerIdentity", default)]
-        pub writer_identity: ::std::option::Option<String>,
+        #[doc = "The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example:\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\""]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)\nbit bit\nBy byte\ns second\nmin minute\nh hour\nd dayPrefixes (PREFIX)\nk kilo (10**3)\nM mega (10**6)\nG giga (10**9)\nT tera (10**12)\nP peta (10**15)\nE exa (10**18)\nZ zetta (10**21)\nY yotta (10**24)\nm milli (10**-3)\nu micro (10**-6)\nn nano (10**-9)\np pico (10**-12)\nf femto (10**-15)\na atto (10**-18)\nz zepto (10**-21)\ny yocto (10**-24)\nKi kibi (2**10)\nMi mebi (2**20)\nGi gibi (2**30)\nTi tebi (2**40)GrammarThe grammar also includes these connectors:\n/ division (as an infix operator, e.g. 1/s).\n. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n| Annotation\n| \"1\"\n;\n\nAnnotation = \"{\" NAME \"}\" ;\nNotes:\nAnnotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.\nNAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.\n1 represents dimensionless value 1, such as in 1/s.\n% represents dimensionless value 1/100, and annotates values giving  a percentage."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<String>,
+        #[doc = "Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported."]
+        #[serde(rename = "valueType", default)]
+        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
     }
-    impl ::field_selector::FieldSelector for LogSink {
+    impl ::field_selector::FieldSelector for MetricDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1266,39 +1319,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricDescriptor {
-        #[doc = "A detailed description of the metric, which can be used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the metric definition."]
+    pub struct MetricDescriptorMetadata {
+        #[doc = "The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors."]
+        #[serde(rename = "ingestDelay", default)]
+        pub ingest_delay: ::std::option::Option<String>,
+        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric definition."]
         #[serde(rename = "launchStage", default)]
-        pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
-        #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
-        #[doc = "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "metricKind", default)]
-        pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
-        #[doc = "The resource name of the metric descriptor."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example:\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\""]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)\nbit bit\nBy byte\ns second\nmin minute\nh hour\nd dayPrefixes (PREFIX)\nk kilo (10**3)\nM mega (10**6)\nG giga (10**9)\nT tera (10**12)\nP peta (10**15)\nE exa (10**18)\nZ zetta (10**21)\nY yotta (10**24)\nm milli (10**-3)\nu micro (10**-6)\nn nano (10**-9)\np pico (10**-12)\nf femto (10**-15)\na atto (10**-18)\nz zepto (10**-21)\ny yocto (10**-24)\nKi kibi (2**10)\nMi mebi (2**20)\nGi gibi (2**30)\nTi tebi (2**40)GrammarThe grammar also includes these connectors:\n/ division (as an infix operator, e.g. 1/s).\n. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n| Annotation\n| \"1\"\n;\n\nAnnotation = \"{\" NAME \"}\" ;\nNotes:\nAnnotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.\nNAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.\n1 represents dimensionless value 1, such as in 1/s.\n% represents dimensionless value 1/100, and annotates values giving  a percentage."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<String>,
-        #[doc = "Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "valueType", default)]
-        pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
+        #[doc = "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period."]
+        #[serde(rename = "samplePeriod", default)]
+        pub sample_period: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MetricDescriptor {
+    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1394,19 +1427,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetricDescriptorMetadata {
-        #[doc = "The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors."]
-        #[serde(rename = "ingestDelay", default)]
-        pub ingest_delay: ::std::option::Option<String>,
-        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
-        #[doc = "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period."]
-        #[serde(rename = "samplePeriod", default)]
-        pub sample_period: ::std::option::Option<String>,
+    pub struct MonitoredResource {
+        #[doc = "Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels \"project_id\", \"instance_id\", and \"zone\"."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MetricDescriptorMetadata {
+    impl ::field_selector::FieldSelector for MonitoredResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1427,15 +1456,28 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MonitoredResource {
-        #[doc = "Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels \"project_id\", \"instance_id\", and \"zone\"."]
+    pub struct MonitoredResourceDescriptor {
+        #[doc = "Optional. A detailed description of the monitored resource type that might be used in documentation."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\"."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\"."]
         #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance."]
+        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
+        #[doc = "Optional. The launch stage of the monitored resource definition."]
+        #[serde(rename = "launchStage", default)]
+        pub launch_stage:
+            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
+        #[doc = "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters."]
         #[serde(rename = "type", default)]
         pub r#type: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for MonitoredResource {
+    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1511,48 +1553,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for MonitoredResourceDescriptorLaunchStage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MonitoredResourceDescriptor {
-        #[doc = "Optional. A detailed description of the monitored resource type that might be used in documentation."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\"."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\"."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
-        #[doc = "Optional. The launch stage of the monitored resource definition."]
-        #[serde(rename = "launchStage", default)]
-        pub launch_stage:
-            ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
-        #[doc = "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MonitoredResourceDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -17101,84 +17101,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -17210,7 +17132,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -17331,50 +17252,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

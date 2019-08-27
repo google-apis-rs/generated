@@ -1,4 +1,48 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Change {
+        #[doc = "Which ResourceRecordSets to add?"]
+        #[serde(rename = "additions", default)]
+        pub additions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
+        #[doc = "Which ResourceRecordSets to remove? Must match existing data exactly."]
+        #[serde(rename = "deletions", default)]
+        pub deletions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
+        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "If the DNS queries for the zone will be served."]
+        #[serde(rename = "isServing", default)]
+        pub is_serving: ::std::option::Option<bool>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#change\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The time that this operation was started by the server (output only). This is in RFC3339 text format."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Status of the operation (output only). A status of \"done\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::ChangeStatus>,
+    }
+    impl ::field_selector::FieldSelector for Change {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ChangeStatus {
         Done,
@@ -64,30 +108,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Change {
-        #[doc = "Which ResourceRecordSets to add?"]
-        #[serde(rename = "additions", default)]
-        pub additions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
-        #[doc = "Which ResourceRecordSets to remove? Must match existing data exactly."]
-        #[serde(rename = "deletions", default)]
-        pub deletions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
-        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "If the DNS queries for the zone will be served."]
-        #[serde(rename = "isServing", default)]
-        pub is_serving: ::std::option::Option<bool>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#change\"."]
+    pub struct ChangesListResponse {
+        #[doc = "The requested changes."]
+        #[serde(rename = "changes", default)]
+        pub changes: ::std::option::Option<Vec<crate::schemas::Change>>,
+        #[serde(rename = "header", default)]
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
+        #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The time that this operation was started by the server (output only). This is in RFC3339 text format."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Status of the operation (output only). A status of \"done\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ChangeStatus>,
+        #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Change {
+    impl ::field_selector::FieldSelector for ChangesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -108,20 +142,42 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ChangesListResponse {
-        #[doc = "The requested changes."]
-        #[serde(rename = "changes", default)]
-        pub changes: ::std::option::Option<Vec<crate::schemas::Change>>,
-        #[serde(rename = "header", default)]
-        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
-        #[doc = "Type of resource."]
+    pub struct DnsKey {
+        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: ::std::option::Option<crate::schemas::DnsKeyAlgorithm>,
+        #[doc = "The time that this resource was created in the control plane. This is in RFC3339 text format. Output only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only."]
+        #[serde(rename = "digests", default)]
+        pub digests: ::std::option::Option<Vec<crate::schemas::DnsKeyDigest>>,
+        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures."]
+        #[serde(rename = "isActive", default)]
+        pub is_active: ::std::option::Option<bool>,
+        #[doc = "Length of the key in bits. Specified at creation time then immutable."]
+        #[serde(rename = "keyLength", default)]
+        pub key_length: ::std::option::Option<u32>,
+        #[doc = "The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only."]
+        #[serde(rename = "keyTag", default)]
+        pub key_tag: ::std::option::Option<i32>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKey\"."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Base64 encoded public half of this key. Output only."]
+        #[serde(rename = "publicKey", default)]
+        pub public_key: ::std::option::Option<String>,
+        #[doc = "One of \"KEY_SIGNING\" or \"ZONE_SIGNING\". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types. Immutable after creation time."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DnsKeyType>,
     }
-    impl ::field_selector::FieldSelector for ChangesListResponse {
+    impl ::field_selector::FieldSelector for DnsKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -257,42 +313,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKey {
-        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::DnsKeyAlgorithm>,
-        #[doc = "The time that this resource was created in the control plane. This is in RFC3339 text format. Output only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only."]
-        #[serde(rename = "digests", default)]
-        pub digests: ::std::option::Option<Vec<crate::schemas::DnsKeyDigest>>,
-        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures."]
-        #[serde(rename = "isActive", default)]
-        pub is_active: ::std::option::Option<bool>,
-        #[doc = "Length of the key in bits. Specified at creation time then immutable."]
-        #[serde(rename = "keyLength", default)]
-        pub key_length: ::std::option::Option<u32>,
-        #[doc = "The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only."]
-        #[serde(rename = "keyTag", default)]
-        pub key_tag: ::std::option::Option<i32>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKey\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Base64 encoded public half of this key. Output only."]
-        #[serde(rename = "publicKey", default)]
-        pub public_key: ::std::option::Option<String>,
-        #[doc = "One of \"KEY_SIGNING\" or \"ZONE_SIGNING\". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types. Immutable after creation time."]
+    pub struct DnsKeyDigest {
+        #[doc = "The base-16 encoded bytes of this digest. Suitable for use in a DS resource record."]
+        #[serde(rename = "digest", default)]
+        pub digest: ::std::option::Option<String>,
+        #[doc = "Specifies the algorithm used to calculate this digest."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DnsKeyType>,
+        pub r#type: ::std::option::Option<crate::schemas::DnsKeyDigestType>,
     }
-    impl ::field_selector::FieldSelector for DnsKey {
+    impl ::field_selector::FieldSelector for DnsKeyDigest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -369,15 +398,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKeyDigest {
-        #[doc = "The base-16 encoded bytes of this digest. Suitable for use in a DS resource record."]
-        #[serde(rename = "digest", default)]
-        pub digest: ::std::option::Option<String>,
-        #[doc = "Specifies the algorithm used to calculate this digest."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DnsKeyDigestType>,
+    pub struct DnsKeySpec {
+        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: ::std::option::Option<crate::schemas::DnsKeySpecAlgorithm>,
+        #[doc = "Length of the keys in bits."]
+        #[serde(rename = "keyLength", default)]
+        pub key_length: ::std::option::Option<u32>,
+        #[doc = "Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets."]
+        #[serde(rename = "keyType", default)]
+        pub key_type: ::std::option::Option<crate::schemas::DnsKeySpecKeyType>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKeySpec\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DnsKeyDigest {
+    impl ::field_selector::FieldSelector for DnsKeySpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -513,21 +548,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKeySpec {
-        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::DnsKeySpecAlgorithm>,
-        #[doc = "Length of the keys in bits."]
-        #[serde(rename = "keyLength", default)]
-        pub key_length: ::std::option::Option<u32>,
-        #[doc = "Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets."]
-        #[serde(rename = "keyType", default)]
-        pub key_type: ::std::option::Option<crate::schemas::DnsKeySpecKeyType>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKeySpec\"."]
+    pub struct DnsKeysListResponse {
+        #[doc = "The requested resources."]
+        #[serde(rename = "dnsKeys", default)]
+        pub dns_keys: ::std::option::Option<Vec<crate::schemas::DnsKey>>,
+        #[serde(rename = "header", default)]
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
+        #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
+        #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DnsKeySpec {
+    impl ::field_selector::FieldSelector for DnsKeysListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -548,20 +582,47 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKeysListResponse {
-        #[doc = "The requested resources."]
-        #[serde(rename = "dnsKeys", default)]
-        pub dns_keys: ::std::option::Option<Vec<crate::schemas::DnsKey>>,
-        #[serde(rename = "header", default)]
-        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
-        #[doc = "Type of resource."]
+    pub struct ManagedZone {
+        #[doc = "The time that this resource was created on the server. This is in RFC3339 text format. Output only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The DNS name of this managed zone, for instance \"example.com.\"."]
+        #[serde(rename = "dnsName", default)]
+        pub dns_name: ::std::option::Option<String>,
+        #[doc = "DNSSEC configuration."]
+        #[serde(rename = "dnssecConfig", default)]
+        pub dnssec_config: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfig>,
+        #[doc = "Unique identifier for the resource; defined by the server (output only)"]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: ::std::option::Option<u64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZone\"."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "User labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset."]
+        #[serde(rename = "nameServerSet", default)]
+        pub name_server_set: ::std::option::Option<String>,
+        #[doc = "Delegate your managed_zone to these virtual name servers; defined by the server (output only)"]
+        #[serde(rename = "nameServers", default)]
+        pub name_servers: ::std::option::Option<Vec<String>>,
+        #[doc = "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from."]
+        #[serde(rename = "privateVisibilityConfig", default)]
+        pub private_visibility_config:
+            ::std::option::Option<crate::schemas::ManagedZonePrivateVisibilityConfig>,
+        #[doc = "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: ::std::option::Option<crate::schemas::ManagedZoneVisibility>,
     }
-    impl ::field_selector::FieldSelector for DnsKeysListResponse {
+    impl ::field_selector::FieldSelector for ManagedZone {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -635,47 +696,22 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ManagedZone {
-        #[doc = "The time that this resource was created on the server. This is in RFC3339 text format. Output only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The DNS name of this managed zone, for instance \"example.com.\"."]
-        #[serde(rename = "dnsName", default)]
-        pub dns_name: ::std::option::Option<String>,
-        #[doc = "DNSSEC configuration."]
-        #[serde(rename = "dnssecConfig", default)]
-        pub dnssec_config: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfig>,
-        #[doc = "Unique identifier for the resource; defined by the server (output only)"]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: ::std::option::Option<u64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZone\"."]
+    pub struct ManagedZoneDnsSecConfig {
+        #[doc = "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF."]
+        #[serde(rename = "defaultKeySpecs", default)]
+        pub default_key_specs: ::std::option::Option<Vec<crate::schemas::DnsKeySpec>>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneDnsSecConfig\"."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "User labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset."]
-        #[serde(rename = "nameServerSet", default)]
-        pub name_server_set: ::std::option::Option<String>,
-        #[doc = "Delegate your managed_zone to these virtual name servers; defined by the server (output only)"]
-        #[serde(rename = "nameServers", default)]
-        pub name_servers: ::std::option::Option<Vec<String>>,
-        #[doc = "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from."]
-        #[serde(rename = "privateVisibilityConfig", default)]
-        pub private_visibility_config:
-            ::std::option::Option<crate::schemas::ManagedZonePrivateVisibilityConfig>,
-        #[doc = "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: ::std::option::Option<crate::schemas::ManagedZoneVisibility>,
+        #[doc = "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF."]
+        #[serde(rename = "nonExistence", default)]
+        pub non_existence:
+            ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
+        #[doc = "Specifies whether DNSSEC is enabled, and what mode it is in."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigState>,
     }
-    impl ::field_selector::FieldSelector for ManagedZone {
+    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -785,42 +821,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfigState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ManagedZoneDnsSecConfig {
-        #[doc = "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF."]
-        #[serde(rename = "defaultKeySpecs", default)]
-        pub default_key_specs: ::std::option::Option<Vec<crate::schemas::DnsKeySpec>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneDnsSecConfig\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF."]
-        #[serde(rename = "nonExistence", default)]
-        pub non_existence:
-            ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
-        #[doc = "Specifies whether DNSSEC is enabled, and what mode it is in."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigState>,
-    }
-    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -956,6 +956,53 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Operation {
+        #[doc = "Only populated if the operation targeted a DnsKey (output only)."]
+        #[serde(rename = "dnsKeyContext", default)]
+        pub dns_key_context: ::std::option::Option<crate::schemas::OperationDnsKeyContext>,
+        #[doc = "Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only)"]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#operation\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Type of the operation. Operations include insert, update, and delete (output only)."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The time that this operation was started by the server. This is in RFC3339 text format (output only)."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only). A status of \"DONE\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::OperationStatus>,
+        #[doc = "User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only)"]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<String>,
+        #[doc = "Only populated if the operation targeted a ManagedZone (output only)."]
+        #[serde(rename = "zoneContext", default)]
+        pub zone_context: ::std::option::Option<crate::schemas::OperationManagedZoneContext>,
+    }
+    impl ::field_selector::FieldSelector for Operation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationStatus {
         Done,
@@ -1001,53 +1048,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for OperationStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Operation {
-        #[doc = "Only populated if the operation targeted a DnsKey (output only)."]
-        #[serde(rename = "dnsKeyContext", default)]
-        pub dns_key_context: ::std::option::Option<crate::schemas::OperationDnsKeyContext>,
-        #[doc = "Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only)"]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#operation\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Type of the operation. Operations include insert, update, and delete (output only)."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "The time that this operation was started by the server. This is in RFC3339 text format (output only)."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only). A status of \"DONE\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::OperationStatus>,
-        #[doc = "User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only)"]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<String>,
-        #[doc = "Only populated if the operation targeted a ManagedZone (output only)."]
-        #[serde(rename = "zoneContext", default)]
-        pub zone_context: ::std::option::Option<crate::schemas::OperationManagedZoneContext>,
-    }
-    impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4697,84 +4697,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4806,7 +4728,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4927,50 +4848,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

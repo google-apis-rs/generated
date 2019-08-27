@@ -78,6 +78,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ApplicationEvent {
+        #[doc = "The creation time of the event."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "App event type."]
+        #[serde(rename = "eventType", default)]
+        pub event_type: ::std::option::Option<crate::schemas::ApplicationEventEventType>,
+    }
+    impl ::field_selector::FieldSelector for ApplicationEvent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationEventEventType {
         #[doc = "This value is disallowed."]
@@ -177,35 +206,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ApplicationEvent {
-        #[doc = "The creation time of the event."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "App event type."]
-        #[serde(rename = "eventType", default)]
-        pub event_type: ::std::option::Option<crate::schemas::ApplicationEventEventType>,
-    }
-    impl ::field_selector::FieldSelector for ApplicationEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ApplicationPermission {
         #[doc = "A longer description of the permission, providing more detail on what it affects. Localized."]
         #[serde(rename = "description", default)]
@@ -218,6 +218,52 @@ pub mod schemas {
         pub permission_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApplicationPermission {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ApplicationPolicy {
+        #[doc = "The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps."]
+        #[serde(rename = "defaultPermissionPolicy", default)]
+        pub default_permission_policy:
+            ::std::option::Option<crate::schemas::ApplicationPolicyDefaultPermissionPolicy>,
+        #[doc = "The scopes delegated to the app from Android Device Policy."]
+        #[serde(rename = "delegatedScopes", default)]
+        pub delegated_scopes:
+            ::std::option::Option<Vec<crate::schemas::ApplicationPolicyDelegatedScopesItems>>,
+        #[doc = "Whether the app is disabled. When disabled, the app data is still preserved."]
+        #[serde(rename = "disabled", default)]
+        pub disabled: ::std::option::Option<bool>,
+        #[doc = "The type of installation to perform."]
+        #[serde(rename = "installType", default)]
+        pub install_type: ::std::option::Option<crate::schemas::ApplicationPolicyInstallType>,
+        #[doc = "Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to to configure a dedicated device."]
+        #[serde(rename = "lockTaskAllowed", default)]
+        pub lock_task_allowed: ::std::option::Option<bool>,
+        #[doc = "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>"]
+        #[serde(rename = "managedConfiguration", default)]
+        pub managed_configuration:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set."]
+        #[serde(rename = "managedConfigurationTemplate", default)]
+        pub managed_configuration_template:
+            ::std::option::Option<crate::schemas::ManagedConfigurationTemplate>,
+        #[doc = "The minimum version of the app that runs on the device. If set, the device attempts to update the app to at least this version code. If the app is not up-to-date, the device will contain a NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum version code per policy."]
+        #[serde(rename = "minimumVersionCode", default)]
+        pub minimum_version_code: ::std::option::Option<i32>,
+        #[doc = "The package name of the app. For example, com.google.android.youtube for the YouTube app."]
+        #[serde(rename = "packageName", default)]
+        pub package_name: ::std::option::Option<String>,
+        #[doc = "Explicit permission grants or denials for the app. These values override the default_permission_policy and permission_grants which apply to all apps."]
+        #[serde(rename = "permissionGrants", default)]
+        pub permission_grants: ::std::option::Option<Vec<crate::schemas::PermissionGrant>>,
+    }
+    impl ::field_selector::FieldSelector for ApplicationPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -444,44 +490,55 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct ApplicationPolicy {
-        #[doc = "The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps."]
-        #[serde(rename = "defaultPermissionPolicy", default)]
-        pub default_permission_policy:
-            ::std::option::Option<crate::schemas::ApplicationPolicyDefaultPermissionPolicy>,
-        #[doc = "The scopes delegated to the app from Android Device Policy."]
-        #[serde(rename = "delegatedScopes", default)]
-        pub delegated_scopes:
-            ::std::option::Option<Vec<crate::schemas::ApplicationPolicyDelegatedScopesItems>>,
-        #[doc = "Whether the app is disabled. When disabled, the app data is still preserved."]
-        #[serde(rename = "disabled", default)]
-        pub disabled: ::std::option::Option<bool>,
-        #[doc = "The type of installation to perform."]
-        #[serde(rename = "installType", default)]
-        pub install_type: ::std::option::Option<crate::schemas::ApplicationPolicyInstallType>,
-        #[doc = "Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to to configure a dedicated device."]
-        #[serde(rename = "lockTaskAllowed", default)]
-        pub lock_task_allowed: ::std::option::Option<bool>,
-        #[doc = "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>"]
-        #[serde(rename = "managedConfiguration", default)]
-        pub managed_configuration:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set."]
-        #[serde(rename = "managedConfigurationTemplate", default)]
-        pub managed_configuration_template:
-            ::std::option::Option<crate::schemas::ManagedConfigurationTemplate>,
-        #[doc = "The minimum version of the app that runs on the device. If set, the device attempts to update the app to at least this version code. If the app is not up-to-date, the device will contain a NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum version code per policy."]
-        #[serde(rename = "minimumVersionCode", default)]
-        pub minimum_version_code: ::std::option::Option<i32>,
-        #[doc = "The package name of the app. For example, com.google.android.youtube for the YouTube app."]
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ApplicationReport {
+        #[doc = "The source of the package."]
+        #[serde(rename = "applicationSource", default)]
+        pub application_source:
+            ::std::option::Option<crate::schemas::ApplicationReportApplicationSource>,
+        #[doc = "The display name of the app."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "List of app events. The most recent 20 events are stored in the list."]
+        #[serde(rename = "events", default)]
+        pub events: ::std::option::Option<Vec<crate::schemas::ApplicationEvent>>,
+        #[doc = "The package name of the app that installed this app."]
+        #[serde(rename = "installerPackageName", default)]
+        pub installer_package_name: ::std::option::Option<String>,
+        #[doc = "List of keyed app states reported by the app."]
+        #[serde(rename = "keyedAppStates", default)]
+        pub keyed_app_states: ::std::option::Option<Vec<crate::schemas::KeyedAppState>>,
+        #[doc = "Package name of the app."]
         #[serde(rename = "packageName", default)]
         pub package_name: ::std::option::Option<String>,
-        #[doc = "Explicit permission grants or denials for the app. These values override the default_permission_policy and permission_grants which apply to all apps."]
-        #[serde(rename = "permissionGrants", default)]
-        pub permission_grants: ::std::option::Option<Vec<crate::schemas::PermissionGrant>>,
+        #[doc = "The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified. Each byte of the hash value is represented as a two-digit hexadecimal number."]
+        #[serde(rename = "packageSha256Hash", default)]
+        pub package_sha_256_hash: ::std::option::Option<String>,
+        #[doc = "The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number."]
+        #[serde(rename = "signingKeyCertFingerprints", default)]
+        pub signing_key_cert_fingerprints: ::std::option::Option<Vec<String>>,
+        #[doc = "Application state."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::ApplicationReportState>,
+        #[doc = "The app version code, which can be used to determine whether one version is more recent than another."]
+        #[serde(rename = "versionCode", default)]
+        pub version_code: ::std::option::Option<i32>,
+        #[doc = "The app version as displayed to the user."]
+        #[serde(rename = "versionName", default)]
+        pub version_name: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ApplicationPolicy {
+    impl ::field_selector::FieldSelector for ApplicationReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -636,63 +693,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ApplicationReport {
-        #[doc = "The source of the package."]
-        #[serde(rename = "applicationSource", default)]
-        pub application_source:
-            ::std::option::Option<crate::schemas::ApplicationReportApplicationSource>,
-        #[doc = "The display name of the app."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "List of app events. The most recent 20 events are stored in the list."]
-        #[serde(rename = "events", default)]
-        pub events: ::std::option::Option<Vec<crate::schemas::ApplicationEvent>>,
-        #[doc = "The package name of the app that installed this app."]
-        #[serde(rename = "installerPackageName", default)]
-        pub installer_package_name: ::std::option::Option<String>,
-        #[doc = "List of keyed app states reported by the app."]
-        #[serde(rename = "keyedAppStates", default)]
-        pub keyed_app_states: ::std::option::Option<Vec<crate::schemas::KeyedAppState>>,
-        #[doc = "Package name of the app."]
-        #[serde(rename = "packageName", default)]
-        pub package_name: ::std::option::Option<String>,
-        #[doc = "The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified. Each byte of the hash value is represented as a two-digit hexadecimal number."]
-        #[serde(rename = "packageSha256Hash", default)]
-        pub package_sha_256_hash: ::std::option::Option<String>,
-        #[doc = "The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number."]
-        #[serde(rename = "signingKeyCertFingerprints", default)]
-        pub signing_key_cert_fingerprints: ::std::option::Option<Vec<String>>,
-        #[doc = "Application state."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::ApplicationReportState>,
-        #[doc = "The app version code, which can be used to determine whether one version is more recent than another."]
-        #[serde(rename = "versionCode", default)]
-        pub version_code: ::std::option::Option<i32>,
-        #[doc = "The app version as displayed to the user."]
-        #[serde(rename = "versionName", default)]
-        pub version_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ApplicationReport {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ApplicationReportingSettings {
         #[doc = "Whether removed apps are included in application reports."]
         #[serde(rename = "includeRemovedApps", default)]
@@ -757,6 +757,51 @@ pub mod schemas {
         pub url_pattern: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChoosePrivateKeyRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Command {
+        #[doc = "The timestamp at which the command was created. The timestamp is automatically generated by the server."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The duration for which the command is valid. The command will expire if not executed by the device during this time. The default duration if unspecified is ten minutes. There is no maximum duration."]
+        #[serde(rename = "duration", default)]
+        pub duration: ::std::option::Option<String>,
+        #[doc = "If the command failed, an error code explaining the failure. This is not set when the command is cancelled by the caller."]
+        #[serde(rename = "errorCode", default)]
+        pub error_code: ::std::option::Option<crate::schemas::CommandErrorCode>,
+        #[doc = "For commands of type RESET_PASSWORD, optionally specifies the new password."]
+        #[serde(rename = "newPassword", default)]
+        pub new_password: ::std::option::Option<String>,
+        #[doc = "The type of the command."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CommandType>,
+        #[doc = "For commands of type RESET_PASSWORD, optionally specifies flags."]
+        #[serde(rename = "resetPasswordFlags", default)]
+        pub reset_password_flags:
+            ::std::option::Option<Vec<crate::schemas::CommandResetPasswordFlagsItems>>,
+        #[doc = "The resource name of the user that owns the device in the form enterprises/{enterpriseId}/users/{userId}. This is automatically generated by the server based on the device the command is sent to."]
+        #[serde(rename = "userName", default)]
+        pub user_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Command {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -978,51 +1023,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Command {
-        #[doc = "The timestamp at which the command was created. The timestamp is automatically generated by the server."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "The duration for which the command is valid. The command will expire if not executed by the device during this time. The default duration if unspecified is ten minutes. There is no maximum duration."]
-        #[serde(rename = "duration", default)]
-        pub duration: ::std::option::Option<String>,
-        #[doc = "If the command failed, an error code explaining the failure. This is not set when the command is cancelled by the caller."]
-        #[serde(rename = "errorCode", default)]
-        pub error_code: ::std::option::Option<crate::schemas::CommandErrorCode>,
-        #[doc = "For commands of type RESET_PASSWORD, optionally specifies the new password."]
-        #[serde(rename = "newPassword", default)]
-        pub new_password: ::std::option::Option<String>,
-        #[doc = "The type of the command."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CommandType>,
-        #[doc = "For commands of type RESET_PASSWORD, optionally specifies flags."]
-        #[serde(rename = "resetPasswordFlags", default)]
-        pub reset_password_flags:
-            ::std::option::Option<Vec<crate::schemas::CommandResetPasswordFlagsItems>>,
-        #[doc = "The resource name of the user that owns the device in the form enterprises/{enterpriseId}/users/{userId}. This is automatically generated by the server based on the device the command is sent to."]
-        #[serde(rename = "userName", default)]
-        pub user_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Command {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ComplianceRule {
         #[doc = "A condition which is satisfied if the Android Framework API level on the device doesn't meet a minimum requirement."]
         #[serde(rename = "apiLevelCondition", default)]
@@ -1039,6 +1039,116 @@ pub mod schemas {
         pub package_names_to_disable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ComplianceRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Device {
+        #[doc = "The API level of the Android platform version running on the device."]
+        #[serde(rename = "apiLevel", default)]
+        pub api_level: ::std::option::Option<i32>,
+        #[doc = "Reports for apps installed on the device. This information is only available when application_reports_enabled is true in the device's policy."]
+        #[serde(rename = "applicationReports", default)]
+        pub application_reports: ::std::option::Option<Vec<crate::schemas::ApplicationReport>>,
+        #[doc = "The name of the policy currently applied to the device."]
+        #[serde(rename = "appliedPolicyName", default)]
+        pub applied_policy_name: ::std::option::Option<String>,
+        #[doc = "The version of the policy currently applied to the device."]
+        #[serde(rename = "appliedPolicyVersion", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub applied_policy_version: ::std::option::Option<i64>,
+        #[doc = "The state currently applied to the device."]
+        #[serde(rename = "appliedState", default)]
+        pub applied_state: ::std::option::Option<crate::schemas::DeviceAppliedState>,
+        #[doc = "Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy."]
+        #[serde(rename = "deviceSettings", default)]
+        pub device_settings: ::std::option::Option<crate::schemas::DeviceSettings>,
+        #[doc = "If the device state is DISABLED, an optional message that is displayed on the device indicating the reason the device is disabled. This field can be modified by a patch request."]
+        #[serde(rename = "disabledReason", default)]
+        pub disabled_reason: ::std::option::Option<crate::schemas::UserFacingMessage>,
+        #[doc = "Detailed information about displays on the device. This information is only available if displayInfoEnabled is true in the device's policy."]
+        #[serde(rename = "displays", default)]
+        pub displays: ::std::option::Option<Vec<crate::schemas::Display>>,
+        #[doc = "The time of device enrollment."]
+        #[serde(rename = "enrollmentTime", default)]
+        pub enrollment_time: ::std::option::Option<String>,
+        #[doc = "If the device was enrolled with an enrollment token with additional data provided, this field contains that data."]
+        #[serde(rename = "enrollmentTokenData", default)]
+        pub enrollment_token_data: ::std::option::Option<String>,
+        #[doc = "If the device was enrolled with an enrollment token, this field contains the name of the token."]
+        #[serde(rename = "enrollmentTokenName", default)]
+        pub enrollment_token_name: ::std::option::Option<String>,
+        #[doc = "Detailed information about the device hardware."]
+        #[serde(rename = "hardwareInfo", default)]
+        pub hardware_info: ::std::option::Option<crate::schemas::HardwareInfo>,
+        #[doc = "Hardware status samples in chronological order. This information is only available if hardwareStatusEnabled is true in the device's policy."]
+        #[serde(rename = "hardwareStatusSamples", default)]
+        pub hardware_status_samples: ::std::option::Option<Vec<crate::schemas::HardwareStatus>>,
+        #[doc = "Deprecated."]
+        #[serde(rename = "lastPolicyComplianceReportTime", default)]
+        pub last_policy_compliance_report_time: ::std::option::Option<String>,
+        #[doc = "The last time the device fetched its policy."]
+        #[serde(rename = "lastPolicySyncTime", default)]
+        pub last_policy_sync_time: ::std::option::Option<String>,
+        #[doc = "The last time the device sent a status report."]
+        #[serde(rename = "lastStatusReportTime", default)]
+        pub last_status_report_time: ::std::option::Option<String>,
+        #[doc = "The type of management mode Android Device Policy takes on the device. This influences which policy settings are supported."]
+        #[serde(rename = "managementMode", default)]
+        pub management_mode: ::std::option::Option<crate::schemas::DeviceManagementMode>,
+        #[doc = "Events related to memory and storage measurements in chronological order. This information is only available if memoryInfoEnabled is true in the device's policy."]
+        #[serde(rename = "memoryEvents", default)]
+        pub memory_events: ::std::option::Option<Vec<crate::schemas::MemoryEvent>>,
+        #[doc = "Memory information. This information is only available if memoryInfoEnabled is true in the device's policy."]
+        #[serde(rename = "memoryInfo", default)]
+        pub memory_info: ::std::option::Option<crate::schemas::MemoryInfo>,
+        #[doc = "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Device network information. This information is only available if networkInfoEnabled is true in the device's policy."]
+        #[serde(rename = "networkInfo", default)]
+        pub network_info: ::std::option::Option<crate::schemas::NetworkInfo>,
+        #[doc = "Details about policy settings that the device is not compliant with."]
+        #[serde(rename = "nonComplianceDetails", default)]
+        pub non_compliance_details: ::std::option::Option<Vec<crate::schemas::NonComplianceDetail>>,
+        #[doc = "Whether the device is compliant with its policy."]
+        #[serde(rename = "policyCompliant", default)]
+        pub policy_compliant: ::std::option::Option<bool>,
+        #[doc = "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn\u{2019}t contain any slashes. The rest of the policy name is inferred."]
+        #[serde(rename = "policyName", default)]
+        pub policy_name: ::std::option::Option<String>,
+        #[doc = "Power management events on the device in chronological order. This information is only available if powerManagementEventsEnabled is true in the device's policy."]
+        #[serde(rename = "powerManagementEvents", default)]
+        pub power_management_events:
+            ::std::option::Option<Vec<crate::schemas::PowerManagementEvent>>,
+        #[doc = "If the same physical device has been enrolled multiple times, this field contains its previous device names. The serial number is used as the unique identifier to determine if the same physical device has enrolled previously. The names are in chronological order."]
+        #[serde(rename = "previousDeviceNames", default)]
+        pub previous_device_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Device's security posture value that reflects how secure the device is."]
+        #[serde(rename = "securityPosture", default)]
+        pub security_posture: ::std::option::Option<crate::schemas::SecurityPosture>,
+        #[doc = "Detailed information about the device software. This information is only available if softwareInfoEnabled is true in the device's policy."]
+        #[serde(rename = "softwareInfo", default)]
+        pub software_info: ::std::option::Option<crate::schemas::SoftwareInfo>,
+        #[doc = "The state to be applied to the device. This field can be modified by a patch request. Note that when calling enterprises.devices.patch, ACTIVE and DISABLED are the only allowable values. To enter the device into a DELETED state, call enterprises.devices.delete."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::DeviceState>,
+        #[doc = "Map of selected system properties name and value related to the device."]
+        #[serde(rename = "systemProperties", default)]
+        pub system_properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The user who owns the device."]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<crate::schemas::User>,
+        #[doc = "The resource name of the user that owns this device in the form enterprises/{enterpriseId}/users/{userId}."]
+        #[serde(rename = "userName", default)]
+        pub user_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Device {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1240,108 +1350,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Device {
-        #[doc = "The API level of the Android platform version running on the device."]
-        #[serde(rename = "apiLevel", default)]
-        pub api_level: ::std::option::Option<i32>,
-        #[doc = "Reports for apps installed on the device. This information is only available when application_reports_enabled is true in the device's policy."]
-        #[serde(rename = "applicationReports", default)]
-        pub application_reports: ::std::option::Option<Vec<crate::schemas::ApplicationReport>>,
-        #[doc = "The name of the policy currently applied to the device."]
-        #[serde(rename = "appliedPolicyName", default)]
-        pub applied_policy_name: ::std::option::Option<String>,
-        #[doc = "The version of the policy currently applied to the device."]
-        #[serde(rename = "appliedPolicyVersion", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub applied_policy_version: ::std::option::Option<i64>,
-        #[doc = "The state currently applied to the device."]
-        #[serde(rename = "appliedState", default)]
-        pub applied_state: ::std::option::Option<crate::schemas::DeviceAppliedState>,
-        #[doc = "Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy."]
-        #[serde(rename = "deviceSettings", default)]
-        pub device_settings: ::std::option::Option<crate::schemas::DeviceSettings>,
-        #[doc = "If the device state is DISABLED, an optional message that is displayed on the device indicating the reason the device is disabled. This field can be modified by a patch request."]
-        #[serde(rename = "disabledReason", default)]
-        pub disabled_reason: ::std::option::Option<crate::schemas::UserFacingMessage>,
-        #[doc = "Detailed information about displays on the device. This information is only available if displayInfoEnabled is true in the device's policy."]
-        #[serde(rename = "displays", default)]
-        pub displays: ::std::option::Option<Vec<crate::schemas::Display>>,
-        #[doc = "The time of device enrollment."]
-        #[serde(rename = "enrollmentTime", default)]
-        pub enrollment_time: ::std::option::Option<String>,
-        #[doc = "If the device was enrolled with an enrollment token with additional data provided, this field contains that data."]
-        #[serde(rename = "enrollmentTokenData", default)]
-        pub enrollment_token_data: ::std::option::Option<String>,
-        #[doc = "If the device was enrolled with an enrollment token, this field contains the name of the token."]
-        #[serde(rename = "enrollmentTokenName", default)]
-        pub enrollment_token_name: ::std::option::Option<String>,
-        #[doc = "Detailed information about the device hardware."]
-        #[serde(rename = "hardwareInfo", default)]
-        pub hardware_info: ::std::option::Option<crate::schemas::HardwareInfo>,
-        #[doc = "Hardware status samples in chronological order. This information is only available if hardwareStatusEnabled is true in the device's policy."]
-        #[serde(rename = "hardwareStatusSamples", default)]
-        pub hardware_status_samples: ::std::option::Option<Vec<crate::schemas::HardwareStatus>>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "lastPolicyComplianceReportTime", default)]
-        pub last_policy_compliance_report_time: ::std::option::Option<String>,
-        #[doc = "The last time the device fetched its policy."]
-        #[serde(rename = "lastPolicySyncTime", default)]
-        pub last_policy_sync_time: ::std::option::Option<String>,
-        #[doc = "The last time the device sent a status report."]
-        #[serde(rename = "lastStatusReportTime", default)]
-        pub last_status_report_time: ::std::option::Option<String>,
-        #[doc = "The type of management mode Android Device Policy takes on the device. This influences which policy settings are supported."]
-        #[serde(rename = "managementMode", default)]
-        pub management_mode: ::std::option::Option<crate::schemas::DeviceManagementMode>,
-        #[doc = "Events related to memory and storage measurements in chronological order. This information is only available if memoryInfoEnabled is true in the device's policy."]
-        #[serde(rename = "memoryEvents", default)]
-        pub memory_events: ::std::option::Option<Vec<crate::schemas::MemoryEvent>>,
-        #[doc = "Memory information. This information is only available if memoryInfoEnabled is true in the device's policy."]
-        #[serde(rename = "memoryInfo", default)]
-        pub memory_info: ::std::option::Option<crate::schemas::MemoryInfo>,
-        #[doc = "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Device network information. This information is only available if networkInfoEnabled is true in the device's policy."]
-        #[serde(rename = "networkInfo", default)]
-        pub network_info: ::std::option::Option<crate::schemas::NetworkInfo>,
-        #[doc = "Details about policy settings that the device is not compliant with."]
-        #[serde(rename = "nonComplianceDetails", default)]
-        pub non_compliance_details: ::std::option::Option<Vec<crate::schemas::NonComplianceDetail>>,
-        #[doc = "Whether the device is compliant with its policy."]
-        #[serde(rename = "policyCompliant", default)]
-        pub policy_compliant: ::std::option::Option<bool>,
-        #[doc = "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn\u{2019}t contain any slashes. The rest of the policy name is inferred."]
-        #[serde(rename = "policyName", default)]
-        pub policy_name: ::std::option::Option<String>,
-        #[doc = "Power management events on the device in chronological order. This information is only available if powerManagementEventsEnabled is true in the device's policy."]
-        #[serde(rename = "powerManagementEvents", default)]
-        pub power_management_events:
-            ::std::option::Option<Vec<crate::schemas::PowerManagementEvent>>,
-        #[doc = "If the same physical device has been enrolled multiple times, this field contains its previous device names. The serial number is used as the unique identifier to determine if the same physical device has enrolled previously. The names are in chronological order."]
-        #[serde(rename = "previousDeviceNames", default)]
-        pub previous_device_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Device's security posture value that reflects how secure the device is."]
-        #[serde(rename = "securityPosture", default)]
-        pub security_posture: ::std::option::Option<crate::schemas::SecurityPosture>,
-        #[doc = "Detailed information about the device software. This information is only available if softwareInfoEnabled is true in the device's policy."]
-        #[serde(rename = "softwareInfo", default)]
-        pub software_info: ::std::option::Option<crate::schemas::SoftwareInfo>,
-        #[doc = "The state to be applied to the device. This field can be modified by a patch request. Note that when calling enterprises.devices.patch, ACTIVE and DISABLED are the only allowable values. To enter the device into a DELETED state, call enterprises.devices.delete."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::DeviceState>,
-        #[doc = "Map of selected system properties name and value related to the device."]
-        #[serde(rename = "systemProperties", default)]
-        pub system_properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The user who owns the device."]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<crate::schemas::User>,
-        #[doc = "The resource name of the user that owns this device in the form enterprises/{enterpriseId}/users/{userId}."]
-        #[serde(rename = "userName", default)]
-        pub user_name: ::std::option::Option<String>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeviceSettings {
+        #[doc = "Whether ADB (https://developer.android.com/studio/command-line/adb.html) is enabled on the device."]
+        #[serde(rename = "adbEnabled", default)]
+        pub adb_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether developer mode is enabled on the device."]
+        #[serde(rename = "developmentSettingsEnabled", default)]
+        pub development_settings_enabled: ::std::option::Option<bool>,
+        #[doc = "Encryption status from DevicePolicyManager."]
+        #[serde(rename = "encryptionStatus", default)]
+        pub encryption_status:
+            ::std::option::Option<crate::schemas::DeviceSettingsEncryptionStatus>,
+        #[doc = "Whether the device is secured with PIN/password."]
+        #[serde(rename = "isDeviceSecure", default)]
+        pub is_device_secure: ::std::option::Option<bool>,
+        #[doc = "Whether the storage encryption is enabled."]
+        #[serde(rename = "isEncrypted", default)]
+        pub is_encrypted: ::std::option::Option<bool>,
+        #[doc = "Whether installing apps from unknown sources is enabled."]
+        #[serde(rename = "unknownSourcesEnabled", default)]
+        pub unknown_sources_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is enabled on the device."]
+        #[serde(rename = "verifyAppsEnabled", default)]
+        pub verify_apps_enabled: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for Device {
+    impl ::field_selector::FieldSelector for DeviceSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1441,31 +1486,30 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DeviceSettings {
-        #[doc = "Whether ADB (https://developer.android.com/studio/command-line/adb.html) is enabled on the device."]
-        #[serde(rename = "adbEnabled", default)]
-        pub adb_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether developer mode is enabled on the device."]
-        #[serde(rename = "developmentSettingsEnabled", default)]
-        pub development_settings_enabled: ::std::option::Option<bool>,
-        #[doc = "Encryption status from DevicePolicyManager."]
-        #[serde(rename = "encryptionStatus", default)]
-        pub encryption_status:
-            ::std::option::Option<crate::schemas::DeviceSettingsEncryptionStatus>,
-        #[doc = "Whether the device is secured with PIN/password."]
-        #[serde(rename = "isDeviceSecure", default)]
-        pub is_device_secure: ::std::option::Option<bool>,
-        #[doc = "Whether the storage encryption is enabled."]
-        #[serde(rename = "isEncrypted", default)]
-        pub is_encrypted: ::std::option::Option<bool>,
-        #[doc = "Whether installing apps from unknown sources is enabled."]
-        #[serde(rename = "unknownSourcesEnabled", default)]
-        pub unknown_sources_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is enabled on the device."]
-        #[serde(rename = "verifyAppsEnabled", default)]
-        pub verify_apps_enabled: ::std::option::Option<bool>,
+    pub struct Display {
+        #[doc = "Display density expressed as dots-per-inch."]
+        #[serde(rename = "density", default)]
+        pub density: ::std::option::Option<i32>,
+        #[doc = "Unique display id."]
+        #[serde(rename = "displayId", default)]
+        pub display_id: ::std::option::Option<i32>,
+        #[doc = "Display height in pixels."]
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[doc = "Name of the display."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Refresh rate of the display in frames per second."]
+        #[serde(rename = "refreshRate", default)]
+        pub refresh_rate: ::std::option::Option<i32>,
+        #[doc = "State of the display."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::DisplayState>,
+        #[doc = "Display width in pixels."]
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for DeviceSettings {
+    impl ::field_selector::FieldSelector for Display {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1549,50 +1593,6 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Display {
-        #[doc = "Display density expressed as dots-per-inch."]
-        #[serde(rename = "density", default)]
-        pub density: ::std::option::Option<i32>,
-        #[doc = "Unique display id."]
-        #[serde(rename = "displayId", default)]
-        pub display_id: ::std::option::Option<i32>,
-        #[doc = "Display height in pixels."]
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[doc = "Name of the display."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Refresh rate of the display in frames per second."]
-        #[serde(rename = "refreshRate", default)]
-        pub refresh_rate: ::std::option::Option<i32>,
-        #[doc = "State of the display."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::DisplayState>,
-        #[doc = "Display width in pixels."]
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for Display {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -1644,6 +1644,57 @@ pub mod schemas {
         pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EnrollmentToken {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Enterprise {
+        #[doc = "Deprecated and unused."]
+        #[serde(rename = "appAutoApprovalEnabled", default)]
+        pub app_auto_approval_enabled: ::std::option::Option<bool>,
+        #[doc = "The types of Google Pub/Sub notifications enabled for the enterprise."]
+        #[serde(rename = "enabledNotificationTypes", default)]
+        pub enabled_notification_types:
+            ::std::option::Option<Vec<crate::schemas::EnterpriseEnabledNotificationTypesItems>>,
+        #[doc = "The name of the enterprise displayed to users."]
+        #[serde(rename = "enterpriseDisplayName", default)]
+        pub enterprise_display_name: ::std::option::Option<String>,
+        #[doc = "An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng."]
+        #[serde(rename = "logo", default)]
+        pub logo: ::std::option::Option<crate::schemas::ExternalData>,
+        #[doc = "The name of the enterprise which is generated by the server during creation, in the form enterprises/{enterpriseId}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A color in RGB format that indicates the predominant color to display in the device management app UI. The color components are stored as follows: (red << 16) | (green << 8) | blue, where the value of each component is between 0 and 255, inclusive."]
+        #[serde(rename = "primaryColor", default)]
+        pub primary_color: ::std::option::Option<i32>,
+        #[doc = "The topic that Cloud Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This field is only required if Pub/Sub notifications are enabled."]
+        #[serde(rename = "pubsubTopic", default)]
+        pub pubsub_topic: ::std::option::Option<String>,
+        #[doc = "Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported."]
+        #[serde(rename = "signinDetails", default)]
+        pub signin_details: ::std::option::Option<Vec<crate::schemas::SigninDetail>>,
+        #[doc = "Terms and conditions that must be accepted when provisioning a device for this enterprise. A page of terms is generated for each value in this list."]
+        #[serde(rename = "termsAndConditions", default)]
+        pub terms_and_conditions: ::std::option::Option<Vec<crate::schemas::TermsAndConditions>>,
+    }
+    impl ::field_selector::FieldSelector for Enterprise {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1710,57 +1761,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for EnterpriseEnabledNotificationTypesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Enterprise {
-        #[doc = "Deprecated and unused."]
-        #[serde(rename = "appAutoApprovalEnabled", default)]
-        pub app_auto_approval_enabled: ::std::option::Option<bool>,
-        #[doc = "The types of Google Pub/Sub notifications enabled for the enterprise."]
-        #[serde(rename = "enabledNotificationTypes", default)]
-        pub enabled_notification_types:
-            ::std::option::Option<Vec<crate::schemas::EnterpriseEnabledNotificationTypesItems>>,
-        #[doc = "The name of the enterprise displayed to users."]
-        #[serde(rename = "enterpriseDisplayName", default)]
-        pub enterprise_display_name: ::std::option::Option<String>,
-        #[doc = "An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng."]
-        #[serde(rename = "logo", default)]
-        pub logo: ::std::option::Option<crate::schemas::ExternalData>,
-        #[doc = "The name of the enterprise which is generated by the server during creation, in the form enterprises/{enterpriseId}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "A color in RGB format that indicates the predominant color to display in the device management app UI. The color components are stored as follows: (red << 16) | (green << 8) | blue, where the value of each component is between 0 and 255, inclusive."]
-        #[serde(rename = "primaryColor", default)]
-        pub primary_color: ::std::option::Option<i32>,
-        #[doc = "The topic that Cloud Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This field is only required if Pub/Sub notifications are enabled."]
-        #[serde(rename = "pubsubTopic", default)]
-        pub pubsub_topic: ::std::option::Option<String>,
-        #[doc = "Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported."]
-        #[serde(rename = "signinDetails", default)]
-        pub signin_details: ::std::option::Option<Vec<crate::schemas::SigninDetail>>,
-        #[doc = "Terms and conditions that must be accepted when provisioning a device for this enterprise. A page of terms is generated for each value in this list."]
-        #[serde(rename = "termsAndConditions", default)]
-        pub terms_and_conditions: ::std::option::Option<Vec<crate::schemas::TermsAndConditions>>,
-    }
-    impl ::field_selector::FieldSelector for Enterprise {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1889,6 +1889,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct KeyedAppState {
+        #[doc = "The creation time of the app state on the device."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. \u{201c}notify me if the battery_warning data < 10\u{201d})."]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<String>,
+        #[doc = "The key for the app state. Acts as a point of reference for what the app is providing state for. For example, when providing managed configuration feedback, this key could be the managed configuration key."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "The time the app state was most recently updated."]
+        #[serde(rename = "lastUpdateTime", default)]
+        pub last_update_time: ::std::option::Option<String>,
+        #[doc = "Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+        #[doc = "The severity of the app state."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::KeyedAppStateSeverity>,
+    }
+    impl ::field_selector::FieldSelector for KeyedAppState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum KeyedAppStateSeverity {
         #[doc = "Error severity level. This should only be set for genuine error conditions that a management organization needs to take action to fix."]
@@ -1940,47 +1981,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for KeyedAppStateSeverity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct KeyedAppState {
-        #[doc = "The creation time of the app state on the device."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. \u{201c}notify me if the battery_warning data < 10\u{201d})."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<String>,
-        #[doc = "The key for the app state. Acts as a point of reference for what the app is providing state for. For example, when providing managed configuration feedback, this key could be the managed configuration key."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "The time the app state was most recently updated."]
-        #[serde(rename = "lastUpdateTime", default)]
-        pub last_update_time: ::std::option::Option<String>,
-        #[doc = "Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-        #[doc = "The severity of the app state."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::KeyedAppStateSeverity>,
-    }
-    impl ::field_selector::FieldSelector for KeyedAppState {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2128,6 +2128,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ManagedProperty {
+        #[doc = "The default value of the property. BUNDLE_ARRAY properties don't have a default value."]
+        #[serde(rename = "defaultValue", default)]
+        pub default_value: ::std::option::Option<::serde_json::Value>,
+        #[doc = "A longer description of the property, providing more detail of what it affects. Localized."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "For CHOICE or MULTISELECT properties, the list of possible entries."]
+        #[serde(rename = "entries", default)]
+        pub entries: ::std::option::Option<Vec<crate::schemas::ManagedPropertyEntry>>,
+        #[doc = "The unique key that the app uses to identify the property, e.g. \"com.google.android.gm.fieldname\"."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two levels deep."]
+        #[serde(rename = "nestedProperties", default)]
+        pub nested_properties: ::std::option::Option<Vec<crate::schemas::ManagedProperty>>,
+        #[doc = "The type of the property."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ManagedPropertyType>,
+        #[doc = "The name of the property. Localized."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ManagedProperty {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedPropertyType {
         #[doc = "A property of boolean type."]
@@ -2211,39 +2244,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct ManagedProperty {
-        #[doc = "The default value of the property. BUNDLE_ARRAY properties don't have a default value."]
-        #[serde(rename = "defaultValue", default)]
-        pub default_value: ::std::option::Option<::serde_json::Value>,
-        #[doc = "A longer description of the property, providing more detail of what it affects. Localized."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "For CHOICE or MULTISELECT properties, the list of possible entries."]
-        #[serde(rename = "entries", default)]
-        pub entries: ::std::option::Option<Vec<crate::schemas::ManagedPropertyEntry>>,
-        #[doc = "The unique key that the app uses to identify the property, e.g. \"com.google.android.gm.fieldname\"."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two levels deep."]
-        #[serde(rename = "nestedProperties", default)]
-        pub nested_properties: ::std::option::Option<Vec<crate::schemas::ManagedProperty>>,
-        #[doc = "The type of the property."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ManagedPropertyType>,
-        #[doc = "The name of the property. Localized."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ManagedProperty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -2265,6 +2265,39 @@ pub mod schemas {
         pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ManagedPropertyEntry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MemoryEvent {
+        #[doc = "The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in bytes of the storage medium."]
+        #[serde(rename = "byteCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub byte_count: ::std::option::Option<i64>,
+        #[doc = "The creation time of the event."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Event type."]
+        #[serde(rename = "eventType", default)]
+        pub event_type: ::std::option::Option<crate::schemas::MemoryEventEventType>,
+    }
+    impl ::field_selector::FieldSelector for MemoryEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2356,39 +2389,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MemoryEvent {
-        #[doc = "The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in bytes of the storage medium."]
-        #[serde(rename = "byteCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub byte_count: ::std::option::Option<i64>,
-        #[doc = "The creation time of the event."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Event type."]
-        #[serde(rename = "eventType", default)]
-        pub event_type: ::std::option::Option<crate::schemas::MemoryEventEventType>,
-    }
-    impl ::field_selector::FieldSelector for MemoryEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct MemoryInfo {
         #[doc = "Total internal storage on device in bytes."]
         #[serde(rename = "totalInternalStorage", default)]
@@ -2435,6 +2435,38 @@ pub mod schemas {
         pub wifi_mac_address: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NetworkInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct NonComplianceDetail {
+        #[doc = "If the policy setting could not be applied, the current value of the setting on the device."]
+        #[serde(rename = "currentValue", default)]
+        pub current_value: ::std::option::Option<::serde_json::Value>,
+        #[doc = "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url"]
+        #[serde(rename = "fieldPath", default)]
+        pub field_path: ::std::option::Option<String>,
+        #[doc = "If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or APP_NOT_UPDATED, the detailed reason the app can't be installed or updated."]
+        #[serde(rename = "installationFailureReason", default)]
+        pub installation_failure_reason:
+            ::std::option::Option<crate::schemas::NonComplianceDetailInstallationFailureReason>,
+        #[doc = "The reason the device is not in compliance with the setting."]
+        #[serde(rename = "nonComplianceReason", default)]
+        pub non_compliance_reason:
+            ::std::option::Option<crate::schemas::NonComplianceDetailNonComplianceReason>,
+        #[doc = "The package name indicating which app is out of compliance, if applicable."]
+        #[serde(rename = "packageName", default)]
+        pub package_name: ::std::option::Option<String>,
+        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy  field."]
+        #[serde(rename = "settingName", default)]
+        pub setting_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for NonComplianceDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2599,30 +2631,31 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct NonComplianceDetail {
-        #[doc = "If the policy setting could not be applied, the current value of the setting on the device."]
-        #[serde(rename = "currentValue", default)]
-        pub current_value: ::std::option::Option<::serde_json::Value>,
-        #[doc = "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url"]
-        #[serde(rename = "fieldPath", default)]
-        pub field_path: ::std::option::Option<String>,
-        #[doc = "If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or APP_NOT_UPDATED, the detailed reason the app can't be installed or updated."]
-        #[serde(rename = "installationFailureReason", default)]
-        pub installation_failure_reason:
-            ::std::option::Option<crate::schemas::NonComplianceDetailInstallationFailureReason>,
-        #[doc = "The reason the device is not in compliance with the setting."]
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NonComplianceDetailCondition {
+        #[doc = "The reason the device is not in compliance with the setting. If not set, then this condition matches any reason."]
         #[serde(rename = "nonComplianceReason", default)]
         pub non_compliance_reason:
-            ::std::option::Option<crate::schemas::NonComplianceDetailNonComplianceReason>,
-        #[doc = "The package name indicating which app is out of compliance, if applicable."]
+            ::std::option::Option<crate::schemas::NonComplianceDetailConditionNonComplianceReason>,
+        #[doc = "The package name of the app that's out of compliance. If not set, then this condition matches any package name."]
         #[serde(rename = "packageName", default)]
         pub package_name: ::std::option::Option<String>,
-        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy  field."]
+        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name."]
         #[serde(rename = "settingName", default)]
         pub setting_name: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for NonComplianceDetail {
+    impl ::field_selector::FieldSelector for NonComplianceDetailCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2738,39 +2771,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NonComplianceDetailCondition {
-        #[doc = "The reason the device is not in compliance with the setting. If not set, then this condition matches any reason."]
-        #[serde(rename = "nonComplianceReason", default)]
-        pub non_compliance_reason:
-            ::std::option::Option<crate::schemas::NonComplianceDetailConditionNonComplianceReason>,
-        #[doc = "The package name of the app that's out of compliance. If not set, then this condition matches any package name."]
-        #[serde(rename = "packageName", default)]
-        pub package_name: ::std::option::Option<String>,
-        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name."]
-        #[serde(rename = "settingName", default)]
-        pub setting_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for NonComplianceDetailCondition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available."]
@@ -2818,6 +2818,67 @@ pub mod schemas {
         pub package_names: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PackageNameList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PasswordRequirements {
+        #[doc = "Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means there is no restriction."]
+        #[serde(rename = "maximumFailedPasswordsForWipe", default)]
+        pub maximum_failed_passwords_for_wipe: ::std::option::Option<i32>,
+        #[doc = "Password expiration timeout."]
+        #[serde(rename = "passwordExpirationTimeout", default)]
+        pub password_expiration_timeout: ::std::option::Option<String>,
+        #[doc = "The length of the password history. After setting this field, the user won't be able to enter a new password that is the same as any password in the history. A value of 0 means there is no restriction."]
+        #[serde(rename = "passwordHistoryLength", default)]
+        pub password_history_length: ::std::option::Option<i32>,
+        #[doc = "The minimum allowed password length. A value of 0 means there is no restriction. Only enforced when password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX."]
+        #[serde(rename = "passwordMinimumLength", default)]
+        pub password_minimum_length: ::std::option::Option<i32>,
+        #[doc = "Minimum number of letters required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumLetters", default)]
+        pub password_minimum_letters: ::std::option::Option<i32>,
+        #[doc = "Minimum number of lower case letters required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumLowerCase", default)]
+        pub password_minimum_lower_case: ::std::option::Option<i32>,
+        #[doc = "Minimum number of non-letter characters (numerical digits or symbols) required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumNonLetter", default)]
+        pub password_minimum_non_letter: ::std::option::Option<i32>,
+        #[doc = "Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumNumeric", default)]
+        pub password_minimum_numeric: ::std::option::Option<i32>,
+        #[doc = "Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumSymbols", default)]
+        pub password_minimum_symbols: ::std::option::Option<i32>,
+        #[doc = "Minimum number of upper case letters required in the password. Only enforced when password_quality is COMPLEX."]
+        #[serde(rename = "passwordMinimumUpperCase", default)]
+        pub password_minimum_upper_case: ::std::option::Option<i32>,
+        #[doc = "The required password quality."]
+        #[serde(rename = "passwordQuality", default)]
+        pub password_quality:
+            ::std::option::Option<crate::schemas::PasswordRequirementsPasswordQuality>,
+        #[doc = "The scope that the password requirement applies to."]
+        #[serde(rename = "passwordScope", default)]
+        pub password_scope:
+            ::std::option::Option<crate::schemas::PasswordRequirementsPasswordScope>,
+    }
+    impl ::field_selector::FieldSelector for PasswordRequirements {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2980,47 +3041,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PasswordRequirements {
-        #[doc = "Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means there is no restriction."]
-        #[serde(rename = "maximumFailedPasswordsForWipe", default)]
-        pub maximum_failed_passwords_for_wipe: ::std::option::Option<i32>,
-        #[doc = "Password expiration timeout."]
-        #[serde(rename = "passwordExpirationTimeout", default)]
-        pub password_expiration_timeout: ::std::option::Option<String>,
-        #[doc = "The length of the password history. After setting this field, the user won't be able to enter a new password that is the same as any password in the history. A value of 0 means there is no restriction."]
-        #[serde(rename = "passwordHistoryLength", default)]
-        pub password_history_length: ::std::option::Option<i32>,
-        #[doc = "The minimum allowed password length. A value of 0 means there is no restriction. Only enforced when password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX."]
-        #[serde(rename = "passwordMinimumLength", default)]
-        pub password_minimum_length: ::std::option::Option<i32>,
-        #[doc = "Minimum number of letters required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumLetters", default)]
-        pub password_minimum_letters: ::std::option::Option<i32>,
-        #[doc = "Minimum number of lower case letters required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumLowerCase", default)]
-        pub password_minimum_lower_case: ::std::option::Option<i32>,
-        #[doc = "Minimum number of non-letter characters (numerical digits or symbols) required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumNonLetter", default)]
-        pub password_minimum_non_letter: ::std::option::Option<i32>,
-        #[doc = "Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumNumeric", default)]
-        pub password_minimum_numeric: ::std::option::Option<i32>,
-        #[doc = "Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumSymbols", default)]
-        pub password_minimum_symbols: ::std::option::Option<i32>,
-        #[doc = "Minimum number of upper case letters required in the password. Only enforced when password_quality is COMPLEX."]
-        #[serde(rename = "passwordMinimumUpperCase", default)]
-        pub password_minimum_upper_case: ::std::option::Option<i32>,
-        #[doc = "The required password quality."]
-        #[serde(rename = "passwordQuality", default)]
-        pub password_quality:
-            ::std::option::Option<crate::schemas::PasswordRequirementsPasswordQuality>,
-        #[doc = "The scope that the password requirement applies to."]
-        #[serde(rename = "passwordScope", default)]
-        pub password_scope:
-            ::std::option::Option<crate::schemas::PasswordRequirementsPasswordScope>,
+    pub struct PermissionGrant {
+        #[doc = "The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<String>,
+        #[doc = "The policy for granting the permission."]
+        #[serde(rename = "policy", default)]
+        pub policy: ::std::option::Option<crate::schemas::PermissionGrantPolicy>,
     }
-    impl ::field_selector::FieldSelector for PasswordRequirements {
+    impl ::field_selector::FieldSelector for PermissionGrant {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3108,35 +3137,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PermissionGrant {
-        #[doc = "The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<String>,
-        #[doc = "The policy for granting the permission."]
-        #[serde(rename = "policy", default)]
-        pub policy: ::std::option::Option<crate::schemas::PermissionGrantPolicy>,
-    }
-    impl ::field_selector::FieldSelector for PermissionGrant {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct PersistentPreferredActivity {
         #[doc = "The intent actions to match in the filter. If any actions are included in the filter, then an intent's action must be one of those values for it to match. If no actions are included, the intent action is ignored."]
         #[serde(rename = "actions", default)]
@@ -3149,6 +3149,261 @@ pub mod schemas {
         pub receiver_activity: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PersistentPreferredActivity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Policy {
+        #[doc = "Account types that can't be managed by the user."]
+        #[serde(rename = "accountTypesWithManagementDisabled", default)]
+        pub account_types_with_management_disabled: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether adding new users and profiles is disabled."]
+        #[serde(rename = "addUserDisabled", default)]
+        pub add_user_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether adjusting the master volume is disabled."]
+        #[serde(rename = "adjustVolumeDisabled", default)]
+        pub adjust_volume_disabled: ::std::option::Option<bool>,
+        #[doc = "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting."]
+        #[serde(rename = "alwaysOnVpnPackage", default)]
+        pub always_on_vpn_package: ::std::option::Option<crate::schemas::AlwaysOnVpnPackage>,
+        #[doc = "The app tracks for Android Device Policy the device can access. The device receives the latest version among all accessible tracks. If no tracks are specified, then the device only uses the production track."]
+        #[serde(rename = "androidDevicePolicyTracks", default)]
+        pub android_device_policy_tracks:
+            ::std::option::Option<Vec<crate::schemas::PolicyAndroidDevicePolicyTracksItems>>,
+        #[doc = "The app auto update policy, which controls when automatic app updates can be applied."]
+        #[serde(rename = "appAutoUpdatePolicy", default)]
+        pub app_auto_update_policy:
+            ::std::option::Option<crate::schemas::PolicyAppAutoUpdatePolicy>,
+        #[doc = "Policy applied to apps."]
+        #[serde(rename = "applications", default)]
+        pub applications: ::std::option::Option<Vec<crate::schemas::ApplicationPolicy>>,
+        #[doc = "Whether auto time is required, which prevents the user from manually setting the date and time."]
+        #[serde(rename = "autoTimeRequired", default)]
+        pub auto_time_required: ::std::option::Option<bool>,
+        #[doc = "Whether applications other than the ones configured in applications are blocked from being installed. When set, applications that were installed under a previous policy but no longer appear in the policy are automatically uninstalled."]
+        #[serde(rename = "blockApplicationsEnabled", default)]
+        pub block_applications_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether configuring bluetooth is disabled."]
+        #[serde(rename = "bluetoothConfigDisabled", default)]
+        pub bluetooth_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether bluetooth contact sharing is disabled."]
+        #[serde(rename = "bluetoothContactSharingDisabled", default)]
+        pub bluetooth_contact_sharing_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by the user."]
+        #[serde(rename = "bluetoothDisabled", default)]
+        pub bluetooth_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether all cameras on the device are disabled."]
+        #[serde(rename = "cameraDisabled", default)]
+        pub camera_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether configuring cell broadcast is disabled."]
+        #[serde(rename = "cellBroadcastsConfigDisabled", default)]
+        pub cell_broadcasts_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Rules for automatically choosing a private key and certificate to authenticate the device to a server. The rules are ordered by increasing precedence, so if an outgoing request matches more than one rule, the last rule defines which private key to use."]
+        #[serde(rename = "choosePrivateKeyRules", default)]
+        pub choose_private_key_rules:
+            ::std::option::Option<Vec<crate::schemas::ChoosePrivateKeyRule>>,
+        #[doc = "Rules declaring which mitigating actions to take when a device is not compliant with its policy. When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken. There is a maximum limit of 100 rules. Use policy enforcement rules instead."]
+        #[serde(rename = "complianceRules", default)]
+        pub compliance_rules: ::std::option::Option<Vec<crate::schemas::ComplianceRule>>,
+        #[doc = "Whether creating windows besides app windows is disabled."]
+        #[serde(rename = "createWindowsDisabled", default)]
+        pub create_windows_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether configuring user credentials is disabled."]
+        #[serde(rename = "credentialsConfigDisabled", default)]
+        pub credentials_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether roaming data services are disabled."]
+        #[serde(rename = "dataRoamingDisabled", default)]
+        pub data_roaming_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether the user is allowed to enable debugging features."]
+        #[serde(rename = "debuggingFeaturesAllowed", default)]
+        pub debugging_features_allowed: ::std::option::Option<bool>,
+        #[doc = "The default permission policy for runtime permission requests."]
+        #[serde(rename = "defaultPermissionPolicy", default)]
+        pub default_permission_policy:
+            ::std::option::Option<crate::schemas::PolicyDefaultPermissionPolicy>,
+        #[doc = "The device owner information to be shown on the lock screen."]
+        #[serde(rename = "deviceOwnerLockScreenInfo", default)]
+        pub device_owner_lock_screen_info: ::std::option::Option<crate::schemas::UserFacingMessage>,
+        #[doc = "Whether encryption is enabled"]
+        #[serde(rename = "encryptionPolicy", default)]
+        pub encryption_policy: ::std::option::Option<crate::schemas::PolicyEncryptionPolicy>,
+        #[doc = "Whether app verification is force-enabled."]
+        #[serde(rename = "ensureVerifyAppsEnabled", default)]
+        pub ensure_verify_apps_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether factory resetting from settings is disabled."]
+        #[serde(rename = "factoryResetDisabled", default)]
+        pub factory_reset_disabled: ::std::option::Option<bool>,
+        #[doc = "Email addresses of device administrators for factory reset protection. When the device is factory reset, it will require one of these admins to log in with the Google account email and password to unlock the device. If no admins are specified, the device won't provide factory reset protection."]
+        #[serde(rename = "frpAdminEmails", default)]
+        pub frp_admin_emails: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is disabled."]
+        #[serde(rename = "funDisabled", default)]
+        pub fun_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether user installation of apps is disabled."]
+        #[serde(rename = "installAppsDisabled", default)]
+        pub install_apps_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether the user is allowed to enable the \"Unknown Sources\" setting, which allows installation of apps from unknown sources."]
+        #[serde(rename = "installUnknownSourcesAllowed", default)]
+        pub install_unknown_sources_allowed: ::std::option::Option<bool>,
+        #[doc = "Whether the keyguard is disabled."]
+        #[serde(rename = "keyguardDisabled", default)]
+        pub keyguard_disabled: ::std::option::Option<bool>,
+        #[doc = "Disabled keyguard customizations, such as widgets."]
+        #[serde(rename = "keyguardDisabledFeatures", default)]
+        pub keyguard_disabled_features:
+            ::std::option::Option<Vec<crate::schemas::PolicyKeyguardDisabledFeaturesItems>>,
+        #[doc = "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. Apps appear on a single page in alphabetical order. The status bar is disabled when this is set."]
+        #[serde(rename = "kioskCustomLauncherEnabled", default)]
+        pub kiosk_custom_launcher_enabled: ::std::option::Option<bool>,
+        #[doc = "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings."]
+        #[serde(rename = "locationMode", default)]
+        pub location_mode: ::std::option::Option<crate::schemas::PolicyLocationMode>,
+        #[doc = "A message displayed to the user in the device administators settings screen."]
+        #[serde(rename = "longSupportMessage", default)]
+        pub long_support_message: ::std::option::Option<crate::schemas::UserFacingMessage>,
+        #[doc = "Maximum time in milliseconds for user activity until the device locks. A value of 0 means there is no restriction."]
+        #[serde(rename = "maximumTimeToLock", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub maximum_time_to_lock: ::std::option::Option<i64>,
+        #[doc = "The minimum allowed Android API level."]
+        #[serde(rename = "minimumApiLevel", default)]
+        pub minimum_api_level: ::std::option::Option<i32>,
+        #[doc = "Whether configuring mobile networks is disabled."]
+        #[serde(rename = "mobileNetworksConfigDisabled", default)]
+        pub mobile_networks_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether adding or removing accounts is disabled."]
+        #[serde(rename = "modifyAccountsDisabled", default)]
+        pub modify_accounts_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether the user mounting physical external media is disabled."]
+        #[serde(rename = "mountPhysicalMediaDisabled", default)]
+        pub mount_physical_media_disabled: ::std::option::Option<bool>,
+        #[doc = "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Whether the network escape hatch is enabled. If a network connection can't be made at boot time, the escape hatch prompts the user to temporarily connect to a network in order to refresh the device policy. After applying policy, the temporary network will be forgotten and the device will continue booting. This prevents being unable to connect to a network if there is no suitable network in the last policy and the device boots into an app in lock task mode, or the user is otherwise unable to reach device settings."]
+        #[serde(rename = "networkEscapeHatchEnabled", default)]
+        pub network_escape_hatch_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether resetting network settings is disabled."]
+        #[serde(rename = "networkResetDisabled", default)]
+        pub network_reset_disabled: ::std::option::Option<bool>,
+        #[doc = "Network configuration for the device. See configure networks for more information."]
+        #[serde(rename = "openNetworkConfiguration", default)]
+        pub open_network_configuration:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Whether using NFC to beam data from apps is disabled."]
+        #[serde(rename = "outgoingBeamDisabled", default)]
+        pub outgoing_beam_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether outgoing calls are disabled."]
+        #[serde(rename = "outgoingCallsDisabled", default)]
+        pub outgoing_calls_disabled: ::std::option::Option<bool>,
+        #[doc = "Password requirement policies. Different policies can be set for work profile or fully managed devices by setting the password_scope field in the policy."]
+        #[serde(rename = "passwordPolicies", default)]
+        pub password_policies: ::std::option::Option<Vec<crate::schemas::PasswordRequirements>>,
+        #[doc = "Password requirements. DEPRECATED - Use password_policies"]
+        #[serde(rename = "passwordRequirements", default)]
+        pub password_requirements: ::std::option::Option<crate::schemas::PasswordRequirements>,
+        #[doc = "Explicit permission or group grants or denials for all apps. These values override the default_permission_policy."]
+        #[serde(rename = "permissionGrants", default)]
+        pub permission_grants: ::std::option::Option<Vec<crate::schemas::PermissionGrant>>,
+        #[doc = "If present, only the input methods provided by packages in this list are permitted. If this field is present, but the list is empty, then only system input methods are permitted."]
+        #[serde(rename = "permittedInputMethods", default)]
+        pub permitted_input_methods: ::std::option::Option<crate::schemas::PackageNameList>,
+        #[doc = "Default intent handler activities."]
+        #[serde(rename = "persistentPreferredActivities", default)]
+        pub persistent_preferred_activities:
+            ::std::option::Option<Vec<crate::schemas::PersistentPreferredActivity>>,
+        #[doc = "This mode controls which apps are available to the user in the Play Store and the behavior on the device when apps are removed from the policy."]
+        #[serde(rename = "playStoreMode", default)]
+        pub play_store_mode: ::std::option::Option<crate::schemas::PolicyPlayStoreMode>,
+        #[doc = "Rules that define the behavior when a particular policy can not be applied on device"]
+        #[serde(rename = "policyEnforcementRules", default)]
+        pub policy_enforcement_rules:
+            ::std::option::Option<Vec<crate::schemas::PolicyEnforcementRule>>,
+        #[doc = "Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable."]
+        #[serde(rename = "privateKeySelectionEnabled", default)]
+        pub private_key_selection_enabled: ::std::option::Option<bool>,
+        #[doc = "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it."]
+        #[serde(rename = "recommendedGlobalProxy", default)]
+        pub recommended_global_proxy: ::std::option::Option<crate::schemas::ProxyInfo>,
+        #[doc = "Whether removing other users is disabled."]
+        #[serde(rename = "removeUserDisabled", default)]
+        pub remove_user_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether rebooting the device into safe boot is disabled."]
+        #[serde(rename = "safeBootDisabled", default)]
+        pub safe_boot_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether screen capture is disabled."]
+        #[serde(rename = "screenCaptureDisabled", default)]
+        pub screen_capture_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether changing the user icon is disabled."]
+        #[serde(rename = "setUserIconDisabled", default)]
+        pub set_user_icon_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether changing the wallpaper is disabled."]
+        #[serde(rename = "setWallpaperDisabled", default)]
+        pub set_wallpaper_disabled: ::std::option::Option<bool>,
+        #[doc = "Actions to take during the setup process."]
+        #[serde(rename = "setupActions", default)]
+        pub setup_actions: ::std::option::Option<Vec<crate::schemas::SetupAction>>,
+        #[doc = "Whether location sharing is disabled."]
+        #[serde(rename = "shareLocationDisabled", default)]
+        pub share_location_disabled: ::std::option::Option<bool>,
+        #[doc = "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin."]
+        #[serde(rename = "shortSupportMessage", default)]
+        pub short_support_message: ::std::option::Option<crate::schemas::UserFacingMessage>,
+        #[doc = "Flag to skip hints on the first use. Enterprise admin can enable the system recommendation for apps to skip their user tutorial and other introductory hints on first start-up."]
+        #[serde(rename = "skipFirstUseHintsEnabled", default)]
+        pub skip_first_use_hints_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether sending and receiving SMS messages is disabled."]
+        #[serde(rename = "smsDisabled", default)]
+        pub sms_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether the status bar is disabled. This disables notifications, quick settings, and other screen overlays that allow escape from full-screen mode. DEPRECATED. To disable the status bar on a kiosk device, use InstallType KIOSK or kioskCustomLauncherEnabled."]
+        #[serde(rename = "statusBarDisabled", default)]
+        pub status_bar_disabled: ::std::option::Option<bool>,
+        #[doc = "Status reporting settings"]
+        #[serde(rename = "statusReportingSettings", default)]
+        pub status_reporting_settings:
+            ::std::option::Option<crate::schemas::StatusReportingSettings>,
+        #[doc = "The battery plugged in modes for which the device stays on. When using this setting, it is recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays on."]
+        #[serde(rename = "stayOnPluggedModes", default)]
+        pub stay_on_plugged_modes:
+            ::std::option::Option<Vec<crate::schemas::PolicyStayOnPluggedModesItems>>,
+        #[doc = "The system update policy, which controls how OS updates are applied. If the update type is WINDOWED, the update window will automatically apply to Play app updates as well."]
+        #[serde(rename = "systemUpdate", default)]
+        pub system_update: ::std::option::Option<crate::schemas::SystemUpdate>,
+        #[doc = "Whether configuring tethering and portable hotspots is disabled."]
+        #[serde(rename = "tetheringConfigDisabled", default)]
+        pub tethering_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether user uninstallation of applications is disabled."]
+        #[serde(rename = "uninstallAppsDisabled", default)]
+        pub uninstall_apps_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether the microphone is muted and adjusting microphone volume is disabled."]
+        #[serde(rename = "unmuteMicrophoneDisabled", default)]
+        pub unmute_microphone_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether transferring files over USB is disabled."]
+        #[serde(rename = "usbFileTransferDisabled", default)]
+        pub usb_file_transfer_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether USB storage is enabled. Deprecated."]
+        #[serde(rename = "usbMassStorageEnabled", default)]
+        pub usb_mass_storage_enabled: ::std::option::Option<bool>,
+        #[doc = "The version of the policy. This is a read-only field. The version is incremented each time the policy is updated."]
+        #[serde(rename = "version", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub version: ::std::option::Option<i64>,
+        #[doc = "Whether configuring VPN is disabled."]
+        #[serde(rename = "vpnConfigDisabled", default)]
+        pub vpn_config_disabled: ::std::option::Option<bool>,
+        #[doc = "Whether configuring Wi-Fi access points is disabled."]
+        #[serde(rename = "wifiConfigDisabled", default)]
+        pub wifi_config_disabled: ::std::option::Option<bool>,
+        #[doc = "DEPRECATED - Use wifi_config_disabled."]
+        #[serde(rename = "wifiConfigsLockdownEnabled", default)]
+        pub wifi_configs_lockdown_enabled: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3686,261 +3941,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Policy {
-        #[doc = "Account types that can't be managed by the user."]
-        #[serde(rename = "accountTypesWithManagementDisabled", default)]
-        pub account_types_with_management_disabled: ::std::option::Option<Vec<String>>,
-        #[doc = "Whether adding new users and profiles is disabled."]
-        #[serde(rename = "addUserDisabled", default)]
-        pub add_user_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether adjusting the master volume is disabled."]
-        #[serde(rename = "adjustVolumeDisabled", default)]
-        pub adjust_volume_disabled: ::std::option::Option<bool>,
-        #[doc = "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting."]
-        #[serde(rename = "alwaysOnVpnPackage", default)]
-        pub always_on_vpn_package: ::std::option::Option<crate::schemas::AlwaysOnVpnPackage>,
-        #[doc = "The app tracks for Android Device Policy the device can access. The device receives the latest version among all accessible tracks. If no tracks are specified, then the device only uses the production track."]
-        #[serde(rename = "androidDevicePolicyTracks", default)]
-        pub android_device_policy_tracks:
-            ::std::option::Option<Vec<crate::schemas::PolicyAndroidDevicePolicyTracksItems>>,
-        #[doc = "The app auto update policy, which controls when automatic app updates can be applied."]
-        #[serde(rename = "appAutoUpdatePolicy", default)]
-        pub app_auto_update_policy:
-            ::std::option::Option<crate::schemas::PolicyAppAutoUpdatePolicy>,
-        #[doc = "Policy applied to apps."]
-        #[serde(rename = "applications", default)]
-        pub applications: ::std::option::Option<Vec<crate::schemas::ApplicationPolicy>>,
-        #[doc = "Whether auto time is required, which prevents the user from manually setting the date and time."]
-        #[serde(rename = "autoTimeRequired", default)]
-        pub auto_time_required: ::std::option::Option<bool>,
-        #[doc = "Whether applications other than the ones configured in applications are blocked from being installed. When set, applications that were installed under a previous policy but no longer appear in the policy are automatically uninstalled."]
-        #[serde(rename = "blockApplicationsEnabled", default)]
-        pub block_applications_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether configuring bluetooth is disabled."]
-        #[serde(rename = "bluetoothConfigDisabled", default)]
-        pub bluetooth_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether bluetooth contact sharing is disabled."]
-        #[serde(rename = "bluetoothContactSharingDisabled", default)]
-        pub bluetooth_contact_sharing_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by the user."]
-        #[serde(rename = "bluetoothDisabled", default)]
-        pub bluetooth_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether all cameras on the device are disabled."]
-        #[serde(rename = "cameraDisabled", default)]
-        pub camera_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether configuring cell broadcast is disabled."]
-        #[serde(rename = "cellBroadcastsConfigDisabled", default)]
-        pub cell_broadcasts_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Rules for automatically choosing a private key and certificate to authenticate the device to a server. The rules are ordered by increasing precedence, so if an outgoing request matches more than one rule, the last rule defines which private key to use."]
-        #[serde(rename = "choosePrivateKeyRules", default)]
-        pub choose_private_key_rules:
-            ::std::option::Option<Vec<crate::schemas::ChoosePrivateKeyRule>>,
-        #[doc = "Rules declaring which mitigating actions to take when a device is not compliant with its policy. When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken. There is a maximum limit of 100 rules. Use policy enforcement rules instead."]
-        #[serde(rename = "complianceRules", default)]
-        pub compliance_rules: ::std::option::Option<Vec<crate::schemas::ComplianceRule>>,
-        #[doc = "Whether creating windows besides app windows is disabled."]
-        #[serde(rename = "createWindowsDisabled", default)]
-        pub create_windows_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether configuring user credentials is disabled."]
-        #[serde(rename = "credentialsConfigDisabled", default)]
-        pub credentials_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether roaming data services are disabled."]
-        #[serde(rename = "dataRoamingDisabled", default)]
-        pub data_roaming_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the user is allowed to enable debugging features."]
-        #[serde(rename = "debuggingFeaturesAllowed", default)]
-        pub debugging_features_allowed: ::std::option::Option<bool>,
-        #[doc = "The default permission policy for runtime permission requests."]
-        #[serde(rename = "defaultPermissionPolicy", default)]
-        pub default_permission_policy:
-            ::std::option::Option<crate::schemas::PolicyDefaultPermissionPolicy>,
-        #[doc = "The device owner information to be shown on the lock screen."]
-        #[serde(rename = "deviceOwnerLockScreenInfo", default)]
-        pub device_owner_lock_screen_info: ::std::option::Option<crate::schemas::UserFacingMessage>,
-        #[doc = "Whether encryption is enabled"]
-        #[serde(rename = "encryptionPolicy", default)]
-        pub encryption_policy: ::std::option::Option<crate::schemas::PolicyEncryptionPolicy>,
-        #[doc = "Whether app verification is force-enabled."]
-        #[serde(rename = "ensureVerifyAppsEnabled", default)]
-        pub ensure_verify_apps_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether factory resetting from settings is disabled."]
-        #[serde(rename = "factoryResetDisabled", default)]
-        pub factory_reset_disabled: ::std::option::Option<bool>,
-        #[doc = "Email addresses of device administrators for factory reset protection. When the device is factory reset, it will require one of these admins to log in with the Google account email and password to unlock the device. If no admins are specified, the device won't provide factory reset protection."]
-        #[serde(rename = "frpAdminEmails", default)]
-        pub frp_admin_emails: ::std::option::Option<Vec<String>>,
-        #[doc = "Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is disabled."]
-        #[serde(rename = "funDisabled", default)]
-        pub fun_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether user installation of apps is disabled."]
-        #[serde(rename = "installAppsDisabled", default)]
-        pub install_apps_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the user is allowed to enable the \"Unknown Sources\" setting, which allows installation of apps from unknown sources."]
-        #[serde(rename = "installUnknownSourcesAllowed", default)]
-        pub install_unknown_sources_allowed: ::std::option::Option<bool>,
-        #[doc = "Whether the keyguard is disabled."]
-        #[serde(rename = "keyguardDisabled", default)]
-        pub keyguard_disabled: ::std::option::Option<bool>,
-        #[doc = "Disabled keyguard customizations, such as widgets."]
-        #[serde(rename = "keyguardDisabledFeatures", default)]
-        pub keyguard_disabled_features:
-            ::std::option::Option<Vec<crate::schemas::PolicyKeyguardDisabledFeaturesItems>>,
-        #[doc = "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. Apps appear on a single page in alphabetical order. The status bar is disabled when this is set."]
-        #[serde(rename = "kioskCustomLauncherEnabled", default)]
-        pub kiosk_custom_launcher_enabled: ::std::option::Option<bool>,
-        #[doc = "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings."]
-        #[serde(rename = "locationMode", default)]
-        pub location_mode: ::std::option::Option<crate::schemas::PolicyLocationMode>,
-        #[doc = "A message displayed to the user in the device administators settings screen."]
-        #[serde(rename = "longSupportMessage", default)]
-        pub long_support_message: ::std::option::Option<crate::schemas::UserFacingMessage>,
-        #[doc = "Maximum time in milliseconds for user activity until the device locks. A value of 0 means there is no restriction."]
-        #[serde(rename = "maximumTimeToLock", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub maximum_time_to_lock: ::std::option::Option<i64>,
-        #[doc = "The minimum allowed Android API level."]
-        #[serde(rename = "minimumApiLevel", default)]
-        pub minimum_api_level: ::std::option::Option<i32>,
-        #[doc = "Whether configuring mobile networks is disabled."]
-        #[serde(rename = "mobileNetworksConfigDisabled", default)]
-        pub mobile_networks_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether adding or removing accounts is disabled."]
-        #[serde(rename = "modifyAccountsDisabled", default)]
-        pub modify_accounts_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the user mounting physical external media is disabled."]
-        #[serde(rename = "mountPhysicalMediaDisabled", default)]
-        pub mount_physical_media_disabled: ::std::option::Option<bool>,
-        #[doc = "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Whether the network escape hatch is enabled. If a network connection can't be made at boot time, the escape hatch prompts the user to temporarily connect to a network in order to refresh the device policy. After applying policy, the temporary network will be forgotten and the device will continue booting. This prevents being unable to connect to a network if there is no suitable network in the last policy and the device boots into an app in lock task mode, or the user is otherwise unable to reach device settings."]
-        #[serde(rename = "networkEscapeHatchEnabled", default)]
-        pub network_escape_hatch_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether resetting network settings is disabled."]
-        #[serde(rename = "networkResetDisabled", default)]
-        pub network_reset_disabled: ::std::option::Option<bool>,
-        #[doc = "Network configuration for the device. See configure networks for more information."]
-        #[serde(rename = "openNetworkConfiguration", default)]
-        pub open_network_configuration:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Whether using NFC to beam data from apps is disabled."]
-        #[serde(rename = "outgoingBeamDisabled", default)]
-        pub outgoing_beam_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether outgoing calls are disabled."]
-        #[serde(rename = "outgoingCallsDisabled", default)]
-        pub outgoing_calls_disabled: ::std::option::Option<bool>,
-        #[doc = "Password requirement policies. Different policies can be set for work profile or fully managed devices by setting the password_scope field in the policy."]
-        #[serde(rename = "passwordPolicies", default)]
-        pub password_policies: ::std::option::Option<Vec<crate::schemas::PasswordRequirements>>,
-        #[doc = "Password requirements. DEPRECATED - Use password_policies"]
-        #[serde(rename = "passwordRequirements", default)]
-        pub password_requirements: ::std::option::Option<crate::schemas::PasswordRequirements>,
-        #[doc = "Explicit permission or group grants or denials for all apps. These values override the default_permission_policy."]
-        #[serde(rename = "permissionGrants", default)]
-        pub permission_grants: ::std::option::Option<Vec<crate::schemas::PermissionGrant>>,
-        #[doc = "If present, only the input methods provided by packages in this list are permitted. If this field is present, but the list is empty, then only system input methods are permitted."]
-        #[serde(rename = "permittedInputMethods", default)]
-        pub permitted_input_methods: ::std::option::Option<crate::schemas::PackageNameList>,
-        #[doc = "Default intent handler activities."]
-        #[serde(rename = "persistentPreferredActivities", default)]
-        pub persistent_preferred_activities:
-            ::std::option::Option<Vec<crate::schemas::PersistentPreferredActivity>>,
-        #[doc = "This mode controls which apps are available to the user in the Play Store and the behavior on the device when apps are removed from the policy."]
-        #[serde(rename = "playStoreMode", default)]
-        pub play_store_mode: ::std::option::Option<crate::schemas::PolicyPlayStoreMode>,
-        #[doc = "Rules that define the behavior when a particular policy can not be applied on device"]
-        #[serde(rename = "policyEnforcementRules", default)]
-        pub policy_enforcement_rules:
-            ::std::option::Option<Vec<crate::schemas::PolicyEnforcementRule>>,
-        #[doc = "Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable."]
-        #[serde(rename = "privateKeySelectionEnabled", default)]
-        pub private_key_selection_enabled: ::std::option::Option<bool>,
-        #[doc = "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it."]
-        #[serde(rename = "recommendedGlobalProxy", default)]
-        pub recommended_global_proxy: ::std::option::Option<crate::schemas::ProxyInfo>,
-        #[doc = "Whether removing other users is disabled."]
-        #[serde(rename = "removeUserDisabled", default)]
-        pub remove_user_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether rebooting the device into safe boot is disabled."]
-        #[serde(rename = "safeBootDisabled", default)]
-        pub safe_boot_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether screen capture is disabled."]
-        #[serde(rename = "screenCaptureDisabled", default)]
-        pub screen_capture_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether changing the user icon is disabled."]
-        #[serde(rename = "setUserIconDisabled", default)]
-        pub set_user_icon_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether changing the wallpaper is disabled."]
-        #[serde(rename = "setWallpaperDisabled", default)]
-        pub set_wallpaper_disabled: ::std::option::Option<bool>,
-        #[doc = "Actions to take during the setup process."]
-        #[serde(rename = "setupActions", default)]
-        pub setup_actions: ::std::option::Option<Vec<crate::schemas::SetupAction>>,
-        #[doc = "Whether location sharing is disabled."]
-        #[serde(rename = "shareLocationDisabled", default)]
-        pub share_location_disabled: ::std::option::Option<bool>,
-        #[doc = "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin."]
-        #[serde(rename = "shortSupportMessage", default)]
-        pub short_support_message: ::std::option::Option<crate::schemas::UserFacingMessage>,
-        #[doc = "Flag to skip hints on the first use. Enterprise admin can enable the system recommendation for apps to skip their user tutorial and other introductory hints on first start-up."]
-        #[serde(rename = "skipFirstUseHintsEnabled", default)]
-        pub skip_first_use_hints_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether sending and receiving SMS messages is disabled."]
-        #[serde(rename = "smsDisabled", default)]
-        pub sms_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the status bar is disabled. This disables notifications, quick settings, and other screen overlays that allow escape from full-screen mode. DEPRECATED. To disable the status bar on a kiosk device, use InstallType KIOSK or kioskCustomLauncherEnabled."]
-        #[serde(rename = "statusBarDisabled", default)]
-        pub status_bar_disabled: ::std::option::Option<bool>,
-        #[doc = "Status reporting settings"]
-        #[serde(rename = "statusReportingSettings", default)]
-        pub status_reporting_settings:
-            ::std::option::Option<crate::schemas::StatusReportingSettings>,
-        #[doc = "The battery plugged in modes for which the device stays on. When using this setting, it is recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays on."]
-        #[serde(rename = "stayOnPluggedModes", default)]
-        pub stay_on_plugged_modes:
-            ::std::option::Option<Vec<crate::schemas::PolicyStayOnPluggedModesItems>>,
-        #[doc = "The system update policy, which controls how OS updates are applied. If the update type is WINDOWED, the update window will automatically apply to Play app updates as well."]
-        #[serde(rename = "systemUpdate", default)]
-        pub system_update: ::std::option::Option<crate::schemas::SystemUpdate>,
-        #[doc = "Whether configuring tethering and portable hotspots is disabled."]
-        #[serde(rename = "tetheringConfigDisabled", default)]
-        pub tethering_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether user uninstallation of applications is disabled."]
-        #[serde(rename = "uninstallAppsDisabled", default)]
-        pub uninstall_apps_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the microphone is muted and adjusting microphone volume is disabled."]
-        #[serde(rename = "unmuteMicrophoneDisabled", default)]
-        pub unmute_microphone_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether transferring files over USB is disabled."]
-        #[serde(rename = "usbFileTransferDisabled", default)]
-        pub usb_file_transfer_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether USB storage is enabled. Deprecated."]
-        #[serde(rename = "usbMassStorageEnabled", default)]
-        pub usb_mass_storage_enabled: ::std::option::Option<bool>,
-        #[doc = "The version of the policy. This is a read-only field. The version is incremented each time the policy is updated."]
-        #[serde(rename = "version", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub version: ::std::option::Option<i64>,
-        #[doc = "Whether configuring VPN is disabled."]
-        #[serde(rename = "vpnConfigDisabled", default)]
-        pub vpn_config_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether configuring Wi-Fi access points is disabled."]
-        #[serde(rename = "wifiConfigDisabled", default)]
-        pub wifi_config_disabled: ::std::option::Option<bool>,
-        #[doc = "DEPRECATED - Use wifi_config_disabled."]
-        #[serde(rename = "wifiConfigsLockdownEnabled", default)]
-        pub wifi_configs_lockdown_enabled: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for Policy {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -3965,6 +3965,35 @@ pub mod schemas {
         pub wipe_action: ::std::option::Option<crate::schemas::WipeAction>,
     }
     impl ::field_selector::FieldSelector for PolicyEnforcementRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PostureDetail {
+        #[doc = "Corresponding pieces of advice to mitigate the security risk."]
+        #[serde(rename = "advice", default)]
+        pub advice: ::std::option::Option<Vec<crate::schemas::UserFacingMessage>>,
+        #[doc = "The risk that makes the device not in the most secure state."]
+        #[serde(rename = "securityRisk", default)]
+        pub security_risk: ::std::option::Option<crate::schemas::PostureDetailSecurityRisk>,
+    }
+    impl ::field_selector::FieldSelector for PostureDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4033,26 +4062,20 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PostureDetail {
-        #[doc = "Corresponding pieces of advice to mitigate the security risk."]
-        #[serde(rename = "advice", default)]
-        pub advice: ::std::option::Option<Vec<crate::schemas::UserFacingMessage>>,
-        #[doc = "The risk that makes the device not in the most secure state."]
-        #[serde(rename = "securityRisk", default)]
-        pub security_risk: ::std::option::Option<crate::schemas::PostureDetailSecurityRisk>,
+    pub struct PowerManagementEvent {
+        #[doc = "For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage."]
+        #[serde(rename = "batteryLevel", default)]
+        pub battery_level: ::std::option::Option<f32>,
+        #[doc = "The creation time of the event."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Event type."]
+        #[serde(rename = "eventType", default)]
+        pub event_type: ::std::option::Option<crate::schemas::PowerManagementEventEventType>,
     }
-    impl ::field_selector::FieldSelector for PostureDetail {
+    impl ::field_selector::FieldSelector for PowerManagementEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4145,29 +4168,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PowerManagementEvent {
-        #[doc = "For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage."]
-        #[serde(rename = "batteryLevel", default)]
-        pub battery_level: ::std::option::Option<f32>,
-        #[doc = "The creation time of the event."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Event type."]
-        #[serde(rename = "eventType", default)]
-        pub event_type: ::std::option::Option<crate::schemas::PowerManagementEventEventType>,
-    }
-    impl ::field_selector::FieldSelector for PowerManagementEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -4194,6 +4194,35 @@ pub mod schemas {
         pub port: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ProxyInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SecurityPosture {
+        #[doc = "Device's security posture value."]
+        #[serde(rename = "devicePosture", default)]
+        pub device_posture: ::std::option::Option<crate::schemas::SecurityPostureDevicePosture>,
+        #[doc = "Details that provide further information if the device is not in the most secure state."]
+        #[serde(rename = "postureDetails", default)]
+        pub posture_details: ::std::option::Option<Vec<crate::schemas::PostureDetail>>,
+    }
+    impl ::field_selector::FieldSelector for SecurityPosture {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4257,35 +4286,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SecurityPostureDevicePosture {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SecurityPosture {
-        #[doc = "Device's security posture value."]
-        #[serde(rename = "devicePosture", default)]
-        pub device_posture: ::std::option::Option<crate::schemas::SecurityPostureDevicePosture>,
-        #[doc = "Details that provide further information if the device is not in the most secure state."]
-        #[serde(rename = "postureDetails", default)]
-        pub posture_details: ::std::option::Option<Vec<crate::schemas::PostureDetail>>,
-    }
-    impl ::field_selector::FieldSelector for SecurityPosture {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4516,6 +4516,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SystemUpdate {
+        #[doc = "If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time."]
+        #[serde(rename = "endMinutes", default)]
+        pub end_minutes: ::std::option::Option<i32>,
+        #[doc = "The type of system update to configure."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::SystemUpdateType>,
+        #[doc = "If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes after midnight in the device's local time. This value must be between 0 and 1439, inclusive."]
+        #[serde(rename = "startMinutes", default)]
+        pub start_minutes: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for SystemUpdate {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SystemUpdateType {
         #[doc = "Install automatically as soon as an update is available."]
@@ -4571,38 +4603,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SystemUpdateType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SystemUpdate {
-        #[doc = "If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time."]
-        #[serde(rename = "endMinutes", default)]
-        pub end_minutes: ::std::option::Option<i32>,
-        #[doc = "The type of system update to configure."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::SystemUpdateType>,
-        #[doc = "If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes after midnight in the device's local time. This value must be between 0 and 1439, inclusive."]
-        #[serde(rename = "startMinutes", default)]
-        pub start_minutes: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for SystemUpdate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4695,6 +4695,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WebApp {
+        #[doc = "The display mode of the web app."]
+        #[serde(rename = "displayMode", default)]
+        pub display_mode: ::std::option::Option<crate::schemas::WebAppDisplayMode>,
+        #[doc = "A list of icons for the web app. Must have at least one element."]
+        #[serde(rename = "icons", default)]
+        pub icons: ::std::option::Option<Vec<crate::schemas::WebAppIcon>>,
+        #[doc = "The name of the web app, which is generated by the server during creation in the form enterprises/{enterpriseId}/webApps/{packageName}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The start URL, i.e. the URL that should load when the user opens the application."]
+        #[serde(rename = "startUrl", default)]
+        pub start_url: ::std::option::Option<String>,
+        #[doc = "The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon)."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "The current version of the app.Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date."]
+        #[serde(rename = "versionCode", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub version_code: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for WebApp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WebAppDisplayMode {
         #[doc = "Not used."]
@@ -4770,28 +4812,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct WebApp {
-        #[doc = "The display mode of the web app."]
-        #[serde(rename = "displayMode", default)]
-        pub display_mode: ::std::option::Option<crate::schemas::WebAppDisplayMode>,
-        #[doc = "A list of icons for the web app. Must have at least one element."]
-        #[serde(rename = "icons", default)]
-        pub icons: ::std::option::Option<Vec<crate::schemas::WebAppIcon>>,
-        #[doc = "The name of the web app, which is generated by the server during creation in the form enterprises/{enterpriseId}/webApps/{packageName}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The start URL, i.e. the URL that should load when the user opens the application."]
-        #[serde(rename = "startUrl", default)]
-        pub start_url: ::std::option::Option<String>,
-        #[doc = "The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon)."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-        #[doc = "The current version of the app.Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date."]
-        #[serde(rename = "versionCode", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub version_code: ::std::option::Option<i64>,
+    pub struct WebAppIcon {
+        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). <ul> <li>The image type can be png or jpg. <li>The image should ideally be square. <li>The image should ideally have a size of 512x512. </ul>"]
+        #[serde(rename = "imageData", default)]
+        pub image_data: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for WebApp {
+    impl ::field_selector::FieldSelector for WebAppIcon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4812,12 +4838,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct WebAppIcon {
-        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). <ul> <li>The image type can be png or jpg. <li>The image should ideally be square. <li>The image should ideally have a size of 512x512. </ul>"]
-        #[serde(rename = "imageData", default)]
-        pub image_data: ::std::option::Option<String>,
+    pub struct WebToken {
+        #[doc = "The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The URL of the parent frame hosting the iframe with the embedded UI. To prevent XSS, the iframe may not be hosted at other URLs. The URL must use the https scheme."]
+        #[serde(rename = "parentFrameUrl", default)]
+        pub parent_frame_url: ::std::option::Option<String>,
+        #[doc = "Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI. This field is deprecated."]
+        #[serde(rename = "permissions", default)]
+        pub permissions: ::std::option::Option<Vec<crate::schemas::WebTokenPermissionsItems>>,
+        #[doc = "The token value which is used in the hosting page to generate the iframe with the embedded UI. This is a read-only field generated by the server."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for WebAppIcon {
+    impl ::field_selector::FieldSelector for WebToken {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4875,41 +4910,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for WebTokenPermissionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WebToken {
-        #[doc = "The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The URL of the parent frame hosting the iframe with the embedded UI. To prevent XSS, the iframe may not be hosted at other URLs. The URL must use the https scheme."]
-        #[serde(rename = "parentFrameUrl", default)]
-        pub parent_frame_url: ::std::option::Option<String>,
-        #[doc = "Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI. This field is deprecated."]
-        #[serde(rename = "permissions", default)]
-        pub permissions: ::std::option::Option<Vec<crate::schemas::WebTokenPermissionsItems>>,
-        #[doc = "The token value which is used in the hosting page to generate the iframe with the embedded UI. This is a read-only field generated by the server."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for WebToken {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10562,84 +10562,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -10671,7 +10593,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -10792,50 +10713,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -260,6 +260,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
+        #[doc = "The digest of the Action\nbeing executed."]
+        #[serde(rename = "actionDigest", default)]
+        pub action_digest: ::std::option::Option<crate::schemas::BuildBazelRemoteExecutionV2Digest>,
+        #[doc = "The current stage of execution."]
+        #[serde(rename = "stage", default)]
+        pub stage: ::std::option::Option<
+            crate::schemas::BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage,
+        >,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
+        #[serde(rename = "stderrStreamName", default)]
+        pub stderr_stream_name: ::std::option::Option<String>,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
+        #[serde(rename = "stdoutStreamName", default)]
+        pub stdout_stream_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
         #[doc = "Checking the result against the cache."]
@@ -323,43 +360,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
-        #[doc = "The digest of the Action\nbeing executed."]
-        #[serde(rename = "actionDigest", default)]
-        pub action_digest: ::std::option::Option<crate::schemas::BuildBazelRemoteExecutionV2Digest>,
-        #[doc = "The current stage of execution."]
-        #[serde(rename = "stage", default)]
-        pub stage: ::std::option::Option<
-            crate::schemas::BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage,
-        >,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
-        #[serde(rename = "stderrStreamName", default)]
-        pub stderr_stream_name: ::std::option::Option<String>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
-        #[serde(rename = "stdoutStreamName", default)]
-        pub stdout_stream_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -885,6 +885,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildbotCommandStatus {
+        #[doc = "The status code."]
+        #[serde(rename = "code", default)]
+        pub code:
+            ::std::option::Option<crate::schemas::GoogleDevtoolsRemotebuildbotCommandStatusCode>,
+        #[doc = "The error message."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildbotCommandStatusCode {
         #[doc = "The command was aborted."]
@@ -1060,36 +1090,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatusCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildbotCommandStatus {
-        #[doc = "The status code."]
-        #[serde(rename = "code", default)]
-        pub code:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemotebuildbotCommandStatusCode>,
-        #[doc = "The error message."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1314,6 +1314,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
+        #[doc = "The location is a GCP region. Currently only `us-central1` is supported."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "Output only. Whether stack driver logging is enabled for the instance."]
+        #[serde(rename = "loggingEnabled", default)]
+        pub logging_enabled: ::std::option::Option<bool>,
+        #[doc = "Output only. Instance resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.\nName should not be populated when creating an instance since it is provided\nin the `instance_id` field."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. State of the instance."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
         #[doc = "The instance is in state `CREATING` once `CreateInstance` is called and\nbefore the instance is ready for use."]
@@ -1377,43 +1414,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
-        #[doc = "The location is a GCP region. Currently only `us-central1` is supported."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "Output only. Whether stack driver logging is enabled for the instance."]
-        #[serde(rename = "loggingEnabled", default)]
-        pub logging_enabled: ::std::option::Option<bool>,
-        #[doc = "Output only. Instance resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.\nName should not be populated when creating an instance since it is provided\nin the `instance_id` field."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. State of the instance."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1623,6 +1623,46 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
+        #[doc = "WorkerPool resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.\nname should not be populated when creating a worker pool since it is\nprovided in the `poolId` field."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. State of the worker pool."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState,
+        >,
+        #[doc = "Specifies the properties, such as machine type and disk size, used for\ncreating workers in a worker pool."]
+        #[serde(rename = "workerConfig", default)]
+        pub worker_config: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig,
+        >,
+        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 1000."]
+        #[serde(rename = "workerCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub worker_count: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
         #[doc = "The worker pool is in state `CREATING` once `CreateWorkerPool` is called\nand before all requested workers are ready."]
@@ -1710,46 +1750,6 @@ pub mod schemas {
     impl ::field_selector::FieldSelector
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
-        #[doc = "WorkerPool resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.\nname should not be populated when creating a worker pool since it is\nprovided in the `poolId` field."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. State of the worker pool."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState,
-        >,
-        #[doc = "Specifies the properties, such as machine type and disk size, used for\ncreating workers in a worker pool."]
-        #[serde(rename = "workerConfig", default)]
-        pub worker_config: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig,
-        >,
-        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 1000."]
-        #[serde(rename = "workerCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub worker_count: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1962,6 +1962,45 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata {
+        #[doc = "The digest of the Action\nbeing executed."]
+        #[serde(rename = "actionDigest", default)]
+        pub action_digest:
+            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
+        #[serde(rename = "stage", default)]
+        pub stage: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
+        >,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
+        #[serde(rename = "stderrStreamName", default)]
+        pub stderr_stream_name: ::std::option::Option<String>,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
+        #[serde(rename = "stdoutStreamName", default)]
+        pub stdout_stream_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
         #[doc = "Checking the result against the cache."]
@@ -2043,45 +2082,6 @@ pub mod schemas {
     }
     impl ::field_selector::FieldSelector
         for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata {
-        #[doc = "The digest of the Action\nbeing executed."]
-        #[serde(rename = "actionDigest", default)]
-        pub action_digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[serde(rename = "stage", default)]
-        pub stage: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
-        >,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
-        #[serde(rename = "stderrStreamName", default)]
-        pub stderr_stream_name: ::std::option::Option<String>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
-        #[serde(rename = "stdoutStreamName", default)]
-        pub stdout_stream_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
     {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -2351,6 +2351,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
+        #[doc = "The argument to the admin action; see `Command` for semantics."]
+        #[serde(rename = "arg", default)]
+        pub arg: ::std::option::Option<String>,
+        #[doc = "The admin action; see `Command` for legal values."]
+        #[serde(rename = "command", default)]
+        pub command: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
         #[doc = "Restart the bot without downloading a new version. `arg` will be a\nmessage to log."]
@@ -2410,37 +2441,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
-        #[doc = "The argument to the admin action; see `Command` for semantics."]
-        #[serde(rename = "arg", default)]
-        pub arg: ::std::option::Option<String>,
-        #[doc = "The admin action; see `Command` for legal values."]
-        #[serde(rename = "command", default)]
-        pub command: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2957,6 +2957,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleWatcherV1Change {
+        #[doc = "If true, this Change is followed by more Changes that are in the same group\nas this Change."]
+        #[serde(rename = "continued", default)]
+        pub continued: ::std::option::Option<bool>,
+        #[doc = "The actual change data. This field is present only when `state() == EXISTS`\nor `state() == ERROR`. Please see google.protobuf.Any about how to use\nthe Any type."]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Name of the element, interpreted relative to the entity's actual\nname. \"\" refers to the entity itself. The element name is a valid\nUTF-8 string."]
+        #[serde(rename = "element", default)]
+        pub element: ::std::option::Option<String>,
+        #[doc = "If present, provides a compact representation of all the messages that have\nbeen received by the caller for the given entity, e.g., it could be a\nsequence number or a multi-part timestamp/version vector. This marker can\nbe provided in the Request message, allowing the caller to resume the\nstream watching at a specific point without fetching the initial state."]
+        #[serde(rename = "resumeMarker", default)]
+        pub resume_marker: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The state of the `element`."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::GoogleWatcherV1ChangeState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleWatcherV1Change {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleWatcherV1ChangeState {
         #[doc = "The element does not exist."]
@@ -3012,33 +3039,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleWatcherV1ChangeState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleWatcherV1Change {
-        #[doc = "If true, this Change is followed by more Changes that are in the same group\nas this Change."]
-        #[serde(rename = "continued", default)]
-        pub continued: ::std::option::Option<bool>,
-        #[doc = "The actual change data. This field is present only when `state() == EXISTS`\nor `state() == ERROR`. Please see google.protobuf.Any about how to use\nthe Any type."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Name of the element, interpreted relative to the entity's actual\nname. \"\" refers to the entity itself. The element name is a valid\nUTF-8 string."]
-        #[serde(rename = "element", default)]
-        pub element: ::std::option::Option<String>,
-        #[doc = "If present, provides a compact representation of all the messages that have\nbeen received by the caller for the given entity, e.g., it could be a\nsequence number or a multi-part timestamp/version vector. This marker can\nbe provided in the Request message, allowing the caller to resume the\nstream watching at a specific point without fetching the initial state."]
-        #[serde(rename = "resumeMarker", default)]
-        pub resume_marker: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The state of the `element`."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::GoogleWatcherV1ChangeState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleWatcherV1Change {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4881,84 +4881,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4990,7 +4912,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -5116,8 +5037,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

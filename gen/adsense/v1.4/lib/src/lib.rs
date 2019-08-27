@@ -198,6 +198,41 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct AdStyle {
+        #[doc = "The colors which are included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
+        #[serde(rename = "colors", default)]
+        pub colors: ::std::option::Option<crate::schemas::AdStyleColors>,
+        #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
+        #[serde(rename = "corners", default)]
+        pub corners: ::std::option::Option<String>,
+        #[doc = "The font which is included in the style."]
+        #[serde(rename = "font", default)]
+        pub font: ::std::option::Option<crate::schemas::AdStyleFont>,
+        #[doc = "Kind this is, in this case adsense#adStyle."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct AdStyleColors {
         #[doc = "The color of the ad background."]
         #[serde(rename = "background", default)]
@@ -265,53 +300,40 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AdStyle {
-        #[doc = "The colors which are included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
-        #[serde(rename = "colors", default)]
-        pub colors: ::std::option::Option<crate::schemas::AdStyleColors>,
-        #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
-        #[serde(rename = "corners", default)]
-        pub corners: ::std::option::Option<String>,
-        #[doc = "The font which is included in the style."]
-        #[serde(rename = "font", default)]
-        pub font: ::std::option::Option<crate::schemas::AdStyleFont>,
-        #[doc = "Kind this is, in this case adsense#adStyle."]
+    pub struct AdUnit {
+        #[doc = "Identity code of this ad unit, not necessarily unique across ad clients."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated)."]
+        #[serde(rename = "contentAdsSettings", default)]
+        pub content_ads_settings: ::std::option::Option<crate::schemas::AdUnitContentAdsSettings>,
+        #[doc = "Custom style information specific to this ad unit."]
+        #[serde(rename = "customStyle", default)]
+        pub custom_style: ::std::option::Option<crate::schemas::AdStyle>,
+        #[doc = "Settings specific to feed ads (AFF) - deprecated."]
+        #[serde(rename = "feedAdsSettings", default)]
+        pub feed_ads_settings: ::std::option::Option<crate::schemas::AdUnitFeedAdsSettings>,
+        #[doc = "Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Kind of resource this is, in this case adsense#adUnit."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
+        #[doc = "Settings specific to WAP mobile content ads (AFMC) - deprecated."]
+        #[serde(rename = "mobileContentAdsSettings", default)]
+        pub mobile_content_ads_settings:
+            ::std::option::Option<crate::schemas::AdUnitMobileContentAdsSettings>,
+        #[doc = "Name of this ad unit."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "ID of the saved ad style which holds this ad unit's style information."]
+        #[serde(rename = "savedStyleId", default)]
+        pub saved_style_id: ::std::option::Option<String>,
+        #[doc = "Status of this ad unit. Possible values are:\nNEW: Indicates that the ad unit was created within the last seven days and does not yet have any activity associated with it.\n\nACTIVE: Indicates that there has been activity on this ad unit in the last seven days.\n\nINACTIVE: Indicates that there has been no activity on this ad unit in the last seven days."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for AdStyle {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdUnitContentAdsSettingsBackupOption {
-        #[doc = "Color to use when type is set to COLOR."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<String>,
-        #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-        #[doc = "URL to use when type is set to URL."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
+    impl ::field_selector::FieldSelector for AdUnit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -345,6 +367,38 @@ pub mod schemas {
         pub size: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnitContentAdsSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdUnitContentAdsSettingsBackupOption {
+        #[doc = "Color to use when type is set to COLOR."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<String>,
+        #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "URL to use when type is set to URL."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -435,60 +489,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AdUnit {
-        #[doc = "Identity code of this ad unit, not necessarily unique across ad clients."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated)."]
-        #[serde(rename = "contentAdsSettings", default)]
-        pub content_ads_settings: ::std::option::Option<crate::schemas::AdUnitContentAdsSettings>,
-        #[doc = "Custom style information specific to this ad unit."]
-        #[serde(rename = "customStyle", default)]
-        pub custom_style: ::std::option::Option<crate::schemas::AdStyle>,
-        #[doc = "Settings specific to feed ads (AFF) - deprecated."]
-        #[serde(rename = "feedAdsSettings", default)]
-        pub feed_ads_settings: ::std::option::Option<crate::schemas::AdUnitFeedAdsSettings>,
-        #[doc = "Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Kind of resource this is, in this case adsense#adUnit."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Settings specific to WAP mobile content ads (AFMC) - deprecated."]
-        #[serde(rename = "mobileContentAdsSettings", default)]
-        pub mobile_content_ads_settings:
-            ::std::option::Option<crate::schemas::AdUnitMobileContentAdsSettings>,
-        #[doc = "Name of this ad unit."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "ID of the saved ad style which holds this ad unit's style information."]
-        #[serde(rename = "savedStyleId", default)]
-        pub saved_style_id: ::std::option::Option<String>,
-        #[doc = "Status of this ad unit. Possible values are:\nNEW: Indicates that the ad unit was created within the last seven days and does not yet have any activity associated with it.\n\nACTIVE: Indicates that there has been activity on this ad unit in the last seven days.\n\nINACTIVE: Indicates that there has been no activity on this ad unit in the last seven days."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdUnit {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct AdUnits {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
@@ -504,38 +504,6 @@ pub mod schemas {
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnits {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdsenseReportsGenerateResponseHeadersItems {
-        #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
-        #[serde(rename = "currency", default)]
-        pub currency: ::std::option::Option<String>,
-        #[doc = "The name of the header."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdsenseReportsGenerateResponseHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -588,6 +556,38 @@ pub mod schemas {
         pub warnings: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AdsenseReportsGenerateResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdsenseReportsGenerateResponseHeadersItems {
+        #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
+        #[serde(rename = "currency", default)]
+        pub currency: ::std::option::Option<String>,
+        #[doc = "The name of the header."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdsenseReportsGenerateResponseHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -678,21 +678,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CustomChannelTargetingInfo {
-        #[doc = "The name used to describe this channel externally."]
-        #[serde(rename = "adsAppearOn", default)]
-        pub ads_appear_on: ::std::option::Option<String>,
-        #[doc = "The external description of the channel."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The language of the sites ads will be displayed on."]
-        #[serde(rename = "siteLanguage", default)]
-        pub site_language: ::std::option::Option<String>,
+    pub struct CustomChannel {
+        #[doc = "Code of this custom channel, not necessarily unique across ad clients."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Kind of resource this is, in this case adsense#customChannel."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Name of this custom channel."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The targeting information of this custom channel, if activated."]
+        #[serde(rename = "targetingInfo", default)]
+        pub targeting_info: ::std::option::Option<crate::schemas::CustomChannelTargetingInfo>,
     }
-    impl ::field_selector::FieldSelector for CustomChannelTargetingInfo {
+    impl ::field_selector::FieldSelector for CustomChannel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -713,24 +716,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CustomChannel {
-        #[doc = "Code of this custom channel, not necessarily unique across ad clients."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Kind of resource this is, in this case adsense#customChannel."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Name of this custom channel."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The targeting information of this custom channel, if activated."]
-        #[serde(rename = "targetingInfo", default)]
-        pub targeting_info: ::std::option::Option<crate::schemas::CustomChannelTargetingInfo>,
+    pub struct CustomChannelTargetingInfo {
+        #[doc = "The name used to describe this channel externally."]
+        #[serde(rename = "adsAppearOn", default)]
+        pub ads_appear_on: ::std::option::Option<String>,
+        #[doc = "The external description of the channel."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The language of the sites ads will be displayed on."]
+        #[serde(rename = "siteLanguage", default)]
+        pub site_language: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for CustomChannel {
+    impl ::field_selector::FieldSelector for CustomChannelTargetingInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9432,84 +9432,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9541,7 +9463,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9662,50 +9583,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -189,6 +189,49 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2BigQueryOptions {
+        #[doc = "References to fields excluded from scanning. This allows you to skip\ninspection of entire columns which you know have no findings."]
+        #[serde(rename = "excludedFields", default)]
+        pub excluded_fields: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2FieldId>>,
+        #[doc = "References to fields uniquely identifying rows within the table.\nNested fields in the format, like `person.birthdate.year`, are allowed."]
+        #[serde(rename = "identifyingFields", default)]
+        pub identifying_fields:
+            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2FieldId>>,
+        #[doc = "Max number of rows to scan. If the table has more rows than this value, the\nrest of the rows are omitted. If not set, or if set to 0, all rows will be\nscanned. Only one of rows_limit and rows_limit_percent can be specified.\nCannot be used in conjunction with TimespanConfig."]
+        #[serde(rename = "rowsLimit", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub rows_limit: ::std::option::Option<i64>,
+        #[doc = "Max percentage of rows to scan. The rest are omitted. The number of rows\nscanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and\n100 means no limit. Defaults to 0. Only one of rows_limit and\nrows_limit_percent can be specified. Cannot be used in conjunction with\nTimespanConfig."]
+        #[serde(rename = "rowsLimitPercent", default)]
+        pub rows_limit_percent: ::std::option::Option<i32>,
+        #[serde(rename = "sampleMethod", default)]
+        pub sample_method:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryOptionsSampleMethod>,
+        #[doc = "Complete BigQuery table reference."]
+        #[serde(rename = "tableReference", default)]
+        pub table_reference: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryTable>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2BigQueryOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
         #[doc = "Randomly pick the row to start scanning. The scanned rows are contiguous."]
@@ -243,49 +286,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2BigQueryOptions {
-        #[doc = "References to fields excluded from scanning. This allows you to skip\ninspection of entire columns which you know have no findings."]
-        #[serde(rename = "excludedFields", default)]
-        pub excluded_fields: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2FieldId>>,
-        #[doc = "References to fields uniquely identifying rows within the table.\nNested fields in the format, like `person.birthdate.year`, are allowed."]
-        #[serde(rename = "identifyingFields", default)]
-        pub identifying_fields:
-            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2FieldId>>,
-        #[doc = "Max number of rows to scan. If the table has more rows than this value, the\nrest of the rows are omitted. If not set, or if set to 0, all rows will be\nscanned. Only one of rows_limit and rows_limit_percent can be specified.\nCannot be used in conjunction with TimespanConfig."]
-        #[serde(rename = "rowsLimit", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub rows_limit: ::std::option::Option<i64>,
-        #[doc = "Max percentage of rows to scan. The rest are omitted. The number of rows\nscanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and\n100 means no limit. Defaults to 0. Only one of rows_limit and\nrows_limit_percent can be specified. Cannot be used in conjunction with\nTimespanConfig."]
-        #[serde(rename = "rowsLimitPercent", default)]
-        pub rows_limit_percent: ::std::option::Option<i32>,
-        #[serde(rename = "sampleMethod", default)]
-        pub sample_method:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryOptionsSampleMethod>,
-        #[doc = "Complete BigQuery table reference."]
-        #[serde(rename = "tableReference", default)]
-        pub table_reference: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryTable>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2BigQueryOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -401,6 +401,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2ByteContentItem {
+        #[doc = "Content data to inspect or redact."]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The type of data stored in the bytes string. Default will be TEXT_UTF8."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ByteContentItemType>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ByteContentItem {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2ByteContentItemType {
         Avro,
@@ -468,35 +497,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ByteContentItemType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2ByteContentItem {
-        #[doc = "Content data to inspect or redact."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The type of data stored in the bytes string. Default will be TEXT_UTF8."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ByteContentItemType>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ByteContentItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -637,6 +637,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2CharsToIgnore {
+        #[serde(rename = "charactersToSkip", default)]
+        pub characters_to_skip: ::std::option::Option<String>,
+        #[serde(rename = "commonCharactersToIgnore", default)]
+        pub common_characters_to_ignore: ::std::option::Option<
+            crate::schemas::GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CharsToIgnore {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
         #[doc = "a-z"]
@@ -699,15 +728,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CharsToIgnore {
-        #[serde(rename = "charactersToSkip", default)]
-        pub characters_to_skip: ::std::option::Option<String>,
-        #[serde(rename = "commonCharactersToIgnore", default)]
-        pub common_characters_to_ignore: ::std::option::Option<
-            crate::schemas::GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore,
-        >,
+    pub struct GooglePrivacyDlpV2CloudStorageFileSet {
+        #[doc = "The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the\npath is allowed."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CharsToIgnore {
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CloudStorageFileSet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -728,12 +754,31 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CloudStorageFileSet {
-        #[doc = "The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the\npath is allowed."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
+    pub struct GooglePrivacyDlpV2CloudStorageOptions {
+        #[doc = "Max number of bytes to scan from a file. If a scanned file's size is bigger\nthan this value then the rest of the bytes are omitted. Only one\nof bytes_limit_per_file and bytes_limit_per_file_percent can be specified."]
+        #[serde(rename = "bytesLimitPerFile", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub bytes_limit_per_file: ::std::option::Option<i64>,
+        #[doc = "Max percentage of bytes to scan from a file. The rest are omitted. The\nnumber of bytes scanned is rounded down. Must be between 0 and 100,\ninclusively. Both 0 and 100 means no limit. Defaults to 0. Only one\nof bytes_limit_per_file and bytes_limit_per_file_percent can be specified."]
+        #[serde(rename = "bytesLimitPerFilePercent", default)]
+        pub bytes_limit_per_file_percent: ::std::option::Option<i32>,
+        #[doc = "The set of one or more files to scan."]
+        #[serde(rename = "fileSet", default)]
+        pub file_set: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FileSet>,
+        #[doc = "List of file type groups to include in the scan.\nIf empty, all files are scanned and available data format processors\nare applied. In addition, the binary content of the selected files\nis always scanned as well."]
+        #[serde(rename = "fileTypes", default)]
+        pub file_types: ::std::option::Option<
+            Vec<crate::schemas::GooglePrivacyDlpV2CloudStorageOptionsFileTypesItems>,
+        >,
+        #[doc = "Limits the number of files to scan to this percentage of the input FileSet.\nNumber of files scanned is rounded down. Must be between 0 and 100,\ninclusively. Both 0 and 100 means no limit. Defaults to 0."]
+        #[serde(rename = "filesLimitPercent", default)]
+        pub files_limit_percent: ::std::option::Option<i32>,
+        #[serde(rename = "sampleMethod", default)]
+        pub sample_method: ::std::option::Option<
+            crate::schemas::GooglePrivacyDlpV2CloudStorageOptionsSampleMethod,
+        >,
     }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CloudStorageFileSet {
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CloudStorageOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -882,51 +927,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CloudStorageOptions {
-        #[doc = "Max number of bytes to scan from a file. If a scanned file's size is bigger\nthan this value then the rest of the bytes are omitted. Only one\nof bytes_limit_per_file and bytes_limit_per_file_percent can be specified."]
-        #[serde(rename = "bytesLimitPerFile", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub bytes_limit_per_file: ::std::option::Option<i64>,
-        #[doc = "Max percentage of bytes to scan from a file. The rest are omitted. The\nnumber of bytes scanned is rounded down. Must be between 0 and 100,\ninclusively. Both 0 and 100 means no limit. Defaults to 0. Only one\nof bytes_limit_per_file and bytes_limit_per_file_percent can be specified."]
-        #[serde(rename = "bytesLimitPerFilePercent", default)]
-        pub bytes_limit_per_file_percent: ::std::option::Option<i32>,
-        #[doc = "The set of one or more files to scan."]
-        #[serde(rename = "fileSet", default)]
-        pub file_set: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FileSet>,
-        #[doc = "List of file type groups to include in the scan.\nIf empty, all files are scanned and available data format processors\nare applied. In addition, the binary content of the selected files\nis always scanned as well."]
-        #[serde(rename = "fileTypes", default)]
-        pub file_types: ::std::option::Option<
-            Vec<crate::schemas::GooglePrivacyDlpV2CloudStorageOptionsFileTypesItems>,
-        >,
-        #[doc = "Limits the number of files to scan to this percentage of the input FileSet.\nNumber of files scanned is rounded down. Must be between 0 and 100,\ninclusively. Both 0 and 100 means no limit. Defaults to 0."]
-        #[serde(rename = "filesLimitPercent", default)]
-        pub files_limit_percent: ::std::option::Option<i32>,
-        #[serde(rename = "sampleMethod", default)]
-        pub sample_method: ::std::option::Option<
-            crate::schemas::GooglePrivacyDlpV2CloudStorageOptionsSampleMethod,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CloudStorageOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GooglePrivacyDlpV2CloudStoragePath {
         #[doc = "A url representing a file or path (no wildcards) in Cloud Storage.\nExample: gs://[BUCKET_NAME]/dictionary.txt"]
         #[serde(rename = "path", default)]
@@ -988,6 +988,29 @@ pub mod schemas {
         pub red: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Color {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2Condition {
+        #[doc = "Field within the record this condition is evaluated against. [required]"]
+        #[serde(rename = "field", default)]
+        pub field: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FieldId>,
+        #[doc = "Operator used to compare the field or infoType to the value. [required]"]
+        #[serde(rename = "operator", default)]
+        pub operator: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ConditionOperator>,
+        #[doc = "Value to compare against. [Required, except for `EXISTS` tests.]"]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Value>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1074,29 +1097,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ConditionOperator {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2Condition {
-        #[doc = "Field within the record this condition is evaluated against. [required]"]
-        #[serde(rename = "field", default)]
-        pub field: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FieldId>,
-        #[doc = "Operator used to compare the field or infoType to the value. [required]"]
-        #[serde(rename = "operator", default)]
-        pub operator: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ConditionOperator>,
-        #[doc = "Value to compare against. [Required, except for `EXISTS` tests.]"]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Value>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1404,6 +1404,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
+        #[serde(rename = "commonAlphabet", default)]
+        pub common_alphabet: ::std::option::Option<
+            crate::schemas::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet,
+        >,
+        #[doc = "The 'tweak', a context may be used for higher security since the same\nidentifier in two different contexts won't be given the same surrogate. If\nthe context is not set, a default tweak will be used.\n\nIf the context is set but:\n\n1. there is no record present when transforming a given value or\n1. the field is not present when transforming a given value,\n\na default tweak will be used.\n\nNote that case (1) is expected when an `InfoTypeTransformation` is\napplied to both structured and non-structured `ContentItem`s.\nCurrently, the referenced field may be of value type integer or string.\n\nThe tweak is constructed as a sequence of bytes in big endian byte order\nsuch that:\n\n* a 64 bit integer is encoded followed by a single byte of value 1\n* a string is encoded in UTF-8 format followed by a single byte of value 2"]
+        #[serde(rename = "context", default)]
+        pub context: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FieldId>,
+        #[doc = "The key used by the encryption algorithm. [required]"]
+        #[serde(rename = "cryptoKey", default)]
+        pub crypto_key: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CryptoKey>,
+        #[doc = "This is supported by mapping these to the alphanumeric characters\nthat the FFX mode natively supports. This happens before/after\nencryption/decryption.\nEach character listed must appear only once.\nNumber of characters must be in the range [2, 62].\nThis must be encoded as ASCII.\nThe order of characters does not matter."]
+        #[serde(rename = "customAlphabet", default)]
+        pub custom_alphabet: ::std::option::Option<String>,
+        #[doc = "The native way to select the alphabet. Must be in the range [2, 62]."]
+        #[serde(rename = "radix", default)]
+        pub radix: ::std::option::Option<i32>,
+        #[doc = "The custom infoType to annotate the surrogate with.\nThis annotation will be applied to the surrogate by prefixing it with\nthe name of the custom infoType followed by the number of\ncharacters comprising the surrogate. The following scheme defines the\nformat: info_type_name(surrogate_character_count):surrogate\n\nFor example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and\nthe surrogate is 'abc', the full replacement value\nwill be: 'MY_TOKEN_INFO_TYPE(3):abc'\n\nThis annotation identifies the surrogate when inspecting content using the\ncustom infoType\n[`SurrogateType`](/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).\nThis facilitates reversal of the surrogate when it occurs in free text.\n\nIn order for inspection to work properly, the name of this infoType must\nnot occur naturally anywhere in your data; otherwise, inspection may\nfind a surrogate that does not correspond to an actual identifier.\nTherefore, choose your custom infoType name carefully after considering\nwhat your data looks like. One way to select a name that has a high chance\nof yielding reliable detection is to include one or more unicode characters\nthat are highly improbable to exist in your data.\nFor example, assuming your data is entered from a regular ASCII keyboard,\nthe symbol with the hex code point 29DD might be used like so:\n\u{29dd}MY_TOKEN_TYPE"]
+        #[serde(rename = "surrogateInfoType", default)]
+        pub surrogate_info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
         #[doc = "[0-9A-Za-z] (radix of 62)"]
@@ -1464,28 +1506,36 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
-        #[serde(rename = "commonAlphabet", default)]
-        pub common_alphabet: ::std::option::Option<
-            crate::schemas::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet,
-        >,
-        #[doc = "The 'tweak', a context may be used for higher security since the same\nidentifier in two different contexts won't be given the same surrogate. If\nthe context is not set, a default tweak will be used.\n\nIf the context is set but:\n\n1. there is no record present when transforming a given value or\n1. the field is not present when transforming a given value,\n\na default tweak will be used.\n\nNote that case (1) is expected when an `InfoTypeTransformation` is\napplied to both structured and non-structured `ContentItem`s.\nCurrently, the referenced field may be of value type integer or string.\n\nThe tweak is constructed as a sequence of bytes in big endian byte order\nsuch that:\n\n* a 64 bit integer is encoded followed by a single byte of value 1\n* a string is encoded in UTF-8 format followed by a single byte of value 2"]
-        #[serde(rename = "context", default)]
-        pub context: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FieldId>,
-        #[doc = "The key used by the encryption algorithm. [required]"]
-        #[serde(rename = "cryptoKey", default)]
-        pub crypto_key: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CryptoKey>,
-        #[doc = "This is supported by mapping these to the alphanumeric characters\nthat the FFX mode natively supports. This happens before/after\nencryption/decryption.\nEach character listed must appear only once.\nNumber of characters must be in the range [2, 62].\nThis must be encoded as ASCII.\nThe order of characters does not matter."]
-        #[serde(rename = "customAlphabet", default)]
-        pub custom_alphabet: ::std::option::Option<String>,
-        #[doc = "The native way to select the alphabet. Must be in the range [2, 62]."]
-        #[serde(rename = "radix", default)]
-        pub radix: ::std::option::Option<i32>,
-        #[doc = "The custom infoType to annotate the surrogate with.\nThis annotation will be applied to the surrogate by prefixing it with\nthe name of the custom infoType followed by the number of\ncharacters comprising the surrogate. The following scheme defines the\nformat: info_type_name(surrogate_character_count):surrogate\n\nFor example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and\nthe surrogate is 'abc', the full replacement value\nwill be: 'MY_TOKEN_INFO_TYPE(3):abc'\n\nThis annotation identifies the surrogate when inspecting content using the\ncustom infoType\n[`SurrogateType`](/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).\nThis facilitates reversal of the surrogate when it occurs in free text.\n\nIn order for inspection to work properly, the name of this infoType must\nnot occur naturally anywhere in your data; otherwise, inspection may\nfind a surrogate that does not correspond to an actual identifier.\nTherefore, choose your custom infoType name carefully after considering\nwhat your data looks like. One way to select a name that has a high chance\nof yielding reliable detection is to include one or more unicode characters\nthat are highly improbable to exist in your data.\nFor example, assuming your data is entered from a regular ASCII keyboard,\nthe symbol with the hex code point 29DD might be used like so:\n\u{29dd}MY_TOKEN_TYPE"]
-        #[serde(rename = "surrogateInfoType", default)]
-        pub surrogate_info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
+    pub struct GooglePrivacyDlpV2CustomInfoType {
+        #[doc = "Set of detection rules to apply to all findings of this CustomInfoType.\nRules are applied in order that they are specified. Not supported for the\n`surrogate_type` CustomInfoType."]
+        #[serde(rename = "detectionRules", default)]
+        pub detection_rules:
+            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2DetectionRule>>,
+        #[doc = "A list of phrases to detect as a CustomInfoType."]
+        #[serde(rename = "dictionary", default)]
+        pub dictionary: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Dictionary>,
+        #[doc = "If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding\nto be returned. It still can be used for rules matching."]
+        #[serde(rename = "exclusionType", default)]
+        pub exclusion_type:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CustomInfoTypeExclusionType>,
+        #[doc = "CustomInfoType can either be a new infoType, or an extension of built-in\ninfoType, when the name matches one of existing infoTypes and that infoType\nis specified in `InspectContent.info_types` field. Specifying the latter\nadds findings to the one detected by the system. If built-in info type is\nnot specified in `InspectContent.info_types` list then the name is treated\nas a custom info type."]
+        #[serde(rename = "infoType", default)]
+        pub info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
+        #[doc = "Likelihood to return for this CustomInfoType. This base value can be\naltered by a detection rule if the finding meets the criteria specified by\nthe rule. Defaults to `VERY_LIKELY` if not specified."]
+        #[serde(rename = "likelihood", default)]
+        pub likelihood:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CustomInfoTypeLikelihood>,
+        #[doc = "Regular expression based CustomInfoType."]
+        #[serde(rename = "regex", default)]
+        pub regex: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Regex>,
+        #[doc = "Load an existing `StoredInfoType` resource for use in\n`InspectDataSource`. Not currently supported in `InspectContent`."]
+        #[serde(rename = "storedType", default)]
+        pub stored_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredType>,
+        #[doc = "Message for detecting output from deidentification transformations that\nsupport reversing."]
+        #[serde(rename = "surrogateType", default)]
+        pub surrogate_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2SurrogateType>,
     }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CustomInfoType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1642,56 +1692,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CustomInfoType {
-        #[doc = "Set of detection rules to apply to all findings of this CustomInfoType.\nRules are applied in order that they are specified. Not supported for the\n`surrogate_type` CustomInfoType."]
-        #[serde(rename = "detectionRules", default)]
-        pub detection_rules:
-            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2DetectionRule>>,
-        #[doc = "A list of phrases to detect as a CustomInfoType."]
-        #[serde(rename = "dictionary", default)]
-        pub dictionary: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Dictionary>,
-        #[doc = "If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding\nto be returned. It still can be used for rules matching."]
-        #[serde(rename = "exclusionType", default)]
-        pub exclusion_type:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CustomInfoTypeExclusionType>,
-        #[doc = "CustomInfoType can either be a new infoType, or an extension of built-in\ninfoType, when the name matches one of existing infoTypes and that infoType\nis specified in `InspectContent.info_types` field. Specifying the latter\nadds findings to the one detected by the system. If built-in info type is\nnot specified in `InspectContent.info_types` list then the name is treated\nas a custom info type."]
-        #[serde(rename = "infoType", default)]
-        pub info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
-        #[doc = "Likelihood to return for this CustomInfoType. This base value can be\naltered by a detection rule if the finding meets the criteria specified by\nthe rule. Defaults to `VERY_LIKELY` if not specified."]
-        #[serde(rename = "likelihood", default)]
-        pub likelihood:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2CustomInfoTypeLikelihood>,
-        #[doc = "Regular expression based CustomInfoType."]
-        #[serde(rename = "regex", default)]
-        pub regex: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Regex>,
-        #[doc = "Load an existing `StoredInfoType` resource for use in\n`InspectDataSource`. Not currently supported in `InspectContent`."]
-        #[serde(rename = "storedType", default)]
-        pub stored_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredType>,
-        #[doc = "Message for detecting output from deidentification transformations that\nsupport reversing."]
-        #[serde(rename = "surrogateType", default)]
-        pub surrogate_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2SurrogateType>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2CustomInfoType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GooglePrivacyDlpV2DatastoreKey {
         #[doc = "Datastore entity key."]
         #[serde(rename = "entityKey", default)]
@@ -1762,6 +1762,38 @@ pub mod schemas {
         pub upper_bound_days: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DateShiftConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2DateTime {
+        #[doc = "One or more of the following must be set. All fields are optional, but\nwhen set must be valid date or time values."]
+        #[serde(rename = "date", default)]
+        pub date: ::std::option::Option<crate::schemas::GoogleTypeDate>,
+        #[serde(rename = "dayOfWeek", default)]
+        pub day_of_week: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DateTimeDayOfWeek>,
+        #[serde(rename = "time", default)]
+        pub time: ::std::option::Option<crate::schemas::GoogleTypeTimeOfDay>,
+        #[serde(rename = "timeZone", default)]
+        pub time_zone: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2TimeZone>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DateTime {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1845,38 +1877,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DateTimeDayOfWeek {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2DateTime {
-        #[doc = "One or more of the following must be set. All fields are optional, but\nwhen set must be valid date or time values."]
-        #[serde(rename = "date", default)]
-        pub date: ::std::option::Option<crate::schemas::GoogleTypeDate>,
-        #[serde(rename = "dayOfWeek", default)]
-        pub day_of_week: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DateTimeDayOfWeek>,
-        #[serde(rename = "time", default)]
-        pub time: ::std::option::Option<crate::schemas::GoogleTypeTimeOfDay>,
-        #[serde(rename = "timeZone", default)]
-        pub time_zone: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2TimeZone>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DateTime {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2155,6 +2155,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GooglePrivacyDlpV2DlpJob {
+        #[doc = "Time when the job was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Time when the job finished."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "A stream of errors encountered running the job."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
+        #[doc = "Results from inspecting a data source."]
+        #[serde(rename = "inspectDetails", default)]
+        pub inspect_details:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectDataSourceDetails>,
+        #[doc = "If created by a job trigger, the resource name of the trigger that\ninstantiated the job."]
+        #[serde(rename = "jobTriggerName", default)]
+        pub job_trigger_name: ::std::option::Option<String>,
+        #[doc = "The server-assigned name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The type of job."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DlpJobType>,
+        #[doc = "Results from analyzing risk of a data source."]
+        #[serde(rename = "riskDetails", default)]
+        pub risk_details:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails>,
+        #[doc = "Time when the job started."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "State of a job."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DlpJobState>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DlpJob {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2DlpJobType {
         DlpJobTypeUnspecified,
@@ -2283,50 +2327,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GooglePrivacyDlpV2DlpJob {
-        #[doc = "Time when the job was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Time when the job finished."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "A stream of errors encountered running the job."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
-        #[doc = "Results from inspecting a data source."]
-        #[serde(rename = "inspectDetails", default)]
-        pub inspect_details:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectDataSourceDetails>,
-        #[doc = "If created by a job trigger, the resource name of the trigger that\ninstantiated the job."]
-        #[serde(rename = "jobTriggerName", default)]
-        pub job_trigger_name: ::std::option::Option<String>,
-        #[doc = "The server-assigned name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The type of job."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DlpJobType>,
-        #[doc = "Results from analyzing risk of a data source."]
-        #[serde(rename = "riskDetails", default)]
-        pub risk_details:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails>,
-        #[doc = "Time when the job started."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "State of a job."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2DlpJobState>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2DlpJob {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -2423,6 +2423,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2ExclusionRule {
+        #[doc = "Dictionary which defines the rule."]
+        #[serde(rename = "dictionary", default)]
+        pub dictionary: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Dictionary>,
+        #[doc = "Set of infoTypes for which findings would affect this rule."]
+        #[serde(rename = "excludeInfoTypes", default)]
+        pub exclude_info_types:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExcludeInfoTypes>,
+        #[doc = "How the rule is applied, see MatchingType documentation for details."]
+        #[serde(rename = "matchingType", default)]
+        pub matching_type:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExclusionRuleMatchingType>,
+        #[doc = "Regular expression which defines the rule."]
+        #[serde(rename = "regex", default)]
+        pub regex: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Regex>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ExclusionRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2ExclusionRuleMatchingType {
         #[doc = "Full match.\n\n* Dictionary: join of Dictionary results matched complete finding quote\n* Regex: all regex matches fill a finding quote start to end\n* Exclude info type: completely inside affecting info types findings"]
@@ -2503,34 +2540,17 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2ExclusionRule {
-        #[doc = "Dictionary which defines the rule."]
-        #[serde(rename = "dictionary", default)]
-        pub dictionary: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Dictionary>,
-        #[doc = "Set of infoTypes for which findings would affect this rule."]
-        #[serde(rename = "excludeInfoTypes", default)]
-        pub exclude_info_types:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExcludeInfoTypes>,
-        #[doc = "How the rule is applied, see MatchingType documentation for details."]
-        #[serde(rename = "matchingType", default)]
-        pub matching_type:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExclusionRuleMatchingType>,
-        #[doc = "Regular expression which defines the rule."]
-        #[serde(rename = "regex", default)]
-        pub regex: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Regex>,
+    pub struct GooglePrivacyDlpV2Expressions {
+        #[serde(rename = "conditions", default)]
+        pub conditions: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Conditions>,
+        #[doc = "The operator to apply to the result of conditions. Default and currently\nonly supported value is `AND`."]
+        #[serde(rename = "logicalOperator", default)]
+        pub logical_operator:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExpressionsLogicalOperator>,
     }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ExclusionRule {
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Expressions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2588,26 +2608,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ExpressionsLogicalOperator {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2Expressions {
-        #[serde(rename = "conditions", default)]
-        pub conditions: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Conditions>,
-        #[doc = "The operator to apply to the result of conditions. Default and currently\nonly supported value is `AND`."]
-        #[serde(rename = "logicalOperator", default)]
-        pub logical_operator:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ExpressionsLogicalOperator>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Expressions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2700,6 +2700,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2Finding {
+        #[doc = "Timestamp when finding was detected."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The type of content that might have been found.\nProvided if `excluded_types` is false."]
+        #[serde(rename = "infoType", default)]
+        pub info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
+        #[doc = "Confidence of how likely it is that the `info_type` is correct."]
+        #[serde(rename = "likelihood", default)]
+        pub likelihood: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FindingLikelihood>,
+        #[doc = "Where the content was found."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Location>,
+        #[doc = "The content that was found. Even if the content is not textual, it\nmay be converted to a textual representation here.\nProvided if `include_quote` is true and the finding is\nless than or equal to 4096 bytes long. If the finding exceeds 4096 bytes\nin length, the quote may be omitted."]
+        #[serde(rename = "quote", default)]
+        pub quote: ::std::option::Option<String>,
+        #[doc = "Contains data parsed from quotes. Only populated if include_quote was set\nto true and a supported infoType was requested. Currently supported\ninfoTypes: DATE, DATE_OF_BIRTH and TIME."]
+        #[serde(rename = "quoteInfo", default)]
+        pub quote_info: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2QuoteInfo>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Finding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2FindingLikelihood {
         #[doc = "Default value; same as POSSIBLE."]
@@ -2765,47 +2806,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2FindingLikelihood {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2Finding {
-        #[doc = "Timestamp when finding was detected."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "The type of content that might have been found.\nProvided if `excluded_types` is false."]
-        #[serde(rename = "infoType", default)]
-        pub info_type: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InfoType>,
-        #[doc = "Confidence of how likely it is that the `info_type` is correct."]
-        #[serde(rename = "likelihood", default)]
-        pub likelihood: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FindingLikelihood>,
-        #[doc = "Where the content was found."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2Location>,
-        #[doc = "The content that was found. Even if the content is not textual, it\nmay be converted to a textual representation here.\nProvided if `include_quote` is true and the finding is\nless than or equal to 4096 bytes long. If the finding exceeds 4096 bytes\nin length, the quote may be omitted."]
-        #[serde(rename = "quote", default)]
-        pub quote: ::std::option::Option<String>,
-        #[doc = "Contains data parsed from quotes. Only populated if include_quote was set\nto true and a supported infoType was requested. Currently supported\ninfoTypes: DATE, DATE_OF_BIRTH and TIME."]
-        #[serde(rename = "quoteInfo", default)]
-        pub quote_info: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2QuoteInfo>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Finding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2979,6 +2979,43 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2InfoTypeDescription {
+        #[doc = "Description of the infotype. Translated when language is provided in the\nrequest."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Human readable form of the infoType name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Internal name of the infoType."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Which parts of the API supports this InfoType."]
+        #[serde(rename = "supportedBy", default)]
+        pub supported_by: ::std::option::Option<
+            Vec<crate::schemas::GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItems>,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InfoTypeDescription {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItems {
         EnumTypeUnspecified,
@@ -3035,43 +3072,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2InfoTypeDescription {
-        #[doc = "Description of the infotype. Translated when language is provided in the\nrequest."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Human readable form of the infoType name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Internal name of the infoType."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Which parts of the API supports this InfoType."]
-        #[serde(rename = "supportedBy", default)]
-        pub supported_by: ::std::option::Option<
-            Vec<crate::schemas::GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItems>,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InfoTypeDescription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3170,6 +3170,57 @@ pub mod schemas {
             ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2InfoTypeTransformation>>,
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InfoTypeTransformations {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2InspectConfig {
+        #[doc = "List of options defining data content to scan.\nIf empty, text, images, and other content will be included."]
+        #[serde(rename = "contentOptions", default)]
+        pub content_options: ::std::option::Option<
+            Vec<crate::schemas::GooglePrivacyDlpV2InspectConfigContentOptionsItems>,
+        >,
+        #[doc = "CustomInfoTypes provided by the user. See\nhttps://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more."]
+        #[serde(rename = "customInfoTypes", default)]
+        pub custom_info_types:
+            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2CustomInfoType>>,
+        #[doc = "When true, excludes type information of the findings."]
+        #[serde(rename = "excludeInfoTypes", default)]
+        pub exclude_info_types: ::std::option::Option<bool>,
+        #[doc = "When true, a contextual quote from the data that triggered a finding is\nincluded in the response; see Finding.quote."]
+        #[serde(rename = "includeQuote", default)]
+        pub include_quote: ::std::option::Option<bool>,
+        #[doc = "Restricts what info_types to look for. The values must correspond to\nInfoType values returned by ListInfoTypes or listed at\nhttps://cloud.google.com/dlp/docs/infotypes-reference.\n\nWhen no InfoTypes or CustomInfoTypes are specified in a request, the\nsystem may automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.\n\nThe special InfoType name \"ALL_BASIC\" can be used to trigger all detectors,\nbut may change over time as new InfoTypes are added. If you need precise\ncontrol and predictability as to what detectors are run you should specify\nspecific InfoTypes listed in the reference."]
+        #[serde(rename = "infoTypes", default)]
+        pub info_types: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2InfoType>>,
+        #[serde(rename = "limits", default)]
+        pub limits: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FindingLimits>,
+        #[doc = "Only returns findings equal or above this threshold. The default is\nPOSSIBLE.\nSee https://cloud.google.com/dlp/docs/likelihood to learn more."]
+        #[serde(rename = "minLikelihood", default)]
+        pub min_likelihood:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectConfigMinLikelihood>,
+        #[doc = "Set of rules to apply to the findings for this InspectConfig.\nExclusion rules, contained in the set are executed in the end, other\nrules are executed in the order they are specified for each info type."]
+        #[serde(rename = "ruleSet", default)]
+        pub rule_set:
+            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2InspectionRuleSet>>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InspectConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3303,57 +3354,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InspectConfigMinLikelihood {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2InspectConfig {
-        #[doc = "List of options defining data content to scan.\nIf empty, text, images, and other content will be included."]
-        #[serde(rename = "contentOptions", default)]
-        pub content_options: ::std::option::Option<
-            Vec<crate::schemas::GooglePrivacyDlpV2InspectConfigContentOptionsItems>,
-        >,
-        #[doc = "CustomInfoTypes provided by the user. See\nhttps://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more."]
-        #[serde(rename = "customInfoTypes", default)]
-        pub custom_info_types:
-            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2CustomInfoType>>,
-        #[doc = "When true, excludes type information of the findings."]
-        #[serde(rename = "excludeInfoTypes", default)]
-        pub exclude_info_types: ::std::option::Option<bool>,
-        #[doc = "When true, a contextual quote from the data that triggered a finding is\nincluded in the response; see Finding.quote."]
-        #[serde(rename = "includeQuote", default)]
-        pub include_quote: ::std::option::Option<bool>,
-        #[doc = "Restricts what info_types to look for. The values must correspond to\nInfoType values returned by ListInfoTypes or listed at\nhttps://cloud.google.com/dlp/docs/infotypes-reference.\n\nWhen no InfoTypes or CustomInfoTypes are specified in a request, the\nsystem may automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.\n\nThe special InfoType name \"ALL_BASIC\" can be used to trigger all detectors,\nbut may change over time as new InfoTypes are added. If you need precise\ncontrol and predictability as to what detectors are run you should specify\nspecific InfoTypes listed in the reference."]
-        #[serde(rename = "infoTypes", default)]
-        pub info_types: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2InfoType>>,
-        #[serde(rename = "limits", default)]
-        pub limits: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2FindingLimits>,
-        #[doc = "Only returns findings equal or above this threshold. The default is\nPOSSIBLE.\nSee https://cloud.google.com/dlp/docs/likelihood to learn more."]
-        #[serde(rename = "minLikelihood", default)]
-        pub min_likelihood:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectConfigMinLikelihood>,
-        #[doc = "Set of rules to apply to the findings for this InspectConfig.\nExclusion rules, contained in the set are executed in the end, other\nrules are executed in the order they are specified for each info type."]
-        #[serde(rename = "ruleSet", default)]
-        pub rule_set:
-            ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2InspectionRuleSet>>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2InspectConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3621,6 +3621,47 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2JobNotificationEmails {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GooglePrivacyDlpV2JobTrigger {
+        #[doc = "The creation timestamp of a triggeredJob, output only field."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "User provided description (max 256 chars)"]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Display name (max 100 chars)"]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "A stream of errors encountered when the trigger was activated. Repeated\nerrors may result in the JobTrigger automatically being paused.\nWill return the last 100 errors. Whenever the JobTrigger is modified\nthis list will be cleared. Output only field."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
+        #[serde(rename = "inspectJob", default)]
+        pub inspect_job: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectJobConfig>,
+        #[doc = "The timestamp of the last time this trigger executed, output only field."]
+        #[serde(rename = "lastRunTime", default)]
+        pub last_run_time: ::std::option::Option<String>,
+        #[doc = "Unique resource name for the triggeredJob, assigned by the service when the\ntriggeredJob is created, for example\n`projects/dlp-test-project/jobTriggers/53234423`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A status for this trigger. [required]"]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2JobTriggerStatus>,
+        #[doc = "A list of triggers which will be OR'ed together. Only one in the list\nneeds to trigger for a job to be started. The list may contain only\na single Schedule trigger and must have at least one object."]
+        #[serde(rename = "triggers", default)]
+        pub triggers: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Trigger>>,
+        #[doc = "The last update timestamp of a triggeredJob, output only field."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2JobTrigger {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2JobTriggerStatus {
         #[doc = "Trigger is cancelled and can not be resumed."]
@@ -3675,47 +3716,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2JobTriggerStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GooglePrivacyDlpV2JobTrigger {
-        #[doc = "The creation timestamp of a triggeredJob, output only field."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "User provided description (max 256 chars)"]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Display name (max 100 chars)"]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "A stream of errors encountered when the trigger was activated. Repeated\nerrors may result in the JobTrigger automatically being paused.\nWill return the last 100 errors. Whenever the JobTrigger is modified\nthis list will be cleared. Output only field."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
-        #[serde(rename = "inspectJob", default)]
-        pub inspect_job: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2InspectJobConfig>,
-        #[doc = "The timestamp of the last time this trigger executed, output only field."]
-        #[serde(rename = "lastRunTime", default)]
-        pub last_run_time: ::std::option::Option<String>,
-        #[doc = "Unique resource name for the triggeredJob, assigned by the service when the\ntriggeredJob is created, for example\n`projects/dlp-test-project/jobTriggers/53234423`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "A status for this trigger. [required]"]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2JobTriggerStatus>,
-        #[doc = "A list of triggers which will be OR'ed together. Only one in the list\nneeds to trigger for a job to be started. The list may contain only\na single Schedule trigger and must have at least one object."]
-        #[serde(rename = "triggers", default)]
-        pub triggers: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Trigger>>,
-        #[doc = "The last update timestamp of a triggeredJob, output only field."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2JobTrigger {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4190,6 +4190,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2LikelihoodAdjustment {
+        #[doc = "Set the likelihood of a finding to a fixed value."]
+        #[serde(rename = "fixedLikelihood", default)]
+        pub fixed_likelihood: ::std::option::Option<
+            crate::schemas::GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood,
+        >,
+        #[doc = "Increase or decrease the likelihood by the specified number of\nlevels. For example, if a finding would be `POSSIBLE` without the\ndetection rule and `relative_likelihood` is 1, then it is upgraded to\n`LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`.\nLikelihood may never drop below `VERY_UNLIKELY` or exceed\n`VERY_LIKELY`, so applying an adjustment of 1 followed by an\nadjustment of -1 when base likelihood is `VERY_LIKELY` will result in\na final likelihood of `LIKELY`."]
+        #[serde(rename = "relativeLikelihood", default)]
+        pub relative_likelihood: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2LikelihoodAdjustment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
         #[doc = "Default value; same as POSSIBLE."]
@@ -4259,37 +4290,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2LikelihoodAdjustment {
-        #[doc = "Set the likelihood of a finding to a fixed value."]
-        #[serde(rename = "fixedLikelihood", default)]
-        pub fixed_likelihood: ::std::option::Option<
-            crate::schemas::GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood,
-        >,
-        #[doc = "Increase or decrease the likelihood by the specified number of\nlevels. For example, if a finding would be `POSSIBLE` without the\ndetection rule and `relative_likelihood` is 1, then it is upgraded to\n`LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`.\nLikelihood may never drop below `VERY_UNLIKELY` or exceed\n`VERY_LIKELY`, so applying an adjustment of 1 followed by an\nadjustment of -1 when base likelihood is `VERY_LIKELY` will result in\na final likelihood of `LIKELY`."]
-        #[serde(rename = "relativeLikelihood", default)]
-        pub relative_likelihood: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2LikelihoodAdjustment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4513,6 +4513,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2OutputStorageConfig {
+        #[doc = "Schema used for writing the findings for Inspect jobs. This field is only\nused for Inspect and must be unspecified for Risk jobs. Columns are derived\nfrom the `Finding` object. If appending to an existing table, any columns\nfrom the predefined schema that are missing will be added. No columns in\nthe existing table will be deleted.\n\nIf unspecified, then all available columns will be used for a new table or\nan (existing) table with no schema, and no changes will be made to an\nexisting table that has a schema."]
+        #[serde(rename = "outputSchema", default)]
+        pub output_schema: ::std::option::Option<
+            crate::schemas::GooglePrivacyDlpV2OutputStorageConfigOutputSchema,
+        >,
+        #[doc = "Store findings in an existing table or a new table in an existing\ndataset. If table_id is not set a new one will be generated\nfor you with the following format:\ndlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for\ngenerating the date details.\n\nFor Inspect, each column in an existing output table must have the same\nname, type, and mode of a field in the `Finding` object.\n\nFor Risk, an existing output table should be the output of a previous\nRisk analysis job run on the same source table, with the same privacy\nmetric and quasi-identifiers. Risk jobs that analyze the same table but\ncompute a different privacy metric, or use different sets of\nquasi-identifiers, cannot store their results in the same table."]
+        #[serde(rename = "table", default)]
+        pub table: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryTable>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2OutputStorageConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
         #[doc = "Schema containing all columns."]
@@ -4587,37 +4618,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2OutputStorageConfig {
-        #[doc = "Schema used for writing the findings for Inspect jobs. This field is only\nused for Inspect and must be unspecified for Risk jobs. Columns are derived\nfrom the `Finding` object. If appending to an existing table, any columns\nfrom the predefined schema that are missing will be added. No columns in\nthe existing table will be deleted.\n\nIf unspecified, then all available columns will be used for a new table or\nan (existing) table with no schema, and no changes will be made to an\nexisting table that has a schema."]
-        #[serde(rename = "outputSchema", default)]
-        pub output_schema: ::std::option::Option<
-            crate::schemas::GooglePrivacyDlpV2OutputStorageConfigOutputSchema,
-        >,
-        #[doc = "Store findings in an existing table or a new table in an existing\ndataset. If table_id is not set a new one will be generated\nfor you with the following format:\ndlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for\ngenerating the date details.\n\nFor Inspect, each column in an existing output table must have the same\nname, type, and mode of a field in the `Finding` object.\n\nFor Risk, an existing output table should be the output of a previous\nRisk analysis job run on the same source table, with the same privacy\nmetric and quasi-identifiers. Risk jobs that analyze the same table but\ncompute a different privacy metric, or use different sets of\nquasi-identifiers, cannot store their results in the same table."]
-        #[serde(rename = "table", default)]
-        pub table: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2BigQueryTable>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2OutputStorageConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5636,6 +5636,34 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GooglePrivacyDlpV2StoredInfoTypeVersion {
+        #[doc = "StoredInfoType configuration."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeConfig>,
+        #[doc = "Create timestamp of the version. Read-only, determined by the system\nwhen the version is created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Errors that occurred when creating this storedInfoType version, or\nanomalies detected in the storedInfoType data that render it unusable. Only\nthe five most recent errors will be displayed, with the most recent error\nappearing first.\n\n<p>For example, some of the data for stored custom dictionaries is put in\nthe user's Google Cloud Storage bucket, and if this data is modified or\ndeleted by the user or another system, the dictionary becomes invalid.\n<p>If any errors occur, fix the problem indicated by the error message and\nuse the UpdateStoredInfoType API method to create another version of the\nstoredInfoType to continue using it, reusing the same `config` if it was\nnot the source of the error."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
+        #[doc = "Stored info type version state. Read-only, updated by the system\nduring dictionary creation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeVersionState>,
+        #[doc = "Statistics about this storedInfoType version."]
+        #[serde(rename = "stats", default)]
+        pub stats: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeStats>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2StoredInfoTypeVersion {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2StoredInfoTypeVersionState {
         #[doc = "StoredInfoType creation failed. All relevant error messages are returned in\nthe `StoredInfoTypeVersion` message."]
@@ -5706,34 +5734,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GooglePrivacyDlpV2StoredInfoTypeVersion {
-        #[doc = "StoredInfoType configuration."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeConfig>,
-        #[doc = "Create timestamp of the version. Read-only, determined by the system\nwhen the version is created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Errors that occurred when creating this storedInfoType version, or\nanomalies detected in the storedInfoType data that render it unusable. Only\nthe five most recent errors will be displayed, with the most recent error\nappearing first.\n\n<p>For example, some of the data for stored custom dictionaries is put in\nthe user's Google Cloud Storage bucket, and if this data is modified or\ndeleted by the user or another system, the dictionary becomes invalid.\n<p>If any errors occur, fix the problem indicated by the error message and\nuse the UpdateStoredInfoType API method to create another version of the\nstoredInfoType to continue using it, reusing the same `config` if it was\nnot the source of the error."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::GooglePrivacyDlpV2Error>>,
-        #[doc = "Stored info type version state. Read-only, updated by the system\nduring dictionary creation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeVersionState>,
-        #[doc = "Statistics about this storedInfoType version."]
-        #[serde(rename = "stats", default)]
-        pub stats: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2StoredInfoTypeStats>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2StoredInfoTypeVersion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -5755,6 +5755,37 @@ pub mod schemas {
         pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2StoredType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2SummaryResult {
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2SummaryResultCode>,
+        #[serde(rename = "count", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub count: ::std::option::Option<i64>,
+        #[doc = "A place for warnings or errors to show up if a transformation didn't\nwork as expected."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2SummaryResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5815,37 +5846,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2SummaryResultCode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2SummaryResult {
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::GooglePrivacyDlpV2SummaryResultCode>,
-        #[serde(rename = "count", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub count: ::std::option::Option<i64>,
-        #[doc = "A place for warnings or errors to show up if a transformation didn't\nwork as expected."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2SummaryResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5951,6 +5951,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2TimePartConfig {
+        #[serde(rename = "partToExtract", default)]
+        pub part_to_extract:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2TimePartConfigPartToExtract>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2TimePartConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2TimePartConfigPartToExtract {
         #[doc = "[1-31]"]
@@ -6021,32 +6047,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2TimePartConfigPartToExtract {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2TimePartConfig {
-        #[serde(rename = "partToExtract", default)]
-        pub part_to_extract:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2TimePartConfigPartToExtract>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2TimePartConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6352,6 +6352,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GooglePrivacyDlpV2Value {
+        #[serde(rename = "booleanValue", default)]
+        pub boolean_value: ::std::option::Option<bool>,
+        #[serde(rename = "dateValue", default)]
+        pub date_value: ::std::option::Option<crate::schemas::GoogleTypeDate>,
+        #[serde(rename = "dayOfWeekValue", default)]
+        pub day_of_week_value:
+            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ValueDayOfWeekValue>,
+        #[serde(rename = "floatValue", default)]
+        pub float_value: ::std::option::Option<f64>,
+        #[serde(rename = "integerValue", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub integer_value: ::std::option::Option<i64>,
+        #[serde(rename = "stringValue", default)]
+        pub string_value: ::std::option::Option<String>,
+        #[serde(rename = "timeValue", default)]
+        pub time_value: ::std::option::Option<crate::schemas::GoogleTypeTimeOfDay>,
+        #[serde(rename = "timestampValue", default)]
+        pub timestamp_value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Value {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GooglePrivacyDlpV2ValueDayOfWeekValue {
         #[doc = "The unspecified day-of-week."]
@@ -6427,38 +6459,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GooglePrivacyDlpV2ValueDayOfWeekValue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GooglePrivacyDlpV2Value {
-        #[serde(rename = "booleanValue", default)]
-        pub boolean_value: ::std::option::Option<bool>,
-        #[serde(rename = "dateValue", default)]
-        pub date_value: ::std::option::Option<crate::schemas::GoogleTypeDate>,
-        #[serde(rename = "dayOfWeekValue", default)]
-        pub day_of_week_value:
-            ::std::option::Option<crate::schemas::GooglePrivacyDlpV2ValueDayOfWeekValue>,
-        #[serde(rename = "floatValue", default)]
-        pub float_value: ::std::option::Option<f64>,
-        #[serde(rename = "integerValue", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub integer_value: ::std::option::Option<i64>,
-        #[serde(rename = "stringValue", default)]
-        pub string_value: ::std::option::Option<String>,
-        #[serde(rename = "timeValue", default)]
-        pub time_value: ::std::option::Option<crate::schemas::GoogleTypeTimeOfDay>,
-        #[serde(rename = "timestampValue", default)]
-        pub timestamp_value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GooglePrivacyDlpV2Value {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16782,84 +16782,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -16891,7 +16813,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -17017,8 +16938,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

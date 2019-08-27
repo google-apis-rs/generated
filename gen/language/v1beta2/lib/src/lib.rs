@@ -1,4 +1,34 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeEntitiesRequest {
+        #[doc = "Required. Input document."]
+        #[serde(rename = "document", default)]
+        pub document: ::std::option::Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeEntitiesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnalyzeEntitiesRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
@@ -63,36 +93,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeEntitiesRequest {
-        #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
-        pub document: ::std::option::Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type:
-            ::std::option::Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeEntitiesRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeEntitiesResponse {
@@ -104,6 +104,36 @@ pub mod schemas {
         pub language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitiesResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeEntitySentimentRequest {
+        #[doc = "Required. Input document."]
+        #[serde(rename = "document", default)]
+        pub document: ::std::option::Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeEntitySentimentRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeEntitySentimentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -176,36 +206,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeEntitySentimentRequest {
-        #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
-        pub document: ::std::option::Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type:
-            ::std::option::Option<crate::schemas::AnalyzeEntitySentimentRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeEntitySentimentRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeEntitySentimentResponse {
@@ -217,6 +217,36 @@ pub mod schemas {
         pub language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitySentimentResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeSentimentRequest {
+        #[doc = "Required. Input document."]
+        #[serde(rename = "document", default)]
+        pub document: ::std::option::Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate sentence offsets for the\nsentence sentiment."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeSentimentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -289,36 +319,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeSentimentRequest {
-        #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
-        pub document: ::std::option::Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate sentence offsets for the\nsentence sentiment."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type:
-            ::std::option::Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeSentimentRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeSentimentResponse {
@@ -333,6 +333,35 @@ pub mod schemas {
         pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSentimentResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeSyntaxRequest {
+        #[doc = "Required. Input document."]
+        #[serde(rename = "document", default)]
+        pub document: ::std::option::Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: ::std::option::Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeSyntaxRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -405,35 +434,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeSyntaxRequest {
-        #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
-        pub document: ::std::option::Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: ::std::option::Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeSyntaxRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeSyntaxResponse {
@@ -448,6 +448,38 @@ pub mod schemas {
         pub tokens: ::std::option::Option<Vec<crate::schemas::Token>>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSyntaxResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnnotateTextRequest {
+        #[doc = "Required. Input document."]
+        #[serde(rename = "document", default)]
+        pub document: ::std::option::Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: ::std::option::Option<crate::schemas::AnnotateTextRequestEncodingType>,
+        #[doc = "Required. The enabled features."]
+        #[serde(rename = "features", default)]
+        pub features: ::std::option::Option<crate::schemas::Features>,
+    }
+    impl ::field_selector::FieldSelector for AnnotateTextRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -511,38 +543,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AnnotateTextRequestEncodingType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotateTextRequest {
-        #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
-        pub document: ::std::option::Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: ::std::option::Option<crate::schemas::AnnotateTextRequestEncodingType>,
-        #[doc = "Required. The enabled features."]
-        #[serde(rename = "features", default)]
-        pub features: ::std::option::Option<crate::schemas::Features>,
-    }
-    impl ::field_selector::FieldSelector for AnnotateTextRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -638,6 +638,35 @@ pub mod schemas {
         pub categories: ::std::option::Option<Vec<crate::schemas::ClassificationCategory>>,
     }
     impl ::field_selector::FieldSelector for ClassifyTextResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DependencyEdge {
+        #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
+        #[serde(rename = "headTokenIndex", default)]
+        pub head_token_index: ::std::option::Option<i32>,
+        #[doc = "The parse label for the token."]
+        #[serde(rename = "label", default)]
+        pub label: ::std::option::Option<crate::schemas::DependencyEdgeLabel>,
+    }
+    impl ::field_selector::FieldSelector for DependencyEdge {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1037,15 +1066,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DependencyEdge {
-        #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
-        #[serde(rename = "headTokenIndex", default)]
-        pub head_token_index: ::std::option::Option<i32>,
-        #[doc = "The parse label for the token."]
-        #[serde(rename = "label", default)]
-        pub label: ::std::option::Option<crate::schemas::DependencyEdgeLabel>,
+    pub struct Document {
+        #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
+        #[serde(rename = "gcsContentUri", default)]
+        pub gcs_content_uri: ::std::option::Option<String>,
+        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
+        #[serde(rename = "language", default)]
+        pub language: ::std::option::Option<String>,
+        #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DocumentType>,
     }
-    impl ::field_selector::FieldSelector for DependencyEdge {
+    impl ::field_selector::FieldSelector for Document {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1114,32 +1149,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Document {
-        #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
-        #[serde(rename = "gcsContentUri", default)]
-        pub gcs_content_uri: ::std::option::Option<String>,
-        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
-        #[serde(rename = "language", default)]
-        pub language: ::std::option::Option<String>,
-        #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
+    pub struct Entity {
+        #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
+        #[serde(rename = "mentions", default)]
+        pub mentions: ::std::option::Option<Vec<crate::schemas::EntityMention>>,
+        #[doc = "Metadata associated with the entity.\n\nFor most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)\nand Knowledge Graph MID (`mid`), if they are available. For the metadata\nassociated with other entity types, see the Type table below."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The representative name for the entity."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The entity type."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DocumentType>,
+        pub r#type: ::std::option::Option<crate::schemas::EntityType>,
+        #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
+        #[serde(rename = "salience", default)]
+        pub salience: ::std::option::Option<f32>,
+        #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the aggregate sentiment expressed for this\nentity in the provided document."]
+        #[serde(rename = "sentiment", default)]
+        pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
     }
-    impl ::field_selector::FieldSelector for Document {
+    impl ::field_selector::FieldSelector for Entity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1250,27 +1282,18 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Entity {
-        #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
-        #[serde(rename = "mentions", default)]
-        pub mentions: ::std::option::Option<Vec<crate::schemas::EntityMention>>,
-        #[doc = "Metadata associated with the entity.\n\nFor most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)\nand Knowledge Graph MID (`mid`), if they are available. For the metadata\nassociated with other entity types, see the Type table below."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The representative name for the entity."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The entity type."]
+    pub struct EntityMention {
+        #[doc = "The type of the entity mention."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::EntityType>,
-        #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
-        #[serde(rename = "salience", default)]
-        pub salience: ::std::option::Option<f32>,
-        #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the aggregate sentiment expressed for this\nentity in the provided document."]
+        pub r#type: ::std::option::Option<crate::schemas::EntityMentionType>,
+        #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the sentiment expressed for this mention of\nthe entity in the provided document."]
         #[serde(rename = "sentiment", default)]
         pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
+        #[doc = "The mention text."]
+        #[serde(rename = "text", default)]
+        pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
-    impl ::field_selector::FieldSelector for Entity {
+    impl ::field_selector::FieldSelector for EntityMention {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1339,29 +1362,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct EntityMention {
-        #[doc = "The type of the entity mention."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::EntityMentionType>,
-        #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the sentiment expressed for this mention of\nthe entity in the provided document."]
-        #[serde(rename = "sentiment", default)]
-        pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
-        #[doc = "The mention text."]
-        #[serde(rename = "text", default)]
-        pub text: ::std::option::Option<crate::schemas::TextSpan>,
-    }
-    impl ::field_selector::FieldSelector for EntityMention {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1391,6 +1391,65 @@ pub mod schemas {
         pub extract_syntax: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Features {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PartOfSpeech {
+        #[doc = "The grammatical aspect."]
+        #[serde(rename = "aspect", default)]
+        pub aspect: ::std::option::Option<crate::schemas::PartOfSpeechAspect>,
+        #[doc = "The grammatical case."]
+        #[serde(rename = "case", default)]
+        pub case: ::std::option::Option<crate::schemas::PartOfSpeechCase>,
+        #[doc = "The grammatical form."]
+        #[serde(rename = "form", default)]
+        pub form: ::std::option::Option<crate::schemas::PartOfSpeechForm>,
+        #[doc = "The grammatical gender."]
+        #[serde(rename = "gender", default)]
+        pub gender: ::std::option::Option<crate::schemas::PartOfSpeechGender>,
+        #[doc = "The grammatical mood."]
+        #[serde(rename = "mood", default)]
+        pub mood: ::std::option::Option<crate::schemas::PartOfSpeechMood>,
+        #[doc = "The grammatical number."]
+        #[serde(rename = "number", default)]
+        pub number: ::std::option::Option<crate::schemas::PartOfSpeechNumber>,
+        #[doc = "The grammatical person."]
+        #[serde(rename = "person", default)]
+        pub person: ::std::option::Option<crate::schemas::PartOfSpeechPerson>,
+        #[doc = "The grammatical properness."]
+        #[serde(rename = "proper", default)]
+        pub proper: ::std::option::Option<crate::schemas::PartOfSpeechProper>,
+        #[doc = "The grammatical reciprocity."]
+        #[serde(rename = "reciprocity", default)]
+        pub reciprocity: ::std::option::Option<crate::schemas::PartOfSpeechReciprocity>,
+        #[doc = "The part of speech tag."]
+        #[serde(rename = "tag", default)]
+        pub tag: ::std::option::Option<crate::schemas::PartOfSpeechTag>,
+        #[doc = "The grammatical tense."]
+        #[serde(rename = "tense", default)]
+        pub tense: ::std::option::Option<crate::schemas::PartOfSpeechTense>,
+        #[doc = "The grammatical voice."]
+        #[serde(rename = "voice", default)]
+        pub voice: ::std::option::Option<crate::schemas::PartOfSpeechVoice>,
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeech {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2283,65 +2342,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PartOfSpeechVoice {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PartOfSpeech {
-        #[doc = "The grammatical aspect."]
-        #[serde(rename = "aspect", default)]
-        pub aspect: ::std::option::Option<crate::schemas::PartOfSpeechAspect>,
-        #[doc = "The grammatical case."]
-        #[serde(rename = "case", default)]
-        pub case: ::std::option::Option<crate::schemas::PartOfSpeechCase>,
-        #[doc = "The grammatical form."]
-        #[serde(rename = "form", default)]
-        pub form: ::std::option::Option<crate::schemas::PartOfSpeechForm>,
-        #[doc = "The grammatical gender."]
-        #[serde(rename = "gender", default)]
-        pub gender: ::std::option::Option<crate::schemas::PartOfSpeechGender>,
-        #[doc = "The grammatical mood."]
-        #[serde(rename = "mood", default)]
-        pub mood: ::std::option::Option<crate::schemas::PartOfSpeechMood>,
-        #[doc = "The grammatical number."]
-        #[serde(rename = "number", default)]
-        pub number: ::std::option::Option<crate::schemas::PartOfSpeechNumber>,
-        #[doc = "The grammatical person."]
-        #[serde(rename = "person", default)]
-        pub person: ::std::option::Option<crate::schemas::PartOfSpeechPerson>,
-        #[doc = "The grammatical properness."]
-        #[serde(rename = "proper", default)]
-        pub proper: ::std::option::Option<crate::schemas::PartOfSpeechProper>,
-        #[doc = "The grammatical reciprocity."]
-        #[serde(rename = "reciprocity", default)]
-        pub reciprocity: ::std::option::Option<crate::schemas::PartOfSpeechReciprocity>,
-        #[doc = "The part of speech tag."]
-        #[serde(rename = "tag", default)]
-        pub tag: ::std::option::Option<crate::schemas::PartOfSpeechTag>,
-        #[doc = "The grammatical tense."]
-        #[serde(rename = "tense", default)]
-        pub tense: ::std::option::Option<crate::schemas::PartOfSpeechTense>,
-        #[doc = "The grammatical voice."]
-        #[serde(rename = "voice", default)]
-        pub voice: ::std::option::Option<crate::schemas::PartOfSpeechVoice>,
-    }
-    impl ::field_selector::FieldSelector for PartOfSpeech {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3835,84 +3835,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3941,174 +3863,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

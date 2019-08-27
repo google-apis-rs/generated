@@ -71,6 +71,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct AutoscalingEvent {
+        #[doc = "The current number of workers the job has."]
+        #[serde(rename = "currentNumWorkers", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub current_num_workers: ::std::option::Option<i64>,
+        #[doc = "A message describing why the system decided to adjust the current\nnumber of workers, why it failed, or why the system decided to\nnot make any changes to the number of workers."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<crate::schemas::StructuredMessage>,
+        #[doc = "The type of autoscaling event to report."]
+        #[serde(rename = "eventType", default)]
+        pub event_type: ::std::option::Option<crate::schemas::AutoscalingEventEventType>,
+        #[doc = "The target number of workers the worker pool wants to resize to use."]
+        #[serde(rename = "targetNumWorkers", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub target_num_workers: ::std::option::Option<i64>,
+        #[doc = "The time this event was emitted to indicate a new target or current\nnum_workers value."]
+        #[serde(rename = "time", default)]
+        pub time: ::std::option::Option<String>,
+        #[doc = "A short and friendly name for the worker pool this event refers to,\npopulated from the value of PoolStageRelation::user_pool_name."]
+        #[serde(rename = "workerPool", default)]
+        pub worker_pool: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AutoscalingEvent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoscalingEventEventType {
         #[doc = "The ACTUATION_FAILURE type should be used when we want to report\nan error to the user indicating why the current number of workers\nin the pool could not be changed.\nDisplayed in the current status and history widgets."]
@@ -142,30 +174,27 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct AutoscalingEvent {
-        #[doc = "The current number of workers the job has."]
-        #[serde(rename = "currentNumWorkers", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub current_num_workers: ::std::option::Option<i64>,
-        #[doc = "A message describing why the system decided to adjust the current\nnumber of workers, why it failed, or why the system decided to\nnot make any changes to the number of workers."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<crate::schemas::StructuredMessage>,
-        #[doc = "The type of autoscaling event to report."]
-        #[serde(rename = "eventType", default)]
-        pub event_type: ::std::option::Option<crate::schemas::AutoscalingEventEventType>,
-        #[doc = "The target number of workers the worker pool wants to resize to use."]
-        #[serde(rename = "targetNumWorkers", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub target_num_workers: ::std::option::Option<i64>,
-        #[doc = "The time this event was emitted to indicate a new target or current\nnum_workers value."]
-        #[serde(rename = "time", default)]
-        pub time: ::std::option::Option<String>,
-        #[doc = "A short and friendly name for the worker pool this event refers to,\npopulated from the value of PoolStageRelation::user_pool_name."]
-        #[serde(rename = "workerPool", default)]
-        pub worker_pool: ::std::option::Option<String>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AutoscalingSettings {
+        #[doc = "The algorithm to use for autoscaling."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: ::std::option::Option<crate::schemas::AutoscalingSettingsAlgorithm>,
+        #[doc = "The maximum number of workers to cap scaling at."]
+        #[serde(rename = "maxNumWorkers", default)]
+        pub max_num_workers: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for AutoscalingEvent {
+    impl ::field_selector::FieldSelector for AutoscalingSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -237,35 +266,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AutoscalingSettingsAlgorithm {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AutoscalingSettings {
-        #[doc = "The algorithm to use for autoscaling."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: ::std::option::Option<crate::schemas::AutoscalingSettingsAlgorithm>,
-        #[doc = "The maximum number of workers to cap scaling at."]
-        #[serde(rename = "maxNumWorkers", default)]
-        pub max_num_workers: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for AutoscalingSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -475,6 +475,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CounterMetadata {
+        #[doc = "Human-readable description of the counter semantics."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Counter aggregation kind."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::CounterMetadataKind>,
+        #[doc = "A string referring to the unit type."]
+        #[serde(rename = "otherUnits", default)]
+        pub other_units: ::std::option::Option<String>,
+        #[doc = "System defined Units, see above enum."]
+        #[serde(rename = "standardUnits", default)]
+        pub standard_units: ::std::option::Option<crate::schemas::CounterMetadataStandardUnits>,
+    }
+    impl ::field_selector::FieldSelector for CounterMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CounterMetadataKind {
         #[doc = "Aggregated value represents the logical 'and' of all contributed values."]
@@ -653,21 +688,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CounterMetadata {
-        #[doc = "Human-readable description of the counter semantics."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Counter aggregation kind."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::CounterMetadataKind>,
-        #[doc = "A string referring to the unit type."]
-        #[serde(rename = "otherUnits", default)]
-        pub other_units: ::std::option::Option<String>,
-        #[doc = "System defined Units, see above enum."]
-        #[serde(rename = "standardUnits", default)]
-        pub standard_units: ::std::option::Option<crate::schemas::CounterMetadataStandardUnits>,
+    pub struct CounterStructuredName {
+        #[doc = "Name of the optimized step being executed by the workers."]
+        #[serde(rename = "componentStepName", default)]
+        pub component_step_name: ::std::option::Option<String>,
+        #[doc = "Name of the stage. An execution step contains multiple component steps."]
+        #[serde(rename = "executionStepName", default)]
+        pub execution_step_name: ::std::option::Option<String>,
+        #[doc = "Index of an input collection that's being read from/written to as a side\ninput.\nThe index identifies a step's side inputs starting by 1 (e.g. the first\nside input has input_index 1, the third has input_index 3).\nSide inputs are identified by a pair of (original_step_name, input_index).\nThis field helps uniquely identify them."]
+        #[serde(rename = "inputIndex", default)]
+        pub input_index: ::std::option::Option<i32>,
+        #[doc = "Counter name. Not necessarily globally-unique, but unique within the\ncontext of the other fields.\nRequired."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "One of the standard Origins defined above."]
+        #[serde(rename = "origin", default)]
+        pub origin: ::std::option::Option<crate::schemas::CounterStructuredNameOrigin>,
+        #[doc = "A string containing a more specific namespace of the counter's origin."]
+        #[serde(rename = "originNamespace", default)]
+        pub origin_namespace: ::std::option::Option<String>,
+        #[doc = "The step name requesting an operation, such as GBK.\nI.e. the ParDo causing a read/write from shuffle to occur, or a\nread from side inputs."]
+        #[serde(rename = "originalRequestingStepName", default)]
+        pub original_requesting_step_name: ::std::option::Option<String>,
+        #[doc = "System generated name of the original step in the user's graph, before\noptimization."]
+        #[serde(rename = "originalStepName", default)]
+        pub original_step_name: ::std::option::Option<String>,
+        #[doc = "Portion of this counter, either key or value."]
+        #[serde(rename = "portion", default)]
+        pub portion: ::std::option::Option<crate::schemas::CounterStructuredNamePortion>,
+        #[doc = "ID of a particular worker."]
+        #[serde(rename = "workerId", default)]
+        pub worker_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for CounterMetadata {
+    impl ::field_selector::FieldSelector for CounterStructuredName {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -782,59 +835,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CounterStructuredNamePortion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CounterStructuredName {
-        #[doc = "Name of the optimized step being executed by the workers."]
-        #[serde(rename = "componentStepName", default)]
-        pub component_step_name: ::std::option::Option<String>,
-        #[doc = "Name of the stage. An execution step contains multiple component steps."]
-        #[serde(rename = "executionStepName", default)]
-        pub execution_step_name: ::std::option::Option<String>,
-        #[doc = "Index of an input collection that's being read from/written to as a side\ninput.\nThe index identifies a step's side inputs starting by 1 (e.g. the first\nside input has input_index 1, the third has input_index 3).\nSide inputs are identified by a pair of (original_step_name, input_index).\nThis field helps uniquely identify them."]
-        #[serde(rename = "inputIndex", default)]
-        pub input_index: ::std::option::Option<i32>,
-        #[doc = "Counter name. Not necessarily globally-unique, but unique within the\ncontext of the other fields.\nRequired."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "One of the standard Origins defined above."]
-        #[serde(rename = "origin", default)]
-        pub origin: ::std::option::Option<crate::schemas::CounterStructuredNameOrigin>,
-        #[doc = "A string containing a more specific namespace of the counter's origin."]
-        #[serde(rename = "originNamespace", default)]
-        pub origin_namespace: ::std::option::Option<String>,
-        #[doc = "The step name requesting an operation, such as GBK.\nI.e. the ParDo causing a read/write from shuffle to occur, or a\nread from side inputs."]
-        #[serde(rename = "originalRequestingStepName", default)]
-        pub original_requesting_step_name: ::std::option::Option<String>,
-        #[doc = "System generated name of the original step in the user's graph, before\noptimization."]
-        #[serde(rename = "originalStepName", default)]
-        pub original_step_name: ::std::option::Option<String>,
-        #[doc = "Portion of this counter, either key or value."]
-        #[serde(rename = "portion", default)]
-        pub portion: ::std::option::Option<crate::schemas::CounterStructuredNamePortion>,
-        #[doc = "ID of a particular worker."]
-        #[serde(rename = "workerId", default)]
-        pub worker_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CounterStructuredName {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1094,6 +1094,24 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for DeleteSnapshotResponse {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct DerivedSource {
+        #[doc = "What source to base the produced source on (if any)."]
+        #[serde(rename = "derivationMode", default)]
+        pub derivation_mode: ::std::option::Option<crate::schemas::DerivedSourceDerivationMode>,
+        #[doc = "Specification of the source."]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<crate::schemas::Source>,
+    }
+    impl ::field_selector::FieldSelector for DerivedSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DerivedSourceDerivationMode {
         #[doc = "Produce a Source based on the Source being split."]
@@ -1165,24 +1183,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DerivedSourceDerivationMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct DerivedSource {
-        #[doc = "What source to base the produced source on (if any)."]
-        #[serde(rename = "derivationMode", default)]
-        pub derivation_mode: ::std::option::Option<crate::schemas::DerivedSourceDerivationMode>,
-        #[doc = "Specification of the source."]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<crate::schemas::Source>,
-    }
-    impl ::field_selector::FieldSelector for DerivedSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1324,6 +1324,59 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Environment {
+        #[doc = "The type of cluster manager API to use.  If unknown or\nunspecified, the service will attempt to choose a reasonable\ndefault.  This should be in the form of the API service name,\ne.g. \"compute.googleapis.com\"."]
+        #[serde(rename = "clusterManagerApiService", default)]
+        pub cluster_manager_api_service: ::std::option::Option<String>,
+        #[doc = "The dataset for the current project where various workflow\nrelated tables are stored.\n\nThe supported resource type is:\n\nGoogle BigQuery:\nbigquery.googleapis.com/{dataset}"]
+        #[serde(rename = "dataset", default)]
+        pub dataset: ::std::option::Option<String>,
+        #[doc = "The list of experiments to enable."]
+        #[serde(rename = "experiments", default)]
+        pub experiments: ::std::option::Option<Vec<String>>,
+        #[doc = "Which Flexible Resource Scheduling mode to run in."]
+        #[serde(rename = "flexResourceSchedulingGoal", default)]
+        pub flex_resource_scheduling_goal:
+            ::std::option::Option<crate::schemas::EnvironmentFlexResourceSchedulingGoal>,
+        #[doc = "Experimental settings."]
+        #[serde(rename = "internalExperiments", default)]
+        pub internal_experiments:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The Cloud Dataflow SDK pipeline options specified by the user. These\noptions are passed through the service and are used to recreate the\nSDK pipeline options on the worker in a language agnostic and platform\nindependent way."]
+        #[serde(rename = "sdkPipelineOptions", default)]
+        pub sdk_pipeline_options:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Identity to run virtual machines as. Defaults to the default account."]
+        #[serde(rename = "serviceAccountEmail", default)]
+        pub service_account_email: ::std::option::Option<String>,
+        #[doc = "If set, contains the Cloud KMS key identifier used to encrypt data\nat rest, AKA a Customer Managed Encryption Key (CMEK).\n\nFormat:\nprojects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"]
+        #[serde(rename = "serviceKmsKeyName", default)]
+        pub service_kms_key_name: ::std::option::Option<String>,
+        #[doc = "The prefix of the resources the system should use for temporary\nstorage.  The system will append the suffix \"/temp-{JOBNAME} to\nthis resource prefix, where {JOBNAME} is the value of the\njob_name field.  The resulting bucket and object prefix is used\nas the prefix of the resources used to store temporary data\nneeded during the job execution.  NOTE: This will override the\nvalue in taskrunner_settings.\nThe supported resource type is:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[serde(rename = "tempStoragePrefix", default)]
+        pub temp_storage_prefix: ::std::option::Option<String>,
+        #[doc = "A description of the process that generated the request."]
+        #[serde(rename = "userAgent", default)]
+        pub user_agent:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "A structure describing which components and their versions of the service\nare required in order to run the job."]
+        #[serde(rename = "version", default)]
+        pub version:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The worker pools. At least one \"harness\" worker pool must be\nspecified in order for the job to have workers."]
+        #[serde(rename = "workerPools", default)]
+        pub worker_pools: ::std::option::Option<Vec<crate::schemas::WorkerPool>>,
+    }
+    impl ::field_selector::FieldSelector for Environment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnvironmentFlexResourceSchedulingGoal {
         #[doc = "Optimize for lower cost."]
@@ -1391,51 +1444,31 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Environment {
-        #[doc = "The type of cluster manager API to use.  If unknown or\nunspecified, the service will attempt to choose a reasonable\ndefault.  This should be in the form of the API service name,\ne.g. \"compute.googleapis.com\"."]
-        #[serde(rename = "clusterManagerApiService", default)]
-        pub cluster_manager_api_service: ::std::option::Option<String>,
-        #[doc = "The dataset for the current project where various workflow\nrelated tables are stored.\n\nThe supported resource type is:\n\nGoogle BigQuery:\nbigquery.googleapis.com/{dataset}"]
-        #[serde(rename = "dataset", default)]
-        pub dataset: ::std::option::Option<String>,
-        #[doc = "The list of experiments to enable."]
-        #[serde(rename = "experiments", default)]
-        pub experiments: ::std::option::Option<Vec<String>>,
-        #[doc = "Which Flexible Resource Scheduling mode to run in."]
-        #[serde(rename = "flexResourceSchedulingGoal", default)]
-        pub flex_resource_scheduling_goal:
-            ::std::option::Option<crate::schemas::EnvironmentFlexResourceSchedulingGoal>,
-        #[doc = "Experimental settings."]
-        #[serde(rename = "internalExperiments", default)]
-        pub internal_experiments:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The Cloud Dataflow SDK pipeline options specified by the user. These\noptions are passed through the service and are used to recreate the\nSDK pipeline options on the worker in a language agnostic and platform\nindependent way."]
-        #[serde(rename = "sdkPipelineOptions", default)]
-        pub sdk_pipeline_options:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Identity to run virtual machines as. Defaults to the default account."]
-        #[serde(rename = "serviceAccountEmail", default)]
-        pub service_account_email: ::std::option::Option<String>,
-        #[doc = "If set, contains the Cloud KMS key identifier used to encrypt data\nat rest, AKA a Customer Managed Encryption Key (CMEK).\n\nFormat:\nprojects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"]
-        #[serde(rename = "serviceKmsKeyName", default)]
-        pub service_kms_key_name: ::std::option::Option<String>,
-        #[doc = "The prefix of the resources the system should use for temporary\nstorage.  The system will append the suffix \"/temp-{JOBNAME} to\nthis resource prefix, where {JOBNAME} is the value of the\njob_name field.  The resulting bucket and object prefix is used\nas the prefix of the resources used to store temporary data\nneeded during the job execution.  NOTE: This will override the\nvalue in taskrunner_settings.\nThe supported resource type is:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
-        #[serde(rename = "tempStoragePrefix", default)]
-        pub temp_storage_prefix: ::std::option::Option<String>,
-        #[doc = "A description of the process that generated the request."]
-        #[serde(rename = "userAgent", default)]
-        pub user_agent:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "A structure describing which components and their versions of the service\nare required in order to run the job."]
-        #[serde(rename = "version", default)]
-        pub version:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The worker pools. At least one \"harness\" worker pool must be\nspecified in order for the job to have workers."]
-        #[serde(rename = "workerPools", default)]
-        pub worker_pools: ::std::option::Option<Vec<crate::schemas::WorkerPool>>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExecutionStageState {
+        #[doc = "The time at which the stage transitioned to this state."]
+        #[serde(rename = "currentStateTime", default)]
+        pub current_state_time: ::std::option::Option<String>,
+        #[doc = "The name of the execution stage."]
+        #[serde(rename = "executionStageName", default)]
+        pub execution_stage_name: ::std::option::Option<String>,
+        #[doc = "Executions stage states allow the same set of values as JobState."]
+        #[serde(rename = "executionStageState", default)]
+        pub execution_stage_state:
+            ::std::option::Option<crate::schemas::ExecutionStageStateExecutionStageState>,
     }
-    impl ::field_selector::FieldSelector for Environment {
+    impl ::field_selector::FieldSelector for ExecutionStageState {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1555,19 +1588,30 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExecutionStageState {
-        #[doc = "The time at which the stage transitioned to this state."]
-        #[serde(rename = "currentStateTime", default)]
-        pub current_state_time: ::std::option::Option<String>,
-        #[doc = "The name of the execution stage."]
-        #[serde(rename = "executionStageName", default)]
-        pub execution_stage_name: ::std::option::Option<String>,
-        #[doc = "Executions stage states allow the same set of values as JobState."]
-        #[serde(rename = "executionStageState", default)]
-        pub execution_stage_state:
-            ::std::option::Option<crate::schemas::ExecutionStageStateExecutionStageState>,
+    pub struct ExecutionStageSummary {
+        #[doc = "Collections produced and consumed by component transforms of this stage."]
+        #[serde(rename = "componentSource", default)]
+        pub component_source: ::std::option::Option<Vec<crate::schemas::ComponentSource>>,
+        #[doc = "Transforms that comprise this execution stage."]
+        #[serde(rename = "componentTransform", default)]
+        pub component_transform: ::std::option::Option<Vec<crate::schemas::ComponentTransform>>,
+        #[doc = "Dataflow service generated id for this stage."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Input sources for this stage."]
+        #[serde(rename = "inputSource", default)]
+        pub input_source: ::std::option::Option<Vec<crate::schemas::StageSource>>,
+        #[doc = "Type of tranform this stage is executing."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::ExecutionStageSummaryKind>,
+        #[doc = "Dataflow service generated name for this stage."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output sources for this stage."]
+        #[serde(rename = "outputSource", default)]
+        pub output_source: ::std::option::Option<Vec<crate::schemas::StageSource>>,
     }
-    impl ::field_selector::FieldSelector for ExecutionStageState {
+    impl ::field_selector::FieldSelector for ExecutionStageSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1651,50 +1695,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ExecutionStageSummaryKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExecutionStageSummary {
-        #[doc = "Collections produced and consumed by component transforms of this stage."]
-        #[serde(rename = "componentSource", default)]
-        pub component_source: ::std::option::Option<Vec<crate::schemas::ComponentSource>>,
-        #[doc = "Transforms that comprise this execution stage."]
-        #[serde(rename = "componentTransform", default)]
-        pub component_transform: ::std::option::Option<Vec<crate::schemas::ComponentTransform>>,
-        #[doc = "Dataflow service generated id for this stage."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Input sources for this stage."]
-        #[serde(rename = "inputSource", default)]
-        pub input_source: ::std::option::Option<Vec<crate::schemas::StageSource>>,
-        #[doc = "Type of tranform this stage is executing."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::ExecutionStageSummaryKind>,
-        #[doc = "Dataflow service generated name for this stage."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output sources for this stage."]
-        #[serde(rename = "outputSource", default)]
-        pub output_source: ::std::option::Option<Vec<crate::schemas::StageSource>>,
-    }
-    impl ::field_selector::FieldSelector for ExecutionStageSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2098,6 +2098,91 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Job {
+        #[doc = "The client's unique identifier of the job, re-used across retried attempts.\nIf this field is set, the service will ensure its uniqueness.\nThe request to create a job will fail if the service has knowledge of a\npreviously submitted job with the same client's ID and job name.\nThe caller may use this field to ensure idempotence of job\ncreation across retried attempts to create a job.\nBy default, the field is empty and, in that case, the service ignores it."]
+        #[serde(rename = "clientRequestId", default)]
+        pub client_request_id: ::std::option::Option<String>,
+        #[doc = "The timestamp when the job was initially created. Immutable and set by the\nCloud Dataflow service."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "If this is specified, the job's initial state is populated from the given\nsnapshot."]
+        #[serde(rename = "createdFromSnapshotId", default)]
+        pub created_from_snapshot_id: ::std::option::Option<String>,
+        #[doc = "The current state of the job.\n\nJobs are created in the `JOB_STATE_STOPPED` state unless otherwise\nspecified.\n\nA job in the `JOB_STATE_RUNNING` state may asynchronously enter a\nterminal state. After a job has reached a terminal state, no\nfurther state updates may be made.\n\nThis field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
+        #[serde(rename = "currentState", default)]
+        pub current_state: ::std::option::Option<crate::schemas::JobCurrentState>,
+        #[doc = "The timestamp associated with the current state."]
+        #[serde(rename = "currentStateTime", default)]
+        pub current_state_time: ::std::option::Option<String>,
+        #[doc = "The environment for the job."]
+        #[serde(rename = "environment", default)]
+        pub environment: ::std::option::Option<crate::schemas::Environment>,
+        #[doc = "Deprecated."]
+        #[serde(rename = "executionInfo", default)]
+        pub execution_info: ::std::option::Option<crate::schemas::JobExecutionInfo>,
+        #[doc = "The unique ID of this job.\n\nThis field is set by the Cloud Dataflow service when the Job is\ncreated, and is immutable for the life of the job."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "This field is populated by the Dataflow service to support filtering jobs\nby the metadata values provided here. Populated for ListJobs and all GetJob\nviews SUMMARY and higher."]
+        #[serde(rename = "jobMetadata", default)]
+        pub job_metadata: ::std::option::Option<crate::schemas::JobMetadata>,
+        #[doc = "User-defined labels for this job.\n\nThe labels map can contain no more than 64 entries.  Entries of the labels\nmap are UTF8 strings that comply with the following restrictions:\n\n* Keys must conform to regexp:  \\p{Ll}\\p{Lo}{0,62}\n* Values must conform to regexp:  [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n* Both keys and values are additionally constrained to be <= 128 bytes in\n  size."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The user-specified Cloud Dataflow job name.\n\nOnly one Job with a given name may exist in a project at any\ngiven time. If a caller attempts to create a Job with the same\nname as an already-existing Job, the attempt returns the\nexisting Job.\n\nThe name must match the regular expression\n`[a-z]([-a-z0-9]{0,38}[a-z0-9])?`"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Preliminary field: The format of this data may change at any time.\nA description of the user pipeline and stages through which it is executed.\nCreated by Cloud Dataflow service.  Only retrieved with\nJOB_VIEW_DESCRIPTION or JOB_VIEW_ALL."]
+        #[serde(rename = "pipelineDescription", default)]
+        pub pipeline_description: ::std::option::Option<crate::schemas::PipelineDescription>,
+        #[doc = "The ID of the Cloud Platform project that the job belongs to."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "The type of Cloud Dataflow job."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::JobType>,
+        #[doc = "If this job is an update of an existing job, this field is the job ID\nof the job it replaced.\n\nWhen sending a `CreateJobRequest`, you can update a job by specifying it\nhere. The job named here is stopped, and its intermediate state is\ntransferred to this job."]
+        #[serde(rename = "replaceJobId", default)]
+        pub replace_job_id: ::std::option::Option<String>,
+        #[doc = "If another job is an update of this job (and thus, this job is in\n`JOB_STATE_UPDATED`), this field contains the ID of that job."]
+        #[serde(rename = "replacedByJobId", default)]
+        pub replaced_by_job_id: ::std::option::Option<String>,
+        #[doc = "The job's requested state.\n\n`UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and\n`JOB_STATE_RUNNING` states, by setting requested_state.  `UpdateJob` may\nalso be used to directly set a job's requested state to\n`JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the\njob if it has not already reached a terminal state."]
+        #[serde(rename = "requestedState", default)]
+        pub requested_state: ::std::option::Option<crate::schemas::JobRequestedState>,
+        #[doc = "This field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
+        #[serde(rename = "stageStates", default)]
+        pub stage_states: ::std::option::Option<Vec<crate::schemas::ExecutionStageState>>,
+        #[doc = "The timestamp when the job was started (transitioned to JOB_STATE_PENDING).\nFlexible resource scheduling jobs are started with some delay after job\ncreation, so start_time is unset before start and is updated when the\njob is started by the Cloud Dataflow service. For other jobs, start_time\nalways equals to create_time and is immutable and set by the Cloud Dataflow\nservice."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Exactly one of step or steps_location should be specified.\n\nThe top-level steps that constitute the entire job."]
+        #[serde(rename = "steps", default)]
+        pub steps: ::std::option::Option<Vec<crate::schemas::Step>>,
+        #[doc = "The GCS location where the steps are stored."]
+        #[serde(rename = "stepsLocation", default)]
+        pub steps_location: ::std::option::Option<String>,
+        #[doc = "A set of files the system should be aware of that are used\nfor temporary storage. These temporary files will be\nremoved on job completion.\nNo duplicates are allowed.\nNo file patterns are supported.\n\nThe supported files are:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[serde(rename = "tempFiles", default)]
+        pub temp_files: ::std::option::Option<Vec<String>>,
+        #[doc = "The map of transform name prefixes of the job to be replaced to the\ncorresponding name prefixes of the new job."]
+        #[serde(rename = "transformNameMapping", default)]
+        pub transform_name_mapping:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+    }
+    impl ::field_selector::FieldSelector for Job {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobCurrentState {
         #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
@@ -2347,91 +2432,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Job {
-        #[doc = "The client's unique identifier of the job, re-used across retried attempts.\nIf this field is set, the service will ensure its uniqueness.\nThe request to create a job will fail if the service has knowledge of a\npreviously submitted job with the same client's ID and job name.\nThe caller may use this field to ensure idempotence of job\ncreation across retried attempts to create a job.\nBy default, the field is empty and, in that case, the service ignores it."]
-        #[serde(rename = "clientRequestId", default)]
-        pub client_request_id: ::std::option::Option<String>,
-        #[doc = "The timestamp when the job was initially created. Immutable and set by the\nCloud Dataflow service."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "If this is specified, the job's initial state is populated from the given\nsnapshot."]
-        #[serde(rename = "createdFromSnapshotId", default)]
-        pub created_from_snapshot_id: ::std::option::Option<String>,
-        #[doc = "The current state of the job.\n\nJobs are created in the `JOB_STATE_STOPPED` state unless otherwise\nspecified.\n\nA job in the `JOB_STATE_RUNNING` state may asynchronously enter a\nterminal state. After a job has reached a terminal state, no\nfurther state updates may be made.\n\nThis field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
-        #[serde(rename = "currentState", default)]
-        pub current_state: ::std::option::Option<crate::schemas::JobCurrentState>,
-        #[doc = "The timestamp associated with the current state."]
-        #[serde(rename = "currentStateTime", default)]
-        pub current_state_time: ::std::option::Option<String>,
-        #[doc = "The environment for the job."]
-        #[serde(rename = "environment", default)]
-        pub environment: ::std::option::Option<crate::schemas::Environment>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "executionInfo", default)]
-        pub execution_info: ::std::option::Option<crate::schemas::JobExecutionInfo>,
-        #[doc = "The unique ID of this job.\n\nThis field is set by the Cloud Dataflow service when the Job is\ncreated, and is immutable for the life of the job."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "This field is populated by the Dataflow service to support filtering jobs\nby the metadata values provided here. Populated for ListJobs and all GetJob\nviews SUMMARY and higher."]
-        #[serde(rename = "jobMetadata", default)]
-        pub job_metadata: ::std::option::Option<crate::schemas::JobMetadata>,
-        #[doc = "User-defined labels for this job.\n\nThe labels map can contain no more than 64 entries.  Entries of the labels\nmap are UTF8 strings that comply with the following restrictions:\n\n* Keys must conform to regexp:  \\p{Ll}\\p{Lo}{0,62}\n* Values must conform to regexp:  [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n* Both keys and values are additionally constrained to be <= 128 bytes in\n  size."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The user-specified Cloud Dataflow job name.\n\nOnly one Job with a given name may exist in a project at any\ngiven time. If a caller attempts to create a Job with the same\nname as an already-existing Job, the attempt returns the\nexisting Job.\n\nThe name must match the regular expression\n`[a-z]([-a-z0-9]{0,38}[a-z0-9])?`"]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Preliminary field: The format of this data may change at any time.\nA description of the user pipeline and stages through which it is executed.\nCreated by Cloud Dataflow service.  Only retrieved with\nJOB_VIEW_DESCRIPTION or JOB_VIEW_ALL."]
-        #[serde(rename = "pipelineDescription", default)]
-        pub pipeline_description: ::std::option::Option<crate::schemas::PipelineDescription>,
-        #[doc = "The ID of the Cloud Platform project that the job belongs to."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "The type of Cloud Dataflow job."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::JobType>,
-        #[doc = "If this job is an update of an existing job, this field is the job ID\nof the job it replaced.\n\nWhen sending a `CreateJobRequest`, you can update a job by specifying it\nhere. The job named here is stopped, and its intermediate state is\ntransferred to this job."]
-        #[serde(rename = "replaceJobId", default)]
-        pub replace_job_id: ::std::option::Option<String>,
-        #[doc = "If another job is an update of this job (and thus, this job is in\n`JOB_STATE_UPDATED`), this field contains the ID of that job."]
-        #[serde(rename = "replacedByJobId", default)]
-        pub replaced_by_job_id: ::std::option::Option<String>,
-        #[doc = "The job's requested state.\n\n`UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and\n`JOB_STATE_RUNNING` states, by setting requested_state.  `UpdateJob` may\nalso be used to directly set a job's requested state to\n`JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the\njob if it has not already reached a terminal state."]
-        #[serde(rename = "requestedState", default)]
-        pub requested_state: ::std::option::Option<crate::schemas::JobRequestedState>,
-        #[doc = "This field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
-        #[serde(rename = "stageStates", default)]
-        pub stage_states: ::std::option::Option<Vec<crate::schemas::ExecutionStageState>>,
-        #[doc = "The timestamp when the job was started (transitioned to JOB_STATE_PENDING).\nFlexible resource scheduling jobs are started with some delay after job\ncreation, so start_time is unset before start and is updated when the\njob is started by the Cloud Dataflow service. For other jobs, start_time\nalways equals to create_time and is immutable and set by the Cloud Dataflow\nservice."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Exactly one of step or steps_location should be specified.\n\nThe top-level steps that constitute the entire job."]
-        #[serde(rename = "steps", default)]
-        pub steps: ::std::option::Option<Vec<crate::schemas::Step>>,
-        #[doc = "The GCS location where the steps are stored."]
-        #[serde(rename = "stepsLocation", default)]
-        pub steps_location: ::std::option::Option<String>,
-        #[doc = "A set of files the system should be aware of that are used\nfor temporary storage. These temporary files will be\nremoved on job completion.\nNo duplicates are allowed.\nNo file patterns are supported.\n\nThe supported files are:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
-        #[serde(rename = "tempFiles", default)]
-        pub temp_files: ::std::option::Option<Vec<String>>,
-        #[doc = "The map of transform name prefixes of the job to be replaced to the\ncorresponding name prefixes of the new job."]
-        #[serde(rename = "transformNameMapping", default)]
-        pub transform_name_mapping:
-            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-    }
-    impl ::field_selector::FieldSelector for Job {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -2478,6 +2478,41 @@ pub mod schemas {
         pub step_name: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for JobExecutionStageInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct JobMessage {
+        #[doc = "Deprecated."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Importance level of the message."]
+        #[serde(rename = "messageImportance", default)]
+        pub message_importance: ::std::option::Option<crate::schemas::JobMessageMessageImportance>,
+        #[doc = "The text of the message."]
+        #[serde(rename = "messageText", default)]
+        pub message_text: ::std::option::Option<String>,
+        #[doc = "The timestamp of the message."]
+        #[serde(rename = "time", default)]
+        pub time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for JobMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2553,41 +2588,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for JobMessageMessageImportance {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct JobMessage {
-        #[doc = "Deprecated."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Importance level of the message."]
-        #[serde(rename = "messageImportance", default)]
-        pub message_importance: ::std::option::Option<crate::schemas::JobMessageMessageImportance>,
-        #[doc = "The text of the message."]
-        #[serde(rename = "messageText", default)]
-        pub message_text: ::std::option::Option<String>,
-        #[doc = "The timestamp of the message."]
-        #[serde(rename = "time", default)]
-        pub time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for JobMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3086,6 +3086,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NameAndKind {
+        #[doc = "Counter aggregation kind."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::NameAndKindKind>,
+        #[doc = "Name of the counter."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for NameAndKind {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NameAndKindKind {
         #[doc = "Aggregated value represents the logical 'and' of all contributed values."]
@@ -3165,35 +3194,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NameAndKindKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NameAndKind {
-        #[doc = "Counter aggregation kind."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::NameAndKindKind>,
-        #[doc = "Name of the counter."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for NameAndKind {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3705,6 +3705,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SdkVersion {
+        #[doc = "The support status for this SDK version."]
+        #[serde(rename = "sdkSupportStatus", default)]
+        pub sdk_support_status: ::std::option::Option<crate::schemas::SdkVersionSdkSupportStatus>,
+        #[doc = "The version of the SDK used to run the job."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<String>,
+        #[doc = "A readable string describing the version of the SDK."]
+        #[serde(rename = "versionDisplayName", default)]
+        pub version_display_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SdkVersion {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SdkVersionSdkSupportStatus {
         #[doc = "This version of the SDK is deprecated and will eventually be no\nlonger supported."]
@@ -3764,38 +3796,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SdkVersionSdkSupportStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SdkVersion {
-        #[doc = "The support status for this SDK version."]
-        #[serde(rename = "sdkSupportStatus", default)]
-        pub sdk_support_status: ::std::option::Option<crate::schemas::SdkVersionSdkSupportStatus>,
-        #[doc = "The version of the SDK used to run the job."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<String>,
-        #[doc = "A readable string describing the version of the SDK."]
-        #[serde(rename = "versionDisplayName", default)]
-        pub version_display_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SdkVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4018,6 +4018,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Snapshot {
+        #[doc = "The time this snapshot was created."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "The unique ID of this snapshot."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The project this snapshot belongs to."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "The job this snapshot was created from."]
+        #[serde(rename = "sourceJobId", default)]
+        pub source_job_id: ::std::option::Option<String>,
+        #[doc = "State of the snapshot."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::SnapshotState>,
+        #[doc = "The time after which this snapshot will be automatically deleted."]
+        #[serde(rename = "ttl", default)]
+        pub ttl: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Snapshot {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SnapshotState {
         #[doc = "Snapshot has been deleted."]
@@ -4081,47 +4122,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SnapshotState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Snapshot {
-        #[doc = "The time this snapshot was created."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "The unique ID of this snapshot."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The project this snapshot belongs to."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "The job this snapshot was created from."]
-        #[serde(rename = "sourceJobId", default)]
-        pub source_job_id: ::std::option::Option<String>,
-        #[doc = "State of the snapshot."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::SnapshotState>,
-        #[doc = "The time after which this snapshot will be automatically deleted."]
-        #[serde(rename = "ttl", default)]
-        pub ttl: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Snapshot {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4382,6 +4382,27 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct SourceSplitResponse {
+        #[doc = "If outcome is SPLITTING_HAPPENED, then this is a list of bundles\ninto which the source was split. Otherwise this field is ignored.\nThis list can be empty, which means the source represents an empty input."]
+        #[serde(rename = "bundles", default)]
+        pub bundles: ::std::option::Option<Vec<crate::schemas::DerivedSource>>,
+        #[doc = "Indicates whether splitting happened and produced a list of bundles.\nIf this is USE_CURRENT_SOURCE_AS_IS, the current source should\nbe processed \"as is\" without splitting. \"bundles\" is ignored in this case.\nIf this is SPLITTING_HAPPENED, then \"bundles\" contains a list of\nbundles into which the source was split."]
+        #[serde(rename = "outcome", default)]
+        pub outcome: ::std::option::Option<crate::schemas::SourceSplitResponseOutcome>,
+        #[doc = "DEPRECATED in favor of bundles."]
+        #[serde(rename = "shards", default)]
+        pub shards: ::std::option::Option<Vec<crate::schemas::SourceSplitShard>>,
+    }
+    impl ::field_selector::FieldSelector for SourceSplitResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SourceSplitResponseOutcome {
         #[doc = "Splitting produced a list of bundles."]
@@ -4454,18 +4475,15 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct SourceSplitResponse {
-        #[doc = "If outcome is SPLITTING_HAPPENED, then this is a list of bundles\ninto which the source was split. Otherwise this field is ignored.\nThis list can be empty, which means the source represents an empty input."]
-        #[serde(rename = "bundles", default)]
-        pub bundles: ::std::option::Option<Vec<crate::schemas::DerivedSource>>,
-        #[doc = "Indicates whether splitting happened and produced a list of bundles.\nIf this is USE_CURRENT_SOURCE_AS_IS, the current source should\nbe processed \"as is\" without splitting. \"bundles\" is ignored in this case.\nIf this is SPLITTING_HAPPENED, then \"bundles\" contains a list of\nbundles into which the source was split."]
-        #[serde(rename = "outcome", default)]
-        pub outcome: ::std::option::Option<crate::schemas::SourceSplitResponseOutcome>,
-        #[doc = "DEPRECATED in favor of bundles."]
-        #[serde(rename = "shards", default)]
-        pub shards: ::std::option::Option<Vec<crate::schemas::SourceSplitShard>>,
+    pub struct SourceSplitShard {
+        #[doc = "DEPRECATED"]
+        #[serde(rename = "derivationMode", default)]
+        pub derivation_mode: ::std::option::Option<crate::schemas::SourceSplitShardDerivationMode>,
+        #[doc = "DEPRECATED"]
+        #[serde(rename = "source", default)]
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
-    impl ::field_selector::FieldSelector for SourceSplitResponse {
+    impl ::field_selector::FieldSelector for SourceSplitShard {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4545,24 +4563,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SourceSplitShardDerivationMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct SourceSplitShard {
-        #[doc = "DEPRECATED"]
-        #[serde(rename = "derivationMode", default)]
-        pub derivation_mode: ::std::option::Option<crate::schemas::SourceSplitShardDerivationMode>,
-        #[doc = "DEPRECATED"]
-        #[serde(rename = "source", default)]
-        pub source: ::std::option::Option<crate::schemas::Source>,
-    }
-    impl ::field_selector::FieldSelector for SourceSplitShard {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4863,6 +4863,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StreamingComputationTask {
+        #[doc = "Contains ranges of a streaming computation this task should apply to."]
+        #[serde(rename = "computationRanges", default)]
+        pub computation_ranges:
+            ::std::option::Option<Vec<crate::schemas::StreamingComputationRanges>>,
+        #[doc = "Describes the set of data disks this task should apply to."]
+        #[serde(rename = "dataDisks", default)]
+        pub data_disks: ::std::option::Option<Vec<crate::schemas::MountedDataDisk>>,
+        #[doc = "A type of streaming computation task."]
+        #[serde(rename = "taskType", default)]
+        pub task_type: ::std::option::Option<crate::schemas::StreamingComputationTaskTaskType>,
+    }
+    impl ::field_selector::FieldSelector for StreamingComputationTask {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StreamingComputationTaskTaskType {
         #[doc = "Start processing specified streaming computation range(s)."]
@@ -4926,39 +4959,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for StreamingComputationTaskTaskType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct StreamingComputationTask {
-        #[doc = "Contains ranges of a streaming computation this task should apply to."]
-        #[serde(rename = "computationRanges", default)]
-        pub computation_ranges:
-            ::std::option::Option<Vec<crate::schemas::StreamingComputationRanges>>,
-        #[doc = "Describes the set of data disks this task should apply to."]
-        #[serde(rename = "dataDisks", default)]
-        pub data_disks: ::std::option::Option<Vec<crate::schemas::MountedDataDisk>>,
-        #[doc = "A type of streaming computation task."]
-        #[serde(rename = "taskType", default)]
-        pub task_type: ::std::option::Option<crate::schemas::StreamingComputationTaskTaskType>,
-    }
-    impl ::field_selector::FieldSelector for StreamingComputationTask {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5290,6 +5290,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct TransformSummary {
+        #[doc = "Transform-specific display data."]
+        #[serde(rename = "displayData", default)]
+        pub display_data: ::std::option::Option<Vec<crate::schemas::DisplayData>>,
+        #[doc = "SDK generated id of this transform instance."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "User names for all collection inputs to this transform."]
+        #[serde(rename = "inputCollectionName", default)]
+        pub input_collection_name: ::std::option::Option<Vec<String>>,
+        #[doc = "Type of transform."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::TransformSummaryKind>,
+        #[doc = "User provided name for this transform instance."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "User  names for all collection outputs to this transform."]
+        #[serde(rename = "outputCollectionName", default)]
+        pub output_collection_name: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for TransformSummary {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TransformSummaryKind {
         #[doc = "Constructs from a constant value, such as with Create.of."]
@@ -5365,38 +5397,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TransformSummaryKind {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct TransformSummary {
-        #[doc = "Transform-specific display data."]
-        #[serde(rename = "displayData", default)]
-        pub display_data: ::std::option::Option<Vec<crate::schemas::DisplayData>>,
-        #[doc = "SDK generated id of this transform instance."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "User names for all collection inputs to this transform."]
-        #[serde(rename = "inputCollectionName", default)]
-        pub input_collection_name: ::std::option::Option<Vec<String>>,
-        #[doc = "Type of transform."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::TransformSummaryKind>,
-        #[doc = "User provided name for this transform instance."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "User  names for all collection outputs to this transform."]
-        #[serde(rename = "outputCollectionName", default)]
-        pub output_collection_name: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for TransformSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5645,6 +5645,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WorkerLifecycleEvent {
+        #[doc = "The start time of this container. All events will report this so that\nevents can be grouped together across container/VM restarts."]
+        #[serde(rename = "containerStartTime", default)]
+        pub container_start_time: ::std::option::Option<String>,
+        #[doc = "The event being reported."]
+        #[serde(rename = "event", default)]
+        pub event: ::std::option::Option<crate::schemas::WorkerLifecycleEventEvent>,
+        #[doc = "Other stats that can accompany an event. E.g.\n{ \"downloaded_bytes\" : \"123456\" }"]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+    }
+    impl ::field_selector::FieldSelector for WorkerLifecycleEvent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerLifecycleEventEvent {
         #[doc = "Our container code starts running. Multiple containers could be\ndistinguished with WorkerMessage.labels if desired."]
@@ -5732,38 +5764,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WorkerLifecycleEvent {
-        #[doc = "The start time of this container. All events will report this so that\nevents can be grouped together across container/VM restarts."]
-        #[serde(rename = "containerStartTime", default)]
-        pub container_start_time: ::std::option::Option<String>,
-        #[doc = "The event being reported."]
-        #[serde(rename = "event", default)]
-        pub event: ::std::option::Option<crate::schemas::WorkerLifecycleEventEvent>,
-        #[doc = "Other stats that can accompany an event. E.g.\n{ \"downloaded_bytes\" : \"123456\" }"]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-    }
-    impl ::field_selector::FieldSelector for WorkerLifecycleEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WorkerMessage {
         #[doc = "Labels are used to group WorkerMessages.\nFor example, a worker_message about a particular container\nmight have the labels:\n{ \"JOB_ID\": \"2015-04-22\",\n\"WORKER_ID\": \"wordcount-vm-2015\u{2026}\"\n\"CONTAINER_TYPE\": \"worker\",\n\"CONTAINER_ID\": \"ac1234def\"}\nLabel tags typically correspond to Label enum values. However, for ease\nof development other strings can be used as tags. LABEL_UNSPECIFIED should\nnot be used here."]
@@ -5843,6 +5843,82 @@ pub mod schemas {
             ::std::option::Option<crate::schemas::WorkerShutdownNoticeResponse>,
     }
     impl ::field_selector::FieldSelector for WorkerMessageResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct WorkerPool {
+        #[doc = "Settings for autoscaling of this WorkerPool."]
+        #[serde(rename = "autoscalingSettings", default)]
+        pub autoscaling_settings: ::std::option::Option<crate::schemas::AutoscalingSettings>,
+        #[doc = "Data disks that are used by a VM in this workflow."]
+        #[serde(rename = "dataDisks", default)]
+        pub data_disks: ::std::option::Option<Vec<crate::schemas::Disk>>,
+        #[doc = "The default package set to install.  This allows the service to\nselect a default set of packages which are useful to worker\nharnesses written in a particular language."]
+        #[serde(rename = "defaultPackageSet", default)]
+        pub default_package_set: ::std::option::Option<crate::schemas::WorkerPoolDefaultPackageSet>,
+        #[doc = "Size of root disk for VMs, in GB.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[serde(rename = "diskSizeGb", default)]
+        pub disk_size_gb: ::std::option::Option<i32>,
+        #[doc = "Fully qualified source image for disks."]
+        #[serde(rename = "diskSourceImage", default)]
+        pub disk_source_image: ::std::option::Option<String>,
+        #[doc = "Type of root disk for VMs.  If empty or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[serde(rename = "diskType", default)]
+        pub disk_type: ::std::option::Option<String>,
+        #[doc = "Configuration for VM IPs."]
+        #[serde(rename = "ipConfiguration", default)]
+        pub ip_configuration: ::std::option::Option<crate::schemas::WorkerPoolIpConfiguration>,
+        #[doc = "The kind of the worker pool; currently only `harness` and `shuffle`\nare supported."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Machine type (e.g. \"n1-standard-1\").  If empty or unspecified, the\nservice will attempt to choose a reasonable default."]
+        #[serde(rename = "machineType", default)]
+        pub machine_type: ::std::option::Option<String>,
+        #[doc = "Metadata to set on the Google Compute Engine VMs."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Network to which VMs will be assigned.  If empty or unspecified,\nthe service will use the network \"default\"."]
+        #[serde(rename = "network", default)]
+        pub network: ::std::option::Option<String>,
+        #[doc = "The number of threads per worker harness. If empty or unspecified, the\nservice will choose a number of threads (according to the number of cores\non the selected machine type for batch, or 1 by convention for streaming)."]
+        #[serde(rename = "numThreadsPerWorker", default)]
+        pub num_threads_per_worker: ::std::option::Option<i32>,
+        #[doc = "Number of Google Compute Engine workers in this pool needed to\nexecute the job.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[serde(rename = "numWorkers", default)]
+        pub num_workers: ::std::option::Option<i32>,
+        #[doc = "The action to take on host maintenance, as defined by the Google\nCompute Engine API."]
+        #[serde(rename = "onHostMaintenance", default)]
+        pub on_host_maintenance: ::std::option::Option<String>,
+        #[doc = "Packages to be installed on workers."]
+        #[serde(rename = "packages", default)]
+        pub packages: ::std::option::Option<Vec<crate::schemas::Package>>,
+        #[doc = "Extra arguments for this worker pool."]
+        #[serde(rename = "poolArgs", default)]
+        pub pool_args:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Subnetwork to which VMs will be assigned, if desired.  Expected to be of\nthe form \"regions/REGION/subnetworks/SUBNETWORK\"."]
+        #[serde(rename = "subnetwork", default)]
+        pub subnetwork: ::std::option::Option<String>,
+        #[doc = "Settings passed through to Google Compute Engine workers when\nusing the standard Dataflow task runner.  Users should ignore\nthis field."]
+        #[serde(rename = "taskrunnerSettings", default)]
+        pub taskrunner_settings: ::std::option::Option<crate::schemas::TaskRunnerSettings>,
+        #[doc = "Sets the policy for determining when to turndown worker pool.\nAllowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and\n`TEARDOWN_NEVER`.\n`TEARDOWN_ALWAYS` means workers are always torn down regardless of whether\nthe job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down\nif the job succeeds. `TEARDOWN_NEVER` means the workers are never torn\ndown.\n\nIf the workers are not torn down by the service, they will\ncontinue to run and use Google Compute Engine VM resources in the\nuser's project until they are explicitly terminated by the user.\nBecause of this, Google recommends using the `TEARDOWN_ALWAYS`\npolicy except for small, manually supervised test jobs.\n\nIf unknown or unspecified, the service will attempt to choose a reasonable\ndefault."]
+        #[serde(rename = "teardownPolicy", default)]
+        pub teardown_policy: ::std::option::Option<crate::schemas::WorkerPoolTeardownPolicy>,
+        #[doc = "Required. Docker container image that executes the Cloud Dataflow worker\nharness, residing in Google Container Registry."]
+        #[serde(rename = "workerHarnessContainerImage", default)]
+        pub worker_harness_container_image: ::std::option::Option<String>,
+        #[doc = "Zone to run the worker pools in.  If empty or unspecified, the service\nwill attempt to choose a reasonable default."]
+        #[serde(rename = "zone", default)]
+        pub zone: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for WorkerPool {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6036,82 +6112,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for WorkerPoolTeardownPolicy {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct WorkerPool {
-        #[doc = "Settings for autoscaling of this WorkerPool."]
-        #[serde(rename = "autoscalingSettings", default)]
-        pub autoscaling_settings: ::std::option::Option<crate::schemas::AutoscalingSettings>,
-        #[doc = "Data disks that are used by a VM in this workflow."]
-        #[serde(rename = "dataDisks", default)]
-        pub data_disks: ::std::option::Option<Vec<crate::schemas::Disk>>,
-        #[doc = "The default package set to install.  This allows the service to\nselect a default set of packages which are useful to worker\nharnesses written in a particular language."]
-        #[serde(rename = "defaultPackageSet", default)]
-        pub default_package_set: ::std::option::Option<crate::schemas::WorkerPoolDefaultPackageSet>,
-        #[doc = "Size of root disk for VMs, in GB.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
-        #[serde(rename = "diskSizeGb", default)]
-        pub disk_size_gb: ::std::option::Option<i32>,
-        #[doc = "Fully qualified source image for disks."]
-        #[serde(rename = "diskSourceImage", default)]
-        pub disk_source_image: ::std::option::Option<String>,
-        #[doc = "Type of root disk for VMs.  If empty or unspecified, the service will\nattempt to choose a reasonable default."]
-        #[serde(rename = "diskType", default)]
-        pub disk_type: ::std::option::Option<String>,
-        #[doc = "Configuration for VM IPs."]
-        #[serde(rename = "ipConfiguration", default)]
-        pub ip_configuration: ::std::option::Option<crate::schemas::WorkerPoolIpConfiguration>,
-        #[doc = "The kind of the worker pool; currently only `harness` and `shuffle`\nare supported."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Machine type (e.g. \"n1-standard-1\").  If empty or unspecified, the\nservice will attempt to choose a reasonable default."]
-        #[serde(rename = "machineType", default)]
-        pub machine_type: ::std::option::Option<String>,
-        #[doc = "Metadata to set on the Google Compute Engine VMs."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Network to which VMs will be assigned.  If empty or unspecified,\nthe service will use the network \"default\"."]
-        #[serde(rename = "network", default)]
-        pub network: ::std::option::Option<String>,
-        #[doc = "The number of threads per worker harness. If empty or unspecified, the\nservice will choose a number of threads (according to the number of cores\non the selected machine type for batch, or 1 by convention for streaming)."]
-        #[serde(rename = "numThreadsPerWorker", default)]
-        pub num_threads_per_worker: ::std::option::Option<i32>,
-        #[doc = "Number of Google Compute Engine workers in this pool needed to\nexecute the job.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
-        #[serde(rename = "numWorkers", default)]
-        pub num_workers: ::std::option::Option<i32>,
-        #[doc = "The action to take on host maintenance, as defined by the Google\nCompute Engine API."]
-        #[serde(rename = "onHostMaintenance", default)]
-        pub on_host_maintenance: ::std::option::Option<String>,
-        #[doc = "Packages to be installed on workers."]
-        #[serde(rename = "packages", default)]
-        pub packages: ::std::option::Option<Vec<crate::schemas::Package>>,
-        #[doc = "Extra arguments for this worker pool."]
-        #[serde(rename = "poolArgs", default)]
-        pub pool_args:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Subnetwork to which VMs will be assigned, if desired.  Expected to be of\nthe form \"regions/REGION/subnetworks/SUBNETWORK\"."]
-        #[serde(rename = "subnetwork", default)]
-        pub subnetwork: ::std::option::Option<String>,
-        #[doc = "Settings passed through to Google Compute Engine workers when\nusing the standard Dataflow task runner.  Users should ignore\nthis field."]
-        #[serde(rename = "taskrunnerSettings", default)]
-        pub taskrunner_settings: ::std::option::Option<crate::schemas::TaskRunnerSettings>,
-        #[doc = "Sets the policy for determining when to turndown worker pool.\nAllowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and\n`TEARDOWN_NEVER`.\n`TEARDOWN_ALWAYS` means workers are always torn down regardless of whether\nthe job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down\nif the job succeeds. `TEARDOWN_NEVER` means the workers are never torn\ndown.\n\nIf the workers are not torn down by the service, they will\ncontinue to run and use Google Compute Engine VM resources in the\nuser's project until they are explicitly terminated by the user.\nBecause of this, Google recommends using the `TEARDOWN_ALWAYS`\npolicy except for small, manually supervised test jobs.\n\nIf unknown or unspecified, the service will attempt to choose a reasonable\ndefault."]
-        #[serde(rename = "teardownPolicy", default)]
-        pub teardown_policy: ::std::option::Option<crate::schemas::WorkerPoolTeardownPolicy>,
-        #[doc = "Required. Docker container image that executes the Cloud Dataflow worker\nharness, residing in Google Container Registry."]
-        #[serde(rename = "workerHarnessContainerImage", default)]
-        pub worker_harness_container_image: ::std::option::Option<String>,
-        #[doc = "Zone to run the worker pools in.  If empty or unspecified, the service\nwill attempt to choose a reasonable default."]
-        #[serde(rename = "zone", default)]
-        pub zone: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for WorkerPool {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16396,84 +16396,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -16505,7 +16427,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -16626,50 +16547,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

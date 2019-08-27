@@ -34,6 +34,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountAccess {
+        #[doc = "List of Account permissions. Valid account permissions are read and manage."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<Vec<crate::schemas::AccountAccessPermissionItems>>,
+    }
+    impl ::field_selector::FieldSelector for AccountAccess {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AccountAccessPermissionItems {
         Delete,
@@ -111,12 +137,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AccountAccess {
-        #[doc = "List of Account permissions. Valid account permissions are read and manage."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<Vec<crate::schemas::AccountAccessPermissionItems>>,
+    pub struct Condition {
+        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: \n\n* For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. \n* At this time, the left operand (arg0) must be a reference to a variable. \n* For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. \n* To negate an operator, include a boolean parameter named negate boolean parameter that is set to true."]
+        #[serde(rename = "parameter", default)]
+        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "The type of operator for this condition."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ConditionType>,
     }
-    impl ::field_selector::FieldSelector for AccountAccess {
+    impl ::field_selector::FieldSelector for Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -217,15 +246,43 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Condition {
-        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: \n\n* For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. \n* At this time, the left operand (arg0) must be a reference to a variable. \n* For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. \n* To negate an operator, include a boolean parameter named negate boolean parameter that is set to true."]
-        #[serde(rename = "parameter", default)]
-        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The type of operator for this condition."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ConditionType>,
+    pub struct Container {
+        #[doc = "GTM Account ID."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "The Container ID uniquely identifies the GTM Container."]
+        #[serde(rename = "containerId", default)]
+        pub container_id: ::std::option::Option<String>,
+        #[doc = "Optional list of domain names associated with the Container."]
+        #[serde(rename = "domainName", default)]
+        pub domain_name: ::std::option::Option<Vec<String>>,
+        #[doc = "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId."]
+        #[serde(rename = "enabledBuiltInVariable", default)]
+        pub enabled_built_in_variable:
+            ::std::option::Option<Vec<crate::schemas::ContainerEnabledBuiltInVariableItems>>,
+        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
+        #[serde(rename = "fingerprint", default)]
+        pub fingerprint: ::std::option::Option<String>,
+        #[doc = "Container display name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Container Notes."]
+        #[serde(rename = "notes", default)]
+        pub notes: ::std::option::Option<String>,
+        #[doc = "Container Public ID."]
+        #[serde(rename = "publicId", default)]
+        pub public_id: ::std::option::Option<String>,
+        #[doc = "Container Country ID."]
+        #[serde(rename = "timeZoneCountryId", default)]
+        pub time_zone_country_id: ::std::option::Option<String>,
+        #[doc = "Container Time Zone ID."]
+        #[serde(rename = "timeZoneId", default)]
+        pub time_zone_id: ::std::option::Option<String>,
+        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, ios."]
+        #[serde(rename = "usageContext", default)]
+        pub usage_context: ::std::option::Option<Vec<crate::schemas::ContainerUsageContextItems>>,
     }
-    impl ::field_selector::FieldSelector for Condition {
+    impl ::field_selector::FieldSelector for Container {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -454,43 +511,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Container {
-        #[doc = "GTM Account ID."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "The Container ID uniquely identifies the GTM Container."]
+    pub struct ContainerAccess {
+        #[doc = "GTM Container ID."]
         #[serde(rename = "containerId", default)]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "Optional list of domain names associated with the Container."]
-        #[serde(rename = "domainName", default)]
-        pub domain_name: ::std::option::Option<Vec<String>>,
-        #[doc = "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId."]
-        #[serde(rename = "enabledBuiltInVariable", default)]
-        pub enabled_built_in_variable:
-            ::std::option::Option<Vec<crate::schemas::ContainerEnabledBuiltInVariableItems>>,
-        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
-        #[serde(rename = "fingerprint", default)]
-        pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Container display name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Container Notes."]
-        #[serde(rename = "notes", default)]
-        pub notes: ::std::option::Option<String>,
-        #[doc = "Container Public ID."]
-        #[serde(rename = "publicId", default)]
-        pub public_id: ::std::option::Option<String>,
-        #[doc = "Container Country ID."]
-        #[serde(rename = "timeZoneCountryId", default)]
-        pub time_zone_country_id: ::std::option::Option<String>,
-        #[doc = "Container Time Zone ID."]
-        #[serde(rename = "timeZoneId", default)]
-        pub time_zone_id: ::std::option::Option<String>,
-        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, ios."]
-        #[serde(rename = "usageContext", default)]
-        pub usage_context: ::std::option::Option<Vec<crate::schemas::ContainerUsageContextItems>>,
+        #[doc = "List of Container permissions. Valid container permissions are: read, edit, delete, publish."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<Vec<crate::schemas::ContainerAccessPermissionItems>>,
     }
-    impl ::field_selector::FieldSelector for Container {
+    impl ::field_selector::FieldSelector for ContainerAccess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -556,35 +585,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ContainerAccessPermissionItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ContainerAccess {
-        #[doc = "GTM Container ID."]
-        #[serde(rename = "containerId", default)]
-        pub container_id: ::std::option::Option<String>,
-        #[doc = "List of Container permissions. Valid container permissions are: read, edit, delete, publish."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<Vec<crate::schemas::ContainerAccessPermissionItems>>,
-    }
-    impl ::field_selector::FieldSelector for ContainerAccess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -772,65 +772,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum EnvironmentType {
-        Draft,
-        Latest,
-        Live,
-        User,
-    }
-    impl EnvironmentType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                EnvironmentType::Draft => "draft",
-                EnvironmentType::Latest => "latest",
-                EnvironmentType::Live => "live",
-                EnvironmentType::User => "user",
-            }
-        }
-    }
-    impl ::std::fmt::Display for EnvironmentType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for EnvironmentType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for EnvironmentType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "draft" => EnvironmentType::Draft,
-                "latest" => EnvironmentType::Latest,
-                "live" => EnvironmentType::Live,
-                "user" => EnvironmentType::User,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for EnvironmentType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -883,6 +824,65 @@ pub mod schemas {
         pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Environment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EnvironmentType {
+        Draft,
+        Latest,
+        Live,
+        User,
+    }
+    impl EnvironmentType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EnvironmentType::Draft => "draft",
+                EnvironmentType::Latest => "latest",
+                EnvironmentType::Live => "live",
+                EnvironmentType::User => "user",
+            }
+        }
+    }
+    impl ::std::fmt::Display for EnvironmentType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EnvironmentType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EnvironmentType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "draft" => EnvironmentType::Draft,
+                "latest" => EnvironmentType::Latest,
+                "live" => EnvironmentType::Live,
+                "user" => EnvironmentType::User,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for EnvironmentType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1263,6 +1263,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Parameter {
+        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "This list parameter's parameters (keys will be ignored)."]
+        #[serde(rename = "list", default)]
+        pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "This map parameter's parameters (must have keys; keys must be unique)."]
+        #[serde(rename = "map", default)]
+        pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "The parameter type. Valid values are: \n\n* boolean: The value represents a boolean, represented as 'true' or 'false' \n* integer: The value represents a 64-bit signed integer value, in base 10 \n* list: A list of parameters should be specified \n* map: A map of parameters should be specified \n* template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n* trigger_reference: The value represents a trigger, represented as the trigger id"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
+        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Parameter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParameterType {
         Boolean,
@@ -1320,44 +1358,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ParameterType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Parameter {
-        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "This list parameter's parameters (keys will be ignored)."]
-        #[serde(rename = "list", default)]
-        pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "This map parameter's parameters (must have keys; keys must be unique)."]
-        #[serde(rename = "map", default)]
-        pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The parameter type. Valid values are: \n\n* boolean: The value represents a boolean, represented as 'true' or 'false' \n* integer: The value represents a 64-bit signed integer value, in base 10 \n* list: A list of parameters should be specified \n* map: A map of parameters should be specified \n* template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n* trigger_reference: The value represents a trigger, represented as the trigger id"]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
-        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Parameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1468,62 +1468,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum TagTagFiringOption {
-        OncePerEvent,
-        OncePerLoad,
-        Unlimited,
-    }
-    impl TagTagFiringOption {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                TagTagFiringOption::OncePerEvent => "oncePerEvent",
-                TagTagFiringOption::OncePerLoad => "oncePerLoad",
-                TagTagFiringOption::Unlimited => "unlimited",
-            }
-        }
-    }
-    impl ::std::fmt::Display for TagTagFiringOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for TagTagFiringOption {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for TagTagFiringOption {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "oncePerEvent" => TagTagFiringOption::OncePerEvent,
-                "oncePerLoad" => TagTagFiringOption::OncePerLoad,
-                "unlimited" => TagTagFiringOption::Unlimited,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for TagTagFiringOption {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -1612,6 +1556,62 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TagTagFiringOption {
+        OncePerEvent,
+        OncePerLoad,
+        Unlimited,
+    }
+    impl TagTagFiringOption {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TagTagFiringOption::OncePerEvent => "oncePerEvent",
+                TagTagFiringOption::OncePerLoad => "oncePerLoad",
+                TagTagFiringOption::Unlimited => "unlimited",
+            }
+        }
+    }
+    impl ::std::fmt::Display for TagTagFiringOption {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TagTagFiringOption {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TagTagFiringOption {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "oncePerEvent" => TagTagFiringOption::OncePerEvent,
+                "oncePerLoad" => TagTagFiringOption::OncePerLoad,
+                "unlimited" => TagTagFiringOption::Unlimited,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for TagTagFiringOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1633,110 +1633,6 @@ pub mod schemas {
         pub tag_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TeardownTag {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum TriggerType {
-        Always,
-        AmpClick,
-        AmpScroll,
-        AmpTimer,
-        AmpVisibility,
-        Click,
-        CustomEvent,
-        DomReady,
-        ElementVisibility,
-        FormSubmission,
-        HistoryChange,
-        JsError,
-        LinkClick,
-        Pageview,
-        ScrollDepth,
-        Timer,
-        TriggerGroup,
-        WindowLoaded,
-        YouTubeVideo,
-    }
-    impl TriggerType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                TriggerType::Always => "always",
-                TriggerType::AmpClick => "ampClick",
-                TriggerType::AmpScroll => "ampScroll",
-                TriggerType::AmpTimer => "ampTimer",
-                TriggerType::AmpVisibility => "ampVisibility",
-                TriggerType::Click => "click",
-                TriggerType::CustomEvent => "customEvent",
-                TriggerType::DomReady => "domReady",
-                TriggerType::ElementVisibility => "elementVisibility",
-                TriggerType::FormSubmission => "formSubmission",
-                TriggerType::HistoryChange => "historyChange",
-                TriggerType::JsError => "jsError",
-                TriggerType::LinkClick => "linkClick",
-                TriggerType::Pageview => "pageview",
-                TriggerType::ScrollDepth => "scrollDepth",
-                TriggerType::Timer => "timer",
-                TriggerType::TriggerGroup => "triggerGroup",
-                TriggerType::WindowLoaded => "windowLoaded",
-                TriggerType::YouTubeVideo => "youTubeVideo",
-            }
-        }
-    }
-    impl ::std::fmt::Display for TriggerType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for TriggerType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for TriggerType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "always" => TriggerType::Always,
-                "ampClick" => TriggerType::AmpClick,
-                "ampScroll" => TriggerType::AmpScroll,
-                "ampTimer" => TriggerType::AmpTimer,
-                "ampVisibility" => TriggerType::AmpVisibility,
-                "click" => TriggerType::Click,
-                "customEvent" => TriggerType::CustomEvent,
-                "domReady" => TriggerType::DomReady,
-                "elementVisibility" => TriggerType::ElementVisibility,
-                "formSubmission" => TriggerType::FormSubmission,
-                "historyChange" => TriggerType::HistoryChange,
-                "jsError" => TriggerType::JsError,
-                "linkClick" => TriggerType::LinkClick,
-                "pageview" => TriggerType::Pageview,
-                "scrollDepth" => TriggerType::ScrollDepth,
-                "timer" => TriggerType::Timer,
-                "triggerGroup" => TriggerType::TriggerGroup,
-                "windowLoaded" => TriggerType::WindowLoaded,
-                "youTubeVideo" => TriggerType::YouTubeVideo,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for TriggerType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1844,6 +1740,110 @@ pub mod schemas {
         pub wait_for_tags_timeout: ::std::option::Option<crate::schemas::Parameter>,
     }
     impl ::field_selector::FieldSelector for Trigger {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TriggerType {
+        Always,
+        AmpClick,
+        AmpScroll,
+        AmpTimer,
+        AmpVisibility,
+        Click,
+        CustomEvent,
+        DomReady,
+        ElementVisibility,
+        FormSubmission,
+        HistoryChange,
+        JsError,
+        LinkClick,
+        Pageview,
+        ScrollDepth,
+        Timer,
+        TriggerGroup,
+        WindowLoaded,
+        YouTubeVideo,
+    }
+    impl TriggerType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TriggerType::Always => "always",
+                TriggerType::AmpClick => "ampClick",
+                TriggerType::AmpScroll => "ampScroll",
+                TriggerType::AmpTimer => "ampTimer",
+                TriggerType::AmpVisibility => "ampVisibility",
+                TriggerType::Click => "click",
+                TriggerType::CustomEvent => "customEvent",
+                TriggerType::DomReady => "domReady",
+                TriggerType::ElementVisibility => "elementVisibility",
+                TriggerType::FormSubmission => "formSubmission",
+                TriggerType::HistoryChange => "historyChange",
+                TriggerType::JsError => "jsError",
+                TriggerType::LinkClick => "linkClick",
+                TriggerType::Pageview => "pageview",
+                TriggerType::ScrollDepth => "scrollDepth",
+                TriggerType::Timer => "timer",
+                TriggerType::TriggerGroup => "triggerGroup",
+                TriggerType::WindowLoaded => "windowLoaded",
+                TriggerType::YouTubeVideo => "youTubeVideo",
+            }
+        }
+    }
+    impl ::std::fmt::Display for TriggerType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TriggerType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TriggerType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "always" => TriggerType::Always,
+                "ampClick" => TriggerType::AmpClick,
+                "ampScroll" => TriggerType::AmpScroll,
+                "ampTimer" => TriggerType::AmpTimer,
+                "ampVisibility" => TriggerType::AmpVisibility,
+                "click" => TriggerType::Click,
+                "customEvent" => TriggerType::CustomEvent,
+                "domReady" => TriggerType::DomReady,
+                "elementVisibility" => TriggerType::ElementVisibility,
+                "formSubmission" => TriggerType::FormSubmission,
+                "historyChange" => TriggerType::HistoryChange,
+                "jsError" => TriggerType::JsError,
+                "linkClick" => TriggerType::LinkClick,
+                "pageview" => TriggerType::Pageview,
+                "scrollDepth" => TriggerType::ScrollDepth,
+                "timer" => TriggerType::Timer,
+                "triggerGroup" => TriggerType::TriggerGroup,
+                "windowLoaded" => TriggerType::WindowLoaded,
+                "youTubeVideo" => TriggerType::YouTubeVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for TriggerType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10110,84 +10110,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -10216,174 +10138,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -1,4 +1,36 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AutoForwarding {
+        #[doc = "The state that a message should be left in after it has been forwarded."]
+        #[serde(rename = "disposition", default)]
+        pub disposition: ::std::option::Option<crate::schemas::AutoForwardingDisposition>,
+        #[doc = "Email address to which all incoming messages are forwarded. This email address must be a verified member of the forwarding addresses."]
+        #[serde(rename = "emailAddress", default)]
+        pub email_address: ::std::option::Option<String>,
+        #[doc = "Whether all incoming mail is automatically forwarded to another address."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for AutoForwarding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoForwardingDisposition {
         Archive,
@@ -73,38 +105,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AutoForwarding {
-        #[doc = "The state that a message should be left in after it has been forwarded."]
-        #[serde(rename = "disposition", default)]
-        pub disposition: ::std::option::Option<crate::schemas::AutoForwardingDisposition>,
-        #[doc = "Email address to which all incoming messages are forwarded. This email address must be a verified member of the forwarding addresses."]
-        #[serde(rename = "emailAddress", default)]
-        pub email_address: ::std::option::Option<String>,
-        #[doc = "Whether all incoming mail is automatically forwarded to another address."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for AutoForwarding {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct BatchDeleteMessagesRequest {
         #[doc = "The IDs of the messages to delete."]
         #[serde(rename = "ids", default)]
@@ -143,6 +143,35 @@ pub mod schemas {
         pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for BatchModifyMessagesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Delegate {
+        #[doc = "The email address of the delegate."]
+        #[serde(rename = "delegateEmail", default)]
+        pub delegate_email: ::std::option::Option<String>,
+        #[doc = "Indicates whether this address has been verified and can act as a delegate for the account. Read-only."]
+        #[serde(rename = "verificationStatus", default)]
+        pub verification_status: ::std::option::Option<crate::schemas::DelegateVerificationStatus>,
+    }
+    impl ::field_selector::FieldSelector for Delegate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -209,35 +238,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DelegateVerificationStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Delegate {
-        #[doc = "The email address of the delegate."]
-        #[serde(rename = "delegateEmail", default)]
-        pub delegate_email: ::std::option::Option<String>,
-        #[doc = "Indicates whether this address has been verified and can act as a delegate for the account. Read-only."]
-        #[serde(rename = "verificationStatus", default)]
-        pub verification_status: ::std::option::Option<crate::schemas::DelegateVerificationStatus>,
-    }
-    impl ::field_selector::FieldSelector for Delegate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -339,6 +339,56 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterCriteria {
+        #[doc = "Whether the response should exclude chats."]
+        #[serde(rename = "excludeChats", default)]
+        pub exclude_chats: ::std::option::Option<bool>,
+        #[doc = "The sender's display name or email address."]
+        #[serde(rename = "from", default)]
+        pub from: ::std::option::Option<String>,
+        #[doc = "Whether the message has any attachment."]
+        #[serde(rename = "hasAttachment", default)]
+        pub has_attachment: ::std::option::Option<bool>,
+        #[doc = "Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
+        #[serde(rename = "negatedQuery", default)]
+        pub negated_query: ::std::option::Option<String>,
+        #[doc = "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<String>,
+        #[doc = "The size of the entire RFC822 message in bytes, including all headers and attachments."]
+        #[serde(rename = "size", default)]
+        pub size: ::std::option::Option<i32>,
+        #[doc = "How the message size in bytes should be in relation to the size field."]
+        #[serde(rename = "sizeComparison", default)]
+        pub size_comparison: ::std::option::Option<crate::schemas::FilterCriteriaSizeComparison>,
+        #[doc = "Case-insensitive phrase found in the message's subject. Trailing and leading whitespace are be trimmed and adjacent spaces are collapsed."]
+        #[serde(rename = "subject", default)]
+        pub subject: ::std::option::Option<String>,
+        #[doc = "The recipient's display name or email address. Includes recipients in the \"to\", \"cc\", and \"bcc\" header fields. You can use simply the local part of the email address. For example, \"example\" and \"example@\" both match \"example@gmail.com\". This field is case-insensitive."]
+        #[serde(rename = "to", default)]
+        pub to: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FilterCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterCriteriaSizeComparison {
         Larger,
@@ -407,36 +457,16 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FilterCriteria {
-        #[doc = "Whether the response should exclude chats."]
-        #[serde(rename = "excludeChats", default)]
-        pub exclude_chats: ::std::option::Option<bool>,
-        #[doc = "The sender's display name or email address."]
-        #[serde(rename = "from", default)]
-        pub from: ::std::option::Option<String>,
-        #[doc = "Whether the message has any attachment."]
-        #[serde(rename = "hasAttachment", default)]
-        pub has_attachment: ::std::option::Option<bool>,
-        #[doc = "Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
-        #[serde(rename = "negatedQuery", default)]
-        pub negated_query: ::std::option::Option<String>,
-        #[doc = "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<String>,
-        #[doc = "The size of the entire RFC822 message in bytes, including all headers and attachments."]
-        #[serde(rename = "size", default)]
-        pub size: ::std::option::Option<i32>,
-        #[doc = "How the message size in bytes should be in relation to the size field."]
-        #[serde(rename = "sizeComparison", default)]
-        pub size_comparison: ::std::option::Option<crate::schemas::FilterCriteriaSizeComparison>,
-        #[doc = "Case-insensitive phrase found in the message's subject. Trailing and leading whitespace are be trimmed and adjacent spaces are collapsed."]
-        #[serde(rename = "subject", default)]
-        pub subject: ::std::option::Option<String>,
-        #[doc = "The recipient's display name or email address. Includes recipients in the \"to\", \"cc\", and \"bcc\" header fields. You can use simply the local part of the email address. For example, \"example\" and \"example@\" both match \"example@gmail.com\". This field is case-insensitive."]
-        #[serde(rename = "to", default)]
-        pub to: ::std::option::Option<String>,
+    pub struct ForwardingAddress {
+        #[doc = "An email address to which messages can be forwarded."]
+        #[serde(rename = "forwardingEmail", default)]
+        pub forwarding_email: ::std::option::Option<String>,
+        #[doc = "Indicates whether this address has been verified and is usable for forwarding. Read-only."]
+        #[serde(rename = "verificationStatus", default)]
+        pub verification_status:
+            ::std::option::Option<crate::schemas::ForwardingAddressVerificationStatus>,
     }
-    impl ::field_selector::FieldSelector for FilterCriteria {
+    impl ::field_selector::FieldSelector for ForwardingAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -497,36 +527,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ForwardingAddressVerificationStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ForwardingAddress {
-        #[doc = "An email address to which messages can be forwarded."]
-        #[serde(rename = "forwardingEmail", default)]
-        pub forwarding_email: ::std::option::Option<String>,
-        #[doc = "Indicates whether this address has been verified and is usable for forwarding. Read-only."]
-        #[serde(rename = "verificationStatus", default)]
-        pub verification_status:
-            ::std::option::Option<crate::schemas::ForwardingAddressVerificationStatus>,
-    }
-    impl ::field_selector::FieldSelector for ForwardingAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -683,6 +683,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImapSettings {
+        #[doc = "If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as deleted."]
+        #[serde(rename = "autoExpunge", default)]
+        pub auto_expunge: ::std::option::Option<bool>,
+        #[doc = "Whether IMAP is enabled for the account."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder."]
+        #[serde(rename = "expungeBehavior", default)]
+        pub expunge_behavior: ::std::option::Option<crate::schemas::ImapSettingsExpungeBehavior>,
+        #[doc = "An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit."]
+        #[serde(rename = "maxFolderSize", default)]
+        pub max_folder_size: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for ImapSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImapSettingsExpungeBehavior {
         Archive,
@@ -758,21 +793,40 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ImapSettings {
-        #[doc = "If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as deleted."]
-        #[serde(rename = "autoExpunge", default)]
-        pub auto_expunge: ::std::option::Option<bool>,
-        #[doc = "Whether IMAP is enabled for the account."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-        #[doc = "The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder."]
-        #[serde(rename = "expungeBehavior", default)]
-        pub expunge_behavior: ::std::option::Option<crate::schemas::ImapSettingsExpungeBehavior>,
-        #[doc = "An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit."]
-        #[serde(rename = "maxFolderSize", default)]
-        pub max_folder_size: ::std::option::Option<i32>,
+    pub struct Label {
+        #[doc = "The color to assign to the label. Color is only available for labels that have their type set to user."]
+        #[serde(rename = "color", default)]
+        pub color: ::std::option::Option<crate::schemas::LabelColor>,
+        #[doc = "The immutable ID of the label."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The visibility of the label in the label list in the Gmail web interface."]
+        #[serde(rename = "labelListVisibility", default)]
+        pub label_list_visibility: ::std::option::Option<crate::schemas::LabelLabelListVisibility>,
+        #[doc = "The visibility of the label in the message list in the Gmail web interface."]
+        #[serde(rename = "messageListVisibility", default)]
+        pub message_list_visibility:
+            ::std::option::Option<crate::schemas::LabelMessageListVisibility>,
+        #[doc = "The total number of messages with the label."]
+        #[serde(rename = "messagesTotal", default)]
+        pub messages_total: ::std::option::Option<i32>,
+        #[doc = "The number of unread messages with the label."]
+        #[serde(rename = "messagesUnread", default)]
+        pub messages_unread: ::std::option::Option<i32>,
+        #[doc = "The display name of the label."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::LabelType>,
+        #[doc = "The total number of threads with the label."]
+        #[serde(rename = "threadsTotal", default)]
+        pub threads_total: ::std::option::Option<i32>,
+        #[doc = "The number of unread threads with the label."]
+        #[serde(rename = "threadsUnread", default)]
+        pub threads_unread: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for ImapSettings {
+    impl ::field_selector::FieldSelector for Label {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -935,60 +989,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LabelType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Label {
-        #[doc = "The color to assign to the label. Color is only available for labels that have their type set to user."]
-        #[serde(rename = "color", default)]
-        pub color: ::std::option::Option<crate::schemas::LabelColor>,
-        #[doc = "The immutable ID of the label."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The visibility of the label in the label list in the Gmail web interface."]
-        #[serde(rename = "labelListVisibility", default)]
-        pub label_list_visibility: ::std::option::Option<crate::schemas::LabelLabelListVisibility>,
-        #[doc = "The visibility of the label in the message list in the Gmail web interface."]
-        #[serde(rename = "messageListVisibility", default)]
-        pub message_list_visibility:
-            ::std::option::Option<crate::schemas::LabelMessageListVisibility>,
-        #[doc = "The total number of messages with the label."]
-        #[serde(rename = "messagesTotal", default)]
-        pub messages_total: ::std::option::Option<i32>,
-        #[doc = "The number of unread messages with the label."]
-        #[serde(rename = "messagesUnread", default)]
-        pub messages_unread: ::std::option::Option<i32>,
-        #[doc = "The display name of the label."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::LabelType>,
-        #[doc = "The total number of threads with the label."]
-        #[serde(rename = "threadsTotal", default)]
-        pub threads_total: ::std::option::Option<i32>,
-        #[doc = "The number of unread threads with the label."]
-        #[serde(rename = "threadsUnread", default)]
-        pub threads_unread: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for Label {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1549,6 +1549,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PopSettings {
+        #[doc = "The range of messages which are accessible via POP."]
+        #[serde(rename = "accessWindow", default)]
+        pub access_window: ::std::option::Option<crate::schemas::PopSettingsAccessWindow>,
+        #[doc = "The action that will be executed on a message after it has been fetched via POP."]
+        #[serde(rename = "disposition", default)]
+        pub disposition: ::std::option::Option<crate::schemas::PopSettingsDisposition>,
+    }
+    impl ::field_selector::FieldSelector for PopSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PopSettingsAccessWindow {
         AccessWindowUnspecified,
@@ -1682,15 +1711,22 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PopSettings {
-        #[doc = "The range of messages which are accessible via POP."]
-        #[serde(rename = "accessWindow", default)]
-        pub access_window: ::std::option::Option<crate::schemas::PopSettingsAccessWindow>,
-        #[doc = "The action that will be executed on a message after it has been fetched via POP."]
-        #[serde(rename = "disposition", default)]
-        pub disposition: ::std::option::Option<crate::schemas::PopSettingsDisposition>,
+    pub struct Profile {
+        #[doc = "The user's email address."]
+        #[serde(rename = "emailAddress", default)]
+        pub email_address: ::std::option::Option<String>,
+        #[doc = "The ID of the mailbox's current history record."]
+        #[serde(rename = "historyId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub history_id: ::std::option::Option<u64>,
+        #[doc = "The total number of messages in the mailbox."]
+        #[serde(rename = "messagesTotal", default)]
+        pub messages_total: ::std::option::Option<i32>,
+        #[doc = "The total number of threads in the mailbox."]
+        #[serde(rename = "threadsTotal", default)]
+        pub threads_total: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PopSettings {
+    impl ::field_selector::FieldSelector for Profile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1711,22 +1747,36 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Profile {
-        #[doc = "The user's email address."]
-        #[serde(rename = "emailAddress", default)]
-        pub email_address: ::std::option::Option<String>,
-        #[doc = "The ID of the mailbox's current history record."]
-        #[serde(rename = "historyId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub history_id: ::std::option::Option<u64>,
-        #[doc = "The total number of messages in the mailbox."]
-        #[serde(rename = "messagesTotal", default)]
-        pub messages_total: ::std::option::Option<i32>,
-        #[doc = "The total number of threads in the mailbox."]
-        #[serde(rename = "threadsTotal", default)]
-        pub threads_total: ::std::option::Option<i32>,
+    pub struct SendAs {
+        #[doc = "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account. If the admin has disabled the ability for users to update their name format, requests to update this field for the primary login will silently fail."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Whether this address is selected as the default \"From:\" address in situations such as composing a new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address, so the only legal value that clients may write to this field is true. Changing this from false to true for an address will result in this field becoming false for the other previous default address."]
+        #[serde(rename = "isDefault", default)]
+        pub is_default: ::std::option::Option<bool>,
+        #[doc = "Whether this address is the primary address used to login to the account. Every Gmail account has exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is read-only."]
+        #[serde(rename = "isPrimary", default)]
+        pub is_primary: ::std::option::Option<bool>,
+        #[doc = "An optional email address that is included in a \"Reply-To:\" header for mail sent using this alias. If this is empty, Gmail will not generate a \"Reply-To:\" header."]
+        #[serde(rename = "replyToAddress", default)]
+        pub reply_to_address: ::std::option::Option<String>,
+        #[doc = "The email address that appears in the \"From:\" header for mail sent using this alias. This is read-only for all operations except create."]
+        #[serde(rename = "sendAsEmail", default)]
+        pub send_as_email: ::std::option::Option<String>,
+        #[doc = "An optional HTML signature that is included in messages composed with this alias in the Gmail web UI."]
+        #[serde(rename = "signature", default)]
+        pub signature: ::std::option::Option<String>,
+        #[doc = "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."]
+        #[serde(rename = "smtpMsa", default)]
+        pub smtp_msa: ::std::option::Option<crate::schemas::SmtpMsa>,
+        #[doc = "Whether Gmail should  treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases."]
+        #[serde(rename = "treatAsAlias", default)]
+        pub treat_as_alias: ::std::option::Option<bool>,
+        #[doc = "Indicates whether this address has been verified for use as a send-as alias. Read-only. This setting only applies to custom \"from\" aliases."]
+        #[serde(rename = "verificationStatus", default)]
+        pub verification_status: ::std::option::Option<crate::schemas::SendAsVerificationStatus>,
     }
-    impl ::field_selector::FieldSelector for Profile {
+    impl ::field_selector::FieldSelector for SendAs {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1807,56 +1857,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SendAs {
-        #[doc = "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account. If the admin has disabled the ability for users to update their name format, requests to update this field for the primary login will silently fail."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Whether this address is selected as the default \"From:\" address in situations such as composing a new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address, so the only legal value that clients may write to this field is true. Changing this from false to true for an address will result in this field becoming false for the other previous default address."]
-        #[serde(rename = "isDefault", default)]
-        pub is_default: ::std::option::Option<bool>,
-        #[doc = "Whether this address is the primary address used to login to the account. Every Gmail account has exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is read-only."]
-        #[serde(rename = "isPrimary", default)]
-        pub is_primary: ::std::option::Option<bool>,
-        #[doc = "An optional email address that is included in a \"Reply-To:\" header for mail sent using this alias. If this is empty, Gmail will not generate a \"Reply-To:\" header."]
-        #[serde(rename = "replyToAddress", default)]
-        pub reply_to_address: ::std::option::Option<String>,
-        #[doc = "The email address that appears in the \"From:\" header for mail sent using this alias. This is read-only for all operations except create."]
-        #[serde(rename = "sendAsEmail", default)]
-        pub send_as_email: ::std::option::Option<String>,
-        #[doc = "An optional HTML signature that is included in messages composed with this alias in the Gmail web UI."]
-        #[serde(rename = "signature", default)]
-        pub signature: ::std::option::Option<String>,
-        #[doc = "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "smtpMsa", default)]
-        pub smtp_msa: ::std::option::Option<crate::schemas::SmtpMsa>,
-        #[doc = "Whether Gmail should  treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "treatAsAlias", default)]
-        pub treat_as_alias: ::std::option::Option<bool>,
-        #[doc = "Indicates whether this address has been verified for use as a send-as alias. Read-only. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "verificationStatus", default)]
-        pub verification_status: ::std::option::Option<crate::schemas::SendAsVerificationStatus>,
-    }
-    impl ::field_selector::FieldSelector for SendAs {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct SmimeInfo {
         #[doc = "Encrypted key password, when key is encrypted."]
         #[serde(rename = "encryptedKeyPassword", default)]
@@ -1882,6 +1882,44 @@ pub mod schemas {
         pub pkcs_12: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for SmimeInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SmtpMsa {
+        #[doc = "The hostname of the SMTP service. Required."]
+        #[serde(rename = "host", default)]
+        pub host: ::std::option::Option<String>,
+        #[doc = "The password that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
+        #[serde(rename = "password", default)]
+        pub password: ::std::option::Option<String>,
+        #[doc = "The port of the SMTP service. Required."]
+        #[serde(rename = "port", default)]
+        pub port: ::std::option::Option<i32>,
+        #[doc = "The protocol that will be used to secure communication with the SMTP service. Required."]
+        #[serde(rename = "securityMode", default)]
+        pub security_mode: ::std::option::Option<crate::schemas::SmtpMsaSecurityMode>,
+        #[doc = "The username that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
+        #[serde(rename = "username", default)]
+        pub username: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SmtpMsa {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1941,44 +1979,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SmtpMsaSecurityMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SmtpMsa {
-        #[doc = "The hostname of the SMTP service. Required."]
-        #[serde(rename = "host", default)]
-        pub host: ::std::option::Option<String>,
-        #[doc = "The password that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
-        #[serde(rename = "password", default)]
-        pub password: ::std::option::Option<String>,
-        #[doc = "The port of the SMTP service. Required."]
-        #[serde(rename = "port", default)]
-        pub port: ::std::option::Option<i32>,
-        #[doc = "The protocol that will be used to secure communication with the SMTP service. Required."]
-        #[serde(rename = "securityMode", default)]
-        pub security_mode: ::std::option::Option<crate::schemas::SmtpMsaSecurityMode>,
-        #[doc = "The username that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
-        #[serde(rename = "username", default)]
-        pub username: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SmtpMsa {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2072,6 +2072,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WatchRequest {
+        #[doc = "Filtering behavior of labelIds list specified."]
+        #[serde(rename = "labelFilterAction", default)]
+        pub label_filter_action:
+            ::std::option::Option<crate::schemas::WatchRequestLabelFilterAction>,
+        #[doc = "List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated."]
+        #[serde(rename = "labelIds", default)]
+        pub label_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail \"publish\" permission on it. For example, \"projects/my-project-identifier/topics/my-topic-name\" (using the Cloud Pub/Sub \"v1\" topic naming format).\n\nNote that the \"my-project-identifier\" portion must exactly match your Google developer project id (the one executing this watch request)."]
+        #[serde(rename = "topicName", default)]
+        pub topic_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for WatchRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WatchRequestLabelFilterAction {
         Exclude,
@@ -2117,39 +2150,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for WatchRequestLabelFilterAction {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WatchRequest {
-        #[doc = "Filtering behavior of labelIds list specified."]
-        #[serde(rename = "labelFilterAction", default)]
-        pub label_filter_action:
-            ::std::option::Option<crate::schemas::WatchRequestLabelFilterAction>,
-        #[doc = "List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated."]
-        #[serde(rename = "labelIds", default)]
-        pub label_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail \"publish\" permission on it. For example, \"projects/my-project-identifier/topics/my-topic-name\" (using the Cloud Pub/Sub \"v1\" topic naming format).\n\nNote that the \"my-project-identifier\" portion must exactly match your Google developer project id (the one executing this watch request)."]
-        #[serde(rename = "topicName", default)]
-        pub topic_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for WatchRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13745,6 +13745,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -13823,38 +13854,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -13980,8 +13979,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

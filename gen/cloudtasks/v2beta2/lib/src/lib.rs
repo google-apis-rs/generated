@@ -25,6 +25,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AppEngineHttpRequest {
+        #[doc = "Task-level setting for App Engine routing.\n\nIf set,\napp_engine_routing_override\nis used for all tasks in the queue, no matter what the setting is for the\ntask-level app_engine_routing."]
+        #[serde(rename = "appEngineRouting", default)]
+        pub app_engine_routing: ::std::option::Option<crate::schemas::AppEngineRouting>,
+        #[doc = "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\nRepeated headers are not supported but a header value can contain commas.\n\nCloud Tasks sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Tasks will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n\nIf the task has a payload, Cloud\nTasks sets the following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explicitly\n  setting `Content-Type` to a particular media type when the\n  task is created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Tasks. This value is\n  output only.   It cannot be changed.\n\nThe headers below cannot be set or overridden:\n\n* `Host`\n* `X-Google-*`\n* `X-AppEngine-*`\n\nIn addition, Cloud Tasks sets some headers when the task is dispatched,\nsuch as headers containing information about the task; see\n[request\nheaders](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).\nThese headers are set only when the task is dispatched, so they are not\nvisible when the task is returned in a Cloud Tasks response.\n\nAlthough there is no specific limit for the maximum number of headers or\nthe size, there is a limit on the maximum size of the Task. For more\ninformation, see the CreateTask documentation."]
+        #[serde(rename = "headers", default)]
+        pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The HTTP method to use for the request. The default is POST.\n\nThe app's request handler for the task's target URL must be able to handle\nHTTP requests with this http_method, otherwise the task attempt will fail\nwith error code 405 (Method Not Allowed). See\n[Writing a push task request\nhandler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)\nand the documentation for the request handlers in the language your app is\nwritten in e.g.\n[Python Request\nHandler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass)."]
+        #[serde(rename = "httpMethod", default)]
+        pub http_method: ::std::option::Option<crate::schemas::AppEngineHttpRequestHttpMethod>,
+        #[doc = "Payload.\n\nThe payload will be sent as the HTTP message body. A message\nbody, and thus a payload, is allowed only if the HTTP method is\nPOST or PUT. It is an error to set a data payload on a task with\nan incompatible HttpMethod."]
+        #[serde(rename = "payload", default)]
+        pub payload: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The relative URL.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path and query string arguments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters."]
+        #[serde(rename = "relativeUrl", default)]
+        pub relative_url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AppEngineHttpRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AppEngineHttpRequestHttpMethod {
         #[doc = "HTTP DELETE"]
@@ -88,44 +126,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AppEngineHttpRequestHttpMethod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AppEngineHttpRequest {
-        #[doc = "Task-level setting for App Engine routing.\n\nIf set,\napp_engine_routing_override\nis used for all tasks in the queue, no matter what the setting is for the\ntask-level app_engine_routing."]
-        #[serde(rename = "appEngineRouting", default)]
-        pub app_engine_routing: ::std::option::Option<crate::schemas::AppEngineRouting>,
-        #[doc = "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\nRepeated headers are not supported but a header value can contain commas.\n\nCloud Tasks sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Tasks will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n\nIf the task has a payload, Cloud\nTasks sets the following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explicitly\n  setting `Content-Type` to a particular media type when the\n  task is created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Tasks. This value is\n  output only.   It cannot be changed.\n\nThe headers below cannot be set or overridden:\n\n* `Host`\n* `X-Google-*`\n* `X-AppEngine-*`\n\nIn addition, Cloud Tasks sets some headers when the task is dispatched,\nsuch as headers containing information about the task; see\n[request\nheaders](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).\nThese headers are set only when the task is dispatched, so they are not\nvisible when the task is returned in a Cloud Tasks response.\n\nAlthough there is no specific limit for the maximum number of headers or\nthe size, there is a limit on the maximum size of the Task. For more\ninformation, see the CreateTask documentation."]
-        #[serde(rename = "headers", default)]
-        pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The HTTP method to use for the request. The default is POST.\n\nThe app's request handler for the task's target URL must be able to handle\nHTTP requests with this http_method, otherwise the task attempt will fail\nwith error code 405 (Method Not Allowed). See\n[Writing a push task request\nhandler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)\nand the documentation for the request handlers in the language your app is\nwritten in e.g.\n[Python Request\nHandler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass)."]
-        #[serde(rename = "httpMethod", default)]
-        pub http_method: ::std::option::Option<crate::schemas::AppEngineHttpRequestHttpMethod>,
-        #[doc = "Payload.\n\nThe payload will be sent as the HTTP message body. A message\nbody, and thus a payload, is allowed only if the HTTP method is\nPOST or PUT. It is an error to set a data payload on a task with\nan incompatible HttpMethod."]
-        #[serde(rename = "payload", default)]
-        pub payload: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The relative URL.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path and query string arguments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters."]
-        #[serde(rename = "relativeUrl", default)]
-        pub relative_url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AppEngineHttpRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -251,6 +251,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CancelLeaseRequest {
+        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
+        #[serde(rename = "responseView", default)]
+        pub response_view: ::std::option::Option<crate::schemas::CancelLeaseRequestResponseView>,
+        #[doc = "Required. The task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease."]
+        #[serde(rename = "scheduleTime", default)]
+        pub schedule_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CancelLeaseRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CancelLeaseRequestResponseView {
         #[doc = "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it."]
@@ -310,27 +339,16 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CancelLeaseRequest {
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct CreateTaskRequest {
         #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
         #[serde(rename = "responseView", default)]
-        pub response_view: ::std::option::Option<crate::schemas::CancelLeaseRequestResponseView>,
-        #[doc = "Required. The task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease."]
-        #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: ::std::option::Option<String>,
+        pub response_view: ::std::option::Option<crate::schemas::CreateTaskRequestResponseView>,
+        #[doc = "Required. The task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or completed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or completed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or completed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."]
+        #[serde(rename = "task", default)]
+        pub task: ::std::option::Option<crate::schemas::Task>,
     }
-    impl ::field_selector::FieldSelector for CancelLeaseRequest {
+    impl ::field_selector::FieldSelector for CreateTaskRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -390,24 +408,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CreateTaskRequestResponseView {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct CreateTaskRequest {
-        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
-        pub response_view: ::std::option::Option<crate::schemas::CreateTaskRequestResponseView>,
-        #[doc = "Required. The task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or completed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or completed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or completed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."]
-        #[serde(rename = "task", default)]
-        pub task: ::std::option::Option<crate::schemas::Task>,
-    }
-    impl ::field_selector::FieldSelector for CreateTaskRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -520,6 +520,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LeaseTasksRequest {
+        #[doc = "`filter` can be used to specify a subset of tasks to lease.\n\nWhen `filter` is set to `tag=<my-tag>` then the\nresponse will contain only tasks whose\ntag is equal to `<my-tag>`. `<my-tag>` must be\nless than 500 characters.\n\nWhen `filter` is set to `tag_function=oldest_tag()`, only tasks which have\nthe same tag as the task with the oldest\nschedule_time will be returned.\n\nGrammar Syntax:\n\n* `filter = \"tag=\" tag | \"tag_function=\" function`\n\n* `tag = string`\n\n* `function = \"oldest_tag()\"`\n\nThe `oldest_tag()` function returns tasks which have the same tag as the\noldest task (ordered by schedule time).\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. Tag which\naren't UTF-8 encoded can't be used in the\nfilter and the task's\ntag will be displayed as empty in Cloud Tasks."]
+        #[serde(rename = "filter", default)]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "Required. The duration of the lease.\n\nEach task returned in the response will\nhave its schedule_time set to the current\ntime plus the `lease_duration`. The task is leased until its\nschedule_time; thus, the task will not be\nreturned to another LeaseTasks call\nbefore its schedule_time.\n\nAfter the worker has successfully finished the work associated\nwith the task, the worker must call via\nAcknowledgeTask before the\nschedule_time. Otherwise the task will be\nreturned to a later LeaseTasks call so\nthat another worker can retry it.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second."]
+        #[serde(rename = "leaseDuration", default)]
+        pub lease_duration: ::std::option::Option<String>,
+        #[doc = "The maximum number of tasks to lease.\n\nThe system will make a best effort to return as close to as\n`max_tasks` as possible.\n\nThe largest that `max_tasks` can be is 1000.\n\nThe maximum total size of a lease tasks response is\n32 MB. If the sum of all task sizes requested reaches this limit,\nfewer tasks than requested are returned."]
+        #[serde(rename = "maxTasks", default)]
+        pub max_tasks: ::std::option::Option<i32>,
+        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
+        #[serde(rename = "responseView", default)]
+        pub response_view: ::std::option::Option<crate::schemas::LeaseTasksRequestResponseView>,
+    }
+    impl ::field_selector::FieldSelector for LeaseTasksRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LeaseTasksRequestResponseView {
         #[doc = "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it."]
@@ -571,41 +606,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LeaseTasksRequestResponseView {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LeaseTasksRequest {
-        #[doc = "`filter` can be used to specify a subset of tasks to lease.\n\nWhen `filter` is set to `tag=<my-tag>` then the\nresponse will contain only tasks whose\ntag is equal to `<my-tag>`. `<my-tag>` must be\nless than 500 characters.\n\nWhen `filter` is set to `tag_function=oldest_tag()`, only tasks which have\nthe same tag as the task with the oldest\nschedule_time will be returned.\n\nGrammar Syntax:\n\n* `filter = \"tag=\" tag | \"tag_function=\" function`\n\n* `tag = string`\n\n* `function = \"oldest_tag()\"`\n\nThe `oldest_tag()` function returns tasks which have the same tag as the\noldest task (ordered by schedule time).\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. Tag which\naren't UTF-8 encoded can't be used in the\nfilter and the task's\ntag will be displayed as empty in Cloud Tasks."]
-        #[serde(rename = "filter", default)]
-        pub filter: ::std::option::Option<String>,
-        #[doc = "Required. The duration of the lease.\n\nEach task returned in the response will\nhave its schedule_time set to the current\ntime plus the `lease_duration`. The task is leased until its\nschedule_time; thus, the task will not be\nreturned to another LeaseTasks call\nbefore its schedule_time.\n\nAfter the worker has successfully finished the work associated\nwith the task, the worker must call via\nAcknowledgeTask before the\nschedule_time. Otherwise the task will be\nreturned to a later LeaseTasks call so\nthat another worker can retry it.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second."]
-        #[serde(rename = "leaseDuration", default)]
-        pub lease_duration: ::std::option::Option<String>,
-        #[doc = "The maximum number of tasks to lease.\n\nThe system will make a best effort to return as close to as\n`max_tasks` as possible.\n\nThe largest that `max_tasks` can be is 1000.\n\nThe maximum total size of a lease tasks response is\n32 MB. If the sum of all task sizes requested reaches this limit,\nfewer tasks than requested are returned."]
-        #[serde(rename = "maxTasks", default)]
-        pub max_tasks: ::std::option::Option<i32>,
-        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
-        pub response_view: ::std::option::Option<crate::schemas::LeaseTasksRequestResponseView>,
-    }
-    impl ::field_selector::FieldSelector for LeaseTasksRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -825,6 +825,41 @@ pub mod schemas {
     impl ::field_selector::FieldSelector for PurgeQueueRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Queue {
+        #[doc = "App Engine HTTP target.\n\nAn App Engine queue is a queue that has an AppEngineHttpTarget."]
+        #[serde(rename = "appEngineHttpTarget", default)]
+        pub app_engine_http_target: ::std::option::Option<crate::schemas::AppEngineHttpTarget>,
+        #[doc = "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Pull target.\n\nA pull queue is a queue that has a PullTarget."]
+        #[serde(rename = "pullTarget", default)]
+        pub pull_target: ::std::option::Option<crate::schemas::PullTarget>,
+        #[doc = "Output only. The last time this queue was purged.\n\nAll tasks that were created before this time\nwere purged.\n\nA queue can be purged using PurgeQueue, the\n[App Engine Task Queue SDK, or the Cloud\nConsole](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).\n\nPurge time will be truncated to the nearest microsecond. Purge\ntime will be unset if the queue has never been purged."]
+        #[serde(rename = "purgeTime", default)]
+        pub purge_time: ::std::option::Option<String>,
+        #[doc = "Rate limits for task dispatches.\n\nrate_limits and\nretry_config are related because they both\ncontrol task attempts however they control how tasks are\nattempted in different ways:\n\n* rate_limits controls the total rate of\n  dispatches from a queue (i.e. all traffic dispatched from the\n  queue, regardless of whether the dispatch is from a first\n  attempt or a retry).\n* retry_config controls what happens to\n  particular a task after its first attempt fails. That is,\n  retry_config controls task retries (the\n  second attempt, third attempt, etc)."]
+        #[serde(rename = "rateLimits", default)]
+        pub rate_limits: ::std::option::Option<crate::schemas::RateLimits>,
+        #[doc = "Settings that determine the retry behavior.\n\n* For tasks created using Cloud Tasks: the queue-level retry settings\n  apply to all tasks in the queue that were created using Cloud Tasks.\n  Retry settings cannot be set on individual tasks.\n* For tasks created using the App Engine SDK: the queue-level retry\n  settings apply to all tasks in the queue which do not have retry settings\n  explicitly set on the task and were created by the App Engine SDK. See\n  [App Engine\n  documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks)."]
+        #[serde(rename = "retryConfig", default)]
+        pub retry_config: ::std::option::Option<crate::schemas::RetryConfig>,
+        #[doc = "Output only. The state of the queue.\n\n`state` can only be changed by called\nPauseQueue,\nResumeQueue, or uploading\n[queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).\nUpdateQueue cannot be used to change `state`."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::QueueState>,
+    }
+    impl ::field_selector::FieldSelector for Queue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueueState {
         #[doc = "The queue is disabled.\n\nA queue becomes `DISABLED` when\n[queue.yaml](https://cloud.google.com/appengine/docs/python/config/queueref)\nor\n[queue.xml](https://cloud.google.com/appengine/docs/standard/java/config/queueref)\nis uploaded which does not contain the queue. You cannot directly disable\na queue.\n\nWhen a queue is disabled, tasks can still be added to a queue\nbut the tasks are not dispatched and\nLeaseTasks calls return a\n`FAILED_PRECONDITION` error.\n\nTo permanently delete this queue and all of its tasks, call\nDeleteQueue."]
@@ -891,41 +926,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Queue {
-        #[doc = "App Engine HTTP target.\n\nAn App Engine queue is a queue that has an AppEngineHttpTarget."]
-        #[serde(rename = "appEngineHttpTarget", default)]
-        pub app_engine_http_target: ::std::option::Option<crate::schemas::AppEngineHttpTarget>,
-        #[doc = "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Pull target.\n\nA pull queue is a queue that has a PullTarget."]
-        #[serde(rename = "pullTarget", default)]
-        pub pull_target: ::std::option::Option<crate::schemas::PullTarget>,
-        #[doc = "Output only. The last time this queue was purged.\n\nAll tasks that were created before this time\nwere purged.\n\nA queue can be purged using PurgeQueue, the\n[App Engine Task Queue SDK, or the Cloud\nConsole](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).\n\nPurge time will be truncated to the nearest microsecond. Purge\ntime will be unset if the queue has never been purged."]
-        #[serde(rename = "purgeTime", default)]
-        pub purge_time: ::std::option::Option<String>,
-        #[doc = "Rate limits for task dispatches.\n\nrate_limits and\nretry_config are related because they both\ncontrol task attempts however they control how tasks are\nattempted in different ways:\n\n* rate_limits controls the total rate of\n  dispatches from a queue (i.e. all traffic dispatched from the\n  queue, regardless of whether the dispatch is from a first\n  attempt or a retry).\n* retry_config controls what happens to\n  particular a task after its first attempt fails. That is,\n  retry_config controls task retries (the\n  second attempt, third attempt, etc)."]
-        #[serde(rename = "rateLimits", default)]
-        pub rate_limits: ::std::option::Option<crate::schemas::RateLimits>,
-        #[doc = "Settings that determine the retry behavior.\n\n* For tasks created using Cloud Tasks: the queue-level retry settings\n  apply to all tasks in the queue that were created using Cloud Tasks.\n  Retry settings cannot be set on individual tasks.\n* For tasks created using the App Engine SDK: the queue-level retry\n  settings apply to all tasks in the queue which do not have retry settings\n  explicitly set on the task and were created by the App Engine SDK. See\n  [App Engine\n  documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks)."]
-        #[serde(rename = "retryConfig", default)]
-        pub retry_config: ::std::option::Option<crate::schemas::RetryConfig>,
-        #[doc = "Output only. The state of the queue.\n\n`state` can only be changed by called\nPauseQueue,\nResumeQueue, or uploading\n[queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).\nUpdateQueue cannot be used to change `state`."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::QueueState>,
-    }
-    impl ::field_selector::FieldSelector for Queue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct RateLimits {
         #[doc = "Output only. The max burst size.\n\nMax burst size limits how fast tasks in queue are processed when\nmany tasks are in the queue and the rate is high. This field\nallows the queue to have a high rate so processing starts shortly\nafter a task is enqueued, but still limits resource usage when\nmany tasks are enqueued in a short period of time.\n\nThe [token bucket](https://wikipedia.org/wiki/Token_Bucket)\nalgorithm is used to control the rate of task dispatches. Each\nqueue has a token bucket that holds tokens, up to the maximum\nspecified by `max_burst_size`. Each time a task is dispatched, a\ntoken is removed from the bucket. Tasks will be dispatched until\nthe queue's bucket runs out of tokens. The bucket will be\ncontinuously refilled with new tokens based on\nmax_tasks_dispatched_per_second.\n\nCloud Tasks will pick the value of `max_burst_size` based on the\nvalue of\nmax_tasks_dispatched_per_second.\n\nFor App Engine queues that were created or updated using\n`queue.yaml/xml`, `max_burst_size` is equal to\n[bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size).\nSince `max_burst_size` is output only, if\nUpdateQueue is called on a queue\ncreated by `queue.yaml/xml`, `max_burst_size` will be reset based\non the value of\nmax_tasks_dispatched_per_second,\nregardless of whether\nmax_tasks_dispatched_per_second\nis updated."]
         #[serde(rename = "maxBurstSize", default)]
@@ -938,6 +938,38 @@ pub mod schemas {
         pub max_tasks_dispatched_per_second: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for RateLimits {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RenewLeaseRequest {
+        #[doc = "Required. The desired new lease duration, starting from now.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second."]
+        #[serde(rename = "leaseDuration", default)]
+        pub lease_duration: ::std::option::Option<String>,
+        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
+        #[serde(rename = "responseView", default)]
+        pub response_view: ::std::option::Option<crate::schemas::RenewLeaseRequestResponseView>,
+        #[doc = "Required. The task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease."]
+        #[serde(rename = "scheduleTime", default)]
+        pub schedule_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RenewLeaseRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1013,38 +1045,6 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RenewLeaseRequest {
-        #[doc = "Required. The desired new lease duration, starting from now.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second."]
-        #[serde(rename = "leaseDuration", default)]
-        pub lease_duration: ::std::option::Option<String>,
-        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
-        pub response_view: ::std::option::Option<crate::schemas::RenewLeaseRequestResponseView>,
-        #[doc = "Required. The task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease."]
-        #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RenewLeaseRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -1087,6 +1087,32 @@ pub mod schemas {
         pub unlimited_attempts: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for RetryConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RunTaskRequest {
+        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
+        #[serde(rename = "responseView", default)]
+        pub response_view: ::std::option::Option<crate::schemas::RunTaskRequestResponseView>,
+    }
+    impl ::field_selector::FieldSelector for RunTaskRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1166,32 +1192,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RunTaskRequest {
-        #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
-        pub response_view: ::std::option::Option<crate::schemas::RunTaskRequestResponseView>,
-    }
-    impl ::field_selector::FieldSelector for RunTaskRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
@@ -1220,6 +1220,39 @@ pub mod schemas {
         pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Task {
+        #[doc = "App Engine HTTP request that is sent to the task's target. Can\nbe set only if\napp_engine_http_target is set\non the queue.\n\nAn App Engine task is a task that has AppEngineHttpRequest set."]
+        #[serde(rename = "appEngineHttpRequest", default)]
+        pub app_engine_http_request: ::std::option::Option<crate::schemas::AppEngineHttpRequest>,
+        #[doc = "Output only. The time that the task was created.\n\n`create_time` will be truncated to the nearest second."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optionally caller-specified in CreateTask.\n\nThe task name.\n\nThe task name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the task's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.\n* `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), or underscores (_). The maximum length is 500 characters."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "LeaseTasks to process the task. Can be\nset only if pull_target is set on the queue.\n\nA pull task is a task that has PullMessage set."]
+        #[serde(rename = "pullMessage", default)]
+        pub pull_message: ::std::option::Option<crate::schemas::PullMessage>,
+        #[doc = "The time when the task is scheduled to be attempted.\n\nFor App Engine queues, this is when the task will be attempted or retried.\n\nFor pull queues, this is the time when the task is available to\nbe leased; if a task is currently leased, this is the time when\nthe current lease expires, that is, the time that the task was\nleased plus the lease_duration.\n\n`schedule_time` will be truncated to the nearest microsecond."]
+        #[serde(rename = "scheduleTime", default)]
+        pub schedule_time: ::std::option::Option<String>,
+        #[doc = "Output only. The task status."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::TaskStatus>,
+        #[doc = "Output only. The view specifies which subset of the Task has\nbeen returned."]
+        #[serde(rename = "view", default)]
+        pub view: ::std::option::Option<crate::schemas::TaskView>,
+    }
+    impl ::field_selector::FieldSelector for Task {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1279,39 +1312,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TaskView {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct Task {
-        #[doc = "App Engine HTTP request that is sent to the task's target. Can\nbe set only if\napp_engine_http_target is set\non the queue.\n\nAn App Engine task is a task that has AppEngineHttpRequest set."]
-        #[serde(rename = "appEngineHttpRequest", default)]
-        pub app_engine_http_request: ::std::option::Option<crate::schemas::AppEngineHttpRequest>,
-        #[doc = "Output only. The time that the task was created.\n\n`create_time` will be truncated to the nearest second."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optionally caller-specified in CreateTask.\n\nThe task name.\n\nThe task name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the task's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.\n* `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), or underscores (_). The maximum length is 500 characters."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "LeaseTasks to process the task. Can be\nset only if pull_target is set on the queue.\n\nA pull task is a task that has PullMessage set."]
-        #[serde(rename = "pullMessage", default)]
-        pub pull_message: ::std::option::Option<crate::schemas::PullMessage>,
-        #[doc = "The time when the task is scheduled to be attempted.\n\nFor App Engine queues, this is when the task will be attempted or retried.\n\nFor pull queues, this is the time when the task is available to\nbe leased; if a task is currently leased, this is the time when\nthe current lease expires, that is, the time that the task was\nleased plus the lease_duration.\n\n`schedule_time` will be truncated to the nearest microsecond."]
-        #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: ::std::option::Option<String>,
-        #[doc = "Output only. The task status."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::TaskStatus>,
-        #[doc = "Output only. The view specifies which subset of the Task has\nbeen returned."]
-        #[serde(rename = "view", default)]
-        pub view: ::std::option::Option<crate::schemas::TaskView>,
-    }
-    impl ::field_selector::FieldSelector for Task {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6209,84 +6209,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -6318,7 +6240,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -6444,8 +6365,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

@@ -80,6 +80,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -155,35 +184,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct AuditableService {
         #[doc = "Public name of the service.\nFor example, the service name for Cloud IAM is 'iam.googleapis.com'."]
         #[serde(rename = "name", default)]
@@ -222,6 +222,41 @@ pub mod schemas {
         pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BindingDelta {
+        #[doc = "The action that was performed on a Binding.\nRequired"]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::BindingDeltaAction>,
+        #[doc = "The condition that is associated with this binding. This field is logged\nonly for Cloud Audit Logging."]
+        #[serde(rename = "condition", default)]
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
+        #[doc = "A single identity requesting access for a Cloud Platform resource.\nFollows the same format of Binding.members.\nRequired"]
+        #[serde(rename = "member", default)]
+        pub member: ::std::option::Option<String>,
+        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.\nRequired"]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BindingDelta {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -301,21 +336,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BindingDelta {
-        #[doc = "The action that was performed on a Binding.\nRequired"]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::BindingDeltaAction>,
-        #[doc = "The condition that is associated with this binding. This field is logged\nonly for Cloud Audit Logging."]
-        #[serde(rename = "condition", default)]
-        pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "A single identity requesting access for a Cloud Platform resource.\nFollows the same format of Binding.members.\nRequired"]
-        #[serde(rename = "member", default)]
-        pub member: ::std::option::Option<String>,
-        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.\nRequired"]
+    pub struct CreateRoleRequest {
+        #[doc = "The Role resource to create."]
         #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
+        pub role: ::std::option::Option<crate::schemas::Role>,
+        #[doc = "The role ID to use for this role."]
+        #[serde(rename = "roleId", default)]
+        pub role_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for BindingDelta {
+    impl ::field_selector::FieldSelector for CreateRoleRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -336,15 +365,17 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreateRoleRequest {
-        #[doc = "The Role resource to create."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<crate::schemas::Role>,
-        #[doc = "The role ID to use for this role."]
-        #[serde(rename = "roleId", default)]
-        pub role_id: ::std::option::Option<String>,
+    pub struct CreateServiceAccountKeyRequest {
+        #[doc = "Which type of key and algorithm to use for the key.\nThe default is currently a 2K RSA key.  However this may change in the\nfuture."]
+        #[serde(rename = "keyAlgorithm", default)]
+        pub key_algorithm:
+            ::std::option::Option<crate::schemas::CreateServiceAccountKeyRequestKeyAlgorithm>,
+        #[doc = "The output format of the private key. The default value is\n`TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File\nformat."]
+        #[serde(rename = "privateKeyType", default)]
+        pub private_key_type:
+            ::std::option::Option<crate::schemas::CreateServiceAccountKeyRequestPrivateKeyType>,
     }
-    impl ::field_selector::FieldSelector for CreateRoleRequest {
+    impl ::field_selector::FieldSelector for CreateServiceAccountKeyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -471,37 +502,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CreateServiceAccountKeyRequestPrivateKeyType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreateServiceAccountKeyRequest {
-        #[doc = "Which type of key and algorithm to use for the key.\nThe default is currently a 2K RSA key.  However this may change in the\nfuture."]
-        #[serde(rename = "keyAlgorithm", default)]
-        pub key_algorithm:
-            ::std::option::Option<crate::schemas::CreateServiceAccountKeyRequestKeyAlgorithm>,
-        #[doc = "The output format of the private key. The default value is\n`TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File\nformat."]
-        #[serde(rename = "privateKeyType", default)]
-        pub private_key_type:
-            ::std::option::Option<crate::schemas::CreateServiceAccountKeyRequestPrivateKeyType>,
-    }
-    impl ::field_selector::FieldSelector for CreateServiceAccountKeyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -679,6 +679,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LintResult {
+        #[doc = "0-based index ordinality of the binding in the input object associated\nwith this result.\nThis field is populated only if the input object to lint is of type\ngoogle.iam.v1.Policy, which can comprise more than one binding.\nIt is set to -1 if the result is not associated with any particular\nbinding and only targets the policy as a whole, such as results about\npolicy size violations."]
+        #[serde(rename = "bindingOrdinal", default)]
+        pub binding_ordinal: ::std::option::Option<i32>,
+        #[doc = "Human readable debug message associated with the issue."]
+        #[serde(rename = "debugMessage", default)]
+        pub debug_message: ::std::option::Option<String>,
+        #[doc = "The name of the field for which this lint result is about.\n\nFor nested messages, `field_name` consists of names of the embedded fields\nseparated by period character. The top-level qualifier is the input object\nto lint in the request. For instance, if the lint request is on a\ngoogle.iam.v1.Policy and this lint result is about a condition\nexpression of one of the input policy bindings, the field would be\npopulated as `policy.bindings.condition.expression`.\n\nThis field does not identify the ordinality of the repetitive fields (for\ninstance bindings in a policy)."]
+        #[serde(rename = "fieldName", default)]
+        pub field_name: ::std::option::Option<String>,
+        #[doc = "The validation unit level."]
+        #[serde(rename = "level", default)]
+        pub level: ::std::option::Option<crate::schemas::LintResultLevel>,
+        #[doc = "0-based character position of problematic construct within the object\nidentified by `field_name`. Currently, this is populated only for condition\nexpression."]
+        #[serde(rename = "locationOffset", default)]
+        pub location_offset: ::std::option::Option<i32>,
+        #[doc = "The validation unit severity."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::LintResultSeverity>,
+        #[doc = "The validation unit name, for instance\n\u{201c}lintValidationUnits/ConditionComplexityCheck\u{201d}."]
+        #[serde(rename = "validationUnitName", default)]
+        pub validation_unit_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for LintResult {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LintResultLevel {
         #[doc = "A validation unit which operates on an individual binding. It is executed\nin both cases where the input object to lint is of type\ngoogle.iam.v1.Policy or google.iam.v1.Binding."]
@@ -825,50 +869,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct LintResult {
-        #[doc = "0-based index ordinality of the binding in the input object associated\nwith this result.\nThis field is populated only if the input object to lint is of type\ngoogle.iam.v1.Policy, which can comprise more than one binding.\nIt is set to -1 if the result is not associated with any particular\nbinding and only targets the policy as a whole, such as results about\npolicy size violations."]
-        #[serde(rename = "bindingOrdinal", default)]
-        pub binding_ordinal: ::std::option::Option<i32>,
-        #[doc = "Human readable debug message associated with the issue."]
-        #[serde(rename = "debugMessage", default)]
-        pub debug_message: ::std::option::Option<String>,
-        #[doc = "The name of the field for which this lint result is about.\n\nFor nested messages, `field_name` consists of names of the embedded fields\nseparated by period character. The top-level qualifier is the input object\nto lint in the request. For instance, if the lint request is on a\ngoogle.iam.v1.Policy and this lint result is about a condition\nexpression of one of the input policy bindings, the field would be\npopulated as `policy.bindings.condition.expression`.\n\nThis field does not identify the ordinality of the repetitive fields (for\ninstance bindings in a policy)."]
-        #[serde(rename = "fieldName", default)]
-        pub field_name: ::std::option::Option<String>,
-        #[doc = "The validation unit level."]
-        #[serde(rename = "level", default)]
-        pub level: ::std::option::Option<crate::schemas::LintResultLevel>,
-        #[doc = "0-based character position of problematic construct within the object\nidentified by `field_name`. Currently, this is populated only for condition\nexpression."]
-        #[serde(rename = "locationOffset", default)]
-        pub location_offset: ::std::option::Option<i32>,
-        #[doc = "The validation unit severity."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::LintResultSeverity>,
-        #[doc = "The validation unit name, for instance\n\u{201c}lintValidationUnits/ConditionComplexityCheck\u{201d}."]
-        #[serde(rename = "validationUnitName", default)]
-        pub validation_unit_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for LintResult {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ListRolesResponse {
         #[doc = "To retrieve the next page of results, set\n`ListRolesRequest.page_token` to this value."]
         #[serde(rename = "nextPageToken", default)]
@@ -960,6 +960,54 @@ pub mod schemas {
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PatchServiceAccountRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Permission {
+        #[doc = "The service API associated with the permission is not enabled."]
+        #[serde(rename = "apiDisabled", default)]
+        pub api_disabled: ::std::option::Option<bool>,
+        #[doc = "The current custom role support level."]
+        #[serde(rename = "customRolesSupportLevel", default)]
+        pub custom_roles_support_level:
+            ::std::option::Option<crate::schemas::PermissionCustomRolesSupportLevel>,
+        #[doc = "A brief description of what this Permission is used for."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The name of this Permission."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "This permission can ONLY be used in predefined roles."]
+        #[serde(rename = "onlyInPredefinedRoles", default)]
+        pub only_in_predefined_roles: ::std::option::Option<bool>,
+        #[doc = "The preferred name for this permission. If present, then this permission is\nan alias of, and equivalent to, the listed primary_permission."]
+        #[serde(rename = "primaryPermission", default)]
+        pub primary_permission: ::std::option::Option<String>,
+        #[doc = "The current launch stage of the permission."]
+        #[serde(rename = "stage", default)]
+        pub stage: ::std::option::Option<crate::schemas::PermissionStage>,
+        #[doc = "The title of this Permission."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Permission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1082,54 +1130,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PermissionStage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Permission {
-        #[doc = "The service API associated with the permission is not enabled."]
-        #[serde(rename = "apiDisabled", default)]
-        pub api_disabled: ::std::option::Option<bool>,
-        #[doc = "The current custom role support level."]
-        #[serde(rename = "customRolesSupportLevel", default)]
-        pub custom_roles_support_level:
-            ::std::option::Option<crate::schemas::PermissionCustomRolesSupportLevel>,
-        #[doc = "A brief description of what this Permission is used for."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The name of this Permission."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "This permission can ONLY be used in predefined roles."]
-        #[serde(rename = "onlyInPredefinedRoles", default)]
-        pub only_in_predefined_roles: ::std::option::Option<bool>,
-        #[doc = "The preferred name for this permission. If present, then this permission is\nan alias of, and equivalent to, the listed primary_permission."]
-        #[serde(rename = "primaryPermission", default)]
-        pub primary_permission: ::std::option::Option<String>,
-        #[doc = "The current launch stage of the permission."]
-        #[serde(rename = "stage", default)]
-        pub stage: ::std::option::Option<crate::schemas::PermissionStage>,
-        #[doc = "The title of this Permission."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Permission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1280,6 +1280,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct QueryGrantableRolesRequest {
+        #[doc = "Required. The full resource name to query from the list of grantable roles.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`."]
+        #[serde(rename = "fullResourceName", default)]
+        pub full_resource_name: ::std::option::Option<String>,
+        #[doc = "Optional limit on the number of roles to include in the response."]
+        #[serde(rename = "pageSize", default)]
+        pub page_size: ::std::option::Option<i32>,
+        #[doc = "Optional pagination token returned in an earlier\nQueryGrantableRolesResponse."]
+        #[serde(rename = "pageToken", default)]
+        pub page_token: ::std::option::Option<String>,
+        #[serde(rename = "view", default)]
+        pub view: ::std::option::Option<crate::schemas::QueryGrantableRolesRequestView>,
+    }
+    impl ::field_selector::FieldSelector for QueryGrantableRolesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryGrantableRolesRequestView {
         #[doc = "Omits the `included_permissions` field.\nThis is the default value."]
@@ -1327,40 +1361,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for QueryGrantableRolesRequestView {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QueryGrantableRolesRequest {
-        #[doc = "Required. The full resource name to query from the list of grantable roles.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`."]
-        #[serde(rename = "fullResourceName", default)]
-        pub full_resource_name: ::std::option::Option<String>,
-        #[doc = "Optional limit on the number of roles to include in the response."]
-        #[serde(rename = "pageSize", default)]
-        pub page_size: ::std::option::Option<i32>,
-        #[doc = "Optional pagination token returned in an earlier\nQueryGrantableRolesResponse."]
-        #[serde(rename = "pageToken", default)]
-        pub page_token: ::std::option::Option<String>,
-        #[serde(rename = "view", default)]
-        pub view: ::std::option::Option<crate::schemas::QueryGrantableRolesRequestView>,
-    }
-    impl ::field_selector::FieldSelector for QueryGrantableRolesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1459,6 +1459,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Role {
+        #[doc = "The current deleted state of the role. This field is read only.\nIt will be ignored in calls to CreateRole and UpdateRole."]
+        #[serde(rename = "deleted", default)]
+        pub deleted: ::std::option::Option<bool>,
+        #[doc = "Optional. A human-readable description for the role."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Used to perform a consistent read-modify-write."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The names of the permissions this role grants when bound in an IAM policy."]
+        #[serde(rename = "includedPermissions", default)]
+        pub included_permissions: ::std::option::Option<Vec<String>>,
+        #[doc = "The name of the role.\n\nWhen Role is used in CreateRole, the role name must not be set.\n\nWhen Role is used in output and other input such as UpdateRole, the role\nname is the complete path, e.g., roles/logging.viewer for predefined roles\nand organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The current launch stage of the role. If the `ALPHA` launch stage has been\nselected for a role, the `stage` field will not be included in the\nreturned definition for the role."]
+        #[serde(rename = "stage", default)]
+        pub stage: ::std::option::Option<crate::schemas::RoleStage>,
+        #[doc = "Optional. A human-readable title for the role.  Typically this\nis limited to 100 UTF-8 bytes."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Role {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RoleStage {
         #[doc = "The user has indicated this role is currently in an Alpha phase. If this\nlaunch stage is selected, the `stage` field will not be included when\nrequesting the definition for a given role."]
@@ -1542,50 +1586,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Role {
-        #[doc = "The current deleted state of the role. This field is read only.\nIt will be ignored in calls to CreateRole and UpdateRole."]
-        #[serde(rename = "deleted", default)]
-        pub deleted: ::std::option::Option<bool>,
-        #[doc = "Optional. A human-readable description for the role."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Used to perform a consistent read-modify-write."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The names of the permissions this role grants when bound in an IAM policy."]
-        #[serde(rename = "includedPermissions", default)]
-        pub included_permissions: ::std::option::Option<Vec<String>>,
-        #[doc = "The name of the role.\n\nWhen Role is used in CreateRole, the role name must not be set.\n\nWhen Role is used in output and other input such as UpdateRole, the role\nname is the complete path, e.g., roles/logging.viewer for predefined roles\nand organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The current launch stage of the role. If the `ALPHA` launch stage has been\nselected for a role, the `stage` field will not be included in the\nreturned definition for the role."]
-        #[serde(rename = "stage", default)]
-        pub stage: ::std::option::Option<crate::schemas::RoleStage>,
-        #[doc = "Optional. A human-readable title for the role.  Typically this\nis limited to 100 UTF-8 bytes."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Role {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ServiceAccount {
         #[doc = "Optional. A user-specified opaque description of the service account.\nMust be less than or equal to 256 UTF-8 bytes."]
         #[serde(rename = "description", default)]
@@ -1616,6 +1616,54 @@ pub mod schemas {
         pub unique_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServiceAccount {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServiceAccountKey {
+        #[doc = "Specifies the algorithm (and possibly key size) for the key."]
+        #[serde(rename = "keyAlgorithm", default)]
+        pub key_algorithm: ::std::option::Option<crate::schemas::ServiceAccountKeyKeyAlgorithm>,
+        #[doc = "The key origin."]
+        #[serde(rename = "keyOrigin", default)]
+        pub key_origin: ::std::option::Option<crate::schemas::ServiceAccountKeyKeyOrigin>,
+        #[doc = "The resource name of the service account key in the following format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The private key data. Only provided in `CreateServiceAccountKey`\nresponses. Make sure to keep the private key data secure because it\nallows for the assertion of the service account identity.\nWhen base64 decoded, the private key data can be used to authenticate with\nGoogle API client libraries and with\n<a href=\"/sdk/gcloud/reference/auth/activate-service-account\">gcloud\nauth activate-service-account</a>."]
+        #[serde(rename = "privateKeyData", default)]
+        pub private_key_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The output format for the private key.\nOnly provided in `CreateServiceAccountKey` responses, not\nin `GetServiceAccountKey` or `ListServiceAccountKey` responses.\n\nGoogle never exposes system-managed private keys, and never retains\nuser-managed private keys."]
+        #[serde(rename = "privateKeyType", default)]
+        pub private_key_type:
+            ::std::option::Option<crate::schemas::ServiceAccountKeyPrivateKeyType>,
+        #[doc = "The public key data. Only provided in `GetServiceAccountKey` responses."]
+        #[serde(rename = "publicKeyData", default)]
+        pub public_key_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The key can be used after this timestamp."]
+        #[serde(rename = "validAfterTime", default)]
+        pub valid_after_time: ::std::option::Option<String>,
+        #[doc = "The key can be used before this timestamp."]
+        #[serde(rename = "validBeforeTime", default)]
+        pub valid_before_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ServiceAccountKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1797,54 +1845,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ServiceAccountKeyPrivateKeyType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ServiceAccountKey {
-        #[doc = "Specifies the algorithm (and possibly key size) for the key."]
-        #[serde(rename = "keyAlgorithm", default)]
-        pub key_algorithm: ::std::option::Option<crate::schemas::ServiceAccountKeyKeyAlgorithm>,
-        #[doc = "The key origin."]
-        #[serde(rename = "keyOrigin", default)]
-        pub key_origin: ::std::option::Option<crate::schemas::ServiceAccountKeyKeyOrigin>,
-        #[doc = "The resource name of the service account key in the following format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The private key data. Only provided in `CreateServiceAccountKey`\nresponses. Make sure to keep the private key data secure because it\nallows for the assertion of the service account identity.\nWhen base64 decoded, the private key data can be used to authenticate with\nGoogle API client libraries and with\n<a href=\"/sdk/gcloud/reference/auth/activate-service-account\">gcloud\nauth activate-service-account</a>."]
-        #[serde(rename = "privateKeyData", default)]
-        pub private_key_data: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The output format for the private key.\nOnly provided in `CreateServiceAccountKey` responses, not\nin `GetServiceAccountKey` or `ListServiceAccountKey` responses.\n\nGoogle never exposes system-managed private keys, and never retains\nuser-managed private keys."]
-        #[serde(rename = "privateKeyType", default)]
-        pub private_key_type:
-            ::std::option::Option<crate::schemas::ServiceAccountKeyPrivateKeyType>,
-        #[doc = "The public key data. Only provided in `GetServiceAccountKey` responses."]
-        #[serde(rename = "publicKeyData", default)]
-        pub public_key_data: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The key can be used after this timestamp."]
-        #[serde(rename = "validAfterTime", default)]
-        pub valid_after_time: ::std::option::Option<String>,
-        #[doc = "The key can be used before this timestamp."]
-        #[serde(rename = "validBeforeTime", default)]
-        pub valid_before_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ServiceAccountKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9980,84 +9980,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -10089,7 +10011,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -10215,8 +10136,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

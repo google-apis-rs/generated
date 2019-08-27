@@ -54,6 +54,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -109,35 +138,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -230,6 +230,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FolderOperation {
+        #[doc = "The resource name of the folder or organization we are either creating\nthe folder under or moving the folder to."]
+        #[serde(rename = "destinationParent", default)]
+        pub destination_parent: ::std::option::Option<String>,
+        #[doc = "The display name of the folder."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The type of this operation."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type: ::std::option::Option<crate::schemas::FolderOperationOperationType>,
+        #[doc = "The resource name of the folder's parent.\nOnly applicable when the operation_type is MOVE."]
+        #[serde(rename = "sourceParent", default)]
+        pub source_parent: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FolderOperation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FolderOperationOperationType {
         #[doc = "A create folder operation."]
@@ -305,21 +340,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FolderOperation {
-        #[doc = "The resource name of the folder or organization we are either creating\nthe folder under or moving the folder to."]
-        #[serde(rename = "destinationParent", default)]
-        pub destination_parent: ::std::option::Option<String>,
-        #[doc = "The display name of the folder."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The type of this operation."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type: ::std::option::Option<crate::schemas::FolderOperationOperationType>,
-        #[doc = "The resource name of the folder's parent.\nOnly applicable when the operation_type is MOVE."]
-        #[serde(rename = "sourceParent", default)]
-        pub source_parent: ::std::option::Option<String>,
+    pub struct FolderOperationError {
+        #[doc = "The type of operation error experienced."]
+        #[serde(rename = "errorMessageId", default)]
+        pub error_message_id:
+            ::std::option::Option<crate::schemas::FolderOperationErrorErrorMessageId>,
     }
-    impl ::field_selector::FieldSelector for FolderOperation {
+    impl ::field_selector::FieldSelector for FolderOperationError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -447,33 +474,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for FolderOperationErrorErrorMessageId {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FolderOperationError {
-        #[doc = "The type of operation error experienced."]
-        #[serde(rename = "errorMessageId", default)]
-        pub error_message_id:
-            ::std::option::Option<crate::schemas::FolderOperationErrorErrorMessageId>,
-    }
-    impl ::field_selector::FieldSelector for FolderOperationError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -635,6 +635,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Organization {
+        #[doc = "Timestamp when the Organization was created. Assigned by the server.\n@OutputOnly"]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "A human-readable string that refers to the Organization in the\nGCP Console UI. This string is set by the server and cannot be\nchanged. The string will be set to the primary domain (for example,\n\"google.com\") of the G Suite customer that owns the organization.\n@OutputOnly"]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The organization's current lifecycle state. Assigned by the server.\n@OutputOnly"]
+        #[serde(rename = "lifecycleState", default)]
+        pub lifecycle_state: ::std::option::Option<crate::schemas::OrganizationLifecycleState>,
+        #[doc = "Output Only. The resource name of the organization. This is the\norganization's relative path in the API. Its format is\n\"organizations/[organization_id]\". For example, \"organizations/1234\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "An immutable id for the Organization that is assigned on creation. This\nshould be omitted when creating a new Organization.\nThis field is read-only."]
+        #[serde(rename = "organizationId", default)]
+        pub organization_id: ::std::option::Option<String>,
+        #[doc = "The owner of this Organization. The owner should be specified on\ncreation. Once set, it cannot be changed.\nThis field is required."]
+        #[serde(rename = "owner", default)]
+        pub owner: ::std::option::Option<crate::schemas::OrganizationOwner>,
+    }
+    impl ::field_selector::FieldSelector for Organization {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OrganizationLifecycleState {
         #[doc = "The normal and active state."]
@@ -710,47 +751,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Organization {
-        #[doc = "Timestamp when the Organization was created. Assigned by the server.\n@OutputOnly"]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "A human-readable string that refers to the Organization in the\nGCP Console UI. This string is set by the server and cannot be\nchanged. The string will be set to the primary domain (for example,\n\"google.com\") of the G Suite customer that owns the organization.\n@OutputOnly"]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The organization's current lifecycle state. Assigned by the server.\n@OutputOnly"]
-        #[serde(rename = "lifecycleState", default)]
-        pub lifecycle_state: ::std::option::Option<crate::schemas::OrganizationLifecycleState>,
-        #[doc = "Output Only. The resource name of the organization. This is the\norganization's relative path in the API. Its format is\n\"organizations/[organization_id]\". For example, \"organizations/1234\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "An immutable id for the Organization that is assigned on creation. This\nshould be omitted when creating a new Organization.\nThis field is read-only."]
-        #[serde(rename = "organizationId", default)]
-        pub organization_id: ::std::option::Option<String>,
-        #[doc = "The owner of this Organization. The owner should be specified on\ncreation. Once set, it cannot be changed.\nThis field is required."]
-        #[serde(rename = "owner", default)]
-        pub owner: ::std::option::Option<crate::schemas::OrganizationOwner>,
-    }
-    impl ::field_selector::FieldSelector for Organization {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct OrganizationOwner {
         #[doc = "The G Suite customer id used in the Directory API."]
         #[serde(rename = "directoryCustomerId", default)]
@@ -792,6 +792,51 @@ pub mod schemas {
         pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Project {
+        #[doc = "Creation time.\n\nRead-only."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. A label\nvalue can be empty.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\nRead-write."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The Project lifecycle state.\n\nRead-only."]
+        #[serde(rename = "lifecycleState", default)]
+        pub lifecycle_state: ::std::option::Option<crate::schemas::ProjectLifecycleState>,
+        #[doc = "The optional user-assigned display name of the Project.\nWhen present it must be between 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\nRead-write."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "An optional reference to a parent Resource.\n\nSupported parent types include \"organization\" and \"folder\". Once set, the\nparent cannot be cleared. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write."]
+        #[serde(rename = "parent", default)]
+        pub parent: ::std::option::Option<crate::schemas::ResourceId>,
+        #[doc = "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\nRead-only after creation."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\nRead-only."]
+        #[serde(rename = "projectNumber", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub project_number: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for Project {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -855,51 +900,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ProjectLifecycleState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Project {
-        #[doc = "Creation time.\n\nRead-only."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. A label\nvalue can be empty.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\nRead-write."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The Project lifecycle state.\n\nRead-only."]
-        #[serde(rename = "lifecycleState", default)]
-        pub lifecycle_state: ::std::option::Option<crate::schemas::ProjectLifecycleState>,
-        #[doc = "The optional user-assigned display name of the Project.\nWhen present it must be between 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\nRead-write."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "An optional reference to a parent Resource.\n\nSupported parent types include \"organization\" and \"folder\". Once set, the\nparent cannot be cleared. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write."]
-        #[serde(rename = "parent", default)]
-        pub parent: ::std::option::Option<crate::schemas::ResourceId>,
-        #[doc = "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\nRead-only after creation."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\nRead-only."]
-        #[serde(rename = "projectNumber", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub project_number: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for Project {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4474,84 +4474,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4583,7 +4505,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4709,8 +4630,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

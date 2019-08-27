@@ -458,294 +458,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ChromeOsDeviceActiveTimeRangesItems {
-        #[doc = "Duration in milliseconds"]
-        #[serde(rename = "activeTime", default)]
-        pub active_time: ::std::option::Option<i32>,
-        #[doc = "Date of usage"]
-        #[serde(rename = "date", default)]
-        pub date: ::std::option::Option<::chrono::NaiveDate>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceActiveTimeRangesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems {
-        #[doc = "CPU label"]
-        #[serde(rename = "label", default)]
-        pub label: ::std::option::Option<String>,
-        #[doc = "Temperature in Celsius degrees."]
-        #[serde(rename = "temperature", default)]
-        pub temperature: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector
-        for ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceCpuStatusReportsItems {
-        #[doc = "List of CPU temperature samples."]
-        #[serde(rename = "cpuTemperatureInfo", default)]
-        pub cpu_temperature_info: ::std::option::Option<
-            Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems>,
-        >,
-        #[serde(rename = "cpuUtilizationPercentageInfo", default)]
-        pub cpu_utilization_percentage_info: ::std::option::Option<Vec<i32>>,
-        #[doc = "Date and time the report was received."]
-        #[serde(rename = "reportTime", default)]
-        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceCpuStatusReportsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceDeviceFilesItems {
-        #[doc = "Date and time the file was created"]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "File download URL"]
-        #[serde(rename = "downloadUrl", default)]
-        pub download_url: ::std::option::Option<String>,
-        #[doc = "File name"]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "File type"]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceDeviceFilesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems {
-        #[doc = "Free disk space [in bytes]"]
-        #[serde(rename = "storageFree", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub storage_free: ::std::option::Option<i64>,
-        #[doc = "Total disk space [in bytes]"]
-        #[serde(rename = "storageTotal", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub storage_total: ::std::option::Option<i64>,
-        #[doc = "Volume id"]
-        #[serde(rename = "volumeId", default)]
-        pub volume_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceDiskVolumeReportsItems {
-        #[doc = "Disk volumes"]
-        #[serde(rename = "volumeInfo", default)]
-        pub volume_info: ::std::option::Option<
-            Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems>,
-        >,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceRecentUsersItems {
-        #[doc = "Email address of the user. Present only if the user type is managed"]
-        #[serde(rename = "email", default)]
-        pub email: ::std::option::Option<String>,
-        #[doc = "The type of the user"]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceRecentUsersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceSystemRamFreeReportsItems {
-        #[doc = "Date and time the report was received."]
-        #[serde(rename = "reportTime", default)]
-        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[serde(rename = "systemRamFreeInfo", default)]
-        pub system_ram_free_info: ::std::option::Option<Vec<i64>>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceSystemRamFreeReportsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ChromeOsDeviceTpmVersionInfo {
-        #[doc = "TPM family."]
-        #[serde(rename = "family", default)]
-        pub family: ::std::option::Option<String>,
-        #[doc = "TPM firmware version."]
-        #[serde(rename = "firmwareVersion", default)]
-        pub firmware_version: ::std::option::Option<String>,
-        #[doc = "TPM manufacturer code."]
-        #[serde(rename = "manufacturer", default)]
-        pub manufacturer: ::std::option::Option<String>,
-        #[doc = "TPM specification level."]
-        #[serde(rename = "specLevel", default)]
-        pub spec_level: ::std::option::Option<String>,
-        #[doc = "TPM model number."]
-        #[serde(rename = "tpmModel", default)]
-        pub tpm_model: ::std::option::Option<String>,
-        #[doc = "Vendor-specific information such as Vendor ID."]
-        #[serde(rename = "vendorSpecific", default)]
-        pub vendor_specific: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ChromeOsDeviceTpmVersionInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ChromeOsDevice {
         #[doc = "List of active time ranges (Read-only)"]
         #[serde(rename = "activeTimeRanges", default)]
@@ -862,6 +574,294 @@ pub mod schemas {
         pub will_auto_renew: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDevice {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceActiveTimeRangesItems {
+        #[doc = "Duration in milliseconds"]
+        #[serde(rename = "activeTime", default)]
+        pub active_time: ::std::option::Option<i32>,
+        #[doc = "Date of usage"]
+        #[serde(rename = "date", default)]
+        pub date: ::std::option::Option<::chrono::NaiveDate>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceActiveTimeRangesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceCpuStatusReportsItems {
+        #[doc = "List of CPU temperature samples."]
+        #[serde(rename = "cpuTemperatureInfo", default)]
+        pub cpu_temperature_info: ::std::option::Option<
+            Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems>,
+        >,
+        #[serde(rename = "cpuUtilizationPercentageInfo", default)]
+        pub cpu_utilization_percentage_info: ::std::option::Option<Vec<i32>>,
+        #[doc = "Date and time the report was received."]
+        #[serde(rename = "reportTime", default)]
+        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceCpuStatusReportsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems {
+        #[doc = "CPU label"]
+        #[serde(rename = "label", default)]
+        pub label: ::std::option::Option<String>,
+        #[doc = "Temperature in Celsius degrees."]
+        #[serde(rename = "temperature", default)]
+        pub temperature: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector
+        for ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceDeviceFilesItems {
+        #[doc = "Date and time the file was created"]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "File download URL"]
+        #[serde(rename = "downloadUrl", default)]
+        pub download_url: ::std::option::Option<String>,
+        #[doc = "File name"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "File type"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceDeviceFilesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceDiskVolumeReportsItems {
+        #[doc = "Disk volumes"]
+        #[serde(rename = "volumeInfo", default)]
+        pub volume_info: ::std::option::Option<
+            Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems>,
+        >,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems {
+        #[doc = "Free disk space [in bytes]"]
+        #[serde(rename = "storageFree", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub storage_free: ::std::option::Option<i64>,
+        #[doc = "Total disk space [in bytes]"]
+        #[serde(rename = "storageTotal", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub storage_total: ::std::option::Option<i64>,
+        #[doc = "Volume id"]
+        #[serde(rename = "volumeId", default)]
+        pub volume_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceRecentUsersItems {
+        #[doc = "Email address of the user. Present only if the user type is managed"]
+        #[serde(rename = "email", default)]
+        pub email: ::std::option::Option<String>,
+        #[doc = "The type of the user"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceRecentUsersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceSystemRamFreeReportsItems {
+        #[doc = "Date and time the report was received."]
+        #[serde(rename = "reportTime", default)]
+        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[serde(rename = "systemRamFreeInfo", default)]
+        pub system_ram_free_info: ::std::option::Option<Vec<i64>>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceSystemRamFreeReportsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChromeOsDeviceTpmVersionInfo {
+        #[doc = "TPM family."]
+        #[serde(rename = "family", default)]
+        pub family: ::std::option::Option<String>,
+        #[doc = "TPM firmware version."]
+        #[serde(rename = "firmwareVersion", default)]
+        pub firmware_version: ::std::option::Option<String>,
+        #[doc = "TPM manufacturer code."]
+        #[serde(rename = "manufacturer", default)]
+        pub manufacturer: ::std::option::Option<String>,
+        #[doc = "TPM specification level."]
+        #[serde(rename = "specLevel", default)]
+        pub spec_level: ::std::option::Option<String>,
+        #[doc = "TPM model number."]
+        #[serde(rename = "tpmModel", default)]
+        pub tpm_model: ::std::option::Option<String>,
+        #[doc = "Vendor-specific information such as Vendor ID."]
+        #[serde(rename = "vendorSpecific", default)]
+        pub vendor_specific: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ChromeOsDeviceTpmVersionInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1538,44 +1538,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MobileDeviceApplicationsItems {
-        #[doc = "Display name of application"]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Package name of application"]
-        #[serde(rename = "packageName", default)]
-        pub package_name: ::std::option::Option<String>,
-        #[doc = "List of Permissions for application"]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<Vec<String>>,
-        #[doc = "Version code of application"]
-        #[serde(rename = "versionCode", default)]
-        pub version_code: ::std::option::Option<i32>,
-        #[doc = "Version name of application"]
-        #[serde(rename = "versionName", default)]
-        pub version_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MobileDeviceApplicationsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct MobileDevice {
         #[doc = "Adb (USB debugging) enabled or disabled on device (Read-only)"]
         #[serde(rename = "adbStatus", default)]
@@ -1700,6 +1662,44 @@ pub mod schemas {
         pub wifi_mac_address: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MobileDevice {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MobileDeviceApplicationsItems {
+        #[doc = "Display name of application"]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Package name of application"]
+        #[serde(rename = "packageName", default)]
+        pub package_name: ::std::option::Option<String>,
+        #[doc = "List of Permissions for application"]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<Vec<String>>,
+        #[doc = "Version code of application"]
+        #[serde(rename = "versionCode", default)]
+        pub version_code: ::std::option::Option<i32>,
+        #[doc = "Version name of application"]
+        #[serde(rename = "versionName", default)]
+        pub version_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MobileDeviceApplicationsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2023,35 +2023,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RoleRolePrivilegesItems {
-        #[doc = "The name of the privilege."]
-        #[serde(rename = "privilegeName", default)]
-        pub privilege_name: ::std::option::Option<String>,
-        #[doc = "The obfuscated ID of the service this privilege is for. This value is returned with Privileges.list()."]
-        #[serde(rename = "serviceId", default)]
-        pub service_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RoleRolePrivilegesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Role {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
@@ -2080,6 +2051,35 @@ pub mod schemas {
         pub role_privileges: ::std::option::Option<Vec<crate::schemas::RoleRolePrivilegesItems>>,
     }
     impl ::field_selector::FieldSelector for Role {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RoleRolePrivilegesItems {
+        #[doc = "The name of the privilege."]
+        #[serde(rename = "privilegeName", default)]
+        pub privilege_name: ::std::option::Option<String>,
+        #[doc = "The obfuscated ID of the service this privilege is for. This value is returned with Privileges.list()."]
+        #[serde(rename = "serviceId", default)]
+        pub service_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RoleRolePrivilegesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2237,26 +2237,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct SchemaFieldSpecNumericIndexingSpec {
-        #[doc = "Maximum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
-        #[serde(rename = "maxValue", default)]
-        pub max_value: ::std::option::Option<f64>,
-        #[doc = "Minimum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
-        #[serde(rename = "minValue", default)]
-        pub min_value: ::std::option::Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for SchemaFieldSpecNumericIndexingSpec {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct SchemaFieldSpec {
         #[doc = "Display Name of the field."]
         #[serde(rename = "displayName", default)]
@@ -2291,6 +2271,26 @@ pub mod schemas {
         pub read_access_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SchemaFieldSpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SchemaFieldSpecNumericIndexingSpec {
+        #[doc = "Maximum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
+        #[serde(rename = "maxValue", default)]
+        pub max_value: ::std::option::Option<f64>,
+        #[doc = "Minimum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
+        #[serde(rename = "minValue", default)]
+        pub min_value: ::std::option::Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for SchemaFieldSpecNumericIndexingSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -23146,84 +23146,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -23255,7 +23177,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -23381,8 +23302,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

@@ -242,36 +242,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportFilesItems {
-        #[doc = "The size of this report file in bytes."]
-        #[serde(rename = "byteCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub byte_count: ::std::option::Option<i64>,
-        #[doc = "Use this url to download the report file."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReportFilesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Report {
         #[doc = "Asynchronous report only. Contains a list of generated report files once the report has succesfully completed."]
@@ -303,6 +273,36 @@ pub mod schemas {
         pub statistics_time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Report {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportFilesItems {
+        #[doc = "The size of this report file in bytes."]
+        #[serde(rename = "byteCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub byte_count: ::std::option::Option<i64>,
+        #[doc = "Use this url to download the report file."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReportFilesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -356,6 +356,60 @@ pub mod schemas {
         pub start_date: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReportApiColumnSpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ReportRequest {
+        #[doc = "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same stanza.\nThe maximum number of columns per request is 300."]
+        #[serde(rename = "columns", default)]
+        pub columns: ::std::option::Option<Vec<crate::schemas::ReportApiColumnSpec>>,
+        #[doc = "Format that the report should be returned in. Currently csv or tsv is supported."]
+        #[serde(rename = "downloadFormat", default)]
+        pub download_format: ::std::option::Option<String>,
+        #[doc = "A list of filters to be applied to the report.\nThe maximum number of filters per request is 300."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<Vec<crate::schemas::ReportRequestFiltersItems>>,
+        #[doc = "Determines if removed entities should be included in the report. Defaults to false. Deprecated, please use includeRemovedEntities instead."]
+        #[serde(rename = "includeDeletedEntities", default)]
+        pub include_deleted_entities: ::std::option::Option<bool>,
+        #[doc = "Determines if removed entities should be included in the report. Defaults to false."]
+        #[serde(rename = "includeRemovedEntities", default)]
+        pub include_removed_entities: ::std::option::Option<bool>,
+        #[doc = "Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are 1000000 to 100000000, inclusive."]
+        #[serde(rename = "maxRowsPerFile", default)]
+        pub max_rows_per_file: ::std::option::Option<i32>,
+        #[doc = "Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\nThe maximum number of orderings per request is 300."]
+        #[serde(rename = "orderBy", default)]
+        pub order_by: ::std::option::Option<Vec<crate::schemas::ReportRequestOrderByItems>>,
+        #[doc = "The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required."]
+        #[serde(rename = "reportScope", default)]
+        pub report_scope: ::std::option::Option<crate::schemas::ReportRequestReportScope>,
+        #[doc = "Determines the type of rows that are returned in the report. For example, if you specify reportType: keyword, each row in the report will contain data about a keyword. See the Types of Reports reference for the columns that are available for each type."]
+        #[serde(rename = "reportType", default)]
+        pub report_type: ::std::option::Option<String>,
+        #[doc = "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000."]
+        #[serde(rename = "rowCount", default)]
+        pub row_count: ::std::option::Option<i32>,
+        #[doc = "Synchronous report only. Zero-based index of the first row to return. Acceptable values are 0 to 50000, inclusive. Defaults to 0."]
+        #[serde(rename = "startRow", default)]
+        pub start_row: ::std::option::Option<i32>,
+        #[doc = "Specifies the currency in which monetary will be returned. Possible values are: usd, agency (valid if the report is scoped to agency or lower), advertiser (valid if the report is scoped to * advertiser or lower), or account (valid if the report is scoped to engine account or lower)."]
+        #[serde(rename = "statisticsCurrency", default)]
+        pub statistics_currency: ::std::option::Option<String>,
+        #[doc = "If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range."]
+        #[serde(rename = "timeRange", default)]
+        pub time_range: ::std::option::Option<crate::schemas::ReportRequestTimeRange>,
+        #[doc = "If true, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to false."]
+        #[serde(rename = "verifySingleTimeZone", default)]
+        pub verify_single_time_zone: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ReportRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -494,60 +548,6 @@ pub mod schemas {
         pub start_date: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReportRequestTimeRange {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct ReportRequest {
-        #[doc = "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same stanza.\nThe maximum number of columns per request is 300."]
-        #[serde(rename = "columns", default)]
-        pub columns: ::std::option::Option<Vec<crate::schemas::ReportApiColumnSpec>>,
-        #[doc = "Format that the report should be returned in. Currently csv or tsv is supported."]
-        #[serde(rename = "downloadFormat", default)]
-        pub download_format: ::std::option::Option<String>,
-        #[doc = "A list of filters to be applied to the report.\nThe maximum number of filters per request is 300."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<Vec<crate::schemas::ReportRequestFiltersItems>>,
-        #[doc = "Determines if removed entities should be included in the report. Defaults to false. Deprecated, please use includeRemovedEntities instead."]
-        #[serde(rename = "includeDeletedEntities", default)]
-        pub include_deleted_entities: ::std::option::Option<bool>,
-        #[doc = "Determines if removed entities should be included in the report. Defaults to false."]
-        #[serde(rename = "includeRemovedEntities", default)]
-        pub include_removed_entities: ::std::option::Option<bool>,
-        #[doc = "Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are 1000000 to 100000000, inclusive."]
-        #[serde(rename = "maxRowsPerFile", default)]
-        pub max_rows_per_file: ::std::option::Option<i32>,
-        #[doc = "Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\nThe maximum number of orderings per request is 300."]
-        #[serde(rename = "orderBy", default)]
-        pub order_by: ::std::option::Option<Vec<crate::schemas::ReportRequestOrderByItems>>,
-        #[doc = "The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required."]
-        #[serde(rename = "reportScope", default)]
-        pub report_scope: ::std::option::Option<crate::schemas::ReportRequestReportScope>,
-        #[doc = "Determines the type of rows that are returned in the report. For example, if you specify reportType: keyword, each row in the report will contain data about a keyword. See the Types of Reports reference for the columns that are available for each type."]
-        #[serde(rename = "reportType", default)]
-        pub report_type: ::std::option::Option<String>,
-        #[doc = "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000."]
-        #[serde(rename = "rowCount", default)]
-        pub row_count: ::std::option::Option<i32>,
-        #[doc = "Synchronous report only. Zero-based index of the first row to return. Acceptable values are 0 to 50000, inclusive. Defaults to 0."]
-        #[serde(rename = "startRow", default)]
-        pub start_row: ::std::option::Option<i32>,
-        #[doc = "Specifies the currency in which monetary will be returned. Possible values are: usd, agency (valid if the report is scoped to agency or lower), advertiser (valid if the report is scoped to * advertiser or lower), or account (valid if the report is scoped to engine account or lower)."]
-        #[serde(rename = "statisticsCurrency", default)]
-        pub statistics_currency: ::std::option::Option<String>,
-        #[doc = "If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range."]
-        #[serde(rename = "timeRange", default)]
-        pub time_range: ::std::option::Option<crate::schemas::ReportRequestTimeRange>,
-        #[doc = "If true, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to false."]
-        #[serde(rename = "verifySingleTimeZone", default)]
-        pub verify_single_time_zone: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ReportRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2483,84 +2483,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2589,174 +2511,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

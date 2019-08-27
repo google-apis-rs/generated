@@ -115,6 +115,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Domain {
+        #[doc = "Required. The domain name of the association."]
+        #[serde(rename = "domainName", default)]
+        pub domain_name: ::std::option::Option<String>,
+        #[doc = "If set, the domain should redirect with the provided parameters."]
+        #[serde(rename = "domainRedirect", default)]
+        pub domain_redirect: ::std::option::Option<crate::schemas::DomainRedirect>,
+        #[doc = "Output only. Information about the provisioning of certificates and the\nhealth of the DNS resolution for the domain."]
+        #[serde(rename = "provisioning", default)]
+        pub provisioning: ::std::option::Option<crate::schemas::DomainProvisioning>,
+        #[doc = "Required. The site name of the association."]
+        #[serde(rename = "site", default)]
+        pub site: ::std::option::Option<String>,
+        #[doc = "Output only. Additional status of the domain association."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::DomainStatus>,
+        #[doc = "Output only. The time at which the domain was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Domain {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DomainStatus {
         #[doc = "The domain association is active and no additional action is required."]
@@ -194,27 +235,33 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Domain {
-        #[doc = "Required. The domain name of the association."]
-        #[serde(rename = "domainName", default)]
-        pub domain_name: ::std::option::Option<String>,
-        #[doc = "If set, the domain should redirect with the provided parameters."]
-        #[serde(rename = "domainRedirect", default)]
-        pub domain_redirect: ::std::option::Option<crate::schemas::DomainRedirect>,
-        #[doc = "Output only. Information about the provisioning of certificates and the\nhealth of the DNS resolution for the domain."]
-        #[serde(rename = "provisioning", default)]
-        pub provisioning: ::std::option::Option<crate::schemas::DomainProvisioning>,
-        #[doc = "Required. The site name of the association."]
-        #[serde(rename = "site", default)]
-        pub site: ::std::option::Option<String>,
-        #[doc = "Output only. Additional status of the domain association."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::DomainStatus>,
-        #[doc = "Output only. The time at which the domain was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
+    pub struct DomainProvisioning {
+        #[doc = "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch."]
+        #[serde(rename = "certChallengeDiscoveredTxt", default)]
+        pub cert_challenge_discovered_txt: ::std::option::Option<Vec<String>>,
+        #[doc = "The DNS challenge for generating a certificate."]
+        #[serde(rename = "certChallengeDns", default)]
+        pub cert_challenge_dns: ::std::option::Option<crate::schemas::CertDnsChallenge>,
+        #[doc = "The HTTP challenge for generating a certificate."]
+        #[serde(rename = "certChallengeHttp", default)]
+        pub cert_challenge_http: ::std::option::Option<crate::schemas::CertHttpChallenge>,
+        #[doc = "The certificate provisioning status; updated when Firebase Hosting\nprovisions an SSL certificate for the domain."]
+        #[serde(rename = "certStatus", default)]
+        pub cert_status: ::std::option::Option<crate::schemas::DomainProvisioningCertStatus>,
+        #[doc = "The IPs found at the last DNS fetch."]
+        #[serde(rename = "discoveredIps", default)]
+        pub discovered_ips: ::std::option::Option<Vec<String>>,
+        #[doc = "The time at which the last DNS fetch occurred."]
+        #[serde(rename = "dnsFetchTime", default)]
+        pub dns_fetch_time: ::std::option::Option<String>,
+        #[doc = "The DNS record match status as of the last DNS fetch."]
+        #[serde(rename = "dnsStatus", default)]
+        pub dns_status: ::std::option::Option<crate::schemas::DomainProvisioningDnsStatus>,
+        #[doc = "The list of IPs to which the domain is expected to resolve."]
+        #[serde(rename = "expectedIps", default)]
+        pub expected_ips: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for Domain {
+    impl ::field_selector::FieldSelector for DomainProvisioning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -381,33 +428,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DomainProvisioning {
-        #[doc = "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch."]
-        #[serde(rename = "certChallengeDiscoveredTxt", default)]
-        pub cert_challenge_discovered_txt: ::std::option::Option<Vec<String>>,
-        #[doc = "The DNS challenge for generating a certificate."]
-        #[serde(rename = "certChallengeDns", default)]
-        pub cert_challenge_dns: ::std::option::Option<crate::schemas::CertDnsChallenge>,
-        #[doc = "The HTTP challenge for generating a certificate."]
-        #[serde(rename = "certChallengeHttp", default)]
-        pub cert_challenge_http: ::std::option::Option<crate::schemas::CertHttpChallenge>,
-        #[doc = "The certificate provisioning status; updated when Firebase Hosting\nprovisions an SSL certificate for the domain."]
-        #[serde(rename = "certStatus", default)]
-        pub cert_status: ::std::option::Option<crate::schemas::DomainProvisioningCertStatus>,
-        #[doc = "The IPs found at the last DNS fetch."]
-        #[serde(rename = "discoveredIps", default)]
-        pub discovered_ips: ::std::option::Option<Vec<String>>,
-        #[doc = "The time at which the last DNS fetch occurred."]
-        #[serde(rename = "dnsFetchTime", default)]
-        pub dns_fetch_time: ::std::option::Option<String>,
-        #[doc = "The DNS record match status as of the last DNS fetch."]
-        #[serde(rename = "dnsStatus", default)]
-        pub dns_status: ::std::option::Option<crate::schemas::DomainProvisioningDnsStatus>,
-        #[doc = "The list of IPs to which the domain is expected to resolve."]
-        #[serde(rename = "expectedIps", default)]
-        pub expected_ips: ::std::option::Option<Vec<String>>,
+    pub struct DomainRedirect {
+        #[doc = "Required. The domain name to redirect to."]
+        #[serde(rename = "domainName", default)]
+        pub domain_name: ::std::option::Option<String>,
+        #[doc = "Required. The redirect status code."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DomainRedirectType>,
     }
-    impl ::field_selector::FieldSelector for DomainProvisioning {
+    impl ::field_selector::FieldSelector for DomainRedirect {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -463,35 +492,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DomainRedirectType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DomainRedirect {
-        #[doc = "Required. The domain name to redirect to."]
-        #[serde(rename = "domainName", default)]
-        pub domain_name: ::std::option::Option<String>,
-        #[doc = "Required. The redirect status code."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DomainRedirectType>,
-    }
-    impl ::field_selector::FieldSelector for DomainRedirect {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -726,6 +726,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Release {
+        #[doc = "The deploy description when the release was created. The value can be up to\n512\u{a0}characters."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+        #[doc = "Output only. The unique identifier for the release, in the format:\n<code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Explains the reason for the release.\n<br>Specify a value for this field only when creating a `SITE_DISABLE`\ntype release."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ReleaseType>,
+        #[doc = "Output only. The time at which the version is set to be public."]
+        #[serde(rename = "releaseTime", default)]
+        pub release_time: ::std::option::Option<String>,
+        #[doc = "Output only. Identifies the user who created the release."]
+        #[serde(rename = "releaseUser", default)]
+        pub release_user: ::std::option::Option<crate::schemas::ActingUser>,
+        #[doc = "Output only. The configuration and content that was released."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<crate::schemas::Version>,
+    }
+    impl ::field_selector::FieldSelector for Release {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReleaseType {
         #[doc = "A version was uploaded to Firebase Hosting and released."]
@@ -801,47 +842,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Release {
-        #[doc = "The deploy description when the release was created. The value can be up to\n512\u{a0}characters."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-        #[doc = "Output only. The unique identifier for the release, in the format:\n<code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Explains the reason for the release.\n<br>Specify a value for this field only when creating a `SITE_DISABLE`\ntype release."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ReleaseType>,
-        #[doc = "Output only. The time at which the version is set to be public."]
-        #[serde(rename = "releaseTime", default)]
-        pub release_time: ::std::option::Option<String>,
-        #[doc = "Output only. Identifies the user who created the release."]
-        #[serde(rename = "releaseUser", default)]
-        pub release_user: ::std::option::Option<crate::schemas::ActingUser>,
-        #[doc = "Output only. The configuration and content that was released."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<crate::schemas::Version>,
-    }
-    impl ::field_selector::FieldSelector for Release {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Rewrite {
         #[doc = "The request will be forwarded to Firebase Dynamic Links."]
         #[serde(rename = "dynamicLinks", default)]
@@ -863,6 +863,48 @@ pub mod schemas {
         pub run: ::std::option::Option<crate::schemas::CloudRunRewrite>,
     }
     impl ::field_selector::FieldSelector for Rewrite {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServingConfig {
+        #[doc = "How to handle well known App Association files."]
+        #[serde(rename = "appAssociation", default)]
+        pub app_association: ::std::option::Option<crate::schemas::ServingConfigAppAssociation>,
+        #[doc = "Defines whether to drop the file extension from uploaded files."]
+        #[serde(rename = "cleanUrls", default)]
+        pub clean_urls: ::std::option::Option<bool>,
+        #[doc = "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob."]
+        #[serde(rename = "headers", default)]
+        pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
+        #[doc = "A list of globs that will cause the response to redirect to another\nlocation."]
+        #[serde(rename = "redirects", default)]
+        pub redirects: ::std::option::Option<Vec<crate::schemas::Redirect>>,
+        #[doc = "A list of rewrites that will act as if the service were given the\ndestination URL."]
+        #[serde(rename = "rewrites", default)]
+        pub rewrites: ::std::option::Option<Vec<crate::schemas::Rewrite>>,
+        #[doc = "Defines how to handle a trailing slash in the URL path."]
+        #[serde(rename = "trailingSlashBehavior", default)]
+        pub trailing_slash_behavior:
+            ::std::option::Option<crate::schemas::ServingConfigTrailingSlashBehavior>,
+    }
+    impl ::field_selector::FieldSelector for ServingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1001,28 +1043,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ServingConfig {
-        #[doc = "How to handle well known App Association files."]
-        #[serde(rename = "appAssociation", default)]
-        pub app_association: ::std::option::Option<crate::schemas::ServingConfigAppAssociation>,
-        #[doc = "Defines whether to drop the file extension from uploaded files."]
-        #[serde(rename = "cleanUrls", default)]
-        pub clean_urls: ::std::option::Option<bool>,
-        #[doc = "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob."]
-        #[serde(rename = "headers", default)]
-        pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
-        #[doc = "A list of globs that will cause the response to redirect to another\nlocation."]
-        #[serde(rename = "redirects", default)]
-        pub redirects: ::std::option::Option<Vec<crate::schemas::Redirect>>,
-        #[doc = "A list of rewrites that will act as if the service were given the\ndestination URL."]
-        #[serde(rename = "rewrites", default)]
-        pub rewrites: ::std::option::Option<Vec<crate::schemas::Rewrite>>,
-        #[doc = "Defines how to handle a trailing slash in the URL path."]
-        #[serde(rename = "trailingSlashBehavior", default)]
-        pub trailing_slash_behavior:
-            ::std::option::Option<crate::schemas::ServingConfigTrailingSlashBehavior>,
+    pub struct SiteConfig {
+        #[doc = "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default."]
+        #[serde(rename = "maxVersions", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub max_versions: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for ServingConfig {
+    impl ::field_selector::FieldSelector for SiteConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1043,13 +1070,47 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SiteConfig {
-        #[doc = "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default."]
-        #[serde(rename = "maxVersions", default)]
+    pub struct Version {
+        #[doc = "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<crate::schemas::ServingConfig>,
+        #[doc = "Output only. The time at which the version was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. Identifies the user who created the version."]
+        #[serde(rename = "createUser", default)]
+        pub create_user: ::std::option::Option<crate::schemas::ActingUser>,
+        #[doc = "Output only. The time at which the version was `DELETED`."]
+        #[serde(rename = "deleteTime", default)]
+        pub delete_time: ::std::option::Option<String>,
+        #[doc = "Output only. Identifies the user who `DELETED` the version."]
+        #[serde(rename = "deleteUser", default)]
+        pub delete_user: ::std::option::Option<crate::schemas::ActingUser>,
+        #[doc = "Output only. The total number of files associated with the version.\n<br>This value is calculated after a version is `FINALIZED`."]
+        #[serde(rename = "fileCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_versions: ::std::option::Option<i64>,
+        pub file_count: ::std::option::Option<i64>,
+        #[doc = "Output only. The time at which the version was `FINALIZED`."]
+        #[serde(rename = "finalizeTime", default)]
+        pub finalize_time: ::std::option::Option<String>,
+        #[doc = "Output only. Identifies the user who `FINALIZED` the version."]
+        #[serde(rename = "finalizeUser", default)]
+        pub finalize_user: ::std::option::Option<crate::schemas::ActingUser>,
+        #[doc = "The labels used for extra metadata and/or filtering."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The unique identifier for a version, in the format:\n<code>sites/<var>site-name</var>/versions/<var>versionID</var></code>\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The deploy status of a version.\n<br>\n<br>For a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n<br>\n<br>Note that if you leave the version in the `CREATED` state for more\nthan 12\u{a0}hours, the system will automatically mark the version as\n`ABANDONED`.\n<br>\n<br>You can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::VersionStatus>,
+        #[doc = "Output only. The total stored bytesize of the version.\n<br>This value is calculated after a version is `FINALIZED`."]
+        #[serde(rename = "versionBytes", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub version_bytes: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for SiteConfig {
+    impl ::field_selector::FieldSelector for Version {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1141,47 +1202,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Version {
-        #[doc = "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<crate::schemas::ServingConfig>,
-        #[doc = "Output only. The time at which the version was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. Identifies the user who created the version."]
-        #[serde(rename = "createUser", default)]
-        pub create_user: ::std::option::Option<crate::schemas::ActingUser>,
-        #[doc = "Output only. The time at which the version was `DELETED`."]
-        #[serde(rename = "deleteTime", default)]
-        pub delete_time: ::std::option::Option<String>,
-        #[doc = "Output only. Identifies the user who `DELETED` the version."]
-        #[serde(rename = "deleteUser", default)]
-        pub delete_user: ::std::option::Option<crate::schemas::ActingUser>,
-        #[doc = "Output only. The total number of files associated with the version.\n<br>This value is calculated after a version is `FINALIZED`."]
-        #[serde(rename = "fileCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub file_count: ::std::option::Option<i64>,
-        #[doc = "Output only. The time at which the version was `FINALIZED`."]
-        #[serde(rename = "finalizeTime", default)]
-        pub finalize_time: ::std::option::Option<String>,
-        #[doc = "Output only. Identifies the user who `FINALIZED` the version."]
-        #[serde(rename = "finalizeUser", default)]
-        pub finalize_user: ::std::option::Option<crate::schemas::ActingUser>,
-        #[doc = "The labels used for extra metadata and/or filtering."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The unique identifier for a version, in the format:\n<code>sites/<var>site-name</var>/versions/<var>versionID</var></code>\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The deploy status of a version.\n<br>\n<br>For a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n<br>\n<br>Note that if you leave the version in the `CREATED` state for more\nthan 12\u{a0}hours, the system will automatically mark the version as\n`ABANDONED`.\n<br>\n<br>You can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint."]
+    pub struct VersionFile {
+        #[doc = "The SHA256 content hash of the file."]
+        #[serde(rename = "hash", default)]
+        pub hash: ::std::option::Option<String>,
+        #[doc = "The URI at which the file's content should display."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "Output only. The current status of a particular file in the specified\nversion.\n<br>The value will be either `pending upload` or `uploaded`."]
         #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::VersionStatus>,
-        #[doc = "Output only. The total stored bytesize of the version.\n<br>This value is calculated after a version is `FINALIZED`."]
-        #[serde(rename = "versionBytes", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub version_bytes: ::std::option::Option<i64>,
+        pub status: ::std::option::Option<crate::schemas::VersionFileStatus>,
     }
-    impl ::field_selector::FieldSelector for Version {
+    impl ::field_selector::FieldSelector for VersionFile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1241,38 +1273,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for VersionFileStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VersionFile {
-        #[doc = "The SHA256 content hash of the file."]
-        #[serde(rename = "hash", default)]
-        pub hash: ::std::option::Option<String>,
-        #[doc = "The URI at which the file's content should display."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "Output only. The current status of a particular file in the specified\nversion.\n<br>The value will be either `pending upload` or `uploaded`."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::VersionFileStatus>,
-    }
-    impl ::field_selector::FieldSelector for VersionFile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4576,84 +4576,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4685,7 +4607,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -4806,50 +4727,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

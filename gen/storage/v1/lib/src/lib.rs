@@ -11,6 +11,109 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Bucket {
+        #[doc = "Access controls on the bucket."]
+        #[serde(rename = "acl", default)]
+        pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
+        #[doc = "The bucket's billing configuration."]
+        #[serde(rename = "billing", default)]
+        pub billing: ::std::option::Option<crate::schemas::BucketBilling>,
+        #[doc = "The bucket's Cross-Origin Resource Sharing (CORS) configuration."]
+        #[serde(rename = "cors", default)]
+        pub cors: ::std::option::Option<Vec<crate::schemas::BucketCorsItems>>,
+        #[doc = "The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed."]
+        #[serde(rename = "defaultEventBasedHold", default)]
+        pub default_event_based_hold: ::std::option::Option<bool>,
+        #[doc = "Default access controls to apply to new objects when no ACL is provided."]
+        #[serde(rename = "defaultObjectAcl", default)]
+        pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
+        #[doc = "Encryption configuration for a bucket."]
+        #[serde(rename = "encryption", default)]
+        pub encryption: ::std::option::Option<crate::schemas::BucketEncryption>,
+        #[doc = "HTTP 1.1 Entity tag for the bucket."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The bucket's IAM configuration."]
+        #[serde(rename = "iamConfiguration", default)]
+        pub iam_configuration: ::std::option::Option<crate::schemas::BucketIamConfiguration>,
+        #[doc = "The ID of the bucket. For buckets, the id and name properties are the same."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "User-provided labels, in key/value pairs."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The bucket's lifecycle configuration. See lifecycle management for more information."]
+        #[serde(rename = "lifecycle", default)]
+        pub lifecycle: ::std::option::Option<crate::schemas::BucketLifecycle>,
+        #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The type of the bucket location."]
+        #[serde(rename = "locationType", default)]
+        pub location_type: ::std::option::Option<String>,
+        #[doc = "The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs."]
+        #[serde(rename = "logging", default)]
+        pub logging: ::std::option::Option<crate::schemas::BucketLogging>,
+        #[doc = "The metadata generation of this bucket."]
+        #[serde(rename = "metageneration", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub metageneration: ::std::option::Option<i64>,
+        #[doc = "The name of the bucket."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The owner of the bucket. This is always the project team's owner group."]
+        #[serde(rename = "owner", default)]
+        pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
+        #[doc = "The project number of the project the bucket belongs to."]
+        #[serde(rename = "projectNumber", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub project_number: ::std::option::Option<u64>,
+        #[doc = "The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error."]
+        #[serde(rename = "retentionPolicy", default)]
+        pub retention_policy: ::std::option::Option<crate::schemas::BucketRetentionPolicy>,
+        #[doc = "The URI of this bucket."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes."]
+        #[serde(rename = "storageClass", default)]
+        pub storage_class: ::std::option::Option<String>,
+        #[doc = "The creation time of the bucket in RFC 3339 format."]
+        #[serde(rename = "timeCreated", default)]
+        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The modification time of the bucket in RFC 3339 format."]
+        #[serde(rename = "updated", default)]
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The bucket's versioning configuration."]
+        #[serde(rename = "versioning", default)]
+        pub versioning: ::std::option::Option<crate::schemas::BucketVersioning>,
+        #[doc = "The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information."]
+        #[serde(rename = "website", default)]
+        pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
+    }
+    impl ::field_selector::FieldSelector for Bucket {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct BucketBilling {
         #[doc = "When set to true, Requester Pays is enabled for this bucket."]
         #[serde(rename = "requesterPays", default)]
@@ -98,6 +201,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct BucketIamConfiguration {
+        #[doc = "The bucket's Bucket Policy Only configuration."]
+        #[serde(rename = "bucketPolicyOnly", default)]
+        pub bucket_policy_only:
+            ::std::option::Option<crate::schemas::BucketIamConfigurationBucketPolicyOnly>,
+        #[doc = "The bucket's uniform bucket-level access configuration."]
+        #[serde(rename = "uniformBucketLevelAccess", default)]
+        pub uniform_bucket_level_access:
+            ::std::option::Option<crate::schemas::BucketIamConfigurationUniformBucketLevelAccess>,
+    }
+    impl ::field_selector::FieldSelector for BucketIamConfiguration {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct BucketIamConfigurationBucketPolicyOnly {
         #[doc = "If set, access is controlled only by bucket-level or above IAM policies."]
         #[serde(rename = "enabled", default)]
@@ -156,17 +290,41 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BucketIamConfiguration {
-        #[doc = "The bucket's Bucket Policy Only configuration."]
-        #[serde(rename = "bucketPolicyOnly", default)]
-        pub bucket_policy_only:
-            ::std::option::Option<crate::schemas::BucketIamConfigurationBucketPolicyOnly>,
-        #[doc = "The bucket's uniform bucket-level access configuration."]
-        #[serde(rename = "uniformBucketLevelAccess", default)]
-        pub uniform_bucket_level_access:
-            ::std::option::Option<crate::schemas::BucketIamConfigurationUniformBucketLevelAccess>,
+    pub struct BucketLifecycle {
+        #[doc = "A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken."]
+        #[serde(rename = "rule", default)]
+        pub rule: ::std::option::Option<Vec<crate::schemas::BucketLifecycleRuleItems>>,
     }
-    impl ::field_selector::FieldSelector for BucketIamConfiguration {
+    impl ::field_selector::FieldSelector for BucketLifecycle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLifecycleRuleItems {
+        #[doc = "The action to take."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::BucketLifecycleRuleItemsAction>,
+        #[doc = "The condition(s) under which the action will be taken."]
+        #[serde(rename = "condition", default)]
+        pub condition: ::std::option::Option<crate::schemas::BucketLifecycleRuleItemsCondition>,
+    }
+    impl ::field_selector::FieldSelector for BucketLifecycleRuleItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -237,61 +395,6 @@ pub mod schemas {
         pub num_newer_versions: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for BucketLifecycleRuleItemsCondition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycleRuleItems {
-        #[doc = "The action to take."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::BucketLifecycleRuleItemsAction>,
-        #[doc = "The condition(s) under which the action will be taken."]
-        #[serde(rename = "condition", default)]
-        pub condition: ::std::option::Option<crate::schemas::BucketLifecycleRuleItemsCondition>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycleRuleItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycle {
-        #[doc = "A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken."]
-        #[serde(rename = "rule", default)]
-        pub rule: ::std::option::Option<Vec<crate::schemas::BucketLifecycleRuleItems>>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -458,138 +561,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Bucket {
-        #[doc = "Access controls on the bucket."]
-        #[serde(rename = "acl", default)]
-        pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
-        #[doc = "The bucket's billing configuration."]
-        #[serde(rename = "billing", default)]
-        pub billing: ::std::option::Option<crate::schemas::BucketBilling>,
-        #[doc = "The bucket's Cross-Origin Resource Sharing (CORS) configuration."]
-        #[serde(rename = "cors", default)]
-        pub cors: ::std::option::Option<Vec<crate::schemas::BucketCorsItems>>,
-        #[doc = "The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed."]
-        #[serde(rename = "defaultEventBasedHold", default)]
-        pub default_event_based_hold: ::std::option::Option<bool>,
-        #[doc = "Default access controls to apply to new objects when no ACL is provided."]
-        #[serde(rename = "defaultObjectAcl", default)]
-        pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
-        #[doc = "Encryption configuration for a bucket."]
-        #[serde(rename = "encryption", default)]
-        pub encryption: ::std::option::Option<crate::schemas::BucketEncryption>,
-        #[doc = "HTTP 1.1 Entity tag for the bucket."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The bucket's IAM configuration."]
-        #[serde(rename = "iamConfiguration", default)]
-        pub iam_configuration: ::std::option::Option<crate::schemas::BucketIamConfiguration>,
-        #[doc = "The ID of the bucket. For buckets, the id and name properties are the same."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "User-provided labels, in key/value pairs."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The bucket's lifecycle configuration. See lifecycle management for more information."]
-        #[serde(rename = "lifecycle", default)]
-        pub lifecycle: ::std::option::Option<crate::schemas::BucketLifecycle>,
-        #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The type of the bucket location."]
-        #[serde(rename = "locationType", default)]
-        pub location_type: ::std::option::Option<String>,
-        #[doc = "The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs."]
-        #[serde(rename = "logging", default)]
-        pub logging: ::std::option::Option<crate::schemas::BucketLogging>,
-        #[doc = "The metadata generation of this bucket."]
-        #[serde(rename = "metageneration", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub metageneration: ::std::option::Option<i64>,
-        #[doc = "The name of the bucket."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The owner of the bucket. This is always the project team's owner group."]
-        #[serde(rename = "owner", default)]
-        pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
-        #[doc = "The project number of the project the bucket belongs to."]
-        #[serde(rename = "projectNumber", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub project_number: ::std::option::Option<u64>,
-        #[doc = "The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error."]
-        #[serde(rename = "retentionPolicy", default)]
-        pub retention_policy: ::std::option::Option<crate::schemas::BucketRetentionPolicy>,
-        #[doc = "The URI of this bucket."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes."]
-        #[serde(rename = "storageClass", default)]
-        pub storage_class: ::std::option::Option<String>,
-        #[doc = "The creation time of the bucket in RFC 3339 format."]
-        #[serde(rename = "timeCreated", default)]
-        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The modification time of the bucket in RFC 3339 format."]
-        #[serde(rename = "updated", default)]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The bucket's versioning configuration."]
-        #[serde(rename = "versioning", default)]
-        pub versioning: ::std::option::Option<crate::schemas::BucketVersioning>,
-        #[doc = "The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information."]
-        #[serde(rename = "website", default)]
-        pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
-    }
-    impl ::field_selector::FieldSelector for Bucket {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketAccessControlProjectTeam {
-        #[doc = "The project number."]
-        #[serde(rename = "projectNumber", default)]
-        pub project_number: ::std::option::Option<String>,
-        #[doc = "The team."]
-        #[serde(rename = "team", default)]
-        pub team: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketAccessControlProjectTeam {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct BucketAccessControl {
         #[doc = "The name of the bucket."]
         #[serde(rename = "bucket", default)]
@@ -626,6 +597,35 @@ pub mod schemas {
         pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketAccessControl {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketAccessControlProjectTeam {
+        #[doc = "The project number."]
+        #[serde(rename = "projectNumber", default)]
+        pub project_number: ::std::option::Option<String>,
+        #[doc = "The team."]
+        #[serde(rename = "team", default)]
+        pub team: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketAccessControlProjectTeam {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -761,13 +761,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ComposeRequestSourceObjectsItemsObjectPreconditions {
-        #[doc = "Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail."]
-        #[serde(rename = "ifGenerationMatch", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub if_generation_match: ::std::option::Option<i64>,
+    pub struct ComposeRequest {
+        #[doc = "Properties of the resulting object."]
+        #[serde(rename = "destination", default)]
+        pub destination: ::std::option::Option<crate::schemas::Object>,
+        #[doc = "The kind of item this is."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The list of source objects that will be concatenated into a single object."]
+        #[serde(rename = "sourceObjects", default)]
+        pub source_objects:
+            ::std::option::Option<Vec<crate::schemas::ComposeRequestSourceObjectsItems>>,
     }
-    impl ::field_selector::FieldSelector for ComposeRequestSourceObjectsItemsObjectPreconditions {
+    impl ::field_selector::FieldSelector for ComposeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -823,19 +829,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ComposeRequest {
-        #[doc = "Properties of the resulting object."]
-        #[serde(rename = "destination", default)]
-        pub destination: ::std::option::Option<crate::schemas::Object>,
-        #[doc = "The kind of item this is."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The list of source objects that will be concatenated into a single object."]
-        #[serde(rename = "sourceObjects", default)]
-        pub source_objects:
-            ::std::option::Option<Vec<crate::schemas::ComposeRequestSourceObjectsItems>>,
+    pub struct ComposeRequestSourceObjectsItemsObjectPreconditions {
+        #[doc = "Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail."]
+        #[serde(rename = "ifGenerationMatch", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub if_generation_match: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for ComposeRequest {
+    impl ::field_selector::FieldSelector for ComposeRequestSourceObjectsItemsObjectPreconditions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1087,64 +1087,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ObjectCustomerEncryption {
-        #[doc = "The encryption algorithm."]
-        #[serde(rename = "encryptionAlgorithm", default)]
-        pub encryption_algorithm: ::std::option::Option<String>,
-        #[doc = "SHA256 hash value of the encryption key."]
-        #[serde(rename = "keySha256", default)]
-        pub key_sha_256: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ObjectCustomerEncryption {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjectOwner {
-        #[doc = "The entity, in the form user-userId."]
-        #[serde(rename = "entity", default)]
-        pub entity: ::std::option::Option<String>,
-        #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
-        pub entity_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ObjectOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Object {
         #[doc = "Access controls on the object."]
         #[serde(rename = "acl", default)]
@@ -1266,15 +1208,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ObjectAccessControlProjectTeam {
-        #[doc = "The project number."]
-        #[serde(rename = "projectNumber", default)]
-        pub project_number: ::std::option::Option<String>,
-        #[doc = "The team."]
-        #[serde(rename = "team", default)]
-        pub team: ::std::option::Option<String>,
+    pub struct ObjectCustomerEncryption {
+        #[doc = "The encryption algorithm."]
+        #[serde(rename = "encryptionAlgorithm", default)]
+        pub encryption_algorithm: ::std::option::Option<String>,
+        #[doc = "SHA256 hash value of the encryption key."]
+        #[serde(rename = "keySha256", default)]
+        pub key_sha_256: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ObjectAccessControlProjectTeam {
+    impl ::field_selector::FieldSelector for ObjectCustomerEncryption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectOwner {
+        #[doc = "The entity, in the form user-userId."]
+        #[serde(rename = "entity", default)]
+        pub entity: ::std::option::Option<String>,
+        #[doc = "The ID for the entity."]
+        #[serde(rename = "entityId", default)]
+        pub entity_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ObjectOwner {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1338,6 +1309,35 @@ pub mod schemas {
         pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectAccessControl {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectAccessControlProjectTeam {
+        #[doc = "The project number."]
+        #[serde(rename = "projectNumber", default)]
+        pub project_number: ::std::option::Option<String>,
+        #[doc = "The team."]
+        #[serde(rename = "team", default)]
+        pub team: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ObjectAccessControlProjectTeam {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1422,18 +1422,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PolicyBindingsItems {
-        #[doc = "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."]
-        #[serde(rename = "condition", default)]
-        pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers \u{2014} A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers \u{2014} A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid \u{2014} An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid \u{2014} An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid \u{2014} An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain \u{2014} A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid \u{2014} Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid \u{2014} Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid \u{2014} Viewers of the given project. For example, projectViewer:my-example-project"]
-        #[serde(rename = "members", default)]
-        pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin \u{2014} Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer \u{2014} Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator \u{2014} Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin \u{2014} Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader \u{2014} Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner \u{2014} Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader \u{2014} Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter \u{2014} Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner \u{2014} Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<String>,
+    pub struct Policy {
+        #[doc = "An association between a role, which comes with a set of permissions, and members who may assume that role."]
+        #[serde(rename = "bindings", default)]
+        pub bindings: ::std::option::Option<Vec<crate::schemas::PolicyBindingsItems>>,
+        #[doc = "HTTP 1.1  Entity tag for the policy."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The kind of item this is. For policies, this is always storage#policy. This field is ignored on input."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The ID of the resource to which this policy belongs. Will be of the form projects/*/buckets/bucket for buckets, and projects/*/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input."]
+        #[serde(rename = "resourceId", default)]
+        pub resource_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for PolicyBindingsItems {
+    impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1454,21 +1457,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Policy {
-        #[doc = "An association between a role, which comes with a set of permissions, and members who may assume that role."]
-        #[serde(rename = "bindings", default)]
-        pub bindings: ::std::option::Option<Vec<crate::schemas::PolicyBindingsItems>>,
-        #[doc = "HTTP 1.1  Entity tag for the policy."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The kind of item this is. For policies, this is always storage#policy. This field is ignored on input."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The ID of the resource to which this policy belongs. Will be of the form projects/*/buckets/bucket for buckets, and projects/*/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input."]
-        #[serde(rename = "resourceId", default)]
-        pub resource_id: ::std::option::Option<String>,
+    pub struct PolicyBindingsItems {
+        #[doc = "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."]
+        #[serde(rename = "condition", default)]
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
+        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers \u{2014} A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers \u{2014} A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid \u{2014} An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid \u{2014} An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid \u{2014} An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain \u{2014} A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid \u{2014} Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid \u{2014} Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid \u{2014} Viewers of the given project. For example, projectViewer:my-example-project"]
+        #[serde(rename = "members", default)]
+        pub members: ::std::option::Option<Vec<String>>,
+        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin \u{2014} Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer \u{2014} Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator \u{2014} Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin \u{2014} Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader \u{2014} Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner \u{2014} Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader \u{2014} Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter \u{2014} Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner \u{2014} Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Policy {
+    impl ::field_selector::FieldSelector for PolicyBindingsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13434,6 +13434,37 @@ mod multipart {
         marker
     }
 }
+// A serde helper module that can be used with the `with` attribute
+// to deserialize any string to a FromStr type and serialize any
+// Display type to a String. Google API's encode i64, u64 values as
+// strings.
+#[allow(dead_code)]
+mod parsed_string {
+    pub fn serialize<T, S>(
+        value: &Option<T>,
+        serializer: S,
+    ) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        T: ::std::fmt::Display,
+        S: ::serde::Serializer,
+    {
+        use ::serde::Serialize;
+        value.as_ref().map(|x| x.to_string()).serialize(serializer)
+    }
+
+    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
+    where
+        T: ::std::str::FromStr,
+        T::Err: ::std::fmt::Display,
+        D: ::serde::de::Deserializer<'de>,
+    {
+        use ::serde::Deserialize;
+        match Option::<String>::deserialize(deserializer)? {
+            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
+            None => Ok(None),
+        }
+    }
+}
 pub struct ResumableUpload {
     reqwest: ::reqwest::Client,
     url: String,
@@ -13512,38 +13543,6 @@ fn parse_range_header(
     let end: i64 = end.parse()?;
     Ok((begin, end))
 }
-// A serde helper module that can be used with the `with` attribute
-// to deserialize any string to a FromStr type and serialize any
-// Display type to a String. Google API's encode i64, u64 values as
-// strings.
-#[allow(dead_code)]
-mod parsed_string {
-    pub fn serialize<T, S>(
-        value: &Option<T>,
-        serializer: S,
-    ) -> ::std::result::Result<S::Ok, S::Error>
-    where
-        T: ::std::fmt::Display,
-        S: ::serde::Serializer,
-    {
-        use ::serde::Serialize;
-        value.as_ref().map(|x| x.to_string()).serialize(serializer)
-    }
-
-    pub fn deserialize<'de, T, D>(deserializer: D) -> ::std::result::Result<Option<T>, D::Error>
-    where
-        T: ::std::str::FromStr,
-        T::Err: ::std::fmt::Display,
-        D: ::serde::de::Deserializer<'de>,
-    {
-        use ::serde::Deserialize;
-        match Option::<String>::deserialize(deserializer)? {
-            Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
-            None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -13669,8 +13668,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

@@ -272,6 +272,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DynamicLinkEventStat {
+        #[doc = "The number of times this event occurred."]
+        #[serde(rename = "count", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub count: ::std::option::Option<i64>,
+        #[doc = "Link event."]
+        #[serde(rename = "event", default)]
+        pub event: ::std::option::Option<crate::schemas::DynamicLinkEventStatEvent>,
+        #[doc = "Requested platform."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<crate::schemas::DynamicLinkEventStatPlatform>,
+    }
+    impl ::field_selector::FieldSelector for DynamicLinkEventStat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatEvent {
         #[doc = "Indicates that the app is opened for the first time after an install\ntriggered by FDLs"]
@@ -430,39 +463,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DynamicLinkEventStat {
-        #[doc = "The number of times this event occurred."]
-        #[serde(rename = "count", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub count: ::std::option::Option<i64>,
-        #[doc = "Link event."]
-        #[serde(rename = "event", default)]
-        pub event: ::std::option::Option<crate::schemas::DynamicLinkEventStatEvent>,
-        #[doc = "Requested platform."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<crate::schemas::DynamicLinkEventStatPlatform>,
-    }
-    impl ::field_selector::FieldSelector for DynamicLinkEventStat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct DynamicLinkInfo {
         #[doc = "Parameters used for tracking. See all tracking parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(rename = "analyticsInfo", default)]
@@ -519,6 +519,38 @@ pub mod schemas {
         pub link_event_stats: ::std::option::Option<Vec<crate::schemas::DynamicLinkEventStat>>,
     }
     impl ::field_selector::FieldSelector for DynamicLinkStats {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DynamicLinkWarning {
+        #[doc = "The warning code."]
+        #[serde(rename = "warningCode", default)]
+        pub warning_code: ::std::option::Option<crate::schemas::DynamicLinkWarningWarningCode>,
+        #[doc = "The document describing the warning, and helps resolve."]
+        #[serde(rename = "warningDocumentLink", default)]
+        pub warning_document_link: ::std::option::Option<String>,
+        #[doc = "The warning message to help developers improve their requests."]
+        #[serde(rename = "warningMessage", default)]
+        pub warning_message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DynamicLinkWarning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -760,18 +792,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DynamicLinkWarning {
-        #[doc = "The warning code."]
-        #[serde(rename = "warningCode", default)]
-        pub warning_code: ::std::option::Option<crate::schemas::DynamicLinkWarningWarningCode>,
-        #[doc = "The document describing the warning, and helps resolve."]
-        #[serde(rename = "warningDocumentLink", default)]
-        pub warning_document_link: ::std::option::Option<String>,
-        #[doc = "The warning message to help developers improve their requests."]
-        #[serde(rename = "warningMessage", default)]
-        pub warning_message: ::std::option::Option<String>,
+    pub struct GetIosPostInstallAttributionRequest {
+        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
+        #[serde(rename = "appInstallationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub app_installation_time: ::std::option::Option<i64>,
+        #[doc = "APP bundle ID."]
+        #[serde(rename = "bundleId", default)]
+        pub bundle_id: ::std::option::Option<String>,
+        #[doc = "Device information."]
+        #[serde(rename = "device", default)]
+        pub device: ::std::option::Option<crate::schemas::DeviceInfo>,
+        #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
+        #[serde(rename = "iosVersion", default)]
+        pub ios_version: ::std::option::Option<String>,
+        #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
+        #[serde(rename = "retrievalMethod", default)]
+        pub retrieval_method: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod,
+        >,
+        #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
+        #[serde(rename = "sdkVersion", default)]
+        pub sdk_version: ::std::option::Option<String>,
+        #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
+        #[serde(rename = "uniqueMatchLinkToCheck", default)]
+        pub unique_match_link_to_check: ::std::option::Option<String>,
+        #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
+        #[serde(rename = "visualStyle", default)]
+        pub visual_style:
+            ::std::option::Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
     }
-    impl ::field_selector::FieldSelector for DynamicLinkWarning {
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -902,37 +953,61 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GetIosPostInstallAttributionRequest {
-        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
-        #[serde(rename = "appInstallationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub app_installation_time: ::std::option::Option<i64>,
-        #[doc = "APP bundle ID."]
-        #[serde(rename = "bundleId", default)]
-        pub bundle_id: ::std::option::Option<String>,
-        #[doc = "Device information."]
-        #[serde(rename = "device", default)]
-        pub device: ::std::option::Option<crate::schemas::DeviceInfo>,
-        #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
-        #[serde(rename = "iosVersion", default)]
-        pub ios_version: ::std::option::Option<String>,
-        #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
-        #[serde(rename = "retrievalMethod", default)]
-        pub retrieval_method: ::std::option::Option<
-            crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod,
+    pub struct GetIosPostInstallAttributionResponse {
+        #[doc = "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this."]
+        #[serde(rename = "appMinimumVersion", default)]
+        pub app_minimum_version: ::std::option::Option<String>,
+        #[doc = "The confidence of the returned attribution."]
+        #[serde(rename = "attributionConfidence", default)]
+        pub attribution_confidence: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionResponseAttributionConfidence,
         >,
-        #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
-        #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: ::std::option::Option<String>,
-        #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
-        #[serde(rename = "uniqueMatchLinkToCheck", default)]
-        pub unique_match_link_to_check: ::std::option::Option<String>,
-        #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
-        #[serde(rename = "visualStyle", default)]
-        pub visual_style:
-            ::std::option::Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
+        #[doc = "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
+        #[serde(rename = "deepLink", default)]
+        pub deep_link: ::std::option::Option<String>,
+        #[doc = "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com"]
+        #[serde(rename = "externalBrowserDestinationLink", default)]
+        pub external_browser_destination_link: ::std::option::Option<String>,
+        #[doc = "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter)."]
+        #[serde(rename = "fallbackLink", default)]
+        pub fallback_link: ::std::option::Option<String>,
+        #[doc = "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
+        #[serde(rename = "invitationId", default)]
+        pub invitation_id: ::std::option::Option<String>,
+        #[doc = "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false."]
+        #[serde(rename = "isStrongMatchExecutable", default)]
+        pub is_strong_match_executable: ::std::option::Option<bool>,
+        #[doc = "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible."]
+        #[serde(rename = "matchMessage", default)]
+        pub match_message: ::std::option::Option<String>,
+        #[doc = "Which IP version the request was made from."]
+        #[serde(rename = "requestIpVersion", default)]
+        pub request_ip_version: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionResponseRequestIpVersion,
+        >,
+        #[doc = "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique)."]
+        #[serde(rename = "requestedLink", default)]
+        pub requested_link: ::std::option::Option<String>,
+        #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies >1 fallback links)."]
+        #[serde(rename = "resolvedLink", default)]
+        pub resolved_link: ::std::option::Option<String>,
+        #[doc = "Scion campaign value to be propagated by iSDK to Scion at post-install."]
+        #[serde(rename = "utmCampaign", default)]
+        pub utm_campaign: ::std::option::Option<String>,
+        #[doc = "Scion content value to be propagated by iSDK to Scion at app-reopen."]
+        #[serde(rename = "utmContent", default)]
+        pub utm_content: ::std::option::Option<String>,
+        #[doc = "Scion medium value to be propagated by iSDK to Scion at post-install."]
+        #[serde(rename = "utmMedium", default)]
+        pub utm_medium: ::std::option::Option<String>,
+        #[doc = "Scion source value to be propagated by iSDK to Scion at post-install."]
+        #[serde(rename = "utmSource", default)]
+        pub utm_source: ::std::option::Option<String>,
+        #[doc = "Scion term value to be propagated by iSDK to Scion at app-reopen."]
+        #[serde(rename = "utmTerm", default)]
+        pub utm_term: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequest {
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1043,81 +1118,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GetIosPostInstallAttributionResponse {
-        #[doc = "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this."]
-        #[serde(rename = "appMinimumVersion", default)]
-        pub app_minimum_version: ::std::option::Option<String>,
-        #[doc = "The confidence of the returned attribution."]
-        #[serde(rename = "attributionConfidence", default)]
-        pub attribution_confidence: ::std::option::Option<
-            crate::schemas::GetIosPostInstallAttributionResponseAttributionConfidence,
-        >,
-        #[doc = "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
-        #[serde(rename = "deepLink", default)]
-        pub deep_link: ::std::option::Option<String>,
-        #[doc = "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com"]
-        #[serde(rename = "externalBrowserDestinationLink", default)]
-        pub external_browser_destination_link: ::std::option::Option<String>,
-        #[doc = "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter)."]
-        #[serde(rename = "fallbackLink", default)]
-        pub fallback_link: ::std::option::Option<String>,
-        #[doc = "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
-        #[serde(rename = "invitationId", default)]
-        pub invitation_id: ::std::option::Option<String>,
-        #[doc = "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false."]
-        #[serde(rename = "isStrongMatchExecutable", default)]
-        pub is_strong_match_executable: ::std::option::Option<bool>,
-        #[doc = "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible."]
-        #[serde(rename = "matchMessage", default)]
-        pub match_message: ::std::option::Option<String>,
-        #[doc = "Which IP version the request was made from."]
-        #[serde(rename = "requestIpVersion", default)]
-        pub request_ip_version: ::std::option::Option<
-            crate::schemas::GetIosPostInstallAttributionResponseRequestIpVersion,
-        >,
-        #[doc = "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique)."]
-        #[serde(rename = "requestedLink", default)]
-        pub requested_link: ::std::option::Option<String>,
-        #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies >1 fallback links)."]
-        #[serde(rename = "resolvedLink", default)]
-        pub resolved_link: ::std::option::Option<String>,
-        #[doc = "Scion campaign value to be propagated by iSDK to Scion at post-install."]
-        #[serde(rename = "utmCampaign", default)]
-        pub utm_campaign: ::std::option::Option<String>,
-        #[doc = "Scion content value to be propagated by iSDK to Scion at app-reopen."]
-        #[serde(rename = "utmContent", default)]
-        pub utm_content: ::std::option::Option<String>,
-        #[doc = "Scion medium value to be propagated by iSDK to Scion at post-install."]
-        #[serde(rename = "utmMedium", default)]
-        pub utm_medium: ::std::option::Option<String>,
-        #[doc = "Scion source value to be propagated by iSDK to Scion at post-install."]
-        #[serde(rename = "utmSource", default)]
-        pub utm_source: ::std::option::Option<String>,
-        #[doc = "Scion term value to be propagated by iSDK to Scion at app-reopen."]
-        #[serde(rename = "utmTerm", default)]
-        pub utm_term: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1328,6 +1328,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ManagedShortLink {
+        #[doc = "Creation timestamp of the short link."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Attributes that have been flagged about this short url."]
+        #[serde(rename = "flaggedAttribute", default)]
+        pub flagged_attribute:
+            ::std::option::Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
+        #[doc = "Full Dyamic Link info"]
+        #[serde(rename = "info", default)]
+        pub info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
+        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
+        #[serde(rename = "link", default)]
+        pub link: ::std::option::Option<String>,
+        #[doc = "Link name defined by the creator.\n\nRequired."]
+        #[serde(rename = "linkName", default)]
+        pub link_name: ::std::option::Option<String>,
+        #[doc = "Visibility status of link."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: ::std::option::Option<crate::schemas::ManagedShortLinkVisibility>,
+    }
+    impl ::field_selector::FieldSelector for ManagedShortLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkFlaggedAttributeItems {
         Spam,
@@ -1460,48 +1502,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ManagedShortLink {
-        #[doc = "Creation timestamp of the short link."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<String>,
-        #[doc = "Attributes that have been flagged about this short url."]
-        #[serde(rename = "flaggedAttribute", default)]
-        pub flagged_attribute:
-            ::std::option::Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
-        #[doc = "Full Dyamic Link info"]
-        #[serde(rename = "info", default)]
-        pub info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
-        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
-        #[serde(rename = "link", default)]
-        pub link: ::std::option::Option<String>,
-        #[doc = "Link name defined by the creator.\n\nRequired."]
-        #[serde(rename = "linkName", default)]
-        pub link_name: ::std::option::Option<String>,
-        #[doc = "Visibility status of link."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: ::std::option::Option<crate::schemas::ManagedShortLinkVisibility>,
-    }
-    impl ::field_selector::FieldSelector for ManagedShortLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct NavigationInfo {
         #[doc = "If this option is on, FDL click will be forced to redirect rather than\nshow an interstitial page."]
         #[serde(rename = "enableForcedRedirect", default)]
@@ -1540,6 +1540,35 @@ pub mod schemas {
         pub social_title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SocialMetaTagInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Suffix {
+        #[doc = "Only applies to Option.CUSTOM."]
+        #[serde(rename = "customSuffix", default)]
+        pub custom_suffix: ::std::option::Option<String>,
+        #[doc = "Suffix option."]
+        #[serde(rename = "option", default)]
+        pub option: ::std::option::Option<crate::schemas::SuffixOption>,
+    }
+    impl ::field_selector::FieldSelector for Suffix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1603,35 +1632,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SuffixOption {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Suffix {
-        #[doc = "Only applies to Option.CUSTOM."]
-        #[serde(rename = "customSuffix", default)]
-        pub custom_suffix: ::std::option::Option<String>,
-        #[doc = "Suffix option."]
-        #[serde(rename = "option", default)]
-        pub option: ::std::option::Option<crate::schemas::SuffixOption>,
-    }
-    impl ::field_selector::FieldSelector for Suffix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2887,84 +2887,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2993,174 +2915,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

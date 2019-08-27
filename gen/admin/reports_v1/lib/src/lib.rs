@@ -46,6 +46,50 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Activity {
+        #[doc = "User doing the action."]
+        #[serde(rename = "actor", default)]
+        pub actor: ::std::option::Option<crate::schemas::ActivityActor>,
+        #[doc = "ETag of the entry."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Activity events."]
+        #[serde(rename = "events", default)]
+        pub events: ::std::option::Option<Vec<crate::schemas::ActivityEventsItems>>,
+        #[doc = "Unique identifier for each activity record."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<crate::schemas::ActivityId>,
+        #[doc = "IP Address of the user doing the action."]
+        #[serde(rename = "ipAddress", default)]
+        pub ip_address: ::std::option::Option<String>,
+        #[doc = "Kind of resource this is."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Domain of source customer."]
+        #[serde(rename = "ownerDomain", default)]
+        pub owner_domain: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Activity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ActivityActor {
         #[doc = "User or OAuth 2LO request."]
         #[serde(rename = "callerType", default)]
@@ -61,6 +105,90 @@ pub mod schemas {
         pub profile_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivityActor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActivityEventsItems {
+        #[doc = "Name of event."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Parameter value pairs for various applications."]
+        #[serde(rename = "parameters", default)]
+        pub parameters:
+            ::std::option::Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
+        #[doc = "Type of event."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ActivityEventsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActivityEventsItemsParametersItems {
+        #[doc = "Boolean value of the parameter."]
+        #[serde(rename = "boolValue", default)]
+        pub bool_value: ::std::option::Option<bool>,
+        #[doc = "Integral value of the parameter."]
+        #[serde(rename = "intValue", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub int_value: ::std::option::Option<i64>,
+        #[doc = "Nested value of the parameter."]
+        #[serde(rename = "messageValue", default)]
+        pub message_value:
+            ::std::option::Option<crate::schemas::ActivityEventsItemsParametersItemsMessageValue>,
+        #[doc = "Multi-int value of the parameter."]
+        #[serde(rename = "multiIntValue", default)]
+        pub multi_int_value: ::std::option::Option<Vec<i64>>,
+        #[doc = "Nested values of the parameter."]
+        #[serde(rename = "multiMessageValue", default)]
+        pub multi_message_value: ::std::option::Option<
+            Vec<crate::schemas::ActivityEventsItemsParametersItemsMultiMessageValueItems>,
+        >,
+        #[doc = "Multi-string value of the parameter."]
+        #[serde(rename = "multiValue", default)]
+        pub multi_value: ::std::option::Option<Vec<String>>,
+        #[doc = "The name of the parameter."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "String value of the parameter."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -133,90 +261,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityEventsItemsParametersItems {
-        #[doc = "Boolean value of the parameter."]
-        #[serde(rename = "boolValue", default)]
-        pub bool_value: ::std::option::Option<bool>,
-        #[doc = "Integral value of the parameter."]
-        #[serde(rename = "intValue", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub int_value: ::std::option::Option<i64>,
-        #[doc = "Nested value of the parameter."]
-        #[serde(rename = "messageValue", default)]
-        pub message_value:
-            ::std::option::Option<crate::schemas::ActivityEventsItemsParametersItemsMessageValue>,
-        #[doc = "Multi-int value of the parameter."]
-        #[serde(rename = "multiIntValue", default)]
-        pub multi_int_value: ::std::option::Option<Vec<i64>>,
-        #[doc = "Nested values of the parameter."]
-        #[serde(rename = "multiMessageValue", default)]
-        pub multi_message_value: ::std::option::Option<
-            Vec<crate::schemas::ActivityEventsItemsParametersItemsMultiMessageValueItems>,
-        >,
-        #[doc = "Multi-string value of the parameter."]
-        #[serde(rename = "multiValue", default)]
-        pub multi_value: ::std::option::Option<Vec<String>>,
-        #[doc = "The name of the parameter."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "String value of the parameter."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ActivityEventsItems {
-        #[doc = "Name of event."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
-        pub parameters:
-            ::std::option::Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
-        #[doc = "Type of event."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ActivityEventsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ActivityId {
         #[doc = "Application name to which the event belongs."]
         #[serde(rename = "applicationName", default)]
@@ -233,50 +277,6 @@ pub mod schemas {
         pub unique_qualifier: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ActivityId {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Activity {
-        #[doc = "User doing the action."]
-        #[serde(rename = "actor", default)]
-        pub actor: ::std::option::Option<crate::schemas::ActivityActor>,
-        #[doc = "ETag of the entry."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Activity events."]
-        #[serde(rename = "events", default)]
-        pub events: ::std::option::Option<Vec<crate::schemas::ActivityEventsItems>>,
-        #[doc = "Unique identifier for each activity record."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<crate::schemas::ActivityId>,
-        #[doc = "IP Address of the user doing the action."]
-        #[serde(rename = "ipAddress", default)]
-        pub ip_address: ::std::option::Option<String>,
-        #[doc = "Kind of resource this is."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Domain of source customer."]
-        #[serde(rename = "ownerDomain", default)]
-        pub owner_domain: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Activity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -384,6 +384,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct UsageReport {
+        #[doc = "The date to which the record belongs."]
+        #[serde(rename = "date", default)]
+        pub date: ::std::option::Option<String>,
+        #[doc = "Information about the type of the item."]
+        #[serde(rename = "entity", default)]
+        pub entity: ::std::option::Option<crate::schemas::UsageReportEntity>,
+        #[doc = "ETag of the resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "The kind of object."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Parameter value pairs for various applications."]
+        #[serde(rename = "parameters", default)]
+        pub parameters: ::std::option::Option<Vec<crate::schemas::UsageReportParametersItems>>,
+    }
+    impl ::field_selector::FieldSelector for UsageReport {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -455,53 +482,24 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct UsageReport {
-        #[doc = "The date to which the record belongs."]
-        #[serde(rename = "date", default)]
-        pub date: ::std::option::Option<String>,
-        #[doc = "Information about the type of the item."]
-        #[serde(rename = "entity", default)]
-        pub entity: ::std::option::Option<crate::schemas::UsageReportEntity>,
+    pub struct UsageReports {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
         pub etag: ::std::option::Option<String>,
         #[doc = "The kind of object."]
         #[serde(rename = "kind", default)]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
-        pub parameters: ::std::option::Option<Vec<crate::schemas::UsageReportParametersItems>>,
+        #[doc = "Token for retrieving the next page"]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Various application parameter records."]
+        #[serde(rename = "usageReports", default)]
+        pub usage_reports: ::std::option::Option<Vec<crate::schemas::UsageReport>>,
+        #[doc = "Warnings if any."]
+        #[serde(rename = "warnings", default)]
+        pub warnings: ::std::option::Option<Vec<crate::schemas::UsageReportsWarningsItems>>,
     }
-    impl ::field_selector::FieldSelector for UsageReport {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsageReportsWarningsItemsDataItems {
-        #[doc = "Key associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "Value associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsageReportsWarningsItemsDataItems {
+    impl ::field_selector::FieldSelector for UsageReports {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -542,25 +540,27 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct UsageReports {
-        #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The kind of object."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Token for retrieving the next page"]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-        #[doc = "Various application parameter records."]
-        #[serde(rename = "usageReports", default)]
-        pub usage_reports: ::std::option::Option<Vec<crate::schemas::UsageReport>>,
-        #[doc = "Warnings if any."]
-        #[serde(rename = "warnings", default)]
-        pub warnings: ::std::option::Option<Vec<crate::schemas::UsageReportsWarningsItems>>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsageReportsWarningsItemsDataItems {
+        #[doc = "Key associated with a key-value pair to give detailed information on the warning."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "Value associated with a key-value pair to give detailed information on the warning."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for UsageReports {
+    impl ::field_selector::FieldSelector for UsageReportsWarningsItemsDataItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2466,84 +2466,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -2575,7 +2497,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -2696,50 +2617,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

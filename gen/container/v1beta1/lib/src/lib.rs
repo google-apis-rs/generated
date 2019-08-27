@@ -326,81 +326,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ClusterStatus {
-        #[doc = "The DEGRADED state indicates the cluster requires user action to restore\nfull functionality. Details can be found in the `statusMessage` field."]
-        Degraded,
-        #[doc = "The ERROR state indicates the cluster may be unusable. Details\ncan be found in the `statusMessage` field."]
-        Error,
-        #[doc = "The PROVISIONING state indicates the cluster is being created."]
-        Provisioning,
-        #[doc = "The RECONCILING state indicates that some work is actively being done on\nthe cluster, such as upgrading the master or node software. Details can\nbe found in the `statusMessage` field."]
-        Reconciling,
-        #[doc = "The RUNNING state indicates the cluster has been created and is fully\nusable."]
-        Running,
-        #[doc = "Not set."]
-        StatusUnspecified,
-        #[doc = "The STOPPING state indicates the cluster is being deleted."]
-        Stopping,
-    }
-    impl ClusterStatus {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ClusterStatus::Degraded => "DEGRADED",
-                ClusterStatus::Error => "ERROR",
-                ClusterStatus::Provisioning => "PROVISIONING",
-                ClusterStatus::Reconciling => "RECONCILING",
-                ClusterStatus::Running => "RUNNING",
-                ClusterStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
-                ClusterStatus::Stopping => "STOPPING",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ClusterStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ClusterStatus {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ClusterStatus {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DEGRADED" => ClusterStatus::Degraded,
-                "ERROR" => ClusterStatus::Error,
-                "PROVISIONING" => ClusterStatus::Provisioning,
-                "RECONCILING" => ClusterStatus::Reconciling,
-                "RUNNING" => ClusterStatus::Running,
-                "STATUS_UNSPECIFIED" => ClusterStatus::StatusUnspecified,
-                "STOPPING" => ClusterStatus::Stopping,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for ClusterStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -582,6 +507,81 @@ pub mod schemas {
         pub zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Cluster {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ClusterStatus {
+        #[doc = "The DEGRADED state indicates the cluster requires user action to restore\nfull functionality. Details can be found in the `statusMessage` field."]
+        Degraded,
+        #[doc = "The ERROR state indicates the cluster may be unusable. Details\ncan be found in the `statusMessage` field."]
+        Error,
+        #[doc = "The PROVISIONING state indicates the cluster is being created."]
+        Provisioning,
+        #[doc = "The RECONCILING state indicates that some work is actively being done on\nthe cluster, such as upgrading the master or node software. Details can\nbe found in the `statusMessage` field."]
+        Reconciling,
+        #[doc = "The RUNNING state indicates the cluster has been created and is fully\nusable."]
+        Running,
+        #[doc = "Not set."]
+        StatusUnspecified,
+        #[doc = "The STOPPING state indicates the cluster is being deleted."]
+        Stopping,
+    }
+    impl ClusterStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ClusterStatus::Degraded => "DEGRADED",
+                ClusterStatus::Error => "ERROR",
+                ClusterStatus::Provisioning => "PROVISIONING",
+                ClusterStatus::Reconciling => "RECONCILING",
+                ClusterStatus::Running => "RUNNING",
+                ClusterStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
+                ClusterStatus::Stopping => "STOPPING",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ClusterStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ClusterStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ClusterStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEGRADED" => ClusterStatus::Degraded,
+                "ERROR" => ClusterStatus::Error,
+                "PROVISIONING" => ClusterStatus::Provisioning,
+                "RECONCILING" => ClusterStatus::Reconciling,
+                "RUNNING" => ClusterStatus::Running,
+                "STATUS_UNSPECIFIED" => ClusterStatus::StatusUnspecified,
+                "STOPPING" => ClusterStatus::Stopping,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for ClusterStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -881,6 +881,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatabaseEncryption {
+        #[doc = "Name of CloudKMS key to use for the encryption of secrets in etcd.\nEx. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key"]
+        #[serde(rename = "keyName", default)]
+        pub key_name: ::std::option::Option<String>,
+        #[doc = "Denotes the state of etcd encryption."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::DatabaseEncryptionState>,
+    }
+    impl ::field_selector::FieldSelector for DatabaseEncryption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DatabaseEncryptionState {
         #[doc = "Secrets in etcd are stored in plain text (at etcd level) - this is\nunrelated to Google Compute Engine level full disk encryption."]
@@ -932,35 +961,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DatabaseEncryptionState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DatabaseEncryption {
-        #[doc = "Name of CloudKMS key to use for the encryption of secrets in etcd.\nEx. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key"]
-        #[serde(rename = "keyName", default)]
-        pub key_name: ::std::option::Option<String>,
-        #[doc = "Denotes the state of etcd encryption."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::DatabaseEncryptionState>,
-    }
-    impl ::field_selector::FieldSelector for DatabaseEncryption {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1235,6 +1235,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct IstioConfig {
+        #[doc = "The specified Istio auth mode, either none, or mutual TLS."]
+        #[serde(rename = "auth", default)]
+        pub auth: ::std::option::Option<crate::schemas::IstioConfigAuth>,
+        #[doc = "Whether Istio is enabled for this cluster."]
+        #[serde(rename = "disabled", default)]
+        pub disabled: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for IstioConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum IstioConfigAuth {
         #[doc = "auth mutual TLS enabled"]
@@ -1282,35 +1311,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for IstioConfigAuth {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct IstioConfig {
-        #[doc = "The specified Istio auth mode, either none, or mutual TLS."]
-        #[serde(rename = "auth", default)]
-        pub auth: ::std::option::Option<crate::schemas::IstioConfigAuth>,
-        #[doc = "Whether Istio is enabled for this cluster."]
-        #[serde(rename = "disabled", default)]
-        pub disabled: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for IstioConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1554,6 +1554,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Location {
+        #[doc = "Contains the name of the resource requested.\nSpecified in the format 'projects/*/locations/*'."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Contains the type of location this Location is for.\nRegional or Zonal."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::LocationType>,
+        #[doc = "Whether the location is recomended for GKE cluster scheduling."]
+        #[serde(rename = "recommended", default)]
+        pub recommended: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for Location {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LocationType {
         #[doc = "LOCATION_TYPE_UNSPECIFIED means the location type was not determined."]
@@ -1605,38 +1637,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for LocationType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Location {
-        #[doc = "Contains the name of the resource requested.\nSpecified in the format 'projects/*/locations/*'."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Contains the type of location this Location is for.\nRegional or Zonal."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::LocationType>,
-        #[doc = "Whether the location is recomended for GKE cluster scheduling."]
-        #[serde(rename = "recommended", default)]
-        pub recommended: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1853,6 +1853,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NetworkPolicy {
+        #[doc = "Whether network policy is enabled on the cluster."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "The selected network policy provider."]
+        #[serde(rename = "provider", default)]
+        pub provider: ::std::option::Option<crate::schemas::NetworkPolicyProvider>,
+    }
+    impl ::field_selector::FieldSelector for NetworkPolicy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkPolicyProvider {
         #[doc = "Tigera (Calico Felix)."]
@@ -1900,35 +1929,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NetworkPolicyProvider {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct NetworkPolicy {
-        #[doc = "Whether network policy is enabled on the cluster."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-        #[doc = "The selected network policy provider."]
-        #[serde(rename = "provider", default)]
-        pub provider: ::std::option::Option<crate::schemas::NetworkPolicyProvider>,
-    }
-    impl ::field_selector::FieldSelector for NetworkPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2069,6 +2069,71 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NodePool {
+        #[doc = "Autoscaler configuration for this NodePool. Autoscaler is enabled\nonly if a valid configuration is present."]
+        #[serde(rename = "autoscaling", default)]
+        pub autoscaling: ::std::option::Option<crate::schemas::NodePoolAutoscaling>,
+        #[doc = "Which conditions caused the current node pool state."]
+        #[serde(rename = "conditions", default)]
+        pub conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
+        #[doc = "The node configuration of the pool."]
+        #[serde(rename = "config", default)]
+        pub config: ::std::option::Option<crate::schemas::NodeConfig>,
+        #[doc = "The initial node count for the pool. You must ensure that your\nCompute Engine <a href=\"/compute/docs/resource-quotas\">resource quota</a>\nis sufficient for this number of instances. You must also have available\nfirewall and routes quota."]
+        #[serde(rename = "initialNodeCount", default)]
+        pub initial_node_count: ::std::option::Option<i32>,
+        #[doc = "[Output only] The resource URLs of the [managed instance\ngroups](/compute/docs/instance-groups/creating-groups-of-managed-instances)\nassociated with this node pool."]
+        #[serde(rename = "instanceGroupUrls", default)]
+        pub instance_group_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "The list of Google Compute Engine [zones](/compute/docs/zones#available)\nin which the NodePool's nodes should be located."]
+        #[serde(rename = "locations", default)]
+        pub locations: ::std::option::Option<Vec<String>>,
+        #[doc = "NodeManagement configuration for this NodePool."]
+        #[serde(rename = "management", default)]
+        pub management: ::std::option::Option<crate::schemas::NodeManagement>,
+        #[doc = "The constraint on the maximum number of pods that can be run\nsimultaneously on a node in the node pool."]
+        #[serde(rename = "maxPodsConstraint", default)]
+        pub max_pods_constraint: ::std::option::Option<crate::schemas::MaxPodsConstraint>,
+        #[doc = "The name of the node pool."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "[Output only] The pod CIDR block size per node in this node pool."]
+        #[serde(rename = "podIpv4CidrSize", default)]
+        pub pod_ipv_4_cidr_size: ::std::option::Option<i32>,
+        #[doc = "[Output only] Server-defined URL for the resource."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "[Output only] The status of the nodes in this pool instance."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::NodePoolStatus>,
+        #[doc = "[Output only] Additional information about the current status of this\nnode pool instance, if available."]
+        #[serde(rename = "statusMessage", default)]
+        pub status_message: ::std::option::Option<String>,
+        #[doc = "The version of the Kubernetes of this node."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for NodePool {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NodePoolStatus {
         #[doc = "The ERROR state indicates the node pool may be unusable. Details\ncan be found in the `statusMessage` field."]
@@ -2156,51 +2221,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct NodePool {
-        #[doc = "Autoscaler configuration for this NodePool. Autoscaler is enabled\nonly if a valid configuration is present."]
-        #[serde(rename = "autoscaling", default)]
-        pub autoscaling: ::std::option::Option<crate::schemas::NodePoolAutoscaling>,
-        #[doc = "Which conditions caused the current node pool state."]
-        #[serde(rename = "conditions", default)]
-        pub conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
-        #[doc = "The node configuration of the pool."]
-        #[serde(rename = "config", default)]
-        pub config: ::std::option::Option<crate::schemas::NodeConfig>,
-        #[doc = "The initial node count for the pool. You must ensure that your\nCompute Engine <a href=\"/compute/docs/resource-quotas\">resource quota</a>\nis sufficient for this number of instances. You must also have available\nfirewall and routes quota."]
-        #[serde(rename = "initialNodeCount", default)]
-        pub initial_node_count: ::std::option::Option<i32>,
-        #[doc = "[Output only] The resource URLs of the [managed instance\ngroups](/compute/docs/instance-groups/creating-groups-of-managed-instances)\nassociated with this node pool."]
-        #[serde(rename = "instanceGroupUrls", default)]
-        pub instance_group_urls: ::std::option::Option<Vec<String>>,
-        #[doc = "The list of Google Compute Engine [zones](/compute/docs/zones#available)\nin which the NodePool's nodes should be located."]
-        #[serde(rename = "locations", default)]
-        pub locations: ::std::option::Option<Vec<String>>,
-        #[doc = "NodeManagement configuration for this NodePool."]
-        #[serde(rename = "management", default)]
-        pub management: ::std::option::Option<crate::schemas::NodeManagement>,
-        #[doc = "The constraint on the maximum number of pods that can be run\nsimultaneously on a node in the node pool."]
-        #[serde(rename = "maxPodsConstraint", default)]
-        pub max_pods_constraint: ::std::option::Option<crate::schemas::MaxPodsConstraint>,
-        #[doc = "The name of the node pool."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "[Output only] The pod CIDR block size per node in this node pool."]
-        #[serde(rename = "podIpv4CidrSize", default)]
-        pub pod_ipv_4_cidr_size: ::std::option::Option<i32>,
-        #[doc = "[Output only] Server-defined URL for the resource."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "[Output only] The status of the nodes in this pool instance."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::NodePoolStatus>,
-        #[doc = "[Output only] Additional information about the current status of this\nnode pool instance, if available."]
-        #[serde(rename = "statusMessage", default)]
-        pub status_message: ::std::option::Option<String>,
-        #[doc = "The version of the Kubernetes of this node."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<String>,
+    pub struct NodePoolAutoscaling {
+        #[doc = "Can this node pool be deleted automatically."]
+        #[serde(rename = "autoprovisioned", default)]
+        pub autoprovisioned: ::std::option::Option<bool>,
+        #[doc = "Is autoscaling enabled for this node pool."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "Maximum number of nodes in the NodePool. Must be >= min_node_count. There\nhas to enough quota to scale up the cluster."]
+        #[serde(rename = "maxNodeCount", default)]
+        pub max_node_count: ::std::option::Option<i32>,
+        #[doc = "Minimum number of nodes in the NodePool. Must be >= 1 and <=\nmax_node_count."]
+        #[serde(rename = "minNodeCount", default)]
+        pub min_node_count: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for NodePool {
+    impl ::field_selector::FieldSelector for NodePoolAutoscaling {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2221,21 +2256,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct NodePoolAutoscaling {
-        #[doc = "Can this node pool be deleted automatically."]
-        #[serde(rename = "autoprovisioned", default)]
-        pub autoprovisioned: ::std::option::Option<bool>,
-        #[doc = "Is autoscaling enabled for this node pool."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: ::std::option::Option<bool>,
-        #[doc = "Maximum number of nodes in the NodePool. Must be >= min_node_count. There\nhas to enough quota to scale up the cluster."]
-        #[serde(rename = "maxNodeCount", default)]
-        pub max_node_count: ::std::option::Option<i32>,
-        #[doc = "Minimum number of nodes in the NodePool. Must be >= 1 and <=\nmax_node_count."]
-        #[serde(rename = "minNodeCount", default)]
-        pub min_node_count: ::std::option::Option<i32>,
+    pub struct NodeTaint {
+        #[doc = "Effect for taint."]
+        #[serde(rename = "effect", default)]
+        pub effect: ::std::option::Option<crate::schemas::NodeTaintEffect>,
+        #[doc = "Key for taint."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "Value for taint."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for NodePoolAutoscaling {
+    impl ::field_selector::FieldSelector for NodeTaint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2308,29 +2340,53 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct NodeTaint {
-        #[doc = "Effect for taint."]
-        #[serde(rename = "effect", default)]
-        pub effect: ::std::option::Option<crate::schemas::NodeTaintEffect>,
-        #[doc = "Key for taint."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "Value for taint."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
+    pub struct Operation {
+        #[doc = "Which conditions caused the current cluster state."]
+        #[serde(rename = "clusterConditions", default)]
+        pub cluster_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
+        #[doc = "Detailed operation progress, if available."]
+        #[serde(rename = "detail", default)]
+        pub detail: ::std::option::Option<String>,
+        #[doc = "[Output only] The time the operation completed, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The server-assigned ID for the operation."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Which conditions caused the current node pool state."]
+        #[serde(rename = "nodepoolConditions", default)]
+        pub nodepool_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
+        #[doc = "The operation type."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type: ::std::option::Option<crate::schemas::OperationOperationType>,
+        #[doc = "[Output only] Progress information for an operation."]
+        #[serde(rename = "progress", default)]
+        pub progress: ::std::option::Option<crate::schemas::OperationProgress>,
+        #[doc = "Server-defined URL for the resource."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: ::std::option::Option<String>,
+        #[doc = "[Output only] The time the operation started, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "The current status of the operation."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::OperationStatus>,
+        #[doc = "If an error has occurred, a textual description of the error."]
+        #[serde(rename = "statusMessage", default)]
+        pub status_message: ::std::option::Option<String>,
+        #[doc = "Server-defined URL for the target of the operation."]
+        #[serde(rename = "targetLink", default)]
+        pub target_link: ::std::option::Option<String>,
+        #[doc = "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation\nis taking place.\nThis field is deprecated, use location instead."]
+        #[serde(rename = "zone", default)]
+        pub zone: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for NodeTaint {
+    impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2524,51 +2580,21 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Operation {
-        #[doc = "Which conditions caused the current cluster state."]
-        #[serde(rename = "clusterConditions", default)]
-        pub cluster_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
-        #[doc = "Detailed operation progress, if available."]
-        #[serde(rename = "detail", default)]
-        pub detail: ::std::option::Option<String>,
-        #[doc = "[Output only] The time the operation completed, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The server-assigned ID for the operation."]
+    pub struct OperationProgress {
+        #[doc = "Progress metric bundle, for example:\nmetrics: [{name: \"nodes done\",     int_value: 15},\n{name: \"nodes total\",    int_value: 32}]\nor\nmetrics: [{name: \"progress\",       double_value: 0.56},\n{name: \"progress scale\", double_value: 1.0}]"]
+        #[serde(rename = "metrics", default)]
+        pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
+        #[doc = "A non-parameterized string describing an operation stage.\nUnset for single-stage operations."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
-        #[doc = "Which conditions caused the current node pool state."]
-        #[serde(rename = "nodepoolConditions", default)]
-        pub nodepool_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
-        #[doc = "The operation type."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type: ::std::option::Option<crate::schemas::OperationOperationType>,
-        #[doc = "[Output only] Progress information for an operation."]
-        #[serde(rename = "progress", default)]
-        pub progress: ::std::option::Option<crate::schemas::OperationProgress>,
-        #[doc = "Server-defined URL for the resource."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: ::std::option::Option<String>,
-        #[doc = "[Output only] The time the operation started, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "The current status of the operation."]
+        #[doc = "Substages of an operation or a stage."]
+        #[serde(rename = "stages", default)]
+        pub stages: ::std::option::Option<Vec<crate::schemas::OperationProgress>>,
+        #[doc = "Status of an operation stage.\nUnset for single-stage operations."]
         #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::OperationStatus>,
-        #[doc = "If an error has occurred, a textual description of the error."]
-        #[serde(rename = "statusMessage", default)]
-        pub status_message: ::std::option::Option<String>,
-        #[doc = "Server-defined URL for the target of the operation."]
-        #[serde(rename = "targetLink", default)]
-        pub target_link: ::std::option::Option<String>,
-        #[doc = "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation\nis taking place.\nThis field is deprecated, use location instead."]
-        #[serde(rename = "zone", default)]
-        pub zone: ::std::option::Option<String>,
+        pub status: ::std::option::Option<crate::schemas::OperationProgressStatus>,
     }
-    impl ::field_selector::FieldSelector for Operation {
+    impl ::field_selector::FieldSelector for OperationProgress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2636,32 +2662,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for OperationProgressStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct OperationProgress {
-        #[doc = "Progress metric bundle, for example:\nmetrics: [{name: \"nodes done\",     int_value: 15},\n{name: \"nodes total\",    int_value: 32}]\nor\nmetrics: [{name: \"progress\",       double_value: 0.56},\n{name: \"progress scale\", double_value: 1.0}]"]
-        #[serde(rename = "metrics", default)]
-        pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
-        #[doc = "A non-parameterized string describing an operation stage.\nUnset for single-stage operations."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Substages of an operation or a stage."]
-        #[serde(rename = "stages", default)]
-        pub stages: ::std::option::Option<Vec<crate::schemas::OperationProgress>>,
-        #[doc = "Status of an operation stage.\nUnset for single-stage operations."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::OperationProgressStatus>,
-    }
-    impl ::field_selector::FieldSelector for OperationProgress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3137,6 +3137,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SetMasterAuthRequest {
+        #[doc = "The exact form of action to be taken on the master auth."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::SetMasterAuthRequestAction>,
+        #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
+        #[serde(rename = "clusterId", default)]
+        pub cluster_id: ::std::option::Option<String>,
+        #[doc = "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "A description of the update."]
+        #[serde(rename = "update", default)]
+        pub update: ::std::option::Option<crate::schemas::MasterAuth>,
+        #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
+        #[serde(rename = "zone", default)]
+        pub zone: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SetMasterAuthRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SetMasterAuthRequestAction {
         #[doc = "Generate a new password and set it to that."]
@@ -3192,47 +3233,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SetMasterAuthRequestAction {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SetMasterAuthRequest {
-        #[doc = "The exact form of action to be taken on the master auth."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::SetMasterAuthRequestAction>,
-        #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
-        pub cluster_id: ::std::option::Option<String>,
-        #[doc = "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "A description of the update."]
-        #[serde(rename = "update", default)]
-        pub update: ::std::option::Option<crate::schemas::MasterAuth>,
-        #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
-        pub zone: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SetMasterAuthRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3533,6 +3533,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StatusCondition {
+        #[doc = "Machine-friendly representation of the condition"]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<crate::schemas::StatusConditionCode>,
+        #[doc = "Human-friendly representation of the condition"]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for StatusCondition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StatusConditionCode {
         #[doc = "Google Compute Engine quota was exceeded."]
@@ -3612,15 +3641,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct StatusCondition {
-        #[doc = "Machine-friendly representation of the condition"]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<crate::schemas::StatusConditionCode>,
-        #[doc = "Human-friendly representation of the condition"]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
+    pub struct TierSettings {
+        #[doc = "Cluster tier."]
+        #[serde(rename = "tier", default)]
+        pub tier: ::std::option::Option<crate::schemas::TierSettingsTier>,
     }
-    impl ::field_selector::FieldSelector for StatusCondition {
+    impl ::field_selector::FieldSelector for TierSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3680,32 +3706,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TierSettingsTier {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TierSettings {
-        #[doc = "Cluster tier."]
-        #[serde(rename = "tier", default)]
-        pub tier: ::std::option::Option<crate::schemas::TierSettingsTier>,
-    }
-    impl ::field_selector::FieldSelector for TierSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3879,6 +3879,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsableSubnetworkSecondaryRange {
+        #[doc = "The range of IP addresses belonging to this subnetwork secondary range."]
+        #[serde(rename = "ipCidrRange", default)]
+        pub ip_cidr_range: ::std::option::Option<String>,
+        #[doc = "The name associated with this subnetwork secondary range, used when adding\nan alias IP range to a VM instance."]
+        #[serde(rename = "rangeName", default)]
+        pub range_name: ::std::option::Option<String>,
+        #[doc = "This field is to determine the status of the secondary range programmably."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::UsableSubnetworkSecondaryRangeStatus>,
+    }
+    impl ::field_selector::FieldSelector for UsableSubnetworkSecondaryRange {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UsableSubnetworkSecondaryRangeStatus {
         #[doc = "IN_USE_MANAGED_POD denotes this range was created by GKE and is claimed\nfor pods. It cannot be used for other clusters."]
@@ -3958,38 +3990,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UsableSubnetworkSecondaryRange {
-        #[doc = "The range of IP addresses belonging to this subnetwork secondary range."]
-        #[serde(rename = "ipCidrRange", default)]
-        pub ip_cidr_range: ::std::option::Option<String>,
-        #[doc = "The name associated with this subnetwork secondary range, used when adding\nan alias IP range to a VM instance."]
-        #[serde(rename = "rangeName", default)]
-        pub range_name: ::std::option::Option<String>,
-        #[doc = "This field is to determine the status of the secondary range programmably."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::UsableSubnetworkSecondaryRangeStatus>,
-    }
-    impl ::field_selector::FieldSelector for UsableSubnetworkSecondaryRange {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct VerticalPodAutoscaling {
         #[doc = "Enables vertical pod autoscaling."]
         #[serde(rename = "enabled", default)]
@@ -4022,6 +4022,33 @@ pub mod schemas {
         pub identity_namespace: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WorkloadIdentityConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WorkloadMetadataConfig {
+        #[doc = "NodeMetadata is the configuration for how to expose metadata to the\nworkloads running on the node."]
+        #[serde(rename = "nodeMetadata", default)]
+        pub node_metadata:
+            ::std::option::Option<crate::schemas::WorkloadMetadataConfigNodeMetadata>,
+    }
+    impl ::field_selector::FieldSelector for WorkloadMetadataConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4085,33 +4112,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for WorkloadMetadataConfigNodeMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WorkloadMetadataConfig {
-        #[doc = "NodeMetadata is the configuration for how to expose metadata to the\nworkloads running on the node."]
-        #[serde(rename = "nodeMetadata", default)]
-        pub node_metadata:
-            ::std::option::Option<crate::schemas::WorkloadMetadataConfigNodeMetadata>,
-    }
-    impl ::field_selector::FieldSelector for WorkloadMetadataConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -17409,84 +17409,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -17518,7 +17440,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -17639,50 +17560,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

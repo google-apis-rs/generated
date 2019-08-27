@@ -28,6 +28,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActionResponse {
+        #[doc = "The type of bot response."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ActionResponseType>,
+        #[doc = "URL for users to auth or config. (Only for REQUEST_CONFIG response types.)"]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ActionResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ActionResponseType {
         #[doc = "Post as a new message in the topic."]
@@ -103,15 +132,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActionResponse {
-        #[doc = "The type of bot response."]
+    pub struct Annotation {
+        #[doc = "Length of the substring in the plain-text message body this annotation\ncorresponds to."]
+        #[serde(rename = "length", default)]
+        pub length: ::std::option::Option<i32>,
+        #[doc = "The type of this annotation."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ActionResponseType>,
-        #[doc = "URL for users to auth or config. (Only for REQUEST_CONFIG response types.)"]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
+        pub r#type: ::std::option::Option<crate::schemas::AnnotationType>,
+        #[doc = "Start index (0-based, inclusive) in the plain-text message body this\nannotation corresponds to."]
+        #[serde(rename = "startIndex", default)]
+        pub start_index: ::std::option::Option<i32>,
+        #[doc = "The metadata of user mention."]
+        #[serde(rename = "userMention", default)]
+        pub user_mention: ::std::option::Option<crate::schemas::UserMentionMetadata>,
     }
-    impl ::field_selector::FieldSelector for ActionResponse {
+    impl ::field_selector::FieldSelector for Annotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -167,41 +202,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AnnotationType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Annotation {
-        #[doc = "Length of the substring in the plain-text message body this annotation\ncorresponds to."]
-        #[serde(rename = "length", default)]
-        pub length: ::std::option::Option<i32>,
-        #[doc = "The type of this annotation."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::AnnotationType>,
-        #[doc = "Start index (0-based, inclusive) in the plain-text message body this\nannotation corresponds to."]
-        #[serde(rename = "startIndex", default)]
-        pub start_index: ::std::option::Option<i32>,
-        #[doc = "The metadata of user mention."]
-        #[serde(rename = "userMention", default)]
-        pub user_mention: ::std::option::Option<crate::schemas::UserMentionMetadata>,
-    }
-    impl ::field_selector::FieldSelector for Annotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -294,6 +294,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CardHeader {
+        #[doc = "The image's type (e.g. square border or circular border)."]
+        #[serde(rename = "imageStyle", default)]
+        pub image_style: ::std::option::Option<crate::schemas::CardHeaderImageStyle>,
+        #[doc = "The URL of the image in the card header."]
+        #[serde(rename = "imageUrl", default)]
+        pub image_url: ::std::option::Option<String>,
+        #[doc = "The subtitle of the card header."]
+        #[serde(rename = "subtitle", default)]
+        pub subtitle: ::std::option::Option<String>,
+        #[doc = "The title must be specified. The header has a fixed height: if both a\ntitle and subtitle is specified, each will take up 1 line. If only the\ntitle is specified, it will take up both lines."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CardHeader {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CardHeaderImageStyle {
         #[doc = "Circular border."]
@@ -353,32 +388,38 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CardHeader {
-        #[doc = "The image's type (e.g. square border or circular border)."]
-        #[serde(rename = "imageStyle", default)]
-        pub image_style: ::std::option::Option<crate::schemas::CardHeaderImageStyle>,
-        #[doc = "The URL of the image in the card header."]
-        #[serde(rename = "imageUrl", default)]
-        pub image_url: ::std::option::Option<String>,
-        #[doc = "The subtitle of the card header."]
-        #[serde(rename = "subtitle", default)]
-        pub subtitle: ::std::option::Option<String>,
-        #[doc = "The title must be specified. The header has a fixed height: if both a\ntitle and subtitle is specified, each will take up 1 line. If only the\ntitle is specified, it will take up both lines."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
+    pub struct DeprecatedEvent {
+        #[doc = "The form action data associated with an interactive card that was clicked.\nOnly populated for\nCARD_CLICKED events.\nSee the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for\nmore information."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::FormAction>,
+        #[doc = "The URL the bot should redirect the user to after they have completed an\nauthorization or configuration flow outside of Hangouts Chat. See the\n[Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)\nfor more information."]
+        #[serde(rename = "configCompleteRedirectUrl", default)]
+        pub config_complete_redirect_url: ::std::option::Option<String>,
+        #[doc = "The timestamp indicating when the event was dispatched."]
+        #[serde(rename = "eventTime", default)]
+        pub event_time: ::std::option::Option<String>,
+        #[doc = "The message that triggered the event, if applicable."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<crate::schemas::Message>,
+        #[doc = "The type of the event."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DeprecatedEventType>,
+        #[doc = "The room or DM in which the event occurred."]
+        #[serde(rename = "space", default)]
+        pub space: ::std::option::Option<crate::schemas::Space>,
+        #[doc = "The bot-defined key for the thread related to the event. See the\nthread_key field of the\n`spaces.message.create` request for more information."]
+        #[serde(rename = "threadKey", default)]
+        pub thread_key: ::std::option::Option<String>,
+        #[doc = "A secret value that bots can use to verify if a request is from Google. The\ntoken is randomly generated by Google, remains static, and can be obtained\nfrom the Hangouts Chat API configuration page in the Cloud Console.\nDevelopers can revoke/regenerate it if needed from the same page."]
+        #[serde(rename = "token", default)]
+        pub token: ::std::option::Option<String>,
+        #[doc = "The user that triggered the event."]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
-    impl ::field_selector::FieldSelector for CardHeader {
+    impl ::field_selector::FieldSelector for DeprecatedEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -455,47 +496,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct DeprecatedEvent {
-        #[doc = "The form action data associated with an interactive card that was clicked.\nOnly populated for\nCARD_CLICKED events.\nSee the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for\nmore information."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::FormAction>,
-        #[doc = "The URL the bot should redirect the user to after they have completed an\nauthorization or configuration flow outside of Hangouts Chat. See the\n[Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)\nfor more information."]
-        #[serde(rename = "configCompleteRedirectUrl", default)]
-        pub config_complete_redirect_url: ::std::option::Option<String>,
-        #[doc = "The timestamp indicating when the event was dispatched."]
-        #[serde(rename = "eventTime", default)]
-        pub event_time: ::std::option::Option<String>,
-        #[doc = "The message that triggered the event, if applicable."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<crate::schemas::Message>,
-        #[doc = "The type of the event."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DeprecatedEventType>,
-        #[doc = "The room or DM in which the event occurred."]
-        #[serde(rename = "space", default)]
-        pub space: ::std::option::Option<crate::schemas::Space>,
-        #[doc = "The bot-defined key for the thread related to the event. See the\nthread_key field of the\n`spaces.message.create` request for more information."]
-        #[serde(rename = "threadKey", default)]
-        pub thread_key: ::std::option::Option<String>,
-        #[doc = "A secret value that bots can use to verify if a request is from Google. The\ntoken is randomly generated by Google, remains static, and can be obtained\nfrom the Hangouts Chat API configuration page in the Cloud Console.\nDevelopers can revoke/regenerate it if needed from the same page."]
-        #[serde(rename = "token", default)]
-        pub token: ::std::option::Option<String>,
-        #[doc = "The user that triggered the event."]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<crate::schemas::User>,
-    }
-    impl ::field_selector::FieldSelector for DeprecatedEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -556,6 +556,41 @@ pub mod schemas {
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
     }
     impl ::field_selector::FieldSelector for Image {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImageButton {
+        #[doc = "The icon specified by an enum that indices to an icon provided by Chat\nAPI."]
+        #[serde(rename = "icon", default)]
+        pub icon: ::std::option::Option<crate::schemas::ImageButtonIcon>,
+        #[doc = "The icon specified by a URL."]
+        #[serde(rename = "iconUrl", default)]
+        pub icon_url: ::std::option::Option<String>,
+        #[doc = "The name of this image_button which will be used for accessibility.\nDefault value will be provided if developers don't specify."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The onclick action."]
+        #[serde(rename = "onClick", default)]
+        pub on_click: ::std::option::Option<crate::schemas::OnClick>,
+    }
+    impl ::field_selector::FieldSelector for ImageButton {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -716,21 +751,33 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ImageButton {
-        #[doc = "The icon specified by an enum that indices to an icon provided by Chat\nAPI."]
+    pub struct KeyValue {
+        #[doc = "The text of the bottom label. Formatted text supported."]
+        #[serde(rename = "bottomLabel", default)]
+        pub bottom_label: ::std::option::Option<String>,
+        #[doc = "A button that can be clicked to trigger an action."]
+        #[serde(rename = "button", default)]
+        pub button: ::std::option::Option<crate::schemas::Button>,
+        #[doc = "The text of the content. Formatted text supported and always required."]
+        #[serde(rename = "content", default)]
+        pub content: ::std::option::Option<String>,
+        #[doc = "If the content should be multiline."]
+        #[serde(rename = "contentMultiline", default)]
+        pub content_multiline: ::std::option::Option<bool>,
+        #[doc = "An enum value that will be replaced by the Chat API with the\ncorresponding icon image."]
         #[serde(rename = "icon", default)]
-        pub icon: ::std::option::Option<crate::schemas::ImageButtonIcon>,
+        pub icon: ::std::option::Option<crate::schemas::KeyValueIcon>,
         #[doc = "The icon specified by a URL."]
         #[serde(rename = "iconUrl", default)]
         pub icon_url: ::std::option::Option<String>,
-        #[doc = "The name of this image_button which will be used for accessibility.\nDefault value will be provided if developers don't specify."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The onclick action."]
+        #[doc = "The onclick action. Only the top label, bottom label and content region\nare clickable."]
         #[serde(rename = "onClick", default)]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
+        #[doc = "The text of the top label. Formatted text supported."]
+        #[serde(rename = "topLabel", default)]
+        pub top_label: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ImageButton {
+    impl ::field_selector::FieldSelector for KeyValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -891,53 +938,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct KeyValue {
-        #[doc = "The text of the bottom label. Formatted text supported."]
-        #[serde(rename = "bottomLabel", default)]
-        pub bottom_label: ::std::option::Option<String>,
-        #[doc = "A button that can be clicked to trigger an action."]
-        #[serde(rename = "button", default)]
-        pub button: ::std::option::Option<crate::schemas::Button>,
-        #[doc = "The text of the content. Formatted text supported and always required."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<String>,
-        #[doc = "If the content should be multiline."]
-        #[serde(rename = "contentMultiline", default)]
-        pub content_multiline: ::std::option::Option<bool>,
-        #[doc = "An enum value that will be replaced by the Chat API with the\ncorresponding icon image."]
-        #[serde(rename = "icon", default)]
-        pub icon: ::std::option::Option<crate::schemas::KeyValueIcon>,
-        #[doc = "The icon specified by a URL."]
-        #[serde(rename = "iconUrl", default)]
-        pub icon_url: ::std::option::Option<String>,
-        #[doc = "The onclick action. Only the top label, bottom label and content region\nare clickable."]
-        #[serde(rename = "onClick", default)]
-        pub on_click: ::std::option::Option<crate::schemas::OnClick>,
-        #[doc = "The text of the top label. Formatted text supported."]
-        #[serde(rename = "topLabel", default)]
-        pub top_label: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for KeyValue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ListMembershipsResponse {
         #[doc = "List of memberships in the requested (or first) page."]
         #[serde(rename = "memberships", default)]
@@ -976,6 +976,41 @@ pub mod schemas {
         pub spaces: ::std::option::Option<Vec<crate::schemas::Space>>,
     }
     impl ::field_selector::FieldSelector for ListSpacesResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Membership {
+        #[doc = "The creation time of the membership a.k.a the time at which the member\njoined the space, if applicable."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Member details."]
+        #[serde(rename = "member", default)]
+        pub member: ::std::option::Option<crate::schemas::User>,
+        #[doc = "Resource name of the membership, in the form \"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "State of the membership."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::MembershipState>,
+    }
+    impl ::field_selector::FieldSelector for Membership {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1039,41 +1074,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for MembershipState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Membership {
-        #[doc = "The creation time of the membership a.k.a the time at which the member\njoined the space, if applicable."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Member details."]
-        #[serde(rename = "member", default)]
-        pub member: ::std::option::Option<crate::schemas::User>,
-        #[doc = "Resource name of the membership, in the form \"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105"]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "State of the membership."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::MembershipState>,
-    }
-    impl ::field_selector::FieldSelector for Membership {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1207,6 +1207,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Space {
+        #[doc = "Output only. The display name (only if the space is a room)."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehYs"]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The type of a space."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::SpaceType>,
+    }
+    impl ::field_selector::FieldSelector for Space {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SpaceType {
         #[doc = "1:1 Direct Message between a human and a bot, where all messages are\nflat."]
@@ -1257,38 +1289,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SpaceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Space {
-        #[doc = "Output only. The display name (only if the space is a room)."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehYs"]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The type of a space."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::SpaceType>,
-    }
-    impl ::field_selector::FieldSelector for Space {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1377,6 +1377,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct User {
+        #[doc = "The user's display name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Resource name, in the format \"users/*\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "User type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::UserType>,
+    }
+    impl ::field_selector::FieldSelector for User {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserType {
         #[doc = "Bot user."]
@@ -1448,18 +1480,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct User {
-        #[doc = "The user's display name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Resource name, in the format \"users/*\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "User type."]
+    pub struct UserMentionMetadata {
+        #[doc = "The type of user mention."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::UserType>,
+        pub r#type: ::std::option::Option<crate::schemas::UserMentionMetadataType>,
+        #[doc = "The user mentioned."]
+        #[serde(rename = "user", default)]
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
-    impl ::field_selector::FieldSelector for User {
+    impl ::field_selector::FieldSelector for UserMentionMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1519,35 +1548,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for UserMentionMetadataType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserMentionMetadata {
-        #[doc = "The type of user mention."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::UserMentionMetadataType>,
-        #[doc = "The user mentioned."]
-        #[serde(rename = "user", default)]
-        pub user: ::std::option::Option<crate::schemas::User>,
-    }
-    impl ::field_selector::FieldSelector for UserMentionMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3506,84 +3506,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3615,7 +3537,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -3736,50 +3657,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -356,35 +356,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DatabaseInstanceFailoverReplica {
-        #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
-        #[serde(rename = "available", default)]
-        pub available: ::std::option::Option<bool>,
-        #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct DatabaseInstance {
         #[doc = "FIRST_GEN: First Generation instance. MySQL only.\nSECOND_GEN: Second Generation instance or PostgreSQL instance.\nEXTERNAL: A database server that is not managed by Google.\nThis property is read-only; use the tier property in the settings object to determine the database type and Second or First Generation."]
         #[serde(rename = "backendType", default)]
@@ -477,6 +448,35 @@ pub mod schemas {
         pub suspension_reason: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for DatabaseInstance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatabaseInstanceFailoverReplica {
+        #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
+        #[serde(rename = "available", default)]
+        pub available: ::std::option::Option<bool>,
+        #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -690,12 +690,29 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExportContextCsvExportOptions {
-        #[doc = "The select query used to extract the data."]
-        #[serde(rename = "selectQuery", default)]
-        pub select_query: ::std::option::Option<String>,
+    pub struct ExportContext {
+        #[doc = "Options for exporting data as CSV."]
+        #[serde(rename = "csvExportOptions", default)]
+        pub csv_export_options:
+            ::std::option::Option<crate::schemas::ExportContextCsvExportOptions>,
+        #[doc = "Databases to be exported.\nMySQL instances: If fileType is SQL and no database is specified, all databases are exported, except for the mysql system database. If fileType is CSV, you can specify one database, either by using this property or by using the csvExportOptions.selectQuery property, which takes precedence over this property.\nPostgreSQL instances: Specify exactly one database to be exported. If fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery property."]
+        #[serde(rename = "databases", default)]
+        pub databases: ::std::option::Option<Vec<String>>,
+        #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
+        #[serde(rename = "fileType", default)]
+        pub file_type: ::std::option::Option<String>,
+        #[doc = "This is always sql#exportContext."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Options for exporting data as SQL statements."]
+        #[serde(rename = "sqlExportOptions", default)]
+        pub sql_export_options:
+            ::std::option::Option<crate::schemas::ExportContextSqlExportOptions>,
+        #[doc = "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed."]
+        #[serde(rename = "uri", default)]
+        pub uri: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ExportContextCsvExportOptions {
+    impl ::field_selector::FieldSelector for ExportContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -716,12 +733,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExportContextSqlExportOptionsMysqlExportOptions {
-        #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
-        #[serde(rename = "masterData", default)]
-        pub master_data: ::std::option::Option<i32>,
+    pub struct ExportContextCsvExportOptions {
+        #[doc = "The select query used to extract the data."]
+        #[serde(rename = "selectQuery", default)]
+        pub select_query: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
+    impl ::field_selector::FieldSelector for ExportContextCsvExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -775,29 +792,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExportContext {
-        #[doc = "Options for exporting data as CSV."]
-        #[serde(rename = "csvExportOptions", default)]
-        pub csv_export_options:
-            ::std::option::Option<crate::schemas::ExportContextCsvExportOptions>,
-        #[doc = "Databases to be exported.\nMySQL instances: If fileType is SQL and no database is specified, all databases are exported, except for the mysql system database. If fileType is CSV, you can specify one database, either by using this property or by using the csvExportOptions.selectQuery property, which takes precedence over this property.\nPostgreSQL instances: Specify exactly one database to be exported. If fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery property."]
-        #[serde(rename = "databases", default)]
-        pub databases: ::std::option::Option<Vec<String>>,
-        #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
-        #[serde(rename = "fileType", default)]
-        pub file_type: ::std::option::Option<String>,
-        #[doc = "This is always sql#exportContext."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Options for exporting data as SQL statements."]
-        #[serde(rename = "sqlExportOptions", default)]
-        pub sql_export_options:
-            ::std::option::Option<crate::schemas::ExportContextSqlExportOptions>,
-        #[doc = "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed."]
-        #[serde(rename = "uri", default)]
-        pub uri: ::std::option::Option<String>,
+    pub struct ExportContextSqlExportOptionsMysqlExportOptions {
+        #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
+        #[serde(rename = "masterData", default)]
+        pub master_data: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for ExportContext {
+    impl ::field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -929,35 +929,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ImportContextCsvImportOptions {
-        #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
-        #[serde(rename = "columns", default)]
-        pub columns: ::std::option::Option<Vec<String>>,
-        #[doc = "The table to which CSV data is imported."]
-        #[serde(rename = "table", default)]
-        pub table: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ImportContextCsvImportOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ImportContext {
         #[doc = "Options for importing data as CSV."]
         #[serde(rename = "csvImportOptions", default)]
@@ -980,6 +951,35 @@ pub mod schemas {
         pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ImportContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportContextCsvImportOptions {
+        #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
+        #[serde(rename = "columns", default)]
+        pub columns: ::std::option::Option<Vec<String>>,
+        #[doc = "The table to which CSV data is imported."]
+        #[serde(rename = "table", default)]
+        pub table: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ImportContextCsvImportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9937,84 +9937,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -10046,7 +9968,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -10167,50 +10088,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

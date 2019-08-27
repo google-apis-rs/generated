@@ -55,6 +55,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdSize {
+        #[doc = "The height of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
+        #[serde(rename = "height", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub height: ::std::option::Option<i64>,
+        #[doc = "The size type of the ad slot."]
+        #[serde(rename = "sizeType", default)]
+        pub size_type: ::std::option::Option<crate::schemas::AdSizeSizeType>,
+        #[doc = "The width of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
+        #[serde(rename = "width", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub width: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for AdSize {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdSizeSizeType {
         #[doc = "Fluid size (i.e., responsive size) can be resized automatically with the\nchange of outside environment."]
@@ -114,40 +148,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AdSizeSizeType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdSize {
-        #[doc = "The height of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
-        #[serde(rename = "height", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub height: ::std::option::Option<i64>,
-        #[doc = "The size type of the ad slot."]
-        #[serde(rename = "sizeType", default)]
-        pub size_type: ::std::option::Option<crate::schemas::AdSizeSizeType>,
-        #[doc = "The width of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
-        #[serde(rename = "width", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub width: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for AdSize {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -237,6 +237,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AppContext {
+        #[doc = "The app types this restriction applies to."]
+        #[serde(rename = "appTypes", default)]
+        pub app_types: ::std::option::Option<Vec<crate::schemas::AppContextAppTypesItems>>,
+    }
+    impl ::field_selector::FieldSelector for AppContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AppContextAppTypesItems {
         Native,
@@ -302,12 +328,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AppContext {
-        #[doc = "The app types this restriction applies to."]
-        #[serde(rename = "appTypes", default)]
-        pub app_types: ::std::option::Option<Vec<crate::schemas::AppContextAppTypesItems>>,
+    pub struct AuctionContext {
+        #[doc = "The auction types this restriction applies to."]
+        #[serde(rename = "auctionTypes", default)]
+        pub auction_types:
+            ::std::option::Option<Vec<crate::schemas::AuctionContextAuctionTypesItems>>,
     }
-    impl ::field_selector::FieldSelector for AppContext {
+    impl ::field_selector::FieldSelector for AuctionContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -381,33 +408,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuctionContext {
-        #[doc = "The auction types this restriction applies to."]
-        #[serde(rename = "auctionTypes", default)]
-        pub auction_types:
-            ::std::option::Option<Vec<crate::schemas::AuctionContextAuctionTypesItems>>,
-    }
-    impl ::field_selector::FieldSelector for AuctionContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct BidMetricsRow {
         #[doc = "The number of bids that Ad Exchange received from the buyer."]
         #[serde(rename = "bids", default)]
@@ -432,6 +432,38 @@ pub mod schemas {
         pub viewable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
     }
     impl ::field_selector::FieldSelector for BidMetricsRow {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BidResponseWithoutBidsStatusRow {
+        #[doc = "The number of impressions for which there was a bid response with the\nspecified status."]
+        #[serde(rename = "impressionCount", default)]
+        pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
+        #[doc = "The values of all dimensions associated with metric values in this row."]
+        #[serde(rename = "rowDimensions", default)]
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
+        #[doc = "The status specifying why the bid responses were considered to have no\napplicable bids."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::BidResponseWithoutBidsStatusRowStatus>,
+    }
+    impl ::field_selector::FieldSelector for BidResponseWithoutBidsStatusRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -527,38 +559,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BidResponseWithoutBidsStatusRow {
-        #[doc = "The number of impressions for which there was a bid response with the\nspecified status."]
-        #[serde(rename = "impressionCount", default)]
-        pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
-        #[doc = "The status specifying why the bid responses were considered to have no\napplicable bids."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::BidResponseWithoutBidsStatusRowStatus>,
-    }
-    impl ::field_selector::FieldSelector for BidResponseWithoutBidsStatusRow {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Buyer {
         #[doc = "Authorized Buyers account ID of the buyer."]
         #[serde(rename = "accountId", default)]
@@ -621,6 +621,58 @@ pub mod schemas {
     pub struct CancelNegotiationRequest;
     impl ::field_selector::FieldSelector for CancelNegotiationRequest {
         fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Client {
+        #[doc = "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations."]
+        #[serde(rename = "clientAccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub client_account_id: ::std::option::Option<i64>,
+        #[doc = "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty."]
+        #[serde(rename = "clientName", default)]
+        pub client_name: ::std::option::Option<String>,
+        #[doc = "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile."]
+        #[serde(rename = "entityId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub entity_id: ::std::option::Option<i64>,
+        #[doc = "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations."]
+        #[serde(rename = "entityName", default)]
+        pub entity_name: ::std::option::Option<String>,
+        #[doc = "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`."]
+        #[serde(rename = "entityType", default)]
+        pub entity_type: ::std::option::Option<crate::schemas::ClientEntityType>,
+        #[doc = "Optional arbitrary unique identifier of this client buyer from the\nstandpoint of its Ad Exchange sponsor buyer.\n\nThis field can be used to associate a client buyer with the identifier\nin the namespace of its sponsor buyer, lookup client buyers by that\nidentifier and verify whether an Ad Exchange counterpart of a given client\nbuyer already exists.\n\nIf present, must be unique among all the client buyers for its\nAd Exchange sponsor buyer."]
+        #[serde(rename = "partnerClientId", default)]
+        pub partner_client_id: ::std::option::Option<String>,
+        #[doc = "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
+        #[serde(rename = "role", default)]
+        pub role: ::std::option::Option<crate::schemas::ClientRole>,
+        #[doc = "The status of the client buyer."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::ClientStatus>,
+        #[doc = "Whether the client buyer will be visible to sellers."]
+        #[serde(rename = "visibleToSeller", default)]
+        pub visible_to_seller: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for Client {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClientEntityType {
@@ -823,38 +875,23 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Client {
-        #[doc = "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations."]
+    pub struct ClientUser {
+        #[doc = "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation."]
         #[serde(rename = "clientAccountId", default)]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
-        #[doc = "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty."]
-        #[serde(rename = "clientName", default)]
-        pub client_name: ::std::option::Option<String>,
-        #[doc = "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile."]
-        #[serde(rename = "entityId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub entity_id: ::std::option::Option<i64>,
-        #[doc = "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations."]
-        #[serde(rename = "entityName", default)]
-        pub entity_name: ::std::option::Option<String>,
-        #[doc = "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`."]
-        #[serde(rename = "entityType", default)]
-        pub entity_type: ::std::option::Option<crate::schemas::ClientEntityType>,
-        #[doc = "Optional arbitrary unique identifier of this client buyer from the\nstandpoint of its Ad Exchange sponsor buyer.\n\nThis field can be used to associate a client buyer with the identifier\nin the namespace of its sponsor buyer, lookup client buyers by that\nidentifier and verify whether an Ad Exchange counterpart of a given client\nbuyer already exists.\n\nIf present, must be unique among all the client buyers for its\nAd Exchange sponsor buyer."]
-        #[serde(rename = "partnerClientId", default)]
-        pub partner_client_id: ::std::option::Option<String>,
-        #[doc = "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
-        #[serde(rename = "role", default)]
-        pub role: ::std::option::Option<crate::schemas::ClientRole>,
-        #[doc = "The status of the client buyer."]
+        #[doc = "User's email address. The value of this field\nis ignored in an update operation."]
+        #[serde(rename = "email", default)]
+        pub email: ::std::option::Option<String>,
+        #[doc = "The status of the client user."]
         #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ClientStatus>,
-        #[doc = "Whether the client buyer will be visible to sellers."]
-        #[serde(rename = "visibleToSeller", default)]
-        pub visible_to_seller: ::std::option::Option<bool>,
+        pub status: ::std::option::Option<crate::schemas::ClientUserStatus>,
+        #[doc = "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation."]
+        #[serde(rename = "userId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub user_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for Client {
+    impl ::field_selector::FieldSelector for ClientUser {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -938,43 +975,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ClientUser {
-        #[doc = "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation."]
-        #[serde(rename = "clientAccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub client_account_id: ::std::option::Option<i64>,
-        #[doc = "User's email address. The value of this field\nis ignored in an update operation."]
-        #[serde(rename = "email", default)]
-        pub email: ::std::option::Option<String>,
-        #[doc = "The status of the client user."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ClientUserStatus>,
-        #[doc = "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation."]
-        #[serde(rename = "userId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub user_id: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for ClientUser {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ClientUserInvitation {
         #[doc = "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations."]
         #[serde(rename = "clientAccountId", default)]
@@ -1035,6 +1035,38 @@ pub mod schemas {
         pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ContactInformation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Correction {
+        #[doc = "The contexts for the correction."]
+        #[serde(rename = "contexts", default)]
+        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
+        #[doc = "Additional details about what was corrected."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<String>>,
+        #[doc = "The type of correction that was applied to the creative."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CorrectionType>,
+    }
+    impl ::field_selector::FieldSelector for Correction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1139,29 +1171,91 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Correction {
-        #[doc = "The contexts for the correction."]
-        #[serde(rename = "contexts", default)]
-        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
-        #[doc = "Additional details about what was corrected."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<String>>,
-        #[doc = "The type of correction that was applied to the creative."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CorrectionType>,
+    pub struct Creative {
+        #[doc = "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "The link to AdChoices destination page."]
+        #[serde(rename = "adChoicesDestinationUrl", default)]
+        pub ad_choices_destination_url: ::std::option::Option<String>,
+        #[doc = "Output only. The detected ad technology providers."]
+        #[serde(rename = "adTechnologyProviders", default)]
+        pub ad_technology_providers: ::std::option::Option<crate::schemas::AdTechnologyProviders>,
+        #[doc = "The name of the company being advertised in the creative."]
+        #[serde(rename = "advertiserName", default)]
+        pub advertiser_name: ::std::option::Option<String>,
+        #[doc = "The agency ID for this creative."]
+        #[serde(rename = "agencyId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub agency_id: ::std::option::Option<i64>,
+        #[doc = "Output only. The last update timestamp of the creative via API."]
+        #[serde(rename = "apiUpdateTime", default)]
+        pub api_update_time: ::std::option::Option<String>,
+        #[doc = "All attributes for the ads that may be shown from this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "attributes", default)]
+        pub attributes: ::std::option::Option<Vec<crate::schemas::CreativeAttributesItems>>,
+        #[doc = "The set of destination URLs for the creative."]
+        #[serde(rename = "clickThroughUrls", default)]
+        pub click_through_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "Output only. Shows any corrections that were applied to this creative."]
+        #[serde(rename = "corrections", default)]
+        pub corrections: ::std::option::Option<Vec<crate::schemas::Correction>>,
+        #[doc = "The buyer-defined creative ID of this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "creativeId", default)]
+        pub creative_id: ::std::option::Option<String>,
+        #[doc = "Output only. The top-level deals status of this creative.\nIf disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "dealsStatus", default)]
+        pub deals_status: ::std::option::Option<crate::schemas::CreativeDealsStatus>,
+        #[doc = "The set of declared destination URLs for the creative."]
+        #[serde(rename = "declaredClickThroughUrls", default)]
+        pub declared_click_through_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "Output only. Detected advertiser IDs, if any."]
+        #[serde(rename = "detectedAdvertiserIds", default)]
+        pub detected_advertiser_ids: ::std::option::Option<Vec<i64>>,
+        #[doc = "Output only. The detected domains for this creative."]
+        #[serde(rename = "detectedDomains", default)]
+        pub detected_domains: ::std::option::Option<Vec<String>>,
+        #[doc = "Output only. The detected languages for this creative. The order is\narbitrary. The codes are 2 or 5 characters and are documented at\nhttps://developers.google.com/adwords/api/docs/appendix/languagecodes."]
+        #[serde(rename = "detectedLanguages", default)]
+        pub detected_languages: ::std::option::Option<Vec<String>>,
+        #[doc = "Output only. Detected product categories, if any.\nSee the ad-product-categories.txt file in the technical documentation\nfor a list of IDs."]
+        #[serde(rename = "detectedProductCategories", default)]
+        pub detected_product_categories: ::std::option::Option<Vec<i32>>,
+        #[doc = "Output only. Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids."]
+        #[serde(rename = "detectedSensitiveCategories", default)]
+        pub detected_sensitive_categories: ::std::option::Option<Vec<i32>>,
+        #[doc = "An HTML creative."]
+        #[serde(rename = "html", default)]
+        pub html: ::std::option::Option<crate::schemas::HtmlContent>,
+        #[doc = "The set of URLs to be called to record an impression."]
+        #[serde(rename = "impressionTrackingUrls", default)]
+        pub impression_tracking_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "A native creative."]
+        #[serde(rename = "native", default)]
+        pub native: ::std::option::Option<crate::schemas::NativeContent>,
+        #[doc = "Output only. The top-level open auction status of this creative.\nIf disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "openAuctionStatus", default)]
+        pub open_auction_status: ::std::option::Option<crate::schemas::CreativeOpenAuctionStatus>,
+        #[doc = "All restricted categories for the ads that may be shown from this creative."]
+        #[serde(rename = "restrictedCategories", default)]
+        pub restricted_categories:
+            ::std::option::Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
+        #[doc = "Output only. The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction)."]
+        #[serde(rename = "servingRestrictions", default)]
+        pub serving_restrictions: ::std::option::Option<Vec<crate::schemas::ServingRestriction>>,
+        #[doc = "All vendor IDs for the ads that may be shown from this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt\nfor possible values."]
+        #[serde(rename = "vendorIds", default)]
+        pub vendor_ids: ::std::option::Option<Vec<i32>>,
+        #[doc = "Output only. The version of this creative."]
+        #[serde(rename = "version", default)]
+        pub version: ::std::option::Option<i32>,
+        #[doc = "A video creative."]
+        #[serde(rename = "video", default)]
+        pub video: ::std::option::Option<crate::schemas::VideoContent>,
     }
-    impl ::field_selector::FieldSelector for Correction {
+    impl ::field_selector::FieldSelector for Creative {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1603,100 +1697,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Creative {
-        #[doc = "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "The link to AdChoices destination page."]
-        #[serde(rename = "adChoicesDestinationUrl", default)]
-        pub ad_choices_destination_url: ::std::option::Option<String>,
-        #[doc = "Output only. The detected ad technology providers."]
-        #[serde(rename = "adTechnologyProviders", default)]
-        pub ad_technology_providers: ::std::option::Option<crate::schemas::AdTechnologyProviders>,
-        #[doc = "The name of the company being advertised in the creative."]
-        #[serde(rename = "advertiserName", default)]
-        pub advertiser_name: ::std::option::Option<String>,
-        #[doc = "The agency ID for this creative."]
-        #[serde(rename = "agencyId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub agency_id: ::std::option::Option<i64>,
-        #[doc = "Output only. The last update timestamp of the creative via API."]
-        #[serde(rename = "apiUpdateTime", default)]
-        pub api_update_time: ::std::option::Option<String>,
-        #[doc = "All attributes for the ads that may be shown from this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "attributes", default)]
-        pub attributes: ::std::option::Option<Vec<crate::schemas::CreativeAttributesItems>>,
-        #[doc = "The set of destination URLs for the creative."]
-        #[serde(rename = "clickThroughUrls", default)]
-        pub click_through_urls: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. Shows any corrections that were applied to this creative."]
-        #[serde(rename = "corrections", default)]
-        pub corrections: ::std::option::Option<Vec<crate::schemas::Correction>>,
-        #[doc = "The buyer-defined creative ID of this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "creativeId", default)]
-        pub creative_id: ::std::option::Option<String>,
-        #[doc = "Output only. The top-level deals status of this creative.\nIf disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "dealsStatus", default)]
-        pub deals_status: ::std::option::Option<crate::schemas::CreativeDealsStatus>,
-        #[doc = "The set of declared destination URLs for the creative."]
-        #[serde(rename = "declaredClickThroughUrls", default)]
-        pub declared_click_through_urls: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. Detected advertiser IDs, if any."]
-        #[serde(rename = "detectedAdvertiserIds", default)]
-        pub detected_advertiser_ids: ::std::option::Option<Vec<i64>>,
-        #[doc = "Output only. The detected domains for this creative."]
-        #[serde(rename = "detectedDomains", default)]
-        pub detected_domains: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. The detected languages for this creative. The order is\narbitrary. The codes are 2 or 5 characters and are documented at\nhttps://developers.google.com/adwords/api/docs/appendix/languagecodes."]
-        #[serde(rename = "detectedLanguages", default)]
-        pub detected_languages: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. Detected product categories, if any.\nSee the ad-product-categories.txt file in the technical documentation\nfor a list of IDs."]
-        #[serde(rename = "detectedProductCategories", default)]
-        pub detected_product_categories: ::std::option::Option<Vec<i32>>,
-        #[doc = "Output only. Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids."]
-        #[serde(rename = "detectedSensitiveCategories", default)]
-        pub detected_sensitive_categories: ::std::option::Option<Vec<i32>>,
-        #[doc = "An HTML creative."]
-        #[serde(rename = "html", default)]
-        pub html: ::std::option::Option<crate::schemas::HtmlContent>,
-        #[doc = "The set of URLs to be called to record an impression."]
-        #[serde(rename = "impressionTrackingUrls", default)]
-        pub impression_tracking_urls: ::std::option::Option<Vec<String>>,
-        #[doc = "A native creative."]
-        #[serde(rename = "native", default)]
-        pub native: ::std::option::Option<crate::schemas::NativeContent>,
-        #[doc = "Output only. The top-level open auction status of this creative.\nIf disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "openAuctionStatus", default)]
-        pub open_auction_status: ::std::option::Option<crate::schemas::CreativeOpenAuctionStatus>,
-        #[doc = "All restricted categories for the ads that may be shown from this creative."]
-        #[serde(rename = "restrictedCategories", default)]
-        pub restricted_categories:
-            ::std::option::Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
-        #[doc = "Output only. The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction)."]
-        #[serde(rename = "servingRestrictions", default)]
-        pub serving_restrictions: ::std::option::Option<Vec<crate::schemas::ServingRestriction>>,
-        #[doc = "All vendor IDs for the ads that may be shown from this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt\nfor possible values."]
-        #[serde(rename = "vendorIds", default)]
-        pub vendor_ids: ::std::option::Option<Vec<i32>>,
-        #[doc = "Output only. The version of this creative."]
-        #[serde(rename = "version", default)]
-        pub version: ::std::option::Option<i32>,
-        #[doc = "A video creative."]
-        #[serde(rename = "video", default)]
-        pub video: ::std::option::Option<crate::schemas::VideoContent>,
-    }
-    impl ::field_selector::FieldSelector for Creative {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1720,6 +1720,40 @@ pub mod schemas {
         pub deals_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativeDealAssociation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeRestrictions {
+        #[doc = "The format of the environment that the creatives will be displayed in."]
+        #[serde(rename = "creativeFormat", default)]
+        pub creative_format:
+            ::std::option::Option<crate::schemas::CreativeRestrictionsCreativeFormat>,
+        #[serde(rename = "creativeSpecifications", default)]
+        pub creative_specifications:
+            ::std::option::Option<Vec<crate::schemas::CreativeSpecification>>,
+        #[doc = "Skippable video ads allow viewers to skip ads after 5 seconds."]
+        #[serde(rename = "skippableAdType", default)]
+        pub skippable_ad_type:
+            ::std::option::Option<crate::schemas::CreativeRestrictionsSkippableAdType>,
+    }
+    impl ::field_selector::FieldSelector for CreativeRestrictions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1870,20 +1904,28 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeRestrictions {
-        #[doc = "The format of the environment that the creatives will be displayed in."]
-        #[serde(rename = "creativeFormat", default)]
-        pub creative_format:
-            ::std::option::Option<crate::schemas::CreativeRestrictionsCreativeFormat>,
-        #[serde(rename = "creativeSpecifications", default)]
-        pub creative_specifications:
-            ::std::option::Option<Vec<crate::schemas::CreativeSpecification>>,
-        #[doc = "Skippable video ads allow viewers to skip ads after 5 seconds."]
+    pub struct CreativeSize {
+        #[doc = "What formats are allowed by the publisher.\nIf this repeated field is empty then all formats are allowed.\nFor example, if this field contains AllowedFormatType.AUDIO then the\npublisher only allows an audio ad (without any video)."]
+        #[serde(rename = "allowedFormats", default)]
+        pub allowed_formats:
+            ::std::option::Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
+        #[doc = "For video creatives specifies the sizes of companion ads (if present).\nCompanion sizes may be filled in only when creative_size_type = VIDEO"]
+        #[serde(rename = "companionSizes", default)]
+        pub companion_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
+        #[doc = "The creative size type."]
+        #[serde(rename = "creativeSizeType", default)]
+        pub creative_size_type: ::std::option::Option<crate::schemas::CreativeSizeCreativeSizeType>,
+        #[doc = "Output only. The native template for this creative. It will have a value\nonly if creative_size_type = CreativeSizeType.NATIVE."]
+        #[serde(rename = "nativeTemplate", default)]
+        pub native_template: ::std::option::Option<crate::schemas::CreativeSizeNativeTemplate>,
+        #[doc = "For regular or video creative size type, specifies the size\nof the creative"]
+        #[serde(rename = "size", default)]
+        pub size: ::std::option::Option<crate::schemas::Size>,
+        #[doc = "The type of skippable ad for this creative. It will have a value only if\ncreative_size_type = CreativeSizeType.VIDEO."]
         #[serde(rename = "skippableAdType", default)]
-        pub skippable_ad_type:
-            ::std::option::Option<crate::schemas::CreativeRestrictionsSkippableAdType>,
+        pub skippable_ad_type: ::std::option::Option<crate::schemas::CreativeSizeSkippableAdType>,
     }
-    impl ::field_selector::FieldSelector for CreativeRestrictions {
+    impl ::field_selector::FieldSelector for CreativeSize {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2166,48 +2208,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeSize {
-        #[doc = "What formats are allowed by the publisher.\nIf this repeated field is empty then all formats are allowed.\nFor example, if this field contains AllowedFormatType.AUDIO then the\npublisher only allows an audio ad (without any video)."]
-        #[serde(rename = "allowedFormats", default)]
-        pub allowed_formats:
-            ::std::option::Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
-        #[doc = "For video creatives specifies the sizes of companion ads (if present).\nCompanion sizes may be filled in only when creative_size_type = VIDEO"]
-        #[serde(rename = "companionSizes", default)]
-        pub companion_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
-        #[doc = "The creative size type."]
-        #[serde(rename = "creativeSizeType", default)]
-        pub creative_size_type: ::std::option::Option<crate::schemas::CreativeSizeCreativeSizeType>,
-        #[doc = "Output only. The native template for this creative. It will have a value\nonly if creative_size_type = CreativeSizeType.NATIVE."]
-        #[serde(rename = "nativeTemplate", default)]
-        pub native_template: ::std::option::Option<crate::schemas::CreativeSizeNativeTemplate>,
-        #[doc = "For regular or video creative size type, specifies the size\nof the creative"]
-        #[serde(rename = "size", default)]
-        pub size: ::std::option::Option<crate::schemas::Size>,
-        #[doc = "The type of skippable ad for this creative. It will have a value only if\ncreative_size_type = CreativeSizeType.VIDEO."]
-        #[serde(rename = "skippableAdType", default)]
-        pub skippable_ad_type: ::std::option::Option<crate::schemas::CreativeSizeSkippableAdType>,
-    }
-    impl ::field_selector::FieldSelector for CreativeSize {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct CreativeSpecification {
         #[doc = "Companion sizes may be filled in only when this is a video creative."]
         #[serde(rename = "creativeCompanionSizes", default)]
@@ -2318,6 +2318,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DayPart {
+        #[doc = "The day of the week to target. If unspecified, applicable to all days."]
+        #[serde(rename = "dayOfWeek", default)]
+        pub day_of_week: ::std::option::Option<crate::schemas::DayPartDayOfWeek>,
+        #[doc = "The ending time of the day for the ad to show (minute level\ngranularity). The end time is exclusive. This field is not available\nfor filtering in PQL queries."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+        #[doc = "The starting time of day for the ad to show (minute level granularity).\nThe start time is inclusive.\nThis field is not available for filtering in PQL queries."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+    }
+    impl ::field_selector::FieldSelector for DayPart {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DayPartDayOfWeek {
         #[doc = "A placeholder for when the day of the week is not specified."]
@@ -2409,18 +2441,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DayPart {
-        #[doc = "The day of the week to target. If unspecified, applicable to all days."]
-        #[serde(rename = "dayOfWeek", default)]
-        pub day_of_week: ::std::option::Option<crate::schemas::DayPartDayOfWeek>,
-        #[doc = "The ending time of the day for the ad to show (minute level\ngranularity). The end time is exclusive. This field is not available\nfor filtering in PQL queries."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<crate::schemas::TimeOfDay>,
-        #[doc = "The starting time of day for the ad to show (minute level granularity).\nThe start time is inclusive.\nThis field is not available for filtering in PQL queries."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+    pub struct DayPartTargeting {
+        #[doc = "A list of day part targeting criterion."]
+        #[serde(rename = "dayParts", default)]
+        pub day_parts: ::std::option::Option<Vec<crate::schemas::DayPart>>,
+        #[doc = "The timezone to use for interpreting the day part targeting."]
+        #[serde(rename = "timeZoneType", default)]
+        pub time_zone_type: ::std::option::Option<crate::schemas::DayPartTargetingTimeZoneType>,
     }
-    impl ::field_selector::FieldSelector for DayPart {
+    impl ::field_selector::FieldSelector for DayPartTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2504,15 +2533,88 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DayPartTargeting {
-        #[doc = "A list of day part targeting criterion."]
-        #[serde(rename = "dayParts", default)]
-        pub day_parts: ::std::option::Option<Vec<crate::schemas::DayPart>>,
-        #[doc = "The timezone to use for interpreting the day part targeting."]
-        #[serde(rename = "timeZoneType", default)]
-        pub time_zone_type: ::std::option::Option<crate::schemas::DayPartTargetingTimeZoneType>,
+    pub struct Deal {
+        #[doc = "Proposed flight end time of the deal.\nThis will generally be stored in a granularity of a second.\nA value is not required for Private Auction deals or Preferred Deals."]
+        #[serde(rename = "availableEndTime", default)]
+        pub available_end_time: ::std::option::Option<String>,
+        #[doc = "Optional proposed flight start time of the deal.\nThis will generally be stored in the granularity of one second since deal\nserving starts at seconds boundary. Any time specified with more\ngranularity (e.g., in milliseconds) will be truncated towards the start of\ntime in seconds."]
+        #[serde(rename = "availableStartTime", default)]
+        pub available_start_time: ::std::option::Option<String>,
+        #[doc = "Buyer private data (hidden from seller)."]
+        #[serde(rename = "buyerPrivateData", default)]
+        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
+        #[doc = "The product ID from which this deal was created.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[serde(rename = "createProductId", default)]
+        pub create_product_id: ::std::option::Option<String>,
+        #[doc = "Optional revision number of the product that the deal was created from.\nIf present on create, and the server `product_revision` has advanced sinced\nthe passed-in `create_product_revision`, an `ABORTED` error will be\nreturned.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[serde(rename = "createProductRevision", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub create_product_revision: ::std::option::Option<i64>,
+        #[doc = "Output only. The time of the deal creation."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. Specifies the creative pre-approval policy."]
+        #[serde(rename = "creativePreApprovalPolicy", default)]
+        pub creative_pre_approval_policy:
+            ::std::option::Option<crate::schemas::DealCreativePreApprovalPolicy>,
+        #[doc = "Output only. Restricitions about the creatives associated with the deal\n(i.e., size) This is available for Programmatic Guaranteed/Preferred Deals\nin Ad Manager."]
+        #[serde(rename = "creativeRestrictions", default)]
+        pub creative_restrictions: ::std::option::Option<crate::schemas::CreativeRestrictions>,
+        #[doc = "Output only. Specifies whether the creative is safeFrame compatible."]
+        #[serde(rename = "creativeSafeFrameCompatibility", default)]
+        pub creative_safe_frame_compatibility:
+            ::std::option::Option<crate::schemas::DealCreativeSafeFrameCompatibility>,
+        #[doc = "Output only. A unique deal ID for the deal (server-assigned)."]
+        #[serde(rename = "dealId", default)]
+        pub deal_id: ::std::option::Option<String>,
+        #[doc = "Output only. Metadata about the serving status of this deal."]
+        #[serde(rename = "dealServingMetadata", default)]
+        pub deal_serving_metadata: ::std::option::Option<crate::schemas::DealServingMetadata>,
+        #[doc = "The negotiable terms of the deal."]
+        #[serde(rename = "dealTerms", default)]
+        pub deal_terms: ::std::option::Option<crate::schemas::DealTerms>,
+        #[doc = "The set of fields around delivery control that are interesting for a buyer\nto see but are non-negotiable. These are set by the publisher."]
+        #[serde(rename = "deliveryControl", default)]
+        pub delivery_control: ::std::option::Option<crate::schemas::DeliveryControl>,
+        #[doc = "Description for the deal terms."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The name of the deal."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Output only. The external deal ID assigned to this deal once the deal is\nfinalized. This is the deal ID that shows up in serving/reporting etc."]
+        #[serde(rename = "externalDealId", default)]
+        pub external_deal_id: ::std::option::Option<String>,
+        #[doc = "Output only. True, if the buyside inventory setup is complete for this\ndeal."]
+        #[serde(rename = "isSetupComplete", default)]
+        pub is_setup_complete: ::std::option::Option<bool>,
+        #[doc = "Output only. Specifies the creative source for programmatic deals.\nPUBLISHER means creative is provided by seller and ADVERTISER means\ncreative is provided by buyer."]
+        #[serde(rename = "programmaticCreativeSource", default)]
+        pub programmatic_creative_source:
+            ::std::option::Option<crate::schemas::DealProgrammaticCreativeSource>,
+        #[doc = "Output only. ID of the proposal that this deal is part of."]
+        #[serde(rename = "proposalId", default)]
+        pub proposal_id: ::std::option::Option<String>,
+        #[doc = "Output only. Seller contact information for the deal."]
+        #[serde(rename = "sellerContacts", default)]
+        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
+        #[doc = "The syndication product associated with the deal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[serde(rename = "syndicationProduct", default)]
+        pub syndication_product: ::std::option::Option<crate::schemas::DealSyndicationProduct>,
+        #[doc = "Output only. Specifies the subset of inventory targeted by the deal."]
+        #[serde(rename = "targeting", default)]
+        pub targeting: ::std::option::Option<crate::schemas::MarketplaceTargeting>,
+        #[doc = "The shared targeting visible to buyers and sellers. Each shared\ntargeting entity is AND'd together."]
+        #[serde(rename = "targetingCriterion", default)]
+        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
+        #[doc = "Output only. The time when the deal was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "The web property code for the seller copied over from the product."]
+        #[serde(rename = "webPropertyCode", default)]
+        pub web_property_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DayPartTargeting {
+    impl ::field_selector::FieldSelector for Deal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2801,88 +2903,24 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Deal {
-        #[doc = "Proposed flight end time of the deal.\nThis will generally be stored in a granularity of a second.\nA value is not required for Private Auction deals or Preferred Deals."]
-        #[serde(rename = "availableEndTime", default)]
-        pub available_end_time: ::std::option::Option<String>,
-        #[doc = "Optional proposed flight start time of the deal.\nThis will generally be stored in the granularity of one second since deal\nserving starts at seconds boundary. Any time specified with more\ngranularity (e.g., in milliseconds) will be truncated towards the start of\ntime in seconds."]
-        #[serde(rename = "availableStartTime", default)]
-        pub available_start_time: ::std::option::Option<String>,
-        #[doc = "Buyer private data (hidden from seller)."]
-        #[serde(rename = "buyerPrivateData", default)]
-        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
-        #[doc = "The product ID from which this deal was created.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "createProductId", default)]
-        pub create_product_id: ::std::option::Option<String>,
-        #[doc = "Optional revision number of the product that the deal was created from.\nIf present on create, and the server `product_revision` has advanced sinced\nthe passed-in `create_product_revision`, an `ABORTED` error will be\nreturned.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "createProductRevision", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub create_product_revision: ::std::option::Option<i64>,
-        #[doc = "Output only. The time of the deal creation."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. Specifies the creative pre-approval policy."]
-        #[serde(rename = "creativePreApprovalPolicy", default)]
-        pub creative_pre_approval_policy:
-            ::std::option::Option<crate::schemas::DealCreativePreApprovalPolicy>,
-        #[doc = "Output only. Restricitions about the creatives associated with the deal\n(i.e., size) This is available for Programmatic Guaranteed/Preferred Deals\nin Ad Manager."]
-        #[serde(rename = "creativeRestrictions", default)]
-        pub creative_restrictions: ::std::option::Option<crate::schemas::CreativeRestrictions>,
-        #[doc = "Output only. Specifies whether the creative is safeFrame compatible."]
-        #[serde(rename = "creativeSafeFrameCompatibility", default)]
-        pub creative_safe_frame_compatibility:
-            ::std::option::Option<crate::schemas::DealCreativeSafeFrameCompatibility>,
-        #[doc = "Output only. A unique deal ID for the deal (server-assigned)."]
-        #[serde(rename = "dealId", default)]
-        pub deal_id: ::std::option::Option<String>,
-        #[doc = "Output only. Metadata about the serving status of this deal."]
-        #[serde(rename = "dealServingMetadata", default)]
-        pub deal_serving_metadata: ::std::option::Option<crate::schemas::DealServingMetadata>,
-        #[doc = "The negotiable terms of the deal."]
-        #[serde(rename = "dealTerms", default)]
-        pub deal_terms: ::std::option::Option<crate::schemas::DealTerms>,
-        #[doc = "The set of fields around delivery control that are interesting for a buyer\nto see but are non-negotiable. These are set by the publisher."]
-        #[serde(rename = "deliveryControl", default)]
-        pub delivery_control: ::std::option::Option<crate::schemas::DeliveryControl>,
-        #[doc = "Description for the deal terms."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The name of the deal."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. The external deal ID assigned to this deal once the deal is\nfinalized. This is the deal ID that shows up in serving/reporting etc."]
-        #[serde(rename = "externalDealId", default)]
-        pub external_deal_id: ::std::option::Option<String>,
-        #[doc = "Output only. True, if the buyside inventory setup is complete for this\ndeal."]
-        #[serde(rename = "isSetupComplete", default)]
-        pub is_setup_complete: ::std::option::Option<bool>,
-        #[doc = "Output only. Specifies the creative source for programmatic deals.\nPUBLISHER means creative is provided by seller and ADVERTISER means\ncreative is provided by buyer."]
-        #[serde(rename = "programmaticCreativeSource", default)]
-        pub programmatic_creative_source:
-            ::std::option::Option<crate::schemas::DealProgrammaticCreativeSource>,
-        #[doc = "Output only. ID of the proposal that this deal is part of."]
-        #[serde(rename = "proposalId", default)]
-        pub proposal_id: ::std::option::Option<String>,
-        #[doc = "Output only. Seller contact information for the deal."]
-        #[serde(rename = "sellerContacts", default)]
-        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
-        #[doc = "The syndication product associated with the deal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "syndicationProduct", default)]
-        pub syndication_product: ::std::option::Option<crate::schemas::DealSyndicationProduct>,
-        #[doc = "Output only. Specifies the subset of inventory targeted by the deal."]
-        #[serde(rename = "targeting", default)]
-        pub targeting: ::std::option::Option<crate::schemas::MarketplaceTargeting>,
-        #[doc = "The shared targeting visible to buyers and sellers. Each shared\ntargeting entity is AND'd together."]
-        #[serde(rename = "targetingCriterion", default)]
-        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
-        #[doc = "Output only. The time when the deal was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "The web property code for the seller copied over from the product."]
-        #[serde(rename = "webPropertyCode", default)]
-        pub web_property_code: ::std::option::Option<String>,
+    pub struct DealPauseStatus {
+        #[doc = "The buyer's reason for pausing, if the buyer paused the deal."]
+        #[serde(rename = "buyerPauseReason", default)]
+        pub buyer_pause_reason: ::std::option::Option<String>,
+        #[doc = "The role of the person who first paused this deal."]
+        #[serde(rename = "firstPausedBy", default)]
+        pub first_paused_by: ::std::option::Option<crate::schemas::DealPauseStatusFirstPausedBy>,
+        #[doc = "True, if the buyer has paused the deal unilaterally."]
+        #[serde(rename = "hasBuyerPaused", default)]
+        pub has_buyer_paused: ::std::option::Option<bool>,
+        #[doc = "True, if the seller has paused the deal unilaterally."]
+        #[serde(rename = "hasSellerPaused", default)]
+        pub has_seller_paused: ::std::option::Option<bool>,
+        #[doc = "The seller's reason for pausing, if the seller paused the deal."]
+        #[serde(rename = "sellerPauseReason", default)]
+        pub seller_pause_reason: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Deal {
+    impl ::field_selector::FieldSelector for DealPauseStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2966,24 +3004,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DealPauseStatus {
-        #[doc = "The buyer's reason for pausing, if the buyer paused the deal."]
-        #[serde(rename = "buyerPauseReason", default)]
-        pub buyer_pause_reason: ::std::option::Option<String>,
-        #[doc = "The role of the person who first paused this deal."]
-        #[serde(rename = "firstPausedBy", default)]
-        pub first_paused_by: ::std::option::Option<crate::schemas::DealPauseStatusFirstPausedBy>,
-        #[doc = "True, if the buyer has paused the deal unilaterally."]
-        #[serde(rename = "hasBuyerPaused", default)]
-        pub has_buyer_paused: ::std::option::Option<bool>,
-        #[doc = "True, if the seller has paused the deal unilaterally."]
-        #[serde(rename = "hasSellerPaused", default)]
-        pub has_seller_paused: ::std::option::Option<bool>,
-        #[doc = "The seller's reason for pausing, if the seller paused the deal."]
-        #[serde(rename = "sellerPauseReason", default)]
-        pub seller_pause_reason: ::std::option::Option<String>,
+    pub struct DealServingMetadata {
+        #[doc = "Output only. Tracks which parties (if any) have paused a deal."]
+        #[serde(rename = "dealPauseStatus", default)]
+        pub deal_pause_status: ::std::option::Option<crate::schemas::DealPauseStatus>,
     }
-    impl ::field_selector::FieldSelector for DealPauseStatus {
+    impl ::field_selector::FieldSelector for DealServingMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3004,12 +3030,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DealServingMetadata {
-        #[doc = "Output only. Tracks which parties (if any) have paused a deal."]
-        #[serde(rename = "dealPauseStatus", default)]
-        pub deal_pause_status: ::std::option::Option<crate::schemas::DealPauseStatus>,
+    pub struct DealTerms {
+        #[doc = "Visibility of the URL in bid requests. (default: BRANDED)"]
+        #[serde(rename = "brandingType", default)]
+        pub branding_type: ::std::option::Option<crate::schemas::DealTermsBrandingType>,
+        #[doc = "Publisher provided description for the terms."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Non-binding estimate of the estimated gross spend for this deal.\nCan be set by buyer or seller."]
+        #[serde(rename = "estimatedGrossSpend", default)]
+        pub estimated_gross_spend: ::std::option::Option<crate::schemas::Price>,
+        #[doc = "Non-binding estimate of the impressions served per day.\nCan be set by buyer or seller."]
+        #[serde(rename = "estimatedImpressionsPerDay", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub estimated_impressions_per_day: ::std::option::Option<i64>,
+        #[doc = "The terms for guaranteed fixed price deals."]
+        #[serde(rename = "guaranteedFixedPriceTerms", default)]
+        pub guaranteed_fixed_price_terms:
+            ::std::option::Option<crate::schemas::GuaranteedFixedPriceTerms>,
+        #[doc = "The terms for non-guaranteed auction deals."]
+        #[serde(rename = "nonGuaranteedAuctionTerms", default)]
+        pub non_guaranteed_auction_terms:
+            ::std::option::Option<crate::schemas::NonGuaranteedAuctionTerms>,
+        #[doc = "The terms for non-guaranteed fixed price deals."]
+        #[serde(rename = "nonGuaranteedFixedPriceTerms", default)]
+        pub non_guaranteed_fixed_price_terms:
+            ::std::option::Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
+        #[doc = "The time zone name. For deals with Cost Per Day billing, defines the\ntime zone used to mark the boundaries of a day. It should be an\nIANA TZ name, such as \"America/Los_Angeles\". For more information,\nsee https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
+        #[serde(rename = "sellerTimeZone", default)]
+        pub seller_time_zone: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DealServingMetadata {
+    impl ::field_selector::FieldSelector for DealTerms {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3089,37 +3140,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DealTerms {
-        #[doc = "Visibility of the URL in bid requests. (default: BRANDED)"]
-        #[serde(rename = "brandingType", default)]
-        pub branding_type: ::std::option::Option<crate::schemas::DealTermsBrandingType>,
-        #[doc = "Publisher provided description for the terms."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Non-binding estimate of the estimated gross spend for this deal.\nCan be set by buyer or seller."]
-        #[serde(rename = "estimatedGrossSpend", default)]
-        pub estimated_gross_spend: ::std::option::Option<crate::schemas::Price>,
-        #[doc = "Non-binding estimate of the impressions served per day.\nCan be set by buyer or seller."]
-        #[serde(rename = "estimatedImpressionsPerDay", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub estimated_impressions_per_day: ::std::option::Option<i64>,
-        #[doc = "The terms for guaranteed fixed price deals."]
-        #[serde(rename = "guaranteedFixedPriceTerms", default)]
-        pub guaranteed_fixed_price_terms:
-            ::std::option::Option<crate::schemas::GuaranteedFixedPriceTerms>,
-        #[doc = "The terms for non-guaranteed auction deals."]
-        #[serde(rename = "nonGuaranteedAuctionTerms", default)]
-        pub non_guaranteed_auction_terms:
-            ::std::option::Option<crate::schemas::NonGuaranteedAuctionTerms>,
-        #[doc = "The terms for non-guaranteed fixed price deals."]
-        #[serde(rename = "nonGuaranteedFixedPriceTerms", default)]
-        pub non_guaranteed_fixed_price_terms:
-            ::std::option::Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
-        #[doc = "The time zone name. For deals with Cost Per Day billing, defines the\ntime zone used to mark the boundaries of a day. It should be an\nIANA TZ name, such as \"America/Los_Angeles\". For more information,\nsee https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
-        #[serde(rename = "sellerTimeZone", default)]
-        pub seller_time_zone: ::std::option::Option<String>,
+    pub struct DeliveryControl {
+        #[doc = "Output only. Specified the creative blocking levels to be applied."]
+        #[serde(rename = "creativeBlockingLevel", default)]
+        pub creative_blocking_level:
+            ::std::option::Option<crate::schemas::DeliveryControlCreativeBlockingLevel>,
+        #[doc = "Output only. Specifies how the impression delivery will be paced."]
+        #[serde(rename = "deliveryRateType", default)]
+        pub delivery_rate_type:
+            ::std::option::Option<crate::schemas::DeliveryControlDeliveryRateType>,
+        #[doc = "Output only. Specifies any frequency caps."]
+        #[serde(rename = "frequencyCaps", default)]
+        pub frequency_caps: ::std::option::Option<Vec<crate::schemas::FrequencyCap>>,
     }
-    impl ::field_selector::FieldSelector for DealTerms {
+    impl ::field_selector::FieldSelector for DeliveryControl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3278,20 +3312,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DeliveryControl {
-        #[doc = "Output only. Specified the creative blocking levels to be applied."]
-        #[serde(rename = "creativeBlockingLevel", default)]
-        pub creative_blocking_level:
-            ::std::option::Option<crate::schemas::DeliveryControlCreativeBlockingLevel>,
-        #[doc = "Output only. Specifies how the impression delivery will be paced."]
-        #[serde(rename = "deliveryRateType", default)]
-        pub delivery_rate_type:
-            ::std::option::Option<crate::schemas::DeliveryControlDeliveryRateType>,
-        #[doc = "Output only. Specifies any frequency caps."]
-        #[serde(rename = "frequencyCaps", default)]
-        pub frequency_caps: ::std::option::Option<Vec<crate::schemas::FrequencyCap>>,
+    pub struct Disapproval {
+        #[doc = "Additional details about the reason for disapproval."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<String>>,
+        #[doc = "The categorized reason for disapproval."]
+        #[serde(rename = "reason", default)]
+        pub reason: ::std::option::Option<crate::schemas::DisapprovalReason>,
     }
-    impl ::field_selector::FieldSelector for DeliveryControl {
+    impl ::field_selector::FieldSelector for Disapproval {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3811,26 +3840,14 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Disapproval {
-        #[doc = "Additional details about the reason for disapproval."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<String>>,
-        #[doc = "The categorized reason for disapproval."]
-        #[serde(rename = "reason", default)]
-        pub reason: ::std::option::Option<crate::schemas::DisapprovalReason>,
-    }
-    impl ::field_selector::FieldSelector for Disapproval {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
+    pub struct Empty;
+    impl ::field_selector::FieldSelector for Empty {
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -3840,14 +3857,62 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
-    impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    pub struct FilterSet {
+        #[doc = "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."]
+        #[serde(rename = "absoluteDateRange", default)]
+        pub absolute_date_range: ::std::option::Option<crate::schemas::AbsoluteDateRange>,
+        #[doc = "The set of dimensions along which to break down the response; may be empty.\nIf multiple dimensions are requested, the breakdown is along the Cartesian\nproduct of the requested dimensions."]
+        #[serde(rename = "breakdownDimensions", default)]
+        pub breakdown_dimensions:
+            ::std::option::Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
+        #[doc = "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
+        #[serde(rename = "creativeId", default)]
+        pub creative_id: ::std::option::Option<String>,
+        #[doc = "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
+        #[serde(rename = "dealId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub deal_id: ::std::option::Option<i64>,
+        #[doc = "The environment on which to filter; optional."]
+        #[serde(rename = "environment", default)]
+        pub environment: ::std::option::Option<crate::schemas::FilterSetEnvironment>,
+        #[doc = "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e., if non-empty,\nresults must match any one of the formats)."]
+        #[serde(rename = "formats", default)]
+        pub formats: ::std::option::Option<Vec<crate::schemas::FilterSetFormatsItems>>,
+        #[doc = "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n* `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\n  data)\n* `bidders/*/accounts/*/filterSets/*` (for accessing account-level\n  troubleshooting data)\n\nThis field is required in create operations."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e., if non-empty,\nresults must match any one of the platforms)."]
+        #[serde(rename = "platforms", default)]
+        pub platforms: ::std::option::Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
+        #[doc = "For Open Bidding partners only.\nThe list of publisher identifiers on which to filter; may be empty.\nThe filters represented by multiple publisher identifiers are ORed\ntogether."]
+        #[serde(rename = "publisherIdentifiers", default)]
+        pub publisher_identifiers: ::std::option::Option<Vec<String>>,
+        #[doc = "An open-ended realtime time range, defined by the aggregation start\ntimestamp."]
+        #[serde(rename = "realtimeTimeRange", default)]
+        pub realtime_time_range: ::std::option::Option<crate::schemas::RealtimeTimeRange>,
+        #[doc = "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."]
+        #[serde(rename = "relativeDateRange", default)]
+        pub relative_date_range: ::std::option::Option<crate::schemas::RelativeDateRange>,
+        #[doc = "For Authorized Buyers only.\nThe list of IDs of the seller (publisher) networks on which to filter;\nmay be empty. The filters represented by multiple seller network IDs are\nORed together (i.e., if non-empty, results must match any one of the\npublisher networks). See\n[seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)\nfile for the set of existing seller network IDs."]
+        #[serde(rename = "sellerNetworkIds", default)]
+        pub seller_network_ids: ::std::option::Option<Vec<i32>>,
+        #[doc = "The granularity of time intervals if a time series breakdown is desired;\noptional."]
+        #[serde(rename = "timeSeriesGranularity", default)]
+        pub time_series_granularity:
+            ::std::option::Option<crate::schemas::FilterSetTimeSeriesGranularity>,
+    }
+    impl ::field_selector::FieldSelector for FilterSet {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetBreakdownDimensionsItems {
@@ -4161,71 +4226,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FilterSet {
-        #[doc = "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."]
-        #[serde(rename = "absoluteDateRange", default)]
-        pub absolute_date_range: ::std::option::Option<crate::schemas::AbsoluteDateRange>,
-        #[doc = "The set of dimensions along which to break down the response; may be empty.\nIf multiple dimensions are requested, the breakdown is along the Cartesian\nproduct of the requested dimensions."]
-        #[serde(rename = "breakdownDimensions", default)]
-        pub breakdown_dimensions:
-            ::std::option::Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
-        #[doc = "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
-        #[serde(rename = "creativeId", default)]
-        pub creative_id: ::std::option::Option<String>,
-        #[doc = "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
-        #[serde(rename = "dealId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub deal_id: ::std::option::Option<i64>,
-        #[doc = "The environment on which to filter; optional."]
-        #[serde(rename = "environment", default)]
-        pub environment: ::std::option::Option<crate::schemas::FilterSetEnvironment>,
-        #[doc = "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e., if non-empty,\nresults must match any one of the formats)."]
-        #[serde(rename = "formats", default)]
-        pub formats: ::std::option::Option<Vec<crate::schemas::FilterSetFormatsItems>>,
-        #[doc = "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n* `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\n  data)\n* `bidders/*/accounts/*/filterSets/*` (for accessing account-level\n  troubleshooting data)\n\nThis field is required in create operations."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e., if non-empty,\nresults must match any one of the platforms)."]
-        #[serde(rename = "platforms", default)]
-        pub platforms: ::std::option::Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
-        #[doc = "For Open Bidding partners only.\nThe list of publisher identifiers on which to filter; may be empty.\nThe filters represented by multiple publisher identifiers are ORed\ntogether."]
-        #[serde(rename = "publisherIdentifiers", default)]
-        pub publisher_identifiers: ::std::option::Option<Vec<String>>,
-        #[doc = "An open-ended realtime time range, defined by the aggregation start\ntimestamp."]
-        #[serde(rename = "realtimeTimeRange", default)]
-        pub realtime_time_range: ::std::option::Option<crate::schemas::RealtimeTimeRange>,
-        #[doc = "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."]
-        #[serde(rename = "relativeDateRange", default)]
-        pub relative_date_range: ::std::option::Option<crate::schemas::RelativeDateRange>,
-        #[doc = "For Authorized Buyers only.\nThe list of IDs of the seller (publisher) networks on which to filter;\nmay be empty. The filters represented by multiple seller network IDs are\nORed together (i.e., if non-empty, results must match any one of the\npublisher networks). See\n[seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)\nfile for the set of existing seller network IDs."]
-        #[serde(rename = "sellerNetworkIds", default)]
-        pub seller_network_ids: ::std::option::Option<Vec<i32>>,
-        #[doc = "The granularity of time intervals if a time series breakdown is desired;\noptional."]
-        #[serde(rename = "timeSeriesGranularity", default)]
-        pub time_series_granularity:
-            ::std::option::Option<crate::schemas::FilterSetTimeSeriesGranularity>,
-    }
-    impl ::field_selector::FieldSelector for FilterSet {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct FilteredBidCreativeRow {
         #[doc = "The number of bids with the specified creative."]
         #[serde(rename = "bidCount", default)]
@@ -4307,6 +4307,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FrequencyCap {
+        #[doc = "The maximum number of impressions that can be served to a user within the\nspecified time period."]
+        #[serde(rename = "maxImpressions", default)]
+        pub max_impressions: ::std::option::Option<i32>,
+        #[doc = "The amount of time, in the units specified by time_unit_type. Defines the\namount of time over which impressions per user are counted and capped."]
+        #[serde(rename = "numTimeUnits", default)]
+        pub num_time_units: ::std::option::Option<i32>,
+        #[doc = "The time unit. Along with num_time_units defines the amount of time over\nwhich impressions per user are counted and capped."]
+        #[serde(rename = "timeUnitType", default)]
+        pub time_unit_type: ::std::option::Option<crate::schemas::FrequencyCapTimeUnitType>,
+    }
+    impl ::field_selector::FieldSelector for FrequencyCap {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FrequencyCapTimeUnitType {
         #[doc = "Day"]
@@ -4374,38 +4406,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for FrequencyCapTimeUnitType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FrequencyCap {
-        #[doc = "The maximum number of impressions that can be served to a user within the\nspecified time period."]
-        #[serde(rename = "maxImpressions", default)]
-        pub max_impressions: ::std::option::Option<i32>,
-        #[doc = "The amount of time, in the units specified by time_unit_type. Defines the\namount of time over which impressions per user are counted and capped."]
-        #[serde(rename = "numTimeUnits", default)]
-        pub num_time_units: ::std::option::Option<i32>,
-        #[doc = "The time unit. Along with num_time_units defines the amount of time over\nwhich impressions per user are counted and capped."]
-        #[serde(rename = "timeUnitType", default)]
-        pub time_unit_type: ::std::option::Option<crate::schemas::FrequencyCapTimeUnitType>,
-    }
-    impl ::field_selector::FieldSelector for FrequencyCap {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4791,6 +4791,41 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListCreativeStatusBreakdownByDetailResponse {
+        #[doc = "The type of detail that the detail IDs represent."]
+        #[serde(rename = "detailType", default)]
+        pub detail_type: ::std::option::Option<
+            crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType,
+        >,
+        #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby detail."]
+        #[serde(rename = "filteredBidDetailRows", default)]
+        pub filtered_bid_detail_rows:
+            ::std::option::Option<Vec<crate::schemas::FilteredBidDetailRow>>,
+        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListCreativeStatusBreakdownByDetailResponseDetailType {
         #[doc = "Indicates that the detail ID refers to a creative attribute; see\n[publisher-excludable-creative-attributes](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes)."]
@@ -4874,41 +4909,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponseDetailType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ListCreativeStatusBreakdownByDetailResponse {
-        #[doc = "The type of detail that the detail IDs represent."]
-        #[serde(rename = "detailType", default)]
-        pub detail_type: ::std::option::Option<
-            crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType,
-        >,
-        #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby detail."]
-        #[serde(rename = "filteredBidDetailRows", default)]
-        pub filtered_bid_detail_rows:
-            ::std::option::Option<Vec<crate::schemas::FilteredBidDetailRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5437,6 +5437,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NonBillableWinningBidStatusRow {
+        #[doc = "The number of bids with the specified status."]
+        #[serde(rename = "bidCount", default)]
+        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
+        #[doc = "The values of all dimensions associated with metric values in this row."]
+        #[serde(rename = "rowDimensions", default)]
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
+        #[doc = "The status specifying why the winning bids were not billed."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::NonBillableWinningBidStatusRowStatus>,
+    }
+    impl ::field_selector::FieldSelector for NonBillableWinningBidStatusRow {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NonBillableWinningBidStatusRowStatus {
         #[doc = "The buyer was not billed because the ad was not rendered by the\npublisher."]
@@ -5508,38 +5540,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct NonBillableWinningBidStatusRow {
-        #[doc = "The number of bids with the specified status."]
-        #[serde(rename = "bidCount", default)]
-        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
-        #[doc = "The status specifying why the winning bids were not billed."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::NonBillableWinningBidStatusRowStatus>,
-    }
-    impl ::field_selector::FieldSelector for NonBillableWinningBidStatusRow {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct NonGuaranteedAuctionTerms {
         #[doc = "True if open auction buyers are allowed to compete with invited buyers\nin this private auction."]
         #[serde(rename = "autoOptimizePrivateAuction", default)]
@@ -5575,6 +5575,45 @@ pub mod schemas {
         pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
     }
     impl ::field_selector::FieldSelector for NonGuaranteedFixedPriceTerms {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Note {
+        #[doc = "Output only. The timestamp for when this note was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Output only. The role of the person (buyer/seller) creating the note."]
+        #[serde(rename = "creatorRole", default)]
+        pub creator_role: ::std::option::Option<crate::schemas::NoteCreatorRole>,
+        #[doc = "The actual note to attach.\n(max-length: 1024 unicode code units)\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[serde(rename = "note", default)]
+        pub note: ::std::option::Option<String>,
+        #[doc = "Output only. The unique ID for the note."]
+        #[serde(rename = "noteId", default)]
+        pub note_id: ::std::option::Option<String>,
+        #[doc = "Output only. The revision number of the proposal when the note is created."]
+        #[serde(rename = "proposalRevision", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub proposal_revision: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for Note {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5634,45 +5673,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for NoteCreatorRole {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Note {
-        #[doc = "Output only. The timestamp for when this note was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The role of the person (buyer/seller) creating the note."]
-        #[serde(rename = "creatorRole", default)]
-        pub creator_role: ::std::option::Option<crate::schemas::NoteCreatorRole>,
-        #[doc = "The actual note to attach.\n(max-length: 1024 unicode code units)\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "note", default)]
-        pub note: ::std::option::Option<String>,
-        #[doc = "Output only. The unique ID for the note."]
-        #[serde(rename = "noteId", default)]
-        pub note_id: ::std::option::Option<String>,
-        #[doc = "Output only. The revision number of the proposal when the note is created."]
-        #[serde(rename = "proposalRevision", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub proposal_revision: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for Note {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5767,6 +5767,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PlatformContext {
+        #[doc = "The platforms this restriction applies to."]
+        #[serde(rename = "platforms", default)]
+        pub platforms: ::std::option::Option<Vec<crate::schemas::PlatformContextPlatformsItems>>,
+    }
+    impl ::field_selector::FieldSelector for PlatformContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformContextPlatformsItems {
         Android,
@@ -5835,12 +5861,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PlatformContext {
-        #[doc = "The platforms this restriction applies to."]
-        #[serde(rename = "platforms", default)]
-        pub platforms: ::std::option::Option<Vec<crate::schemas::PlatformContextPlatformsItems>>,
+    pub struct Price {
+        #[doc = "The actual price with currency specified."]
+        #[serde(rename = "amount", default)]
+        pub amount: ::std::option::Option<crate::schemas::Money>,
+        #[doc = "The pricing type for the deal/product. (default: CPM)"]
+        #[serde(rename = "pricingType", default)]
+        pub pricing_type: ::std::option::Option<crate::schemas::PricePricingType>,
     }
-    impl ::field_selector::FieldSelector for PlatformContext {
+    impl ::field_selector::FieldSelector for Price {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5920,35 +5949,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Price {
-        #[doc = "The actual price with currency specified."]
-        #[serde(rename = "amount", default)]
-        pub amount: ::std::option::Option<crate::schemas::Money>,
-        #[doc = "The pricing type for the deal/product. (default: CPM)"]
-        #[serde(rename = "pricingType", default)]
-        pub pricing_type: ::std::option::Option<crate::schemas::PricePricingType>,
-    }
-    impl ::field_selector::FieldSelector for Price {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct PricePerBuyer {
         #[doc = "The list of advertisers for this price when associated with this buyer.\nIf empty, all advertisers with this buyer pay this price."]
         #[serde(rename = "advertiserIds", default)]
@@ -5987,6 +5987,75 @@ pub mod schemas {
         pub reference_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PrivateData {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Product {
+        #[doc = "The proposed end time for the deal. The field will be truncated to the\norder of seconds during serving."]
+        #[serde(rename = "availableEndTime", default)]
+        pub available_end_time: ::std::option::Option<String>,
+        #[doc = "Inventory availability dates. The start time will be truncated to seconds\nduring serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will\nbe truncated to 3:23:34 when serving."]
+        #[serde(rename = "availableStartTime", default)]
+        pub available_start_time: ::std::option::Option<String>,
+        #[doc = "Creation time."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional contact information for the creator of this product."]
+        #[serde(rename = "creatorContacts", default)]
+        pub creator_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
+        #[doc = "The display name for this product as set by the seller."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "If the creator has already signed off on the product, then the buyer can\nfinalize the deal by accepting the product as is. When copying to a\nproposal, if any of the terms are changed, then auto_finalize is\nautomatically set to false."]
+        #[serde(rename = "hasCreatorSignedOff", default)]
+        pub has_creator_signed_off: ::std::option::Option<bool>,
+        #[doc = "The unique ID for the product."]
+        #[serde(rename = "productId", default)]
+        pub product_id: ::std::option::Option<String>,
+        #[doc = "The revision number of the product (auto-assigned by Marketplace)."]
+        #[serde(rename = "productRevision", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub product_revision: ::std::option::Option<i64>,
+        #[doc = "An ID which can be used by the Publisher Profile API to get more\ninformation about the seller that created this product."]
+        #[serde(rename = "publisherProfileId", default)]
+        pub publisher_profile_id: ::std::option::Option<String>,
+        #[doc = "Information about the seller that created this product."]
+        #[serde(rename = "seller", default)]
+        pub seller: ::std::option::Option<crate::schemas::Seller>,
+        #[doc = "The syndication product associated with the deal."]
+        #[serde(rename = "syndicationProduct", default)]
+        pub syndication_product: ::std::option::Option<crate::schemas::ProductSyndicationProduct>,
+        #[doc = "Targeting that is shared between the buyer and the seller. Each targeting\ncriterion has a specified key and for each key there is a list of inclusion\nvalue or exclusion values."]
+        #[serde(rename = "targetingCriterion", default)]
+        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
+        #[doc = "The negotiable terms of the deal."]
+        #[serde(rename = "terms", default)]
+        pub terms: ::std::option::Option<crate::schemas::DealTerms>,
+        #[doc = "Time of last update."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "The web-property code for the seller. This needs to be copied as is when\nadding a new deal to a proposal."]
+        #[serde(rename = "webPropertyCode", default)]
+        pub web_property_code: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Product {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6078,55 +6147,65 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Product {
-        #[doc = "The proposed end time for the deal. The field will be truncated to the\norder of seconds during serving."]
-        #[serde(rename = "availableEndTime", default)]
-        pub available_end_time: ::std::option::Option<String>,
-        #[doc = "Inventory availability dates. The start time will be truncated to seconds\nduring serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will\nbe truncated to 3:23:34 when serving."]
-        #[serde(rename = "availableStartTime", default)]
-        pub available_start_time: ::std::option::Option<String>,
-        #[doc = "Creation time."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional contact information for the creator of this product."]
-        #[serde(rename = "creatorContacts", default)]
-        pub creator_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
-        #[doc = "The display name for this product as set by the seller."]
+    pub struct Proposal {
+        #[doc = "Output only. Reference to the buyer that will get billed for this proposal."]
+        #[serde(rename = "billedBuyer", default)]
+        pub billed_buyer: ::std::option::Option<crate::schemas::Buyer>,
+        #[doc = "Reference to the buyer on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[serde(rename = "buyer", default)]
+        pub buyer: ::std::option::Option<crate::schemas::Buyer>,
+        #[doc = "Contact information for the buyer."]
+        #[serde(rename = "buyerContacts", default)]
+        pub buyer_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
+        #[doc = "Private data for buyer. (hidden from seller)."]
+        #[serde(rename = "buyerPrivateData", default)]
+        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
+        #[doc = "The deals associated with this proposal. For Private Auction proposals\n(whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
+        #[serde(rename = "deals", default)]
+        pub deals: ::std::option::Option<Vec<crate::schemas::Deal>>,
+        #[doc = "The name for the proposal."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "If the creator has already signed off on the product, then the buyer can\nfinalize the deal by accepting the product as is. When copying to a\nproposal, if any of the terms are changed, then auto_finalize is\nautomatically set to false."]
-        #[serde(rename = "hasCreatorSignedOff", default)]
-        pub has_creator_signed_off: ::std::option::Option<bool>,
-        #[doc = "The unique ID for the product."]
-        #[serde(rename = "productId", default)]
-        pub product_id: ::std::option::Option<String>,
-        #[doc = "The revision number of the product (auto-assigned by Marketplace)."]
-        #[serde(rename = "productRevision", default)]
+        #[doc = "Output only. True if the proposal is being renegotiated."]
+        #[serde(rename = "isRenegotiating", default)]
+        pub is_renegotiating: ::std::option::Option<bool>,
+        #[doc = "Output only. True, if the buyside inventory setup is complete for this\nproposal."]
+        #[serde(rename = "isSetupComplete", default)]
+        pub is_setup_complete: ::std::option::Option<bool>,
+        #[doc = "Output only. The role of the last user that either updated the proposal or\nleft a comment."]
+        #[serde(rename = "lastUpdaterOrCommentorRole", default)]
+        pub last_updater_or_commentor_role:
+            ::std::option::Option<crate::schemas::ProposalLastUpdaterOrCommentorRole>,
+        #[doc = "Output only. The notes associated with this proposal."]
+        #[serde(rename = "notes", default)]
+        pub notes: ::std::option::Option<Vec<crate::schemas::Note>>,
+        #[doc = "Output only. Indicates whether the buyer/seller created the proposal."]
+        #[serde(rename = "originatorRole", default)]
+        pub originator_role: ::std::option::Option<crate::schemas::ProposalOriginatorRole>,
+        #[doc = "Output only. Private auction ID if this proposal is a private auction\nproposal."]
+        #[serde(rename = "privateAuctionId", default)]
+        pub private_auction_id: ::std::option::Option<String>,
+        #[doc = "Output only. The unique ID of the proposal."]
+        #[serde(rename = "proposalId", default)]
+        pub proposal_id: ::std::option::Option<String>,
+        #[doc = "Output only. The revision number for the proposal.\nEach update to the proposal or the deal causes the proposal revision number\nto auto-increment. The buyer keeps track of the last revision number they\nknow of and pass it in when making an update. If the head revision number\non the server has since incremented, then an ABORTED error is returned\nduring the update operation to let the buyer know that a subsequent update\nwas made."]
+        #[serde(rename = "proposalRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub product_revision: ::std::option::Option<i64>,
-        #[doc = "An ID which can be used by the Publisher Profile API to get more\ninformation about the seller that created this product."]
-        #[serde(rename = "publisherProfileId", default)]
-        pub publisher_profile_id: ::std::option::Option<String>,
-        #[doc = "Information about the seller that created this product."]
+        pub proposal_revision: ::std::option::Option<i64>,
+        #[doc = "Output only. The current state of the proposal."]
+        #[serde(rename = "proposalState", default)]
+        pub proposal_state: ::std::option::Option<crate::schemas::ProposalProposalState>,
+        #[doc = "Reference to the seller on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "seller", default)]
         pub seller: ::std::option::Option<crate::schemas::Seller>,
-        #[doc = "The syndication product associated with the deal."]
-        #[serde(rename = "syndicationProduct", default)]
-        pub syndication_product: ::std::option::Option<crate::schemas::ProductSyndicationProduct>,
-        #[doc = "Targeting that is shared between the buyer and the seller. Each targeting\ncriterion has a specified key and for each key there is a list of inclusion\nvalue or exclusion values."]
-        #[serde(rename = "targetingCriterion", default)]
-        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
-        #[doc = "The negotiable terms of the deal."]
-        #[serde(rename = "terms", default)]
-        pub terms: ::std::option::Option<crate::schemas::DealTerms>,
-        #[doc = "Time of last update."]
+        #[doc = "Output only. Contact information for the seller."]
+        #[serde(rename = "sellerContacts", default)]
+        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
+        #[doc = "Output only. The time when the proposal was last revised."]
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
-        #[doc = "The web-property code for the seller. This needs to be copied as is when\nadding a new deal to a proposal."]
-        #[serde(rename = "webPropertyCode", default)]
-        pub web_property_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Product {
+    impl ::field_selector::FieldSelector for Proposal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6344,85 +6423,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Proposal {
-        #[doc = "Output only. Reference to the buyer that will get billed for this proposal."]
-        #[serde(rename = "billedBuyer", default)]
-        pub billed_buyer: ::std::option::Option<crate::schemas::Buyer>,
-        #[doc = "Reference to the buyer on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "buyer", default)]
-        pub buyer: ::std::option::Option<crate::schemas::Buyer>,
-        #[doc = "Contact information for the buyer."]
-        #[serde(rename = "buyerContacts", default)]
-        pub buyer_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
-        #[doc = "Private data for buyer. (hidden from seller)."]
-        #[serde(rename = "buyerPrivateData", default)]
-        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
-        #[doc = "The deals associated with this proposal. For Private Auction proposals\n(whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
-        #[serde(rename = "deals", default)]
-        pub deals: ::std::option::Option<Vec<crate::schemas::Deal>>,
-        #[doc = "The name for the proposal."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. True if the proposal is being renegotiated."]
-        #[serde(rename = "isRenegotiating", default)]
-        pub is_renegotiating: ::std::option::Option<bool>,
-        #[doc = "Output only. True, if the buyside inventory setup is complete for this\nproposal."]
-        #[serde(rename = "isSetupComplete", default)]
-        pub is_setup_complete: ::std::option::Option<bool>,
-        #[doc = "Output only. The role of the last user that either updated the proposal or\nleft a comment."]
-        #[serde(rename = "lastUpdaterOrCommentorRole", default)]
-        pub last_updater_or_commentor_role:
-            ::std::option::Option<crate::schemas::ProposalLastUpdaterOrCommentorRole>,
-        #[doc = "Output only. The notes associated with this proposal."]
-        #[serde(rename = "notes", default)]
-        pub notes: ::std::option::Option<Vec<crate::schemas::Note>>,
-        #[doc = "Output only. Indicates whether the buyer/seller created the proposal."]
-        #[serde(rename = "originatorRole", default)]
-        pub originator_role: ::std::option::Option<crate::schemas::ProposalOriginatorRole>,
-        #[doc = "Output only. Private auction ID if this proposal is a private auction\nproposal."]
-        #[serde(rename = "privateAuctionId", default)]
-        pub private_auction_id: ::std::option::Option<String>,
-        #[doc = "Output only. The unique ID of the proposal."]
-        #[serde(rename = "proposalId", default)]
-        pub proposal_id: ::std::option::Option<String>,
-        #[doc = "Output only. The revision number for the proposal.\nEach update to the proposal or the deal causes the proposal revision number\nto auto-increment. The buyer keeps track of the last revision number they\nknow of and pass it in when making an update. If the head revision number\non the server has since incremented, then an ABORTED error is returned\nduring the update operation to let the buyer know that a subsequent update\nwas made."]
-        #[serde(rename = "proposalRevision", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub proposal_revision: ::std::option::Option<i64>,
-        #[doc = "Output only. The current state of the proposal."]
-        #[serde(rename = "proposalState", default)]
-        pub proposal_state: ::std::option::Option<crate::schemas::ProposalProposalState>,
-        #[doc = "Reference to the seller on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "seller", default)]
-        pub seller: ::std::option::Option<crate::schemas::Seller>,
-        #[doc = "Output only. Contact information for the seller."]
-        #[serde(rename = "sellerContacts", default)]
-        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
-        #[doc = "Output only. The time when the proposal was last revised."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Proposal {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct PublisherProfile {
         #[doc = "Description on the publisher's audience."]
         #[serde(rename = "audienceDescription", default)]
@@ -6606,6 +6606,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SecurityContext {
+        #[doc = "The security types in this context."]
+        #[serde(rename = "securities", default)]
+        pub securities: ::std::option::Option<Vec<crate::schemas::SecurityContextSecuritiesItems>>,
+    }
+    impl ::field_selector::FieldSelector for SecurityContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SecurityContextSecuritiesItems {
         Insecure,
@@ -6671,12 +6697,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SecurityContext {
-        #[doc = "The security types in this context."]
-        #[serde(rename = "securities", default)]
-        pub securities: ::std::option::Option<Vec<crate::schemas::SecurityContextSecuritiesItems>>,
+    pub struct Seller {
+        #[doc = "The unique ID for the seller. The seller fills in this field.\nThe seller account ID is then available to buyer in the product."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "Optional sub-account ID for the seller."]
+        #[serde(rename = "subAccountId", default)]
+        pub sub_account_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for SecurityContext {
+    impl ::field_selector::FieldSelector for Seller {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6697,15 +6726,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Seller {
-        #[doc = "The unique ID for the seller. The seller fills in this field.\nThe seller account ID is then available to buyer in the product."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "Optional sub-account ID for the seller."]
-        #[serde(rename = "subAccountId", default)]
-        pub sub_account_id: ::std::option::Option<String>,
+    pub struct ServingContext {
+        #[doc = "Matches all contexts."]
+        #[serde(rename = "all", default)]
+        pub all: ::std::option::Option<crate::schemas::ServingContextAll>,
+        #[doc = "Matches impressions for a particular app type."]
+        #[serde(rename = "appType", default)]
+        pub app_type: ::std::option::Option<crate::schemas::AppContext>,
+        #[doc = "Matches impressions for a particular auction type."]
+        #[serde(rename = "auctionType", default)]
+        pub auction_type: ::std::option::Option<crate::schemas::AuctionContext>,
+        #[doc = "Matches impressions coming from users *or* publishers in a specific\nlocation."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<crate::schemas::LocationContext>,
+        #[doc = "Matches impressions coming from a particular platform."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<crate::schemas::PlatformContext>,
+        #[doc = "Matches impressions for a particular security type."]
+        #[serde(rename = "securityType", default)]
+        pub security_type: ::std::option::Option<crate::schemas::SecurityContext>,
     }
-    impl ::field_selector::FieldSelector for Seller {
+    impl ::field_selector::FieldSelector for ServingContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6777,27 +6818,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ServingContext {
-        #[doc = "Matches all contexts."]
-        #[serde(rename = "all", default)]
-        pub all: ::std::option::Option<crate::schemas::ServingContextAll>,
-        #[doc = "Matches impressions for a particular app type."]
-        #[serde(rename = "appType", default)]
-        pub app_type: ::std::option::Option<crate::schemas::AppContext>,
-        #[doc = "Matches impressions for a particular auction type."]
-        #[serde(rename = "auctionType", default)]
-        pub auction_type: ::std::option::Option<crate::schemas::AuctionContext>,
-        #[doc = "Matches impressions coming from users *or* publishers in a specific\nlocation."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<crate::schemas::LocationContext>,
-        #[doc = "Matches impressions coming from a particular platform."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<crate::schemas::PlatformContext>,
-        #[doc = "Matches impressions for a particular security type."]
-        #[serde(rename = "securityType", default)]
-        pub security_type: ::std::option::Option<crate::schemas::SecurityContext>,
+    pub struct ServingRestriction {
+        #[doc = "The contexts for the restriction."]
+        #[serde(rename = "contexts", default)]
+        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
+        #[doc = "Disapproval bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[serde(rename = "disapproval", default)]
+        pub disapproval: ::std::option::Option<crate::schemas::Disapproval>,
+        #[doc = "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.\nDeprecated; please use\ndisapproval\nfield instead."]
+        #[serde(rename = "disapprovalReasons", default)]
+        pub disapproval_reasons: ::std::option::Option<Vec<crate::schemas::Disapproval>>,
+        #[doc = "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review)."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::ServingRestrictionStatus>,
     }
-    impl ::field_selector::FieldSelector for ServingContext {
+    impl ::field_selector::FieldSelector for ServingRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6857,41 +6892,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ServingRestrictionStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ServingRestriction {
-        #[doc = "The contexts for the restriction."]
-        #[serde(rename = "contexts", default)]
-        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
-        #[doc = "Disapproval bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "disapproval", default)]
-        pub disapproval: ::std::option::Option<crate::schemas::Disapproval>,
-        #[doc = "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.\nDeprecated; please use\ndisapproval\nfield instead."]
-        #[serde(rename = "disapprovalReasons", default)]
-        pub disapproval_reasons: ::std::option::Option<Vec<crate::schemas::Disapproval>>,
-        #[doc = "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review)."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::ServingRestrictionStatus>,
-    }
-    impl ::field_selector::FieldSelector for ServingRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7169,6 +7169,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VideoTargeting {
+        #[doc = "A list of video positions to be excluded.\nPosition types can either be included or excluded (XOR)."]
+        #[serde(rename = "excludedPositionTypes", default)]
+        pub excluded_position_types:
+            ::std::option::Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
+        #[doc = "A list of video positions to be included.\nWhen the included list is present, the excluded list must be empty.\nWhen the excluded list is present, the included list must be empty."]
+        #[serde(rename = "targetedPositionTypes", default)]
+        pub targeted_position_types:
+            ::std::option::Option<Vec<crate::schemas::VideoTargetingTargetedPositionTypesItems>>,
+    }
+    impl ::field_selector::FieldSelector for VideoTargeting {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoTargetingExcludedPositionTypesItems {
         Midroll,
@@ -7287,37 +7318,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for VideoTargetingTargetedPositionTypesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VideoTargeting {
-        #[doc = "A list of video positions to be excluded.\nPosition types can either be included or excluded (XOR)."]
-        #[serde(rename = "excludedPositionTypes", default)]
-        pub excluded_position_types:
-            ::std::option::Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
-        #[doc = "A list of video positions to be included.\nWhen the included list is present, the excluded list must be empty.\nWhen the excluded list is present, the included list must be empty."]
-        #[serde(rename = "targetedPositionTypes", default)]
-        pub targeted_position_types:
-            ::std::option::Option<Vec<crate::schemas::VideoTargetingTargetedPositionTypesItems>>,
-    }
-    impl ::field_selector::FieldSelector for VideoTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -23327,84 +23327,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -23436,7 +23358,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -23557,50 +23478,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

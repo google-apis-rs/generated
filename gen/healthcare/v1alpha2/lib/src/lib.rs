@@ -112,6 +112,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -167,35 +196,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -572,6 +572,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DicomConfig {
+        #[doc = "Tag filtering profile that determines which tags to keep/remove."]
+        #[serde(rename = "filterProfile", default)]
+        pub filter_profile: ::std::option::Option<crate::schemas::DicomConfigFilterProfile>,
+        #[doc = "List of tags to keep. Remove all other tags."]
+        #[serde(rename = "keepList", default)]
+        pub keep_list: ::std::option::Option<crate::schemas::TagFilterList>,
+        #[doc = "List of tags to remove. Keep all other tags."]
+        #[serde(rename = "removeList", default)]
+        pub remove_list: ::std::option::Option<crate::schemas::TagFilterList>,
+    }
+    impl ::field_selector::FieldSelector for DicomConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DicomConfigFilterProfile {
         #[doc = "Remove tags based on DICOM Standard's Attribute Confidentiality Basic\nProfile (DICOM Standard Edition 2018e)\nhttp://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html."]
@@ -639,38 +671,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DicomConfigFilterProfile {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DicomConfig {
-        #[doc = "Tag filtering profile that determines which tags to keep/remove."]
-        #[serde(rename = "filterProfile", default)]
-        pub filter_profile: ::std::option::Option<crate::schemas::DicomConfigFilterProfile>,
-        #[doc = "List of tags to keep. Remove all other tags."]
-        #[serde(rename = "keepList", default)]
-        pub keep_list: ::std::option::Option<crate::schemas::TagFilterList>,
-        #[doc = "List of tags to remove. Keep all other tags."]
-        #[serde(rename = "removeList", default)]
-        pub remove_list: ::std::option::Option<crate::schemas::TagFilterList>,
-    }
-    impl ::field_selector::FieldSelector for DicomConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -925,6 +925,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FieldMetadata {
+        #[doc = "Deidentify action for one field."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::FieldMetadataAction>,
+        #[doc = "List of paths to FHIR fields to be redacted. Each path is a\nperiod-separated list where each component is either a field name or\nFHIR type name, for example: Patient, HumanName.\nFor \"choice\" types (those defined in the FHIR spec with the form:\nfield[x]) we use two separate components. e.g. \"deceasedAge.unit\" is\nmatched by \"Deceased.Age.unit\".\nSupported types are: AdministrativeGenderCode, Code, Date, DateTime,\nDecimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,\nString, Uri, Uuid, Xhtml."]
+        #[serde(rename = "paths", default)]
+        pub paths: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for FieldMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FieldMetadataAction {
         #[doc = "No action specified."]
@@ -980,35 +1009,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for FieldMetadataAction {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FieldMetadata {
-        #[doc = "Deidentify action for one field."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::FieldMetadataAction>,
-        #[doc = "List of paths to FHIR fields to be redacted. Each path is a\nperiod-separated list where each component is either a field name or\nFHIR type name, for example: Patient, HumanName.\nFor \"choice\" types (those defined in the FHIR spec with the form:\nfield[x]) we use two separate components. e.g. \"deceasedAge.unit\" is\nmatched by \"Deceased.Age.unit\".\nSupported types are: AdministrativeGenderCode, Code, Date, DateTime,\nDecimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,\nString, Uri, Uuid, Xhtml."]
-        #[serde(rename = "paths", default)]
-        pub paths: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for FieldMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1472,6 +1472,33 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImageConfig {
+        #[doc = "Determines how to redact text from image."]
+        #[serde(rename = "textRedactionMode", default)]
+        pub text_redaction_mode:
+            ::std::option::Option<crate::schemas::ImageConfigTextRedactionMode>,
+    }
+    impl ::field_selector::FieldSelector for ImageConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImageConfigTextRedactionMode {
         #[doc = "Redact all text."]
@@ -1539,33 +1566,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ImageConfig {
-        #[doc = "Determines how to redact text from image."]
-        #[serde(rename = "textRedactionMode", default)]
-        pub text_redaction_mode:
-            ::std::option::Option<crate::schemas::ImageConfigTextRedactionMode>,
-    }
-    impl ::field_selector::FieldSelector for ImageConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ImportDicomDataErrorDetails {
         #[doc = "Deprecated. Use only for debugging purposes.\n\nContains sample errors encountered in imports of individual resources\n(for example, a Cloud Storage object)."]
@@ -1600,6 +1600,42 @@ pub mod schemas {
             ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Alpha2DicomGcsSource>,
     }
     impl ::field_selector::FieldSelector for ImportDicomDataRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportResourcesRequest {
+        #[doc = "The content structure in the source location. If not specified, the server\ntreats the input source files as BUNDLE."]
+        #[serde(rename = "contentStructure", default)]
+        pub content_structure:
+            ::std::option::Option<crate::schemas::ImportResourcesRequestContentStructure>,
+        #[doc = "The Cloud Storage destination to write the error report to.\n\nThe Cloud Storage location requires the `roles/storage.objectAdmin` Cloud\nIAM role.\n\nNote that writing a file to the same destination multiple times will\nresult in the previous version of the file being overwritten."]
+        #[serde(rename = "gcsErrorDestination", default)]
+        pub gcs_error_destination: ::std::option::Option<
+            crate::schemas::GoogleCloudHealthcareV1Alpha2FhirRestGcsErrorDestination,
+        >,
+        #[doc = "Cloud Storage source data location and import configuration.\n\nThe Cloud Storage location requires the `roles/storage.objectViewer`\nCloud IAM role.\n\nEach Cloud Storage object should be a text file that contains the format\nspecified in ContentStructu."]
+        #[serde(rename = "gcsSource", default)]
+        pub gcs_source:
+            ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Alpha2FhirRestGcsSource>,
+    }
+    impl ::field_selector::FieldSelector for ImportResourcesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1671,42 +1707,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ImportResourcesRequestContentStructure {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ImportResourcesRequest {
-        #[doc = "The content structure in the source location. If not specified, the server\ntreats the input source files as BUNDLE."]
-        #[serde(rename = "contentStructure", default)]
-        pub content_structure:
-            ::std::option::Option<crate::schemas::ImportResourcesRequestContentStructure>,
-        #[doc = "The Cloud Storage destination to write the error report to.\n\nThe Cloud Storage location requires the `roles/storage.objectAdmin` Cloud\nIAM role.\n\nNote that writing a file to the same destination multiple times will\nresult in the previous version of the file being overwritten."]
-        #[serde(rename = "gcsErrorDestination", default)]
-        pub gcs_error_destination: ::std::option::Option<
-            crate::schemas::GoogleCloudHealthcareV1Alpha2FhirRestGcsErrorDestination,
-        >,
-        #[doc = "Cloud Storage source data location and import configuration.\n\nThe Cloud Storage location requires the `roles/storage.objectViewer`\nCloud IAM role.\n\nEach Cloud Storage object should be a text file that contains the format\nspecified in ContentStructu."]
-        #[serde(rename = "gcsSource", default)]
-        pub gcs_source:
-            ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Alpha2FhirRestGcsSource>,
-    }
-    impl ::field_selector::FieldSelector for ImportResourcesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2430,6 +2430,36 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SchemaConfig {
+        #[doc = "The depth for all recursive structures in the output analytics\nschema. For example, `concept` in the CodeSystem resource is a recursive\nstructure; when the depth is 2, the CodeSystem table will have a column\ncalled `concept.concept` but not `concept.concept.concept`. If not\nspecified or set to 0, the server will use the default value 2."]
+        #[serde(rename = "recursiveStructureDepth", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub recursive_structure_depth: ::std::option::Option<i64>,
+        #[doc = "Specifies the output schema type. If unspecified, the default is\n`LOSSLESS`."]
+        #[serde(rename = "schemaType", default)]
+        pub schema_type: ::std::option::Option<crate::schemas::SchemaConfigSchemaType>,
+    }
+    impl ::field_selector::FieldSelector for SchemaConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SchemaConfigSchemaType {
         #[doc = "Analytics schema defined by the FHIR community.\nSee https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md."]
@@ -2481,36 +2511,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SchemaConfigSchemaType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SchemaConfig {
-        #[doc = "The depth for all recursive structures in the output analytics\nschema. For example, `concept` in the CodeSystem resource is a recursive\nstructure; when the depth is 2, the CodeSystem table will have a column\ncalled `concept.concept` but not `concept.concept.concept`. If not\nspecified or set to 0, the server will use the default value 2."]
-        #[serde(rename = "recursiveStructureDepth", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub recursive_structure_depth: ::std::option::Option<i64>,
-        #[doc = "Specifies the output schema type. If unspecified, the default is\n`LOSSLESS`."]
-        #[serde(rename = "schemaType", default)]
-        pub schema_type: ::std::option::Option<crate::schemas::SchemaConfigSchemaType>,
-    }
-    impl ::field_selector::FieldSelector for SchemaConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -22968,84 +22968,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -23077,7 +22999,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -23203,8 +23124,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

@@ -56,6 +56,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: ::std::option::Option<Vec<String>>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Admin reads. Example: CloudIAM getIamPolicy"]
@@ -111,35 +140,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AuditLogConfigLogType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -683,6 +683,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DomainMappingSpec {
+        #[doc = "The mode of the certificate."]
+        #[serde(rename = "certificateMode", default)]
+        pub certificate_mode:
+            ::std::option::Option<crate::schemas::DomainMappingSpecCertificateMode>,
+        #[doc = "If set, the mapping will override any mapping set before this spec was set.\nIt is recommended that the user leaves this empty to receive an error\nwarning about a potential conflict and only set it once the respective UI\nhas given such a warning."]
+        #[serde(rename = "forceOverride", default)]
+        pub force_override: ::std::option::Option<bool>,
+        #[doc = "The name of the Knative Route that this DomainMapping applies to.\nThe route must exist."]
+        #[serde(rename = "routeName", default)]
+        pub route_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DomainMappingSpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DomainMappingSpecCertificateMode {
         #[doc = "Automatically provisions an HTTPS certificate via LetsEncrypt."]
@@ -737,39 +770,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DomainMappingSpecCertificateMode {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DomainMappingSpec {
-        #[doc = "The mode of the certificate."]
-        #[serde(rename = "certificateMode", default)]
-        pub certificate_mode:
-            ::std::option::Option<crate::schemas::DomainMappingSpecCertificateMode>,
-        #[doc = "If set, the mapping will override any mapping set before this spec was set.\nIt is recommended that the user leaves this empty to receive an error\nwarning about a potential conflict and only set it once the respective UI\nhas given such a warning."]
-        #[serde(rename = "forceOverride", default)]
-        pub force_override: ::std::option::Option<bool>,
-        #[doc = "The name of the Knative Route that this DomainMapping applies to.\nThe route must exist."]
-        #[serde(rename = "routeName", default)]
-        pub route_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DomainMappingSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2014,6 +2014,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceRecord {
+        #[doc = "Relative name of the object affected by this record. Only applicable for\n`CNAME` records. Example: 'www'."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Resource record type. Example: `AAAA`."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ResourceRecordType>,
+        #[doc = "Data for this record. Values vary by record type, as defined in RFC 1035\n(section 5) and RFC 1034 (section 3.6.1)."]
+        #[serde(rename = "rrdata", default)]
+        pub rrdata: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResourceRecord {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ResourceRecordType {
         #[doc = "An A resource record. Data is an IPv4 address."]
@@ -2069,38 +2101,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ResourceRecordType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResourceRecord {
-        #[doc = "Relative name of the object affected by this record. Only applicable for\n`CNAME` records. Example: 'www'."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Resource record type. Example: `AAAA`."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ResourceRecordType>,
-        #[doc = "Data for this record. Values vary by record type, as defined in RFC 1035\n(section 5) and RFC 1034 (section 3.6.1)."]
-        #[serde(rename = "rrdata", default)]
-        pub rrdata: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ResourceRecord {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2225,6 +2225,55 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RevisionSpec {
+        #[doc = "ConcurrencyModel specifies the desired concurrency model\n(Single or Multi) for the Revision. Defaults to Multi.\nDeprecated in favor of ContainerConcurrency.\n+optional"]
+        #[serde(rename = "concurrencyModel", default)]
+        pub concurrency_model: ::std::option::Option<String>,
+        #[doc = "Container defines the unit of execution for this Revision.\nIn the context of a Revision, we disallow a number of the fields of\nthis Container, including: name, ports, and volumeMounts.\nThe runtime contract is documented here:\nhttps://github.com/knative/serving/blob/master/docs/runtime-contract.md"]
+        #[serde(rename = "container", default)]
+        pub container: ::std::option::Option<crate::schemas::Container>,
+        #[doc = "ContainerConcurrency specifies the maximum allowed in-flight (concurrent)\nrequests per container of the Revision. Values are:\n\n* `0` thread-safe, the system should manage the max concurrency. This is\n  the default value.\n* `1` not-thread-safe. Single concurrency\n* `2-N` thread-safe, max concurrency of N"]
+        #[serde(rename = "containerConcurrency", default)]
+        pub container_concurrency: ::std::option::Option<i32>,
+        #[doc = "Containers holds the single container that defines the unit of execution\nfor this Revision. In the context of a Revision, we disallow a number of\nfields on this Container, including: name and lifecycle.\nIn Cloud Run, only a single container may be provided."]
+        #[serde(rename = "containers", default)]
+        pub containers: ::std::option::Option<Vec<crate::schemas::Container>>,
+        #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
+        #[serde(rename = "generation", default)]
+        pub generation: ::std::option::Option<i32>,
+        #[doc = "Email address of the IAM service account associated with the revision\nof the service. The service account represents the identity of the\nrunning revision, and determines what permissions the revision has. If\nnot provided, the revision will use the project's default service account."]
+        #[serde(rename = "serviceAccountName", default)]
+        pub service_account_name: ::std::option::Option<String>,
+        #[doc = "ServingState holds a value describing the state the resources\nare in for this Revision.\nUsers must not specify this when creating a revision. It is expected\nthat the system will manipulate this based on routability and load.\n\nPopulated by the system.\nRead-only."]
+        #[serde(rename = "servingState", default)]
+        pub serving_state: ::std::option::Option<crate::schemas::RevisionSpecServingState>,
+        #[doc = "TimeoutSeconds holds the max duration the instance is allowed for\nresponding to a request.\nNot currently used by Cloud Run."]
+        #[serde(rename = "timeoutSeconds", default)]
+        pub timeout_seconds: ::std::option::Option<i32>,
+        #[serde(rename = "volumes", default)]
+        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
+    }
+    impl ::field_selector::FieldSelector for RevisionSpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RevisionSpecServingState {
         #[doc = "The revision is ready to serve traffic."]
@@ -2284,55 +2333,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for RevisionSpecServingState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RevisionSpec {
-        #[doc = "ConcurrencyModel specifies the desired concurrency model\n(Single or Multi) for the Revision. Defaults to Multi.\nDeprecated in favor of ContainerConcurrency.\n+optional"]
-        #[serde(rename = "concurrencyModel", default)]
-        pub concurrency_model: ::std::option::Option<String>,
-        #[doc = "Container defines the unit of execution for this Revision.\nIn the context of a Revision, we disallow a number of the fields of\nthis Container, including: name, ports, and volumeMounts.\nThe runtime contract is documented here:\nhttps://github.com/knative/serving/blob/master/docs/runtime-contract.md"]
-        #[serde(rename = "container", default)]
-        pub container: ::std::option::Option<crate::schemas::Container>,
-        #[doc = "ContainerConcurrency specifies the maximum allowed in-flight (concurrent)\nrequests per container of the Revision. Values are:\n\n* `0` thread-safe, the system should manage the max concurrency. This is\n  the default value.\n* `1` not-thread-safe. Single concurrency\n* `2-N` thread-safe, max concurrency of N"]
-        #[serde(rename = "containerConcurrency", default)]
-        pub container_concurrency: ::std::option::Option<i32>,
-        #[doc = "Containers holds the single container that defines the unit of execution\nfor this Revision. In the context of a Revision, we disallow a number of\nfields on this Container, including: name and lifecycle.\nIn Cloud Run, only a single container may be provided."]
-        #[serde(rename = "containers", default)]
-        pub containers: ::std::option::Option<Vec<crate::schemas::Container>>,
-        #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
-        #[serde(rename = "generation", default)]
-        pub generation: ::std::option::Option<i32>,
-        #[doc = "Email address of the IAM service account associated with the revision\nof the service. The service account represents the identity of the\nrunning revision, and determines what permissions the revision has. If\nnot provided, the revision will use the project's default service account."]
-        #[serde(rename = "serviceAccountName", default)]
-        pub service_account_name: ::std::option::Option<String>,
-        #[doc = "ServingState holds a value describing the state the resources\nare in for this Revision.\nUsers must not specify this when creating a revision. It is expected\nthat the system will manipulate this based on routability and load.\n\nPopulated by the system.\nRead-only."]
-        #[serde(rename = "servingState", default)]
-        pub serving_state: ::std::option::Option<crate::schemas::RevisionSpecServingState>,
-        #[doc = "TimeoutSeconds holds the max duration the instance is allowed for\nresponding to a request.\nNot currently used by Cloud Run."]
-        #[serde(rename = "timeoutSeconds", default)]
-        pub timeout_seconds: ::std::option::Option<i32>,
-        #[serde(rename = "volumes", default)]
-        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
-    }
-    impl ::field_selector::FieldSelector for RevisionSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -14790,84 +14790,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -14899,7 +14821,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -15025,8 +14946,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

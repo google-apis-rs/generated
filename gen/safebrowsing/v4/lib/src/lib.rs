@@ -54,6 +54,48 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Constraints {
+        #[doc = "A client's physical location, expressed as a ISO 31166-1 alpha-2\nregion code."]
+        #[serde(rename = "deviceLocation", default)]
+        pub device_location: ::std::option::Option<String>,
+        #[doc = "Requests the lists for a specific language. Expects ISO 639 alpha-2\nformat."]
+        #[serde(rename = "language", default)]
+        pub language: ::std::option::Option<String>,
+        #[doc = "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set."]
+        #[serde(rename = "maxDatabaseEntries", default)]
+        pub max_database_entries: ::std::option::Option<i32>,
+        #[doc = "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set."]
+        #[serde(rename = "maxUpdateEntries", default)]
+        pub max_update_entries: ::std::option::Option<i32>,
+        #[doc = "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format."]
+        #[serde(rename = "region", default)]
+        pub region: ::std::option::Option<String>,
+        #[doc = "The compression types supported by the client."]
+        #[serde(rename = "supportedCompressions", default)]
+        pub supported_compressions:
+            ::std::option::Option<Vec<crate::schemas::ConstraintsSupportedCompressionsItems>>,
+    }
+    impl ::field_selector::FieldSelector for Constraints {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ConstraintsSupportedCompressionsItems {
         CompressionTypeUnspecified,
@@ -106,48 +148,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ConstraintsSupportedCompressionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Constraints {
-        #[doc = "A client's physical location, expressed as a ISO 31166-1 alpha-2\nregion code."]
-        #[serde(rename = "deviceLocation", default)]
-        pub device_location: ::std::option::Option<String>,
-        #[doc = "Requests the lists for a specific language. Expects ISO 639 alpha-2\nformat."]
-        #[serde(rename = "language", default)]
-        pub language: ::std::option::Option<String>,
-        #[doc = "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set."]
-        #[serde(rename = "maxDatabaseEntries", default)]
-        pub max_database_entries: ::std::option::Option<i32>,
-        #[doc = "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set."]
-        #[serde(rename = "maxUpdateEntries", default)]
-        pub max_update_entries: ::std::option::Option<i32>,
-        #[doc = "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format."]
-        #[serde(rename = "region", default)]
-        pub region: ::std::option::Option<String>,
-        #[doc = "The compression types supported by the client."]
-        #[serde(rename = "supportedCompressions", default)]
-        pub supported_compressions:
-            ::std::option::Option<Vec<crate::schemas::ConstraintsSupportedCompressionsItems>>,
-    }
-    impl ::field_selector::FieldSelector for Constraints {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -371,6 +371,45 @@ pub mod schemas {
         pub threat_lists: ::std::option::Option<Vec<crate::schemas::ThreatListDescriptor>>,
     }
     impl ::field_selector::FieldSelector for ListThreatListsResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListUpdateRequest {
+        #[doc = "The constraints associated with this request."]
+        #[serde(rename = "constraints", default)]
+        pub constraints: ::std::option::Option<crate::schemas::Constraints>,
+        #[doc = "The type of platform at risk by entries present in the list."]
+        #[serde(rename = "platformType", default)]
+        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateRequestPlatformType>,
+        #[doc = "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update)."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The types of entries present in the list."]
+        #[serde(rename = "threatEntryType", default)]
+        pub threat_entry_type:
+            ::std::option::Option<crate::schemas::ListUpdateRequestThreatEntryType>,
+        #[doc = "The type of threat posed by entries present in the list."]
+        #[serde(rename = "threatType", default)]
+        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateRequestThreatType>,
+    }
+    impl ::field_selector::FieldSelector for ListUpdateRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -680,25 +719,34 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListUpdateRequest {
-        #[doc = "The constraints associated with this request."]
-        #[serde(rename = "constraints", default)]
-        pub constraints: ::std::option::Option<crate::schemas::Constraints>,
-        #[doc = "The type of platform at risk by entries present in the list."]
+    pub struct ListUpdateResponse {
+        #[doc = "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse."]
+        #[serde(rename = "additions", default)]
+        pub additions: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
+        #[doc = "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later."]
+        #[serde(rename = "checksum", default)]
+        pub checksum: ::std::option::Option<crate::schemas::Checksum>,
+        #[doc = "The new client state, in encrypted format. Opaque to clients."]
+        #[serde(rename = "newClientState", default)]
+        pub new_client_state: ::std::option::Option<crate::bytes::Bytes>,
+        #[doc = "The platform type for which data is returned."]
         #[serde(rename = "platformType", default)]
-        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateRequestPlatformType>,
-        #[doc = "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update)."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The types of entries present in the list."]
+        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateResponsePlatformType>,
+        #[doc = "A set of entries to remove from a local threat type's list. In practice,\nthis field is empty or contains exactly one ThreatEntrySet."]
+        #[serde(rename = "removals", default)]
+        pub removals: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
+        #[doc = "The type of response. This may indicate that an action is required by the\nclient when the response is received."]
+        #[serde(rename = "responseType", default)]
+        pub response_type: ::std::option::Option<crate::schemas::ListUpdateResponseResponseType>,
+        #[doc = "The format of the threats."]
         #[serde(rename = "threatEntryType", default)]
         pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ListUpdateRequestThreatEntryType>,
-        #[doc = "The type of threat posed by entries present in the list."]
+            ::std::option::Option<crate::schemas::ListUpdateResponseThreatEntryType>,
+        #[doc = "The threat type for which data is returned."]
         #[serde(rename = "threatType", default)]
-        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateRequestThreatType>,
+        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateResponseThreatType>,
     }
-    impl ::field_selector::FieldSelector for ListUpdateRequest {
+    impl ::field_selector::FieldSelector for ListUpdateResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1079,54 +1127,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListUpdateResponse {
-        #[doc = "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse."]
-        #[serde(rename = "additions", default)]
-        pub additions: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
-        #[doc = "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later."]
-        #[serde(rename = "checksum", default)]
-        pub checksum: ::std::option::Option<crate::schemas::Checksum>,
-        #[doc = "The new client state, in encrypted format. Opaque to clients."]
-        #[serde(rename = "newClientState", default)]
-        pub new_client_state: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "The platform type for which data is returned."]
-        #[serde(rename = "platformType", default)]
-        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateResponsePlatformType>,
-        #[doc = "A set of entries to remove from a local threat type's list. In practice,\nthis field is empty or contains exactly one ThreatEntrySet."]
-        #[serde(rename = "removals", default)]
-        pub removals: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
-        #[doc = "The type of response. This may indicate that an action is required by the\nclient when the response is received."]
-        #[serde(rename = "responseType", default)]
-        pub response_type: ::std::option::Option<crate::schemas::ListUpdateResponseResponseType>,
-        #[doc = "The format of the threats."]
-        #[serde(rename = "threatEntryType", default)]
-        pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ListUpdateResponseThreatEntryType>,
-        #[doc = "The threat type for which data is returned."]
-        #[serde(rename = "threatType", default)]
-        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateResponseThreatType>,
-    }
-    impl ::field_selector::FieldSelector for ListUpdateResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct MetadataEntry {
         #[doc = "The metadata entry key. For JSON requests, the key is base64-encoded."]
         #[serde(rename = "key", default)]
@@ -1293,6 +1293,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ThreatEntrySet {
+        #[doc = "The compression type for the entries in this set."]
+        #[serde(rename = "compressionType", default)]
+        pub compression_type: ::std::option::Option<crate::schemas::ThreatEntrySetCompressionType>,
+        #[doc = "The raw SHA256-formatted entries."]
+        #[serde(rename = "rawHashes", default)]
+        pub raw_hashes: ::std::option::Option<crate::schemas::RawHashes>,
+        #[doc = "The raw removal indices for a local list."]
+        #[serde(rename = "rawIndices", default)]
+        pub raw_indices: ::std::option::Option<crate::schemas::RawIndices>,
+        #[doc = "The encoded 4-byte prefixes of SHA256-formatted entries, using a\nGolomb-Rice encoding. The hashes are converted to uint32, sorted in\nascending order, then delta encoded and stored as encoded_data."]
+        #[serde(rename = "riceHashes", default)]
+        pub rice_hashes: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
+        #[doc = "The encoded local, lexicographically-sorted list indices, using a\nGolomb-Rice encoding. Used for sending compressed removal indices. The\nremoval indices (uint32) are sorted in ascending order, then delta encoded\nand stored as encoded_data."]
+        #[serde(rename = "riceIndices", default)]
+        pub rice_indices: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
+    }
+    impl ::field_selector::FieldSelector for ThreatEntrySet {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThreatEntrySetCompressionType {
         #[doc = "Unknown."]
@@ -1368,24 +1406,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatEntrySet {
-        #[doc = "The compression type for the entries in this set."]
-        #[serde(rename = "compressionType", default)]
-        pub compression_type: ::std::option::Option<crate::schemas::ThreatEntrySetCompressionType>,
-        #[doc = "The raw SHA256-formatted entries."]
-        #[serde(rename = "rawHashes", default)]
-        pub raw_hashes: ::std::option::Option<crate::schemas::RawHashes>,
-        #[doc = "The raw removal indices for a local list."]
-        #[serde(rename = "rawIndices", default)]
-        pub raw_indices: ::std::option::Option<crate::schemas::RawIndices>,
-        #[doc = "The encoded 4-byte prefixes of SHA256-formatted entries, using a\nGolomb-Rice encoding. The hashes are converted to uint32, sorted in\nascending order, then delta encoded and stored as encoded_data."]
-        #[serde(rename = "riceHashes", default)]
-        pub rice_hashes: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
-        #[doc = "The encoded local, lexicographically-sorted list indices, using a\nGolomb-Rice encoding. Used for sending compressed removal indices. The\nremoval indices (uint32) are sorted in ascending order, then delta encoded\nand stored as encoded_data."]
-        #[serde(rename = "riceIndices", default)]
-        pub rice_indices: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
+    pub struct ThreatHit {
+        #[doc = "Client-reported identification."]
+        #[serde(rename = "clientInfo", default)]
+        pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
+        #[doc = "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits."]
+        #[serde(rename = "entry", default)]
+        pub entry: ::std::option::Option<crate::schemas::ThreatEntry>,
+        #[doc = "The platform type reported."]
+        #[serde(rename = "platformType", default)]
+        pub platform_type: ::std::option::Option<crate::schemas::ThreatHitPlatformType>,
+        #[doc = "The resources related to the threat hit."]
+        #[serde(rename = "resources", default)]
+        pub resources: ::std::option::Option<Vec<crate::schemas::ThreatSource>>,
+        #[doc = "The threat type reported."]
+        #[serde(rename = "threatType", default)]
+        pub threat_type: ::std::option::Option<crate::schemas::ThreatHitThreatType>,
+        #[doc = "Details about the user that encountered the threat."]
+        #[serde(rename = "userInfo", default)]
+        pub user_info: ::std::option::Option<crate::schemas::UserInfo>,
     }
-    impl ::field_selector::FieldSelector for ThreatEntrySet {
+    impl ::field_selector::FieldSelector for ThreatHit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1608,27 +1649,23 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatHit {
-        #[doc = "Client-reported identification."]
-        #[serde(rename = "clientInfo", default)]
-        pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
-        #[doc = "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits."]
-        #[serde(rename = "entry", default)]
-        pub entry: ::std::option::Option<crate::schemas::ThreatEntry>,
-        #[doc = "The platform type reported."]
-        #[serde(rename = "platformType", default)]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatHitPlatformType>,
-        #[doc = "The resources related to the threat hit."]
-        #[serde(rename = "resources", default)]
-        pub resources: ::std::option::Option<Vec<crate::schemas::ThreatSource>>,
-        #[doc = "The threat type reported."]
-        #[serde(rename = "threatType", default)]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatHitThreatType>,
-        #[doc = "Details about the user that encountered the threat."]
-        #[serde(rename = "userInfo", default)]
-        pub user_info: ::std::option::Option<crate::schemas::UserInfo>,
+    pub struct ThreatInfo {
+        #[doc = "The platform types to be checked."]
+        #[serde(rename = "platformTypes", default)]
+        pub platform_types:
+            ::std::option::Option<Vec<crate::schemas::ThreatInfoPlatformTypesItems>>,
+        #[doc = "The threat entries to be checked."]
+        #[serde(rename = "threatEntries", default)]
+        pub threat_entries: ::std::option::Option<Vec<crate::schemas::ThreatEntry>>,
+        #[doc = "The entry types to be checked."]
+        #[serde(rename = "threatEntryTypes", default)]
+        pub threat_entry_types:
+            ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatEntryTypesItems>>,
+        #[doc = "The threat types to be checked."]
+        #[serde(rename = "threatTypes", default)]
+        pub threat_types: ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatTypesItems>>,
     }
-    impl ::field_selector::FieldSelector for ThreatHit {
+    impl ::field_selector::FieldSelector for ThreatInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1905,23 +1942,19 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatInfo {
-        #[doc = "The platform types to be checked."]
-        #[serde(rename = "platformTypes", default)]
-        pub platform_types:
-            ::std::option::Option<Vec<crate::schemas::ThreatInfoPlatformTypesItems>>,
-        #[doc = "The threat entries to be checked."]
-        #[serde(rename = "threatEntries", default)]
-        pub threat_entries: ::std::option::Option<Vec<crate::schemas::ThreatEntry>>,
-        #[doc = "The entry types to be checked."]
-        #[serde(rename = "threatEntryTypes", default)]
-        pub threat_entry_types:
-            ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatEntryTypesItems>>,
-        #[doc = "The threat types to be checked."]
-        #[serde(rename = "threatTypes", default)]
-        pub threat_types: ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatTypesItems>>,
+    pub struct ThreatListDescriptor {
+        #[doc = "The platform type targeted by the list's entries."]
+        #[serde(rename = "platformType", default)]
+        pub platform_type: ::std::option::Option<crate::schemas::ThreatListDescriptorPlatformType>,
+        #[doc = "The entry types contained in the list."]
+        #[serde(rename = "threatEntryType", default)]
+        pub threat_entry_type:
+            ::std::option::Option<crate::schemas::ThreatListDescriptorThreatEntryType>,
+        #[doc = "The threat type posed by the list's entries."]
+        #[serde(rename = "threatType", default)]
+        pub threat_type: ::std::option::Option<crate::schemas::ThreatListDescriptorThreatType>,
     }
-    impl ::field_selector::FieldSelector for ThreatInfo {
+    impl ::field_selector::FieldSelector for ThreatListDescriptor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2239,19 +2272,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatListDescriptor {
-        #[doc = "The platform type targeted by the list's entries."]
+    pub struct ThreatMatch {
+        #[doc = "The cache lifetime for the returned match. Clients must not cache this\nresponse for more than this duration to avoid false positives."]
+        #[serde(rename = "cacheDuration", default)]
+        pub cache_duration: ::std::option::Option<String>,
+        #[doc = "The platform type matching this threat."]
         #[serde(rename = "platformType", default)]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatListDescriptorPlatformType>,
-        #[doc = "The entry types contained in the list."]
+        pub platform_type: ::std::option::Option<crate::schemas::ThreatMatchPlatformType>,
+        #[doc = "The threat matching this threat."]
+        #[serde(rename = "threat", default)]
+        pub threat: ::std::option::Option<crate::schemas::ThreatEntry>,
+        #[doc = "Optional metadata associated with this threat."]
+        #[serde(rename = "threatEntryMetadata", default)]
+        pub threat_entry_metadata: ::std::option::Option<crate::schemas::ThreatEntryMetadata>,
+        #[doc = "The threat entry type matching this threat."]
         #[serde(rename = "threatEntryType", default)]
-        pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ThreatListDescriptorThreatEntryType>,
-        #[doc = "The threat type posed by the list's entries."]
+        pub threat_entry_type: ::std::option::Option<crate::schemas::ThreatMatchThreatEntryType>,
+        #[doc = "The threat type matching this threat."]
         #[serde(rename = "threatType", default)]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatListDescriptorThreatType>,
+        pub threat_type: ::std::option::Option<crate::schemas::ThreatMatchThreatType>,
     }
-    impl ::field_selector::FieldSelector for ThreatListDescriptor {
+    impl ::field_selector::FieldSelector for ThreatMatch {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2553,27 +2594,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatMatch {
-        #[doc = "The cache lifetime for the returned match. Clients must not cache this\nresponse for more than this duration to avoid false positives."]
-        #[serde(rename = "cacheDuration", default)]
-        pub cache_duration: ::std::option::Option<String>,
-        #[doc = "The platform type matching this threat."]
-        #[serde(rename = "platformType", default)]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatMatchPlatformType>,
-        #[doc = "The threat matching this threat."]
-        #[serde(rename = "threat", default)]
-        pub threat: ::std::option::Option<crate::schemas::ThreatEntry>,
-        #[doc = "Optional metadata associated with this threat."]
-        #[serde(rename = "threatEntryMetadata", default)]
-        pub threat_entry_metadata: ::std::option::Option<crate::schemas::ThreatEntryMetadata>,
-        #[doc = "The threat entry type matching this threat."]
-        #[serde(rename = "threatEntryType", default)]
-        pub threat_entry_type: ::std::option::Option<crate::schemas::ThreatMatchThreatEntryType>,
-        #[doc = "The threat type matching this threat."]
-        #[serde(rename = "threatType", default)]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatMatchThreatType>,
+    pub struct ThreatSource {
+        #[doc = "The type of source reported."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ThreatSourceType>,
+        #[doc = "Referrer of the resource. Only set if the referrer is available."]
+        #[serde(rename = "referrer", default)]
+        pub referrer: ::std::option::Option<String>,
+        #[doc = "The remote IP of the resource in ASCII format. Either IPv4 or IPv6."]
+        #[serde(rename = "remoteIp", default)]
+        pub remote_ip: ::std::option::Option<String>,
+        #[doc = "The URL of the resource."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ThreatMatch {
+    impl ::field_selector::FieldSelector for ThreatSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2641,41 +2676,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ThreatSourceType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatSource {
-        #[doc = "The type of source reported."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ThreatSourceType>,
-        #[doc = "Referrer of the resource. Only set if the referrer is available."]
-        #[serde(rename = "referrer", default)]
-        pub referrer: ::std::option::Option<String>,
-        #[doc = "The remote IP of the resource in ASCII format. Either IPv4 or IPv6."]
-        #[serde(rename = "remoteIp", default)]
-        pub remote_ip: ::std::option::Option<String>,
-        #[doc = "The URL of the resource."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ThreatSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4339,84 +4339,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4448,134 +4370,10 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+// Bytes in google apis are represented as urlsafe base64 encoded strings.
+// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+// internally to handle byte fields in google apis.
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

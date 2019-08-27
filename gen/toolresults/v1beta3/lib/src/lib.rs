@@ -201,6 +201,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BasicPerfSampleSeries {
+        #[serde(rename = "perfMetricType", default)]
+        pub perf_metric_type:
+            ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfMetricType>,
+        #[serde(rename = "perfUnit", default)]
+        pub perf_unit: ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfUnit>,
+        #[serde(rename = "sampleSeriesLabel", default)]
+        pub sample_series_label:
+            ::std::option::Option<crate::schemas::BasicPerfSampleSeriesSampleSeriesLabel>,
+    }
+    impl ::field_selector::FieldSelector for BasicPerfSampleSeries {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicPerfSampleSeriesPerfMetricType {
         Cpu,
@@ -423,37 +454,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BasicPerfSampleSeries {
-        #[serde(rename = "perfMetricType", default)]
-        pub perf_metric_type:
-            ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfMetricType>,
-        #[serde(rename = "perfUnit", default)]
-        pub perf_unit: ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfUnit>,
-        #[serde(rename = "sampleSeriesLabel", default)]
-        pub sample_series_label:
-            ::std::option::Option<crate::schemas::BasicPerfSampleSeriesSampleSeriesLabel>,
-    }
-    impl ::field_selector::FieldSelector for BasicPerfSampleSeries {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BatchCreatePerfSamplesRequest {
@@ -539,6 +539,50 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Execution {
+        #[doc = "The time when the Execution status transitioned to COMPLETE.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n* In response: set if the execution state is COMPLETE. - In create/update request: never set"]
+        #[serde(rename = "completionTime", default)]
+        pub completion_time: ::std::option::Option<crate::schemas::Timestamp>,
+        #[doc = "The time when the Execution was created.\n\nThis value will be set automatically when CreateExecution is called.\n\n* In response: always set - In create/update request: never set"]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: ::std::option::Option<crate::schemas::Timestamp>,
+        #[doc = "A unique identifier within a History for this Execution.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n* In response always set - In create/update request: never set"]
+        #[serde(rename = "executionId", default)]
+        pub execution_id: ::std::option::Option<String>,
+        #[doc = "Classify the result, for example into SUCCESS or FAILURE\n\n* In response: present if set by create/update request - In create/update request: optional"]
+        #[serde(rename = "outcome", default)]
+        pub outcome: ::std::option::Option<crate::schemas::Outcome>,
+        #[doc = "Lightweight information about execution request.\n\n* In response: present if set by create - In create: optional - In update: optional"]
+        #[serde(rename = "specification", default)]
+        pub specification: ::std::option::Option<crate::schemas::Specification>,
+        #[doc = "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n* In response always set - In create/update request: optional"]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::ExecutionState>,
+        #[doc = "TestExecution Matrix ID that the TestExecutionService uses.\n\n* In response: present if set by create - In create: optional - In update: never set"]
+        #[serde(rename = "testExecutionMatrixId", default)]
+        pub test_execution_matrix_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Execution {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecutionState {
         Complete,
@@ -590,50 +634,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ExecutionState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Execution {
-        #[doc = "The time when the Execution status transitioned to COMPLETE.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n* In response: set if the execution state is COMPLETE. - In create/update request: never set"]
-        #[serde(rename = "completionTime", default)]
-        pub completion_time: ::std::option::Option<crate::schemas::Timestamp>,
-        #[doc = "The time when the Execution was created.\n\nThis value will be set automatically when CreateExecution is called.\n\n* In response: always set - In create/update request: never set"]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: ::std::option::Option<crate::schemas::Timestamp>,
-        #[doc = "A unique identifier within a History for this Execution.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n* In response always set - In create/update request: never set"]
-        #[serde(rename = "executionId", default)]
-        pub execution_id: ::std::option::Option<String>,
-        #[doc = "Classify the result, for example into SUCCESS or FAILURE\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "outcome", default)]
-        pub outcome: ::std::option::Option<crate::schemas::Outcome>,
-        #[doc = "Lightweight information about execution request.\n\n* In response: present if set by create - In create: optional - In update: optional"]
-        #[serde(rename = "specification", default)]
-        pub specification: ::std::option::Option<crate::schemas::Specification>,
-        #[doc = "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n* In response always set - In create/update request: optional"]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::ExecutionState>,
-        #[doc = "TestExecution Matrix ID that the TestExecutionService uses.\n\n* In response: present if set by create - In create: optional - In update: never set"]
-        #[serde(rename = "testExecutionMatrixId", default)]
-        pub test_execution_matrix_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Execution {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -906,6 +906,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct IndividualOutcome {
+        #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
+        #[serde(rename = "multistepNumber", default)]
+        pub multistep_number: ::std::option::Option<i32>,
+        #[serde(rename = "outcomeSummary", default)]
+        pub outcome_summary: ::std::option::Option<crate::schemas::IndividualOutcomeOutcomeSummary>,
+        #[doc = "How long it took for this step to run."]
+        #[serde(rename = "runDuration", default)]
+        pub run_duration: ::std::option::Option<crate::schemas::Duration>,
+        #[serde(rename = "stepId", default)]
+        pub step_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for IndividualOutcome {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum IndividualOutcomeOutcomeSummary {
         Failure,
@@ -963,39 +996,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for IndividualOutcomeOutcomeSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct IndividualOutcome {
-        #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
-        #[serde(rename = "multistepNumber", default)]
-        pub multistep_number: ::std::option::Option<i32>,
-        #[serde(rename = "outcomeSummary", default)]
-        pub outcome_summary: ::std::option::Option<crate::schemas::IndividualOutcomeOutcomeSummary>,
-        #[doc = "How long it took for this step to run."]
-        #[serde(rename = "runDuration", default)]
-        pub run_duration: ::std::option::Option<crate::schemas::Duration>,
-        #[serde(rename = "stepId", default)]
-        pub step_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for IndividualOutcome {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1282,6 +1282,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Outcome {
+        #[doc = "More information about a FAILURE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.\n\nOptional"]
+        #[serde(rename = "failureDetail", default)]
+        pub failure_detail: ::std::option::Option<crate::schemas::FailureDetail>,
+        #[doc = "More information about an INCONCLUSIVE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.\n\nOptional"]
+        #[serde(rename = "inconclusiveDetail", default)]
+        pub inconclusive_detail: ::std::option::Option<crate::schemas::InconclusiveDetail>,
+        #[doc = "More information about a SKIPPED outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.\n\nOptional"]
+        #[serde(rename = "skippedDetail", default)]
+        pub skipped_detail: ::std::option::Option<crate::schemas::SkippedDetail>,
+        #[doc = "More information about a SUCCESS outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.\n\nOptional"]
+        #[serde(rename = "successDetail", default)]
+        pub success_detail: ::std::option::Option<crate::schemas::SuccessDetail>,
+        #[doc = "The simplest way to interpret a result.\n\nRequired"]
+        #[serde(rename = "summary", default)]
+        pub summary: ::std::option::Option<crate::schemas::OutcomeSummary>,
+    }
+    impl ::field_selector::FieldSelector for Outcome {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OutcomeSummary {
         Failure,
@@ -1348,44 +1386,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Outcome {
-        #[doc = "More information about a FAILURE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.\n\nOptional"]
-        #[serde(rename = "failureDetail", default)]
-        pub failure_detail: ::std::option::Option<crate::schemas::FailureDetail>,
-        #[doc = "More information about an INCONCLUSIVE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.\n\nOptional"]
-        #[serde(rename = "inconclusiveDetail", default)]
-        pub inconclusive_detail: ::std::option::Option<crate::schemas::InconclusiveDetail>,
-        #[doc = "More information about a SKIPPED outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.\n\nOptional"]
-        #[serde(rename = "skippedDetail", default)]
-        pub skipped_detail: ::std::option::Option<crate::schemas::SkippedDetail>,
-        #[doc = "More information about a SUCCESS outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.\n\nOptional"]
-        #[serde(rename = "successDetail", default)]
-        pub success_detail: ::std::option::Option<crate::schemas::SuccessDetail>,
-        #[doc = "The simplest way to interpret a result.\n\nRequired"]
-        #[serde(rename = "summary", default)]
-        pub summary: ::std::option::Option<crate::schemas::OutcomeSummary>,
-    }
-    impl ::field_selector::FieldSelector for Outcome {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PerfEnvironment {
@@ -1397,6 +1397,44 @@ pub mod schemas {
         pub memory_info: ::std::option::Option<crate::schemas::MemoryInfo>,
     }
     impl ::field_selector::FieldSelector for PerfEnvironment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PerfMetricsSummary {
+        #[serde(rename = "appStartTime", default)]
+        pub app_start_time: ::std::option::Option<crate::schemas::AppStartTime>,
+        #[doc = "A tool results execution ID."]
+        #[serde(rename = "executionId", default)]
+        pub execution_id: ::std::option::Option<String>,
+        #[doc = "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."]
+        #[serde(rename = "graphicsStats", default)]
+        pub graphics_stats: ::std::option::Option<crate::schemas::GraphicsStats>,
+        #[doc = "A tool results history ID."]
+        #[serde(rename = "historyId", default)]
+        pub history_id: ::std::option::Option<String>,
+        #[doc = "Describes the environment in which the performance metrics were collected"]
+        #[serde(rename = "perfEnvironment", default)]
+        pub perf_environment: ::std::option::Option<crate::schemas::PerfEnvironment>,
+        #[doc = "Set of resource collected"]
+        #[serde(rename = "perfMetrics", default)]
+        pub perf_metrics:
+            ::std::option::Option<Vec<crate::schemas::PerfMetricsSummaryPerfMetricsItems>>,
+        #[doc = "The cloud project"]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "A tool results step ID."]
+        #[serde(rename = "stepId", default)]
+        pub step_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PerfMetricsSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1474,44 +1512,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PerfMetricsSummary {
-        #[serde(rename = "appStartTime", default)]
-        pub app_start_time: ::std::option::Option<crate::schemas::AppStartTime>,
-        #[doc = "A tool results execution ID."]
-        #[serde(rename = "executionId", default)]
-        pub execution_id: ::std::option::Option<String>,
-        #[doc = "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."]
-        #[serde(rename = "graphicsStats", default)]
-        pub graphics_stats: ::std::option::Option<crate::schemas::GraphicsStats>,
-        #[doc = "A tool results history ID."]
-        #[serde(rename = "historyId", default)]
-        pub history_id: ::std::option::Option<String>,
-        #[doc = "Describes the environment in which the performance metrics were collected"]
-        #[serde(rename = "perfEnvironment", default)]
-        pub perf_environment: ::std::option::Option<crate::schemas::PerfEnvironment>,
-        #[doc = "Set of resource collected"]
-        #[serde(rename = "perfMetrics", default)]
-        pub perf_metrics:
-            ::std::option::Option<Vec<crate::schemas::PerfMetricsSummaryPerfMetricsItems>>,
-        #[doc = "The cloud project"]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "A tool results step ID."]
-        #[serde(rename = "stepId", default)]
-        pub step_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PerfMetricsSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct PerfSample {
         #[doc = "Timestamp of collection"]
         #[serde(rename = "sampleTime", default)]
@@ -1562,6 +1562,35 @@ pub mod schemas {
         pub step_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PerfSampleSeries {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PrimaryStep {
+        #[doc = "Step Id and outcome of each individual step."]
+        #[serde(rename = "individualOutcome", default)]
+        pub individual_outcome: ::std::option::Option<Vec<crate::schemas::IndividualOutcome>>,
+        #[doc = "Rollup test status of multiple steps that were run with the same configuration as a group."]
+        #[serde(rename = "rollUp", default)]
+        pub roll_up: ::std::option::Option<crate::schemas::PrimaryStepRollUp>,
+    }
+    impl ::field_selector::FieldSelector for PrimaryStep {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1627,35 +1656,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for PrimaryStepRollUp {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PrimaryStep {
-        #[doc = "Step Id and outcome of each individual step."]
-        #[serde(rename = "individualOutcome", default)]
-        pub individual_outcome: ::std::option::Option<Vec<crate::schemas::IndividualOutcome>>,
-        #[doc = "Rollup test status of multiple steps that were run with the same configuration as a group."]
-        #[serde(rename = "rollUp", default)]
-        pub roll_up: ::std::option::Option<crate::schemas::PrimaryStepRollUp>,
-    }
-    impl ::field_selector::FieldSelector for PrimaryStep {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1905,65 +1905,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum StepState {
-        Complete,
-        InProgress,
-        Pending,
-        UnknownState,
-    }
-    impl StepState {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                StepState::Complete => "complete",
-                StepState::InProgress => "inProgress",
-                StepState::Pending => "pending",
-                StepState::UnknownState => "unknownState",
-            }
-        }
-    }
-    impl ::std::fmt::Display for StepState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for StepState {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for StepState {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "complete" => StepState::Complete,
-                "inProgress" => StepState::InProgress,
-                "pending" => StepState::Pending,
-                "unknownState" => StepState::UnknownState,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for StepState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -2024,6 +1965,65 @@ pub mod schemas {
         pub tool_execution_step: ::std::option::Option<crate::schemas::ToolExecutionStep>,
     }
     impl ::field_selector::FieldSelector for Step {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum StepState {
+        Complete,
+        InProgress,
+        Pending,
+        UnknownState,
+    }
+    impl StepState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                StepState::Complete => "complete",
+                StepState::InProgress => "inProgress",
+                StepState::Pending => "pending",
+                StepState::UnknownState => "unknownState",
+            }
+        }
+    }
+    impl ::std::fmt::Display for StepState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for StepState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for StepState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "complete" => StepState::Complete,
+                "inProgress" => StepState::InProgress,
+                "pending" => StepState::Pending,
+                "unknownState" => StepState::UnknownState,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for StepState {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2112,6 +2112,56 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestCase {
+        #[doc = "The elapsed run time of the test case.\n\nRequired."]
+        #[serde(rename = "elapsedTime", default)]
+        pub elapsed_time: ::std::option::Option<crate::schemas::Duration>,
+        #[doc = "The end time of the test case.\n\nOptional."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<crate::schemas::Timestamp>,
+        #[doc = "Why the test case was skipped.\n\nPresent only for skipped test case"]
+        #[serde(rename = "skippedMessage", default)]
+        pub skipped_message: ::std::option::Option<String>,
+        #[doc = "The stack trace details if the test case failed or encountered an error.\n\nThe maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.\n\nZero if the test case passed."]
+        #[serde(rename = "stackTraces", default)]
+        pub stack_traces: ::std::option::Option<Vec<crate::schemas::StackTrace>>,
+        #[doc = "The start time of the test case.\n\nOptional."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<crate::schemas::Timestamp>,
+        #[doc = "The status of the test case.\n\nRequired."]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::TestCaseStatus>,
+        #[doc = "A unique identifier within a Step for this Test Case."]
+        #[serde(rename = "testCaseId", default)]
+        pub test_case_id: ::std::option::Option<String>,
+        #[doc = "Test case reference, e.g. name, class name and test suite name.\n\nRequired."]
+        #[serde(rename = "testCaseReference", default)]
+        pub test_case_reference: ::std::option::Option<crate::schemas::TestCaseReference>,
+        #[doc = "References to opaque files of any format output by the tool execution."]
+        #[serde(rename = "toolOutputs", default)]
+        pub tool_outputs: ::std::option::Option<Vec<crate::schemas::ToolOutputReference>>,
+    }
+    impl ::field_selector::FieldSelector for TestCase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestCaseStatus {
         Error,
@@ -2166,56 +2216,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TestCaseStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestCase {
-        #[doc = "The elapsed run time of the test case.\n\nRequired."]
-        #[serde(rename = "elapsedTime", default)]
-        pub elapsed_time: ::std::option::Option<crate::schemas::Duration>,
-        #[doc = "The end time of the test case.\n\nOptional."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<crate::schemas::Timestamp>,
-        #[doc = "Why the test case was skipped.\n\nPresent only for skipped test case"]
-        #[serde(rename = "skippedMessage", default)]
-        pub skipped_message: ::std::option::Option<String>,
-        #[doc = "The stack trace details if the test case failed or encountered an error.\n\nThe maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.\n\nZero if the test case passed."]
-        #[serde(rename = "stackTraces", default)]
-        pub stack_traces: ::std::option::Option<Vec<crate::schemas::StackTrace>>,
-        #[doc = "The start time of the test case.\n\nOptional."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<crate::schemas::Timestamp>,
-        #[doc = "The status of the test case.\n\nRequired."]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::TestCaseStatus>,
-        #[doc = "A unique identifier within a Step for this Test Case."]
-        #[serde(rename = "testCaseId", default)]
-        pub test_case_id: ::std::option::Option<String>,
-        #[doc = "Test case reference, e.g. name, class name and test suite name.\n\nRequired."]
-        #[serde(rename = "testCaseReference", default)]
-        pub test_case_reference: ::std::option::Option<crate::schemas::TestCaseReference>,
-        #[doc = "References to opaque files of any format output by the tool execution."]
-        #[serde(rename = "toolOutputs", default)]
-        pub tool_outputs: ::std::option::Option<Vec<crate::schemas::ToolOutputReference>>,
-    }
-    impl ::field_selector::FieldSelector for TestCase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2291,6 +2291,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestIssue {
+        #[doc = "Category of issue. Required."]
+        #[serde(rename = "category", default)]
+        pub category: ::std::option::Option<crate::schemas::TestIssueCategory>,
+        #[doc = "A brief human-readable message describing the issue. Required."]
+        #[serde(rename = "errorMessage", default)]
+        pub error_message: ::std::option::Option<String>,
+        #[doc = "Type of issue. Required."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::TestIssueType>,
+        #[doc = "Severity of issue. Required."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::TestIssueSeverity>,
+        #[doc = "Deprecated in favor of stack trace fields inside specific warnings."]
+        #[serde(rename = "stackTrace", default)]
+        pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
+        #[doc = "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"]
+        #[serde(rename = "warning", default)]
+        pub warning: ::std::option::Option<crate::schemas::Any>,
+    }
+    impl ::field_selector::FieldSelector for TestIssue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestIssueCategory {
         Common,
@@ -2351,6 +2392,7 @@ pub mod schemas {
     pub enum TestIssueType {
         Anr,
         AvailableDeepLinks,
+        BlankScreen,
         CompatibleWithOrchestrator,
         CompleteRoboScriptExecution,
         CrashDialogError,
@@ -2367,6 +2409,7 @@ pub mod schemas {
         NativeCrash,
         NonSdkApiUsageReport,
         NonSdkApiUsageViolation,
+        OverlappingUiElements,
         PerformedGoogleLogin,
         PerformedMonkeyActions,
         StartActivityNotFound,
@@ -2381,6 +2424,7 @@ pub mod schemas {
             match self {
                 TestIssueType::Anr => "anr",
                 TestIssueType::AvailableDeepLinks => "availableDeepLinks",
+                TestIssueType::BlankScreen => "blankScreen",
                 TestIssueType::CompatibleWithOrchestrator => "compatibleWithOrchestrator",
                 TestIssueType::CompleteRoboScriptExecution => "completeRoboScriptExecution",
                 TestIssueType::CrashDialogError => "crashDialogError",
@@ -2399,6 +2443,7 @@ pub mod schemas {
                 TestIssueType::NativeCrash => "nativeCrash",
                 TestIssueType::NonSdkApiUsageReport => "nonSdkApiUsageReport",
                 TestIssueType::NonSdkApiUsageViolation => "nonSdkApiUsageViolation",
+                TestIssueType::OverlappingUiElements => "overlappingUiElements",
                 TestIssueType::PerformedGoogleLogin => "performedGoogleLogin",
                 TestIssueType::PerformedMonkeyActions => "performedMonkeyActions",
                 TestIssueType::StartActivityNotFound => "startActivityNotFound",
@@ -2432,6 +2477,7 @@ pub mod schemas {
             Ok(match value {
                 "anr" => TestIssueType::Anr,
                 "availableDeepLinks" => TestIssueType::AvailableDeepLinks,
+                "blankScreen" => TestIssueType::BlankScreen,
                 "compatibleWithOrchestrator" => TestIssueType::CompatibleWithOrchestrator,
                 "completeRoboScriptExecution" => TestIssueType::CompleteRoboScriptExecution,
                 "crashDialogError" => TestIssueType::CrashDialogError,
@@ -2450,6 +2496,7 @@ pub mod schemas {
                 "nativeCrash" => TestIssueType::NativeCrash,
                 "nonSdkApiUsageReport" => TestIssueType::NonSdkApiUsageReport,
                 "nonSdkApiUsageViolation" => TestIssueType::NonSdkApiUsageViolation,
+                "overlappingUiElements" => TestIssueType::OverlappingUiElements,
                 "performedGoogleLogin" => TestIssueType::PerformedGoogleLogin,
                 "performedMonkeyActions" => TestIssueType::PerformedMonkeyActions,
                 "startActivityNotFound" => TestIssueType::StartActivityNotFound,
@@ -2530,47 +2577,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TestIssueSeverity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestIssue {
-        #[doc = "Category of issue. Required."]
-        #[serde(rename = "category", default)]
-        pub category: ::std::option::Option<crate::schemas::TestIssueCategory>,
-        #[doc = "A brief human-readable message describing the issue. Required."]
-        #[serde(rename = "errorMessage", default)]
-        pub error_message: ::std::option::Option<String>,
-        #[doc = "Type of issue. Required."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::TestIssueType>,
-        #[doc = "Severity of issue. Required."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::TestIssueSeverity>,
-        #[doc = "Deprecated in favor of stack trace fields inside specific warnings."]
-        #[serde(rename = "stackTrace", default)]
-        pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
-        #[doc = "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"]
-        #[serde(rename = "warning", default)]
-        pub warning: ::std::option::Option<crate::schemas::Any>,
-    }
-    impl ::field_selector::FieldSelector for TestIssue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8528,84 +8534,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -8637,7 +8565,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -8763,8 +8690,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

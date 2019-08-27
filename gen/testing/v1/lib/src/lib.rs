@@ -110,6 +110,54 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AndroidInstrumentationTest {
+        #[doc = "The APK for the application under test."]
+        #[serde(rename = "appApk", default)]
+        pub app_apk: ::std::option::Option<crate::schemas::FileReference>,
+        #[doc = "A multi-apk app bundle for the application under test."]
+        #[serde(rename = "appBundle", default)]
+        pub app_bundle: ::std::option::Option<crate::schemas::AppBundle>,
+        #[doc = "The java package for the application under test.\nThe default value is determined by examining the application's manifest."]
+        #[serde(rename = "appPackageId", default)]
+        pub app_package_id: ::std::option::Option<String>,
+        #[doc = "The option of whether running each test within its own invocation of\ninstrumentation with Android Test Orchestrator or not.\n** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher! **\nOrchestrator offers the following benefits:\n\n* No shared state\n* Crashes are isolated\n* Logs are scoped per test\n\nSee\n[https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator](https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator)\nfor more information about Android Test Orchestrator.\n\nIf not set, the test will be run without the orchestrator."]
+        #[serde(rename = "orchestratorOption", default)]
+        pub orchestrator_option:
+            ::std::option::Option<crate::schemas::AndroidInstrumentationTestOrchestratorOption>,
+        #[doc = "Required. The APK containing the test code to be executed."]
+        #[serde(rename = "testApk", default)]
+        pub test_apk: ::std::option::Option<crate::schemas::FileReference>,
+        #[doc = "The java package for the test to be executed.\nThe default value is determined by examining the application's manifest."]
+        #[serde(rename = "testPackageId", default)]
+        pub test_package_id: ::std::option::Option<String>,
+        #[doc = "The InstrumentationTestRunner class.\nThe default value is determined by examining the application's manifest."]
+        #[serde(rename = "testRunnerClass", default)]
+        pub test_runner_class: ::std::option::Option<String>,
+        #[doc = "Each target must be fully qualified with the package name or class name,\nin one of these formats:\n\n* \"package package_name\"\n* \"class package_name.class_name\"\n* \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run."]
+        #[serde(rename = "testTargets", default)]
+        pub test_targets: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for AndroidInstrumentationTest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidInstrumentationTestOrchestratorOption {
         #[doc = "Run test without using orchestrator."]
@@ -189,34 +237,21 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AndroidInstrumentationTest {
-        #[doc = "The APK for the application under test."]
-        #[serde(rename = "appApk", default)]
-        pub app_apk: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "A multi-apk app bundle for the application under test."]
-        #[serde(rename = "appBundle", default)]
-        pub app_bundle: ::std::option::Option<crate::schemas::AppBundle>,
-        #[doc = "The java package for the application under test.\nThe default value is determined by examining the application's manifest."]
-        #[serde(rename = "appPackageId", default)]
-        pub app_package_id: ::std::option::Option<String>,
-        #[doc = "The option of whether running each test within its own invocation of\ninstrumentation with Android Test Orchestrator or not.\n** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher! **\nOrchestrator offers the following benefits:\n\n* No shared state\n* Crashes are isolated\n* Logs are scoped per test\n\nSee\n[https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator](https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator)\nfor more information about Android Test Orchestrator.\n\nIf not set, the test will be run without the orchestrator."]
-        #[serde(rename = "orchestratorOption", default)]
-        pub orchestrator_option:
-            ::std::option::Option<crate::schemas::AndroidInstrumentationTestOrchestratorOption>,
-        #[doc = "Required. The APK containing the test code to be executed."]
-        #[serde(rename = "testApk", default)]
-        pub test_apk: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The java package for the test to be executed.\nThe default value is determined by examining the application's manifest."]
-        #[serde(rename = "testPackageId", default)]
-        pub test_package_id: ::std::option::Option<String>,
-        #[doc = "The InstrumentationTestRunner class.\nThe default value is determined by examining the application's manifest."]
-        #[serde(rename = "testRunnerClass", default)]
-        pub test_runner_class: ::std::option::Option<String>,
-        #[doc = "Each target must be fully qualified with the package name or class name,\nin one of these formats:\n\n* \"package package_name\"\n* \"class package_name.class_name\"\n* \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run."]
-        #[serde(rename = "testTargets", default)]
-        pub test_targets: ::std::option::Option<Vec<String>>,
+    pub struct AndroidMatrix {
+        #[doc = "Required. The ids of the set of Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[serde(rename = "androidModelIds", default)]
+        pub android_model_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "Required. The ids of the set of Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[serde(rename = "androidVersionIds", default)]
+        pub android_version_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "Required. The set of locales the test device will enable for testing.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[serde(rename = "locales", default)]
+        pub locales: ::std::option::Option<Vec<String>>,
+        #[doc = "Required. The set of orientations to test with.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[serde(rename = "orientations", default)]
+        pub orientations: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for AndroidInstrumentationTest {
+    impl ::field_selector::FieldSelector for AndroidMatrix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -237,21 +272,51 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AndroidMatrix {
-        #[doc = "Required. The ids of the set of Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
-        #[serde(rename = "androidModelIds", default)]
-        pub android_model_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The ids of the set of Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
-        #[serde(rename = "androidVersionIds", default)]
-        pub android_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The set of locales the test device will enable for testing.\nUse the TestEnvironmentDiscoveryService to get supported options."]
-        #[serde(rename = "locales", default)]
-        pub locales: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The set of orientations to test with.\nUse the TestEnvironmentDiscoveryService to get supported options."]
-        #[serde(rename = "orientations", default)]
-        pub orientations: ::std::option::Option<Vec<String>>,
+    pub struct AndroidModel {
+        #[doc = "The company that this device is branded with.\nExample: \"Google\", \"Samsung\"."]
+        #[serde(rename = "brand", default)]
+        pub brand: ::std::option::Option<String>,
+        #[doc = "The name of the industrial design.\nThis corresponds to android.os.Build.DEVICE."]
+        #[serde(rename = "codename", default)]
+        pub codename: ::std::option::Option<String>,
+        #[doc = "Whether this device is virtual or physical."]
+        #[serde(rename = "form", default)]
+        pub form: ::std::option::Option<crate::schemas::AndroidModelForm>,
+        #[doc = "Whether this device is a phone, tablet, wearable, etc."]
+        #[serde(rename = "formFactor", default)]
+        pub form_factor: ::std::option::Option<crate::schemas::AndroidModelFormFactor>,
+        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "True if and only if tests with this model are recorded by stitching\ntogether screenshots. See use_low_spec_video_recording in device config."]
+        #[serde(rename = "lowFpsVideoRecording", default)]
+        pub low_fps_video_recording: ::std::option::Option<bool>,
+        #[doc = "The manufacturer of this device."]
+        #[serde(rename = "manufacturer", default)]
+        pub manufacturer: ::std::option::Option<String>,
+        #[doc = "The human-readable marketing name for this device model.\nExamples: \"Nexus 5\", \"Galaxy S5\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Screen density in DPI.\nThis corresponds to ro.sf.lcd_density"]
+        #[serde(rename = "screenDensity", default)]
+        pub screen_density: ::std::option::Option<i32>,
+        #[doc = "Screen size in the horizontal (X) dimension measured in pixels."]
+        #[serde(rename = "screenX", default)]
+        pub screen_x: ::std::option::Option<i32>,
+        #[doc = "Screen size in the vertical (Y) dimension measured in pixels."]
+        #[serde(rename = "screenY", default)]
+        pub screen_y: ::std::option::Option<i32>,
+        #[doc = "The list of supported ABIs for this device.\nThis corresponds to either android.os.Build.SUPPORTED_ABIS (for API level\n21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.\nThe most preferred ABI is the first element in the list.\n\nElements are optionally prefixed by \"version_id:\" (where version_id is\nthe id of an AndroidVersion), denoting an ABI that is supported only on\na particular version."]
+        #[serde(rename = "supportedAbis", default)]
+        pub supported_abis: ::std::option::Option<Vec<String>>,
+        #[doc = "The set of Android versions this device supports."]
+        #[serde(rename = "supportedVersionIds", default)]
+        pub supported_version_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[serde(rename = "tags", default)]
+        pub tags: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for AndroidMatrix {
+    impl ::field_selector::FieldSelector for AndroidModel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -378,71 +443,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for AndroidModelFormFactor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AndroidModel {
-        #[doc = "The company that this device is branded with.\nExample: \"Google\", \"Samsung\"."]
-        #[serde(rename = "brand", default)]
-        pub brand: ::std::option::Option<String>,
-        #[doc = "The name of the industrial design.\nThis corresponds to android.os.Build.DEVICE."]
-        #[serde(rename = "codename", default)]
-        pub codename: ::std::option::Option<String>,
-        #[doc = "Whether this device is virtual or physical."]
-        #[serde(rename = "form", default)]
-        pub form: ::std::option::Option<crate::schemas::AndroidModelForm>,
-        #[doc = "Whether this device is a phone, tablet, wearable, etc."]
-        #[serde(rename = "formFactor", default)]
-        pub form_factor: ::std::option::Option<crate::schemas::AndroidModelFormFactor>,
-        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "True if and only if tests with this model are recorded by stitching\ntogether screenshots. See use_low_spec_video_recording in device config."]
-        #[serde(rename = "lowFpsVideoRecording", default)]
-        pub low_fps_video_recording: ::std::option::Option<bool>,
-        #[doc = "The manufacturer of this device."]
-        #[serde(rename = "manufacturer", default)]
-        pub manufacturer: ::std::option::Option<String>,
-        #[doc = "The human-readable marketing name for this device model.\nExamples: \"Nexus 5\", \"Galaxy S5\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Screen density in DPI.\nThis corresponds to ro.sf.lcd_density"]
-        #[serde(rename = "screenDensity", default)]
-        pub screen_density: ::std::option::Option<i32>,
-        #[doc = "Screen size in the horizontal (X) dimension measured in pixels."]
-        #[serde(rename = "screenX", default)]
-        pub screen_x: ::std::option::Option<i32>,
-        #[doc = "Screen size in the vertical (Y) dimension measured in pixels."]
-        #[serde(rename = "screenY", default)]
-        pub screen_y: ::std::option::Option<i32>,
-        #[doc = "The list of supported ABIs for this device.\nThis corresponds to either android.os.Build.SUPPORTED_ABIS (for API level\n21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.\nThe most preferred ABI is the first element in the list.\n\nElements are optionally prefixed by \"version_id:\" (where version_id is\nthe id of an AndroidVersion), denoting an ABI that is supported only on\na particular version."]
-        #[serde(rename = "supportedAbis", default)]
-        pub supported_abis: ::std::option::Option<Vec<String>>,
-        #[doc = "The set of Android versions this device supports."]
-        #[serde(rename = "supportedVersionIds", default)]
-        pub supported_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
-        #[serde(rename = "tags", default)]
-        pub tags: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for AndroidModel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -723,6 +723,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CancelTestMatrixResponse {
+        #[doc = "The current rolled-up state of the test matrix.\nIf this state is already final, then the cancelation request will\nhave no effect."]
+        #[serde(rename = "testState", default)]
+        pub test_state: ::std::option::Option<crate::schemas::CancelTestMatrixResponseTestState>,
+    }
+    impl ::field_selector::FieldSelector for CancelTestMatrixResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CancelTestMatrixResponseTestState {
         #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
@@ -818,32 +844,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CancelTestMatrixResponseTestState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CancelTestMatrixResponse {
-        #[doc = "The current rolled-up state of the test matrix.\nIf this state is already final, then the cancelation request will\nhave no effect."]
-        #[serde(rename = "testState", default)]
-        pub test_state: ::std::option::Option<crate::schemas::CancelTestMatrixResponseTestState>,
-    }
-    impl ::field_selector::FieldSelector for CancelTestMatrixResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1304,6 +1304,47 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct IosModel {
+        #[doc = "Device capabilities.\nCopied from\nhttps://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html"]
+        #[serde(rename = "deviceCapabilities", default)]
+        pub device_capabilities: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether this device is a phone, tablet, wearable, etc."]
+        #[serde(rename = "formFactor", default)]
+        pub form_factor: ::std::option::Option<crate::schemas::IosModelFormFactor>,
+        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The human-readable name for this device model.\nExamples: \"iPhone 4s\", \"iPad Mini 2\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The set of iOS major software versions this device supports."]
+        #[serde(rename = "supportedVersionIds", default)]
+        pub supported_version_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[serde(rename = "tags", default)]
+        pub tags: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for IosModel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum IosModelFormFactor {
         #[doc = "Do not use. For proto versioning only."]
@@ -1359,47 +1400,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for IosModelFormFactor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct IosModel {
-        #[doc = "Device capabilities.\nCopied from\nhttps://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html"]
-        #[serde(rename = "deviceCapabilities", default)]
-        pub device_capabilities: ::std::option::Option<Vec<String>>,
-        #[doc = "Whether this device is a phone, tablet, wearable, etc."]
-        #[serde(rename = "formFactor", default)]
-        pub form_factor: ::std::option::Option<crate::schemas::IosModelFormFactor>,
-        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "The human-readable name for this device model.\nExamples: \"iPhone 4s\", \"iPad Mini 2\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The set of iOS major software versions this device supports."]
-        #[serde(rename = "supportedVersionIds", default)]
-        pub supported_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
-        #[serde(rename = "tags", default)]
-        pub tags: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for IosModel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1778,6 +1778,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RoboDirective {
+        #[doc = "Required. The type of action that Robo should perform on the specified\nelement."]
+        #[serde(rename = "actionType", default)]
+        pub action_type: ::std::option::Option<crate::schemas::RoboDirectiveActionType>,
+        #[doc = "The text that Robo is directed to set. If left empty, the directive will be\ntreated as a CLICK on the element matching the resource_name."]
+        #[serde(rename = "inputText", default)]
+        pub input_text: ::std::option::Option<String>,
+        #[doc = "Required. The android resource name of the target UI element.\nFor example,\nin Java: R.string.foo\nin xml: @string/foo\nOnly the \"foo\" part is needed.\nReference doc:\nhttps://developer.android.com/guide/topics/resources/accessing-resources.html"]
+        #[serde(rename = "resourceName", default)]
+        pub resource_name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RoboDirective {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RoboDirectiveActionType {
         #[doc = "DO NOT USE. For proto versioning only."]
@@ -1833,38 +1865,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for RoboDirectiveActionType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RoboDirective {
-        #[doc = "Required. The type of action that Robo should perform on the specified\nelement."]
-        #[serde(rename = "actionType", default)]
-        pub action_type: ::std::option::Option<crate::schemas::RoboDirectiveActionType>,
-        #[doc = "The text that Robo is directed to set. If left empty, the directive will be\ntreated as a CLICK on the element matching the resource_name."]
-        #[serde(rename = "inputText", default)]
-        pub input_text: ::std::option::Option<String>,
-        #[doc = "Required. The android resource name of the target UI element.\nFor example,\nin Java: R.string.foo\nin xml: @string/foo\nOnly the \"foo\" part is needed.\nReference doc:\nhttps://developer.android.com/guide/topics/resources/accessing-resources.html"]
-        #[serde(rename = "resourceName", default)]
-        pub resource_name: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RoboDirective {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1993,6 +1993,56 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestExecution {
+        #[doc = "Output only. How the host machine(s) are configured."]
+        #[serde(rename = "environment", default)]
+        pub environment: ::std::option::Option<crate::schemas::Environment>,
+        #[doc = "Output only. Unique id set by the service."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Output only. Id of the containing TestMatrix."]
+        #[serde(rename = "matrixId", default)]
+        pub matrix_id: ::std::option::Option<String>,
+        #[doc = "Output only. The cloud project that owns the test execution."]
+        #[serde(rename = "projectId", default)]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED)."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::TestExecutionState>,
+        #[doc = "Output only. Additional details about the running test."]
+        #[serde(rename = "testDetails", default)]
+        pub test_details: ::std::option::Option<crate::schemas::TestDetails>,
+        #[doc = "Output only. How to run the test."]
+        #[serde(rename = "testSpecification", default)]
+        pub test_specification: ::std::option::Option<crate::schemas::TestSpecification>,
+        #[doc = "Output only. The time this test execution was initially created."]
+        #[serde(rename = "timestamp", default)]
+        pub timestamp: ::std::option::Option<String>,
+        #[doc = "Output only. Where the results for this execution are written."]
+        #[serde(rename = "toolResultsStep", default)]
+        pub tool_results_step: ::std::option::Option<crate::schemas::ToolResultsStep>,
+    }
+    impl ::field_selector::FieldSelector for TestExecution {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestExecutionState {
         #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
@@ -2096,36 +2146,46 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TestExecution {
-        #[doc = "Output only. How the host machine(s) are configured."]
-        #[serde(rename = "environment", default)]
-        pub environment: ::std::option::Option<crate::schemas::Environment>,
-        #[doc = "Output only. Unique id set by the service."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Output only. Id of the containing TestMatrix."]
-        #[serde(rename = "matrixId", default)]
-        pub matrix_id: ::std::option::Option<String>,
-        #[doc = "Output only. The cloud project that owns the test execution."]
+    pub struct TestMatrix {
+        #[doc = "Information about the client which invoked the test."]
+        #[serde(rename = "clientInfo", default)]
+        pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
+        #[doc = "Required. The devices the tests are being executed on."]
+        #[serde(rename = "environmentMatrix", default)]
+        pub environment_matrix: ::std::option::Option<crate::schemas::EnvironmentMatrix>,
+        #[doc = "The number of times a TestExecution should be re-attempted if one or more\nof its test cases fail for any reason.\nThe maximum number of reruns allowed is 10.\n\nDefault is 0, which implies no reruns."]
+        #[serde(rename = "flakyTestAttempts", default)]
+        pub flaky_test_attempts: ::std::option::Option<i32>,
+        #[doc = "Output only. Describes why the matrix is considered invalid.\nOnly useful for matrices in the INVALID state."]
+        #[serde(rename = "invalidMatrixDetails", default)]
+        pub invalid_matrix_details:
+            ::std::option::Option<crate::schemas::TestMatrixInvalidMatrixDetails>,
+        #[doc = "Output Only. The overall outcome of the test.\nOnly set when the test matrix state is FINISHED."]
+        #[serde(rename = "outcomeSummary", default)]
+        pub outcome_summary: ::std::option::Option<crate::schemas::TestMatrixOutcomeSummary>,
+        #[doc = "The cloud project that owns the test matrix."]
         #[serde(rename = "projectId", default)]
         pub project_id: ::std::option::Option<String>,
-        #[doc = "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED)."]
+        #[doc = "Required. Where the results for the matrix are written."]
+        #[serde(rename = "resultStorage", default)]
+        pub result_storage: ::std::option::Option<crate::schemas::ResultStorage>,
+        #[doc = "Output only. Indicates the current progress of the test matrix."]
         #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::TestExecutionState>,
-        #[doc = "Output only. Additional details about the running test."]
-        #[serde(rename = "testDetails", default)]
-        pub test_details: ::std::option::Option<crate::schemas::TestDetails>,
-        #[doc = "Output only. How to run the test."]
+        pub state: ::std::option::Option<crate::schemas::TestMatrixState>,
+        #[doc = "Output only. The list of test executions that the service creates for\nthis matrix."]
+        #[serde(rename = "testExecutions", default)]
+        pub test_executions: ::std::option::Option<Vec<crate::schemas::TestExecution>>,
+        #[doc = "Output only. Unique id set by the service."]
+        #[serde(rename = "testMatrixId", default)]
+        pub test_matrix_id: ::std::option::Option<String>,
+        #[doc = "Required. How to run the test."]
         #[serde(rename = "testSpecification", default)]
         pub test_specification: ::std::option::Option<crate::schemas::TestSpecification>,
-        #[doc = "Output only. The time this test execution was initially created."]
+        #[doc = "Output only. The time this test matrix was initially created."]
         #[serde(rename = "timestamp", default)]
         pub timestamp: ::std::option::Option<String>,
-        #[doc = "Output only. Where the results for this execution are written."]
-        #[serde(rename = "toolResultsStep", default)]
-        pub tool_results_step: ::std::option::Option<crate::schemas::ToolResultsStep>,
     }
-    impl ::field_selector::FieldSelector for TestExecution {
+    impl ::field_selector::FieldSelector for TestMatrix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2495,66 +2555,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TestMatrixState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestMatrix {
-        #[doc = "Information about the client which invoked the test."]
-        #[serde(rename = "clientInfo", default)]
-        pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
-        #[doc = "Required. The devices the tests are being executed on."]
-        #[serde(rename = "environmentMatrix", default)]
-        pub environment_matrix: ::std::option::Option<crate::schemas::EnvironmentMatrix>,
-        #[doc = "The number of times a TestExecution should be re-attempted if one or more\nof its test cases fail for any reason.\nThe maximum number of reruns allowed is 10.\n\nDefault is 0, which implies no reruns."]
-        #[serde(rename = "flakyTestAttempts", default)]
-        pub flaky_test_attempts: ::std::option::Option<i32>,
-        #[doc = "Output only. Describes why the matrix is considered invalid.\nOnly useful for matrices in the INVALID state."]
-        #[serde(rename = "invalidMatrixDetails", default)]
-        pub invalid_matrix_details:
-            ::std::option::Option<crate::schemas::TestMatrixInvalidMatrixDetails>,
-        #[doc = "Output Only. The overall outcome of the test.\nOnly set when the test matrix state is FINISHED."]
-        #[serde(rename = "outcomeSummary", default)]
-        pub outcome_summary: ::std::option::Option<crate::schemas::TestMatrixOutcomeSummary>,
-        #[doc = "The cloud project that owns the test matrix."]
-        #[serde(rename = "projectId", default)]
-        pub project_id: ::std::option::Option<String>,
-        #[doc = "Required. Where the results for the matrix are written."]
-        #[serde(rename = "resultStorage", default)]
-        pub result_storage: ::std::option::Option<crate::schemas::ResultStorage>,
-        #[doc = "Output only. Indicates the current progress of the test matrix."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::TestMatrixState>,
-        #[doc = "Output only. The list of test executions that the service creates for\nthis matrix."]
-        #[serde(rename = "testExecutions", default)]
-        pub test_executions: ::std::option::Option<Vec<crate::schemas::TestExecution>>,
-        #[doc = "Output only. Unique id set by the service."]
-        #[serde(rename = "testMatrixId", default)]
-        pub test_matrix_id: ::std::option::Option<String>,
-        #[doc = "Required. How to run the test."]
-        #[serde(rename = "testSpecification", default)]
-        pub test_specification: ::std::option::Option<crate::schemas::TestSpecification>,
-        #[doc = "Output only. The time this test matrix was initially created."]
-        #[serde(rename = "timestamp", default)]
-        pub timestamp: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for TestMatrix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4186,84 +4186,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -4292,174 +4214,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

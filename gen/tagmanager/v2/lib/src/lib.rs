@@ -40,6 +40,32 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountAccess {
+        #[doc = "Whether the user has no access, user access, or admin access to an account."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<crate::schemas::AccountAccessPermission>,
+    }
+    impl ::field_selector::FieldSelector for AccountAccess {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AccountAccessPermission {
         AccountPermissionUnspecified,
@@ -115,12 +141,27 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AccountAccess {
-        #[doc = "Whether the user has no access, user access, or admin access to an account."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<crate::schemas::AccountAccessPermission>,
+    pub struct BuiltInVariable {
+        #[doc = "GTM Account ID."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "GTM Container ID."]
+        #[serde(rename = "containerId", default)]
+        pub container_id: ::std::option::Option<String>,
+        #[doc = "Name of the built-in variable to be used to refer to the built-in variable."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "GTM BuiltInVariable's API relative path."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "Type of built-in variable."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::BuiltInVariableType>,
+        #[doc = "GTM Workspace ID."]
+        #[serde(rename = "workspaceId", default)]
+        pub workspace_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for AccountAccess {
+    impl ::field_selector::FieldSelector for BuiltInVariable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -591,27 +632,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BuiltInVariable {
-        #[doc = "GTM Account ID."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "GTM Container ID."]
-        #[serde(rename = "containerId", default)]
-        pub container_id: ::std::option::Option<String>,
-        #[doc = "Name of the built-in variable to be used to refer to the built-in variable."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "GTM BuiltInVariable's API relative path."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "Type of built-in variable."]
+    pub struct Condition {
+        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: \n\n* For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. \n* At this time, the left operand (arg0) must be a reference to a variable. \n* For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. \n* To negate an operator, include a boolean parameter named negate boolean parameter that is set to true."]
+        #[serde(rename = "parameter", default)]
+        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "The type of operator for this condition."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::BuiltInVariableType>,
-        #[doc = "GTM Workspace ID."]
-        #[serde(rename = "workspaceId", default)]
-        pub workspace_id: ::std::option::Option<String>,
+        pub r#type: ::std::option::Option<crate::schemas::ConditionType>,
     }
-    impl ::field_selector::FieldSelector for BuiltInVariable {
+    impl ::field_selector::FieldSelector for Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -715,15 +744,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Condition {
-        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: \n\n* For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. \n* At this time, the left operand (arg0) must be a reference to a variable. \n* For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. \n* To negate an operator, include a boolean parameter named negate boolean parameter that is set to true."]
-        #[serde(rename = "parameter", default)]
-        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The type of operator for this condition."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ConditionType>,
+    pub struct Container {
+        #[doc = "GTM Account ID."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "The Container ID uniquely identifies the GTM Container."]
+        #[serde(rename = "containerId", default)]
+        pub container_id: ::std::option::Option<String>,
+        #[doc = "List of domain names associated with the Container."]
+        #[serde(rename = "domainName", default)]
+        pub domain_name: ::std::option::Option<Vec<String>>,
+        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
+        #[serde(rename = "fingerprint", default)]
+        pub fingerprint: ::std::option::Option<String>,
+        #[doc = "Container display name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Container Notes."]
+        #[serde(rename = "notes", default)]
+        pub notes: ::std::option::Option<String>,
+        #[doc = "GTM Container's API relative path."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "Container Public ID."]
+        #[serde(rename = "publicId", default)]
+        pub public_id: ::std::option::Option<String>,
+        #[doc = "Auto generated link to the tag manager UI"]
+        #[serde(rename = "tagManagerUrl", default)]
+        pub tag_manager_url: ::std::option::Option<String>,
+        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, or ios."]
+        #[serde(rename = "usageContext", default)]
+        pub usage_context: ::std::option::Option<Vec<crate::schemas::ContainerUsageContextItems>>,
     }
-    impl ::field_selector::FieldSelector for Condition {
+    impl ::field_selector::FieldSelector for Container {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -812,39 +865,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Container {
-        #[doc = "GTM Account ID."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "The Container ID uniquely identifies the GTM Container."]
+    pub struct ContainerAccess {
+        #[doc = "GTM Container ID."]
         #[serde(rename = "containerId", default)]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "List of domain names associated with the Container."]
-        #[serde(rename = "domainName", default)]
-        pub domain_name: ::std::option::Option<Vec<String>>,
-        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
-        #[serde(rename = "fingerprint", default)]
-        pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Container display name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Container Notes."]
-        #[serde(rename = "notes", default)]
-        pub notes: ::std::option::Option<String>,
-        #[doc = "GTM Container's API relative path."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "Container Public ID."]
-        #[serde(rename = "publicId", default)]
-        pub public_id: ::std::option::Option<String>,
-        #[doc = "Auto generated link to the tag manager UI"]
-        #[serde(rename = "tagManagerUrl", default)]
-        pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, or ios."]
-        #[serde(rename = "usageContext", default)]
-        pub usage_context: ::std::option::Option<Vec<crate::schemas::ContainerUsageContextItems>>,
+        #[doc = "List of Container permissions."]
+        #[serde(rename = "permission", default)]
+        pub permission: ::std::option::Option<crate::schemas::ContainerAccessPermission>,
     }
-    impl ::field_selector::FieldSelector for Container {
+    impl ::field_selector::FieldSelector for ContainerAccess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -914,35 +943,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ContainerAccessPermission {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ContainerAccess {
-        #[doc = "GTM Container ID."]
-        #[serde(rename = "containerId", default)]
-        pub container_id: ::std::option::Option<String>,
-        #[doc = "List of Container permissions."]
-        #[serde(rename = "permission", default)]
-        pub permission: ::std::option::Option<crate::schemas::ContainerAccessPermission>,
-    }
-    impl ::field_selector::FieldSelector for ContainerAccess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1227,6 +1227,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Entity {
+        #[doc = "Represents how the entity has been changed in the workspace."]
+        #[serde(rename = "changeStatus", default)]
+        pub change_status: ::std::option::Option<crate::schemas::EntityChangeStatus>,
+        #[doc = "The Folder being represented by the entity."]
+        #[serde(rename = "folder", default)]
+        pub folder: ::std::option::Option<crate::schemas::Folder>,
+        #[doc = "The tag being represented by the entity."]
+        #[serde(rename = "tag", default)]
+        pub tag: ::std::option::Option<crate::schemas::Tag>,
+        #[doc = "The trigger being represented by the entity."]
+        #[serde(rename = "trigger", default)]
+        pub trigger: ::std::option::Option<crate::schemas::Trigger>,
+        #[doc = "The variable being represented by the entity."]
+        #[serde(rename = "variable", default)]
+        pub variable: ::std::option::Option<crate::schemas::Variable>,
+    }
+    impl ::field_selector::FieldSelector for Entity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EntityChangeStatus {
         Added,
@@ -1301,24 +1339,54 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Entity {
-        #[doc = "Represents how the entity has been changed in the workspace."]
-        #[serde(rename = "changeStatus", default)]
-        pub change_status: ::std::option::Option<crate::schemas::EntityChangeStatus>,
-        #[doc = "The Folder being represented by the entity."]
-        #[serde(rename = "folder", default)]
-        pub folder: ::std::option::Option<crate::schemas::Folder>,
-        #[doc = "The tag being represented by the entity."]
-        #[serde(rename = "tag", default)]
-        pub tag: ::std::option::Option<crate::schemas::Tag>,
-        #[doc = "The trigger being represented by the entity."]
-        #[serde(rename = "trigger", default)]
-        pub trigger: ::std::option::Option<crate::schemas::Trigger>,
-        #[doc = "The variable being represented by the entity."]
-        #[serde(rename = "variable", default)]
-        pub variable: ::std::option::Option<crate::schemas::Variable>,
+    pub struct Environment {
+        #[doc = "GTM Account ID."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "The environment authorization code."]
+        #[serde(rename = "authorizationCode", default)]
+        pub authorization_code: ::std::option::Option<String>,
+        #[doc = "The last update time-stamp for the authorization code."]
+        #[serde(rename = "authorizationTimestamp", default)]
+        pub authorization_timestamp: ::std::option::Option<crate::schemas::Timestamp>,
+        #[doc = "GTM Container ID."]
+        #[serde(rename = "containerId", default)]
+        pub container_id: ::std::option::Option<String>,
+        #[doc = "Represents a link to a container version."]
+        #[serde(rename = "containerVersionId", default)]
+        pub container_version_id: ::std::option::Option<String>,
+        #[doc = "The environment description. Can be set or changed only on USER type environments."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Whether or not to enable debug by default for the environment."]
+        #[serde(rename = "enableDebug", default)]
+        pub enable_debug: ::std::option::Option<bool>,
+        #[doc = "GTM Environment ID uniquely identifies the GTM Environment."]
+        #[serde(rename = "environmentId", default)]
+        pub environment_id: ::std::option::Option<String>,
+        #[doc = "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified."]
+        #[serde(rename = "fingerprint", default)]
+        pub fingerprint: ::std::option::Option<String>,
+        #[doc = "The environment display name. Can be set or changed only on USER type environments."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "GTM Environment's API relative path."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "The type of this environment."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::EnvironmentType>,
+        #[doc = "Auto generated link to the tag manager UI"]
+        #[serde(rename = "tagManagerUrl", default)]
+        pub tag_manager_url: ::std::option::Option<String>,
+        #[doc = "Default preview page url for the environment."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[doc = "Represents a link to a quick preview of a workspace."]
+        #[serde(rename = "workspaceId", default)]
+        pub workspace_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Entity {
+    impl ::field_selector::FieldSelector for Environment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1378,74 +1446,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for EnvironmentType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Environment {
-        #[doc = "GTM Account ID."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "The environment authorization code."]
-        #[serde(rename = "authorizationCode", default)]
-        pub authorization_code: ::std::option::Option<String>,
-        #[doc = "The last update time-stamp for the authorization code."]
-        #[serde(rename = "authorizationTimestamp", default)]
-        pub authorization_timestamp: ::std::option::Option<crate::schemas::Timestamp>,
-        #[doc = "GTM Container ID."]
-        #[serde(rename = "containerId", default)]
-        pub container_id: ::std::option::Option<String>,
-        #[doc = "Represents a link to a container version."]
-        #[serde(rename = "containerVersionId", default)]
-        pub container_version_id: ::std::option::Option<String>,
-        #[doc = "The environment description. Can be set or changed only on USER type environments."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Whether or not to enable debug by default for the environment."]
-        #[serde(rename = "enableDebug", default)]
-        pub enable_debug: ::std::option::Option<bool>,
-        #[doc = "GTM Environment ID uniquely identifies the GTM Environment."]
-        #[serde(rename = "environmentId", default)]
-        pub environment_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified."]
-        #[serde(rename = "fingerprint", default)]
-        pub fingerprint: ::std::option::Option<String>,
-        #[doc = "The environment display name. Can be set or changed only on USER type environments."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "GTM Environment's API relative path."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "The type of this environment."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::EnvironmentType>,
-        #[doc = "Auto generated link to the tag manager UI"]
-        #[serde(rename = "tagManagerUrl", default)]
-        pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "Default preview page url for the environment."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[doc = "Represents a link to a quick preview of a workspace."]
-        #[serde(rename = "workspaceId", default)]
-        pub workspace_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Environment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1975,6 +1975,44 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Parameter {
+        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "This list parameter's parameters (keys will be ignored)."]
+        #[serde(rename = "list", default)]
+        pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "This map parameter's parameters (must have keys; keys must be unique)."]
+        #[serde(rename = "map", default)]
+        pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "The parameter type. Valid values are: \n\n* boolean: The value represents a boolean, represented as 'true' or 'false' \n* integer: The value represents a 64-bit signed integer value, in base 10 \n* list: A list of parameters should be specified \n* map: A map of parameters should be specified \n* template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n* trigger_reference: The value represents a trigger, represented as the trigger id"]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
+        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Parameter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParameterType {
         Boolean,
@@ -2035,44 +2073,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for ParameterType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Parameter {
-        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "This list parameter's parameters (keys will be ignored)."]
-        #[serde(rename = "list", default)]
-        pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "This map parameter's parameters (must have keys; keys must be unique)."]
-        #[serde(rename = "map", default)]
-        pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The parameter type. Valid values are: \n\n* boolean: The value represents a boolean, represented as 'true' or 'false' \n* integer: The value represents a 64-bit signed integer value, in base 10 \n* list: A list of parameters should be specified \n* map: A map of parameters should be specified \n* template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n* trigger_reference: The value represents a trigger, represented as the trigger id"]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
-        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Parameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2411,65 +2411,6 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum TagTagFiringOption {
-        OncePerEvent,
-        OncePerLoad,
-        TagFiringOptionUnspecified,
-        Unlimited,
-    }
-    impl TagTagFiringOption {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                TagTagFiringOption::OncePerEvent => "oncePerEvent",
-                TagTagFiringOption::OncePerLoad => "oncePerLoad",
-                TagTagFiringOption::TagFiringOptionUnspecified => "tagFiringOptionUnspecified",
-                TagTagFiringOption::Unlimited => "unlimited",
-            }
-        }
-    }
-    impl ::std::fmt::Display for TagTagFiringOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for TagTagFiringOption {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for TagTagFiringOption {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "oncePerEvent" => TagTagFiringOption::OncePerEvent,
-                "oncePerLoad" => TagTagFiringOption::OncePerLoad,
-                "tagFiringOptionUnspecified" => TagTagFiringOption::TagFiringOptionUnspecified,
-                "unlimited" => TagTagFiringOption::Unlimited,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::field_selector::FieldSelector for TagTagFiringOption {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
     #[derive(
         Debug,
         Clone,
@@ -2567,6 +2508,65 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TagTagFiringOption {
+        OncePerEvent,
+        OncePerLoad,
+        TagFiringOptionUnspecified,
+        Unlimited,
+    }
+    impl TagTagFiringOption {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TagTagFiringOption::OncePerEvent => "oncePerEvent",
+                TagTagFiringOption::OncePerLoad => "oncePerLoad",
+                TagTagFiringOption::TagFiringOptionUnspecified => "tagFiringOptionUnspecified",
+                TagTagFiringOption::Unlimited => "unlimited",
+            }
+        }
+    }
+    impl ::std::fmt::Display for TagTagFiringOption {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TagTagFiringOption {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TagTagFiringOption {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "oncePerEvent" => TagTagFiringOption::OncePerEvent,
+                "oncePerLoad" => TagTagFiringOption::OncePerLoad,
+                "tagFiringOptionUnspecified" => TagTagFiringOption::TagFiringOptionUnspecified,
+                "unlimited" => TagTagFiringOption::Unlimited,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::field_selector::FieldSelector for TagTagFiringOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2618,6 +2618,125 @@ pub mod schemas {
         pub seconds: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Timestamp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Trigger {
+        #[doc = "GTM Account ID."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: ::std::option::Option<String>,
+        #[doc = "Used in the case of auto event tracking."]
+        #[serde(rename = "autoEventFilter", default)]
+        pub auto_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
+        #[doc = "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers."]
+        #[serde(rename = "checkValidation", default)]
+        pub check_validation: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "GTM Container ID."]
+        #[serde(rename = "containerId", default)]
+        pub container_id: ::std::option::Option<String>,
+        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger."]
+        #[serde(rename = "continuousTimeMinMilliseconds", default)]
+        pub continuous_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Used in the case of custom event, which is fired iff all Conditions are true."]
+        #[serde(rename = "customEventFilter", default)]
+        pub custom_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
+        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers."]
+        #[serde(rename = "eventName", default)]
+        pub event_name: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "The trigger will only fire iff all Conditions are true."]
+        #[serde(rename = "filter", default)]
+        pub filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
+        #[doc = "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified."]
+        #[serde(rename = "fingerprint", default)]
+        pub fingerprint: ::std::option::Option<String>,
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers."]
+        #[serde(rename = "horizontalScrollPercentageList", default)]
+        pub horizontal_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers."]
+        #[serde(rename = "interval", default)]
+        pub interval: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger."]
+        #[serde(rename = "intervalSeconds", default)]
+        pub interval_seconds: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers."]
+        #[serde(rename = "limit", default)]
+        pub limit: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger."]
+        #[serde(rename = "maxTimerLengthSeconds", default)]
+        pub max_timer_length_seconds: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Trigger display name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "User notes on how to apply this trigger in the container."]
+        #[serde(rename = "notes", default)]
+        pub notes: ::std::option::Option<String>,
+        #[doc = "Additional parameters."]
+        #[serde(rename = "parameter", default)]
+        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "Parent folder id."]
+        #[serde(rename = "parentFolderId", default)]
+        pub parent_folder_id: ::std::option::Option<String>,
+        #[doc = "GTM Trigger's API relative path."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+        #[doc = "Defines the data layer event that causes this trigger."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::TriggerType>,
+        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger."]
+        #[serde(rename = "selector", default)]
+        pub selector: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Auto generated link to the tag manager UI"]
+        #[serde(rename = "tagManagerUrl", default)]
+        pub tag_manager_url: ::std::option::Option<String>,
+        #[doc = "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger."]
+        #[serde(rename = "totalTimeMinMilliseconds", default)]
+        pub total_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "The Trigger ID uniquely identifies the GTM Trigger."]
+        #[serde(rename = "triggerId", default)]
+        pub trigger_id: ::std::option::Option<String>,
+        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers."]
+        #[serde(rename = "uniqueTriggerId", default)]
+        pub unique_trigger_id: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers."]
+        #[serde(rename = "verticalScrollPercentageList", default)]
+        pub vertical_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger."]
+        #[serde(rename = "visibilitySelector", default)]
+        pub visibility_selector: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger."]
+        #[serde(rename = "visiblePercentageMax", default)]
+        pub visible_percentage_max: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger."]
+        #[serde(rename = "visiblePercentageMin", default)]
+        pub visible_percentage_min: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers."]
+        #[serde(rename = "waitForTags", default)]
+        pub wait_for_tags: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers."]
+        #[serde(rename = "waitForTagsTimeout", default)]
+        pub wait_for_tags_timeout: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "GTM Workspace ID."]
+        #[serde(rename = "workspaceId", default)]
+        pub workspace_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Trigger {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2781,125 +2900,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Trigger {
-        #[doc = "GTM Account ID."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: ::std::option::Option<String>,
-        #[doc = "Used in the case of auto event tracking."]
-        #[serde(rename = "autoEventFilter", default)]
-        pub auto_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers."]
-        #[serde(rename = "checkValidation", default)]
-        pub check_validation: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "GTM Container ID."]
-        #[serde(rename = "containerId", default)]
-        pub container_id: ::std::option::Option<String>,
-        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger."]
-        #[serde(rename = "continuousTimeMinMilliseconds", default)]
-        pub continuous_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Used in the case of custom event, which is fired iff all Conditions are true."]
-        #[serde(rename = "customEventFilter", default)]
-        pub custom_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers."]
-        #[serde(rename = "eventName", default)]
-        pub event_name: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The trigger will only fire iff all Conditions are true."]
-        #[serde(rename = "filter", default)]
-        pub filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified."]
-        #[serde(rename = "fingerprint", default)]
-        pub fingerprint: ::std::option::Option<String>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers."]
-        #[serde(rename = "horizontalScrollPercentageList", default)]
-        pub horizontal_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers."]
-        #[serde(rename = "interval", default)]
-        pub interval: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger."]
-        #[serde(rename = "intervalSeconds", default)]
-        pub interval_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers."]
-        #[serde(rename = "limit", default)]
-        pub limit: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger."]
-        #[serde(rename = "maxTimerLengthSeconds", default)]
-        pub max_timer_length_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Trigger display name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this trigger in the container."]
-        #[serde(rename = "notes", default)]
-        pub notes: ::std::option::Option<String>,
-        #[doc = "Additional parameters."]
-        #[serde(rename = "parameter", default)]
-        pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "Parent folder id."]
-        #[serde(rename = "parentFolderId", default)]
-        pub parent_folder_id: ::std::option::Option<String>,
-        #[doc = "GTM Trigger's API relative path."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
-        #[doc = "Defines the data layer event that causes this trigger."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::TriggerType>,
-        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger."]
-        #[serde(rename = "selector", default)]
-        pub selector: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Auto generated link to the tag manager UI"]
-        #[serde(rename = "tagManagerUrl", default)]
-        pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger."]
-        #[serde(rename = "totalTimeMinMilliseconds", default)]
-        pub total_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The Trigger ID uniquely identifies the GTM Trigger."]
-        #[serde(rename = "triggerId", default)]
-        pub trigger_id: ::std::option::Option<String>,
-        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers."]
-        #[serde(rename = "uniqueTriggerId", default)]
-        pub unique_trigger_id: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers."]
-        #[serde(rename = "verticalScrollPercentageList", default)]
-        pub vertical_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger."]
-        #[serde(rename = "visibilitySelector", default)]
-        pub visibility_selector: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger."]
-        #[serde(rename = "visiblePercentageMax", default)]
-        pub visible_percentage_max: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger."]
-        #[serde(rename = "visiblePercentageMin", default)]
-        pub visible_percentage_min: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers."]
-        #[serde(rename = "waitForTags", default)]
-        pub wait_for_tags: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers."]
-        #[serde(rename = "waitForTagsTimeout", default)]
-        pub wait_for_tags_timeout: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "GTM Workspace ID."]
-        #[serde(rename = "workspaceId", default)]
-        pub workspace_id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Trigger {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct UserPermission {
         #[doc = "GTM Account access permissions."]
         #[serde(rename = "accountAccess", default)]
@@ -3002,6 +3002,45 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VariableFormatValue {
+        #[doc = "The option to convert a string-type variable value to either lowercase or uppercase."]
+        #[serde(rename = "caseConversionType", default)]
+        pub case_conversion_type:
+            ::std::option::Option<crate::schemas::VariableFormatValueCaseConversionType>,
+        #[doc = "The value to convert if a variable value is false."]
+        #[serde(rename = "convertFalseToValue", default)]
+        pub convert_false_to_value: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "The value to convert if a variable value is null."]
+        #[serde(rename = "convertNullToValue", default)]
+        pub convert_null_to_value: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "The value to convert if a variable value is true."]
+        #[serde(rename = "convertTrueToValue", default)]
+        pub convert_true_to_value: ::std::option::Option<crate::schemas::Parameter>,
+        #[doc = "The value to convert if a variable value is undefined."]
+        #[serde(rename = "convertUndefinedToValue", default)]
+        pub convert_undefined_to_value: ::std::option::Option<crate::schemas::Parameter>,
+    }
+    impl ::field_selector::FieldSelector for VariableFormatValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VariableFormatValueCaseConversionType {
         Lowercase,
@@ -3050,45 +3089,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for VariableFormatValueCaseConversionType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VariableFormatValue {
-        #[doc = "The option to convert a string-type variable value to either lowercase or uppercase."]
-        #[serde(rename = "caseConversionType", default)]
-        pub case_conversion_type:
-            ::std::option::Option<crate::schemas::VariableFormatValueCaseConversionType>,
-        #[doc = "The value to convert if a variable value is false."]
-        #[serde(rename = "convertFalseToValue", default)]
-        pub convert_false_to_value: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The value to convert if a variable value is null."]
-        #[serde(rename = "convertNullToValue", default)]
-        pub convert_null_to_value: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The value to convert if a variable value is true."]
-        #[serde(rename = "convertTrueToValue", default)]
-        pub convert_true_to_value: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The value to convert if a variable value is undefined."]
-        #[serde(rename = "convertUndefinedToValue", default)]
-        pub convert_undefined_to_value: ::std::option::Option<crate::schemas::Parameter>,
-    }
-    impl ::field_selector::FieldSelector for VariableFormatValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16832,84 +16832,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -16941,7 +16863,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -17062,50 +16983,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

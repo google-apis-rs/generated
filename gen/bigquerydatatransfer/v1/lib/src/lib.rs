@@ -42,6 +42,74 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct DataSource {
+        #[doc = "Indicates the type of authorization."]
+        #[serde(rename = "authorizationType", default)]
+        pub authorization_type: ::std::option::Option<crate::schemas::DataSourceAuthorizationType>,
+        #[doc = "Data source client id which should be used to receive refresh token."]
+        #[serde(rename = "clientId", default)]
+        pub client_id: ::std::option::Option<String>,
+        #[doc = "Specifies whether the data source supports automatic data refresh for the\npast few days, and how it's supported.\nFor some data sources, data might not be complete until a few days later,\nso it's useful to refresh data automatically."]
+        #[serde(rename = "dataRefreshType", default)]
+        pub data_refresh_type: ::std::option::Option<crate::schemas::DataSourceDataRefreshType>,
+        #[doc = "Data source id."]
+        #[serde(rename = "dataSourceId", default)]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`."]
+        #[serde(rename = "defaultDataRefreshWindowDays", default)]
+        pub default_data_refresh_window_days: ::std::option::Option<i32>,
+        #[doc = "Default data transfer schedule.\nExamples of valid schedules include:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`."]
+        #[serde(rename = "defaultSchedule", default)]
+        pub default_schedule: ::std::option::Option<String>,
+        #[doc = "User friendly data source description string."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "User friendly data source name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Url for the help document for this data source."]
+        #[serde(rename = "helpUrl", default)]
+        pub help_url: ::std::option::Option<String>,
+        #[doc = "Disables backfilling and manual run scheduling\nfor the data source."]
+        #[serde(rename = "manualRunsDisabled", default)]
+        pub manual_runs_disabled: ::std::option::Option<bool>,
+        #[doc = "The minimum interval for scheduler to schedule runs."]
+        #[serde(rename = "minimumScheduleInterval", default)]
+        pub minimum_schedule_interval: ::std::option::Option<String>,
+        #[doc = "Output only. Data source resource name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Data source parameters."]
+        #[serde(rename = "parameters", default)]
+        pub parameters: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
+        #[doc = "Api auth scopes for which refresh token needs to be obtained. These are\nscopes needed by a data source to prepare data and ingest them into\nBigQuery, e.g., https://www.googleapis.com/auth/bigquery"]
+        #[serde(rename = "scopes", default)]
+        pub scopes: ::std::option::Option<Vec<String>>,
+        #[doc = "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule."]
+        #[serde(rename = "supportsCustomSchedule", default)]
+        pub supports_custom_schedule: ::std::option::Option<bool>,
+        #[doc = "Deprecated. This field has no effect."]
+        #[serde(rename = "supportsMultipleTransfers", default)]
+        pub supports_multiple_transfers: ::std::option::Option<bool>,
+        #[doc = "Deprecated. This field has no effect."]
+        #[serde(rename = "transferType", default)]
+        pub transfer_type: ::std::option::Option<crate::schemas::DataSourceTransferType>,
+        #[doc = "The number of seconds to wait for an update from the data source\nbefore the Data Transfer Service marks the transfer as FAILED."]
+        #[serde(rename = "updateDeadlineSeconds", default)]
+        pub update_deadline_seconds: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for DataSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceAuthorizationType {
         #[doc = "Use OAuth 2 authorization codes that can be exchanged\nfor a refresh token on the backend."]
@@ -234,63 +302,57 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct DataSource {
-        #[doc = "Indicates the type of authorization."]
-        #[serde(rename = "authorizationType", default)]
-        pub authorization_type: ::std::option::Option<crate::schemas::DataSourceAuthorizationType>,
-        #[doc = "Data source client id which should be used to receive refresh token."]
-        #[serde(rename = "clientId", default)]
-        pub client_id: ::std::option::Option<String>,
-        #[doc = "Specifies whether the data source supports automatic data refresh for the\npast few days, and how it's supported.\nFor some data sources, data might not be complete until a few days later,\nso it's useful to refresh data automatically."]
-        #[serde(rename = "dataRefreshType", default)]
-        pub data_refresh_type: ::std::option::Option<crate::schemas::DataSourceDataRefreshType>,
-        #[doc = "Data source id."]
-        #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: ::std::option::Option<String>,
-        #[doc = "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`."]
-        #[serde(rename = "defaultDataRefreshWindowDays", default)]
-        pub default_data_refresh_window_days: ::std::option::Option<i32>,
-        #[doc = "Default data transfer schedule.\nExamples of valid schedules include:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`."]
-        #[serde(rename = "defaultSchedule", default)]
-        pub default_schedule: ::std::option::Option<String>,
-        #[doc = "User friendly data source description string."]
+    pub struct DataSourceParameter {
+        #[doc = "All possible values for the parameter."]
+        #[serde(rename = "allowedValues", default)]
+        pub allowed_values: ::std::option::Option<Vec<String>>,
+        #[doc = "If true, it should not be used in new transfers, and it should not be\nvisible to users."]
+        #[serde(rename = "deprecated", default)]
+        pub deprecated: ::std::option::Option<bool>,
+        #[doc = "Parameter description."]
         #[serde(rename = "description", default)]
         pub description: ::std::option::Option<String>,
-        #[doc = "User friendly data source name."]
+        #[doc = "Parameter display name in the user interface."]
         #[serde(rename = "displayName", default)]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Url for the help document for this data source."]
-        #[serde(rename = "helpUrl", default)]
-        pub help_url: ::std::option::Option<String>,
-        #[doc = "Disables backfilling and manual run scheduling\nfor the data source."]
-        #[serde(rename = "manualRunsDisabled", default)]
-        pub manual_runs_disabled: ::std::option::Option<bool>,
-        #[doc = "The minimum interval for scheduler to schedule runs."]
-        #[serde(rename = "minimumScheduleInterval", default)]
-        pub minimum_schedule_interval: ::std::option::Option<String>,
-        #[doc = "Output only. Data source resource name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Data source parameters."]
-        #[serde(rename = "parameters", default)]
-        pub parameters: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
-        #[doc = "Api auth scopes for which refresh token needs to be obtained. These are\nscopes needed by a data source to prepare data and ingest them into\nBigQuery, e.g., https://www.googleapis.com/auth/bigquery"]
-        #[serde(rename = "scopes", default)]
-        pub scopes: ::std::option::Option<Vec<String>>,
-        #[doc = "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule."]
-        #[serde(rename = "supportsCustomSchedule", default)]
-        pub supports_custom_schedule: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "supportsMultipleTransfers", default)]
-        pub supports_multiple_transfers: ::std::option::Option<bool>,
+        #[serde(rename = "fields", default)]
+        pub fields: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
+        #[doc = "Cannot be changed after initial creation."]
+        #[serde(rename = "immutable", default)]
+        pub immutable: ::std::option::Option<bool>,
+        #[doc = "For integer and double values specifies maxminum allowed value."]
+        #[serde(rename = "maxValue", default)]
+        pub max_value: ::std::option::Option<f64>,
+        #[doc = "For integer and double values specifies minimum allowed value."]
+        #[serde(rename = "minValue", default)]
+        pub min_value: ::std::option::Option<f64>,
+        #[doc = "Parameter identifier."]
+        #[serde(rename = "paramId", default)]
+        pub param_id: ::std::option::Option<String>,
+        #[doc = "Parameter type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DataSourceParameterType>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "transferType", default)]
-        pub transfer_type: ::std::option::Option<crate::schemas::DataSourceTransferType>,
-        #[doc = "The number of seconds to wait for an update from the data source\nbefore the Data Transfer Service marks the transfer as FAILED."]
-        #[serde(rename = "updateDeadlineSeconds", default)]
-        pub update_deadline_seconds: ::std::option::Option<i32>,
+        #[serde(rename = "recurse", default)]
+        pub recurse: ::std::option::Option<bool>,
+        #[doc = "Deprecated. This field has no effect."]
+        #[serde(rename = "repeated", default)]
+        pub repeated: ::std::option::Option<bool>,
+        #[doc = "Is parameter required."]
+        #[serde(rename = "required", default)]
+        pub required: ::std::option::Option<bool>,
+        #[doc = "Description of the requirements for this field, in case the user input does\nnot fulfill the regex pattern or min/max values."]
+        #[serde(rename = "validationDescription", default)]
+        pub validation_description: ::std::option::Option<String>,
+        #[doc = "URL to a help document to further explain the naming requirements."]
+        #[serde(rename = "validationHelpUrl", default)]
+        pub validation_help_url: ::std::option::Option<String>,
+        #[doc = "Regular expression which can be used for parameter validation."]
+        #[serde(rename = "validationRegex", default)]
+        pub validation_regex: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DataSource {
+    impl ::field_selector::FieldSelector for DataSourceParameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -366,68 +428,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DataSourceParameterType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct DataSourceParameter {
-        #[doc = "All possible values for the parameter."]
-        #[serde(rename = "allowedValues", default)]
-        pub allowed_values: ::std::option::Option<Vec<String>>,
-        #[doc = "If true, it should not be used in new transfers, and it should not be\nvisible to users."]
-        #[serde(rename = "deprecated", default)]
-        pub deprecated: ::std::option::Option<bool>,
-        #[doc = "Parameter description."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Parameter display name in the user interface."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "fields", default)]
-        pub fields: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
-        #[doc = "Cannot be changed after initial creation."]
-        #[serde(rename = "immutable", default)]
-        pub immutable: ::std::option::Option<bool>,
-        #[doc = "For integer and double values specifies maxminum allowed value."]
-        #[serde(rename = "maxValue", default)]
-        pub max_value: ::std::option::Option<f64>,
-        #[doc = "For integer and double values specifies minimum allowed value."]
-        #[serde(rename = "minValue", default)]
-        pub min_value: ::std::option::Option<f64>,
-        #[doc = "Parameter identifier."]
-        #[serde(rename = "paramId", default)]
-        pub param_id: ::std::option::Option<String>,
-        #[doc = "Parameter type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DataSourceParameterType>,
-        #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "recurse", default)]
-        pub recurse: ::std::option::Option<bool>,
-        #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "repeated", default)]
-        pub repeated: ::std::option::Option<bool>,
-        #[doc = "Is parameter required."]
-        #[serde(rename = "required", default)]
-        pub required: ::std::option::Option<bool>,
-        #[doc = "Description of the requirements for this field, in case the user input does\nnot fulfill the regex pattern or min/max values."]
-        #[serde(rename = "validationDescription", default)]
-        pub validation_description: ::std::option::Option<String>,
-        #[doc = "URL to a help document to further explain the naming requirements."]
-        #[serde(rename = "validationHelpUrl", default)]
-        pub validation_help_url: ::std::option::Option<String>,
-        #[doc = "Regular expression which can be used for parameter validation."]
-        #[serde(rename = "validationRegex", default)]
-        pub validation_regex: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DataSourceParameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -755,6 +755,62 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TransferConfig {
+        #[doc = "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value."]
+        #[serde(rename = "dataRefreshWindowDays", default)]
+        pub data_refresh_window_days: ::std::option::Option<i32>,
+        #[doc = "Data source id. Cannot be changed once data transfer is created."]
+        #[serde(rename = "dataSourceId", default)]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "Output only. Region in which BigQuery dataset is located."]
+        #[serde(rename = "datasetRegion", default)]
+        pub dataset_region: ::std::option::Option<String>,
+        #[doc = "The BigQuery target dataset id."]
+        #[serde(rename = "destinationDatasetId", default)]
+        pub destination_dataset_id: ::std::option::Option<String>,
+        #[doc = "Is this config disabled. When set to true, no runs are scheduled\nfor a given transfer."]
+        #[serde(rename = "disabled", default)]
+        pub disabled: ::std::option::Option<bool>,
+        #[doc = "User specified display name for the data transfer."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The resource name of the transfer config.\nTransfer config names have the form of\n`projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.\nThe name is automatically generated based on the config_id specified in\nCreateTransferConfigRequest along with project_id and region. If config_id\nis not provided, usually a uuid, even though it is not guaranteed or\nrequired, will be generated for config_id."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. Next time when data transfer will run."]
+        #[serde(rename = "nextRunTime", default)]
+        pub next_run_time: ::std::option::Option<String>,
+        #[doc = "Data transfer specific parameters."]
+        #[serde(rename = "params", default)]
+        pub params:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Data transfer schedule.\nIf the data source does not support a custom schedule, this should be\nempty. If it is empty, the default value for the data source will be\nused.\nThe specified times are in UTC.\nExamples of valid format:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`.\nSee more explanation about the format here:\nhttps://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format\nNOTE: the granularity should be at least 8 hours, or less frequent."]
+        #[serde(rename = "schedule", default)]
+        pub schedule: ::std::option::Option<String>,
+        #[doc = "Options customizing the data transfer schedule."]
+        #[serde(rename = "scheduleOptions", default)]
+        pub schedule_options: ::std::option::Option<crate::schemas::ScheduleOptions>,
+        #[doc = "Output only. State of the most recently updated transfer run."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::TransferConfigState>,
+        #[doc = "Output only. Data transfer modification time. Ignored by server on input."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
+        #[serde(rename = "userId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub user_id: ::std::option::Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for TransferConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TransferConfigState {
         #[doc = "Data transfer is cancelled."]
@@ -826,54 +882,30 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct TransferConfig {
-        #[doc = "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value."]
-        #[serde(rename = "dataRefreshWindowDays", default)]
-        pub data_refresh_window_days: ::std::option::Option<i32>,
-        #[doc = "Data source id. Cannot be changed once data transfer is created."]
-        #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: ::std::option::Option<String>,
-        #[doc = "Output only. Region in which BigQuery dataset is located."]
-        #[serde(rename = "datasetRegion", default)]
-        pub dataset_region: ::std::option::Option<String>,
-        #[doc = "The BigQuery target dataset id."]
-        #[serde(rename = "destinationDatasetId", default)]
-        pub destination_dataset_id: ::std::option::Option<String>,
-        #[doc = "Is this config disabled. When set to true, no runs are scheduled\nfor a given transfer."]
-        #[serde(rename = "disabled", default)]
-        pub disabled: ::std::option::Option<bool>,
-        #[doc = "User specified display name for the data transfer."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "The resource name of the transfer config.\nTransfer config names have the form of\n`projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.\nThe name is automatically generated based on the config_id specified in\nCreateTransferConfigRequest along with project_id and region. If config_id\nis not provided, usually a uuid, even though it is not guaranteed or\nrequired, will be generated for config_id."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. Next time when data transfer will run."]
-        #[serde(rename = "nextRunTime", default)]
-        pub next_run_time: ::std::option::Option<String>,
-        #[doc = "Data transfer specific parameters."]
-        #[serde(rename = "params", default)]
-        pub params:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Data transfer schedule.\nIf the data source does not support a custom schedule, this should be\nempty. If it is empty, the default value for the data source will be\nused.\nThe specified times are in UTC.\nExamples of valid format:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`.\nSee more explanation about the format here:\nhttps://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format\nNOTE: the granularity should be at least 8 hours, or less frequent."]
-        #[serde(rename = "schedule", default)]
-        pub schedule: ::std::option::Option<String>,
-        #[doc = "Options customizing the data transfer schedule."]
-        #[serde(rename = "scheduleOptions", default)]
-        pub schedule_options: ::std::option::Option<crate::schemas::ScheduleOptions>,
-        #[doc = "Output only. State of the most recently updated transfer run."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::TransferConfigState>,
-        #[doc = "Output only. Data transfer modification time. Ignored by server on input."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
-        #[serde(rename = "userId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub user_id: ::std::option::Option<i64>,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TransferMessage {
+        #[doc = "Message text."]
+        #[serde(rename = "messageText", default)]
+        pub message_text: ::std::option::Option<String>,
+        #[doc = "Time when message was logged."]
+        #[serde(rename = "messageTime", default)]
+        pub message_time: ::std::option::Option<String>,
+        #[doc = "Message severity."]
+        #[serde(rename = "severity", default)]
+        pub severity: ::std::option::Option<crate::schemas::TransferMessageSeverity>,
     }
-    impl ::field_selector::FieldSelector for TransferConfig {
+    impl ::field_selector::FieldSelector for TransferMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -949,30 +981,51 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TransferMessage {
-        #[doc = "Message text."]
-        #[serde(rename = "messageText", default)]
-        pub message_text: ::std::option::Option<String>,
-        #[doc = "Time when message was logged."]
-        #[serde(rename = "messageTime", default)]
-        pub message_time: ::std::option::Option<String>,
-        #[doc = "Message severity."]
-        #[serde(rename = "severity", default)]
-        pub severity: ::std::option::Option<crate::schemas::TransferMessageSeverity>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TransferRun {
+        #[doc = "Output only. Data source id."]
+        #[serde(rename = "dataSourceId", default)]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "Output only. The BigQuery target dataset id."]
+        #[serde(rename = "destinationDatasetId", default)]
+        pub destination_dataset_id: ::std::option::Option<String>,
+        #[doc = "Output only. Time when transfer run ended.\nParameter ignored by server for input requests."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Status of the transfer run."]
+        #[serde(rename = "errorStatus", default)]
+        pub error_status: ::std::option::Option<crate::schemas::Status>,
+        #[doc = "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. Data transfer specific parameters."]
+        #[serde(rename = "params", default)]
+        pub params:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "For batch transfer runs, specifies the date and time of the data should be\ningested."]
+        #[serde(rename = "runTime", default)]
+        pub run_time: ::std::option::Option<String>,
+        #[doc = "Output only. Describes the schedule of this transfer run if it was\ncreated as part of a regular schedule. For batch transfer runs that are\nscheduled manually, this is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always match this."]
+        #[serde(rename = "schedule", default)]
+        pub schedule: ::std::option::Option<String>,
+        #[doc = "Minimum time after which a transfer run can be started."]
+        #[serde(rename = "scheduleTime", default)]
+        pub schedule_time: ::std::option::Option<String>,
+        #[doc = "Output only. Time when transfer run was started.\nParameter ignored by server for input requests."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Data transfer run state. Ignored for input requests."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::TransferRunState>,
+        #[doc = "Output only. Last time the data transfer run state was updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
+        #[serde(rename = "userId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub user_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for TransferMessage {
+    impl ::field_selector::FieldSelector for TransferRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1044,59 +1097,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for TransferRunState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct TransferRun {
-        #[doc = "Output only. Data source id."]
-        #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: ::std::option::Option<String>,
-        #[doc = "Output only. The BigQuery target dataset id."]
-        #[serde(rename = "destinationDatasetId", default)]
-        pub destination_dataset_id: ::std::option::Option<String>,
-        #[doc = "Output only. Time when transfer run ended.\nParameter ignored by server for input requests."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "Status of the transfer run."]
-        #[serde(rename = "errorStatus", default)]
-        pub error_status: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. Data transfer specific parameters."]
-        #[serde(rename = "params", default)]
-        pub params:
-            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "For batch transfer runs, specifies the date and time of the data should be\ningested."]
-        #[serde(rename = "runTime", default)]
-        pub run_time: ::std::option::Option<String>,
-        #[doc = "Output only. Describes the schedule of this transfer run if it was\ncreated as part of a regular schedule. For batch transfer runs that are\nscheduled manually, this is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always match this."]
-        #[serde(rename = "schedule", default)]
-        pub schedule: ::std::option::Option<String>,
-        #[doc = "Minimum time after which a transfer run can be started."]
-        #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: ::std::option::Option<String>,
-        #[doc = "Output only. Time when transfer run was started.\nParameter ignored by server for input requests."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: ::std::option::Option<String>,
-        #[doc = "Data transfer run state. Ignored for input requests."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::TransferRunState>,
-        #[doc = "Output only. Last time the data transfer run state was updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
-        #[serde(rename = "userId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub user_id: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for TransferRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8390,84 +8390,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -8499,7 +8421,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -8620,50 +8541,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

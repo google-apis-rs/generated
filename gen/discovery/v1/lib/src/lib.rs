@@ -11,15 +11,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DirectoryListItemsItemsIcons {
-        #[doc = "The URL of the 16x16 icon."]
-        #[serde(rename = "x16", default)]
-        pub x_16: ::std::option::Option<String>,
-        #[doc = "The URL of the 32x32 icon."]
-        #[serde(rename = "x32", default)]
-        pub x_32: ::std::option::Option<String>,
+    pub struct DirectoryList {
+        #[doc = "Indicate the version of the Discovery API used to generate this doc."]
+        #[serde(rename = "discoveryVersion", default)]
+        pub discovery_version: ::std::option::Option<String>,
+        #[doc = "The individual directory entries. One entry per api/version pair."]
+        #[serde(rename = "items", default)]
+        pub items: ::std::option::Option<Vec<crate::schemas::DirectoryListItemsItems>>,
+        #[doc = "The kind for this response."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DirectoryListItemsItemsIcons {
+    impl ::field_selector::FieldSelector for DirectoryList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -99,100 +102,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DirectoryList {
-        #[doc = "Indicate the version of the Discovery API used to generate this doc."]
-        #[serde(rename = "discoveryVersion", default)]
-        pub discovery_version: ::std::option::Option<String>,
-        #[doc = "The individual directory entries. One entry per api/version pair."]
-        #[serde(rename = "items", default)]
-        pub items: ::std::option::Option<Vec<crate::schemas::DirectoryListItemsItems>>,
-        #[doc = "The kind for this response."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
+    pub struct DirectoryListItemsItemsIcons {
+        #[doc = "The URL of the 16x16 icon."]
+        #[serde(rename = "x16", default)]
+        pub x_16: ::std::option::Option<String>,
+        #[doc = "The URL of the 32x32 icon."]
+        #[serde(rename = "x32", default)]
+        pub x_32: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for DirectoryList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct JsonSchemaAnnotations {
-        #[doc = "A list of methods for which this property is required on requests."]
-        #[serde(rename = "required", default)]
-        pub required: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for JsonSchemaAnnotations {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct JsonSchemaVariantMapItems {
-        #[serde(rename = "$ref", default)]
-        pub r#ref: ::std::option::Option<String>,
-        #[serde(rename = "type_value", default)]
-        pub type_value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for JsonSchemaVariantMapItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct JsonSchemaVariant {
-        #[doc = "The name of the type discriminant property."]
-        #[serde(rename = "discriminant", default)]
-        pub discriminant: ::std::option::Option<String>,
-        #[doc = "The map of discriminant value to schema to use for parsing.."]
-        #[serde(rename = "map", default)]
-        pub map: ::std::option::Option<Vec<crate::schemas::JsonSchemaVariantMapItems>>,
-    }
-    impl ::field_selector::FieldSelector for JsonSchemaVariant {
+    impl ::field_selector::FieldSelector for DirectoryListItemsItemsIcons {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -297,12 +215,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestDescriptionAuthOauth2ScopesAdditionalProperties {
-        #[doc = "Description of scope."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
+    pub struct JsonSchemaAnnotations {
+        #[doc = "A list of methods for which this property is required on requests."]
+        #[serde(rename = "required", default)]
+        pub required: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for RestDescriptionAuthOauth2ScopesAdditionalProperties {
+    impl ::field_selector::FieldSelector for JsonSchemaAnnotations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -323,17 +241,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestDescriptionAuthOauth2 {
-        #[doc = "Available OAuth 2.0 scopes."]
-        #[serde(rename = "scopes", default)]
-        pub scopes: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::RestDescriptionAuthOauth2ScopesAdditionalProperties,
-            >,
-        >,
+    pub struct JsonSchemaVariant {
+        #[doc = "The name of the type discriminant property."]
+        #[serde(rename = "discriminant", default)]
+        pub discriminant: ::std::option::Option<String>,
+        #[doc = "The map of discriminant value to schema to use for parsing.."]
+        #[serde(rename = "map", default)]
+        pub map: ::std::option::Option<Vec<crate::schemas::JsonSchemaVariantMapItems>>,
     }
-    impl ::field_selector::FieldSelector for RestDescriptionAuthOauth2 {
+    impl ::field_selector::FieldSelector for JsonSchemaVariant {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -354,41 +270,13 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestDescriptionAuth {
-        #[doc = "OAuth 2.0 authentication information."]
-        #[serde(rename = "oauth2", default)]
-        pub oauth_2: ::std::option::Option<crate::schemas::RestDescriptionAuthOauth2>,
+    pub struct JsonSchemaVariantMapItems {
+        #[serde(rename = "$ref", default)]
+        pub r#ref: ::std::option::Option<String>,
+        #[serde(rename = "type_value", default)]
+        pub type_value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for RestDescriptionAuth {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RestDescriptionIcons {
-        #[doc = "The URL of the 16x16 icon."]
-        #[serde(rename = "x16", default)]
-        pub x_16: ::std::option::Option<String>,
-        #[doc = "The URL of the 32x32 icon."]
-        #[serde(rename = "x32", default)]
-        pub x_32: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RestDescriptionIcons {
+    impl ::field_selector::FieldSelector for JsonSchemaVariantMapItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -526,15 +414,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestMethodMediaUploadProtocolsResumable {
-        #[doc = "True if this endpoint supports uploading multipart media."]
-        #[serde(rename = "multipart", default)]
-        pub multipart: ::std::option::Option<bool>,
-        #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
+    pub struct RestDescriptionAuth {
+        #[doc = "OAuth 2.0 authentication information."]
+        #[serde(rename = "oauth2", default)]
+        pub oauth_2: ::std::option::Option<crate::schemas::RestDescriptionAuthOauth2>,
     }
-    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsResumable {
+    impl ::field_selector::FieldSelector for RestDescriptionAuth {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -555,15 +440,17 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestMethodMediaUploadProtocolsSimple {
-        #[doc = "True if this endpoint supports upload multipart media."]
-        #[serde(rename = "multipart", default)]
-        pub multipart: ::std::option::Option<bool>,
-        #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
-        #[serde(rename = "path", default)]
-        pub path: ::std::option::Option<String>,
+    pub struct RestDescriptionAuthOauth2 {
+        #[doc = "Available OAuth 2.0 scopes."]
+        #[serde(rename = "scopes", default)]
+        pub scopes: ::std::option::Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::RestDescriptionAuthOauth2ScopesAdditionalProperties,
+            >,
+        >,
     }
-    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsSimple {
+    impl ::field_selector::FieldSelector for RestDescriptionAuthOauth2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -584,16 +471,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestMethodMediaUploadProtocols {
-        #[doc = "Supports the Resumable Media Upload protocol."]
-        #[serde(rename = "resumable", default)]
-        pub resumable:
-            ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsResumable>,
-        #[doc = "Supports uploading as a single HTTP request."]
-        #[serde(rename = "simple", default)]
-        pub simple: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsSimple>,
+    pub struct RestDescriptionAuthOauth2ScopesAdditionalProperties {
+        #[doc = "Description of scope."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocols {
+    impl ::field_selector::FieldSelector for RestDescriptionAuthOauth2ScopesAdditionalProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -614,73 +497,15 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestMethodMediaUpload {
-        #[doc = "MIME Media Ranges for acceptable media uploads to this method."]
-        #[serde(rename = "accept", default)]
-        pub accept: ::std::option::Option<Vec<String>>,
-        #[doc = "Maximum size of a media upload, such as \"1MB\", \"2GB\" or \"3TB\"."]
-        #[serde(rename = "maxSize", default)]
-        pub max_size: ::std::option::Option<String>,
-        #[doc = "Supported upload protocols."]
-        #[serde(rename = "protocols", default)]
-        pub protocols: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocols>,
+    pub struct RestDescriptionIcons {
+        #[doc = "The URL of the 16x16 icon."]
+        #[serde(rename = "x16", default)]
+        pub x_16: ::std::option::Option<String>,
+        #[doc = "The URL of the 32x32 icon."]
+        #[serde(rename = "x32", default)]
+        pub x_32: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for RestMethodMediaUpload {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RestMethodRequest {
-        #[doc = "parameter name."]
-        #[serde(rename = "parameterName", default)]
-        pub parameter_name: ::std::option::Option<String>,
-        #[doc = "Schema ID for the request schema."]
-        #[serde(rename = "$ref", default)]
-        pub r#ref: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RestMethodRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RestMethodResponse {
-        #[doc = "Schema ID for the response schema."]
-        #[serde(rename = "$ref", default)]
-        pub r#ref: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RestMethodResponse {
+    impl ::field_selector::FieldSelector for RestDescriptionIcons {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -750,6 +575,181 @@ pub mod schemas {
         pub use_media_download_service: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for RestMethod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodMediaUpload {
+        #[doc = "MIME Media Ranges for acceptable media uploads to this method."]
+        #[serde(rename = "accept", default)]
+        pub accept: ::std::option::Option<Vec<String>>,
+        #[doc = "Maximum size of a media upload, such as \"1MB\", \"2GB\" or \"3TB\"."]
+        #[serde(rename = "maxSize", default)]
+        pub max_size: ::std::option::Option<String>,
+        #[doc = "Supported upload protocols."]
+        #[serde(rename = "protocols", default)]
+        pub protocols: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocols>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodMediaUpload {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodMediaUploadProtocols {
+        #[doc = "Supports the Resumable Media Upload protocol."]
+        #[serde(rename = "resumable", default)]
+        pub resumable:
+            ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsResumable>,
+        #[doc = "Supports uploading as a single HTTP request."]
+        #[serde(rename = "simple", default)]
+        pub simple: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsSimple>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocols {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodMediaUploadProtocolsResumable {
+        #[doc = "True if this endpoint supports uploading multipart media."]
+        #[serde(rename = "multipart", default)]
+        pub multipart: ::std::option::Option<bool>,
+        #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsResumable {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodMediaUploadProtocolsSimple {
+        #[doc = "True if this endpoint supports upload multipart media."]
+        #[serde(rename = "multipart", default)]
+        pub multipart: ::std::option::Option<bool>,
+        #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
+        #[serde(rename = "path", default)]
+        pub path: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsSimple {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodRequest {
+        #[doc = "parameter name."]
+        #[serde(rename = "parameterName", default)]
+        pub parameter_name: ::std::option::Option<String>,
+        #[doc = "Schema ID for the request schema."]
+        #[serde(rename = "$ref", default)]
+        pub r#ref: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RestMethodResponse {
+        #[doc = "Schema ID for the response schema."]
+        #[serde(rename = "$ref", default)]
+        pub r#ref: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RestMethodResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1344,84 +1344,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -1450,174 +1372,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

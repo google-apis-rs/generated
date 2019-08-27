@@ -85,6 +85,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CommutePreference {
+        #[doc = "Optional. If `true`, jobs without street level addresses may also be returned.\nFor city level addresses, the city center is used. For state and coarser\nlevel addresses, text matching is used.\nIf this field is set to `false` or is not specified, only jobs that include\nstreet level addresses will be returned by commute search."]
+        #[serde(rename = "allowNonStreetLevelAddress", default)]
+        pub allow_non_street_level_address: ::std::option::Option<bool>,
+        #[doc = "Optional. The departure hour to use to calculate traffic impact. Accepts an\ninteger between 0 and 23, representing the hour in the time zone of the\nstart_location. Must not be present if road_traffic is specified."]
+        #[serde(rename = "departureHourLocal", default)]
+        pub departure_hour_local: ::std::option::Option<i32>,
+        #[doc = "Required. The method of transportation for which to calculate the commute time."]
+        #[serde(rename = "method", default)]
+        pub method: ::std::option::Option<crate::schemas::CommutePreferenceMethod>,
+        #[doc = "Optional. Specifies the traffic density to use when calculating commute time.\nMust not be present if departure_hour_local is specified."]
+        #[serde(rename = "roadTraffic", default)]
+        pub road_traffic: ::std::option::Option<crate::schemas::CommutePreferenceRoadTraffic>,
+        #[doc = "Required. The latitude and longitude of the location from which to calculate the\ncommute time."]
+        #[serde(rename = "startLocation", default)]
+        pub start_location: ::std::option::Option<crate::schemas::LatLng>,
+        #[doc = "Required. The maximum travel time in seconds. The maximum allowed value is `3600s`\n(one hour). Format is `123s`."]
+        #[serde(rename = "travelTime", default)]
+        pub travel_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommutePreference {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommutePreferenceMethod {
         #[doc = "Commute method is not specified."]
@@ -206,27 +238,63 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CommutePreference {
-        #[doc = "Optional. If `true`, jobs without street level addresses may also be returned.\nFor city level addresses, the city center is used. For state and coarser\nlevel addresses, text matching is used.\nIf this field is set to `false` or is not specified, only jobs that include\nstreet level addresses will be returned by commute search."]
-        #[serde(rename = "allowNonStreetLevelAddress", default)]
-        pub allow_non_street_level_address: ::std::option::Option<bool>,
-        #[doc = "Optional. The departure hour to use to calculate traffic impact. Accepts an\ninteger between 0 and 23, representing the hour in the time zone of the\nstart_location. Must not be present if road_traffic is specified."]
-        #[serde(rename = "departureHourLocal", default)]
-        pub departure_hour_local: ::std::option::Option<i32>,
-        #[doc = "Required. The method of transportation for which to calculate the commute time."]
-        #[serde(rename = "method", default)]
-        pub method: ::std::option::Option<crate::schemas::CommutePreferenceMethod>,
-        #[doc = "Optional. Specifies the traffic density to use when calculating commute time.\nMust not be present if departure_hour_local is specified."]
-        #[serde(rename = "roadTraffic", default)]
-        pub road_traffic: ::std::option::Option<crate::schemas::CommutePreferenceRoadTraffic>,
-        #[doc = "Required. The latitude and longitude of the location from which to calculate the\ncommute time."]
-        #[serde(rename = "startLocation", default)]
-        pub start_location: ::std::option::Option<crate::schemas::LatLng>,
-        #[doc = "Required. The maximum travel time in seconds. The maximum allowed value is `3600s`\n(one hour). Format is `123s`."]
-        #[serde(rename = "travelTime", default)]
-        pub travel_time: ::std::option::Option<String>,
+    pub struct Company {
+        #[doc = "Optional. The URL to employer's career site or careers page on the employer's web\nsite."]
+        #[serde(rename = "careerPageLink", default)]
+        pub career_page_link: ::std::option::Option<String>,
+        #[doc = "Optional. Identifiers external to the application that help to further identify\nthe employer."]
+        #[serde(rename = "companyInfoSources", default)]
+        pub company_info_sources: ::std::option::Option<Vec<crate::schemas::CompanyInfoSource>>,
+        #[doc = "Optional. The employer's company size."]
+        #[serde(rename = "companySize", default)]
+        pub company_size: ::std::option::Option<crate::schemas::CompanyCompanySize>,
+        #[doc = "Deprecated. Do not use this field.\n\nOptional.\n\nThis field is no longer used. Any value set to it is ignored."]
+        #[serde(rename = "disableLocationOptimization", default)]
+        pub disable_location_optimization: ::std::option::Option<bool>,
+        #[doc = "Required. The name of the employer to be displayed with the job,\nfor example, \"Google, LLC.\"."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. The unique company identifier provided by the client to identify an\nemployer for billing purposes. Recommended practice is to use\nthe distributor_company_id.\n\nDefaults to same value as distributor_company_id when a value\nis not provided."]
+        #[serde(rename = "distributorBillingCompanyId", default)]
+        pub distributor_billing_company_id: ::std::option::Option<String>,
+        #[doc = "Required. A client's company identifier, used to uniquely identify the\ncompany. If an employer has a subsidiary or sub-brand, such as \"Alphabet\"\nand \"Google\", which the client wishes to use as the company displayed on\nthe job. Best practice is to create a distinct company identifier for each\ndistinct brand displayed.\n\nThe maximum number of allowed characters is 255."]
+        #[serde(rename = "distributorCompanyId", default)]
+        pub distributor_company_id: ::std::option::Option<String>,
+        #[doc = "Optional. Equal Employment Opportunity legal disclaimer text to be\nassociated with all jobs, and typically to be displayed in all\nroles.\n\nThe maximum number of allowed characters is 500."]
+        #[serde(rename = "eeoText", default)]
+        pub eeo_text: ::std::option::Option<String>,
+        #[doc = "Optional. Set to true if it is the hiring agency that post jobs for other\nemployers.\n\nDefaults to false if not provided."]
+        #[serde(rename = "hiringAgency", default)]
+        pub hiring_agency: ::std::option::Option<bool>,
+        #[doc = "Optional. The street address of the company's main headquarters, which may be\ndifferent from the job location. The service attempts\nto geolocate the provided address, and populates a more specific\nlocation wherever possible in structured_company_hq_location."]
+        #[serde(rename = "hqLocation", default)]
+        pub hq_location: ::std::option::Option<String>,
+        #[doc = "Optional. A URL that hosts the employer's company logo. If provided,\nthe logo image should be squared at 80x80 pixels.\n\nThe url must be a Google Photos or Google Album url.\nOnly images in these Google sub-domains are accepted."]
+        #[serde(rename = "imageUrl", default)]
+        pub image_url: ::std::option::Option<String>,
+        #[doc = "Optional. A list of keys of filterable Job.custom_attributes, whose\ncorresponding `string_values` are used in keyword search. Jobs with\n`string_values` under these specified field keys are returned if any\nof the values matches the search keyword. Custom field values with\nparenthesis, brackets and special symbols might not be properly searchable,\nand those keyword queries need to be surrounded by quotes."]
+        #[serde(rename = "keywordSearchableCustomAttributes", default)]
+        pub keyword_searchable_custom_attributes: ::std::option::Option<Vec<String>>,
+        #[doc = "Deprecated. Use keyword_searchable_custom_attributes instead.\n\nOptional.\n\nA list of filterable custom fields that should be used in keyword\nsearch. The jobs of this company are returned if any of these custom\nfields matches the search keyword. Custom field values with parenthesis,\nbrackets and special symbols might not be properly searchable, and those\nkeyword queries need to be surrounded by quotes."]
+        #[serde(rename = "keywordSearchableCustomFields", default)]
+        pub keyword_searchable_custom_fields: ::std::option::Option<Vec<i32>>,
+        #[doc = "Required during company update.\n\nThe resource name for a company. This is generated by the service when a\ncompany is created, for example,\n\"companies/0000aaaa-1111-bbbb-2222-cccc3333dddd\"."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. A structured headquarters location of the company,\nresolved from hq_location if possible."]
+        #[serde(rename = "structuredCompanyHqLocation", default)]
+        pub structured_company_hq_location: ::std::option::Option<crate::schemas::JobLocation>,
+        #[doc = "Output only. Indicates whether a company is flagged to be suspended from public\navailability by the service when job content appears suspicious,\nabusive, or spammy."]
+        #[serde(rename = "suspended", default)]
+        pub suspended: ::std::option::Option<bool>,
+        #[doc = "Deprecated. Use display_name instead.\n\nRequired.\n\nThe name of the employer to be displayed with the job,\nfor example, \"Google, LLC.\"."]
+        #[serde(rename = "title", default)]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Optional. The URL representing the company's primary web site or home page,\nsuch as, \"www.google.com\"."]
+        #[serde(rename = "website", default)]
+        pub website: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for CommutePreference {
+    impl ::field_selector::FieldSelector for Company {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -315,74 +383,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Company {
-        #[doc = "Optional. The URL to employer's career site or careers page on the employer's web\nsite."]
-        #[serde(rename = "careerPageLink", default)]
-        pub career_page_link: ::std::option::Option<String>,
-        #[doc = "Optional. Identifiers external to the application that help to further identify\nthe employer."]
-        #[serde(rename = "companyInfoSources", default)]
-        pub company_info_sources: ::std::option::Option<Vec<crate::schemas::CompanyInfoSource>>,
-        #[doc = "Optional. The employer's company size."]
-        #[serde(rename = "companySize", default)]
-        pub company_size: ::std::option::Option<crate::schemas::CompanyCompanySize>,
-        #[doc = "Deprecated. Do not use this field.\n\nOptional.\n\nThis field is no longer used. Any value set to it is ignored."]
-        #[serde(rename = "disableLocationOptimization", default)]
-        pub disable_location_optimization: ::std::option::Option<bool>,
-        #[doc = "Required. The name of the employer to be displayed with the job,\nfor example, \"Google, LLC.\"."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. The unique company identifier provided by the client to identify an\nemployer for billing purposes. Recommended practice is to use\nthe distributor_company_id.\n\nDefaults to same value as distributor_company_id when a value\nis not provided."]
-        #[serde(rename = "distributorBillingCompanyId", default)]
-        pub distributor_billing_company_id: ::std::option::Option<String>,
-        #[doc = "Required. A client's company identifier, used to uniquely identify the\ncompany. If an employer has a subsidiary or sub-brand, such as \"Alphabet\"\nand \"Google\", which the client wishes to use as the company displayed on\nthe job. Best practice is to create a distinct company identifier for each\ndistinct brand displayed.\n\nThe maximum number of allowed characters is 255."]
-        #[serde(rename = "distributorCompanyId", default)]
-        pub distributor_company_id: ::std::option::Option<String>,
-        #[doc = "Optional. Equal Employment Opportunity legal disclaimer text to be\nassociated with all jobs, and typically to be displayed in all\nroles.\n\nThe maximum number of allowed characters is 500."]
-        #[serde(rename = "eeoText", default)]
-        pub eeo_text: ::std::option::Option<String>,
-        #[doc = "Optional. Set to true if it is the hiring agency that post jobs for other\nemployers.\n\nDefaults to false if not provided."]
-        #[serde(rename = "hiringAgency", default)]
-        pub hiring_agency: ::std::option::Option<bool>,
-        #[doc = "Optional. The street address of the company's main headquarters, which may be\ndifferent from the job location. The service attempts\nto geolocate the provided address, and populates a more specific\nlocation wherever possible in structured_company_hq_location."]
-        #[serde(rename = "hqLocation", default)]
-        pub hq_location: ::std::option::Option<String>,
-        #[doc = "Optional. A URL that hosts the employer's company logo. If provided,\nthe logo image should be squared at 80x80 pixels.\n\nThe url must be a Google Photos or Google Album url.\nOnly images in these Google sub-domains are accepted."]
-        #[serde(rename = "imageUrl", default)]
-        pub image_url: ::std::option::Option<String>,
-        #[doc = "Optional. A list of keys of filterable Job.custom_attributes, whose\ncorresponding `string_values` are used in keyword search. Jobs with\n`string_values` under these specified field keys are returned if any\nof the values matches the search keyword. Custom field values with\nparenthesis, brackets and special symbols might not be properly searchable,\nand those keyword queries need to be surrounded by quotes."]
-        #[serde(rename = "keywordSearchableCustomAttributes", default)]
-        pub keyword_searchable_custom_attributes: ::std::option::Option<Vec<String>>,
-        #[doc = "Deprecated. Use keyword_searchable_custom_attributes instead.\n\nOptional.\n\nA list of filterable custom fields that should be used in keyword\nsearch. The jobs of this company are returned if any of these custom\nfields matches the search keyword. Custom field values with parenthesis,\nbrackets and special symbols might not be properly searchable, and those\nkeyword queries need to be surrounded by quotes."]
-        #[serde(rename = "keywordSearchableCustomFields", default)]
-        pub keyword_searchable_custom_fields: ::std::option::Option<Vec<i32>>,
-        #[doc = "Required during company update.\n\nThe resource name for a company. This is generated by the service when a\ncompany is created, for example,\n\"companies/0000aaaa-1111-bbbb-2222-cccc3333dddd\"."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Output only. A structured headquarters location of the company,\nresolved from hq_location if possible."]
-        #[serde(rename = "structuredCompanyHqLocation", default)]
-        pub structured_company_hq_location: ::std::option::Option<crate::schemas::JobLocation>,
-        #[doc = "Output only. Indicates whether a company is flagged to be suspended from public\navailability by the service when job content appears suspicious,\nabusive, or spammy."]
-        #[serde(rename = "suspended", default)]
-        pub suspended: ::std::option::Option<bool>,
-        #[doc = "Deprecated. Use display_name instead.\n\nRequired.\n\nThe name of the employer to be displayed with the job,\nfor example, \"Google, LLC.\"."]
-        #[serde(rename = "title", default)]
-        pub title: ::std::option::Option<String>,
-        #[doc = "Optional. The URL representing the company's primary web site or home page,\nsuch as, \"www.google.com\"."]
-        #[serde(rename = "website", default)]
-        pub website: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Company {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -409,6 +409,38 @@ pub mod schemas {
         pub unknown_type_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CompanyInfoSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CompensationEntry {
+        #[doc = "Optional. Compensation amount."]
+        #[serde(rename = "amount", default)]
+        pub amount: ::std::option::Option<crate::schemas::Money>,
+        #[doc = "Optional. Compensation description.  For example, could\nindicate equity terms or provide additional context to an estimated\nbonus."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. Expected number of units paid each year. If not specified, when\nJob.employment_types is FULLTIME, a default value is inferred\nbased on unit. Default values:\n\n* HOURLY: 2080\n* DAILY: 260\n* WEEKLY: 52\n* MONTHLY: 12\n* ANNUAL: 1"]
+        #[serde(rename = "expectedUnitsPerYear", default)]
+        pub expected_units_per_year: ::std::option::Option<f64>,
+        #[doc = "Required. Compensation type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CompensationEntryType>,
+        #[doc = "Optional. Compensation range."]
+        #[serde(rename = "range", default)]
+        pub range: ::std::option::Option<crate::schemas::CompensationRange>,
+        #[doc = "Optional. Frequency of the specified amount.\n\nDefault is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED."]
+        #[serde(rename = "unit", default)]
+        pub unit: ::std::option::Option<crate::schemas::CompensationEntryUnit>,
+    }
+    impl ::field_selector::FieldSelector for CompensationEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -588,29 +620,32 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct CompensationEntry {
-        #[doc = "Optional. Compensation amount."]
-        #[serde(rename = "amount", default)]
-        pub amount: ::std::option::Option<crate::schemas::Money>,
-        #[doc = "Optional. Compensation description.  For example, could\nindicate equity terms or provide additional context to an estimated\nbonus."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. Expected number of units paid each year. If not specified, when\nJob.employment_types is FULLTIME, a default value is inferred\nbased on unit. Default values:\n\n* HOURLY: 2080\n* DAILY: 260\n* WEEKLY: 52\n* MONTHLY: 12\n* ANNUAL: 1"]
-        #[serde(rename = "expectedUnitsPerYear", default)]
-        pub expected_units_per_year: ::std::option::Option<f64>,
-        #[doc = "Required. Compensation type."]
+    pub struct CompensationFilter {
+        #[doc = "Optional. Whether to include jobs whose compensation range is unspecified."]
+        #[serde(rename = "includeJobsWithUnspecifiedCompensationRange", default)]
+        pub include_jobs_with_unspecified_compensation_range: ::std::option::Option<bool>,
+        #[doc = "Required. Type of filter."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompensationEntryType>,
+        pub r#type: ::std::option::Option<crate::schemas::CompensationFilterType>,
         #[doc = "Optional. Compensation range."]
         #[serde(rename = "range", default)]
         pub range: ::std::option::Option<crate::schemas::CompensationRange>,
-        #[doc = "Optional. Frequency of the specified amount.\n\nDefault is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED."]
-        #[serde(rename = "unit", default)]
-        pub unit: ::std::option::Option<crate::schemas::CompensationEntryUnit>,
+        #[doc = "Required. Specify desired `base compensation entry's`\nCompensationInfo.CompensationUnit."]
+        #[serde(rename = "units", default)]
+        pub units: ::std::option::Option<Vec<crate::schemas::CompensationFilterUnitsItems>>,
     }
-    impl ::field_selector::FieldSelector for CompensationEntry {
+    impl ::field_selector::FieldSelector for CompensationFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -762,32 +797,17 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CompensationFilter {
-        #[doc = "Optional. Whether to include jobs whose compensation range is unspecified."]
-        #[serde(rename = "includeJobsWithUnspecifiedCompensationRange", default)]
-        pub include_jobs_with_unspecified_compensation_range: ::std::option::Option<bool>,
-        #[doc = "Required. Type of filter."]
+    pub struct CompensationHistogramRequest {
+        #[doc = "Required. Numeric histogram options, like buckets, whether include min or max value."]
+        #[serde(rename = "bucketingOption", default)]
+        pub bucketing_option: ::std::option::Option<crate::schemas::NumericBucketingOption>,
+        #[doc = "Required. Type of the request, representing which field the histogramming should be\nperformed over. A single request can only specify one histogram of each\n`CompensationHistogramRequestType`."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompensationFilterType>,
-        #[doc = "Optional. Compensation range."]
-        #[serde(rename = "range", default)]
-        pub range: ::std::option::Option<crate::schemas::CompensationRange>,
-        #[doc = "Required. Specify desired `base compensation entry's`\nCompensationInfo.CompensationUnit."]
-        #[serde(rename = "units", default)]
-        pub units: ::std::option::Option<Vec<crate::schemas::CompensationFilterUnitsItems>>,
+        pub r#type: ::std::option::Option<crate::schemas::CompensationHistogramRequestType>,
     }
-    impl ::field_selector::FieldSelector for CompensationFilter {
+    impl ::field_selector::FieldSelector for CompensationHistogramRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -866,15 +886,15 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CompensationHistogramRequest {
-        #[doc = "Required. Numeric histogram options, like buckets, whether include min or max value."]
-        #[serde(rename = "bucketingOption", default)]
-        pub bucketing_option: ::std::option::Option<crate::schemas::NumericBucketingOption>,
-        #[doc = "Required. Type of the request, representing which field the histogramming should be\nperformed over. A single request can only specify one histogram of each\n`CompensationHistogramRequestType`."]
+    pub struct CompensationHistogramResult {
+        #[doc = "Type of the request, corresponding to\nCompensationHistogramRequest.type."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompensationHistogramRequestType>,
+        pub r#type: ::std::option::Option<crate::schemas::CompensationHistogramResultType>,
+        #[doc = "Histogram result."]
+        #[serde(rename = "result", default)]
+        pub result: ::std::option::Option<crate::schemas::NumericBucketingResult>,
     }
-    impl ::field_selector::FieldSelector for CompensationHistogramRequest {
+    impl ::field_selector::FieldSelector for CompensationHistogramResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -953,15 +973,32 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct CompensationHistogramResult {
-        #[doc = "Type of the request, corresponding to\nCompensationHistogramRequest.type."]
+    pub struct CompensationInfo {
+        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nThe amount of compensation or pay for the job.\nAs an alternative, compensation_amount_min and\ncompensation_amount_max may be used to define a range of\ncompensation."]
+        #[serde(rename = "amount", default)]
+        pub amount: ::std::option::Option<crate::schemas::Money>,
+        #[doc = "Output only. Annualized base compensation range. Computed as\nbase compensation entry's CompensationEntry.compensation times\nCompensationEntry.expected_units_per_year.\n\nSee CompensationEntry for explanation on compensation annualization."]
+        #[serde(rename = "annualizedBaseCompensationRange", default)]
+        pub annualized_base_compensation_range:
+            ::std::option::Option<crate::schemas::CompensationRange>,
+        #[doc = "Output only. Annualized total compensation range. Computed as\nall compensation entries' CompensationEntry.compensation times\nCompensationEntry.expected_units_per_year.\n\nSee CompensationEntry for explanation on compensation annualization."]
+        #[serde(rename = "annualizedTotalCompensationRange", default)]
+        pub annualized_total_compensation_range:
+            ::std::option::Option<crate::schemas::CompensationRange>,
+        #[doc = "Optional. Job compensation information.\n\nAt most one entry can be of type\nCompensationInfo.CompensationType.BASE, which is\nreferred as ** base compensation entry ** for the job."]
+        #[serde(rename = "entries", default)]
+        pub entries: ::std::option::Option<Vec<crate::schemas::CompensationEntry>>,
+        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nAn upper bound on a range for compensation or pay for the job.\nThe currency type is specified in compensation_amount."]
+        #[serde(rename = "max", default)]
+        pub max: ::std::option::Option<crate::schemas::Money>,
+        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nA lower bound on a range for compensation or pay for the job.\nThe currency type is specified in compensation_amount."]
+        #[serde(rename = "min", default)]
+        pub min: ::std::option::Option<crate::schemas::Money>,
+        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nType of job compensation."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompensationHistogramResultType>,
-        #[doc = "Histogram result."]
-        #[serde(rename = "result", default)]
-        pub result: ::std::option::Option<crate::schemas::NumericBucketingResult>,
+        pub r#type: ::std::option::Option<crate::schemas::CompensationInfoType>,
     }
-    impl ::field_selector::FieldSelector for CompensationHistogramResult {
+    impl ::field_selector::FieldSelector for CompensationInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1046,43 +1083,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CompensationInfo {
-        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nThe amount of compensation or pay for the job.\nAs an alternative, compensation_amount_min and\ncompensation_amount_max may be used to define a range of\ncompensation."]
-        #[serde(rename = "amount", default)]
-        pub amount: ::std::option::Option<crate::schemas::Money>,
-        #[doc = "Output only. Annualized base compensation range. Computed as\nbase compensation entry's CompensationEntry.compensation times\nCompensationEntry.expected_units_per_year.\n\nSee CompensationEntry for explanation on compensation annualization."]
-        #[serde(rename = "annualizedBaseCompensationRange", default)]
-        pub annualized_base_compensation_range:
-            ::std::option::Option<crate::schemas::CompensationRange>,
-        #[doc = "Output only. Annualized total compensation range. Computed as\nall compensation entries' CompensationEntry.compensation times\nCompensationEntry.expected_units_per_year.\n\nSee CompensationEntry for explanation on compensation annualization."]
-        #[serde(rename = "annualizedTotalCompensationRange", default)]
-        pub annualized_total_compensation_range:
-            ::std::option::Option<crate::schemas::CompensationRange>,
-        #[doc = "Optional. Job compensation information.\n\nAt most one entry can be of type\nCompensationInfo.CompensationType.BASE, which is\nreferred as ** base compensation entry ** for the job."]
-        #[serde(rename = "entries", default)]
-        pub entries: ::std::option::Option<Vec<crate::schemas::CompensationEntry>>,
-        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nAn upper bound on a range for compensation or pay for the job.\nThe currency type is specified in compensation_amount."]
-        #[serde(rename = "max", default)]
-        pub max: ::std::option::Option<crate::schemas::Money>,
-        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nA lower bound on a range for compensation or pay for the job.\nThe currency type is specified in compensation_amount."]
-        #[serde(rename = "min", default)]
-        pub min: ::std::option::Option<crate::schemas::Money>,
-        #[doc = "Deprecated. Use entries instead.\n\nOptional.\n\nType of job compensation."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompensationInfoType>,
-    }
-    impl ::field_selector::FieldSelector for CompensationInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1132,6 +1132,38 @@ pub mod schemas {
         pub metadata: ::std::option::Option<crate::schemas::ResponseMetadata>,
     }
     impl ::field_selector::FieldSelector for CompleteQueryResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CompletionResult {
+        #[doc = "The URL for the company logo if `type=COMPANY_NAME`."]
+        #[serde(rename = "imageUrl", default)]
+        pub image_url: ::std::option::Option<String>,
+        #[doc = "The completion topic."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CompletionResultType>,
+        #[doc = "The suggestion for the query."]
+        #[serde(rename = "suggestion", default)]
+        pub suggestion: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CompletionResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1195,38 +1227,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for CompletionResultType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CompletionResult {
-        #[doc = "The URL for the company logo if `type=COMPANY_NAME`."]
-        #[serde(rename = "imageUrl", default)]
-        pub image_url: ::std::option::Option<String>,
-        #[doc = "The completion topic."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CompletionResultType>,
-        #[doc = "The suggestion for the query."]
-        #[serde(rename = "suggestion", default)]
-        pub suggestion: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CompletionResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1366,6 +1366,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomFieldFilter {
+        #[doc = "Required. The query strings for the filter."]
+        #[serde(rename = "queries", default)]
+        pub queries: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The type of filter.\nDefaults to FilterType.OR."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::CustomFieldFilterType>,
+    }
+    impl ::field_selector::FieldSelector for CustomFieldFilter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CustomFieldFilterType {
         #[doc = "Search for a match with all queries."]
@@ -1441,35 +1470,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CustomFieldFilter {
-        #[doc = "Required. The query strings for the filter."]
-        #[serde(rename = "queries", default)]
-        pub queries: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The type of filter.\nDefaults to FilterType.OR."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::CustomFieldFilterType>,
-    }
-    impl ::field_selector::FieldSelector for CustomFieldFilter {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
         #[serde(rename = "day", default)]
@@ -1511,6 +1511,35 @@ pub mod schemas {
         pub filter: ::std::option::Option<crate::schemas::Filter>,
     }
     impl ::field_selector::FieldSelector for DeleteJobsByFilterRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeviceInfo {
+        #[doc = "Optional. Type of the device."]
+        #[serde(rename = "deviceType", default)]
+        pub device_type: ::std::option::Option<crate::schemas::DeviceInfoDeviceType>,
+        #[doc = "Optional. A device-specific ID. The ID must be a unique identifier that distinguishes\nthe device from other devices."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DeviceInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1602,26 +1631,14 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DeviceInfo {
-        #[doc = "Optional. Type of the device."]
-        #[serde(rename = "deviceType", default)]
-        pub device_type: ::std::option::Option<crate::schemas::DeviceInfoDeviceType>,
-        #[doc = "Optional. A device-specific ID. The ID must be a unique identifier that distinguishes\nthe device from other devices."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DeviceInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
+    pub struct Empty;
+    impl ::field_selector::FieldSelector for Empty {
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1631,14 +1648,38 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
-    impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    pub struct ExtendedCompensationFilter {
+        #[doc = "Optional. Compensation range."]
+        #[serde(rename = "compensationRange", default)]
+        pub compensation_range:
+            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationRange>,
+        #[doc = "Required. Specify desired `base compensation entry's`\nExtendedCompensationInfo.CompensationUnit."]
+        #[serde(rename = "compensationUnits", default)]
+        pub compensation_units: ::std::option::Option<
+            Vec<crate::schemas::ExtendedCompensationFilterCompensationUnitsItems>,
+        >,
+        #[doc = "Optional. Specify currency in 3-letter\n[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format. If\nunspecified, jobs are returned regardless of currency."]
+        #[serde(rename = "currency", default)]
+        pub currency: ::std::option::Option<String>,
+        #[doc = "Optional. Whether to include jobs whose compensation range is unspecified."]
+        #[serde(rename = "includeJobWithUnspecifiedCompensationRange", default)]
+        pub include_job_with_unspecified_compensation_range: ::std::option::Option<bool>,
+        #[doc = "Required. Type of filter."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::ExtendedCompensationFilterType>,
+    }
+    impl ::field_selector::FieldSelector for ExtendedCompensationFilter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExtendedCompensationFilterCompensationUnitsItems {
@@ -1766,47 +1807,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExtendedCompensationFilter {
-        #[doc = "Optional. Compensation range."]
-        #[serde(rename = "compensationRange", default)]
-        pub compensation_range:
-            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationRange>,
-        #[doc = "Required. Specify desired `base compensation entry's`\nExtendedCompensationInfo.CompensationUnit."]
-        #[serde(rename = "compensationUnits", default)]
-        pub compensation_units: ::std::option::Option<
-            Vec<crate::schemas::ExtendedCompensationFilterCompensationUnitsItems>,
-        >,
-        #[doc = "Optional. Specify currency in 3-letter\n[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format. If\nunspecified, jobs are returned regardless of currency."]
-        #[serde(rename = "currency", default)]
-        pub currency: ::std::option::Option<String>,
-        #[doc = "Optional. Whether to include jobs whose compensation range is unspecified."]
-        #[serde(rename = "includeJobWithUnspecifiedCompensationRange", default)]
-        pub include_job_with_unspecified_compensation_range: ::std::option::Option<bool>,
-        #[doc = "Required. Type of filter."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::ExtendedCompensationFilterType>,
-    }
-    impl ::field_selector::FieldSelector for ExtendedCompensationFilter {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ExtendedCompensationInfo {
         #[doc = "Output only. Annualized base compensation range."]
         #[serde(rename = "annualizedBaseCompensationRange", default)]
@@ -1831,6 +1831,53 @@ pub mod schemas {
             ::std::option::Option<Vec<crate::schemas::ExtendedCompensationInfoCompensationEntry>>,
     }
     impl ::field_selector::FieldSelector for ExtendedCompensationInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExtendedCompensationInfoCompensationEntry {
+        #[doc = "Optional. Monetary amount."]
+        #[serde(rename = "amount", default)]
+        pub amount: ::std::option::Option<crate::schemas::ExtendedCompensationInfoDecimal>,
+        #[doc = "Optional. Compensation description."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. Expected number of units paid each year. If not specified, when\nJob.employment_types is FULLTIME, a default value is inferred\nbased on unit. Default values:\n\n* HOURLY: 2080\n* DAILY: 260\n* WEEKLY: 52\n* MONTHLY: 12\n* ANNUAL: 1"]
+        #[serde(rename = "expectedUnitsPerYear", default)]
+        pub expected_units_per_year:
+            ::std::option::Option<crate::schemas::ExtendedCompensationInfoDecimal>,
+        #[doc = "Required. Compensation type."]
+        #[serde(rename = "type", default)]
+        pub r#type:
+            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationEntryType>,
+        #[doc = "Optional. Compensation range."]
+        #[serde(rename = "range", default)]
+        pub range: ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationRange>,
+        #[doc = "Optional. Frequency of the specified amount.\n\nDefault is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED."]
+        #[serde(rename = "unit", default)]
+        pub unit:
+            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationEntryUnit>,
+        #[doc = "Optional. Indicates compensation amount and range are unset."]
+        #[serde(rename = "unspecified", default)]
+        pub unspecified: ::std::option::Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ExtendedCompensationInfoCompensationEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1963,53 +2010,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ExtendedCompensationInfoCompensationEntry {
-        #[doc = "Optional. Monetary amount."]
-        #[serde(rename = "amount", default)]
-        pub amount: ::std::option::Option<crate::schemas::ExtendedCompensationInfoDecimal>,
-        #[doc = "Optional. Compensation description."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional. Expected number of units paid each year. If not specified, when\nJob.employment_types is FULLTIME, a default value is inferred\nbased on unit. Default values:\n\n* HOURLY: 2080\n* DAILY: 260\n* WEEKLY: 52\n* MONTHLY: 12\n* ANNUAL: 1"]
-        #[serde(rename = "expectedUnitsPerYear", default)]
-        pub expected_units_per_year:
-            ::std::option::Option<crate::schemas::ExtendedCompensationInfoDecimal>,
-        #[doc = "Required. Compensation type."]
-        #[serde(rename = "type", default)]
-        pub r#type:
-            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationEntryType>,
-        #[doc = "Optional. Compensation range."]
-        #[serde(rename = "range", default)]
-        pub range: ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationRange>,
-        #[doc = "Optional. Frequency of the specified amount.\n\nDefault is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED."]
-        #[serde(rename = "unit", default)]
-        pub unit:
-            ::std::option::Option<crate::schemas::ExtendedCompensationInfoCompensationEntryUnit>,
-        #[doc = "Optional. Indicates compensation amount and range are unset."]
-        #[serde(rename = "unspecified", default)]
-        pub unspecified: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ExtendedCompensationInfoCompensationEntry {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ExtendedCompensationInfoCompensationRange {
         #[doc = "Required. Maximum value."]
         #[serde(rename = "max", default)]
@@ -2075,6 +2075,36 @@ pub mod schemas {
         pub requisition_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Filter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GetHistogramRequest {
+        #[doc = "Optional. Controls whether to broaden the search to avoid too few results for a\ngiven query in instances where a search has sparse results. Results from a\nbroadened query is a superset of the results from the original query.\n\nDefaults to false."]
+        #[serde(rename = "allowBroadening", default)]
+        pub allow_broadening: ::std::option::Option<bool>,
+        #[doc = "Deprecated. Use query instead.\n\nOptional.\n\nRestrictions on the scope of the histogram."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<crate::schemas::JobFilters>,
+        #[doc = "Optional. Query used to search against jobs, such as keyword, location filters, etc."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<crate::schemas::JobQuery>,
+        #[doc = "Meta information, such as `user_id`, collected from the job searcher or\nother entity conducting a job search, is used to improve the service's\nsearch quality. Users determine identifier values, which must be\nunique and consist."]
+        #[serde(rename = "requestMetadata", default)]
+        pub request_metadata: ::std::option::Option<crate::schemas::RequestMetadata>,
+        #[doc = "Required. A list of facets that specify the histogram data to be calculated\nagainst and returned.\n\nHistogram response times can be slow, and counts\ncan be approximations. This call may be temporarily or permanently removed\nprior to the production release of Cloud Talent Solution."]
+        #[serde(rename = "searchTypes", default)]
+        pub search_types:
+            ::std::option::Option<Vec<crate::schemas::GetHistogramRequestSearchTypesItems>>,
+    }
+    impl ::field_selector::FieldSelector for GetHistogramRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2249,36 +2279,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GetHistogramRequest {
-        #[doc = "Optional. Controls whether to broaden the search to avoid too few results for a\ngiven query in instances where a search has sparse results. Results from a\nbroadened query is a superset of the results from the original query.\n\nDefaults to false."]
-        #[serde(rename = "allowBroadening", default)]
-        pub allow_broadening: ::std::option::Option<bool>,
-        #[doc = "Deprecated. Use query instead.\n\nOptional.\n\nRestrictions on the scope of the histogram."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<crate::schemas::JobFilters>,
-        #[doc = "Optional. Query used to search against jobs, such as keyword, location filters, etc."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<crate::schemas::JobQuery>,
-        #[doc = "Meta information, such as `user_id`, collected from the job searcher or\nother entity conducting a job search, is used to improve the service's\nsearch quality. Users determine identifier values, which must be\nunique and consist."]
-        #[serde(rename = "requestMetadata", default)]
-        pub request_metadata: ::std::option::Option<crate::schemas::RequestMetadata>,
-        #[doc = "Required. A list of facets that specify the histogram data to be calculated\nagainst and returned.\n\nHistogram response times can be slow, and counts\ncan be approximations. This call may be temporarily or permanently removed\nprior to the production release of Cloud Talent Solution."]
-        #[serde(rename = "searchTypes", default)]
-        pub search_types:
-            ::std::option::Option<Vec<crate::schemas::GetHistogramRequestSearchTypesItems>>,
-    }
-    impl ::field_selector::FieldSelector for GetHistogramRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2299,6 +2299,32 @@ pub mod schemas {
         pub results: ::std::option::Option<Vec<crate::schemas::HistogramResult>>,
     }
     impl ::field_selector::FieldSelector for GetHistogramResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct HistogramFacets {
+        #[doc = "Optional. Specifies compensation field-based histogram requests.\nDuplicate values of CompensationHistogramRequest.type are not allowed."]
+        #[serde(rename = "compensationHistogramFacets", default)]
+        pub compensation_histogram_facets:
+            ::std::option::Option<Vec<crate::schemas::CompensationHistogramRequest>>,
+        #[doc = "Optional. Specifies the custom attributes histogram requests.\nDuplicate values of CustomAttributeHistogramRequest.key are not\nallowed."]
+        #[serde(rename = "customAttributeHistogramFacets", default)]
+        pub custom_attribute_histogram_facets:
+            ::std::option::Option<Vec<crate::schemas::CustomAttributeHistogramRequest>>,
+        #[doc = "Optional. Specifies the simple type of histogram facets, for example,\n`COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to\nGetHistogramRequest."]
+        #[serde(rename = "simpleHistogramFacets", default)]
+        pub simple_histogram_facets:
+            ::std::option::Option<Vec<crate::schemas::HistogramFacetsSimpleHistogramFacetsItems>>,
+    }
+    impl ::field_selector::FieldSelector for HistogramFacets {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2481,23 +2507,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct HistogramFacets {
-        #[doc = "Optional. Specifies compensation field-based histogram requests.\nDuplicate values of CompensationHistogramRequest.type are not allowed."]
-        #[serde(rename = "compensationHistogramFacets", default)]
-        pub compensation_histogram_facets:
-            ::std::option::Option<Vec<crate::schemas::CompensationHistogramRequest>>,
-        #[doc = "Optional. Specifies the custom attributes histogram requests.\nDuplicate values of CustomAttributeHistogramRequest.key are not\nallowed."]
-        #[serde(rename = "customAttributeHistogramFacets", default)]
-        pub custom_attribute_histogram_facets:
-            ::std::option::Option<Vec<crate::schemas::CustomAttributeHistogramRequest>>,
-        #[doc = "Optional. Specifies the simple type of histogram facets, for example,\n`COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to\nGetHistogramRequest."]
-        #[serde(rename = "simpleHistogramFacets", default)]
-        pub simple_histogram_facets:
-            ::std::option::Option<Vec<crate::schemas::HistogramFacetsSimpleHistogramFacetsItems>>,
+    pub struct HistogramResult {
+        #[doc = "The Histogram search filters."]
+        #[serde(rename = "searchType", default)]
+        pub search_type: ::std::option::Option<crate::schemas::HistogramResultSearchType>,
+        #[doc = "A map from the values of field to the number of jobs with that value\nin this search result.\n\nKey: search type (filter names, such as the companyName).\n\nValues: the count of jobs that match the filter for this search."]
+        #[serde(rename = "values", default)]
+        pub values: ::std::option::Option<::std::collections::BTreeMap<String, i32>>,
     }
-    impl ::field_selector::FieldSelector for HistogramFacets {
+    impl ::field_selector::FieldSelector for HistogramResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2706,35 +2735,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct HistogramResult {
-        #[doc = "The Histogram search filters."]
-        #[serde(rename = "searchType", default)]
-        pub search_type: ::std::option::Option<crate::schemas::HistogramResultSearchType>,
-        #[doc = "A map from the values of field to the number of jobs with that value\nin this search result.\n\nKey: search type (filter names, such as the companyName).\n\nValues: the count of jobs that match the filter for this search."]
-        #[serde(rename = "values", default)]
-        pub values: ::std::option::Option<::std::collections::BTreeMap<String, i32>>,
-    }
-    impl ::field_selector::FieldSelector for HistogramResult {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct HistogramResults {
@@ -2751,6 +2751,141 @@ pub mod schemas {
         pub simple_histogram_results: ::std::option::Option<Vec<crate::schemas::HistogramResult>>,
     }
     impl ::field_selector::FieldSelector for HistogramResults {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Job {
+        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this field to specify email address(es) to which resumes or\napplications can be sent.\n\nThe maximum number of allowed characters is 255."]
+        #[serde(rename = "applicationEmailList", default)]
+        pub application_email_list: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this field to provide instructions, such as \"Mail your application\nto ...\", that a candidate can follow to apply for the job.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 3,000."]
+        #[serde(rename = "applicationInstruction", default)]
+        pub application_instruction: ::std::option::Option<String>,
+        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this URL field to direct an applicant to a website, for example to\nlink to an online application form.\n\nThe maximum number of allowed characters is 2,000."]
+        #[serde(rename = "applicationUrls", default)]
+        pub application_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The benefits included with the job."]
+        #[serde(rename = "benefits", default)]
+        pub benefits: ::std::option::Option<Vec<crate::schemas::JobBenefitsItems>>,
+        #[doc = "Output only. The name of the company listing the job."]
+        #[serde(rename = "companyDisplayName", default)]
+        pub company_display_name: ::std::option::Option<String>,
+        #[doc = "Optional but one of company_name or distributor_company_id must be\nprovided.\n\nThe resource name of the company listing the job, such as\n/companies/foo. This field takes precedence over the\ndistributor-assigned company identifier, distributor_company_id."]
+        #[serde(rename = "companyName", default)]
+        pub company_name: ::std::option::Option<String>,
+        #[doc = "Deprecated. Use company_display_name instead.\n\nOutput only.\n\nThe name of the company listing the job."]
+        #[serde(rename = "companyTitle", default)]
+        pub company_title: ::std::option::Option<String>,
+        #[doc = "Optional. Job compensation information."]
+        #[serde(rename = "compensationInfo", default)]
+        pub compensation_info: ::std::option::Option<crate::schemas::CompensationInfo>,
+        #[doc = "Output only. The timestamp when this job was created."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional. A map of fields to hold both filterable and non-filterable custom job\nattributes that are not covered by the provided structured fields.\n\nThis field is a more general combination of the deprecated id-based\nfilterable_custom_fields and string-based\nnon_filterable_custom_fields.\n\nThe keys of the map are strings up to 64 bytes and must match the\npattern: a-zA-Z*.\n\nAt most 100 filterable and at most 100 unfilterable keys are supported.\nFor filterable `string_values`, across all keys at most 200 values are\nallowed, with each string no more than 255 characters. For unfilterable\n`string_values`, the maximum total size of `string_values` across all keys\nis 50KB."]
+        #[serde(rename = "customAttributes", default)]
+        pub custom_attributes: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::CustomAttribute>,
+        >,
+        #[doc = "Optional. The department or functional area within the company with the open\nposition.\n\nThe maximum number of allowed characters is 255."]
+        #[serde(rename = "department", default)]
+        pub department: ::std::option::Option<String>,
+        #[doc = "Required. The description of the job, which typically includes a multi-paragraph\ndescription of the company and related information. Separate fields are\nprovided on the job object for responsibilities,\nqualifications, and other job characteristics. Use of\nthese separate job fields is recommended.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 100,000."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional but one of company_name or distributor_company_id must be\nprovided.\n\nA unique company identifier used by job distributors to identify an\nemployer's company entity. company_name takes precedence over\nthis field, and is the recommended field to use to identify companies.\n\nThe maximum number of allowed characters is 255."]
+        #[serde(rename = "distributorCompanyId", default)]
+        pub distributor_company_id: ::std::option::Option<String>,
+        #[doc = "Optional. The desired education level for the job, such as\n\"Bachelors\", \"Masters\", \"Doctorate\"."]
+        #[serde(rename = "educationLevels", default)]
+        pub education_levels: ::std::option::Option<Vec<crate::schemas::JobEducationLevelsItems>>,
+        #[doc = "Optional. The employment type(s) of a job, for example,\nfull time or\npart time."]
+        #[serde(rename = "employmentTypes", default)]
+        pub employment_types: ::std::option::Option<Vec<crate::schemas::JobEmploymentTypesItems>>,
+        #[doc = "Optional. The end date of the job in UTC time zone. Typically this field\nis used for contracting engagements.\nDates prior to 1970/1/1 and invalid date formats are ignored."]
+        #[serde(rename = "endDate", default)]
+        pub end_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "Optional but strongly recommended for the best service\nexperience.\n\nThe expiration timestamp of the job. After this timestamp, the\njob is marked as expired, and it no longer appears in search results. The\nexpired job can't be deleted or listed by the DeleteJob and\nListJobs APIs, but it can be retrieved with the GetJob API or\nupdated with the UpdateJob API. An expired job can be updated and\nopened again by using a future expiration timestamp. Updating an expired\njob fails if there is another existing open job with same\nrequisition_id, company_name and language_code.\n\nThe expired jobs are retained in our system for 90 days. However, the\noverall expired job count cannot exceed 3 times the maximum of open jobs\ncount over the past week, otherwise jobs with earlier expire time are\ncleaned first. Expired jobs are no longer accessible after they are cleaned\nout.\nThe format of this field is RFC 3339 date strings. Example:\n2000-01-01T00:00:00.999999999Z\nSee\n[https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).\n\nA valid date range is between 1970-01-01T00:00:00.0Z and\n2100-12-31T23:59:59.999Z. Invalid dates are ignored and treated as expire\ntime not provided.\n\nIf this value is not provided at the time of job creation or is invalid,\nthe job posting expires after 30 days from the job's creation time. For\nexample, if the job was created on 2017/01/01 13:00AM UTC with an\nunspecified expiration date, the job expires after 2017/01/31 13:00AM UTC.\n\nIf this value is not provided but expiry_date is, expiry_date is\nused.\n\nIf this value is not provided on job update, it depends on the field masks\nset by UpdateJobRequest.update_job_fields. If the field masks include\nexpiry_time, or the masks are empty meaning that every field is\nupdated, the job posting expires after 30 days from the job's last\nupdate time. Otherwise the expiration date isn't updated."]
+        #[serde(rename = "expireTime", default)]
+        pub expire_time: ::std::option::Option<String>,
+        #[doc = "Deprecated. Use expire_time instead.\n\nOptional but strongly recommended to be provided for the best service\nexperience.\n\nThe expiration date of the job in UTC time. After 12 am on this date, the\njob is marked as expired, and it no longer appears in search results.\nThe expired job can't be deleted or listed by the DeleteJob and\nListJobs APIs, but it can be retrieved with the GetJob API or\nupdated with the UpdateJob API. An expired job can be updated and\nopened again by using a future expiration date. It can also remain expired.\nUpdating an expired job to be open fails if there is another existing open\njob with same requisition_id, company_name and language_code.\n\nThe expired jobs are retained in our system for 90 days. However, the\noverall expired job count cannot exceed 3 times the maximum of open jobs\ncount over the past week, otherwise jobs with earlier expire time are\nremoved first. Expired jobs are no longer accessible after they are cleaned\nout.\n\nA valid date range is between 1970/1/1 and 2100/12/31. Invalid dates are\nignored and treated as expiry date not provided.\n\nIf this value is not provided on job creation or is invalid, the job\nposting expires after 30 days from the job's creation time. For example, if\nthe job was created on 2017/01/01 13:00AM UTC with an unspecified\nexpiration date, the job expires after 2017/01/31 13:00AM UTC.\n\nIf this value is not provided on job update, it depends on the field masks\nset by UpdateJobRequest.update_job_fields. If the field masks include\nexpiry_date, or the masks are empty meaning that every field is\nupdated, the job expires after 30 days from the job's last update time.\nOtherwise the expiration date isn't updated."]
+        #[serde(rename = "expiryDate", default)]
+        pub expiry_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "Deprecated. Always use compensation_info.\n\nOptional.\n\nJob compensation information.\n\nThis field replaces compensation_info. Only\nCompensationInfo.entries or extended_compensation_info can be set,\notherwise an exception is thrown."]
+        #[serde(rename = "extendedCompensationInfo", default)]
+        pub extended_compensation_info:
+            ::std::option::Option<crate::schemas::ExtendedCompensationInfo>,
+        #[doc = "Deprecated. Use custom_attributes instead.\n\nOptional.\n\nA map of fields to hold filterable custom job attributes not captured by\nthe standard fields such as job_title, company_name, or\nlevel. These custom fields store arbitrary\nstring values, and can be used for purposes not covered by\nthe structured fields. For the best search experience, use of the\nstructured rather than custom fields is recommended.\n\nData stored in these custom fields fields are indexed and\nsearched against by keyword searches (see\nSearchJobsRequest.custom_field_filters][]).\n\nThe map key must be a number between 1-20. If an invalid key is\nprovided on job create or update, an error is returned."]
+        #[serde(rename = "filterableCustomFields", default)]
+        pub filterable_custom_fields: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::CustomField>,
+        >,
+        #[doc = "Optional. A description of bonus, commission, and other compensation\nincentives associated with the job not including salary or pay.\n\nThe maximum number of allowed characters is 10,000."]
+        #[serde(rename = "incentives", default)]
+        pub incentives: ::std::option::Option<String>,
+        #[doc = "Output only. Structured locations of the job, resolved from locations."]
+        #[serde(rename = "jobLocations", default)]
+        pub job_locations: ::std::option::Option<Vec<crate::schemas::JobLocation>>,
+        #[doc = "Required. The title of the job, such as \"Software Engineer\"\n\nThe maximum number of allowed characters is 500."]
+        #[serde(rename = "jobTitle", default)]
+        pub job_title: ::std::option::Option<String>,
+        #[doc = "Optional. The language of the posting. This field is distinct from\nany requirements for fluency that are associated with the job.\n\nLanguage codes must be in BCP-47 format, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:\nclass=\"external\" target=\"_blank\" }.\n\nIf this field is unspecified and Job.description is present, detected\nlanguage code based on Job.description is assigned, otherwise\ndefaults to 'en_US'."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Optional. The experience level associated with the job, such as \"Entry Level\"."]
+        #[serde(rename = "level", default)]
+        pub level: ::std::option::Option<crate::schemas::JobLevel>,
+        #[doc = "Optional but strongly recommended for the best service experience.\n\nLocation(s) where the emploeyer is looking to hire for this job posting.\n\nSpecifying the full street address(es) of the hiring location enables\nbetter API results, especially job searches by commute time.\n\nAt most 50 locations are allowed for best search performance. If a job has\nmore locations, it is suggested to split it into multiple jobs with unique\nrequisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as\nmultiple jobs with the same requisition_id, company_name and\nlanguage_code are not allowed. If the original requisition_id must\nbe preserved, a custom field should be used for storage. It is also\nsuggested to group the locations that close to each other in the same job\nfor better search experience.\n\nThe maximum number of allowed characters is 500."]
+        #[serde(rename = "locations", default)]
+        pub locations: ::std::option::Option<Vec<String>>,
+        #[doc = "Required during job update.\n\nResource name assigned to a job by the API, for example, \"/jobs/foo\". Use\nof this field in job queries and API calls is preferred over the use of\nrequisition_id since this value is unique."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Optional. A promotion value of the job, as determined by the client.\nThe value determines the sort order of the jobs returned when searching for\njobs using the featured jobs search call, with higher promotional values\nbeing returned first and ties being resolved by relevance sort. Only the\njobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH.\n\nDefault value is 0, and negative values are treated as 0."]
+        #[serde(rename = "promotionValue", default)]
+        pub promotion_value: ::std::option::Option<i32>,
+        #[doc = "Optional. The date this job was most recently published in UTC format. The default\nvalue is the time the request arrives at the server."]
+        #[serde(rename = "publishDate", default)]
+        pub publish_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "Optional. A description of the qualifications required to perform the\njob. The use of this field is recommended\nas an alternative to using the more general description field.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 10,000."]
+        #[serde(rename = "qualifications", default)]
+        pub qualifications: ::std::option::Option<String>,
+        #[doc = "Output only. The URL of a web page that displays job details."]
+        #[serde(rename = "referenceUrl", default)]
+        pub reference_url: ::std::option::Option<String>,
+        #[doc = "Optional. The job Region (for example, state, country) throughout which the job\nis available. If this field is set, a\nLocationFilter in a search query within the job region\nfinds this job if an exact location match is not specified.\nIf this field is set, setting job locations\nto the same location level as this field is strongly recommended."]
+        #[serde(rename = "region", default)]
+        pub region: ::std::option::Option<crate::schemas::JobRegion>,
+        #[doc = "Required. The requisition ID, also referred to as the posting ID, assigned by the\nclient to identify a job. This field is intended to be used by clients\nfor client identification and tracking of listings. A job is not allowed\nto be created if there is another job with the same requisition_id,\ncompany_name and language_code.\n\nThe maximum number of allowed characters is 255."]
+        #[serde(rename = "requisitionId", default)]
+        pub requisition_id: ::std::option::Option<String>,
+        #[doc = "Optional. A description of job responsibilities. The use of this field is\nrecommended as an alternative to using the more general description\nfield.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 10,000."]
+        #[serde(rename = "responsibilities", default)]
+        pub responsibilities: ::std::option::Option<String>,
+        #[doc = "Optional. The start date of the job in UTC time zone. Typically this field\nis used for contracting engagements.\nDates prior to 1970/1/1 and invalid date formats are ignored."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "Deprecated. Use custom_attributes instead.\n\nOptional.\n\nA map of fields to hold non-filterable custom job attributes, similar to\nfilterable_custom_fields. These fields are distinct in that the data\nin these fields are not indexed. Therefore, the client cannot search\nagainst them, nor can the client use them to list jobs.\n\nThe key of the map can be any valid string."]
+        #[serde(rename = "unindexedCustomFields", default)]
+        pub unindexed_custom_fields: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::CustomField>,
+        >,
+        #[doc = "Output only. The timestamp when this job was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Optional. The visibility of the job.\nDefaults to JobVisibility.PRIVATE if not specified.\nCurrently only JobVisibility.PRIVATE is supported."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: ::std::option::Option<crate::schemas::JobVisibility>,
+    }
+    impl ::field_selector::FieldSelector for Job {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3193,130 +3328,58 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Job {
-        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this field to specify email address(es) to which resumes or\napplications can be sent.\n\nThe maximum number of allowed characters is 255."]
-        #[serde(rename = "applicationEmailList", default)]
-        pub application_email_list: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this field to provide instructions, such as \"Mail your application\nto ...\", that a candidate can follow to apply for the job.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 3,000."]
-        #[serde(rename = "applicationInstruction", default)]
-        pub application_instruction: ::std::option::Option<String>,
-        #[doc = "Optional but at least one of application_urls,\napplication_email_list or application_instruction must be\nspecified.\n\nUse this URL field to direct an applicant to a website, for example to\nlink to an online application form.\n\nThe maximum number of allowed characters is 2,000."]
-        #[serde(rename = "applicationUrls", default)]
-        pub application_urls: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The benefits included with the job."]
-        #[serde(rename = "benefits", default)]
-        pub benefits: ::std::option::Option<Vec<crate::schemas::JobBenefitsItems>>,
-        #[doc = "Output only. The name of the company listing the job."]
-        #[serde(rename = "companyDisplayName", default)]
-        pub company_display_name: ::std::option::Option<String>,
-        #[doc = "Optional but one of company_name or distributor_company_id must be\nprovided.\n\nThe resource name of the company listing the job, such as\n/companies/foo. This field takes precedence over the\ndistributor-assigned company identifier, distributor_company_id."]
-        #[serde(rename = "companyName", default)]
-        pub company_name: ::std::option::Option<String>,
-        #[doc = "Deprecated. Use company_display_name instead.\n\nOutput only.\n\nThe name of the company listing the job."]
-        #[serde(rename = "companyTitle", default)]
-        pub company_title: ::std::option::Option<String>,
-        #[doc = "Optional. Job compensation information."]
-        #[serde(rename = "compensationInfo", default)]
-        pub compensation_info: ::std::option::Option<crate::schemas::CompensationInfo>,
-        #[doc = "Output only. The timestamp when this job was created."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. A map of fields to hold both filterable and non-filterable custom job\nattributes that are not covered by the provided structured fields.\n\nThis field is a more general combination of the deprecated id-based\nfilterable_custom_fields and string-based\nnon_filterable_custom_fields.\n\nThe keys of the map are strings up to 64 bytes and must match the\npattern: a-zA-Z*.\n\nAt most 100 filterable and at most 100 unfilterable keys are supported.\nFor filterable `string_values`, across all keys at most 200 values are\nallowed, with each string no more than 255 characters. For unfilterable\n`string_values`, the maximum total size of `string_values` across all keys\nis 50KB."]
-        #[serde(rename = "customAttributes", default)]
-        pub custom_attributes: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::CustomAttribute>,
+    pub struct JobFilters {
+        #[doc = "Optional. The category filter specifies the categories of jobs to search against.\nSee Category for more information.\n\nIf a value is not specified, jobs from any category are searched against.\n\nIf multiple values are specified, jobs from any of the specified\ncategories are searched against."]
+        #[serde(rename = "categories", default)]
+        pub categories: ::std::option::Option<Vec<crate::schemas::JobFiltersCategoriesItems>>,
+        #[doc = "Optional. Allows filtering jobs by commute time with different travel methods (e.g.\ndriving or public transit). Note: this only works with COMMUTE\nMODE. When specified, [JobFilters.location_filters] will be\nignored.\n\nCurrently we do not support sorting by commute time."]
+        #[serde(rename = "commuteFilter", default)]
+        pub commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
+        #[doc = "Optional. The company names filter specifies the company entities to search\nagainst.\n\nIf a value is not specified, jobs are searched for against all companies.\n\nIf multiple values are specified, jobs are searched against the\nspecified companies.\n\nAt most 20 company filters are allowed."]
+        #[serde(rename = "companyNames", default)]
+        pub company_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. This filter specifies the exact company titles\nof jobs to search against.\n\nIf a value is not specified, jobs within the search results can be\nassociated with any company.\n\nIf multiple values are specified, jobs within the search results may be\nassociated with any of the specified companies.\n\nAt most 20 company title filters are allowed."]
+        #[serde(rename = "companyTitles", default)]
+        pub company_titles: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. This search filter is applied only to\nJob.compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs that meet\nthis criteria are searched. If a filter is not defined, all open jobs\nare searched."]
+        #[serde(rename = "compensationFilter", default)]
+        pub compensation_filter: ::std::option::Option<crate::schemas::CompensationFilter>,
+        #[doc = "Optional. This filter specifies a structured syntax to match against the\nJob.custom_attributes that are marked as `filterable`.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: =, !=, <, <=, >, >= where the left of the operator\nis a custom field key and the right of the operator is a number or string\n(surrounded by quotes) value.\n\nSupported functions are LOWER(<field_name>) to\nperform case insensitive match and EMPTY(<field_name>) to filter on the\nexistence of a key.\n\nBoolean expressions (AND/OR/NOT) are supported up to 3 levels of\nnesting (For example, \"((A AND B AND C) OR NOT D) AND E\"), and there can\nbe a maximum of 100 comparisons/functions in the expression. The expression\nmust be < 3000 bytes in length.\n\nSample Query:\n(key1 = \"TEST\" OR LOWER(key1)=\"test\" OR NOT EMPTY(key1)) AND key2 > 100"]
+        #[serde(rename = "customAttributeFilter", default)]
+        pub custom_attribute_filter: ::std::option::Option<String>,
+        #[doc = "Deprecated. Use custom_attribute_filter instead.\n\nOptional.\n\nThis filter specifies searching against\ncustom field values. See Job.filterable_custom_fields for information.\nThe key value specifies a number between 1-20 (the service\nsupports 20 custom fields) corresponding to the desired custom field map\nvalue. If an invalid key is provided or specified together with\ncustom_attribute_filter, an error is thrown."]
+        #[serde(rename = "customFieldFilters", default)]
+        pub custom_field_filters: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::CustomFieldFilter>,
         >,
-        #[doc = "Optional. The department or functional area within the company with the open\nposition.\n\nThe maximum number of allowed characters is 255."]
-        #[serde(rename = "department", default)]
-        pub department: ::std::option::Option<String>,
-        #[doc = "Required. The description of the job, which typically includes a multi-paragraph\ndescription of the company and related information. Separate fields are\nprovided on the job object for responsibilities,\nqualifications, and other job characteristics. Use of\nthese separate job fields is recommended.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 100,000."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<String>,
-        #[doc = "Optional but one of company_name or distributor_company_id must be\nprovided.\n\nA unique company identifier used by job distributors to identify an\nemployer's company entity. company_name takes precedence over\nthis field, and is the recommended field to use to identify companies.\n\nThe maximum number of allowed characters is 255."]
-        #[serde(rename = "distributorCompanyId", default)]
-        pub distributor_company_id: ::std::option::Option<String>,
-        #[doc = "Optional. The desired education level for the job, such as\n\"Bachelors\", \"Masters\", \"Doctorate\"."]
-        #[serde(rename = "educationLevels", default)]
-        pub education_levels: ::std::option::Option<Vec<crate::schemas::JobEducationLevelsItems>>,
-        #[doc = "Optional. The employment type(s) of a job, for example,\nfull time or\npart time."]
+        #[doc = "Optional. This flag controls the spell-check feature. If false, the\nservice attempts to correct a misspelled query,\nfor example, \"enginee\" is corrected to \"engineer\".\n\nDefaults to false: a spell check is performed."]
+        #[serde(rename = "disableSpellCheck", default)]
+        pub disable_spell_check: ::std::option::Option<bool>,
+        #[doc = "Optional. The employment type filter specifies the employment type of jobs to\nsearch against, such as EmploymentType.FULL_TIME.\n\nIf a value is not specified, jobs in the search results include any\nemployment type.\n\nIf multiple values are specified, jobs in the search results include any\nof the specified employment types."]
         #[serde(rename = "employmentTypes", default)]
-        pub employment_types: ::std::option::Option<Vec<crate::schemas::JobEmploymentTypesItems>>,
-        #[doc = "Optional. The end date of the job in UTC time zone. Typically this field\nis used for contracting engagements.\nDates prior to 1970/1/1 and invalid date formats are ignored."]
-        #[serde(rename = "endDate", default)]
-        pub end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Optional but strongly recommended for the best service\nexperience.\n\nThe expiration timestamp of the job. After this timestamp, the\njob is marked as expired, and it no longer appears in search results. The\nexpired job can't be deleted or listed by the DeleteJob and\nListJobs APIs, but it can be retrieved with the GetJob API or\nupdated with the UpdateJob API. An expired job can be updated and\nopened again by using a future expiration timestamp. Updating an expired\njob fails if there is another existing open job with same\nrequisition_id, company_name and language_code.\n\nThe expired jobs are retained in our system for 90 days. However, the\noverall expired job count cannot exceed 3 times the maximum of open jobs\ncount over the past week, otherwise jobs with earlier expire time are\ncleaned first. Expired jobs are no longer accessible after they are cleaned\nout.\nThe format of this field is RFC 3339 date strings. Example:\n2000-01-01T00:00:00.999999999Z\nSee\n[https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).\n\nA valid date range is between 1970-01-01T00:00:00.0Z and\n2100-12-31T23:59:59.999Z. Invalid dates are ignored and treated as expire\ntime not provided.\n\nIf this value is not provided at the time of job creation or is invalid,\nthe job posting expires after 30 days from the job's creation time. For\nexample, if the job was created on 2017/01/01 13:00AM UTC with an\nunspecified expiration date, the job expires after 2017/01/31 13:00AM UTC.\n\nIf this value is not provided but expiry_date is, expiry_date is\nused.\n\nIf this value is not provided on job update, it depends on the field masks\nset by UpdateJobRequest.update_job_fields. If the field masks include\nexpiry_time, or the masks are empty meaning that every field is\nupdated, the job posting expires after 30 days from the job's last\nupdate time. Otherwise the expiration date isn't updated."]
-        #[serde(rename = "expireTime", default)]
-        pub expire_time: ::std::option::Option<String>,
-        #[doc = "Deprecated. Use expire_time instead.\n\nOptional but strongly recommended to be provided for the best service\nexperience.\n\nThe expiration date of the job in UTC time. After 12 am on this date, the\njob is marked as expired, and it no longer appears in search results.\nThe expired job can't be deleted or listed by the DeleteJob and\nListJobs APIs, but it can be retrieved with the GetJob API or\nupdated with the UpdateJob API. An expired job can be updated and\nopened again by using a future expiration date. It can also remain expired.\nUpdating an expired job to be open fails if there is another existing open\njob with same requisition_id, company_name and language_code.\n\nThe expired jobs are retained in our system for 90 days. However, the\noverall expired job count cannot exceed 3 times the maximum of open jobs\ncount over the past week, otherwise jobs with earlier expire time are\nremoved first. Expired jobs are no longer accessible after they are cleaned\nout.\n\nA valid date range is between 1970/1/1 and 2100/12/31. Invalid dates are\nignored and treated as expiry date not provided.\n\nIf this value is not provided on job creation or is invalid, the job\nposting expires after 30 days from the job's creation time. For example, if\nthe job was created on 2017/01/01 13:00AM UTC with an unspecified\nexpiration date, the job expires after 2017/01/31 13:00AM UTC.\n\nIf this value is not provided on job update, it depends on the field masks\nset by UpdateJobRequest.update_job_fields. If the field masks include\nexpiry_date, or the masks are empty meaning that every field is\nupdated, the job expires after 30 days from the job's last update time.\nOtherwise the expiration date isn't updated."]
-        #[serde(rename = "expiryDate", default)]
-        pub expiry_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Deprecated. Always use compensation_info.\n\nOptional.\n\nJob compensation information.\n\nThis field replaces compensation_info. Only\nCompensationInfo.entries or extended_compensation_info can be set,\notherwise an exception is thrown."]
-        #[serde(rename = "extendedCompensationInfo", default)]
-        pub extended_compensation_info:
-            ::std::option::Option<crate::schemas::ExtendedCompensationInfo>,
-        #[doc = "Deprecated. Use custom_attributes instead.\n\nOptional.\n\nA map of fields to hold filterable custom job attributes not captured by\nthe standard fields such as job_title, company_name, or\nlevel. These custom fields store arbitrary\nstring values, and can be used for purposes not covered by\nthe structured fields. For the best search experience, use of the\nstructured rather than custom fields is recommended.\n\nData stored in these custom fields fields are indexed and\nsearched against by keyword searches (see\nSearchJobsRequest.custom_field_filters][]).\n\nThe map key must be a number between 1-20. If an invalid key is\nprovided on job create or update, an error is returned."]
-        #[serde(rename = "filterableCustomFields", default)]
-        pub filterable_custom_fields: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::CustomField>,
-        >,
-        #[doc = "Optional. A description of bonus, commission, and other compensation\nincentives associated with the job not including salary or pay.\n\nThe maximum number of allowed characters is 10,000."]
-        #[serde(rename = "incentives", default)]
-        pub incentives: ::std::option::Option<String>,
-        #[doc = "Output only. Structured locations of the job, resolved from locations."]
-        #[serde(rename = "jobLocations", default)]
-        pub job_locations: ::std::option::Option<Vec<crate::schemas::JobLocation>>,
-        #[doc = "Required. The title of the job, such as \"Software Engineer\"\n\nThe maximum number of allowed characters is 500."]
-        #[serde(rename = "jobTitle", default)]
-        pub job_title: ::std::option::Option<String>,
-        #[doc = "Optional. The language of the posting. This field is distinct from\nany requirements for fluency that are associated with the job.\n\nLanguage codes must be in BCP-47 format, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:\nclass=\"external\" target=\"_blank\" }.\n\nIf this field is unspecified and Job.description is present, detected\nlanguage code based on Job.description is assigned, otherwise\ndefaults to 'en_US'."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: ::std::option::Option<String>,
-        #[doc = "Optional. The experience level associated with the job, such as \"Entry Level\"."]
-        #[serde(rename = "level", default)]
-        pub level: ::std::option::Option<crate::schemas::JobLevel>,
-        #[doc = "Optional but strongly recommended for the best service experience.\n\nLocation(s) where the emploeyer is looking to hire for this job posting.\n\nSpecifying the full street address(es) of the hiring location enables\nbetter API results, especially job searches by commute time.\n\nAt most 50 locations are allowed for best search performance. If a job has\nmore locations, it is suggested to split it into multiple jobs with unique\nrequisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as\nmultiple jobs with the same requisition_id, company_name and\nlanguage_code are not allowed. If the original requisition_id must\nbe preserved, a custom field should be used for storage. It is also\nsuggested to group the locations that close to each other in the same job\nfor better search experience.\n\nThe maximum number of allowed characters is 500."]
-        #[serde(rename = "locations", default)]
-        pub locations: ::std::option::Option<Vec<String>>,
-        #[doc = "Required during job update.\n\nResource name assigned to a job by the API, for example, \"/jobs/foo\". Use\nof this field in job queries and API calls is preferred over the use of\nrequisition_id since this value is unique."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Optional. A promotion value of the job, as determined by the client.\nThe value determines the sort order of the jobs returned when searching for\njobs using the featured jobs search call, with higher promotional values\nbeing returned first and ties being resolved by relevance sort. Only the\njobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH.\n\nDefault value is 0, and negative values are treated as 0."]
-        #[serde(rename = "promotionValue", default)]
-        pub promotion_value: ::std::option::Option<i32>,
-        #[doc = "Optional. The date this job was most recently published in UTC format. The default\nvalue is the time the request arrives at the server."]
-        #[serde(rename = "publishDate", default)]
-        pub publish_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Optional. A description of the qualifications required to perform the\njob. The use of this field is recommended\nas an alternative to using the more general description field.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 10,000."]
-        #[serde(rename = "qualifications", default)]
-        pub qualifications: ::std::option::Option<String>,
-        #[doc = "Output only. The URL of a web page that displays job details."]
-        #[serde(rename = "referenceUrl", default)]
-        pub reference_url: ::std::option::Option<String>,
-        #[doc = "Optional. The job Region (for example, state, country) throughout which the job\nis available. If this field is set, a\nLocationFilter in a search query within the job region\nfinds this job if an exact location match is not specified.\nIf this field is set, setting job locations\nto the same location level as this field is strongly recommended."]
-        #[serde(rename = "region", default)]
-        pub region: ::std::option::Option<crate::schemas::JobRegion>,
-        #[doc = "Required. The requisition ID, also referred to as the posting ID, assigned by the\nclient to identify a job. This field is intended to be used by clients\nfor client identification and tracking of listings. A job is not allowed\nto be created if there is another job with the same requisition_id,\ncompany_name and language_code.\n\nThe maximum number of allowed characters is 255."]
-        #[serde(rename = "requisitionId", default)]
-        pub requisition_id: ::std::option::Option<String>,
-        #[doc = "Optional. A description of job responsibilities. The use of this field is\nrecommended as an alternative to using the more general description\nfield.\n\nThis field accepts and sanitizes HTML input, and also accepts\nbold, italic, ordered list, and unordered list markup tags.\n\nThe maximum number of allowed characters is 10,000."]
-        #[serde(rename = "responsibilities", default)]
-        pub responsibilities: ::std::option::Option<String>,
-        #[doc = "Optional. The start date of the job in UTC time zone. Typically this field\nis used for contracting engagements.\nDates prior to 1970/1/1 and invalid date formats are ignored."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Deprecated. Use custom_attributes instead.\n\nOptional.\n\nA map of fields to hold non-filterable custom job attributes, similar to\nfilterable_custom_fields. These fields are distinct in that the data\nin these fields are not indexed. Therefore, the client cannot search\nagainst them, nor can the client use them to list jobs.\n\nThe key of the map can be any valid string."]
-        #[serde(rename = "unindexedCustomFields", default)]
-        pub unindexed_custom_fields: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::CustomField>,
-        >,
-        #[doc = "Output only. The timestamp when this job was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-        #[doc = "Optional. The visibility of the job.\nDefaults to JobVisibility.PRIVATE if not specified.\nCurrently only JobVisibility.PRIVATE is supported."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: ::std::option::Option<crate::schemas::JobVisibility>,
+        pub employment_types:
+            ::std::option::Option<Vec<crate::schemas::JobFiltersEmploymentTypesItems>>,
+        #[doc = "Deprecated. Always use compensation_filter.\n\nOptional.\n\nThis search filter is applied only to\nJob.extended_compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs that meet\nthese criteria are searched. If a filter is not defined, all open jobs\nare searched."]
+        #[serde(rename = "extendedCompensationFilter", default)]
+        pub extended_compensation_filter:
+            ::std::option::Option<crate::schemas::ExtendedCompensationFilter>,
+        #[doc = "Optional. This filter specifies the locale of jobs to search against,\nfor example, \"en-US\".\n\nIf a value is not specified, the search results may contain jobs in any\nlocale.\n\nLanguage codes should be in BCP-47 format, for example, \"en-US\" or\n\"sr-Latn\". For more information, see [Tags for Identifying\nLanguages](https://tools.ietf.org/html/bcp47).\n\nAt most 10 language code filters are allowed."]
+        #[serde(rename = "languageCodes", default)]
+        pub language_codes: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The location filter specifies geo-regions containing the jobs to\nsearch against. See LocationFilter for more information.\n\nIf a location value is not specified, jobs are retrieved\nfrom all locations.\n\nIf multiple values are specified, jobs are retrieved from any of the\nspecified locations. If different values are specified for the\nLocationFilter.distance_in_miles parameter, the maximum provided\ndistance is used for all locations.\n\nAt most 5 location filters are allowed."]
+        #[serde(rename = "locationFilters", default)]
+        pub location_filters: ::std::option::Option<Vec<crate::schemas::LocationFilter>>,
+        #[doc = "Optional. Jobs published within a range specified by this filter are searched\nagainst, for example, DateRange.PAST_MONTH. If a value is not\nspecified, all open jobs are searched against regardless of the\ndate they were published."]
+        #[serde(rename = "publishDateRange", default)]
+        pub publish_date_range: ::std::option::Option<crate::schemas::JobFiltersPublishDateRange>,
+        #[doc = "Optional. The query filter contains the keywords that match against the job\ntitle, description, and location fields.\n\nThe maximum query size is 255 bytes/characters."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<String>,
+        #[doc = "Deprecated. Do not use this field.\n\nThis flag controls whether the job search should be restricted to jobs\nowned by the current user.\n\nDefaults to false where all jobs accessible to the\nuser are searched against."]
+        #[serde(rename = "tenantJobOnly", default)]
+        pub tenant_job_only: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for Job {
+    impl ::field_selector::FieldSelector for JobFilters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3647,58 +3710,21 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct JobFilters {
-        #[doc = "Optional. The category filter specifies the categories of jobs to search against.\nSee Category for more information.\n\nIf a value is not specified, jobs from any category are searched against.\n\nIf multiple values are specified, jobs from any of the specified\ncategories are searched against."]
-        #[serde(rename = "categories", default)]
-        pub categories: ::std::option::Option<Vec<crate::schemas::JobFiltersCategoriesItems>>,
-        #[doc = "Optional. Allows filtering jobs by commute time with different travel methods (e.g.\ndriving or public transit). Note: this only works with COMMUTE\nMODE. When specified, [JobFilters.location_filters] will be\nignored.\n\nCurrently we do not support sorting by commute time."]
-        #[serde(rename = "commuteFilter", default)]
-        pub commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
-        #[doc = "Optional. The company names filter specifies the company entities to search\nagainst.\n\nIf a value is not specified, jobs are searched for against all companies.\n\nIf multiple values are specified, jobs are searched against the\nspecified companies.\n\nAt most 20 company filters are allowed."]
-        #[serde(rename = "companyNames", default)]
-        pub company_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. This filter specifies the exact company titles\nof jobs to search against.\n\nIf a value is not specified, jobs within the search results can be\nassociated with any company.\n\nIf multiple values are specified, jobs within the search results may be\nassociated with any of the specified companies.\n\nAt most 20 company title filters are allowed."]
-        #[serde(rename = "companyTitles", default)]
-        pub company_titles: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. This search filter is applied only to\nJob.compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs that meet\nthis criteria are searched. If a filter is not defined, all open jobs\nare searched."]
-        #[serde(rename = "compensationFilter", default)]
-        pub compensation_filter: ::std::option::Option<crate::schemas::CompensationFilter>,
-        #[doc = "Optional. This filter specifies a structured syntax to match against the\nJob.custom_attributes that are marked as `filterable`.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: =, !=, <, <=, >, >= where the left of the operator\nis a custom field key and the right of the operator is a number or string\n(surrounded by quotes) value.\n\nSupported functions are LOWER(<field_name>) to\nperform case insensitive match and EMPTY(<field_name>) to filter on the\nexistence of a key.\n\nBoolean expressions (AND/OR/NOT) are supported up to 3 levels of\nnesting (For example, \"((A AND B AND C) OR NOT D) AND E\"), and there can\nbe a maximum of 100 comparisons/functions in the expression. The expression\nmust be < 3000 bytes in length.\n\nSample Query:\n(key1 = \"TEST\" OR LOWER(key1)=\"test\" OR NOT EMPTY(key1)) AND key2 > 100"]
-        #[serde(rename = "customAttributeFilter", default)]
-        pub custom_attribute_filter: ::std::option::Option<String>,
-        #[doc = "Deprecated. Use custom_attribute_filter instead.\n\nOptional.\n\nThis filter specifies searching against\ncustom field values. See Job.filterable_custom_fields for information.\nThe key value specifies a number between 1-20 (the service\nsupports 20 custom fields) corresponding to the desired custom field map\nvalue. If an invalid key is provided or specified together with\ncustom_attribute_filter, an error is thrown."]
-        #[serde(rename = "customFieldFilters", default)]
-        pub custom_field_filters: ::std::option::Option<
-            ::std::collections::BTreeMap<String, crate::schemas::CustomFieldFilter>,
-        >,
-        #[doc = "Optional. This flag controls the spell-check feature. If false, the\nservice attempts to correct a misspelled query,\nfor example, \"enginee\" is corrected to \"engineer\".\n\nDefaults to false: a spell check is performed."]
-        #[serde(rename = "disableSpellCheck", default)]
-        pub disable_spell_check: ::std::option::Option<bool>,
-        #[doc = "Optional. The employment type filter specifies the employment type of jobs to\nsearch against, such as EmploymentType.FULL_TIME.\n\nIf a value is not specified, jobs in the search results include any\nemployment type.\n\nIf multiple values are specified, jobs in the search results include any\nof the specified employment types."]
-        #[serde(rename = "employmentTypes", default)]
-        pub employment_types:
-            ::std::option::Option<Vec<crate::schemas::JobFiltersEmploymentTypesItems>>,
-        #[doc = "Deprecated. Always use compensation_filter.\n\nOptional.\n\nThis search filter is applied only to\nJob.extended_compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs that meet\nthese criteria are searched. If a filter is not defined, all open jobs\nare searched."]
-        #[serde(rename = "extendedCompensationFilter", default)]
-        pub extended_compensation_filter:
-            ::std::option::Option<crate::schemas::ExtendedCompensationFilter>,
-        #[doc = "Optional. This filter specifies the locale of jobs to search against,\nfor example, \"en-US\".\n\nIf a value is not specified, the search results may contain jobs in any\nlocale.\n\nLanguage codes should be in BCP-47 format, for example, \"en-US\" or\n\"sr-Latn\". For more information, see [Tags for Identifying\nLanguages](https://tools.ietf.org/html/bcp47).\n\nAt most 10 language code filters are allowed."]
-        #[serde(rename = "languageCodes", default)]
-        pub language_codes: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The location filter specifies geo-regions containing the jobs to\nsearch against. See LocationFilter for more information.\n\nIf a location value is not specified, jobs are retrieved\nfrom all locations.\n\nIf multiple values are specified, jobs are retrieved from any of the\nspecified locations. If different values are specified for the\nLocationFilter.distance_in_miles parameter, the maximum provided\ndistance is used for all locations.\n\nAt most 5 location filters are allowed."]
-        #[serde(rename = "locationFilters", default)]
-        pub location_filters: ::std::option::Option<Vec<crate::schemas::LocationFilter>>,
-        #[doc = "Optional. Jobs published within a range specified by this filter are searched\nagainst, for example, DateRange.PAST_MONTH. If a value is not\nspecified, all open jobs are searched against regardless of the\ndate they were published."]
-        #[serde(rename = "publishDateRange", default)]
-        pub publish_date_range: ::std::option::Option<crate::schemas::JobFiltersPublishDateRange>,
-        #[doc = "Optional. The query filter contains the keywords that match against the job\ntitle, description, and location fields.\n\nThe maximum query size is 255 bytes/characters."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<String>,
-        #[doc = "Deprecated. Do not use this field.\n\nThis flag controls whether the job search should be restricted to jobs\nowned by the current user.\n\nDefaults to false where all jobs accessible to the\nuser are searched against."]
-        #[serde(rename = "tenantJobOnly", default)]
-        pub tenant_job_only: ::std::option::Option<bool>,
+    pub struct JobLocation {
+        #[doc = "An object representing a latitude/longitude pair."]
+        #[serde(rename = "latLng", default)]
+        pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
+        #[doc = "The type of a location, which corresponds to the address lines field of\nPostalAddress. For example, \"Downtown, Atlanta, GA, USA\" has a type of\nLocationType#NEIGHBORHOOD, and \"Kansas City, KS, USA\" has a type of\nLocationType#LOCALITY."]
+        #[serde(rename = "locationType", default)]
+        pub location_type: ::std::option::Option<crate::schemas::JobLocationLocationType>,
+        #[doc = "Postal address of the location that includes human readable information,\nsuch as postal delivery and payments addresses. Given a postal address,\na postal service can deliver items to a premises, P.O. Box, or other\ndelivery location."]
+        #[serde(rename = "postalAddress", default)]
+        pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
+        #[doc = "Radius in meters of the job location. This value is derived from the\nlocation bounding box in which a circle with the specified radius\ncentered from LatLng coves the area associated with the job location.\nFor example, currently, \"Mountain View, CA, USA\" has a radius of\n7885.79 meters."]
+        #[serde(rename = "radiusMeters", default)]
+        pub radius_meters: ::std::option::Option<f64>,
     }
-    impl ::field_selector::FieldSelector for JobFilters {
+    impl ::field_selector::FieldSelector for JobLocation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3799,23 +3825,27 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct JobLocation {
-        #[doc = "An object representing a latitude/longitude pair."]
-        #[serde(rename = "latLng", default)]
-        pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
-        #[doc = "The type of a location, which corresponds to the address lines field of\nPostalAddress. For example, \"Downtown, Atlanta, GA, USA\" has a type of\nLocationType#NEIGHBORHOOD, and \"Kansas City, KS, USA\" has a type of\nLocationType#LOCALITY."]
-        #[serde(rename = "locationType", default)]
-        pub location_type: ::std::option::Option<crate::schemas::JobLocationLocationType>,
-        #[doc = "Postal address of the location that includes human readable information,\nsuch as postal delivery and payments addresses. Given a postal address,\na postal service can deliver items to a premises, P.O. Box, or other\ndelivery location."]
-        #[serde(rename = "postalAddress", default)]
-        pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
-        #[doc = "Radius in meters of the job location. This value is derived from the\nlocation bounding box in which a circle with the specified radius\ncentered from LatLng coves the area associated with the job location.\nFor example, currently, \"Mountain View, CA, USA\" has a radius of\n7885.79 meters."]
-        #[serde(rename = "radiusMeters", default)]
-        pub radius_meters: ::std::option::Option<f64>,
+    pub struct JobProcessingOptions {
+        #[doc = "Optional. If set to `true`, the service does not attempt to resolve a\nmore precise address for the job."]
+        #[serde(rename = "disableStreetAddressResolution", default)]
+        pub disable_street_address_resolution: ::std::option::Option<bool>,
+        #[doc = "Optional. Option for job HTML content sanitization. Applied fields are:\n\n* description\n* applicationInstruction\n* incentives\n* qualifications\n* responsibilities\n\nHTML tags in these fields may be stripped if sanitiazation is not disabled.\n\nDefaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY."]
+        #[serde(rename = "htmlSanitization", default)]
+        pub html_sanitization:
+            ::std::option::Option<crate::schemas::JobProcessingOptionsHtmlSanitization>,
     }
-    impl ::field_selector::FieldSelector for JobLocation {
+    impl ::field_selector::FieldSelector for JobProcessingOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3896,27 +3926,48 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct JobProcessingOptions {
-        #[doc = "Optional. If set to `true`, the service does not attempt to resolve a\nmore precise address for the job."]
-        #[serde(rename = "disableStreetAddressResolution", default)]
-        pub disable_street_address_resolution: ::std::option::Option<bool>,
-        #[doc = "Optional. Option for job HTML content sanitization. Applied fields are:\n\n* description\n* applicationInstruction\n* incentives\n* qualifications\n* responsibilities\n\nHTML tags in these fields may be stripped if sanitiazation is not disabled.\n\nDefaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY."]
-        #[serde(rename = "htmlSanitization", default)]
-        pub html_sanitization:
-            ::std::option::Option<crate::schemas::JobProcessingOptionsHtmlSanitization>,
+    pub struct JobQuery {
+        #[doc = "Optional. The category filter specifies the categories of jobs to search against.\nSee Category for more information.\n\nIf a value is not specified, jobs from any category are searched against.\n\nIf multiple values are specified, jobs from any of the specified\ncategories are searched against."]
+        #[serde(rename = "categories", default)]
+        pub categories: ::std::option::Option<Vec<crate::schemas::JobQueryCategoriesItems>>,
+        #[doc = "Optional. Allows filtering jobs by commute time with different travel methods (for\nexample, driving or public transit). Note: This only works with COMMUTE\nMODE. When specified, [JobQuery.location_filters] is\nignored.\n\nCurrently we don't support sorting by commute time."]
+        #[serde(rename = "commuteFilter", default)]
+        pub commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
+        #[doc = "Optional. This filter specifies the exact company display\nname of the jobs to search against.\n\nIf a value isn't specified, jobs within the search results are\nassociated with any company.\n\nIf multiple values are specified, jobs within the search results may be\nassociated with any of the specified companies.\n\nAt most 20 company display name filters are allowed."]
+        #[serde(rename = "companyDisplayNames", default)]
+        pub company_display_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. This filter specifies the company entities to search against.\n\nIf a value isn't specified, jobs are searched for against all\ncompanies.\n\nIf multiple values are specified, jobs are searched against the\ncompanies specified.\n\nAt most 20 company filters are allowed."]
+        #[serde(rename = "companyNames", default)]
+        pub company_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. This search filter is applied only to\nJob.compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs meeting\nthese criteria are searched. If a filter isn't defined, all open jobs\nare searched."]
+        #[serde(rename = "compensationFilter", default)]
+        pub compensation_filter: ::std::option::Option<crate::schemas::CompensationFilter>,
+        #[doc = "Optional. This filter specifies a structured syntax to match against the\nJob.custom_attributes marked as `filterable`.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: =, !=, <, <=, >, >= where the left of the operator\nis a custom field key and the right of the operator is a number or string\n(surrounded by quotes) value.\n\nSupported functions are LOWER(<field_name>) to\nperform case insensitive match and EMPTY(<field_name>) to filter on the\nexistence of a key.\n\nBoolean expressions (AND/OR/NOT) are supported up to 3 levels of\nnesting (for example, \"((A AND B AND C) OR NOT D) AND E\"), a maximum of 50\ncomparisons/functions are allowed in the expression. The expression\nmust be < 2000 characters in length.\n\nSample Query:\n(key1 = \"TEST\" OR LOWER(key1)=\"test\" OR NOT EMPTY(key1)) AND key2 > 100"]
+        #[serde(rename = "customAttributeFilter", default)]
+        pub custom_attribute_filter: ::std::option::Option<String>,
+        #[doc = "Optional. This flag controls the spell-check feature. If false, the\nservice attempts to correct a misspelled query,\nfor example, \"enginee\" is corrected to \"engineer\".\n\nDefaults to false: a spell check is performed."]
+        #[serde(rename = "disableSpellCheck", default)]
+        pub disable_spell_check: ::std::option::Option<bool>,
+        #[doc = "Optional. The employment type filter specifies the employment type of jobs to\nsearch against, such as EmploymentType.FULL_TIME.\n\nIf a value is not specified, jobs in the search results include any\nemployment type.\n\nIf multiple values are specified, jobs in the search results include\nany of the specified employment types."]
+        #[serde(rename = "employmentTypes", default)]
+        pub employment_types:
+            ::std::option::Option<Vec<crate::schemas::JobQueryEmploymentTypesItems>>,
+        #[doc = "Optional. This filter specifies the locale of jobs to search against,\nfor example, \"en-US\".\n\nIf a value isn't specified, the search results can contain jobs in any\nlocale.\n\nLanguage codes should be in BCP-47 format, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).\n\nAt most 10 language code filters are allowed."]
+        #[serde(rename = "languageCodes", default)]
+        pub language_codes: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The location filter specifies geo-regions containing the jobs to\nsearch against. See LocationFilter for more information.\n\nIf a location value isn't specified, jobs fitting the other search\ncriteria are retrieved regardless of where they're located.\n\nIf multiple values are specified, jobs are retrieved from any of the\nspecified locations. If different values are specified for the\nLocationFilter.distance_in_miles parameter, the maximum provided\ndistance is used for all locations.\n\nAt most 5 location filters are allowed."]
+        #[serde(rename = "locationFilters", default)]
+        pub location_filters: ::std::option::Option<Vec<crate::schemas::LocationFilter>>,
+        #[doc = "Optional. Jobs published within a range specified by this filter are searched\nagainst, for example, DateRange.PAST_MONTH. If a value isn't\nspecified, all open jobs are searched against regardless of their\npublished date."]
+        #[serde(rename = "publishDateRange", default)]
+        pub publish_date_range: ::std::option::Option<crate::schemas::JobQueryPublishDateRange>,
+        #[doc = "Optional. The query string that matches against the job title, description, and\nlocation fields.\n\nThe maximum query size is 255 bytes."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for JobProcessingOptions {
+    impl ::field_selector::FieldSelector for JobQuery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4243,57 +4294,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct JobQuery {
-        #[doc = "Optional. The category filter specifies the categories of jobs to search against.\nSee Category for more information.\n\nIf a value is not specified, jobs from any category are searched against.\n\nIf multiple values are specified, jobs from any of the specified\ncategories are searched against."]
-        #[serde(rename = "categories", default)]
-        pub categories: ::std::option::Option<Vec<crate::schemas::JobQueryCategoriesItems>>,
-        #[doc = "Optional. Allows filtering jobs by commute time with different travel methods (for\nexample, driving or public transit). Note: This only works with COMMUTE\nMODE. When specified, [JobQuery.location_filters] is\nignored.\n\nCurrently we don't support sorting by commute time."]
-        #[serde(rename = "commuteFilter", default)]
-        pub commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
-        #[doc = "Optional. This filter specifies the exact company display\nname of the jobs to search against.\n\nIf a value isn't specified, jobs within the search results are\nassociated with any company.\n\nIf multiple values are specified, jobs within the search results may be\nassociated with any of the specified companies.\n\nAt most 20 company display name filters are allowed."]
-        #[serde(rename = "companyDisplayNames", default)]
-        pub company_display_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. This filter specifies the company entities to search against.\n\nIf a value isn't specified, jobs are searched for against all\ncompanies.\n\nIf multiple values are specified, jobs are searched against the\ncompanies specified.\n\nAt most 20 company filters are allowed."]
-        #[serde(rename = "companyNames", default)]
-        pub company_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. This search filter is applied only to\nJob.compensation_info. For example, if the filter is specified\nas \"Hourly job with per-hour compensation > $15\", only jobs meeting\nthese criteria are searched. If a filter isn't defined, all open jobs\nare searched."]
-        #[serde(rename = "compensationFilter", default)]
-        pub compensation_filter: ::std::option::Option<crate::schemas::CompensationFilter>,
-        #[doc = "Optional. This filter specifies a structured syntax to match against the\nJob.custom_attributes marked as `filterable`.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: =, !=, <, <=, >, >= where the left of the operator\nis a custom field key and the right of the operator is a number or string\n(surrounded by quotes) value.\n\nSupported functions are LOWER(<field_name>) to\nperform case insensitive match and EMPTY(<field_name>) to filter on the\nexistence of a key.\n\nBoolean expressions (AND/OR/NOT) are supported up to 3 levels of\nnesting (for example, \"((A AND B AND C) OR NOT D) AND E\"), a maximum of 50\ncomparisons/functions are allowed in the expression. The expression\nmust be < 2000 characters in length.\n\nSample Query:\n(key1 = \"TEST\" OR LOWER(key1)=\"test\" OR NOT EMPTY(key1)) AND key2 > 100"]
-        #[serde(rename = "customAttributeFilter", default)]
-        pub custom_attribute_filter: ::std::option::Option<String>,
-        #[doc = "Optional. This flag controls the spell-check feature. If false, the\nservice attempts to correct a misspelled query,\nfor example, \"enginee\" is corrected to \"engineer\".\n\nDefaults to false: a spell check is performed."]
-        #[serde(rename = "disableSpellCheck", default)]
-        pub disable_spell_check: ::std::option::Option<bool>,
-        #[doc = "Optional. The employment type filter specifies the employment type of jobs to\nsearch against, such as EmploymentType.FULL_TIME.\n\nIf a value is not specified, jobs in the search results include any\nemployment type.\n\nIf multiple values are specified, jobs in the search results include\nany of the specified employment types."]
-        #[serde(rename = "employmentTypes", default)]
-        pub employment_types:
-            ::std::option::Option<Vec<crate::schemas::JobQueryEmploymentTypesItems>>,
-        #[doc = "Optional. This filter specifies the locale of jobs to search against,\nfor example, \"en-US\".\n\nIf a value isn't specified, the search results can contain jobs in any\nlocale.\n\nLanguage codes should be in BCP-47 format, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).\n\nAt most 10 language code filters are allowed."]
-        #[serde(rename = "languageCodes", default)]
-        pub language_codes: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The location filter specifies geo-regions containing the jobs to\nsearch against. See LocationFilter for more information.\n\nIf a location value isn't specified, jobs fitting the other search\ncriteria are retrieved regardless of where they're located.\n\nIf multiple values are specified, jobs are retrieved from any of the\nspecified locations. If different values are specified for the\nLocationFilter.distance_in_miles parameter, the maximum provided\ndistance is used for all locations.\n\nAt most 5 location filters are allowed."]
-        #[serde(rename = "locationFilters", default)]
-        pub location_filters: ::std::option::Option<Vec<crate::schemas::LocationFilter>>,
-        #[doc = "Optional. Jobs published within a range specified by this filter are searched\nagainst, for example, DateRange.PAST_MONTH. If a value isn't\nspecified, all open jobs are searched against regardless of their\npublished date."]
-        #[serde(rename = "publishDateRange", default)]
-        pub publish_date_range: ::std::option::Option<crate::schemas::JobQueryPublishDateRange>,
-        #[doc = "Optional. The query string that matches against the job title, description, and\nlocation fields.\n\nThe maximum query size is 255 bytes."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for JobQuery {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
         #[serde(rename = "latitude", default)]
@@ -4609,6 +4609,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResponseMetadata {
+        #[doc = "Identifiers for the versions of the search algorithm used during\nthis API invocation if multiple algorithms are used.\nThe default value is empty.\nFor search response only."]
+        #[serde(rename = "experimentIdList", default)]
+        pub experiment_id_list: ::std::option::Option<Vec<i32>>,
+        #[doc = "For search response only. Indicates the mode of a performed search."]
+        #[serde(rename = "mode", default)]
+        pub mode: ::std::option::Option<crate::schemas::ResponseMetadataMode>,
+        #[doc = "A unique id associated with this call.\nThis id is logged for tracking purposes."]
+        #[serde(rename = "requestId", default)]
+        pub request_id: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResponseMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ResponseMetadataMode {
         #[doc = "Deprecated. Please use the SearchJobsForAlert API.\n\nThe job search matches against jobs suited to email notifications."]
@@ -4673,29 +4705,53 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ResponseMetadata {
-        #[doc = "Identifiers for the versions of the search algorithm used during\nthis API invocation if multiple algorithms are used.\nThe default value is empty.\nFor search response only."]
-        #[serde(rename = "experimentIdList", default)]
-        pub experiment_id_list: ::std::option::Option<Vec<i32>>,
-        #[doc = "For search response only. Indicates the mode of a performed search."]
+    pub struct SearchJobsRequest {
+        #[doc = "Optional. Controls whether to disable relevance thresholding. Relevance\nthresholding removes jobs that have low relevance in search results,\nfor example, removing \"Assistant to the CEO\" positions from the search\nresults of a search for \"CEO\".\n\nDisabling relevance thresholding improves the accuracy of subsequent\nsearch requests.\n\nDefaults to false."]
+        #[serde(rename = "disableRelevanceThresholding", default)]
+        pub disable_relevance_thresholding: ::std::option::Option<bool>,
+        #[doc = "Optional. Controls whether to broaden the search when it produces sparse results.\nBroadened queries append results to the end of the matching results\nlist.\n\nDefaults to false."]
+        #[serde(rename = "enableBroadening", default)]
+        pub enable_broadening: ::std::option::Option<bool>,
+        #[doc = "Optional. Controls if the search job request requires the return of a precise\ncount of the first 300 results. Setting this to `true` ensures\nconsistency in the number of results per page. Best practice is to set this\nvalue to true if a client allows users to jump directly to a\nnon-sequential search results page.\n\nEnabling this flag may adversely impact performance.\n\nDefaults to false."]
+        #[serde(rename = "enablePreciseResultSize", default)]
+        pub enable_precise_result_size: ::std::option::Option<bool>,
+        #[doc = "Deprecated. Use query instead.\n\nOptional.\n\nRestrictions on the scope of the search request, such as filtering\nby location."]
+        #[serde(rename = "filters", default)]
+        pub filters: ::std::option::Option<crate::schemas::JobFilters>,
+        #[doc = "Optional. Restrictions on what fields to perform histogram on, such as\n`COMPANY_SIZE` etc."]
+        #[serde(rename = "histogramFacets", default)]
+        pub histogram_facets: ::std::option::Option<crate::schemas::HistogramFacets>,
+        #[doc = "Optional. The number of job attributes returned for jobs in the\nsearch response. Defaults to JobView.SMALL if no value is specified."]
+        #[serde(rename = "jobView", default)]
+        pub job_view: ::std::option::Option<crate::schemas::SearchJobsRequestJobView>,
+        #[doc = "Required. Mode of a search."]
         #[serde(rename = "mode", default)]
-        pub mode: ::std::option::Option<crate::schemas::ResponseMetadataMode>,
-        #[doc = "A unique id associated with this call.\nThis id is logged for tracking purposes."]
-        #[serde(rename = "requestId", default)]
-        pub request_id: ::std::option::Option<String>,
+        pub mode: ::std::option::Option<crate::schemas::SearchJobsRequestMode>,
+        #[doc = "Optional. An integer that specifies the current offset (that is, starting result\nlocation, amongst the jobs deemed by the API as relevant) in search\nresults. This field is only considered if page_token is unset.\n\nFor example, 0 means to  return results starting from the first matching\njob, and 10 means to return from the 11th job. This can be used for\npagination, (for example, pageSize = 10 and offset = 10 means to return\nfrom the second page)."]
+        #[serde(rename = "offset", default)]
+        pub offset: ::std::option::Option<i32>,
+        #[doc = "Deprecated. Use sort_by instead.\n\nOptional.\n\nThe criteria determining how search results are sorted.\nDefaults to SortBy.RELEVANCE_DESC if no value is specified."]
+        #[serde(rename = "orderBy", default)]
+        pub order_by: ::std::option::Option<crate::schemas::SearchJobsRequestOrderBy>,
+        #[doc = "Optional. A limit on the number of jobs returned in the search results.\nIncreasing this value above the default value of 10 can increase search\nresponse time. The value can be between 1 and 100."]
+        #[serde(rename = "pageSize", default)]
+        pub page_size: ::std::option::Option<i32>,
+        #[doc = "Optional. The token specifying the current offset within\nsearch results. See SearchJobsResponse.next_page_token for\nan explanation of how to obtain the next set of query results."]
+        #[serde(rename = "pageToken", default)]
+        pub page_token: ::std::option::Option<String>,
+        #[doc = "Optional. Query used to search against jobs, such as keyword, location filters, etc."]
+        #[serde(rename = "query", default)]
+        pub query: ::std::option::Option<crate::schemas::JobQuery>,
+        #[doc = "Required. The meta information collected about the job searcher, used to improve the\nsearch quality of the service. The identifiers, (such as `user_id`) are\nprovided by users, and must be unique and consistent."]
+        #[serde(rename = "requestMetadata", default)]
+        pub request_metadata: ::std::option::Option<crate::schemas::RequestMetadata>,
+        #[doc = "Optional. The criteria determining how search results are sorted.\nDefaults to SortBy.RELEVANCE_DESC if no value is specified."]
+        #[serde(rename = "sortBy", default)]
+        pub sort_by: ::std::option::Option<crate::schemas::SearchJobsRequestSortBy>,
     }
-    impl ::field_selector::FieldSelector for ResponseMetadata {
+    impl ::field_selector::FieldSelector for SearchJobsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5039,51 +5095,44 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct SearchJobsRequest {
-        #[doc = "Optional. Controls whether to disable relevance thresholding. Relevance\nthresholding removes jobs that have low relevance in search results,\nfor example, removing \"Assistant to the CEO\" positions from the search\nresults of a search for \"CEO\".\n\nDisabling relevance thresholding improves the accuracy of subsequent\nsearch requests.\n\nDefaults to false."]
-        #[serde(rename = "disableRelevanceThresholding", default)]
-        pub disable_relevance_thresholding: ::std::option::Option<bool>,
-        #[doc = "Optional. Controls whether to broaden the search when it produces sparse results.\nBroadened queries append results to the end of the matching results\nlist.\n\nDefaults to false."]
-        #[serde(rename = "enableBroadening", default)]
-        pub enable_broadening: ::std::option::Option<bool>,
-        #[doc = "Optional. Controls if the search job request requires the return of a precise\ncount of the first 300 results. Setting this to `true` ensures\nconsistency in the number of results per page. Best practice is to set this\nvalue to true if a client allows users to jump directly to a\nnon-sequential search results page.\n\nEnabling this flag may adversely impact performance.\n\nDefaults to false."]
-        #[serde(rename = "enablePreciseResultSize", default)]
-        pub enable_precise_result_size: ::std::option::Option<bool>,
-        #[doc = "Deprecated. Use query instead.\n\nOptional.\n\nRestrictions on the scope of the search request, such as filtering\nby location."]
-        #[serde(rename = "filters", default)]
-        pub filters: ::std::option::Option<crate::schemas::JobFilters>,
-        #[doc = "Optional. Restrictions on what fields to perform histogram on, such as\n`COMPANY_SIZE` etc."]
-        #[serde(rename = "histogramFacets", default)]
-        pub histogram_facets: ::std::option::Option<crate::schemas::HistogramFacets>,
-        #[doc = "Optional. The number of job attributes returned for jobs in the\nsearch response. Defaults to JobView.SMALL if no value is specified."]
+    pub struct SearchJobsResponse {
+        #[doc = "The commute filter the service applied to the specified query. This\ninformation is only available when query has a valid CommutePreference."]
+        #[serde(rename = "appliedCommuteFilter", default)]
+        pub applied_commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
+        #[doc = "The location filters that the service applied to the specified query. If\nany filters are lat-lng based, the JobLocation.location_type is\nJobLocation.LocationType#LOCATION_TYPE_UNSPECIFIED."]
+        #[serde(rename = "appliedJobLocationFilters", default)]
+        pub applied_job_location_filters: ::std::option::Option<Vec<crate::schemas::JobLocation>>,
+        #[doc = "An estimation of the number of jobs that match the specified query.\n\nThis number is not guaranteed to be accurate. For accurate results,\nseenenable_precise_result_size."]
+        #[serde(rename = "estimatedTotalSize", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub estimated_total_size: ::std::option::Option<i64>,
+        #[doc = "The histogram results that match specified\nSearchJobsRequest.HistogramFacets."]
+        #[serde(rename = "histogramResults", default)]
+        pub histogram_results: ::std::option::Option<crate::schemas::HistogramResults>,
+        #[doc = "Corresponds to SearchJobsRequest.job_view."]
         #[serde(rename = "jobView", default)]
-        pub job_view: ::std::option::Option<crate::schemas::SearchJobsRequestJobView>,
-        #[doc = "Required. Mode of a search."]
-        #[serde(rename = "mode", default)]
-        pub mode: ::std::option::Option<crate::schemas::SearchJobsRequestMode>,
-        #[doc = "Optional. An integer that specifies the current offset (that is, starting result\nlocation, amongst the jobs deemed by the API as relevant) in search\nresults. This field is only considered if page_token is unset.\n\nFor example, 0 means to  return results starting from the first matching\njob, and 10 means to return from the 11th job. This can be used for\npagination, (for example, pageSize = 10 and offset = 10 means to return\nfrom the second page)."]
-        #[serde(rename = "offset", default)]
-        pub offset: ::std::option::Option<i32>,
-        #[doc = "Deprecated. Use sort_by instead.\n\nOptional.\n\nThe criteria determining how search results are sorted.\nDefaults to SortBy.RELEVANCE_DESC if no value is specified."]
-        #[serde(rename = "orderBy", default)]
-        pub order_by: ::std::option::Option<crate::schemas::SearchJobsRequestOrderBy>,
-        #[doc = "Optional. A limit on the number of jobs returned in the search results.\nIncreasing this value above the default value of 10 can increase search\nresponse time. The value can be between 1 and 100."]
-        #[serde(rename = "pageSize", default)]
-        pub page_size: ::std::option::Option<i32>,
-        #[doc = "Optional. The token specifying the current offset within\nsearch results. See SearchJobsResponse.next_page_token for\nan explanation of how to obtain the next set of query results."]
-        #[serde(rename = "pageToken", default)]
-        pub page_token: ::std::option::Option<String>,
-        #[doc = "Optional. Query used to search against jobs, such as keyword, location filters, etc."]
-        #[serde(rename = "query", default)]
-        pub query: ::std::option::Option<crate::schemas::JobQuery>,
-        #[doc = "Required. The meta information collected about the job searcher, used to improve the\nsearch quality of the service. The identifiers, (such as `user_id`) are\nprovided by users, and must be unique and consistent."]
-        #[serde(rename = "requestMetadata", default)]
-        pub request_metadata: ::std::option::Option<crate::schemas::RequestMetadata>,
-        #[doc = "Optional. The criteria determining how search results are sorted.\nDefaults to SortBy.RELEVANCE_DESC if no value is specified."]
-        #[serde(rename = "sortBy", default)]
-        pub sort_by: ::std::option::Option<crate::schemas::SearchJobsRequestSortBy>,
+        pub job_view: ::std::option::Option<crate::schemas::SearchJobsResponseJobView>,
+        #[doc = "The Job entities that match the specified SearchJobsRequest."]
+        #[serde(rename = "matchingJobs", default)]
+        pub matching_jobs: ::std::option::Option<Vec<crate::schemas::MatchingJob>>,
+        #[doc = "Additional information for the API invocation, such as the request\ntracking id."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: ::std::option::Option<crate::schemas::ResponseMetadata>,
+        #[doc = "The token that specifies the starting position of the next page of results.\nThis field is empty if there are no more results."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "If query broadening is enabled, we may append additional results from the\nbroadened query. This number indicates how many of the jobs returned in the\njobs field are from the broadened query. These results are always at the\nend of the jobs list. In particular, a value of 0 means all the jobs in the\njobs list are from the original (without broadening) query. If this\nfield is non-zero, subsequent requests with offset after this result set\nshould contain all broadened results."]
+        #[serde(rename = "numJobsFromBroadenedQuery", default)]
+        pub num_jobs_from_broadened_query: ::std::option::Option<i32>,
+        #[doc = "The spell checking result, and correction."]
+        #[serde(rename = "spellResult", default)]
+        pub spell_result: ::std::option::Option<crate::schemas::SpellingCorrection>,
+        #[doc = "The precise result count, which is available only if the client set\nenable_precise_result_size to `true` or if the response\nis the last page of results. Otherwise, the value will be `-1`."]
+        #[serde(rename = "totalSize", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub total_size: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for SearchJobsRequest {
+    impl ::field_selector::FieldSelector for SearchJobsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5147,55 +5196,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SearchJobsResponseJobView {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct SearchJobsResponse {
-        #[doc = "The commute filter the service applied to the specified query. This\ninformation is only available when query has a valid CommutePreference."]
-        #[serde(rename = "appliedCommuteFilter", default)]
-        pub applied_commute_filter: ::std::option::Option<crate::schemas::CommutePreference>,
-        #[doc = "The location filters that the service applied to the specified query. If\nany filters are lat-lng based, the JobLocation.location_type is\nJobLocation.LocationType#LOCATION_TYPE_UNSPECIFIED."]
-        #[serde(rename = "appliedJobLocationFilters", default)]
-        pub applied_job_location_filters: ::std::option::Option<Vec<crate::schemas::JobLocation>>,
-        #[doc = "An estimation of the number of jobs that match the specified query.\n\nThis number is not guaranteed to be accurate. For accurate results,\nseenenable_precise_result_size."]
-        #[serde(rename = "estimatedTotalSize", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub estimated_total_size: ::std::option::Option<i64>,
-        #[doc = "The histogram results that match specified\nSearchJobsRequest.HistogramFacets."]
-        #[serde(rename = "histogramResults", default)]
-        pub histogram_results: ::std::option::Option<crate::schemas::HistogramResults>,
-        #[doc = "Corresponds to SearchJobsRequest.job_view."]
-        #[serde(rename = "jobView", default)]
-        pub job_view: ::std::option::Option<crate::schemas::SearchJobsResponseJobView>,
-        #[doc = "The Job entities that match the specified SearchJobsRequest."]
-        #[serde(rename = "matchingJobs", default)]
-        pub matching_jobs: ::std::option::Option<Vec<crate::schemas::MatchingJob>>,
-        #[doc = "Additional information for the API invocation, such as the request\ntracking id."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: ::std::option::Option<crate::schemas::ResponseMetadata>,
-        #[doc = "The token that specifies the starting position of the next page of results.\nThis field is empty if there are no more results."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: ::std::option::Option<String>,
-        #[doc = "If query broadening is enabled, we may append additional results from the\nbroadened query. This number indicates how many of the jobs returned in the\njobs field are from the broadened query. These results are always at the\nend of the jobs list. In particular, a value of 0 means all the jobs in the\njobs list are from the original (without broadening) query. If this\nfield is non-zero, subsequent requests with offset after this result set\nshould contain all broadened results."]
-        #[serde(rename = "numJobsFromBroadenedQuery", default)]
-        pub num_jobs_from_broadened_query: ::std::option::Option<i32>,
-        #[doc = "The spell checking result, and correction."]
-        #[serde(rename = "spellResult", default)]
-        pub spell_result: ::std::option::Option<crate::schemas::SpellingCorrection>,
-        #[doc = "The precise result count, which is available only if the client set\nenable_precise_result_size to `true` or if the response\nis the last page of results. Otherwise, the value will be `-1`."]
-        #[serde(rename = "totalSize", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub total_size: ::std::option::Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for SearchJobsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9102,84 +9102,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9211,7 +9133,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9332,50 +9253,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

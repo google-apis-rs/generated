@@ -11,41 +11,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AccountBidderLocationItems {
-        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:\n\n* PROTOCOL_ADX \n* PROTOCOL_OPENRTB_2_2 \n* PROTOCOL_OPENRTB_2_3 \n* PROTOCOL_OPENRTB_2_4 \n* PROTOCOL_OPENRTB_2_5 \n* PROTOCOL_OPENRTB_PROTOBUF_2_3 \n* PROTOCOL_OPENRTB_PROTOBUF_2_4 \n* PROTOCOL_OPENRTB_PROTOBUF_2_5"]
-        #[serde(rename = "bidProtocol", default)]
-        pub bid_protocol: ::std::option::Option<String>,
-        #[doc = "The maximum queries per second the Ad Exchange will send."]
-        #[serde(rename = "maximumQps", default)]
-        pub maximum_qps: ::std::option::Option<i32>,
-        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
-        #[serde(rename = "region", default)]
-        pub region: ::std::option::Option<String>,
-        #[doc = "The URL to which the Ad Exchange will send bid requests."]
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountBidderLocationItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Account {
         #[doc = "When this is false, bid requests that include a deal ID for a private auction or preferred deal are always sent to your bidder. When true, all active pretargeting configs will be applied to private auctions and preferred deals. Programmatic Guaranteed deals (when enabled) are always sent to your bidder."]
         #[serde(rename = "applyPretargetingToNonGuaranteedDeals", default)]
@@ -76,6 +41,41 @@ pub mod schemas {
         pub number_active_creatives: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Account {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountBidderLocationItems {
+        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:\n\n* PROTOCOL_ADX \n* PROTOCOL_OPENRTB_2_2 \n* PROTOCOL_OPENRTB_2_3 \n* PROTOCOL_OPENRTB_2_4 \n* PROTOCOL_OPENRTB_2_5 \n* PROTOCOL_OPENRTB_PROTOBUF_2_3 \n* PROTOCOL_OPENRTB_PROTOBUF_2_4 \n* PROTOCOL_OPENRTB_PROTOBUF_2_5"]
+        #[serde(rename = "bidProtocol", default)]
+        pub bid_protocol: ::std::option::Option<String>,
+        #[doc = "The maximum queries per second the Ad Exchange will send."]
+        #[serde(rename = "maximumQps", default)]
+        pub maximum_qps: ::std::option::Option<i32>,
+        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
+        #[serde(rename = "region", default)]
+        pub region: ::std::option::Option<String>,
+        #[doc = "The URL to which the Ad Exchange will send bid requests."]
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AccountBidderLocationItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -428,400 +428,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeAdTechnologyProviders {
-        #[serde(rename = "detectedProviderIds", default)]
-        pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
-        #[serde(rename = "hasUnidentifiedProvider", default)]
-        pub has_unidentified_provider: ::std::option::Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for CreativeAdTechnologyProviders {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeCorrectionsItemsContextsItems {
-        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this correction applies to."]
-        #[serde(rename = "auctionType", default)]
-        pub auction_type: ::std::option::Option<Vec<String>>,
-        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
-        #[serde(rename = "contextType", default)]
-        pub context_type: ::std::option::Option<String>,
-        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this correction applies to."]
-        #[serde(rename = "geoCriteriaId", default)]
-        pub geo_criteria_id: ::std::option::Option<Vec<i32>>,
-        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this correction applies to."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for CreativeCorrectionsItemsContextsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeCorrectionsItems {
-        #[doc = "All known serving contexts containing serving status information."]
-        #[serde(rename = "contexts", default)]
-        pub contexts:
-            ::std::option::Option<Vec<crate::schemas::CreativeCorrectionsItemsContextsItems>>,
-        #[doc = "Additional details about the correction."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<String>>,
-        #[doc = "The type of correction that was applied to the creative."]
-        #[serde(rename = "reason", default)]
-        pub reason: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeCorrectionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeFilteringReasonsReasonsItems {
-        #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
-        #[serde(rename = "filteringCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub filtering_count: ::std::option::Option<i64>,
-        #[doc = "The filtering status code as defined in  creative-status-codes.txt."]
-        #[serde(rename = "filteringStatus", default)]
-        pub filtering_status: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeFilteringReasons {
-        #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
-        #[serde(rename = "date", default)]
-        pub date: ::std::option::Option<String>,
-        #[doc = "The filtering reasons."]
-        #[serde(rename = "reasons", default)]
-        pub reasons:
-            ::std::option::Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
-    }
-    impl ::field_selector::FieldSelector for CreativeFilteringReasons {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdAppIcon {
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdAppIcon {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdImage {
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdLogo {
-        #[serde(rename = "height", default)]
-        pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: ::std::option::Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdLogo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAd {
-        #[serde(rename = "advertiser", default)]
-        pub advertiser: ::std::option::Option<String>,
-        #[doc = "The app icon, for app download ads."]
-        #[serde(rename = "appIcon", default)]
-        pub app_icon: ::std::option::Option<crate::schemas::CreativeNativeAdAppIcon>,
-        #[doc = "A long description of the ad."]
-        #[serde(rename = "body", default)]
-        pub body: ::std::option::Option<String>,
-        #[doc = "A label for the button that the user is supposed to click."]
-        #[serde(rename = "callToAction", default)]
-        pub call_to_action: ::std::option::Option<String>,
-        #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
-        #[serde(rename = "clickLinkUrl", default)]
-        pub click_link_url: ::std::option::Option<String>,
-        #[doc = "The URL to use for click tracking."]
-        #[serde(rename = "clickTrackingUrl", default)]
-        pub click_tracking_url: ::std::option::Option<String>,
-        #[doc = "A short title for the ad."]
-        #[serde(rename = "headline", default)]
-        pub headline: ::std::option::Option<String>,
-        #[doc = "A large image."]
-        #[serde(rename = "image", default)]
-        pub image: ::std::option::Option<crate::schemas::CreativeNativeAdImage>,
-        #[doc = "The URLs are called when the impression is rendered."]
-        #[serde(rename = "impressionTrackingUrl", default)]
-        pub impression_tracking_url: ::std::option::Option<Vec<String>>,
-        #[doc = "A smaller image, for the advertiser logo."]
-        #[serde(rename = "logo", default)]
-        pub logo: ::std::option::Option<crate::schemas::CreativeNativeAdLogo>,
-        #[doc = "The price of the promoted app including the currency info."]
-        #[serde(rename = "price", default)]
-        pub price: ::std::option::Option<String>,
-        #[doc = "The app rating in the app store. Must be in the range [0-5]."]
-        #[serde(rename = "starRating", default)]
-        pub star_rating: ::std::option::Option<f64>,
-        #[doc = "The URL of the XML VAST for a native ad. Note this is a separate field from resource.video_url."]
-        #[serde(rename = "videoURL", default)]
-        pub video_url: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAd {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItemsContextsItems {
-        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this restriction applies to."]
-        #[serde(rename = "auctionType", default)]
-        pub auction_type: ::std::option::Option<Vec<String>>,
-        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
-        #[serde(rename = "contextType", default)]
-        pub context_type: ::std::option::Option<String>,
-        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to. Impressions are considered to match a context if either the user location or publisher location matches a given geoCriteriaId."]
-        #[serde(rename = "geoCriteriaId", default)]
-        pub geo_criteria_id: ::std::option::Option<Vec<i32>>,
-        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this restriction applies to."]
-        #[serde(rename = "platform", default)]
-        pub platform: ::std::option::Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsContextsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItemsDisapprovalReasonsItems {
-        #[doc = "Additional details about the reason for disapproval."]
-        #[serde(rename = "details", default)]
-        pub details: ::std::option::Option<Vec<String>>,
-        #[doc = "The categorized reason for disapproval."]
-        #[serde(rename = "reason", default)]
-        pub reason: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsDisapprovalReasonsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItems {
-        #[doc = "All known contexts/restrictions."]
-        #[serde(rename = "contexts", default)]
-        pub contexts: ::std::option::Option<
-            Vec<crate::schemas::CreativeServingRestrictionsItemsContextsItems>,
-        >,
-        #[doc = "The reasons for disapproval within this restriction, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue."]
-        #[serde(rename = "disapprovalReasons", default)]
-        pub disapproval_reasons: ::std::option::Option<
-            Vec<crate::schemas::CreativeServingRestrictionsItemsDisapprovalReasonsItems>,
-        >,
-        #[doc = "Why the creative is ineligible to serve in this context (e.g., it has been explicitly disapproved or is pending review)."]
-        #[serde(rename = "reason", default)]
-        pub reason: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Creative {
@@ -942,19 +548,380 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeDealIdsDealStatusesItems {
-        #[doc = "ARC approval status."]
-        #[serde(rename = "arcStatus", default)]
-        pub arc_status: ::std::option::Option<String>,
-        #[doc = "External deal ID."]
-        #[serde(rename = "dealId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub deal_id: ::std::option::Option<i64>,
-        #[doc = "Publisher ID."]
-        #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: ::std::option::Option<i32>,
+    pub struct CreativeAdTechnologyProviders {
+        #[serde(rename = "detectedProviderIds", default)]
+        pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
+        #[serde(rename = "hasUnidentifiedProvider", default)]
+        pub has_unidentified_provider: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for CreativeDealIdsDealStatusesItems {
+    impl ::field_selector::FieldSelector for CreativeAdTechnologyProviders {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeCorrectionsItems {
+        #[doc = "All known serving contexts containing serving status information."]
+        #[serde(rename = "contexts", default)]
+        pub contexts:
+            ::std::option::Option<Vec<crate::schemas::CreativeCorrectionsItemsContextsItems>>,
+        #[doc = "Additional details about the correction."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<String>>,
+        #[doc = "The type of correction that was applied to the creative."]
+        #[serde(rename = "reason", default)]
+        pub reason: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeCorrectionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeCorrectionsItemsContextsItems {
+        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this correction applies to."]
+        #[serde(rename = "auctionType", default)]
+        pub auction_type: ::std::option::Option<Vec<String>>,
+        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
+        #[serde(rename = "contextType", default)]
+        pub context_type: ::std::option::Option<String>,
+        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this correction applies to."]
+        #[serde(rename = "geoCriteriaId", default)]
+        pub geo_criteria_id: ::std::option::Option<Vec<i32>>,
+        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this correction applies to."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeCorrectionsItemsContextsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeFilteringReasons {
+        #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
+        #[serde(rename = "date", default)]
+        pub date: ::std::option::Option<String>,
+        #[doc = "The filtering reasons."]
+        #[serde(rename = "reasons", default)]
+        pub reasons:
+            ::std::option::Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeFilteringReasons {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeFilteringReasonsReasonsItems {
+        #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
+        #[serde(rename = "filteringCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub filtering_count: ::std::option::Option<i64>,
+        #[doc = "The filtering status code as defined in  creative-status-codes.txt."]
+        #[serde(rename = "filteringStatus", default)]
+        pub filtering_status: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAd {
+        #[serde(rename = "advertiser", default)]
+        pub advertiser: ::std::option::Option<String>,
+        #[doc = "The app icon, for app download ads."]
+        #[serde(rename = "appIcon", default)]
+        pub app_icon: ::std::option::Option<crate::schemas::CreativeNativeAdAppIcon>,
+        #[doc = "A long description of the ad."]
+        #[serde(rename = "body", default)]
+        pub body: ::std::option::Option<String>,
+        #[doc = "A label for the button that the user is supposed to click."]
+        #[serde(rename = "callToAction", default)]
+        pub call_to_action: ::std::option::Option<String>,
+        #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
+        #[serde(rename = "clickLinkUrl", default)]
+        pub click_link_url: ::std::option::Option<String>,
+        #[doc = "The URL to use for click tracking."]
+        #[serde(rename = "clickTrackingUrl", default)]
+        pub click_tracking_url: ::std::option::Option<String>,
+        #[doc = "A short title for the ad."]
+        #[serde(rename = "headline", default)]
+        pub headline: ::std::option::Option<String>,
+        #[doc = "A large image."]
+        #[serde(rename = "image", default)]
+        pub image: ::std::option::Option<crate::schemas::CreativeNativeAdImage>,
+        #[doc = "The URLs are called when the impression is rendered."]
+        #[serde(rename = "impressionTrackingUrl", default)]
+        pub impression_tracking_url: ::std::option::Option<Vec<String>>,
+        #[doc = "A smaller image, for the advertiser logo."]
+        #[serde(rename = "logo", default)]
+        pub logo: ::std::option::Option<crate::schemas::CreativeNativeAdLogo>,
+        #[doc = "The price of the promoted app including the currency info."]
+        #[serde(rename = "price", default)]
+        pub price: ::std::option::Option<String>,
+        #[doc = "The app rating in the app store. Must be in the range [0-5]."]
+        #[serde(rename = "starRating", default)]
+        pub star_rating: ::std::option::Option<f64>,
+        #[doc = "The URL of the XML VAST for a native ad. Note this is a separate field from resource.video_url."]
+        #[serde(rename = "videoURL", default)]
+        pub video_url: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAd {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdAppIcon {
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdAppIcon {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdImage {
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdLogo {
+        #[serde(rename = "height", default)]
+        pub height: ::std::option::Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: ::std::option::Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdLogo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItems {
+        #[doc = "All known contexts/restrictions."]
+        #[serde(rename = "contexts", default)]
+        pub contexts: ::std::option::Option<
+            Vec<crate::schemas::CreativeServingRestrictionsItemsContextsItems>,
+        >,
+        #[doc = "The reasons for disapproval within this restriction, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue."]
+        #[serde(rename = "disapprovalReasons", default)]
+        pub disapproval_reasons: ::std::option::Option<
+            Vec<crate::schemas::CreativeServingRestrictionsItemsDisapprovalReasonsItems>,
+        >,
+        #[doc = "Why the creative is ineligible to serve in this context (e.g., it has been explicitly disapproved or is pending review)."]
+        #[serde(rename = "reason", default)]
+        pub reason: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItemsContextsItems {
+        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this restriction applies to."]
+        #[serde(rename = "auctionType", default)]
+        pub auction_type: ::std::option::Option<Vec<String>>,
+        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
+        #[serde(rename = "contextType", default)]
+        pub context_type: ::std::option::Option<String>,
+        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to. Impressions are considered to match a context if either the user location or publisher location matches a given geoCriteriaId."]
+        #[serde(rename = "geoCriteriaId", default)]
+        pub geo_criteria_id: ::std::option::Option<Vec<i32>>,
+        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this restriction applies to."]
+        #[serde(rename = "platform", default)]
+        pub platform: ::std::option::Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsContextsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItemsDisapprovalReasonsItems {
+        #[doc = "Additional details about the reason for disapproval."]
+        #[serde(rename = "details", default)]
+        pub details: ::std::option::Option<Vec<String>>,
+        #[doc = "The categorized reason for disapproval."]
+        #[serde(rename = "reason", default)]
+        pub reason: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsDisapprovalReasonsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -985,6 +952,39 @@ pub mod schemas {
         pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativeDealIds {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeDealIdsDealStatusesItems {
+        #[doc = "ARC approval status."]
+        #[serde(rename = "arcStatus", default)]
+        pub arc_status: ::std::option::Option<String>,
+        #[doc = "External deal ID."]
+        #[serde(rename = "dealId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub deal_id: ::std::option::Option<i64>,
+        #[doc = "Publisher ID."]
+        #[serde(rename = "webPropertyId", default)]
+        pub web_property_id: ::std::option::Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeDealIdsDealStatusesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1895,6 +1895,113 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PretargetingConfig {
+        #[doc = "The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically."]
+        #[serde(rename = "billingId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub billing_id: ::std::option::Option<i64>,
+        #[doc = "The config id; generated automatically. Leave this field blank for insert requests."]
+        #[serde(rename = "configId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub config_id: ::std::option::Option<i64>,
+        #[doc = "The name of the config. Must be unique. Required for all requests."]
+        #[serde(rename = "configName", default)]
+        pub config_name: ::std::option::Option<String>,
+        #[doc = "List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or PRETARGETING_CREATIVE_TYPE_VIDEO."]
+        #[serde(rename = "creativeType", default)]
+        pub creative_type: ::std::option::Option<Vec<String>>,
+        #[doc = "Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigDimensionsItems>>,
+        #[doc = "Requests with any of these content labels will not match. Values are from content-labels.txt in the downloadable files section."]
+        #[serde(rename = "excludedContentLabels", default)]
+        pub excluded_content_labels: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these geo criteria ids will not match."]
+        #[serde(rename = "excludedGeoCriteriaIds", default)]
+        pub excluded_geo_criteria_ids: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these placements will not match."]
+        #[serde(rename = "excludedPlacements", default)]
+        pub excluded_placements:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigExcludedPlacementsItems>>,
+        #[doc = "Requests containing any of these users list ids will not match."]
+        #[serde(rename = "excludedUserLists", default)]
+        pub excluded_user_lists: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these vertical ids will not match. Values are from the publisher-verticals.txt file in the downloadable files section."]
+        #[serde(rename = "excludedVerticals", default)]
+        pub excluded_verticals: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these geo criteria ids will match."]
+        #[serde(rename = "geoCriteriaIds", default)]
+        pub geo_criteria_ids: ::std::option::Option<Vec<i64>>,
+        #[doc = "Whether this config is active. Required for all requests."]
+        #[serde(rename = "isActive", default)]
+        pub is_active: ::std::option::Option<bool>,
+        #[doc = "The kind of the resource, i.e. \"adexchangebuyer#pretargetingConfig\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "Request containing any of these language codes will match."]
+        #[serde(rename = "languages", default)]
+        pub languages: ::std::option::Option<Vec<String>>,
+        #[doc = "Requests where the predicted viewability is below the specified decile will not match. E.g. if the buyer sets this value to 5, requests from slots where the predicted viewability is below 50% will not match. If the predicted viewability is unknown this field will be ignored."]
+        #[serde(rename = "minimumViewabilityDecile", default)]
+        pub minimum_viewability_decile: ::std::option::Option<i32>,
+        #[doc = "Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv in the downloadable files section."]
+        #[serde(rename = "mobileCarriers", default)]
+        pub mobile_carriers: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these mobile device ids will match. Values are from mobile-devices.csv in the downloadable files section."]
+        #[serde(rename = "mobileDevices", default)]
+        pub mobile_devices: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these mobile operating system version ids will match. Values are from mobile-os.csv in the downloadable files section."]
+        #[serde(rename = "mobileOperatingSystemVersions", default)]
+        pub mobile_operating_system_versions: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these placements will match."]
+        #[serde(rename = "placements", default)]
+        pub placements:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigPlacementsItems>>,
+        #[doc = "Requests matching any of these platforms will match. Possible values are PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET."]
+        #[serde(rename = "platforms", default)]
+        pub platforms: ::std::option::Option<Vec<String>>,
+        #[doc = "Creative attributes should be declared here if all creatives corresponding to this pretargeting configuration have that creative attribute. Values are from pretargetable-creative-attributes.txt in the downloadable files section."]
+        #[serde(rename = "supportedCreativeAttributes", default)]
+        pub supported_creative_attributes: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing the specified type of user data will match. Possible values are HOSTED_MATCH_DATA, which means the request is cookie-targetable and has a match in the buyer's hosted match table, and COOKIE_OR_IDFA, which means the request has either a targetable cookie or an iOS IDFA."]
+        #[serde(rename = "userIdentifierDataRequired", default)]
+        pub user_identifier_data_required: ::std::option::Option<Vec<String>>,
+        #[doc = "Requests containing any of these user list ids will match."]
+        #[serde(rename = "userLists", default)]
+        pub user_lists: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests that allow any of these vendor ids will match. Values are from vendors.txt in the downloadable files section."]
+        #[serde(rename = "vendorTypes", default)]
+        pub vendor_types: ::std::option::Option<Vec<i64>>,
+        #[doc = "Requests containing any of these vertical ids will match."]
+        #[serde(rename = "verticals", default)]
+        pub verticals: ::std::option::Option<Vec<i64>>,
+        #[doc = "Video requests satisfying any of these player size constraints will match."]
+        #[serde(rename = "videoPlayerSizes", default)]
+        pub video_player_sizes:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigVideoPlayerSizesItems>>,
+    }
+    impl ::field_selector::FieldSelector for PretargetingConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct PretargetingConfigDimensionsItems {
         #[doc = "Height in pixels."]
         #[serde(rename = "height", default)]
@@ -1998,113 +2105,6 @@ pub mod schemas {
         pub min_width: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigVideoPlayerSizesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PretargetingConfig {
-        #[doc = "The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically."]
-        #[serde(rename = "billingId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub billing_id: ::std::option::Option<i64>,
-        #[doc = "The config id; generated automatically. Leave this field blank for insert requests."]
-        #[serde(rename = "configId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub config_id: ::std::option::Option<i64>,
-        #[doc = "The name of the config. Must be unique. Required for all requests."]
-        #[serde(rename = "configName", default)]
-        pub config_name: ::std::option::Option<String>,
-        #[doc = "List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or PRETARGETING_CREATIVE_TYPE_VIDEO."]
-        #[serde(rename = "creativeType", default)]
-        pub creative_type: ::std::option::Option<Vec<String>>,
-        #[doc = "Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions:
-            ::std::option::Option<Vec<crate::schemas::PretargetingConfigDimensionsItems>>,
-        #[doc = "Requests with any of these content labels will not match. Values are from content-labels.txt in the downloadable files section."]
-        #[serde(rename = "excludedContentLabels", default)]
-        pub excluded_content_labels: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these geo criteria ids will not match."]
-        #[serde(rename = "excludedGeoCriteriaIds", default)]
-        pub excluded_geo_criteria_ids: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these placements will not match."]
-        #[serde(rename = "excludedPlacements", default)]
-        pub excluded_placements:
-            ::std::option::Option<Vec<crate::schemas::PretargetingConfigExcludedPlacementsItems>>,
-        #[doc = "Requests containing any of these users list ids will not match."]
-        #[serde(rename = "excludedUserLists", default)]
-        pub excluded_user_lists: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these vertical ids will not match. Values are from the publisher-verticals.txt file in the downloadable files section."]
-        #[serde(rename = "excludedVerticals", default)]
-        pub excluded_verticals: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these geo criteria ids will match."]
-        #[serde(rename = "geoCriteriaIds", default)]
-        pub geo_criteria_ids: ::std::option::Option<Vec<i64>>,
-        #[doc = "Whether this config is active. Required for all requests."]
-        #[serde(rename = "isActive", default)]
-        pub is_active: ::std::option::Option<bool>,
-        #[doc = "The kind of the resource, i.e. \"adexchangebuyer#pretargetingConfig\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Request containing any of these language codes will match."]
-        #[serde(rename = "languages", default)]
-        pub languages: ::std::option::Option<Vec<String>>,
-        #[doc = "Requests where the predicted viewability is below the specified decile will not match. E.g. if the buyer sets this value to 5, requests from slots where the predicted viewability is below 50% will not match. If the predicted viewability is unknown this field will be ignored."]
-        #[serde(rename = "minimumViewabilityDecile", default)]
-        pub minimum_viewability_decile: ::std::option::Option<i32>,
-        #[doc = "Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv in the downloadable files section."]
-        #[serde(rename = "mobileCarriers", default)]
-        pub mobile_carriers: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these mobile device ids will match. Values are from mobile-devices.csv in the downloadable files section."]
-        #[serde(rename = "mobileDevices", default)]
-        pub mobile_devices: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these mobile operating system version ids will match. Values are from mobile-os.csv in the downloadable files section."]
-        #[serde(rename = "mobileOperatingSystemVersions", default)]
-        pub mobile_operating_system_versions: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these placements will match."]
-        #[serde(rename = "placements", default)]
-        pub placements:
-            ::std::option::Option<Vec<crate::schemas::PretargetingConfigPlacementsItems>>,
-        #[doc = "Requests matching any of these platforms will match. Possible values are PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET."]
-        #[serde(rename = "platforms", default)]
-        pub platforms: ::std::option::Option<Vec<String>>,
-        #[doc = "Creative attributes should be declared here if all creatives corresponding to this pretargeting configuration have that creative attribute. Values are from pretargetable-creative-attributes.txt in the downloadable files section."]
-        #[serde(rename = "supportedCreativeAttributes", default)]
-        pub supported_creative_attributes: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing the specified type of user data will match. Possible values are HOSTED_MATCH_DATA, which means the request is cookie-targetable and has a match in the buyer's hosted match table, and COOKIE_OR_IDFA, which means the request has either a targetable cookie or an iOS IDFA."]
-        #[serde(rename = "userIdentifierDataRequired", default)]
-        pub user_identifier_data_required: ::std::option::Option<Vec<String>>,
-        #[doc = "Requests containing any of these user list ids will match."]
-        #[serde(rename = "userLists", default)]
-        pub user_lists: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests that allow any of these vendor ids will match. Values are from vendors.txt in the downloadable files section."]
-        #[serde(rename = "vendorTypes", default)]
-        pub vendor_types: ::std::option::Option<Vec<i64>>,
-        #[doc = "Requests containing any of these vertical ids will match."]
-        #[serde(rename = "verticals", default)]
-        pub verticals: ::std::option::Option<Vec<i64>>,
-        #[doc = "Video requests satisfying any of these player size constraints will match."]
-        #[serde(rename = "videoPlayerSizes", default)]
-        pub video_player_sizes:
-            ::std::option::Option<Vec<crate::schemas::PretargetingConfigVideoPlayerSizesItems>>,
-    }
-    impl ::field_selector::FieldSelector for PretargetingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9221,84 +9221,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9330,7 +9252,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -9456,8 +9377,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

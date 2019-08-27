@@ -168,6 +168,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BatchOperationMetadata {
+        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::BatchOperationMetadataState>,
+        #[doc = "The time when the batch request was submitted to the server."]
+        #[serde(rename = "submitTime", default)]
+        pub submit_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BatchOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchOperationMetadataState {
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
@@ -236,29 +268,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct BatchOperationMetadata {
-        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::BatchOperationMetadataState>,
-        #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
-        pub submit_time: ::std::option::Option<String>,
+    pub struct Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type: ::std::option::Option<crate::schemas::BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs: ::std::option::Option<Vec<crate::schemas::Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<crate::schemas::TextProperty>,
     }
-    impl ::field_selector::FieldSelector for BatchOperationMetadata {
+    impl ::field_selector::FieldSelector for Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -330,35 +359,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type: ::std::option::Option<crate::schemas::BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs: ::std::option::Option<Vec<crate::schemas::Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<crate::schemas::TextProperty>,
-    }
-    impl ::field_selector::FieldSelector for Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -476,6 +476,35 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::DetectedBreakType>,
+    }
+    impl ::field_selector::FieldSelector for DetectedBreak {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DetectedBreakType {
         #[doc = "Line-wrapping break."]
@@ -539,35 +568,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for DetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::DetectedBreakType>,
-    }
-    impl ::field_selector::FieldSelector for DetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -646,6 +646,70 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationAngerLikelihood>,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood:
+            ::std::option::Option<crate::schemas::FaceAnnotationBlurredLikelihood>,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood:
+            ::std::option::Option<crate::schemas::FaceAnnotationHeadwearLikelihood>,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationJoyLikelihood>,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<Vec<crate::schemas::Landmark>>,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood:
+            ::std::option::Option<crate::schemas::FaceAnnotationSorrowLikelihood>,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood:
+            ::std::option::Option<crate::schemas::FaceAnnotationSurpriseLikelihood>,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood:
+            ::std::option::Option<crate::schemas::FaceAnnotationUnderExposedLikelihood>,
+    }
+    impl ::field_selector::FieldSelector for FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1152,70 +1216,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationAngerLikelihood>,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood:
-            ::std::option::Option<crate::schemas::FaceAnnotationBlurredLikelihood>,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood:
-            ::std::option::Option<crate::schemas::FaceAnnotationHeadwearLikelihood>,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationJoyLikelihood>,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<Vec<crate::schemas::Landmark>>,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood:
-            ::std::option::Option<crate::schemas::FaceAnnotationSorrowLikelihood>,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood:
-            ::std::option::Option<crate::schemas::FaceAnnotationSurpriseLikelihood>,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood:
-            ::std::option::Option<crate::schemas::FaceAnnotationUnderExposedLikelihood>,
-    }
-    impl ::field_selector::FieldSelector for FaceAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1414,6 +1414,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Block {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1BlockBlockType {
         #[doc = "Barcode block."]
@@ -1477,40 +1511,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P1Beta1Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1658,6 +1658,83 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood,
+        >,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood,
+        >,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood,
+        >,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood,
+        >,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark>,
+        >,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood,
+        >,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood,
+        >,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2238,72 +2315,17 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P1Beta1FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood,
-        >,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood,
-        >,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood,
-        >,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood,
-        >,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark>,
-        >,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood,
-        >,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood,
-        >,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood,
+    pub struct GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1FaceAnnotation {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2608,28 +2630,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1Position>,
-        #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2828,6 +2828,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P1Beta1OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -2891,39 +2924,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P1Beta1OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3213,6 +3213,54 @@ pub mod schemas {
         pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Property {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult,
+        >,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical,
+        >,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy,
+        >,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof,
+        >,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3593,54 +3641,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P1Beta1SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult,
-        >,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical,
-        >,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy,
-        >,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof,
-        >,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1SafeSearchAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P1Beta1Symbol {
@@ -3681,6 +3681,37 @@ pub mod schemas {
         pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1TextAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3764,37 +3795,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4408,6 +4408,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Block {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1BlockBlockType {
         #[doc = "Barcode block."]
@@ -4471,40 +4505,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P2Beta1Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4669,6 +4669,83 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood,
+        >,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood,
+        >,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood,
+        >,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood,
+        >,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark>,
+        >,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood,
+        >,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood,
+        >,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5249,72 +5326,17 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P2Beta1FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood,
-        >,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood,
-        >,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood,
-        >,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood,
-        >,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark>,
-        >,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood,
-        >,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood,
-        >,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood,
+    pub struct GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1FaceAnnotation {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5619,19 +5641,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1Position>,
-        #[doc = "Face landmark type."]
+    pub struct GoogleCloudVisionV1P2Beta1Feature {
+        #[doc = "Maximum number of results of this type. Does not apply to\n`TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`."]
+        #[serde(rename = "maxResults", default)]
+        pub max_results: ::std::option::Option<i32>,
+        #[doc = "Model to use for the feature.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"."]
+        #[serde(rename = "model", default)]
+        pub model: ::std::option::Option<String>,
+        #[doc = "The feature type."]
         #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType,
-        >,
+        pub r#type: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1FeatureType>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Feature {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5739,38 +5771,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1FeatureType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P2Beta1Feature {
-        #[doc = "Maximum number of results of this type. Does not apply to\n`TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`."]
-        #[serde(rename = "maxResults", default)]
-        pub max_results: ::std::option::Option<i32>,
-        #[doc = "Model to use for the feature.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"."]
-        #[serde(rename = "model", default)]
-        pub model: ::std::option::Option<String>,
-        #[doc = "The feature type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1FeatureType>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Feature {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6089,6 +6089,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P2Beta1OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -6152,39 +6185,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P2Beta1OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6501,6 +6501,54 @@ pub mod schemas {
         pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Property {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult,
+        >,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical,
+        >,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy,
+        >,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof,
+        >,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6881,54 +6929,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P2Beta1SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult,
-        >,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical,
-        >,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy,
-        >,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof,
-        >,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1SafeSearchAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P2Beta1Symbol {
@@ -6969,6 +6969,37 @@ pub mod schemas {
         pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1TextAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7052,37 +7083,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7515,6 +7515,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
+        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1BatchOperationMetadataState,
+        >,
+        #[doc = "The time when the batch request was submitted to the server."]
+        #[serde(rename = "submitTime", default)]
+        pub submit_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
@@ -7587,31 +7621,31 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
-        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1BatchOperationMetadataState,
+    pub struct GoogleCloudVisionV1P3Beta1Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
-        #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
-        pub submit_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7683,40 +7717,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P3Beta1Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -7864,6 +7864,83 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood,
+        >,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood,
+        >,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood,
+        >,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood,
+        >,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark>,
+        >,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood,
+        >,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood,
+        >,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8444,72 +8521,17 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P3Beta1FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood,
-        >,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood,
-        >,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood,
-        >,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood,
-        >,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark>,
-        >,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood,
-        >,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood,
-        >,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood,
+    pub struct GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1FaceAnnotation {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -8814,28 +8836,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1Position>,
-        #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -9053,6 +9053,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P3Beta1OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -9116,39 +9149,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P3Beta1OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9462,6 +9462,54 @@ pub mod schemas {
         pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1ReferenceImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult,
+        >,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical,
+        >,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy,
+        >,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof,
+        >,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9842,54 +9890,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P3Beta1SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult,
-        >,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical,
-        >,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy,
-        >,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof,
-        >,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1SafeSearchAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P3Beta1Symbol {
@@ -9930,6 +9930,37 @@ pub mod schemas {
         pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1TextAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10013,37 +10044,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10505,6 +10505,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
+        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1BatchOperationMetadataState,
+        >,
+        #[doc = "The time when the batch request was submitted to the server."]
+        #[serde(rename = "submitTime", default)]
+        pub submit_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
@@ -10577,31 +10611,31 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
-        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1BatchOperationMetadataState,
+    pub struct GoogleCloudVisionV1P4Beta1Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
-        #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
-        pub submit_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10673,40 +10707,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -10854,6 +10854,83 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood,
+        >,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood,
+        >,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood,
+        >,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood,
+        >,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark>,
+        >,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood,
+        >,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood,
+        >,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -11434,72 +11511,17 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P4Beta1FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood,
-        >,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood,
-        >,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood,
-        >,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood,
-        >,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark>,
-        >,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood,
-        >,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood,
-        >,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood,
+    pub struct GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1FaceAnnotation {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -11804,28 +11826,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1Position>,
-        #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -12060,6 +12060,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -12123,39 +12156,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -12453,6 +12453,28 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1QualityOptimizationResult { # [ doc = "Optimized image bytes." ] # [ serde ( rename = "image" , default ) ] pub image : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Mime type of the output image." ] # [ serde ( rename = "mimeType" , default ) ] pub mime_type : :: std :: option :: Option < String > , # [ doc = "Required optimization type." ] # [ serde ( rename = "qualityOptimizationType" , default ) ] pub quality_optimization_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType > , }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1QualityOptimizationResult {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
         #[doc = "Reduce image file size. Detailed params specified in CompressionConfig.\nIf customer do not specify CompressionConfig, it will reduce image file\nsize while not reducing image quality. If customer specify\nCompressionConfig, we will reduce file size while keeping\nCompressionParams.target_quality."]
@@ -12509,28 +12531,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1QualityOptimizationResult { # [ doc = "Optimized image bytes." ] # [ serde ( rename = "image" , default ) ] pub image : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Mime type of the output image." ] # [ serde ( rename = "mimeType" , default ) ] pub mime_type : :: std :: option :: Option < String > , # [ doc = "Required optimization type." ] # [ serde ( rename = "qualityOptimizationType" , default ) ] pub quality_optimization_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1QualityOptimizationResult {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P4Beta1ReferenceImage {
@@ -12546,6 +12546,63 @@ pub mod schemas {
         pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ReferenceImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult,
+        >,
+        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "adultConfidence", default)]
+        pub adult_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical,
+        >,
+        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "medicalConfidence", default)]
+        pub medical_confidence: ::std::option::Option<f32>,
+        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "nsfwConfidence", default)]
+        pub nsfw_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy,
+        >,
+        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "racyConfidence", default)]
+        pub racy_confidence: ::std::option::Option<f32>,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof,
+        >,
+        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "spoofConfidence", default)]
+        pub spoof_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence,
+        >,
+        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "violenceConfidence", default)]
+        pub violence_confidence: ::std::option::Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -12928,63 +12985,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult,
-        >,
-        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
-        pub adult_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical,
-        >,
-        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
-        pub medical_confidence: ::std::option::Option<f32>,
-        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
-        pub nsfw_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy,
-        >,
-        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
-        pub racy_confidence: ::std::option::Option<f32>,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof,
-        >,
-        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
-        pub spoof_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence,
-        >,
-        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
-        pub violence_confidence: ::std::option::Option<f32>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct GoogleCloudVisionV1P4Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
         #[serde(rename = "boundingBox", default)]
@@ -13023,6 +13023,37 @@ pub mod schemas {
         pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1TextAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13106,37 +13137,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13589,6 +13589,40 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
+        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1BatchOperationMetadataState,
+        >,
+        #[doc = "The time when the batch request was submitted to the server."]
+        #[serde(rename = "submitTime", default)]
+        pub submit_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
         #[doc = "The request is done after the longrunning.Operations.CancelOperation has\nbeen called by the user.  Any records that were processed before the\ncancel command are output as specified in the request."]
@@ -13661,31 +13695,41 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
-        #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: ::std::option::Option<String>,
-        #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1BatchOperationMetadataState,
+    pub struct GoogleCloudVisionV1P5Beta1Block {
+        #[doc = "Detected block type (text, image etc) for this block."]
+        #[serde(rename = "blockType", default)]
+        pub block_type:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BlockBlockType>,
+        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
+        #[serde(rename = "boundingBox", default)]
+        pub bounding_box:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
+        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
+        #[serde(rename = "confidence", default)]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "Detected pair for KEY_VALUE_PAIR block_type. This detection can be turned\noff by explicitly setting desired fields in\nDocumentParsingParams.block_filter."]
+        #[serde(rename = "keyValuePair", default)]
+        pub key_value_pair:
+            ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1KeyValuePair>>,
+        #[doc = "All UTF-8 text detected in this block. This field is by default not\nreturned unless specified in TextDetectionParams.block_filter or\nDocumentParsingParams.block_filter."]
+        #[serde(rename = "mergedText", default)]
+        pub merged_text: ::std::option::Option<String>,
+        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
+        #[serde(rename = "paragraphs", default)]
+        pub paragraphs:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Paragraph>>,
+        #[doc = "Additional information detected for the block."]
+        #[serde(rename = "property", default)]
+        pub property: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
-        #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
-        pub submit_time: ::std::option::Option<String>,
+        #[doc = "Detected table for TABLE block_type. This detection can be turned off by\nexplicitly setting desired fields in DocumentParsingParams.block_filter."]
+        #[serde(rename = "table", default)]
+        pub table: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Table>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13761,50 +13805,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1BlockBlockType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P5Beta1Block {
-        #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
-        pub block_type:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BlockBlockType>,
-        #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
-        pub bounding_box:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
-        #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
-        pub confidence: ::std::option::Option<f32>,
-        #[doc = "Detected pair for KEY_VALUE_PAIR block_type. This detection can be turned\noff by explicitly setting desired fields in\nDocumentParsingParams.block_filter."]
-        #[serde(rename = "keyValuePair", default)]
-        pub key_value_pair:
-            ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1KeyValuePair>>,
-        #[doc = "All UTF-8 text detected in this block. This field is by default not\nreturned unless specified in TextDetectionParams.block_filter or\nDocumentParsingParams.block_filter."]
-        #[serde(rename = "mergedText", default)]
-        pub merged_text: ::std::option::Option<String>,
-        #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
-        pub paragraphs:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Paragraph>>,
-        #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
-        pub property: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
-        >,
-        #[doc = "Detected table for TABLE block_type. This detection can be turned off by\nexplicitly setting desired fields in DocumentParsingParams.block_filter."]
-        #[serde(rename = "table", default)]
-        pub table: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Table>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Block {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -13952,6 +13952,83 @@ pub mod schemas {
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1EntityAnnotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1FaceAnnotation {
+        #[doc = "Anger likelihood."]
+        #[serde(rename = "angerLikelihood", default)]
+        pub anger_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood,
+        >,
+        #[doc = "Blurred likelihood."]
+        #[serde(rename = "blurredLikelihood", default)]
+        pub blurred_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood,
+        >,
+        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
+        #[serde(rename = "boundingPoly", default)]
+        pub bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
+        #[doc = "Detection confidence. Range [0, 1]."]
+        #[serde(rename = "detectionConfidence", default)]
+        pub detection_confidence: ::std::option::Option<f32>,
+        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
+        #[serde(rename = "fdBoundingPoly", default)]
+        pub fd_bounding_poly:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
+        #[doc = "Headwear likelihood."]
+        #[serde(rename = "headwearLikelihood", default)]
+        pub headwear_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood,
+        >,
+        #[doc = "Joy likelihood."]
+        #[serde(rename = "joyLikelihood", default)]
+        pub joy_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood,
+        >,
+        #[doc = "Face landmarking confidence. Range [0, 1]."]
+        #[serde(rename = "landmarkingConfidence", default)]
+        pub landmarking_confidence: ::std::option::Option<f32>,
+        #[doc = "Detected face landmarks."]
+        #[serde(rename = "landmarks", default)]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark>,
+        >,
+        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
+        #[serde(rename = "panAngle", default)]
+        pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
+        #[serde(rename = "rollAngle", default)]
+        pub roll_angle: ::std::option::Option<f32>,
+        #[doc = "Sorrow likelihood."]
+        #[serde(rename = "sorrowLikelihood", default)]
+        pub sorrow_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood,
+        >,
+        #[doc = "Surprise likelihood."]
+        #[serde(rename = "surpriseLikelihood", default)]
+        pub surprise_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood,
+        >,
+        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
+        #[serde(rename = "tiltAngle", default)]
+        pub tilt_angle: ::std::option::Option<f32>,
+        #[doc = "Under-exposed likelihood."]
+        #[serde(rename = "underExposedLikelihood", default)]
+        pub under_exposed_likelihood: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1FaceAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -14532,72 +14609,17 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P5Beta1FaceAnnotation {
-        #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
-        pub anger_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood,
-        >,
-        #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
-        pub blurred_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood,
-        >,
-        #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
-        pub bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
-        #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
-        pub detection_confidence: ::std::option::Option<f32>,
-        #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
-        pub fd_bounding_poly:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
-        #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
-        pub headwear_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood,
-        >,
-        #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
-        pub joy_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood,
-        >,
-        #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
-        pub landmarking_confidence: ::std::option::Option<f32>,
-        #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
-        pub landmarks: ::std::option::Option<
-            Vec<crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark>,
-        >,
-        #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
-        pub pan_angle: ::std::option::Option<f32>,
-        #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
-        pub roll_angle: ::std::option::Option<f32>,
-        #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
-        pub sorrow_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood,
-        >,
-        #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
-        pub surprise_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood,
-        >,
-        #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
-        pub tilt_angle: ::std::option::Option<f32>,
-        #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
-        pub under_exposed_likelihood: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood,
+    pub struct GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1FaceAnnotation {
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -14902,28 +14924,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Position>,
-        #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -15171,6 +15171,39 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -15234,39 +15267,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P5Beta1OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -15586,6 +15586,63 @@ pub mod schemas {
         pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1ReferenceImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult,
+        >,
+        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "adultConfidence", default)]
+        pub adult_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical,
+        >,
+        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "medicalConfidence", default)]
+        pub medical_confidence: ::std::option::Option<f32>,
+        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "nsfwConfidence", default)]
+        pub nsfw_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy,
+        >,
+        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "racyConfidence", default)]
+        pub racy_confidence: ::std::option::Option<f32>,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof,
+        >,
+        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "spoofConfidence", default)]
+        pub spoof_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence,
+        >,
+        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "violenceConfidence", default)]
+        pub violence_confidence: ::std::option::Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -15968,63 +16025,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult,
-        >,
-        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
-        pub adult_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical,
-        >,
-        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
-        pub medical_confidence: ::std::option::Option<f32>,
-        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
-        pub nsfw_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy,
-        >,
-        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
-        pub racy_confidence: ::std::option::Option<f32>,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof,
-        >,
-        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
-        pub spoof_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence,
-        >,
-        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
-        pub violence_confidence: ::std::option::Option<f32>,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct GoogleCloudVisionV1P5Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
         #[serde(rename = "boundingBox", default)]
@@ -16137,6 +16137,37 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak {
+        #[doc = "True if break prepends the element."]
+        #[serde(rename = "isPrefix", default)]
+        pub is_prefix: ::std::option::Option<bool>,
+        #[doc = "Detected break type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType,
+        >,
+    }
+    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
         #[doc = "Line-wrapping break."]
@@ -16212,37 +16243,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak {
-        #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
-        pub is_prefix: ::std::option::Option<bool>,
-        #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType,
-        >,
-    }
-    impl ::field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16650,6 +16650,26 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Landmark {
+        #[doc = "Face landmark position."]
+        #[serde(rename = "position", default)]
+        pub position: ::std::option::Option<crate::schemas::Position>,
+        #[doc = "Face landmark type."]
+        #[serde(rename = "type", default)]
+        pub r#type: ::std::option::Option<crate::schemas::LandmarkType>,
+    }
+    impl ::field_selector::FieldSelector for Landmark {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LandmarkType {
         #[doc = "Chin gnathion."]
@@ -16840,26 +16860,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct Landmark {
-        #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
-        pub position: ::std::option::Option<crate::schemas::Position>,
-        #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
-        pub r#type: ::std::option::Option<crate::schemas::LandmarkType>,
-    }
-    impl ::field_selector::FieldSelector for Landmark {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
         #[serde(rename = "latitude", default)]
@@ -16972,6 +16972,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationMetadata {
+        #[doc = "The time when the batch request was received."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Current state of the batch operation."]
+        #[serde(rename = "state", default)]
+        pub state: ::std::option::Option<crate::schemas::OperationMetadataState>,
+        #[doc = "The time when the operation result was last updated."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for OperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationMetadataState {
         #[doc = "The batch processing was cancelled."]
@@ -17031,38 +17063,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for OperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationMetadata {
-        #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::schemas::OperationMetadataState>,
-        #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -17310,6 +17310,53 @@ pub mod schemas {
         pub score: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for Result {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SafeSearchAnnotation {
+        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
+        #[serde(rename = "adult", default)]
+        pub adult: ::std::option::Option<crate::schemas::SafeSearchAnnotationAdult>,
+        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "adultConfidence", default)]
+        pub adult_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this is a medical image."]
+        #[serde(rename = "medical", default)]
+        pub medical: ::std::option::Option<crate::schemas::SafeSearchAnnotationMedical>,
+        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "medicalConfidence", default)]
+        pub medical_confidence: ::std::option::Option<f32>,
+        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "nsfwConfidence", default)]
+        pub nsfw_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
+        #[serde(rename = "racy", default)]
+        pub racy: ::std::option::Option<crate::schemas::SafeSearchAnnotationRacy>,
+        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
+        #[serde(rename = "racyConfidence", default)]
+        pub racy_confidence: ::std::option::Option<f32>,
+        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
+        #[serde(rename = "spoof", default)]
+        pub spoof: ::std::option::Option<crate::schemas::SafeSearchAnnotationSpoof>,
+        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "spoofConfidence", default)]
+        pub spoof_confidence: ::std::option::Option<f32>,
+        #[doc = "Likelihood that this image contains violent content."]
+        #[serde(rename = "violence", default)]
+        pub violence: ::std::option::Option<crate::schemas::SafeSearchAnnotationViolence>,
+        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
+        #[serde(rename = "violenceConfidence", default)]
+        pub violence_confidence: ::std::option::Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -17665,53 +17712,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for SafeSearchAnnotationViolence {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct SafeSearchAnnotation {
-        #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
-        pub adult: ::std::option::Option<crate::schemas::SafeSearchAnnotationAdult>,
-        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
-        pub adult_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
-        pub medical: ::std::option::Option<crate::schemas::SafeSearchAnnotationMedical>,
-        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
-        pub medical_confidence: ::std::option::Option<f32>,
-        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
-        pub nsfw_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
-        pub racy: ::std::option::Option<crate::schemas::SafeSearchAnnotationRacy>,
-        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
-        pub racy_confidence: ::std::option::Option<f32>,
-        #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
-        pub spoof: ::std::option::Option<crate::schemas::SafeSearchAnnotationSpoof>,
-        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
-        pub spoof_confidence: ::std::option::Option<f32>,
-        #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
-        pub violence: ::std::option::Option<crate::schemas::SafeSearchAnnotationViolence>,
-        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
-        pub violence_confidence: ::std::option::Option<f32>,
-    }
-    impl ::field_selector::FieldSelector for SafeSearchAnnotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -20624,84 +20624,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -20733,134 +20655,10 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+// Bytes in google apis are represented as urlsafe base64 encoded strings.
+// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+// internally to handle byte fields in google apis.
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

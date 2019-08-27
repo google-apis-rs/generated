@@ -1110,125 +1110,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct OperationErrorErrorsItems {
-        #[doc = "[Output Only] The error type identifier for this error."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "[Output Only] Indicates the field in the request that caused the error. This property is optional."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "[Output Only] An optional, human-readable error message."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for OperationErrorErrorsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationError {
-        #[doc = "[Output Only] The array of errors encountered while processing this operation."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::OperationErrorErrorsItems>>,
-    }
-    impl ::field_selector::FieldSelector for OperationError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationWarningsItemsDataItems {
-        #[doc = "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "[Output Only] A warning data value corresponding to the key."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for OperationWarningsItemsDataItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationWarningsItems {
-        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<Vec<crate::schemas::OperationWarningsItemsDataItems>>,
-        #[doc = "[Output Only] A human-readable description of the warning code."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for OperationWarningsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Operation {
         #[doc = "[Output Only] The value of `requestId` if you provided it in the request. Not present otherwise."]
         #[serde(rename = "clientOperationId", default)]
@@ -1303,6 +1184,125 @@ pub mod schemas {
         pub zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Operation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationError {
+        #[doc = "[Output Only] The array of errors encountered while processing this operation."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::OperationErrorErrorsItems>>,
+    }
+    impl ::field_selector::FieldSelector for OperationError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationErrorErrorsItems {
+        #[doc = "[Output Only] The error type identifier for this error."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "[Output Only] Indicates the field in the request that caused the error. This property is optional."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "[Output Only] An optional, human-readable error message."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for OperationErrorErrorsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationWarningsItems {
+        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<Vec<crate::schemas::OperationWarningsItemsDataItems>>,
+        #[doc = "[Output Only] A human-readable description of the warning code."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for OperationWarningsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationWarningsItemsDataItems {
+        #[doc = "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "[Output Only] A warning data value corresponding to the key."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for OperationWarningsItemsDataItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1466,67 +1466,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResourceWarningsItemsDataItems {
-        #[doc = "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<String>,
-        #[doc = "[Output Only] A warning data value corresponding to the key."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ResourceWarningsItemsDataItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResourceWarningsItems {
-        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<Vec<crate::schemas::ResourceWarningsItemsDataItems>>,
-        #[doc = "[Output Only] A human-readable description of the warning code."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ResourceWarningsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Resource {
         #[doc = "The Access Control Policy set on this resource."]
         #[serde(rename = "accessControl", default)]
@@ -1592,44 +1531,18 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResourceAccessControl {
-        #[doc = "The GCP IAM Policy to set on the resource."]
-        #[serde(rename = "gcpIamPolicy", default)]
-        pub gcp_iam_policy: ::std::option::Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ResourceAccessControl {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResourceUpdateErrorErrorsItems {
-        #[doc = "[Output Only] The error type identifier for this error."]
+    pub struct ResourceWarningsItems {
+        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
         #[serde(rename = "code", default)]
         pub code: ::std::option::Option<String>,
-        #[doc = "[Output Only] Indicates the field in the request that caused the error. This property is optional."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<String>,
-        #[doc = "[Output Only] An optional, human-readable error message."]
+        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<Vec<crate::schemas::ResourceWarningsItemsDataItems>>,
+        #[doc = "[Output Only] A human-readable description of the warning code."]
         #[serde(rename = "message", default)]
         pub message: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ResourceUpdateErrorErrorsItems {
+    impl ::field_selector::FieldSelector for ResourceWarningsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1650,33 +1563,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResourceUpdateError {
-        #[doc = "[Output Only] The array of errors encountered while processing this operation."]
-        #[serde(rename = "errors", default)]
-        pub errors: ::std::option::Option<Vec<crate::schemas::ResourceUpdateErrorErrorsItems>>,
-    }
-    impl ::field_selector::FieldSelector for ResourceUpdateError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResourceUpdateWarningsItemsDataItems {
+    pub struct ResourceWarningsItemsDataItems {
         #[doc = "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."]
         #[serde(rename = "key", default)]
         pub key: ::std::option::Option<String>,
@@ -1684,7 +1571,7 @@ pub mod schemas {
         #[serde(rename = "value", default)]
         pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ResourceUpdateWarningsItemsDataItems {
+    impl ::field_selector::FieldSelector for ResourceWarningsItemsDataItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1705,18 +1592,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResourceUpdateWarningsItems {
-        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
-        #[serde(rename = "code", default)]
-        pub code: ::std::option::Option<String>,
-        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<Vec<crate::schemas::ResourceUpdateWarningsItemsDataItems>>,
-        #[doc = "[Output Only] A human-readable description of the warning code."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<String>,
+    pub struct ResourceAccessControl {
+        #[doc = "The GCP IAM Policy to set on the resource."]
+        #[serde(rename = "gcpIamPolicy", default)]
+        pub gcp_iam_policy: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ResourceUpdateWarningsItems {
+    impl ::field_selector::FieldSelector for ResourceAccessControl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1770,6 +1651,125 @@ pub mod schemas {
         pub warnings: ::std::option::Option<Vec<crate::schemas::ResourceUpdateWarningsItems>>,
     }
     impl ::field_selector::FieldSelector for ResourceUpdate {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceUpdateError {
+        #[doc = "[Output Only] The array of errors encountered while processing this operation."]
+        #[serde(rename = "errors", default)]
+        pub errors: ::std::option::Option<Vec<crate::schemas::ResourceUpdateErrorErrorsItems>>,
+    }
+    impl ::field_selector::FieldSelector for ResourceUpdateError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceUpdateErrorErrorsItems {
+        #[doc = "[Output Only] The error type identifier for this error."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "[Output Only] Indicates the field in the request that caused the error. This property is optional."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<String>,
+        #[doc = "[Output Only] An optional, human-readable error message."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResourceUpdateErrorErrorsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceUpdateWarningsItems {
+        #[doc = "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<String>,
+        #[doc = "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }"]
+        #[serde(rename = "data", default)]
+        pub data: ::std::option::Option<Vec<crate::schemas::ResourceUpdateWarningsItemsDataItems>>,
+        #[doc = "[Output Only] A human-readable description of the warning code."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResourceUpdateWarningsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceUpdateWarningsItemsDataItems {
+        #[doc = "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."]
+        #[serde(rename = "key", default)]
+        pub key: ::std::option::Option<String>,
+        #[doc = "[Output Only] A warning data value corresponding to the key."]
+        #[serde(rename = "value", default)]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResourceUpdateWarningsItemsDataItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -9823,84 +9823,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -9932,7 +9854,6 @@ mod parsed_string {
         }
     }
 }
-#[allow(dead_code)]
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
@@ -10058,8 +9979,7 @@ pub mod iter {
 } // Bytes in google apis are represented as urlsafe base64 encoded strings.
   // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
   // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
+pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]

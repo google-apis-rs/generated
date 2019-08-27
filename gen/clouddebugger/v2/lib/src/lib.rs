@@ -1,4 +1,33 @@
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AliasContext {
+        #[doc = "The alias kind."]
+        #[serde(rename = "kind", default)]
+        pub kind: ::std::option::Option<crate::schemas::AliasContextKind>,
+        #[doc = "The alias name."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AliasContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AliasContextKind {
         #[doc = "Do not use."]
@@ -74,15 +103,57 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AliasContext {
-        #[doc = "The alias kind."]
-        #[serde(rename = "kind", default)]
-        pub kind: ::std::option::Option<crate::schemas::AliasContextKind>,
-        #[doc = "The alias name."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
+    pub struct Breakpoint {
+        #[doc = "Action that the agent should perform when the code at the\nbreakpoint location is hit."]
+        #[serde(rename = "action", default)]
+        pub action: ::std::option::Option<crate::schemas::BreakpointAction>,
+        #[doc = "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location."]
+        #[serde(rename = "condition", default)]
+        pub condition: ::std::option::Option<String>,
+        #[doc = "Time this breakpoint was created by the server in seconds resolution."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text."]
+        #[serde(rename = "evaluatedExpressions", default)]
+        pub evaluated_expressions: ::std::option::Option<Vec<crate::schemas::Variable>>,
+        #[doc = "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements."]
+        #[serde(rename = "expressions", default)]
+        pub expressions: ::std::option::Option<Vec<String>>,
+        #[doc = "Time this breakpoint was finalized as seen by the server in seconds\nresolution."]
+        #[serde(rename = "finalTime", default)]
+        pub final_time: ::std::option::Option<String>,
+        #[doc = "Breakpoint identifier, unique in the scope of the debuggee."]
+        #[serde(rename = "id", default)]
+        pub id: ::std::option::Option<String>,
+        #[doc = "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on."]
+        #[serde(rename = "isFinalState", default)]
+        pub is_final_state: ::std::option::Option<bool>,
+        #[doc = "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user."]
+        #[serde(rename = "labels", default)]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Breakpoint source location."]
+        #[serde(rename = "location", default)]
+        pub location: ::std::option::Option<crate::schemas::SourceLocation>,
+        #[doc = "Indicates the severity of the log. Only relevant when action is `LOG`."]
+        #[serde(rename = "logLevel", default)]
+        pub log_level: ::std::option::Option<crate::schemas::BreakpointLogLevel>,
+        #[doc = "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`."]
+        #[serde(rename = "logMessageFormat", default)]
+        pub log_message_format: ::std::option::Option<String>,
+        #[doc = "The stack at breakpoint time, where stack_frames[0] represents the most\nrecently entered function."]
+        #[serde(rename = "stackFrames", default)]
+        pub stack_frames: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
+        #[doc = "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n* `Invalid line number` referring to location\n* `Field f not found in class C` referring to condition"]
+        #[serde(rename = "status", default)]
+        pub status: ::std::option::Option<crate::schemas::StatusMessage>,
+        #[doc = "E-mail address of the user that created this breakpoint"]
+        #[serde(rename = "userEmail", default)]
+        pub user_email: ::std::option::Option<String>,
+        #[doc = "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable."]
+        #[serde(rename = "variableTable", default)]
+        pub variable_table: ::std::option::Option<Vec<crate::schemas::Variable>>,
     }
-    impl ::field_selector::FieldSelector for AliasContext {
+    impl ::field_selector::FieldSelector for Breakpoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -197,77 +268,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for BreakpointLogLevel {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Breakpoint {
-        #[doc = "Action that the agent should perform when the code at the\nbreakpoint location is hit."]
-        #[serde(rename = "action", default)]
-        pub action: ::std::option::Option<crate::schemas::BreakpointAction>,
-        #[doc = "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location."]
-        #[serde(rename = "condition", default)]
-        pub condition: ::std::option::Option<String>,
-        #[doc = "Time this breakpoint was created by the server in seconds resolution."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text."]
-        #[serde(rename = "evaluatedExpressions", default)]
-        pub evaluated_expressions: ::std::option::Option<Vec<crate::schemas::Variable>>,
-        #[doc = "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements."]
-        #[serde(rename = "expressions", default)]
-        pub expressions: ::std::option::Option<Vec<String>>,
-        #[doc = "Time this breakpoint was finalized as seen by the server in seconds\nresolution."]
-        #[serde(rename = "finalTime", default)]
-        pub final_time: ::std::option::Option<String>,
-        #[doc = "Breakpoint identifier, unique in the scope of the debuggee."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<String>,
-        #[doc = "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on."]
-        #[serde(rename = "isFinalState", default)]
-        pub is_final_state: ::std::option::Option<bool>,
-        #[doc = "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user."]
-        #[serde(rename = "labels", default)]
-        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Breakpoint source location."]
-        #[serde(rename = "location", default)]
-        pub location: ::std::option::Option<crate::schemas::SourceLocation>,
-        #[doc = "Indicates the severity of the log. Only relevant when action is `LOG`."]
-        #[serde(rename = "logLevel", default)]
-        pub log_level: ::std::option::Option<crate::schemas::BreakpointLogLevel>,
-        #[doc = "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`."]
-        #[serde(rename = "logMessageFormat", default)]
-        pub log_message_format: ::std::option::Option<String>,
-        #[doc = "The stack at breakpoint time, where stack_frames[0] represents the most\nrecently entered function."]
-        #[serde(rename = "stackFrames", default)]
-        pub stack_frames: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
-        #[doc = "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n* `Invalid line number` referring to location\n* `Field f not found in class C` referring to condition"]
-        #[serde(rename = "status", default)]
-        pub status: ::std::option::Option<crate::schemas::StatusMessage>,
-        #[doc = "E-mail address of the user that created this breakpoint"]
-        #[serde(rename = "userEmail", default)]
-        pub user_email: ::std::option::Option<String>,
-        #[doc = "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable."]
-        #[serde(rename = "variableTable", default)]
-        pub variable_table: ::std::option::Option<Vec<crate::schemas::Variable>>,
-    }
-    impl ::field_selector::FieldSelector for Breakpoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -918,6 +918,38 @@ pub mod schemas {
             selector.push_str(ident);
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StatusMessage {
+        #[doc = "Status message text."]
+        #[serde(rename = "description", default)]
+        pub description: ::std::option::Option<crate::schemas::FormatMessage>,
+        #[doc = "Distinguishes errors from informational messages."]
+        #[serde(rename = "isError", default)]
+        pub is_error: ::std::option::Option<bool>,
+        #[doc = "Reference to which the message applies."]
+        #[serde(rename = "refersTo", default)]
+        pub refers_to: ::std::option::Option<crate::schemas::StatusMessageRefersTo>,
+    }
+    impl ::field_selector::FieldSelector for StatusMessage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StatusMessageRefersTo {
         #[doc = "Status applies to the breakpoint and is related to its age."]
@@ -985,38 +1017,6 @@ pub mod schemas {
         }
     }
     impl ::field_selector::FieldSelector for StatusMessageRefersTo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct StatusMessage {
-        #[doc = "Status message text."]
-        #[serde(rename = "description", default)]
-        pub description: ::std::option::Option<crate::schemas::FormatMessage>,
-        #[doc = "Distinguishes errors from informational messages."]
-        #[serde(rename = "isError", default)]
-        pub is_error: ::std::option::Option<bool>,
-        #[doc = "Reference to which the message applies."]
-        #[serde(rename = "refersTo", default)]
-        pub refers_to: ::std::option::Option<crate::schemas::StatusMessageRefersTo>,
-    }
-    impl ::field_selector::FieldSelector for StatusMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3158,84 +3158,6 @@ mod multipart {
         marker
     }
 }
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
 // A serde helper module that can be used with the `with` attribute
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
@@ -3264,174 +3186,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-#[allow(dead_code)]
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
-
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-#[allow(dead_code)]
-mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }
