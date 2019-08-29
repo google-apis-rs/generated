@@ -78,7 +78,8 @@ impl<'n> Engine<'n, ClientInner> {
         dry_run: bool,
         err: &mut InvalidOptionsError,
     ) -> Result<(), DoitError> {
-        let mut call = self.hub.url().get(opt.value_of("short-url").unwrap_or(""));
+        let mut keep = self.hub.url();
+        let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
         for parg in opt
             .values_of("v")
             .map(|i| i.collect())
@@ -130,12 +131,12 @@ impl<'n> Engine<'n, ClientInner> {
                 }
             };
             match match protocol {
-                CallType::Standard => call.execute(),
+                CallType::Standard => call.execute_with_all_fields(),
                 _ => unreachable!(),
             } {
                 Err(api_err) => Err(DoitError::ApiError(api_err)),
                 Ok(response) => {
-                    json::to_writer_pretty(&mut ostream, response).unwrap();
+                    json::to_writer_pretty(&mut ostream, &response).unwrap();
                     ostream.flush().unwrap();
                     Ok(())
                 }
@@ -317,7 +318,8 @@ impl<'n> Engine<'n, ClientInner> {
             }
         }
         let mut request: api::schemas::Url = json::value::from_value(object).unwrap();
-        let mut call = self.hub.url().insert(request);
+        let keep = self.hub.url();
+        let mut call = keep.insert(request);
         for parg in opt
             .values_of("v")
             .map(|i| i.collect())
@@ -365,7 +367,7 @@ impl<'n> Engine<'n, ClientInner> {
                 }
             };
             match match protocol {
-                CallType::Standard => call.execute(),
+                CallType::Standard => call.execute_with_all_fields(),
                 _ => unreachable!(),
             } {
                 Err(api_err) => Err(DoitError::ApiError(api_err)),
@@ -384,7 +386,8 @@ impl<'n> Engine<'n, ClientInner> {
         dry_run: bool,
         err: &mut InvalidOptionsError,
     ) -> Result<(), DoitError> {
-        let mut call = self.hub.url().list();
+        let keep = self.hub.url();
+        let mut call = keep.list();
         for parg in opt
             .values_of("v")
             .map(|i| i.collect())
@@ -440,7 +443,7 @@ impl<'n> Engine<'n, ClientInner> {
                 }
             };
             match match protocol {
-                CallType::Standard => call.execute(),
+                CallType::Standard => call.execute_with_all_fields(),
                 _ => unreachable!(),
             } {
                 Err(api_err) => Err(DoitError::ApiError(api_err)),

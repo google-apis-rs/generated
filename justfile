@@ -105,6 +105,6 @@ gen-cargo +arguments=check:
 gen-cargo-errors +arguments=check:
     {{MCP}} cargo-errors {{API_INDEX_MAPPED_JSON}} {{GEN_CARGO_TOML}} {{OUTPUT_DIR}} {{arguments}}
 
-# Run make on the given target
+# Run make on the given target, potentially providing arguments to cargo
 gen-make target +arguments=check:
-    make -C {{OUTPUT_DIR}} {{target}}-cargo ARGS={{arguments}}
+    make -C {{OUTPUT_DIR}} {{target}} ARGS={{arguments}}

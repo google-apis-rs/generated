@@ -498,31 +498,31 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Url, Box<dyn ::std::error::Error>> {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Url, Box<dyn ::std::error::Error>> {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -620,31 +620,31 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Url, Box<dyn ::std::error::Error>> {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Url, Box<dyn ::std::error::Error>> {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -755,31 +755,31 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::UrlHistory, Box<dyn ::std::error::Error>> {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::UrlHistory, Box<dyn ::std::error::Error>> {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
