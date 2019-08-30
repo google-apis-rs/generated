@@ -4,6 +4,7 @@ name = "google-urlshortener1-cli"
 version = "0.1.0"
 authors = ["Sebastian Thiel <byronimo@gmail.com>"]
 description = "A test-implementation to see how code could look like for latest API"
+edition = "2018"
 publish = false
 
 [[bin]]

@@ -1,23 +1,21 @@
 // COPY OF 'src/rust/cli/cmn.rs'
 // DO NOT EDIT
-use clap::{App, SubCommand};
+use clap::{arg_enum, App, SubCommand};
 use mime::Mime;
-use oauth2::{ApplicationSecret, ConsoleApplicationSecret, Token, TokenStorage};
-use serde_json as json;
-use serde_json::value::Value;
+use serde_json::{self as json, value::Value};
 use strsim;
+use yup_oauth2::{ApplicationSecret, ConsoleApplicationSecret, Token, TokenStorage};
 
-use std::env;
-use std::error::Error as StdError;
-use std::fmt;
-use std::fs;
-use std::io;
-use std::io::{stdout, Read, Write};
-use std::path::{Path, PathBuf};
-use std::str::FromStr;
-use std::string::ToString;
-
-use std::default::Default;
+use std::{
+    default::Default,
+    env,
+    error::Error as StdError,
+    fmt, fs, io,
+    io::{stdout, Read, Write},
+    path::{Path, PathBuf},
+    str::FromStr,
+    string::ToString,
+};
 
 const FIELD_SEP: char = '.';
 
@@ -704,7 +702,7 @@ pub struct InvalidOptionsError {
 impl fmt::Display for InvalidOptionsError {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         for issue in &self.issues {
-            try!(issue.fmt(f));
+            issue.fmt(f)?;
         }
         Ok(())
     }

@@ -2,25 +2,16 @@
 // This file was generated automatically from 'src/mako/cli/main.rs.mako'
 // DO NOT EDIT !
 #![allow(unused_variables, unused_imports, dead_code, unused_mut)]
+use clap::{arg_enum, App, Arg, SubCommand};
+use std::{
+    default::Default,
+    env,
+    io::{self, Write},
+    path::PathBuf,
+    str::FromStr,
+};
 
-#[macro_use]
-extern crate clap;
-extern crate google_api_auth;
-extern crate google_urlshortener1 as api;
-extern crate hyper;
-extern crate hyper_rustls;
-extern crate mime;
-extern crate serde;
-extern crate serde_json;
-extern crate strsim;
-extern crate yup_hyper_mock as mock;
-extern crate yup_oauth2 as oauth2;
-
-use clap::{App, Arg, SubCommand};
-use std::env;
-use std::io::{self, Write};
-use std::path::PathBuf;
-
+use google_urlshortener1 as api;
 use hyper::client::HttpConnector;
 use hyper_rustls::HttpsConnector;
 
@@ -32,12 +23,9 @@ use cmn::{
     FieldError, InvalidOptionsError, JsonTokenStorage, JsonType, JsonTypeInfo, UploadProtocol,
 };
 
-use std::default::Default;
-use std::str::FromStr;
-
 use clap::ArgMatches;
-use oauth2::{Authenticator, DefaultAuthenticatorDelegate, FlowType, GetToken};
 use serde_json as json;
+use yup_oauth2::Authenticator;
 
 //TODO: this probably should be a typedef coming from the api crate
 type Error = Box<dyn std::error::Error>;
@@ -55,7 +43,6 @@ where
         DoitError::ApiError(Box::new(e))
     }
 }
-
 
 fn main() {
     let mut exit_status = 0i32;
@@ -193,7 +180,9 @@ fn main() {
             writeln!(io::stderr(), "{}", err).ok();
         }
         Ok((opt, client)) => {
-            if let Err(doit_err) = doit(&client, &opt, false).expect("no failure should be possible"){
+            if let Err(doit_err) =
+                doit(&client, &opt, false).expect("no failure should be possible")
+            {
                 exit_status = 1;
                 match doit_err {
                     DoitError::IoError(path, err) => {
@@ -220,23 +209,32 @@ fn main() {
     std::process::exit(exit_status);
 }
 
-const GP: [&'static str;7 ] = [
-            "alt",
-            "fields",
-            "key",
-            "oauth-token",
-            "pretty-print",
-            "quota-user",
-            "user-ip",
-        ];
+const GP: [&'static str; 7] = [
+    "alt",
+    "fields",
+    "key",
+    "oauth-token",
+    "pretty-print",
+    "quota-user",
+    "user-ip",
+];
 
 const GPM: [(&'static str, &'static str); 4] = [
-            ("oauth-token", "oauth_token"),
-            ("pretty-print", "prettyPrint"),
-            ("quota-user", "quotaUser"),
-            ("user-ip", "userIp")];
+    ("oauth-token", "oauth_token"),
+    ("pretty-print", "prettyPrint"),
+    ("quota-user", "quotaUser"),
+    ("user-ip", "userIp"),
+];
 
-fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth::GetAccessToken + Send + Sync>), InvalidOptionsError> {
+fn new(
+    opt: ArgMatches,
+) -> Result<
+    (
+        ArgMatches,
+        api::Client<impl google_api_auth::GetAccessToken + Send + Sync>,
+    ),
+    InvalidOptionsError,
+> {
     let (config_dir, secret) = {
         let config_dir = match cmn::assure_config_dir_exists(
             opt.value_of("folder").unwrap_or("~/.google-service-cli"),
@@ -259,7 +257,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth:
 
     // InstalledFlow handles OAuth flows of that type. They are usually the ones where a user
     // grants access to their personal account (think Google Drive, Github API, etc.).
-    let inf = oauth2::InstalledFlow::new(
+    let inf = yup_oauth2::InstalledFlow::new(
         client.clone(),
         yup_oauth2::DefaultFlowDelegate,
         secret,
@@ -275,12 +273,12 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth:
     let auth = Authenticator::new_disk(
         client,
         inf,
-        oauth2::DefaultAuthenticatorDelegate,
+        yup_oauth2::DefaultAuthenticatorDelegate,
         PathBuf::from(config_dir)
             .join("token.json")
             .to_string_lossy(),
     )
-        .expect("create a new statically known client");
+    .expect("create a new statically known client");
 
     // TODO: fetch actual provided scopes
     let auth = google_api_auth::yup_oauth2::from_authenticator(
@@ -302,7 +300,9 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth:
     match doit(&client, &opt, true) {
         Err(Some(err)) => Err(err),
         Err(None) => Ok((opt, client)),
-        Ok(_) => unreachable!("dry runs are never successful, right now. TODO: can this be different?")
+        Ok(_) => {
+            unreachable!("dry runs are never successful, right now. TODO: can this be different?")
+        }
     }
 }
 
@@ -312,8 +312,8 @@ fn url_get<T>(
     dry_run: bool,
     err: &mut InvalidOptionsError,
 ) -> Result<(), DoitError>
-    where
-        T: google_api_auth::GetAccessToken
+where
+    T: google_api_auth::GetAccessToken,
 {
     let mut keep = hub.url();
     let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
@@ -322,34 +322,34 @@ fn url_get<T>(
         .map(|i| i.collect())
         .unwrap_or(Vec::new())
         .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                "projection" => {
-                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
-                }
-                _ => {
-                    let mut found = false;
-                    // TODO: params work differently
-                    // for param in &gp {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(GP.iter().map(|v| *v));
-                                v.extend(["projection"].iter().map(|v| *v));
-                                v
-                            }));
-                    }
+    {
+        let (key, value) = parse_kv_arg(&*parg, err, false);
+        match key {
+            "projection" => {
+                call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+            }
+            _ => {
+                let mut found = false;
+                // TODO: params work differently
+                // for param in &gp {
+                //     if key == *param {
+                //         found = true;
+                //         call = call.param(gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                //         break;
+                //     }
+                // }
+                if !found {
+                    err.issues
+                        .push(CLIError::UnknownParameter(key.to_string(), {
+                            let mut v = Vec::new();
+                            v.extend(GP.iter().map(|v| *v));
+                            v.extend(["projection"].iter().map(|v| *v));
+                            v
+                        }));
                 }
             }
         }
+    }
     let protocol = CallType::Standard;
     if dry_run {
         Ok(())
@@ -383,9 +383,11 @@ fn url_get<T>(
 
 fn doit<T>(
     hub: &api::Client<T>,
-    opt: &ArgMatches, dry_run: bool) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>>
-    where
-        T: google_api_auth::GetAccessToken
+    opt: &ArgMatches,
+    dry_run: bool,
+) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>>
+where
+    T: google_api_auth::GetAccessToken,
 {
     let mut err = InvalidOptionsError::new();
     let mut call_result: Result<(), DoitError> = Ok(());
@@ -429,7 +431,10 @@ fn url_insert<T>(
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError> where T: google_api_auth::GetAccessToken {
+) -> Result<(), DoitError>
+where
+    T: google_api_auth::GetAccessToken,
+{
     let mut field_cursor = FieldCursor::default();
     let mut object = json::value::Value::Object(Default::default());
 
@@ -438,165 +443,164 @@ fn url_insert<T>(
         .map(|i| i.collect())
         .unwrap_or(Vec::new())
         .iter()
-        {
-            let last_errc = err.issues.len();
-            let (key, value) = parse_kv_arg(&*kvarg, err, false);
-            let mut temp_cursor = field_cursor.clone();
-            if let Err(field_err) = temp_cursor.set(&*key) {
-                err.issues.push(field_err);
-            }
-            if value.is_none() {
-                field_cursor = temp_cursor.clone();
-                if err.issues.len() > last_errc {
-                    err.issues.remove(last_errc);
-                }
-                continue;
-            }
-
-            let type_info: Option<(&'static str, JsonTypeInfo)> = match &temp_cursor.to_string()[..]
-                {
-                    "status" => Some((
-                        "status",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "kind" => Some((
-                        "kind",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "created" => Some((
-                        "created",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.week.short-url-clicks" => Some((
-                        "analytics.week.shortUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.week.long-url-clicks" => Some((
-                        "analytics.week.longUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.all-time.short-url-clicks" => Some((
-                        "analytics.allTime.shortUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.all-time.long-url-clicks" => Some((
-                        "analytics.allTime.longUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.two-hours.short-url-clicks" => Some((
-                        "analytics.twoHours.shortUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.two-hours.long-url-clicks" => Some((
-                        "analytics.twoHours.longUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.day.short-url-clicks" => Some((
-                        "analytics.day.shortUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.day.long-url-clicks" => Some((
-                        "analytics.day.longUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.month.short-url-clicks" => Some((
-                        "analytics.month.shortUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "analytics.month.long-url-clicks" => Some((
-                        "analytics.month.longUrlClicks",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "long-url" => Some((
-                        "longUrl",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    "id" => Some((
-                        "id",
-                        JsonTypeInfo {
-                            jtype: JsonType::String,
-                            ctype: ComplexType::Pod,
-                        },
-                    )),
-                    _ => {
-                        let suggestion = FieldCursor::did_you_mean(
-                            key,
-                            &vec![
-                                "all-time",
-                                "analytics",
-                                "created",
-                                "day",
-                                "id",
-                                "kind",
-                                "long-url",
-                                "long-url-clicks",
-                                "month",
-                                "short-url-clicks",
-                                "status",
-                                "two-hours",
-                                "week",
-                            ],
-                        );
-                        err.issues.push(CLIError::Field(FieldError::Unknown(
-                            temp_cursor.to_string(),
-                            suggestion,
-                            value.map(|v| v.to_string()),
-                        )));
-                        None
-                    }
-                };
-            if let Some((field_cursor_str, type_info)) = type_info {
-                FieldCursor::from(field_cursor_str).set_json_value(
-                    &mut object,
-                    value.unwrap(),
-                    type_info,
-                    err,
-                    &temp_cursor,
-                );
-            }
+    {
+        let last_errc = err.issues.len();
+        let (key, value) = parse_kv_arg(&*kvarg, err, false);
+        let mut temp_cursor = field_cursor.clone();
+        if let Err(field_err) = temp_cursor.set(&*key) {
+            err.issues.push(field_err);
         }
+        if value.is_none() {
+            field_cursor = temp_cursor.clone();
+            if err.issues.len() > last_errc {
+                err.issues.remove(last_errc);
+            }
+            continue;
+        }
+
+        let type_info: Option<(&'static str, JsonTypeInfo)> = match &temp_cursor.to_string()[..] {
+            "status" => Some((
+                "status",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "kind" => Some((
+                "kind",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "created" => Some((
+                "created",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.week.short-url-clicks" => Some((
+                "analytics.week.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.week.long-url-clicks" => Some((
+                "analytics.week.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.all-time.short-url-clicks" => Some((
+                "analytics.allTime.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.all-time.long-url-clicks" => Some((
+                "analytics.allTime.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.two-hours.short-url-clicks" => Some((
+                "analytics.twoHours.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.two-hours.long-url-clicks" => Some((
+                "analytics.twoHours.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.day.short-url-clicks" => Some((
+                "analytics.day.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.day.long-url-clicks" => Some((
+                "analytics.day.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.month.short-url-clicks" => Some((
+                "analytics.month.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "analytics.month.long-url-clicks" => Some((
+                "analytics.month.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "long-url" => Some((
+                "longUrl",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            "id" => Some((
+                "id",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            )),
+            _ => {
+                let suggestion = FieldCursor::did_you_mean(
+                    key,
+                    &vec![
+                        "all-time",
+                        "analytics",
+                        "created",
+                        "day",
+                        "id",
+                        "kind",
+                        "long-url",
+                        "long-url-clicks",
+                        "month",
+                        "short-url-clicks",
+                        "status",
+                        "two-hours",
+                        "week",
+                    ],
+                );
+                err.issues.push(CLIError::Field(FieldError::Unknown(
+                    temp_cursor.to_string(),
+                    suggestion,
+                    value.map(|v| v.to_string()),
+                )));
+                None
+            }
+        };
+        if let Some((field_cursor_str, type_info)) = type_info {
+            FieldCursor::from(field_cursor_str).set_json_value(
+                &mut object,
+                value.unwrap(),
+                type_info,
+                err,
+                &temp_cursor,
+            );
+        }
+    }
     let mut request: api::schemas::Url = json::value::from_value(object).unwrap();
     let keep = hub.url();
     let mut call = keep.insert(request);
@@ -605,30 +609,30 @@ fn url_insert<T>(
         .map(|i| i.collect())
         .unwrap_or(Vec::new())
         .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                _ => {
-                    let mut found = false;
-                    // TODO: params
-                    // for param in &GP {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(GP.iter().map(|v| *v));
-                                v
-                            }));
-                    }
+    {
+        let (key, value) = parse_kv_arg(&*parg, err, false);
+        match key {
+            _ => {
+                let mut found = false;
+                // TODO: params
+                // for param in &GP {
+                //     if key == *param {
+                //         found = true;
+                //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                //         break;
+                //     }
+                // }
+                if !found {
+                    err.issues
+                        .push(CLIError::UnknownParameter(key.to_string(), {
+                            let mut v = Vec::new();
+                            v.extend(GP.iter().map(|v| *v));
+                            v
+                        }));
                 }
             }
         }
+    }
     let protocol = CallType::Standard;
     if dry_run {
         Ok(())
@@ -665,7 +669,10 @@ fn url_list<T>(
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError> where T: google_api_auth::GetAccessToken {
+) -> Result<(), DoitError>
+where
+    T: google_api_auth::GetAccessToken,
+{
     let keep = hub.url();
     let mut call = keep.list();
     for parg in opt
@@ -673,37 +680,37 @@ fn url_list<T>(
         .map(|i| i.collect())
         .unwrap_or(Vec::new())
         .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                "start-token" => {
-                    call = call.start_token(value.unwrap_or(""));
-                }
-                "projection" => {
-                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
-                }
-                _ => {
-                    let mut found = false;
-                    // TODO: figure out changed handling of parameters
-                    // for param in &GP {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(GP.iter().map(|v| *v));
-                                v.extend(["start-token", "projection"].iter().map(|v| *v));
-                                v
-                            }));
-                    }
+    {
+        let (key, value) = parse_kv_arg(&*parg, err, false);
+        match key {
+            "start-token" => {
+                call = call.start_token(value.unwrap_or(""));
+            }
+            "projection" => {
+                call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+            }
+            _ => {
+                let mut found = false;
+                // TODO: figure out changed handling of parameters
+                // for param in &GP {
+                //     if key == *param {
+                //         found = true;
+                //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                //         break;
+                //     }
+                // }
+                if !found {
+                    err.issues
+                        .push(CLIError::UnknownParameter(key.to_string(), {
+                            let mut v = Vec::new();
+                            v.extend(GP.iter().map(|v| *v));
+                            v.extend(["start-token", "projection"].iter().map(|v| *v));
+                            v
+                        }));
                 }
             }
         }
+    }
     let protocol = CallType::Standard;
     if dry_run {
         Ok(())
