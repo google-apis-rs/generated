@@ -2,6 +2,7 @@
   "standard": {
     "cargo_toml_path": "Cargo.toml",
     "lib_path": "src/lib.rs",
+    "metadata_path": "meta.json",
     "lib_dir": "lib",
     "spec_dir": "etc/api"
   },
@@ -9,6 +10,7 @@
     {
       "name": "abusiveexperiencereport",
       "id": "abusiveexperiencereport:v1",
+      "metadata_file": "abusiveexperiencereport/v1/meta.json",
       "lib_cargo_file": "abusiveexperiencereport/v1/lib/Cargo.toml",
       "gen_error_file": "abusiveexperiencereport/v1/generator-errors.log",
       "cargo_error_file": "abusiveexperiencereport/v1/cargo-errors.log",
@@ -21,6 +23,7 @@
     {
       "name": "acceleratedmobilepageurl",
       "id": "acceleratedmobilepageurl:v1",
+      "metadata_file": "acceleratedmobilepageurl/v1/meta.json",
       "lib_cargo_file": "acceleratedmobilepageurl/v1/lib/Cargo.toml",
       "gen_error_file": "acceleratedmobilepageurl/v1/generator-errors.log",
       "cargo_error_file": "acceleratedmobilepageurl/v1/cargo-errors.log",
@@ -33,6 +36,7 @@
     {
       "name": "accessapproval",
       "id": "accessapproval:v1beta1",
+      "metadata_file": "accessapproval/v1beta1/meta.json",
       "lib_cargo_file": "accessapproval/v1beta1/lib/Cargo.toml",
       "gen_error_file": "accessapproval/v1beta1/generator-errors.log",
       "cargo_error_file": "accessapproval/v1beta1/cargo-errors.log",
@@ -45,6 +49,7 @@
     {
       "name": "accesscontextmanager",
       "id": "accesscontextmanager:v1beta",
+      "metadata_file": "accesscontextmanager/v1beta/meta.json",
       "lib_cargo_file": "accesscontextmanager/v1beta/lib/Cargo.toml",
       "gen_error_file": "accesscontextmanager/v1beta/generator-errors.log",
       "cargo_error_file": "accesscontextmanager/v1beta/cargo-errors.log",
@@ -57,6 +62,7 @@
     {
       "name": "accesscontextmanager",
       "id": "accesscontextmanager:v1",
+      "metadata_file": "accesscontextmanager/v1/meta.json",
       "lib_cargo_file": "accesscontextmanager/v1/lib/Cargo.toml",
       "gen_error_file": "accesscontextmanager/v1/generator-errors.log",
       "cargo_error_file": "accesscontextmanager/v1/cargo-errors.log",
@@ -69,6 +75,7 @@
     {
       "name": "adexchangebuyer",
       "id": "adexchangebuyer:v1.2",
+      "metadata_file": "adexchangebuyer/v1.2/meta.json",
       "lib_cargo_file": "adexchangebuyer/v1.2/lib/Cargo.toml",
       "gen_error_file": "adexchangebuyer/v1.2/generator-errors.log",
       "cargo_error_file": "adexchangebuyer/v1.2/cargo-errors.log",
@@ -81,6 +88,7 @@
     {
       "name": "adexchangebuyer",
       "id": "adexchangebuyer:v1.3",
+      "metadata_file": "adexchangebuyer/v1.3/meta.json",
       "lib_cargo_file": "adexchangebuyer/v1.3/lib/Cargo.toml",
       "gen_error_file": "adexchangebuyer/v1.3/generator-errors.log",
       "cargo_error_file": "adexchangebuyer/v1.3/cargo-errors.log",
@@ -93,6 +101,7 @@
     {
       "name": "adexchangebuyer",
       "id": "adexchangebuyer:v1.4",
+      "metadata_file": "adexchangebuyer/v1.4/meta.json",
       "lib_cargo_file": "adexchangebuyer/v1.4/lib/Cargo.toml",
       "gen_error_file": "adexchangebuyer/v1.4/generator-errors.log",
       "cargo_error_file": "adexchangebuyer/v1.4/cargo-errors.log",
@@ -105,6 +114,7 @@
     {
       "name": "adexchangebuyer",
       "id": "adexchangebuyer2:v2beta1",
+      "metadata_file": "adexchangebuyer/v2beta1/meta.json",
       "lib_cargo_file": "adexchangebuyer/v2beta1/lib/Cargo.toml",
       "gen_error_file": "adexchangebuyer/v2beta1/generator-errors.log",
       "cargo_error_file": "adexchangebuyer/v2beta1/cargo-errors.log",
@@ -117,6 +127,7 @@
     {
       "name": "adexperiencereport",
       "id": "adexperiencereport:v1",
+      "metadata_file": "adexperiencereport/v1/meta.json",
       "lib_cargo_file": "adexperiencereport/v1/lib/Cargo.toml",
       "gen_error_file": "adexperiencereport/v1/generator-errors.log",
       "cargo_error_file": "adexperiencereport/v1/cargo-errors.log",
@@ -129,6 +140,7 @@
     {
       "name": "admin",
       "id": "admin:datatransfer_v1",
+      "metadata_file": "admin/datatransfer_v1/meta.json",
       "lib_cargo_file": "admin/datatransfer_v1/lib/Cargo.toml",
       "gen_error_file": "admin/datatransfer_v1/generator-errors.log",
       "cargo_error_file": "admin/datatransfer_v1/cargo-errors.log",
@@ -141,6 +153,7 @@
     {
       "name": "admin",
       "id": "admin:directory_v1",
+      "metadata_file": "admin/directory_v1/meta.json",
       "lib_cargo_file": "admin/directory_v1/lib/Cargo.toml",
       "gen_error_file": "admin/directory_v1/generator-errors.log",
       "cargo_error_file": "admin/directory_v1/cargo-errors.log",
@@ -153,6 +166,7 @@
     {
       "name": "admin",
       "id": "admin:reports_v1",
+      "metadata_file": "admin/reports_v1/meta.json",
       "lib_cargo_file": "admin/reports_v1/lib/Cargo.toml",
       "gen_error_file": "admin/reports_v1/generator-errors.log",
       "cargo_error_file": "admin/reports_v1/cargo-errors.log",
@@ -165,6 +179,7 @@
     {
       "name": "adsense",
       "id": "adsense:v1.4",
+      "metadata_file": "adsense/v1.4/meta.json",
       "lib_cargo_file": "adsense/v1.4/lib/Cargo.toml",
       "gen_error_file": "adsense/v1.4/generator-errors.log",
       "cargo_error_file": "adsense/v1.4/cargo-errors.log",
@@ -177,6 +192,7 @@
     {
       "name": "adsensehost",
       "id": "adsensehost:v4.1",
+      "metadata_file": "adsensehost/v4.1/meta.json",
       "lib_cargo_file": "adsensehost/v4.1/lib/Cargo.toml",
       "gen_error_file": "adsensehost/v4.1/generator-errors.log",
       "cargo_error_file": "adsensehost/v4.1/cargo-errors.log",
@@ -189,6 +205,7 @@
     {
       "name": "alertcenter",
       "id": "alertcenter:v1beta1",
+      "metadata_file": "alertcenter/v1beta1/meta.json",
       "lib_cargo_file": "alertcenter/v1beta1/lib/Cargo.toml",
       "gen_error_file": "alertcenter/v1beta1/generator-errors.log",
       "cargo_error_file": "alertcenter/v1beta1/cargo-errors.log",
@@ -201,6 +218,7 @@
     {
       "name": "analytics",
       "id": "analytics:v2.4",
+      "metadata_file": "analytics/v2.4/meta.json",
       "lib_cargo_file": "analytics/v2.4/lib/Cargo.toml",
       "gen_error_file": "analytics/v2.4/generator-errors.log",
       "cargo_error_file": "analytics/v2.4/cargo-errors.log",
@@ -213,6 +231,7 @@
     {
       "name": "analytics",
       "id": "analytics:v3",
+      "metadata_file": "analytics/v3/meta.json",
       "lib_cargo_file": "analytics/v3/lib/Cargo.toml",
       "gen_error_file": "analytics/v3/generator-errors.log",
       "cargo_error_file": "analytics/v3/cargo-errors.log",
@@ -225,6 +244,7 @@
     {
       "name": "analyticsreporting",
       "id": "analyticsreporting:v4",
+      "metadata_file": "analyticsreporting/v4/meta.json",
       "lib_cargo_file": "analyticsreporting/v4/lib/Cargo.toml",
       "gen_error_file": "analyticsreporting/v4/generator-errors.log",
       "cargo_error_file": "analyticsreporting/v4/cargo-errors.log",
@@ -237,6 +257,7 @@
     {
       "name": "androiddeviceprovisioning",
       "id": "androiddeviceprovisioning:v1",
+      "metadata_file": "androiddeviceprovisioning/v1/meta.json",
       "lib_cargo_file": "androiddeviceprovisioning/v1/lib/Cargo.toml",
       "gen_error_file": "androiddeviceprovisioning/v1/generator-errors.log",
       "cargo_error_file": "androiddeviceprovisioning/v1/cargo-errors.log",
@@ -249,6 +270,7 @@
     {
       "name": "androidenterprise",
       "id": "androidenterprise:v1",
+      "metadata_file": "androidenterprise/v1/meta.json",
       "lib_cargo_file": "androidenterprise/v1/lib/Cargo.toml",
       "gen_error_file": "androidenterprise/v1/generator-errors.log",
       "cargo_error_file": "androidenterprise/v1/cargo-errors.log",
@@ -261,6 +283,7 @@
     {
       "name": "androidmanagement",
       "id": "androidmanagement:v1",
+      "metadata_file": "androidmanagement/v1/meta.json",
       "lib_cargo_file": "androidmanagement/v1/lib/Cargo.toml",
       "gen_error_file": "androidmanagement/v1/generator-errors.log",
       "cargo_error_file": "androidmanagement/v1/cargo-errors.log",
@@ -273,6 +296,7 @@
     {
       "name": "androidpublisher",
       "id": "androidpublisher:v1",
+      "metadata_file": "androidpublisher/v1/meta.json",
       "lib_cargo_file": "androidpublisher/v1/lib/Cargo.toml",
       "gen_error_file": "androidpublisher/v1/generator-errors.log",
       "cargo_error_file": "androidpublisher/v1/cargo-errors.log",
@@ -285,6 +309,7 @@
     {
       "name": "androidpublisher",
       "id": "androidpublisher:v1.1",
+      "metadata_file": "androidpublisher/v1.1/meta.json",
       "lib_cargo_file": "androidpublisher/v1.1/lib/Cargo.toml",
       "gen_error_file": "androidpublisher/v1.1/generator-errors.log",
       "cargo_error_file": "androidpublisher/v1.1/cargo-errors.log",
@@ -297,6 +322,7 @@
     {
       "name": "androidpublisher",
       "id": "androidpublisher:v2",
+      "metadata_file": "androidpublisher/v2/meta.json",
       "lib_cargo_file": "androidpublisher/v2/lib/Cargo.toml",
       "gen_error_file": "androidpublisher/v2/generator-errors.log",
       "cargo_error_file": "androidpublisher/v2/cargo-errors.log",
@@ -309,6 +335,7 @@
     {
       "name": "androidpublisher",
       "id": "androidpublisher:v3",
+      "metadata_file": "androidpublisher/v3/meta.json",
       "lib_cargo_file": "androidpublisher/v3/lib/Cargo.toml",
       "gen_error_file": "androidpublisher/v3/generator-errors.log",
       "cargo_error_file": "androidpublisher/v3/cargo-errors.log",
@@ -321,6 +348,7 @@
     {
       "name": "appengine",
       "id": "appengine:v1alpha",
+      "metadata_file": "appengine/v1alpha/meta.json",
       "lib_cargo_file": "appengine/v1alpha/lib/Cargo.toml",
       "gen_error_file": "appengine/v1alpha/generator-errors.log",
       "cargo_error_file": "appengine/v1alpha/cargo-errors.log",
@@ -333,6 +361,7 @@
     {
       "name": "appengine",
       "id": "appengine:v1beta",
+      "metadata_file": "appengine/v1beta/meta.json",
       "lib_cargo_file": "appengine/v1beta/lib/Cargo.toml",
       "gen_error_file": "appengine/v1beta/generator-errors.log",
       "cargo_error_file": "appengine/v1beta/cargo-errors.log",
@@ -345,6 +374,7 @@
     {
       "name": "appengine",
       "id": "appengine:v1",
+      "metadata_file": "appengine/v1/meta.json",
       "lib_cargo_file": "appengine/v1/lib/Cargo.toml",
       "gen_error_file": "appengine/v1/generator-errors.log",
       "cargo_error_file": "appengine/v1/cargo-errors.log",
@@ -357,6 +387,7 @@
     {
       "name": "appsactivity",
       "id": "appsactivity:v1",
+      "metadata_file": "appsactivity/v1/meta.json",
       "lib_cargo_file": "appsactivity/v1/lib/Cargo.toml",
       "gen_error_file": "appsactivity/v1/generator-errors.log",
       "cargo_error_file": "appsactivity/v1/cargo-errors.log",
@@ -369,6 +400,7 @@
     {
       "name": "appstate",
       "id": "appstate:v1",
+      "metadata_file": "appstate/v1/meta.json",
       "lib_cargo_file": "appstate/v1/lib/Cargo.toml",
       "gen_error_file": "appstate/v1/generator-errors.log",
       "cargo_error_file": "appstate/v1/cargo-errors.log",
@@ -381,6 +413,7 @@
     {
       "name": "bigquery",
       "id": "bigquery:v2",
+      "metadata_file": "bigquery/v2/meta.json",
       "lib_cargo_file": "bigquery/v2/lib/Cargo.toml",
       "gen_error_file": "bigquery/v2/generator-errors.log",
       "cargo_error_file": "bigquery/v2/cargo-errors.log",
@@ -393,6 +426,7 @@
     {
       "name": "bigquerydatatransfer",
       "id": "bigquerydatatransfer:v1",
+      "metadata_file": "bigquerydatatransfer/v1/meta.json",
       "lib_cargo_file": "bigquerydatatransfer/v1/lib/Cargo.toml",
       "gen_error_file": "bigquerydatatransfer/v1/generator-errors.log",
       "cargo_error_file": "bigquerydatatransfer/v1/cargo-errors.log",
@@ -405,6 +439,7 @@
     {
       "name": "bigqueryreservation",
       "id": "bigqueryreservation:v1alpha2",
+      "metadata_file": "bigqueryreservation/v1alpha2/meta.json",
       "lib_cargo_file": "bigqueryreservation/v1alpha2/lib/Cargo.toml",
       "gen_error_file": "bigqueryreservation/v1alpha2/generator-errors.log",
       "cargo_error_file": "bigqueryreservation/v1alpha2/cargo-errors.log",
@@ -417,6 +452,7 @@
     {
       "name": "bigqueryreservation",
       "id": "bigqueryreservation:v1",
+      "metadata_file": "bigqueryreservation/v1/meta.json",
       "lib_cargo_file": "bigqueryreservation/v1/lib/Cargo.toml",
       "gen_error_file": "bigqueryreservation/v1/generator-errors.log",
       "cargo_error_file": "bigqueryreservation/v1/cargo-errors.log",
@@ -429,6 +465,7 @@
     {
       "name": "bigtableadmin",
       "id": "bigtableadmin:v1",
+      "metadata_file": "bigtableadmin/v1/meta.json",
       "lib_cargo_file": "bigtableadmin/v1/lib/Cargo.toml",
       "gen_error_file": "bigtableadmin/v1/generator-errors.log",
       "cargo_error_file": "bigtableadmin/v1/cargo-errors.log",
@@ -441,6 +478,7 @@
     {
       "name": "bigtableadmin",
       "id": "bigtableadmin:v2",
+      "metadata_file": "bigtableadmin/v2/meta.json",
       "lib_cargo_file": "bigtableadmin/v2/lib/Cargo.toml",
       "gen_error_file": "bigtableadmin/v2/generator-errors.log",
       "cargo_error_file": "bigtableadmin/v2/cargo-errors.log",
@@ -453,6 +491,7 @@
     {
       "name": "binaryauthorization",
       "id": "binaryauthorization:v1beta1",
+      "metadata_file": "binaryauthorization/v1beta1/meta.json",
       "lib_cargo_file": "binaryauthorization/v1beta1/lib/Cargo.toml",
       "gen_error_file": "binaryauthorization/v1beta1/generator-errors.log",
       "cargo_error_file": "binaryauthorization/v1beta1/cargo-errors.log",
@@ -465,6 +504,7 @@
     {
       "name": "blogger",
       "id": "blogger:v2",
+      "metadata_file": "blogger/v2/meta.json",
       "lib_cargo_file": "blogger/v2/lib/Cargo.toml",
       "gen_error_file": "blogger/v2/generator-errors.log",
       "cargo_error_file": "blogger/v2/cargo-errors.log",
@@ -477,6 +517,7 @@
     {
       "name": "blogger",
       "id": "blogger:v3",
+      "metadata_file": "blogger/v3/meta.json",
       "lib_cargo_file": "blogger/v3/lib/Cargo.toml",
       "gen_error_file": "blogger/v3/generator-errors.log",
       "cargo_error_file": "blogger/v3/cargo-errors.log",
@@ -489,6 +530,7 @@
     {
       "name": "books",
       "id": "books:v1",
+      "metadata_file": "books/v1/meta.json",
       "lib_cargo_file": "books/v1/lib/Cargo.toml",
       "gen_error_file": "books/v1/generator-errors.log",
       "cargo_error_file": "books/v1/cargo-errors.log",
@@ -501,6 +543,7 @@
     {
       "name": "calendar",
       "id": "calendar:v3",
+      "metadata_file": "calendar/v3/meta.json",
       "lib_cargo_file": "calendar/v3/lib/Cargo.toml",
       "gen_error_file": "calendar/v3/generator-errors.log",
       "cargo_error_file": "calendar/v3/cargo-errors.log",
@@ -513,6 +556,7 @@
     {
       "name": "chat",
       "id": "chat:v1",
+      "metadata_file": "chat/v1/meta.json",
       "lib_cargo_file": "chat/v1/lib/Cargo.toml",
       "gen_error_file": "chat/v1/generator-errors.log",
       "cargo_error_file": "chat/v1/cargo-errors.log",
@@ -525,6 +569,7 @@
     {
       "name": "civicinfo",
       "id": "civicinfo:v2",
+      "metadata_file": "civicinfo/v2/meta.json",
       "lib_cargo_file": "civicinfo/v2/lib/Cargo.toml",
       "gen_error_file": "civicinfo/v2/generator-errors.log",
       "cargo_error_file": "civicinfo/v2/cargo-errors.log",
@@ -537,6 +582,7 @@
     {
       "name": "classroom",
       "id": "classroom:v1",
+      "metadata_file": "classroom/v1/meta.json",
       "lib_cargo_file": "classroom/v1/lib/Cargo.toml",
       "gen_error_file": "classroom/v1/generator-errors.log",
       "cargo_error_file": "classroom/v1/cargo-errors.log",
@@ -549,6 +595,7 @@
     {
       "name": "cloudasset",
       "id": "cloudasset:v1",
+      "metadata_file": "cloudasset/v1/meta.json",
       "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
       "gen_error_file": "cloudasset/v1/generator-errors.log",
       "cargo_error_file": "cloudasset/v1/cargo-errors.log",
@@ -561,6 +608,7 @@
     {
       "name": "cloudasset",
       "id": "cloudasset:v1beta1",
+      "metadata_file": "cloudasset/v1beta1/meta.json",
       "lib_cargo_file": "cloudasset/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudasset/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudasset/v1beta1/cargo-errors.log",
@@ -573,6 +621,7 @@
     {
       "name": "cloudbilling",
       "id": "cloudbilling:v1",
+      "metadata_file": "cloudbilling/v1/meta.json",
       "lib_cargo_file": "cloudbilling/v1/lib/Cargo.toml",
       "gen_error_file": "cloudbilling/v1/generator-errors.log",
       "cargo_error_file": "cloudbilling/v1/cargo-errors.log",
@@ -585,6 +634,7 @@
     {
       "name": "cloudbuild",
       "id": "cloudbuild:v1alpha1",
+      "metadata_file": "cloudbuild/v1alpha1/meta.json",
       "lib_cargo_file": "cloudbuild/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "cloudbuild/v1alpha1/generator-errors.log",
       "cargo_error_file": "cloudbuild/v1alpha1/cargo-errors.log",
@@ -597,6 +647,7 @@
     {
       "name": "cloudbuild",
       "id": "cloudbuild:v1",
+      "metadata_file": "cloudbuild/v1/meta.json",
       "lib_cargo_file": "cloudbuild/v1/lib/Cargo.toml",
       "gen_error_file": "cloudbuild/v1/generator-errors.log",
       "cargo_error_file": "cloudbuild/v1/cargo-errors.log",
@@ -609,6 +660,7 @@
     {
       "name": "clouddebugger",
       "id": "clouddebugger:v2",
+      "metadata_file": "clouddebugger/v2/meta.json",
       "lib_cargo_file": "clouddebugger/v2/lib/Cargo.toml",
       "gen_error_file": "clouddebugger/v2/generator-errors.log",
       "cargo_error_file": "clouddebugger/v2/cargo-errors.log",
@@ -621,6 +673,7 @@
     {
       "name": "clouderrorreporting",
       "id": "clouderrorreporting:v1beta1",
+      "metadata_file": "clouderrorreporting/v1beta1/meta.json",
       "lib_cargo_file": "clouderrorreporting/v1beta1/lib/Cargo.toml",
       "gen_error_file": "clouderrorreporting/v1beta1/generator-errors.log",
       "cargo_error_file": "clouderrorreporting/v1beta1/cargo-errors.log",
@@ -633,6 +686,7 @@
     {
       "name": "cloudfunctions",
       "id": "cloudfunctions:v1",
+      "metadata_file": "cloudfunctions/v1/meta.json",
       "lib_cargo_file": "cloudfunctions/v1/lib/Cargo.toml",
       "gen_error_file": "cloudfunctions/v1/generator-errors.log",
       "cargo_error_file": "cloudfunctions/v1/cargo-errors.log",
@@ -645,6 +699,7 @@
     {
       "name": "cloudfunctions",
       "id": "cloudfunctions:v1beta2",
+      "metadata_file": "cloudfunctions/v1beta2/meta.json",
       "lib_cargo_file": "cloudfunctions/v1beta2/lib/Cargo.toml",
       "gen_error_file": "cloudfunctions/v1beta2/generator-errors.log",
       "cargo_error_file": "cloudfunctions/v1beta2/cargo-errors.log",
@@ -657,6 +712,7 @@
     {
       "name": "cloudidentity",
       "id": "cloudidentity:v1",
+      "metadata_file": "cloudidentity/v1/meta.json",
       "lib_cargo_file": "cloudidentity/v1/lib/Cargo.toml",
       "gen_error_file": "cloudidentity/v1/generator-errors.log",
       "cargo_error_file": "cloudidentity/v1/cargo-errors.log",
@@ -669,6 +725,7 @@
     {
       "name": "cloudidentity",
       "id": "cloudidentity:v1beta1",
+      "metadata_file": "cloudidentity/v1beta1/meta.json",
       "lib_cargo_file": "cloudidentity/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudidentity/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudidentity/v1beta1/cargo-errors.log",
@@ -681,6 +738,7 @@
     {
       "name": "cloudiot",
       "id": "cloudiot:v1",
+      "metadata_file": "cloudiot/v1/meta.json",
       "lib_cargo_file": "cloudiot/v1/lib/Cargo.toml",
       "gen_error_file": "cloudiot/v1/generator-errors.log",
       "cargo_error_file": "cloudiot/v1/cargo-errors.log",
@@ -693,6 +751,7 @@
     {
       "name": "cloudkms",
       "id": "cloudkms:v1",
+      "metadata_file": "cloudkms/v1/meta.json",
       "lib_cargo_file": "cloudkms/v1/lib/Cargo.toml",
       "gen_error_file": "cloudkms/v1/generator-errors.log",
       "cargo_error_file": "cloudkms/v1/cargo-errors.log",
@@ -705,6 +764,7 @@
     {
       "name": "cloudprivatecatalog",
       "id": "cloudprivatecatalog:v1beta1",
+      "metadata_file": "cloudprivatecatalog/v1beta1/meta.json",
       "lib_cargo_file": "cloudprivatecatalog/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudprivatecatalog/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudprivatecatalog/v1beta1/cargo-errors.log",
@@ -717,6 +777,7 @@
     {
       "name": "cloudprivatecatalogproducer",
       "id": "cloudprivatecatalogproducer:v1beta1",
+      "metadata_file": "cloudprivatecatalogproducer/v1beta1/meta.json",
       "lib_cargo_file": "cloudprivatecatalogproducer/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudprivatecatalogproducer/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudprivatecatalogproducer/v1beta1/cargo-errors.log",
@@ -729,6 +790,7 @@
     {
       "name": "cloudprofiler",
       "id": "cloudprofiler:v2",
+      "metadata_file": "cloudprofiler/v2/meta.json",
       "lib_cargo_file": "cloudprofiler/v2/lib/Cargo.toml",
       "gen_error_file": "cloudprofiler/v2/generator-errors.log",
       "cargo_error_file": "cloudprofiler/v2/cargo-errors.log",
@@ -741,6 +803,7 @@
     {
       "name": "cloudresourcemanager",
       "id": "cloudresourcemanager:v1",
+      "metadata_file": "cloudresourcemanager/v1/meta.json",
       "lib_cargo_file": "cloudresourcemanager/v1/lib/Cargo.toml",
       "gen_error_file": "cloudresourcemanager/v1/generator-errors.log",
       "cargo_error_file": "cloudresourcemanager/v1/cargo-errors.log",
@@ -753,6 +816,7 @@
     {
       "name": "cloudresourcemanager",
       "id": "cloudresourcemanager:v1beta1",
+      "metadata_file": "cloudresourcemanager/v1beta1/meta.json",
       "lib_cargo_file": "cloudresourcemanager/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudresourcemanager/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudresourcemanager/v1beta1/cargo-errors.log",
@@ -765,6 +829,7 @@
     {
       "name": "cloudresourcemanager",
       "id": "cloudresourcemanager:v2",
+      "metadata_file": "cloudresourcemanager/v2/meta.json",
       "lib_cargo_file": "cloudresourcemanager/v2/lib/Cargo.toml",
       "gen_error_file": "cloudresourcemanager/v2/generator-errors.log",
       "cargo_error_file": "cloudresourcemanager/v2/cargo-errors.log",
@@ -777,6 +842,7 @@
     {
       "name": "cloudresourcemanager",
       "id": "cloudresourcemanager:v2beta1",
+      "metadata_file": "cloudresourcemanager/v2beta1/meta.json",
       "lib_cargo_file": "cloudresourcemanager/v2beta1/lib/Cargo.toml",
       "gen_error_file": "cloudresourcemanager/v2beta1/generator-errors.log",
       "cargo_error_file": "cloudresourcemanager/v2beta1/cargo-errors.log",
@@ -789,6 +855,7 @@
     {
       "name": "cloudscheduler",
       "id": "cloudscheduler:v1",
+      "metadata_file": "cloudscheduler/v1/meta.json",
       "lib_cargo_file": "cloudscheduler/v1/lib/Cargo.toml",
       "gen_error_file": "cloudscheduler/v1/generator-errors.log",
       "cargo_error_file": "cloudscheduler/v1/cargo-errors.log",
@@ -801,6 +868,7 @@
     {
       "name": "cloudscheduler",
       "id": "cloudscheduler:v1beta1",
+      "metadata_file": "cloudscheduler/v1beta1/meta.json",
       "lib_cargo_file": "cloudscheduler/v1beta1/lib/Cargo.toml",
       "gen_error_file": "cloudscheduler/v1beta1/generator-errors.log",
       "cargo_error_file": "cloudscheduler/v1beta1/cargo-errors.log",
@@ -813,6 +881,7 @@
     {
       "name": "cloudsearch",
       "id": "cloudsearch:v1",
+      "metadata_file": "cloudsearch/v1/meta.json",
       "lib_cargo_file": "cloudsearch/v1/lib/Cargo.toml",
       "gen_error_file": "cloudsearch/v1/generator-errors.log",
       "cargo_error_file": "cloudsearch/v1/cargo-errors.log",
@@ -825,6 +894,7 @@
     {
       "name": "cloudshell",
       "id": "cloudshell:v1alpha1",
+      "metadata_file": "cloudshell/v1alpha1/meta.json",
       "lib_cargo_file": "cloudshell/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "cloudshell/v1alpha1/generator-errors.log",
       "cargo_error_file": "cloudshell/v1alpha1/cargo-errors.log",
@@ -837,6 +907,7 @@
     {
       "name": "cloudshell",
       "id": "cloudshell:v1",
+      "metadata_file": "cloudshell/v1/meta.json",
       "lib_cargo_file": "cloudshell/v1/lib/Cargo.toml",
       "gen_error_file": "cloudshell/v1/generator-errors.log",
       "cargo_error_file": "cloudshell/v1/cargo-errors.log",
@@ -849,6 +920,7 @@
     {
       "name": "cloudtasks",
       "id": "cloudtasks:v2",
+      "metadata_file": "cloudtasks/v2/meta.json",
       "lib_cargo_file": "cloudtasks/v2/lib/Cargo.toml",
       "gen_error_file": "cloudtasks/v2/generator-errors.log",
       "cargo_error_file": "cloudtasks/v2/cargo-errors.log",
@@ -861,6 +933,7 @@
     {
       "name": "cloudtasks",
       "id": "cloudtasks:v2beta2",
+      "metadata_file": "cloudtasks/v2beta2/meta.json",
       "lib_cargo_file": "cloudtasks/v2beta2/lib/Cargo.toml",
       "gen_error_file": "cloudtasks/v2beta2/generator-errors.log",
       "cargo_error_file": "cloudtasks/v2beta2/cargo-errors.log",
@@ -873,6 +946,7 @@
     {
       "name": "cloudtasks",
       "id": "cloudtasks:v2beta3",
+      "metadata_file": "cloudtasks/v2beta3/meta.json",
       "lib_cargo_file": "cloudtasks/v2beta3/lib/Cargo.toml",
       "gen_error_file": "cloudtasks/v2beta3/generator-errors.log",
       "cargo_error_file": "cloudtasks/v2beta3/cargo-errors.log",
@@ -885,6 +959,7 @@
     {
       "name": "cloudtrace",
       "id": "cloudtrace:v1",
+      "metadata_file": "cloudtrace/v1/meta.json",
       "lib_cargo_file": "cloudtrace/v1/lib/Cargo.toml",
       "gen_error_file": "cloudtrace/v1/generator-errors.log",
       "cargo_error_file": "cloudtrace/v1/cargo-errors.log",
@@ -897,6 +972,7 @@
     {
       "name": "cloudtrace",
       "id": "cloudtrace:v2",
+      "metadata_file": "cloudtrace/v2/meta.json",
       "lib_cargo_file": "cloudtrace/v2/lib/Cargo.toml",
       "gen_error_file": "cloudtrace/v2/generator-errors.log",
       "cargo_error_file": "cloudtrace/v2/cargo-errors.log",
@@ -909,6 +985,7 @@
     {
       "name": "commentanalyzer",
       "id": "commentanalyzer:v1alpha1",
+      "metadata_file": "commentanalyzer/v1alpha1/meta.json",
       "lib_cargo_file": "commentanalyzer/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "commentanalyzer/v1alpha1/generator-errors.log",
       "cargo_error_file": "commentanalyzer/v1alpha1/cargo-errors.log",
@@ -921,6 +998,7 @@
     {
       "name": "composer",
       "id": "composer:v1",
+      "metadata_file": "composer/v1/meta.json",
       "lib_cargo_file": "composer/v1/lib/Cargo.toml",
       "gen_error_file": "composer/v1/generator-errors.log",
       "cargo_error_file": "composer/v1/cargo-errors.log",
@@ -933,6 +1011,7 @@
     {
       "name": "composer",
       "id": "composer:v1beta1",
+      "metadata_file": "composer/v1beta1/meta.json",
       "lib_cargo_file": "composer/v1beta1/lib/Cargo.toml",
       "gen_error_file": "composer/v1beta1/generator-errors.log",
       "cargo_error_file": "composer/v1beta1/cargo-errors.log",
@@ -945,6 +1024,7 @@
     {
       "name": "compute",
       "id": "compute:alpha",
+      "metadata_file": "compute/alpha/meta.json",
       "lib_cargo_file": "compute/alpha/lib/Cargo.toml",
       "gen_error_file": "compute/alpha/generator-errors.log",
       "cargo_error_file": "compute/alpha/cargo-errors.log",
@@ -957,6 +1037,7 @@
     {
       "name": "compute",
       "id": "compute:beta",
+      "metadata_file": "compute/beta/meta.json",
       "lib_cargo_file": "compute/beta/lib/Cargo.toml",
       "gen_error_file": "compute/beta/generator-errors.log",
       "cargo_error_file": "compute/beta/cargo-errors.log",
@@ -969,6 +1050,7 @@
     {
       "name": "compute",
       "id": "compute:v1",
+      "metadata_file": "compute/v1/meta.json",
       "lib_cargo_file": "compute/v1/lib/Cargo.toml",
       "gen_error_file": "compute/v1/generator-errors.log",
       "cargo_error_file": "compute/v1/cargo-errors.log",
@@ -981,6 +1063,7 @@
     {
       "name": "container",
       "id": "container:v1",
+      "metadata_file": "container/v1/meta.json",
       "lib_cargo_file": "container/v1/lib/Cargo.toml",
       "gen_error_file": "container/v1/generator-errors.log",
       "cargo_error_file": "container/v1/cargo-errors.log",
@@ -993,6 +1076,7 @@
     {
       "name": "container",
       "id": "container:v1beta1",
+      "metadata_file": "container/v1beta1/meta.json",
       "lib_cargo_file": "container/v1beta1/lib/Cargo.toml",
       "gen_error_file": "container/v1beta1/generator-errors.log",
       "cargo_error_file": "container/v1beta1/cargo-errors.log",
@@ -1005,6 +1089,7 @@
     {
       "name": "containeranalysis",
       "id": "containeranalysis:v1alpha1",
+      "metadata_file": "containeranalysis/v1alpha1/meta.json",
       "lib_cargo_file": "containeranalysis/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "containeranalysis/v1alpha1/generator-errors.log",
       "cargo_error_file": "containeranalysis/v1alpha1/cargo-errors.log",
@@ -1017,6 +1102,7 @@
     {
       "name": "containeranalysis",
       "id": "containeranalysis:v1beta1",
+      "metadata_file": "containeranalysis/v1beta1/meta.json",
       "lib_cargo_file": "containeranalysis/v1beta1/lib/Cargo.toml",
       "gen_error_file": "containeranalysis/v1beta1/generator-errors.log",
       "cargo_error_file": "containeranalysis/v1beta1/cargo-errors.log",
@@ -1029,6 +1115,7 @@
     {
       "name": "content",
       "id": "content:v2",
+      "metadata_file": "content/v2/meta.json",
       "lib_cargo_file": "content/v2/lib/Cargo.toml",
       "gen_error_file": "content/v2/generator-errors.log",
       "cargo_error_file": "content/v2/cargo-errors.log",
@@ -1041,6 +1128,7 @@
     {
       "name": "content",
       "id": "content:v2.1",
+      "metadata_file": "content/v2.1/meta.json",
       "lib_cargo_file": "content/v2.1/lib/Cargo.toml",
       "gen_error_file": "content/v2.1/generator-errors.log",
       "cargo_error_file": "content/v2.1/cargo-errors.log",
@@ -1053,6 +1141,7 @@
     {
       "name": "customsearch",
       "id": "customsearch:v1",
+      "metadata_file": "customsearch/v1/meta.json",
       "lib_cargo_file": "customsearch/v1/lib/Cargo.toml",
       "gen_error_file": "customsearch/v1/generator-errors.log",
       "cargo_error_file": "customsearch/v1/cargo-errors.log",
@@ -1065,6 +1154,7 @@
     {
       "name": "dataflow",
       "id": "dataflow:v1b3",
+      "metadata_file": "dataflow/v1b3/meta.json",
       "lib_cargo_file": "dataflow/v1b3/lib/Cargo.toml",
       "gen_error_file": "dataflow/v1b3/generator-errors.log",
       "cargo_error_file": "dataflow/v1b3/cargo-errors.log",
@@ -1077,6 +1167,7 @@
     {
       "name": "datafusion",
       "id": "datafusion:v1beta1",
+      "metadata_file": "datafusion/v1beta1/meta.json",
       "lib_cargo_file": "datafusion/v1beta1/lib/Cargo.toml",
       "gen_error_file": "datafusion/v1beta1/generator-errors.log",
       "cargo_error_file": "datafusion/v1beta1/cargo-errors.log",
@@ -1089,6 +1180,7 @@
     {
       "name": "dataproc",
       "id": "dataproc:v1",
+      "metadata_file": "dataproc/v1/meta.json",
       "lib_cargo_file": "dataproc/v1/lib/Cargo.toml",
       "gen_error_file": "dataproc/v1/generator-errors.log",
       "cargo_error_file": "dataproc/v1/cargo-errors.log",
@@ -1101,6 +1193,7 @@
     {
       "name": "dataproc",
       "id": "dataproc:v1beta2",
+      "metadata_file": "dataproc/v1beta2/meta.json",
       "lib_cargo_file": "dataproc/v1beta2/lib/Cargo.toml",
       "gen_error_file": "dataproc/v1beta2/generator-errors.log",
       "cargo_error_file": "dataproc/v1beta2/cargo-errors.log",
@@ -1113,6 +1206,7 @@
     {
       "name": "datastore",
       "id": "datastore:v1",
+      "metadata_file": "datastore/v1/meta.json",
       "lib_cargo_file": "datastore/v1/lib/Cargo.toml",
       "gen_error_file": "datastore/v1/generator-errors.log",
       "cargo_error_file": "datastore/v1/cargo-errors.log",
@@ -1125,6 +1219,7 @@
     {
       "name": "datastore",
       "id": "datastore:v1beta1",
+      "metadata_file": "datastore/v1beta1/meta.json",
       "lib_cargo_file": "datastore/v1beta1/lib/Cargo.toml",
       "gen_error_file": "datastore/v1beta1/generator-errors.log",
       "cargo_error_file": "datastore/v1beta1/cargo-errors.log",
@@ -1137,6 +1232,7 @@
     {
       "name": "datastore",
       "id": "datastore:v1beta3",
+      "metadata_file": "datastore/v1beta3/meta.json",
       "lib_cargo_file": "datastore/v1beta3/lib/Cargo.toml",
       "gen_error_file": "datastore/v1beta3/generator-errors.log",
       "cargo_error_file": "datastore/v1beta3/cargo-errors.log",
@@ -1149,6 +1245,7 @@
     {
       "name": "deploymentmanager",
       "id": "deploymentmanager:alpha",
+      "metadata_file": "deploymentmanager/alpha/meta.json",
       "lib_cargo_file": "deploymentmanager/alpha/lib/Cargo.toml",
       "gen_error_file": "deploymentmanager/alpha/generator-errors.log",
       "cargo_error_file": "deploymentmanager/alpha/cargo-errors.log",
@@ -1161,6 +1258,7 @@
     {
       "name": "deploymentmanager",
       "id": "deploymentmanager:v2beta",
+      "metadata_file": "deploymentmanager/v2beta/meta.json",
       "lib_cargo_file": "deploymentmanager/v2beta/lib/Cargo.toml",
       "gen_error_file": "deploymentmanager/v2beta/generator-errors.log",
       "cargo_error_file": "deploymentmanager/v2beta/cargo-errors.log",
@@ -1173,6 +1271,7 @@
     {
       "name": "deploymentmanager",
       "id": "deploymentmanager:v2",
+      "metadata_file": "deploymentmanager/v2/meta.json",
       "lib_cargo_file": "deploymentmanager/v2/lib/Cargo.toml",
       "gen_error_file": "deploymentmanager/v2/generator-errors.log",
       "cargo_error_file": "deploymentmanager/v2/cargo-errors.log",
@@ -1185,6 +1284,7 @@
     {
       "name": "dfareporting",
       "id": "dfareporting:v3.1",
+      "metadata_file": "dfareporting/v3.1/meta.json",
       "lib_cargo_file": "dfareporting/v3.1/lib/Cargo.toml",
       "gen_error_file": "dfareporting/v3.1/generator-errors.log",
       "cargo_error_file": "dfareporting/v3.1/cargo-errors.log",
@@ -1197,6 +1297,7 @@
     {
       "name": "dfareporting",
       "id": "dfareporting:v3.2",
+      "metadata_file": "dfareporting/v3.2/meta.json",
       "lib_cargo_file": "dfareporting/v3.2/lib/Cargo.toml",
       "gen_error_file": "dfareporting/v3.2/generator-errors.log",
       "cargo_error_file": "dfareporting/v3.2/cargo-errors.log",
@@ -1209,6 +1310,7 @@
     {
       "name": "dfareporting",
       "id": "dfareporting:v3.3",
+      "metadata_file": "dfareporting/v3.3/meta.json",
       "lib_cargo_file": "dfareporting/v3.3/lib/Cargo.toml",
       "gen_error_file": "dfareporting/v3.3/generator-errors.log",
       "cargo_error_file": "dfareporting/v3.3/cargo-errors.log",
@@ -1221,6 +1323,7 @@
     {
       "name": "dialogflow",
       "id": "dialogflow:v2",
+      "metadata_file": "dialogflow/v2/meta.json",
       "lib_cargo_file": "dialogflow/v2/lib/Cargo.toml",
       "gen_error_file": "dialogflow/v2/generator-errors.log",
       "cargo_error_file": "dialogflow/v2/cargo-errors.log",
@@ -1233,6 +1336,7 @@
     {
       "name": "dialogflow",
       "id": "dialogflow:v2beta1",
+      "metadata_file": "dialogflow/v2beta1/meta.json",
       "lib_cargo_file": "dialogflow/v2beta1/lib/Cargo.toml",
       "gen_error_file": "dialogflow/v2beta1/generator-errors.log",
       "cargo_error_file": "dialogflow/v2beta1/cargo-errors.log",
@@ -1245,6 +1349,7 @@
     {
       "name": "digitalassetlinks",
       "id": "digitalassetlinks:v1",
+      "metadata_file": "digitalassetlinks/v1/meta.json",
       "lib_cargo_file": "digitalassetlinks/v1/lib/Cargo.toml",
       "gen_error_file": "digitalassetlinks/v1/generator-errors.log",
       "cargo_error_file": "digitalassetlinks/v1/cargo-errors.log",
@@ -1257,6 +1362,7 @@
     {
       "name": "discovery",
       "id": "discovery:v1",
+      "metadata_file": "discovery/v1/meta.json",
       "lib_cargo_file": "discovery/v1/lib/Cargo.toml",
       "gen_error_file": "discovery/v1/generator-errors.log",
       "cargo_error_file": "discovery/v1/cargo-errors.log",
@@ -1269,6 +1375,7 @@
     {
       "name": "dlp",
       "id": "dlp:v2",
+      "metadata_file": "dlp/v2/meta.json",
       "lib_cargo_file": "dlp/v2/lib/Cargo.toml",
       "gen_error_file": "dlp/v2/generator-errors.log",
       "cargo_error_file": "dlp/v2/cargo-errors.log",
@@ -1281,6 +1388,7 @@
     {
       "name": "dns",
       "id": "dns:v1",
+      "metadata_file": "dns/v1/meta.json",
       "lib_cargo_file": "dns/v1/lib/Cargo.toml",
       "gen_error_file": "dns/v1/generator-errors.log",
       "cargo_error_file": "dns/v1/cargo-errors.log",
@@ -1293,6 +1401,7 @@
     {
       "name": "dns",
       "id": "dns:v1beta2",
+      "metadata_file": "dns/v1beta2/meta.json",
       "lib_cargo_file": "dns/v1beta2/lib/Cargo.toml",
       "gen_error_file": "dns/v1beta2/generator-errors.log",
       "cargo_error_file": "dns/v1beta2/cargo-errors.log",
@@ -1305,6 +1414,7 @@
     {
       "name": "dns",
       "id": "dns:v2beta1",
+      "metadata_file": "dns/v2beta1/meta.json",
       "lib_cargo_file": "dns/v2beta1/lib/Cargo.toml",
       "gen_error_file": "dns/v2beta1/generator-errors.log",
       "cargo_error_file": "dns/v2beta1/cargo-errors.log",
@@ -1317,6 +1427,7 @@
     {
       "name": "docs",
       "id": "docs:v1",
+      "metadata_file": "docs/v1/meta.json",
       "lib_cargo_file": "docs/v1/lib/Cargo.toml",
       "gen_error_file": "docs/v1/generator-errors.log",
       "cargo_error_file": "docs/v1/cargo-errors.log",
@@ -1329,6 +1440,7 @@
     {
       "name": "domainsrdap",
       "id": "domainsrdap:v1",
+      "metadata_file": "domainsrdap/v1/meta.json",
       "lib_cargo_file": "domainsrdap/v1/lib/Cargo.toml",
       "gen_error_file": "domainsrdap/v1/generator-errors.log",
       "cargo_error_file": "domainsrdap/v1/cargo-errors.log",
@@ -1341,6 +1453,7 @@
     {
       "name": "doubleclickbidmanager",
       "id": "doubleclickbidmanager:v1",
+      "metadata_file": "doubleclickbidmanager/v1/meta.json",
       "lib_cargo_file": "doubleclickbidmanager/v1/lib/Cargo.toml",
       "gen_error_file": "doubleclickbidmanager/v1/generator-errors.log",
       "cargo_error_file": "doubleclickbidmanager/v1/cargo-errors.log",
@@ -1353,6 +1466,7 @@
     {
       "name": "doubleclicksearch",
       "id": "doubleclicksearch:v2",
+      "metadata_file": "doubleclicksearch/v2/meta.json",
       "lib_cargo_file": "doubleclicksearch/v2/lib/Cargo.toml",
       "gen_error_file": "doubleclicksearch/v2/generator-errors.log",
       "cargo_error_file": "doubleclicksearch/v2/cargo-errors.log",
@@ -1365,6 +1479,7 @@
     {
       "name": "drive",
       "id": "drive:v2",
+      "metadata_file": "drive/v2/meta.json",
       "lib_cargo_file": "drive/v2/lib/Cargo.toml",
       "gen_error_file": "drive/v2/generator-errors.log",
       "cargo_error_file": "drive/v2/cargo-errors.log",
@@ -1377,6 +1492,7 @@
     {
       "name": "drive",
       "id": "drive:v3",
+      "metadata_file": "drive/v3/meta.json",
       "lib_cargo_file": "drive/v3/lib/Cargo.toml",
       "gen_error_file": "drive/v3/generator-errors.log",
       "cargo_error_file": "drive/v3/cargo-errors.log",
@@ -1389,6 +1505,7 @@
     {
       "name": "driveactivity",
       "id": "driveactivity:v2",
+      "metadata_file": "driveactivity/v2/meta.json",
       "lib_cargo_file": "driveactivity/v2/lib/Cargo.toml",
       "gen_error_file": "driveactivity/v2/generator-errors.log",
       "cargo_error_file": "driveactivity/v2/cargo-errors.log",
@@ -1401,6 +1518,7 @@
     {
       "name": "factchecktools",
       "id": "factchecktools:v1alpha1",
+      "metadata_file": "factchecktools/v1alpha1/meta.json",
       "lib_cargo_file": "factchecktools/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "factchecktools/v1alpha1/generator-errors.log",
       "cargo_error_file": "factchecktools/v1alpha1/cargo-errors.log",
@@ -1413,6 +1531,7 @@
     {
       "name": "fcm",
       "id": "fcm:v1",
+      "metadata_file": "fcm/v1/meta.json",
       "lib_cargo_file": "fcm/v1/lib/Cargo.toml",
       "gen_error_file": "fcm/v1/generator-errors.log",
       "cargo_error_file": "fcm/v1/cargo-errors.log",
@@ -1425,6 +1544,7 @@
     {
       "name": "file",
       "id": "file:v1",
+      "metadata_file": "file/v1/meta.json",
       "lib_cargo_file": "file/v1/lib/Cargo.toml",
       "gen_error_file": "file/v1/generator-errors.log",
       "cargo_error_file": "file/v1/cargo-errors.log",
@@ -1437,6 +1557,7 @@
     {
       "name": "file",
       "id": "file:v1beta1",
+      "metadata_file": "file/v1beta1/meta.json",
       "lib_cargo_file": "file/v1beta1/lib/Cargo.toml",
       "gen_error_file": "file/v1beta1/generator-errors.log",
       "cargo_error_file": "file/v1beta1/cargo-errors.log",
@@ -1449,6 +1570,7 @@
     {
       "name": "firebase",
       "id": "firebase:v1beta1",
+      "metadata_file": "firebase/v1beta1/meta.json",
       "lib_cargo_file": "firebase/v1beta1/lib/Cargo.toml",
       "gen_error_file": "firebase/v1beta1/generator-errors.log",
       "cargo_error_file": "firebase/v1beta1/cargo-errors.log",
@@ -1461,6 +1583,7 @@
     {
       "name": "firebasedynamiclinks",
       "id": "firebasedynamiclinks:v1",
+      "metadata_file": "firebasedynamiclinks/v1/meta.json",
       "lib_cargo_file": "firebasedynamiclinks/v1/lib/Cargo.toml",
       "gen_error_file": "firebasedynamiclinks/v1/generator-errors.log",
       "cargo_error_file": "firebasedynamiclinks/v1/cargo-errors.log",
@@ -1473,6 +1596,7 @@
     {
       "name": "firebasehosting",
       "id": "firebasehosting:v1beta1",
+      "metadata_file": "firebasehosting/v1beta1/meta.json",
       "lib_cargo_file": "firebasehosting/v1beta1/lib/Cargo.toml",
       "gen_error_file": "firebasehosting/v1beta1/generator-errors.log",
       "cargo_error_file": "firebasehosting/v1beta1/cargo-errors.log",
@@ -1485,6 +1609,7 @@
     {
       "name": "firebaserules",
       "id": "firebaserules:v1",
+      "metadata_file": "firebaserules/v1/meta.json",
       "lib_cargo_file": "firebaserules/v1/lib/Cargo.toml",
       "gen_error_file": "firebaserules/v1/generator-errors.log",
       "cargo_error_file": "firebaserules/v1/cargo-errors.log",
@@ -1497,6 +1622,7 @@
     {
       "name": "firestore",
       "id": "firestore:v1",
+      "metadata_file": "firestore/v1/meta.json",
       "lib_cargo_file": "firestore/v1/lib/Cargo.toml",
       "gen_error_file": "firestore/v1/generator-errors.log",
       "cargo_error_file": "firestore/v1/cargo-errors.log",
@@ -1509,6 +1635,7 @@
     {
       "name": "firestore",
       "id": "firestore:v1beta1",
+      "metadata_file": "firestore/v1beta1/meta.json",
       "lib_cargo_file": "firestore/v1beta1/lib/Cargo.toml",
       "gen_error_file": "firestore/v1beta1/generator-errors.log",
       "cargo_error_file": "firestore/v1beta1/cargo-errors.log",
@@ -1521,6 +1648,7 @@
     {
       "name": "firestore",
       "id": "firestore:v1beta2",
+      "metadata_file": "firestore/v1beta2/meta.json",
       "lib_cargo_file": "firestore/v1beta2/lib/Cargo.toml",
       "gen_error_file": "firestore/v1beta2/generator-errors.log",
       "cargo_error_file": "firestore/v1beta2/cargo-errors.log",
@@ -1533,6 +1661,7 @@
     {
       "name": "fitness",
       "id": "fitness:v1",
+      "metadata_file": "fitness/v1/meta.json",
       "lib_cargo_file": "fitness/v1/lib/Cargo.toml",
       "gen_error_file": "fitness/v1/generator-errors.log",
       "cargo_error_file": "fitness/v1/cargo-errors.log",
@@ -1545,6 +1674,7 @@
     {
       "name": "fusiontables",
       "id": "fusiontables:v1",
+      "metadata_file": "fusiontables/v1/meta.json",
       "lib_cargo_file": "fusiontables/v1/lib/Cargo.toml",
       "gen_error_file": "fusiontables/v1/generator-errors.log",
       "cargo_error_file": "fusiontables/v1/cargo-errors.log",
@@ -1557,6 +1687,7 @@
     {
       "name": "fusiontables",
       "id": "fusiontables:v2",
+      "metadata_file": "fusiontables/v2/meta.json",
       "lib_cargo_file": "fusiontables/v2/lib/Cargo.toml",
       "gen_error_file": "fusiontables/v2/generator-errors.log",
       "cargo_error_file": "fusiontables/v2/cargo-errors.log",
@@ -1569,6 +1700,7 @@
     {
       "name": "games",
       "id": "games:v1",
+      "metadata_file": "games/v1/meta.json",
       "lib_cargo_file": "games/v1/lib/Cargo.toml",
       "gen_error_file": "games/v1/generator-errors.log",
       "cargo_error_file": "games/v1/cargo-errors.log",
@@ -1581,6 +1713,7 @@
     {
       "name": "gamesConfiguration",
       "id": "gamesConfiguration:v1configuration",
+      "metadata_file": "gamesConfiguration/v1configuration/meta.json",
       "lib_cargo_file": "gamesConfiguration/v1configuration/lib/Cargo.toml",
       "gen_error_file": "gamesConfiguration/v1configuration/generator-errors.log",
       "cargo_error_file": "gamesConfiguration/v1configuration/cargo-errors.log",
@@ -1593,6 +1726,7 @@
     {
       "name": "gamesManagement",
       "id": "gamesManagement:v1management",
+      "metadata_file": "gamesManagement/v1management/meta.json",
       "lib_cargo_file": "gamesManagement/v1management/lib/Cargo.toml",
       "gen_error_file": "gamesManagement/v1management/generator-errors.log",
       "cargo_error_file": "gamesManagement/v1management/cargo-errors.log",
@@ -1605,6 +1739,7 @@
     {
       "name": "genomics",
       "id": "genomics:v1alpha2",
+      "metadata_file": "genomics/v1alpha2/meta.json",
       "lib_cargo_file": "genomics/v1alpha2/lib/Cargo.toml",
       "gen_error_file": "genomics/v1alpha2/generator-errors.log",
       "cargo_error_file": "genomics/v1alpha2/cargo-errors.log",
@@ -1617,6 +1752,7 @@
     {
       "name": "genomics",
       "id": "genomics:v2alpha1",
+      "metadata_file": "genomics/v2alpha1/meta.json",
       "lib_cargo_file": "genomics/v2alpha1/lib/Cargo.toml",
       "gen_error_file": "genomics/v2alpha1/generator-errors.log",
       "cargo_error_file": "genomics/v2alpha1/cargo-errors.log",
@@ -1629,6 +1765,7 @@
     {
       "name": "genomics",
       "id": "genomics:v1",
+      "metadata_file": "genomics/v1/meta.json",
       "lib_cargo_file": "genomics/v1/lib/Cargo.toml",
       "gen_error_file": "genomics/v1/generator-errors.log",
       "cargo_error_file": "genomics/v1/cargo-errors.log",
@@ -1641,6 +1778,7 @@
     {
       "name": "gmail",
       "id": "gmail:v1",
+      "metadata_file": "gmail/v1/meta.json",
       "lib_cargo_file": "gmail/v1/lib/Cargo.toml",
       "gen_error_file": "gmail/v1/generator-errors.log",
       "cargo_error_file": "gmail/v1/cargo-errors.log",
@@ -1653,6 +1791,7 @@
     {
       "name": "groupsmigration",
       "id": "groupsmigration:v1",
+      "metadata_file": "groupsmigration/v1/meta.json",
       "lib_cargo_file": "groupsmigration/v1/lib/Cargo.toml",
       "gen_error_file": "groupsmigration/v1/generator-errors.log",
       "cargo_error_file": "groupsmigration/v1/cargo-errors.log",
@@ -1665,6 +1804,7 @@
     {
       "name": "groupssettings",
       "id": "groupssettings:v1",
+      "metadata_file": "groupssettings/v1/meta.json",
       "lib_cargo_file": "groupssettings/v1/lib/Cargo.toml",
       "gen_error_file": "groupssettings/v1/generator-errors.log",
       "cargo_error_file": "groupssettings/v1/cargo-errors.log",
@@ -1677,6 +1817,7 @@
     {
       "name": "healthcare",
       "id": "healthcare:v1alpha2",
+      "metadata_file": "healthcare/v1alpha2/meta.json",
       "lib_cargo_file": "healthcare/v1alpha2/lib/Cargo.toml",
       "gen_error_file": "healthcare/v1alpha2/generator-errors.log",
       "cargo_error_file": "healthcare/v1alpha2/cargo-errors.log",
@@ -1689,6 +1830,7 @@
     {
       "name": "healthcare",
       "id": "healthcare:v1beta1",
+      "metadata_file": "healthcare/v1beta1/meta.json",
       "lib_cargo_file": "healthcare/v1beta1/lib/Cargo.toml",
       "gen_error_file": "healthcare/v1beta1/generator-errors.log",
       "cargo_error_file": "healthcare/v1beta1/cargo-errors.log",
@@ -1701,6 +1843,7 @@
     {
       "name": "homegraph",
       "id": "homegraph:v1",
+      "metadata_file": "homegraph/v1/meta.json",
       "lib_cargo_file": "homegraph/v1/lib/Cargo.toml",
       "gen_error_file": "homegraph/v1/generator-errors.log",
       "cargo_error_file": "homegraph/v1/cargo-errors.log",
@@ -1713,6 +1856,7 @@
     {
       "name": "iam",
       "id": "iam:v1",
+      "metadata_file": "iam/v1/meta.json",
       "lib_cargo_file": "iam/v1/lib/Cargo.toml",
       "gen_error_file": "iam/v1/generator-errors.log",
       "cargo_error_file": "iam/v1/cargo-errors.log",
@@ -1725,6 +1869,7 @@
     {
       "name": "iamcredentials",
       "id": "iamcredentials:v1",
+      "metadata_file": "iamcredentials/v1/meta.json",
       "lib_cargo_file": "iamcredentials/v1/lib/Cargo.toml",
       "gen_error_file": "iamcredentials/v1/generator-errors.log",
       "cargo_error_file": "iamcredentials/v1/cargo-errors.log",
@@ -1737,6 +1882,7 @@
     {
       "name": "iap",
       "id": "iap:v1",
+      "metadata_file": "iap/v1/meta.json",
       "lib_cargo_file": "iap/v1/lib/Cargo.toml",
       "gen_error_file": "iap/v1/generator-errors.log",
       "cargo_error_file": "iap/v1/cargo-errors.log",
@@ -1749,6 +1895,7 @@
     {
       "name": "iap",
       "id": "iap:v1beta1",
+      "metadata_file": "iap/v1beta1/meta.json",
       "lib_cargo_file": "iap/v1beta1/lib/Cargo.toml",
       "gen_error_file": "iap/v1beta1/generator-errors.log",
       "cargo_error_file": "iap/v1beta1/cargo-errors.log",
@@ -1761,6 +1908,7 @@
     {
       "name": "identitytoolkit",
       "id": "identitytoolkit:v3",
+      "metadata_file": "identitytoolkit/v3/meta.json",
       "lib_cargo_file": "identitytoolkit/v3/lib/Cargo.toml",
       "gen_error_file": "identitytoolkit/v3/generator-errors.log",
       "cargo_error_file": "identitytoolkit/v3/cargo-errors.log",
@@ -1773,6 +1921,7 @@
     {
       "name": "indexing",
       "id": "indexing:v3",
+      "metadata_file": "indexing/v3/meta.json",
       "lib_cargo_file": "indexing/v3/lib/Cargo.toml",
       "gen_error_file": "indexing/v3/generator-errors.log",
       "cargo_error_file": "indexing/v3/cargo-errors.log",
@@ -1785,6 +1934,7 @@
     {
       "name": "jobs",
       "id": "jobs:v3p1beta1",
+      "metadata_file": "jobs/v3p1beta1/meta.json",
       "lib_cargo_file": "jobs/v3p1beta1/lib/Cargo.toml",
       "gen_error_file": "jobs/v3p1beta1/generator-errors.log",
       "cargo_error_file": "jobs/v3p1beta1/cargo-errors.log",
@@ -1797,6 +1947,7 @@
     {
       "name": "jobs",
       "id": "jobs:v2",
+      "metadata_file": "jobs/v2/meta.json",
       "lib_cargo_file": "jobs/v2/lib/Cargo.toml",
       "gen_error_file": "jobs/v2/generator-errors.log",
       "cargo_error_file": "jobs/v2/cargo-errors.log",
@@ -1809,6 +1960,7 @@
     {
       "name": "jobs",
       "id": "jobs:v3",
+      "metadata_file": "jobs/v3/meta.json",
       "lib_cargo_file": "jobs/v3/lib/Cargo.toml",
       "gen_error_file": "jobs/v3/generator-errors.log",
       "cargo_error_file": "jobs/v3/cargo-errors.log",
@@ -1821,6 +1973,7 @@
     {
       "name": "kgsearch",
       "id": "kgsearch:v1",
+      "metadata_file": "kgsearch/v1/meta.json",
       "lib_cargo_file": "kgsearch/v1/lib/Cargo.toml",
       "gen_error_file": "kgsearch/v1/generator-errors.log",
       "cargo_error_file": "kgsearch/v1/cargo-errors.log",
@@ -1833,6 +1986,7 @@
     {
       "name": "language",
       "id": "language:v1",
+      "metadata_file": "language/v1/meta.json",
       "lib_cargo_file": "language/v1/lib/Cargo.toml",
       "gen_error_file": "language/v1/generator-errors.log",
       "cargo_error_file": "language/v1/cargo-errors.log",
@@ -1845,6 +1999,7 @@
     {
       "name": "language",
       "id": "language:v1beta1",
+      "metadata_file": "language/v1beta1/meta.json",
       "lib_cargo_file": "language/v1beta1/lib/Cargo.toml",
       "gen_error_file": "language/v1beta1/generator-errors.log",
       "cargo_error_file": "language/v1beta1/cargo-errors.log",
@@ -1857,6 +2012,7 @@
     {
       "name": "language",
       "id": "language:v1beta2",
+      "metadata_file": "language/v1beta2/meta.json",
       "lib_cargo_file": "language/v1beta2/lib/Cargo.toml",
       "gen_error_file": "language/v1beta2/generator-errors.log",
       "cargo_error_file": "language/v1beta2/cargo-errors.log",
@@ -1869,6 +2025,7 @@
     {
       "name": "libraryagent",
       "id": "libraryagent:v1",
+      "metadata_file": "libraryagent/v1/meta.json",
       "lib_cargo_file": "libraryagent/v1/lib/Cargo.toml",
       "gen_error_file": "libraryagent/v1/generator-errors.log",
       "cargo_error_file": "libraryagent/v1/cargo-errors.log",
@@ -1881,6 +2038,7 @@
     {
       "name": "licensing",
       "id": "licensing:v1",
+      "metadata_file": "licensing/v1/meta.json",
       "lib_cargo_file": "licensing/v1/lib/Cargo.toml",
       "gen_error_file": "licensing/v1/generator-errors.log",
       "cargo_error_file": "licensing/v1/cargo-errors.log",
@@ -1893,6 +2051,7 @@
     {
       "name": "logging",
       "id": "logging:v2",
+      "metadata_file": "logging/v2/meta.json",
       "lib_cargo_file": "logging/v2/lib/Cargo.toml",
       "gen_error_file": "logging/v2/generator-errors.log",
       "cargo_error_file": "logging/v2/cargo-errors.log",
@@ -1905,6 +2064,7 @@
     {
       "name": "manufacturers",
       "id": "manufacturers:v1",
+      "metadata_file": "manufacturers/v1/meta.json",
       "lib_cargo_file": "manufacturers/v1/lib/Cargo.toml",
       "gen_error_file": "manufacturers/v1/generator-errors.log",
       "cargo_error_file": "manufacturers/v1/cargo-errors.log",
@@ -1917,6 +2077,7 @@
     {
       "name": "mirror",
       "id": "mirror:v1",
+      "metadata_file": "mirror/v1/meta.json",
       "lib_cargo_file": "mirror/v1/lib/Cargo.toml",
       "gen_error_file": "mirror/v1/generator-errors.log",
       "cargo_error_file": "mirror/v1/cargo-errors.log",
@@ -1929,6 +2090,7 @@
     {
       "name": "ml",
       "id": "ml:v1",
+      "metadata_file": "ml/v1/meta.json",
       "lib_cargo_file": "ml/v1/lib/Cargo.toml",
       "gen_error_file": "ml/v1/generator-errors.log",
       "cargo_error_file": "ml/v1/cargo-errors.log",
@@ -1941,6 +2103,7 @@
     {
       "name": "monitoring",
       "id": "monitoring:v3",
+      "metadata_file": "monitoring/v3/meta.json",
       "lib_cargo_file": "monitoring/v3/lib/Cargo.toml",
       "gen_error_file": "monitoring/v3/generator-errors.log",
       "cargo_error_file": "monitoring/v3/cargo-errors.log",
@@ -1953,6 +2116,7 @@
     {
       "name": "oauth",
       "id": "oauth2:v1",
+      "metadata_file": "oauth/v1/meta.json",
       "lib_cargo_file": "oauth/v1/lib/Cargo.toml",
       "gen_error_file": "oauth/v1/generator-errors.log",
       "cargo_error_file": "oauth/v1/cargo-errors.log",
@@ -1965,6 +2129,7 @@
     {
       "name": "oauth",
       "id": "oauth2:v2",
+      "metadata_file": "oauth/v2/meta.json",
       "lib_cargo_file": "oauth/v2/lib/Cargo.toml",
       "gen_error_file": "oauth/v2/generator-errors.log",
       "cargo_error_file": "oauth/v2/cargo-errors.log",
@@ -1977,6 +2142,7 @@
     {
       "name": "oslogin",
       "id": "oslogin:v1alpha",
+      "metadata_file": "oslogin/v1alpha/meta.json",
       "lib_cargo_file": "oslogin/v1alpha/lib/Cargo.toml",
       "gen_error_file": "oslogin/v1alpha/generator-errors.log",
       "cargo_error_file": "oslogin/v1alpha/cargo-errors.log",
@@ -1989,6 +2155,7 @@
     {
       "name": "oslogin",
       "id": "oslogin:v1beta",
+      "metadata_file": "oslogin/v1beta/meta.json",
       "lib_cargo_file": "oslogin/v1beta/lib/Cargo.toml",
       "gen_error_file": "oslogin/v1beta/generator-errors.log",
       "cargo_error_file": "oslogin/v1beta/cargo-errors.log",
@@ -2001,6 +2168,7 @@
     {
       "name": "oslogin",
       "id": "oslogin:v1",
+      "metadata_file": "oslogin/v1/meta.json",
       "lib_cargo_file": "oslogin/v1/lib/Cargo.toml",
       "gen_error_file": "oslogin/v1/generator-errors.log",
       "cargo_error_file": "oslogin/v1/cargo-errors.log",
@@ -2013,6 +2181,7 @@
     {
       "name": "pagespeedonline",
       "id": "pagespeedonline:v1",
+      "metadata_file": "pagespeedonline/v1/meta.json",
       "lib_cargo_file": "pagespeedonline/v1/lib/Cargo.toml",
       "gen_error_file": "pagespeedonline/v1/generator-errors.log",
       "cargo_error_file": "pagespeedonline/v1/cargo-errors.log",
@@ -2025,6 +2194,7 @@
     {
       "name": "pagespeedonline",
       "id": "pagespeedonline:v2",
+      "metadata_file": "pagespeedonline/v2/meta.json",
       "lib_cargo_file": "pagespeedonline/v2/lib/Cargo.toml",
       "gen_error_file": "pagespeedonline/v2/generator-errors.log",
       "cargo_error_file": "pagespeedonline/v2/cargo-errors.log",
@@ -2037,6 +2207,7 @@
     {
       "name": "pagespeedonline",
       "id": "pagespeedonline:v4",
+      "metadata_file": "pagespeedonline/v4/meta.json",
       "lib_cargo_file": "pagespeedonline/v4/lib/Cargo.toml",
       "gen_error_file": "pagespeedonline/v4/generator-errors.log",
       "cargo_error_file": "pagespeedonline/v4/cargo-errors.log",
@@ -2049,6 +2220,7 @@
     {
       "name": "pagespeedonline",
       "id": "pagespeedonline:v5",
+      "metadata_file": "pagespeedonline/v5/meta.json",
       "lib_cargo_file": "pagespeedonline/v5/lib/Cargo.toml",
       "gen_error_file": "pagespeedonline/v5/generator-errors.log",
       "cargo_error_file": "pagespeedonline/v5/cargo-errors.log",
@@ -2061,6 +2233,7 @@
     {
       "name": "people",
       "id": "people:v1",
+      "metadata_file": "people/v1/meta.json",
       "lib_cargo_file": "people/v1/lib/Cargo.toml",
       "gen_error_file": "people/v1/generator-errors.log",
       "cargo_error_file": "people/v1/cargo-errors.log",
@@ -2073,6 +2246,7 @@
     {
       "name": "playcustomapp",
       "id": "playcustomapp:v1",
+      "metadata_file": "playcustomapp/v1/meta.json",
       "lib_cargo_file": "playcustomapp/v1/lib/Cargo.toml",
       "gen_error_file": "playcustomapp/v1/generator-errors.log",
       "cargo_error_file": "playcustomapp/v1/cargo-errors.log",
@@ -2085,6 +2259,7 @@
     {
       "name": "plus",
       "id": "plus:v1",
+      "metadata_file": "plus/v1/meta.json",
       "lib_cargo_file": "plus/v1/lib/Cargo.toml",
       "gen_error_file": "plus/v1/generator-errors.log",
       "cargo_error_file": "plus/v1/cargo-errors.log",
@@ -2097,6 +2272,7 @@
     {
       "name": "plusDomains",
       "id": "plusDomains:v1",
+      "metadata_file": "plusDomains/v1/meta.json",
       "lib_cargo_file": "plusDomains/v1/lib/Cargo.toml",
       "gen_error_file": "plusDomains/v1/generator-errors.log",
       "cargo_error_file": "plusDomains/v1/cargo-errors.log",
@@ -2109,6 +2285,7 @@
     {
       "name": "poly",
       "id": "poly:v1",
+      "metadata_file": "poly/v1/meta.json",
       "lib_cargo_file": "poly/v1/lib/Cargo.toml",
       "gen_error_file": "poly/v1/generator-errors.log",
       "cargo_error_file": "poly/v1/cargo-errors.log",
@@ -2121,6 +2298,7 @@
     {
       "name": "proximitybeacon",
       "id": "proximitybeacon:v1beta1",
+      "metadata_file": "proximitybeacon/v1beta1/meta.json",
       "lib_cargo_file": "proximitybeacon/v1beta1/lib/Cargo.toml",
       "gen_error_file": "proximitybeacon/v1beta1/generator-errors.log",
       "cargo_error_file": "proximitybeacon/v1beta1/cargo-errors.log",
@@ -2133,6 +2311,7 @@
     {
       "name": "pubsub",
       "id": "pubsub:v1beta1a",
+      "metadata_file": "pubsub/v1beta1a/meta.json",
       "lib_cargo_file": "pubsub/v1beta1a/lib/Cargo.toml",
       "gen_error_file": "pubsub/v1beta1a/generator-errors.log",
       "cargo_error_file": "pubsub/v1beta1a/cargo-errors.log",
@@ -2145,6 +2324,7 @@
     {
       "name": "pubsub",
       "id": "pubsub:v1",
+      "metadata_file": "pubsub/v1/meta.json",
       "lib_cargo_file": "pubsub/v1/lib/Cargo.toml",
       "gen_error_file": "pubsub/v1/generator-errors.log",
       "cargo_error_file": "pubsub/v1/cargo-errors.log",
@@ -2157,6 +2337,7 @@
     {
       "name": "pubsub",
       "id": "pubsub:v1beta2",
+      "metadata_file": "pubsub/v1beta2/meta.json",
       "lib_cargo_file": "pubsub/v1beta2/lib/Cargo.toml",
       "gen_error_file": "pubsub/v1beta2/generator-errors.log",
       "cargo_error_file": "pubsub/v1beta2/cargo-errors.log",
@@ -2169,6 +2350,7 @@
     {
       "name": "redis",
       "id": "redis:v1",
+      "metadata_file": "redis/v1/meta.json",
       "lib_cargo_file": "redis/v1/lib/Cargo.toml",
       "gen_error_file": "redis/v1/generator-errors.log",
       "cargo_error_file": "redis/v1/cargo-errors.log",
@@ -2181,6 +2363,7 @@
     {
       "name": "redis",
       "id": "redis:v1beta1",
+      "metadata_file": "redis/v1beta1/meta.json",
       "lib_cargo_file": "redis/v1beta1/lib/Cargo.toml",
       "gen_error_file": "redis/v1beta1/generator-errors.log",
       "cargo_error_file": "redis/v1beta1/cargo-errors.log",
@@ -2193,6 +2376,7 @@
     {
       "name": "remotebuildexecution",
       "id": "remotebuildexecution:v1alpha",
+      "metadata_file": "remotebuildexecution/v1alpha/meta.json",
       "lib_cargo_file": "remotebuildexecution/v1alpha/lib/Cargo.toml",
       "gen_error_file": "remotebuildexecution/v1alpha/generator-errors.log",
       "cargo_error_file": "remotebuildexecution/v1alpha/cargo-errors.log",
@@ -2205,6 +2389,7 @@
     {
       "name": "remotebuildexecution",
       "id": "remotebuildexecution:v1",
+      "metadata_file": "remotebuildexecution/v1/meta.json",
       "lib_cargo_file": "remotebuildexecution/v1/lib/Cargo.toml",
       "gen_error_file": "remotebuildexecution/v1/generator-errors.log",
       "cargo_error_file": "remotebuildexecution/v1/cargo-errors.log",
@@ -2217,6 +2402,7 @@
     {
       "name": "remotebuildexecution",
       "id": "remotebuildexecution:v2",
+      "metadata_file": "remotebuildexecution/v2/meta.json",
       "lib_cargo_file": "remotebuildexecution/v2/lib/Cargo.toml",
       "gen_error_file": "remotebuildexecution/v2/generator-errors.log",
       "cargo_error_file": "remotebuildexecution/v2/cargo-errors.log",
@@ -2229,6 +2415,7 @@
     {
       "name": "replicapool",
       "id": "replicapool:v1beta1",
+      "metadata_file": "replicapool/v1beta1/meta.json",
       "lib_cargo_file": "replicapool/v1beta1/lib/Cargo.toml",
       "gen_error_file": "replicapool/v1beta1/generator-errors.log",
       "cargo_error_file": "replicapool/v1beta1/cargo-errors.log",
@@ -2241,6 +2428,7 @@
     {
       "name": "reseller",
       "id": "reseller:v1",
+      "metadata_file": "reseller/v1/meta.json",
       "lib_cargo_file": "reseller/v1/lib/Cargo.toml",
       "gen_error_file": "reseller/v1/generator-errors.log",
       "cargo_error_file": "reseller/v1/cargo-errors.log",
@@ -2253,6 +2441,7 @@
     {
       "name": "run",
       "id": "run:v1alpha1",
+      "metadata_file": "run/v1alpha1/meta.json",
       "lib_cargo_file": "run/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "run/v1alpha1/generator-errors.log",
       "cargo_error_file": "run/v1alpha1/cargo-errors.log",
@@ -2265,6 +2454,7 @@
     {
       "name": "run",
       "id": "run:v1",
+      "metadata_file": "run/v1/meta.json",
       "lib_cargo_file": "run/v1/lib/Cargo.toml",
       "gen_error_file": "run/v1/generator-errors.log",
       "cargo_error_file": "run/v1/cargo-errors.log",
@@ -2277,6 +2467,7 @@
     {
       "name": "runtimeconfig",
       "id": "runtimeconfig:v1",
+      "metadata_file": "runtimeconfig/v1/meta.json",
       "lib_cargo_file": "runtimeconfig/v1/lib/Cargo.toml",
       "gen_error_file": "runtimeconfig/v1/generator-errors.log",
       "cargo_error_file": "runtimeconfig/v1/cargo-errors.log",
@@ -2289,6 +2480,7 @@
     {
       "name": "runtimeconfig",
       "id": "runtimeconfig:v1beta1",
+      "metadata_file": "runtimeconfig/v1beta1/meta.json",
       "lib_cargo_file": "runtimeconfig/v1beta1/lib/Cargo.toml",
       "gen_error_file": "runtimeconfig/v1beta1/generator-errors.log",
       "cargo_error_file": "runtimeconfig/v1beta1/cargo-errors.log",
@@ -2301,6 +2493,7 @@
     {
       "name": "safebrowsing",
       "id": "safebrowsing:v4",
+      "metadata_file": "safebrowsing/v4/meta.json",
       "lib_cargo_file": "safebrowsing/v4/lib/Cargo.toml",
       "gen_error_file": "safebrowsing/v4/generator-errors.log",
       "cargo_error_file": "safebrowsing/v4/cargo-errors.log",
@@ -2313,6 +2506,7 @@
     {
       "name": "script",
       "id": "script:v1",
+      "metadata_file": "script/v1/meta.json",
       "lib_cargo_file": "script/v1/lib/Cargo.toml",
       "gen_error_file": "script/v1/generator-errors.log",
       "cargo_error_file": "script/v1/cargo-errors.log",
@@ -2325,6 +2519,7 @@
     {
       "name": "searchconsole",
       "id": "searchconsole:v1",
+      "metadata_file": "searchconsole/v1/meta.json",
       "lib_cargo_file": "searchconsole/v1/lib/Cargo.toml",
       "gen_error_file": "searchconsole/v1/generator-errors.log",
       "cargo_error_file": "searchconsole/v1/cargo-errors.log",
@@ -2337,6 +2532,7 @@
     {
       "name": "securitycenter",
       "id": "securitycenter:v1p1alpha1",
+      "metadata_file": "securitycenter/v1p1alpha1/meta.json",
       "lib_cargo_file": "securitycenter/v1p1alpha1/lib/Cargo.toml",
       "gen_error_file": "securitycenter/v1p1alpha1/generator-errors.log",
       "cargo_error_file": "securitycenter/v1p1alpha1/cargo-errors.log",
@@ -2349,6 +2545,7 @@
     {
       "name": "securitycenter",
       "id": "securitycenter:v1",
+      "metadata_file": "securitycenter/v1/meta.json",
       "lib_cargo_file": "securitycenter/v1/lib/Cargo.toml",
       "gen_error_file": "securitycenter/v1/generator-errors.log",
       "cargo_error_file": "securitycenter/v1/cargo-errors.log",
@@ -2361,6 +2558,7 @@
     {
       "name": "securitycenter",
       "id": "securitycenter:v1beta1",
+      "metadata_file": "securitycenter/v1beta1/meta.json",
       "lib_cargo_file": "securitycenter/v1beta1/lib/Cargo.toml",
       "gen_error_file": "securitycenter/v1beta1/generator-errors.log",
       "cargo_error_file": "securitycenter/v1beta1/cargo-errors.log",
@@ -2373,6 +2571,7 @@
     {
       "name": "servicebroker",
       "id": "servicebroker:v1alpha1",
+      "metadata_file": "servicebroker/v1alpha1/meta.json",
       "lib_cargo_file": "servicebroker/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "servicebroker/v1alpha1/generator-errors.log",
       "cargo_error_file": "servicebroker/v1alpha1/cargo-errors.log",
@@ -2385,6 +2584,7 @@
     {
       "name": "servicebroker",
       "id": "servicebroker:v1",
+      "metadata_file": "servicebroker/v1/meta.json",
       "lib_cargo_file": "servicebroker/v1/lib/Cargo.toml",
       "gen_error_file": "servicebroker/v1/generator-errors.log",
       "cargo_error_file": "servicebroker/v1/cargo-errors.log",
@@ -2397,6 +2597,7 @@
     {
       "name": "servicebroker",
       "id": "servicebroker:v1beta1",
+      "metadata_file": "servicebroker/v1beta1/meta.json",
       "lib_cargo_file": "servicebroker/v1beta1/lib/Cargo.toml",
       "gen_error_file": "servicebroker/v1beta1/generator-errors.log",
       "cargo_error_file": "servicebroker/v1beta1/cargo-errors.log",
@@ -2409,6 +2610,7 @@
     {
       "name": "serviceconsumermanagement",
       "id": "serviceconsumermanagement:v1",
+      "metadata_file": "serviceconsumermanagement/v1/meta.json",
       "lib_cargo_file": "serviceconsumermanagement/v1/lib/Cargo.toml",
       "gen_error_file": "serviceconsumermanagement/v1/generator-errors.log",
       "cargo_error_file": "serviceconsumermanagement/v1/cargo-errors.log",
@@ -2421,6 +2623,7 @@
     {
       "name": "servicecontrol",
       "id": "servicecontrol:v1",
+      "metadata_file": "servicecontrol/v1/meta.json",
       "lib_cargo_file": "servicecontrol/v1/lib/Cargo.toml",
       "gen_error_file": "servicecontrol/v1/generator-errors.log",
       "cargo_error_file": "servicecontrol/v1/cargo-errors.log",
@@ -2433,6 +2636,7 @@
     {
       "name": "servicemanagement",
       "id": "servicemanagement:v1",
+      "metadata_file": "servicemanagement/v1/meta.json",
       "lib_cargo_file": "servicemanagement/v1/lib/Cargo.toml",
       "gen_error_file": "servicemanagement/v1/generator-errors.log",
       "cargo_error_file": "servicemanagement/v1/cargo-errors.log",
@@ -2445,6 +2649,7 @@
     {
       "name": "servicenetworking",
       "id": "servicenetworking:v1beta",
+      "metadata_file": "servicenetworking/v1beta/meta.json",
       "lib_cargo_file": "servicenetworking/v1beta/lib/Cargo.toml",
       "gen_error_file": "servicenetworking/v1beta/generator-errors.log",
       "cargo_error_file": "servicenetworking/v1beta/cargo-errors.log",
@@ -2457,6 +2662,7 @@
     {
       "name": "servicenetworking",
       "id": "servicenetworking:v1",
+      "metadata_file": "servicenetworking/v1/meta.json",
       "lib_cargo_file": "servicenetworking/v1/lib/Cargo.toml",
       "gen_error_file": "servicenetworking/v1/generator-errors.log",
       "cargo_error_file": "servicenetworking/v1/cargo-errors.log",
@@ -2469,6 +2675,7 @@
     {
       "name": "serviceusage",
       "id": "serviceusage:v1",
+      "metadata_file": "serviceusage/v1/meta.json",
       "lib_cargo_file": "serviceusage/v1/lib/Cargo.toml",
       "gen_error_file": "serviceusage/v1/generator-errors.log",
       "cargo_error_file": "serviceusage/v1/cargo-errors.log",
@@ -2481,6 +2688,7 @@
     {
       "name": "serviceusage",
       "id": "serviceusage:v1beta1",
+      "metadata_file": "serviceusage/v1beta1/meta.json",
       "lib_cargo_file": "serviceusage/v1beta1/lib/Cargo.toml",
       "gen_error_file": "serviceusage/v1beta1/generator-errors.log",
       "cargo_error_file": "serviceusage/v1beta1/cargo-errors.log",
@@ -2493,6 +2701,7 @@
     {
       "name": "sheets",
       "id": "sheets:v4",
+      "metadata_file": "sheets/v4/meta.json",
       "lib_cargo_file": "sheets/v4/lib/Cargo.toml",
       "gen_error_file": "sheets/v4/generator-errors.log",
       "cargo_error_file": "sheets/v4/cargo-errors.log",
@@ -2505,6 +2714,7 @@
     {
       "name": "siteVerification",
       "id": "siteVerification:v1",
+      "metadata_file": "siteVerification/v1/meta.json",
       "lib_cargo_file": "siteVerification/v1/lib/Cargo.toml",
       "gen_error_file": "siteVerification/v1/generator-errors.log",
       "cargo_error_file": "siteVerification/v1/cargo-errors.log",
@@ -2517,6 +2727,7 @@
     {
       "name": "slides",
       "id": "slides:v1",
+      "metadata_file": "slides/v1/meta.json",
       "lib_cargo_file": "slides/v1/lib/Cargo.toml",
       "gen_error_file": "slides/v1/generator-errors.log",
       "cargo_error_file": "slides/v1/cargo-errors.log",
@@ -2529,6 +2740,7 @@
     {
       "name": "sourcerepo",
       "id": "sourcerepo:v1",
+      "metadata_file": "sourcerepo/v1/meta.json",
       "lib_cargo_file": "sourcerepo/v1/lib/Cargo.toml",
       "gen_error_file": "sourcerepo/v1/generator-errors.log",
       "cargo_error_file": "sourcerepo/v1/cargo-errors.log",
@@ -2541,6 +2753,7 @@
     {
       "name": "spanner",
       "id": "spanner:v1",
+      "metadata_file": "spanner/v1/meta.json",
       "lib_cargo_file": "spanner/v1/lib/Cargo.toml",
       "gen_error_file": "spanner/v1/generator-errors.log",
       "cargo_error_file": "spanner/v1/cargo-errors.log",
@@ -2553,6 +2766,7 @@
     {
       "name": "speech",
       "id": "speech:v1p1beta1",
+      "metadata_file": "speech/v1p1beta1/meta.json",
       "lib_cargo_file": "speech/v1p1beta1/lib/Cargo.toml",
       "gen_error_file": "speech/v1p1beta1/generator-errors.log",
       "cargo_error_file": "speech/v1p1beta1/cargo-errors.log",
@@ -2565,6 +2779,7 @@
     {
       "name": "speech",
       "id": "speech:v2beta",
+      "metadata_file": "speech/v2beta/meta.json",
       "lib_cargo_file": "speech/v2beta/lib/Cargo.toml",
       "gen_error_file": "speech/v2beta/generator-errors.log",
       "cargo_error_file": "speech/v2beta/cargo-errors.log",
@@ -2577,6 +2792,7 @@
     {
       "name": "speech",
       "id": "speech:v1",
+      "metadata_file": "speech/v1/meta.json",
       "lib_cargo_file": "speech/v1/lib/Cargo.toml",
       "gen_error_file": "speech/v1/generator-errors.log",
       "cargo_error_file": "speech/v1/cargo-errors.log",
@@ -2589,6 +2805,7 @@
     {
       "name": "sqladmin",
       "id": "sqladmin:v1beta4",
+      "metadata_file": "sqladmin/v1beta4/meta.json",
       "lib_cargo_file": "sqladmin/v1beta4/lib/Cargo.toml",
       "gen_error_file": "sqladmin/v1beta4/generator-errors.log",
       "cargo_error_file": "sqladmin/v1beta4/cargo-errors.log",
@@ -2601,6 +2818,7 @@
     {
       "name": "storage",
       "id": "storage:v1",
+      "metadata_file": "storage/v1/meta.json",
       "lib_cargo_file": "storage/v1/lib/Cargo.toml",
       "gen_error_file": "storage/v1/generator-errors.log",
       "cargo_error_file": "storage/v1/cargo-errors.log",
@@ -2613,6 +2831,7 @@
     {
       "name": "storage",
       "id": "storage:v1beta1",
+      "metadata_file": "storage/v1beta1/meta.json",
       "lib_cargo_file": "storage/v1beta1/lib/Cargo.toml",
       "gen_error_file": "storage/v1beta1/generator-errors.log",
       "cargo_error_file": "storage/v1beta1/cargo-errors.log",
@@ -2625,6 +2844,7 @@
     {
       "name": "storage",
       "id": "storage:v1beta2",
+      "metadata_file": "storage/v1beta2/meta.json",
       "lib_cargo_file": "storage/v1beta2/lib/Cargo.toml",
       "gen_error_file": "storage/v1beta2/generator-errors.log",
       "cargo_error_file": "storage/v1beta2/cargo-errors.log",
@@ -2637,6 +2857,7 @@
     {
       "name": "storagetransfer",
       "id": "storagetransfer:v1",
+      "metadata_file": "storagetransfer/v1/meta.json",
       "lib_cargo_file": "storagetransfer/v1/lib/Cargo.toml",
       "gen_error_file": "storagetransfer/v1/generator-errors.log",
       "cargo_error_file": "storagetransfer/v1/cargo-errors.log",
@@ -2649,6 +2870,7 @@
     {
       "name": "streetviewpublish",
       "id": "streetviewpublish:v1",
+      "metadata_file": "streetviewpublish/v1/meta.json",
       "lib_cargo_file": "streetviewpublish/v1/lib/Cargo.toml",
       "gen_error_file": "streetviewpublish/v1/generator-errors.log",
       "cargo_error_file": "streetviewpublish/v1/cargo-errors.log",
@@ -2661,6 +2883,7 @@
     {
       "name": "surveys",
       "id": "surveys:v2",
+      "metadata_file": "surveys/v2/meta.json",
       "lib_cargo_file": "surveys/v2/lib/Cargo.toml",
       "gen_error_file": "surveys/v2/generator-errors.log",
       "cargo_error_file": "surveys/v2/cargo-errors.log",
@@ -2673,6 +2896,7 @@
     {
       "name": "tagmanager",
       "id": "tagmanager:v1",
+      "metadata_file": "tagmanager/v1/meta.json",
       "lib_cargo_file": "tagmanager/v1/lib/Cargo.toml",
       "gen_error_file": "tagmanager/v1/generator-errors.log",
       "cargo_error_file": "tagmanager/v1/cargo-errors.log",
@@ -2685,6 +2909,7 @@
     {
       "name": "tagmanager",
       "id": "tagmanager:v2",
+      "metadata_file": "tagmanager/v2/meta.json",
       "lib_cargo_file": "tagmanager/v2/lib/Cargo.toml",
       "gen_error_file": "tagmanager/v2/generator-errors.log",
       "cargo_error_file": "tagmanager/v2/cargo-errors.log",
@@ -2697,6 +2922,7 @@
     {
       "name": "tasks",
       "id": "tasks:v1",
+      "metadata_file": "tasks/v1/meta.json",
       "lib_cargo_file": "tasks/v1/lib/Cargo.toml",
       "gen_error_file": "tasks/v1/generator-errors.log",
       "cargo_error_file": "tasks/v1/cargo-errors.log",
@@ -2709,6 +2935,7 @@
     {
       "name": "testing",
       "id": "testing:v1",
+      "metadata_file": "testing/v1/meta.json",
       "lib_cargo_file": "testing/v1/lib/Cargo.toml",
       "gen_error_file": "testing/v1/generator-errors.log",
       "cargo_error_file": "testing/v1/cargo-errors.log",
@@ -2721,6 +2948,7 @@
     {
       "name": "texttospeech",
       "id": "texttospeech:v1",
+      "metadata_file": "texttospeech/v1/meta.json",
       "lib_cargo_file": "texttospeech/v1/lib/Cargo.toml",
       "gen_error_file": "texttospeech/v1/generator-errors.log",
       "cargo_error_file": "texttospeech/v1/cargo-errors.log",
@@ -2733,6 +2961,7 @@
     {
       "name": "texttospeech",
       "id": "texttospeech:v1beta1",
+      "metadata_file": "texttospeech/v1beta1/meta.json",
       "lib_cargo_file": "texttospeech/v1beta1/lib/Cargo.toml",
       "gen_error_file": "texttospeech/v1beta1/generator-errors.log",
       "cargo_error_file": "texttospeech/v1beta1/cargo-errors.log",
@@ -2745,6 +2974,7 @@
     {
       "name": "toolresults",
       "id": "toolresults:v1beta3",
+      "metadata_file": "toolresults/v1beta3/meta.json",
       "lib_cargo_file": "toolresults/v1beta3/lib/Cargo.toml",
       "gen_error_file": "toolresults/v1beta3/generator-errors.log",
       "cargo_error_file": "toolresults/v1beta3/cargo-errors.log",
@@ -2757,6 +2987,7 @@
     {
       "name": "tpu",
       "id": "tpu:v1alpha1",
+      "metadata_file": "tpu/v1alpha1/meta.json",
       "lib_cargo_file": "tpu/v1alpha1/lib/Cargo.toml",
       "gen_error_file": "tpu/v1alpha1/generator-errors.log",
       "cargo_error_file": "tpu/v1alpha1/cargo-errors.log",
@@ -2769,6 +3000,7 @@
     {
       "name": "tpu",
       "id": "tpu:v1",
+      "metadata_file": "tpu/v1/meta.json",
       "lib_cargo_file": "tpu/v1/lib/Cargo.toml",
       "gen_error_file": "tpu/v1/generator-errors.log",
       "cargo_error_file": "tpu/v1/cargo-errors.log",
@@ -2781,6 +3013,7 @@
     {
       "name": "translate",
       "id": "translate:v2",
+      "metadata_file": "translate/v2/meta.json",
       "lib_cargo_file": "translate/v2/lib/Cargo.toml",
       "gen_error_file": "translate/v2/generator-errors.log",
       "cargo_error_file": "translate/v2/cargo-errors.log",
@@ -2793,6 +3026,7 @@
     {
       "name": "translate",
       "id": "translate:v3beta1",
+      "metadata_file": "translate/v3beta1/meta.json",
       "lib_cargo_file": "translate/v3beta1/lib/Cargo.toml",
       "gen_error_file": "translate/v3beta1/generator-errors.log",
       "cargo_error_file": "translate/v3beta1/cargo-errors.log",
@@ -2805,6 +3039,7 @@
     {
       "name": "urlshortener",
       "id": "urlshortener:v1",
+      "metadata_file": "urlshortener/v1/meta.json",
       "lib_cargo_file": "urlshortener/v1/lib/Cargo.toml",
       "gen_error_file": "urlshortener/v1/generator-errors.log",
       "cargo_error_file": "urlshortener/v1/cargo-errors.log",
@@ -2817,6 +3052,7 @@
     {
       "name": "vault",
       "id": "vault:v1",
+      "metadata_file": "vault/v1/meta.json",
       "lib_cargo_file": "vault/v1/lib/Cargo.toml",
       "gen_error_file": "vault/v1/generator-errors.log",
       "cargo_error_file": "vault/v1/cargo-errors.log",
@@ -2829,6 +3065,7 @@
     {
       "name": "videointelligence",
       "id": "videointelligence:v1p1beta1",
+      "metadata_file": "videointelligence/v1p1beta1/meta.json",
       "lib_cargo_file": "videointelligence/v1p1beta1/lib/Cargo.toml",
       "gen_error_file": "videointelligence/v1p1beta1/generator-errors.log",
       "cargo_error_file": "videointelligence/v1p1beta1/cargo-errors.log",
@@ -2841,6 +3078,7 @@
     {
       "name": "videointelligence",
       "id": "videointelligence:v1p2beta1",
+      "metadata_file": "videointelligence/v1p2beta1/meta.json",
       "lib_cargo_file": "videointelligence/v1p2beta1/lib/Cargo.toml",
       "gen_error_file": "videointelligence/v1p2beta1/generator-errors.log",
       "cargo_error_file": "videointelligence/v1p2beta1/cargo-errors.log",
@@ -2853,6 +3091,7 @@
     {
       "name": "videointelligence",
       "id": "videointelligence:v1p3beta1",
+      "metadata_file": "videointelligence/v1p3beta1/meta.json",
       "lib_cargo_file": "videointelligence/v1p3beta1/lib/Cargo.toml",
       "gen_error_file": "videointelligence/v1p3beta1/generator-errors.log",
       "cargo_error_file": "videointelligence/v1p3beta1/cargo-errors.log",
@@ -2865,6 +3104,7 @@
     {
       "name": "videointelligence",
       "id": "videointelligence:v1",
+      "metadata_file": "videointelligence/v1/meta.json",
       "lib_cargo_file": "videointelligence/v1/lib/Cargo.toml",
       "gen_error_file": "videointelligence/v1/generator-errors.log",
       "cargo_error_file": "videointelligence/v1/cargo-errors.log",
@@ -2877,6 +3117,7 @@
     {
       "name": "videointelligence",
       "id": "videointelligence:v1beta2",
+      "metadata_file": "videointelligence/v1beta2/meta.json",
       "lib_cargo_file": "videointelligence/v1beta2/lib/Cargo.toml",
       "gen_error_file": "videointelligence/v1beta2/generator-errors.log",
       "cargo_error_file": "videointelligence/v1beta2/cargo-errors.log",
@@ -2889,6 +3130,7 @@
     {
       "name": "vision",
       "id": "vision:v1p1beta1",
+      "metadata_file": "vision/v1p1beta1/meta.json",
       "lib_cargo_file": "vision/v1p1beta1/lib/Cargo.toml",
       "gen_error_file": "vision/v1p1beta1/generator-errors.log",
       "cargo_error_file": "vision/v1p1beta1/cargo-errors.log",
@@ -2901,6 +3143,7 @@
     {
       "name": "vision",
       "id": "vision:v1p2beta1",
+      "metadata_file": "vision/v1p2beta1/meta.json",
       "lib_cargo_file": "vision/v1p2beta1/lib/Cargo.toml",
       "gen_error_file": "vision/v1p2beta1/generator-errors.log",
       "cargo_error_file": "vision/v1p2beta1/cargo-errors.log",
@@ -2913,6 +3156,7 @@
     {
       "name": "vision",
       "id": "vision:v1",
+      "metadata_file": "vision/v1/meta.json",
       "lib_cargo_file": "vision/v1/lib/Cargo.toml",
       "gen_error_file": "vision/v1/generator-errors.log",
       "cargo_error_file": "vision/v1/cargo-errors.log",
@@ -2925,6 +3169,7 @@
     {
       "name": "webfonts",
       "id": "webfonts:v1",
+      "metadata_file": "webfonts/v1/meta.json",
       "lib_cargo_file": "webfonts/v1/lib/Cargo.toml",
       "gen_error_file": "webfonts/v1/generator-errors.log",
       "cargo_error_file": "webfonts/v1/cargo-errors.log",
@@ -2937,6 +3182,7 @@
     {
       "name": "webmasters",
       "id": "webmasters:v3",
+      "metadata_file": "webmasters/v3/meta.json",
       "lib_cargo_file": "webmasters/v3/lib/Cargo.toml",
       "gen_error_file": "webmasters/v3/generator-errors.log",
       "cargo_error_file": "webmasters/v3/cargo-errors.log",
@@ -2949,6 +3195,7 @@
     {
       "name": "websecurityscanner",
       "id": "websecurityscanner:v1alpha",
+      "metadata_file": "websecurityscanner/v1alpha/meta.json",
       "lib_cargo_file": "websecurityscanner/v1alpha/lib/Cargo.toml",
       "gen_error_file": "websecurityscanner/v1alpha/generator-errors.log",
       "cargo_error_file": "websecurityscanner/v1alpha/cargo-errors.log",
@@ -2961,6 +3208,7 @@
     {
       "name": "websecurityscanner",
       "id": "websecurityscanner:v1beta",
+      "metadata_file": "websecurityscanner/v1beta/meta.json",
       "lib_cargo_file": "websecurityscanner/v1beta/lib/Cargo.toml",
       "gen_error_file": "websecurityscanner/v1beta/generator-errors.log",
       "cargo_error_file": "websecurityscanner/v1beta/cargo-errors.log",
@@ -2973,6 +3221,7 @@
     {
       "name": "websecurityscanner",
       "id": "websecurityscanner:v1",
+      "metadata_file": "websecurityscanner/v1/meta.json",
       "lib_cargo_file": "websecurityscanner/v1/lib/Cargo.toml",
       "gen_error_file": "websecurityscanner/v1/generator-errors.log",
       "cargo_error_file": "websecurityscanner/v1/cargo-errors.log",
@@ -2985,6 +3234,7 @@
     {
       "name": "youtube",
       "id": "youtube:v3",
+      "metadata_file": "youtube/v3/meta.json",
       "lib_cargo_file": "youtube/v3/lib/Cargo.toml",
       "gen_error_file": "youtube/v3/generator-errors.log",
       "cargo_error_file": "youtube/v3/cargo-errors.log",
@@ -2997,6 +3247,7 @@
     {
       "name": "youtubeAnalytics",
       "id": "youtubeAnalytics:v1",
+      "metadata_file": "youtubeAnalytics/v1/meta.json",
       "lib_cargo_file": "youtubeAnalytics/v1/lib/Cargo.toml",
       "gen_error_file": "youtubeAnalytics/v1/generator-errors.log",
       "cargo_error_file": "youtubeAnalytics/v1/cargo-errors.log",
@@ -3009,6 +3260,7 @@
     {
       "name": "youtubeAnalytics",
       "id": "youtubeAnalytics:v2",
+      "metadata_file": "youtubeAnalytics/v2/meta.json",
       "lib_cargo_file": "youtubeAnalytics/v2/lib/Cargo.toml",
       "gen_error_file": "youtubeAnalytics/v2/generator-errors.log",
       "cargo_error_file": "youtubeAnalytics/v2/cargo-errors.log",
@@ -3021,6 +3273,7 @@
     {
       "name": "youtubereporting",
       "id": "youtubereporting:v1",
+      "metadata_file": "youtubereporting/v1/meta.json",
       "lib_cargo_file": "youtubereporting/v1/lib/Cargo.toml",
       "gen_error_file": "youtubereporting/v1/generator-errors.log",
       "cargo_error_file": "youtubereporting/v1/cargo-errors.log",
