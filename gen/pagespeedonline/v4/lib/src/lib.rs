@@ -19,13 +19,14 @@ pub mod schemas {
         #[serde(rename = "format", default)]
         pub format: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4 {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4 {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiFormatStringV4 {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -61,13 +62,14 @@ pub mod schemas {
         #[serde(rename = "value", default)]
         pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiFormatStringV4ArgsItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -92,13 +94,14 @@ pub mod schemas {
         #[serde(rename = "width", default)]
         pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsRectsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsRectsItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiFormatStringV4ArgsItemsRectsItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -123,13 +126,18 @@ pub mod schemas {
         #[serde(rename = "width", default)]
         pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -163,13 +171,14 @@ pub mod schemas {
         #[serde(rename = "width", default)]
         pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiImageV4 {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiImageV4 {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiImageV4 {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -194,13 +203,14 @@ pub mod schemas {
         #[serde(rename = "width", default)]
         pub width: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiImageV4PageRect {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiImageV4PageRect {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiImageV4PageRect {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -255,41 +265,46 @@ pub mod schemas {
         #[serde(rename = "version", default)]
         pub version: ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4Version>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4 {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4 {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiPagespeedResponseV4 {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4FormattedResults { # [ doc = "The locale of the formattedResults, e.g. \"en_US\"." ] # [ serde ( rename = "locale" , default ) ] pub locale : :: std :: option :: Option < String > , # [ doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server." ] # [ serde ( rename = "ruleResults" , default ) ] pub rule_results : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties > > , }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4FormattedResults {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4FormattedResults {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiPagespeedResponseV4FormattedResults {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties { # [ doc = "Whether this rule is in 'beta'. Rules in beta are new rules that are being tested, which do not impact the overall score." ] # [ serde ( rename = "beta" , default ) ] pub beta : :: std :: option :: Option < bool > , # [ doc = "List of rule groups that this rule belongs to. Each entry in the list is one of \"SPEED\", \"USABILITY\", or \"SECURITY\"." ] # [ serde ( rename = "groups" , default ) ] pub groups : :: std :: option :: Option < Vec < String > > , # [ doc = "Localized name of the rule, intended for presentation to a user." ] # [ serde ( rename = "localizedRuleName" , default ) ] pub localized_rule_name : :: std :: option :: Option < String > , # [ doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal." ] # [ serde ( rename = "ruleImpact" , default ) ] pub rule_impact : :: std :: option :: Option < f64 > , # [ doc = "A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so." ] # [ serde ( rename = "summary" , default ) ] pub summary : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details." ] # [ serde ( rename = "urlBlocks" , default ) ] pub url_blocks : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems > > , }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -305,7 +320,8 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
+    impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
     #[derive(
         Debug,
         Clone,
@@ -327,33 +343,38 @@ pub mod schemas {
         #[serde(rename = "result", default)]
         pub result: ::std::option::Option<crate::schemas::PagespeedApiFormatStringV4>,
     }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
+    impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4LoadingExperience { # [ doc = "The url, pattern or origin which the metrics are on." ] # [ serde ( rename = "id" , default ) ] pub id : :: std :: option :: Option < String > , # [ serde ( rename = "initial_url" , default ) ] pub initial_url : :: std :: option :: Option < String > , # [ serde ( rename = "metrics" , default ) ] pub metrics : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties > > , # [ serde ( rename = "overall_category" , default ) ] pub overall_category : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperience {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperience {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiPagespeedResponseV4LoadingExperience {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : :: std :: option :: Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "median" , default ) ] pub median : :: std :: option :: Option < i32 > , }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -368,7 +389,8 @@ pub mod schemas {
         #[serde(rename = "proportion", default)]
         pub proportion: ::std::option::Option<f64>,
     }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
+    impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
     #[derive(
         Debug,
         Clone,
@@ -455,13 +477,14 @@ pub mod schemas {
         #[serde(rename = "transientFetchFailureUrls", default)]
         pub transient_fetch_failure_urls: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4PageStats {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4PageStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiPagespeedResponseV4PageStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -483,15 +506,18 @@ pub mod schemas {
         #[serde(rename = "score", default)]
         pub score: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -514,13 +540,14 @@ pub mod schemas {
         #[serde(rename = "minor", default)]
         pub minor: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4Version {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4Version {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PagespeedApiPagespeedResponseV4Version {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -567,25 +594,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the pagespeedapi resource"]
@@ -645,21 +676,22 @@ pub mod resources {
                     })
                 }
             }
-            impl ::field_selector::FieldSelector for RunpagespeedStrategy {
-                fn field_selector_with_ident(ident: &str, selector: &mut String) {
-                    match selector.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => selector.push_str(","),
-                    }
-                    selector.push_str(ident);
+            impl ::google_field_selector::FieldSelector for RunpagespeedStrategy {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for RunpagespeedStrategy {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
                 }
             }
         }
         pub struct PagespeedapiActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> PagespeedapiActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> PagespeedapiActions<'a, A> {
             #[doc = "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information."]
             pub fn runpagespeed(&self, url: impl Into<String>) -> RunpagespeedRequestBuilder<A> {
                 RunpagespeedRequestBuilder {
@@ -687,7 +719,7 @@ pub mod resources {
         #[derive(Debug, Clone)]
         pub struct RunpagespeedRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
             url: String,
             filter_third_party_resources: Option<bool>,
             locale: Option<String>,
@@ -705,7 +737,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: yup_oauth2::GetToken> RunpagespeedRequestBuilder<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> RunpagespeedRequestBuilder<'a, A> {
             #[doc = "Indicates if third party resources should be filtered out before PageSpeed analysis."]
             pub fn filter_third_party_resources(mut self, value: bool) -> Self {
                 self.filter_third_party_resources = Some(value);
@@ -783,41 +815,41 @@ pub mod resources {
             #[doc = r" fields."]
             pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
-                let fields = T::field_selector();
+                let fields = ::google_field_selector::to_string::<T>();
                 let fields: Option<String> = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::PagespeedApiPagespeedResponseV4, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::PagespeedApiPagespeedResponseV4, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -832,7 +864,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path());
+                let req = self._request(&self._path())?;
                 Ok(req.send()?.error_for_status()?.json()?)
             }
             fn _path(&self) -> String {
@@ -840,7 +872,10 @@ pub mod resources {
                 output.push_str("runPagespeed");
                 output
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("url", &self.url)]);
                 let req = req.query(&[(
@@ -861,7 +896,8 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                req
+                let req = req.bearer_auth(self.auth.access_token()?);
+                Ok(req)
             }
         }
     }

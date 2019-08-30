@@ -28,13 +28,14 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Catalog {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Catalog {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudPrivatecatalogV1Beta1Catalog {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -59,13 +60,14 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Product {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Product {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudPrivatecatalogV1Beta1Product {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -89,13 +91,18 @@ pub mod schemas {
         #[serde(rename = "nextPageToken", default)]
         pub next_page_token: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -108,13 +115,18 @@ pub mod schemas {
         pub products:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product>>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -127,13 +139,18 @@ pub mod schemas {
         pub versions:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version>>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -154,13 +171,14 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Version {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Version {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudPrivatecatalogV1Beta1Version {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -215,13 +233,14 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -270,25 +289,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Xgafv {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the folders resource"]
@@ -318,9 +341,9 @@ pub mod resources {
         pub mod params {}
         pub struct FoldersActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> FoldersActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> FoldersActions<'a, A> {
             #[doc = "Actions that can be performed on the catalogs resource"]
             pub fn catalogs(&self) -> crate::resources::folders::catalogs::CatalogsActions<A> {
                 crate::resources::folders::catalogs::CatalogsActions {
@@ -347,9 +370,9 @@ pub mod resources {
             pub mod params {}
             pub struct CatalogsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> CatalogsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> CatalogsActions<'a, A> {
                 #[doc = "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -376,7 +399,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -393,7 +416,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -459,32 +482,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_catalogs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_catalogs<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "catalogs").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_catalogs_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_catalogs_standard(
-                    mut self,
+                pub fn iter_catalogs_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs").to_owned());
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    self.iter_catalogs_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -492,20 +512,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_catalogs_debug(
-                    mut self,
+                pub fn iter_catalogs_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs", "(*)").to_owned());
+                    self.iter_catalogs_with_fields(Some("*"))
+                }
+                pub fn iter_catalogs_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "catalogs").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "catalogs")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -514,23 +585,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -542,45 +596,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -595,7 +649,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -611,7 +665,11 @@ pub mod resources {
                     output.push_str("/catalogs:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -627,15 +685,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -651,9 +707,9 @@ pub mod resources {
             pub mod params {}
             pub struct ProductsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> ProductsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ProductsActions<'a, A> {
                 #[doc = "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -680,7 +736,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -697,7 +753,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -763,32 +819,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_products<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_products<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "products").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "products")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_products_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_products_standard(
-                    mut self,
+                pub fn iter_products_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products").to_owned());
-                    crate::iter::PageItemIter::new(self, "products")
+                    self.iter_products_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -796,20 +849,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_products_debug(
-                    mut self,
+                pub fn iter_products_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products", "(*)").to_owned());
+                    self.iter_products_with_fields(Some("*"))
+                }
+                pub fn iter_products_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "products").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "products")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -818,23 +922,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -846,45 +933,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -899,7 +986,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -915,7 +1002,11 @@ pub mod resources {
                     output.push_str("/products:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -931,15 +1022,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -955,9 +1044,9 @@ pub mod resources {
             pub mod params {}
             pub struct VersionsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> VersionsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> VersionsActions<'a, A> {
                 #[doc = "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -984,7 +1073,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -1001,7 +1090,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -1067,32 +1156,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_versions<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_versions<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "versions").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "versions")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_versions_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_versions_standard(
-                    mut self,
+                pub fn iter_versions_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions").to_owned());
-                    crate::iter::PageItemIter::new(self, "versions")
+                    self.iter_versions_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1100,20 +1186,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_versions_debug(
-                    mut self,
+                pub fn iter_versions_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions", "(*)").to_owned());
+                    self.iter_versions_with_fields(Some("*"))
+                }
+                pub fn iter_versions_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "versions").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "versions")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -1122,23 +1259,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -1150,45 +1270,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1203,7 +1323,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -1219,7 +1339,11 @@ pub mod resources {
                     output.push_str("/versions:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1235,15 +1359,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -1260,9 +1382,9 @@ pub mod resources {
         pub mod params {}
         pub struct OrganizationsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> OrganizationsActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> OrganizationsActions<'a, A> {
             #[doc = "Actions that can be performed on the catalogs resource"]
             pub fn catalogs(
                 &self,
@@ -1295,9 +1417,9 @@ pub mod resources {
             pub mod params {}
             pub struct CatalogsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> CatalogsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> CatalogsActions<'a, A> {
                 #[doc = "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -1324,7 +1446,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -1341,7 +1463,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -1407,32 +1529,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_catalogs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_catalogs<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "catalogs").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_catalogs_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_catalogs_standard(
-                    mut self,
+                pub fn iter_catalogs_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs").to_owned());
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    self.iter_catalogs_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1440,20 +1559,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_catalogs_debug(
-                    mut self,
+                pub fn iter_catalogs_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs", "(*)").to_owned());
+                    self.iter_catalogs_with_fields(Some("*"))
+                }
+                pub fn iter_catalogs_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "catalogs").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "catalogs")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -1462,23 +1632,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -1490,45 +1643,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1543,7 +1696,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -1559,7 +1712,11 @@ pub mod resources {
                     output.push_str("/catalogs:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1575,15 +1732,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -1599,9 +1754,9 @@ pub mod resources {
             pub mod params {}
             pub struct ProductsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> ProductsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ProductsActions<'a, A> {
                 #[doc = "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -1628,7 +1783,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -1645,7 +1800,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -1711,32 +1866,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_products<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_products<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "products").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "products")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_products_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_products_standard(
-                    mut self,
+                pub fn iter_products_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products").to_owned());
-                    crate::iter::PageItemIter::new(self, "products")
+                    self.iter_products_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1744,20 +1896,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_products_debug(
-                    mut self,
+                pub fn iter_products_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products", "(*)").to_owned());
+                    self.iter_products_with_fields(Some("*"))
+                }
+                pub fn iter_products_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "products").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "products")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -1766,23 +1969,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -1794,45 +1980,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1847,7 +2033,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -1863,7 +2049,11 @@ pub mod resources {
                     output.push_str("/products:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1879,15 +2069,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -1903,9 +2091,9 @@ pub mod resources {
             pub mod params {}
             pub struct VersionsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> VersionsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> VersionsActions<'a, A> {
                 #[doc = "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -1932,7 +2120,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -1949,7 +2137,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -2015,32 +2203,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_versions<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_versions<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "versions").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "versions")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_versions_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_versions_standard(
-                    mut self,
+                pub fn iter_versions_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions").to_owned());
-                    crate::iter::PageItemIter::new(self, "versions")
+                    self.iter_versions_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2048,20 +2233,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_versions_debug(
-                    mut self,
+                pub fn iter_versions_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions", "(*)").to_owned());
+                    self.iter_versions_with_fields(Some("*"))
+                }
+                pub fn iter_versions_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "versions").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "versions")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -2070,23 +2306,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -2098,45 +2317,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2151,7 +2370,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -2167,7 +2386,11 @@ pub mod resources {
                     output.push_str("/versions:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2183,15 +2406,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -2208,9 +2429,9 @@ pub mod resources {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> ProjectsActions<'a, A> {
             #[doc = "Actions that can be performed on the catalogs resource"]
             pub fn catalogs(&self) -> crate::resources::projects::catalogs::CatalogsActions<A> {
                 crate::resources::projects::catalogs::CatalogsActions {
@@ -2237,9 +2458,9 @@ pub mod resources {
             pub mod params {}
             pub struct CatalogsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> CatalogsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> CatalogsActions<'a, A> {
                 #[doc = "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -2266,7 +2487,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -2283,7 +2504,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -2349,32 +2570,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_catalogs<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_catalogs<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "catalogs").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_catalogs_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_catalogs_standard(
-                    mut self,
+                pub fn iter_catalogs_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs").to_owned());
-                    crate::iter::PageItemIter::new(self, "catalogs")
+                    self.iter_catalogs_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2382,20 +2600,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_catalogs_debug(
-                    mut self,
+                pub fn iter_catalogs_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "catalogs", "(*)").to_owned());
+                    self.iter_catalogs_with_fields(Some("*"))
+                }
+                pub fn iter_catalogs_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "catalogs").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "catalogs")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -2404,23 +2673,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -2432,45 +2684,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2485,7 +2737,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -2501,7 +2753,11 @@ pub mod resources {
                     output.push_str("/catalogs:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2517,15 +2773,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -2541,9 +2795,9 @@ pub mod resources {
             pub mod params {}
             pub struct ProductsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> ProductsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ProductsActions<'a, A> {
                 #[doc = "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -2570,7 +2824,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -2587,7 +2841,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -2653,32 +2907,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_products<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_products<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "products").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "products")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_products_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_products_standard(
-                    mut self,
+                pub fn iter_products_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products").to_owned());
-                    crate::iter::PageItemIter::new(self, "products")
+                    self.iter_products_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2686,20 +2937,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_products_debug(
-                    mut self,
+                pub fn iter_products_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "products", "(*)").to_owned());
+                    self.iter_products_with_fields(Some("*"))
+                }
+                pub fn iter_products_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "products").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "products")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -2708,23 +3010,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -2736,45 +3021,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2789,7 +3074,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -2805,7 +3090,11 @@ pub mod resources {
                     output.push_str("/products:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2821,15 +3110,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -2845,9 +3132,9 @@ pub mod resources {
             pub mod params {}
             pub struct VersionsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> VersionsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> VersionsActions<'a, A> {
                 #[doc = "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."]
                 pub fn search(&self, resource: impl Into<String>) -> SearchRequestBuilder<A> {
                     SearchRequestBuilder {
@@ -2874,7 +3161,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 resource: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
@@ -2891,7 +3178,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> SearchRequestBuilder<'a, A> {
                 #[doc = "The maximum number of entries that are requested."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
@@ -2957,32 +3244,29 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_versions<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_versions<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "versions").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "versions")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_versions_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_versions_standard(
-                    mut self,
+                pub fn iter_versions_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions").to_owned());
-                    crate::iter::PageItemIter::new(self, "versions")
+                    self.iter_versions_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2990,20 +3274,71 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_versions_debug(
-                    mut self,
+                pub fn iter_versions_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<
                     Self,
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version,
                 > {
-                    self.fields = Some(concat!("nextPageToken,", "versions", "(*)").to_owned());
+                    self.iter_versions_with_fields(Some("*"))
+                }
+                pub fn iter_versions_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "versions").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "versions")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<
+                    Self,
+                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
+                > {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -3012,23 +3347,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<
-                    Self,
-                    crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
-                > {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -3040,45 +3358,45 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -3093,7 +3411,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -3109,7 +3427,11 @@ pub mod resources {
                     output.push_str("/versions:search");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3125,15 +3447,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for SearchRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for SearchRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }

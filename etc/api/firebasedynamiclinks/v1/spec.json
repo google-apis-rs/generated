@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Dynamic Links",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190820",
+  "revision": "20190829",
   "title": "Firebase Dynamic Links API",
   "description": "Programmatically creates and manages Firebase Dynamic Links.",
   "ownerDomain": "google.com",

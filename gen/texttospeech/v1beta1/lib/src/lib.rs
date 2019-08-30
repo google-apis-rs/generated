@@ -22,13 +22,14 @@ pub mod schemas {
         #[serde(rename = "volumeGainDb", default)]
         pub volume_gain_db: ::std::option::Option<f64>,
     }
-    impl ::field_selector::FieldSelector for AudioConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for AudioConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AudioConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -85,13 +86,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for AudioConfigAudioEncoding {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for AudioConfigAudioEncoding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AudioConfigAudioEncoding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -111,13 +113,14 @@ pub mod schemas {
         #[serde(rename = "voices", default)]
         pub voices: ::std::option::Option<Vec<crate::schemas::Voice>>,
     }
-    impl ::field_selector::FieldSelector for ListVoicesResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ListVoicesResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListVoicesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -140,13 +143,14 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for SynthesisInput {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for SynthesisInput {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SynthesisInput {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -163,13 +167,14 @@ pub mod schemas {
         #[serde(rename = "voice", default)]
         pub voice: ::std::option::Option<crate::schemas::VoiceSelectionParams>,
     }
-    impl ::field_selector::FieldSelector for SynthesizeSpeechRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for SynthesizeSpeechRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SynthesizeSpeechRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -189,13 +194,14 @@ pub mod schemas {
         #[serde(rename = "audioContent", default)]
         pub audio_content: ::std::option::Option<crate::bytes::Bytes>,
     }
-    impl ::field_selector::FieldSelector for SynthesizeSpeechResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for SynthesizeSpeechResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SynthesizeSpeechResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -224,13 +230,14 @@ pub mod schemas {
         #[serde(rename = "ssmlGender", default)]
         pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSsmlGender>,
     }
-    impl ::field_selector::FieldSelector for Voice {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Voice {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Voice {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -287,13 +294,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for VoiceSsmlGender {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for VoiceSsmlGender {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for VoiceSsmlGender {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -319,13 +327,14 @@ pub mod schemas {
         #[serde(rename = "ssmlGender", default)]
         pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
     }
-    impl ::field_selector::FieldSelector for VoiceSelectionParams {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for VoiceSelectionParams {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for VoiceSelectionParams {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -386,13 +395,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for VoiceSelectionParamsSsmlGender {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for VoiceSelectionParamsSsmlGender {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for VoiceSelectionParamsSsmlGender {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -447,13 +457,14 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -502,25 +513,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Xgafv {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the text resource"]
@@ -543,9 +558,9 @@ pub mod resources {
         pub mod params {}
         pub struct TextActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> TextActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> TextActions<'a, A> {
             #[doc = "Synthesizes speech synchronously: receive results after all text input\nhas been processed."]
             pub fn synthesize(
                 &self,
@@ -572,7 +587,7 @@ pub mod resources {
         #[derive(Debug, Clone)]
         pub struct SynthesizeRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
             request: crate::schemas::SynthesizeSpeechRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -586,7 +601,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: yup_oauth2::GetToken> SynthesizeRequestBuilder<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> SynthesizeRequestBuilder<'a, A> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -641,41 +656,41 @@ pub mod resources {
             #[doc = r" fields."]
             pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
-                let fields = T::field_selector();
+                let fields = ::google_field_selector::to_string::<T>();
                 let fields: Option<String> = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::SynthesizeSpeechResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::SynthesizeSpeechResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -690,7 +705,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path());
+                let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
                 Ok(req.send()?.error_for_status()?.json()?)
             }
@@ -699,7 +714,10 @@ pub mod resources {
                 output.push_str("v1beta1/text:synthesize");
                 output
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -712,12 +730,8 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                let token = runtime.block_on(fut).unwrap().access_token;
-                let req = req.bearer_auth(&token);
-                req
+                let req = req.bearer_auth(self.auth.access_token()?);
+                Ok(req)
             }
         }
     }
@@ -725,9 +739,9 @@ pub mod resources {
         pub mod params {}
         pub struct VoicesActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> VoicesActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> VoicesActions<'a, A> {
             #[doc = "Returns a list of Voice supported for synthesis."]
             pub fn list(&self) -> ListRequestBuilder<A> {
                 ListRequestBuilder {
@@ -751,7 +765,7 @@ pub mod resources {
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
             language_code: Option<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -765,7 +779,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
             #[doc = "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices."]
             pub fn language_code(mut self, value: impl Into<String>) -> Self {
                 self.language_code = Some(value.into());
@@ -825,41 +839,41 @@ pub mod resources {
             #[doc = r" fields."]
             pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
-                let fields = T::field_selector();
+                let fields = ::google_field_selector::to_string::<T>();
                 let fields: Option<String> = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::ListVoicesResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::ListVoicesResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -874,7 +888,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path());
+                let req = self._request(&self._path())?;
                 Ok(req.send()?.error_for_status()?.json()?)
             }
             fn _path(&self) -> String {
@@ -882,7 +896,10 @@ pub mod resources {
                 output.push_str("v1beta1/voices");
                 output
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("languageCode", &self.language_code)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -896,12 +913,8 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                let token = runtime.block_on(fut).unwrap().access_token;
-                let req = req.bearer_auth(&token);
-                req
+                let req = req.bearer_auth(self.auth.access_token()?);
+                Ok(req)
             }
         }
     }

@@ -13,8 +13,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteEventsResponse;
-    impl ::field_selector::FieldSelector for DeleteEventsResponse {
-        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    impl ::google_field_selector::FieldSelector for DeleteEventsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeleteEventsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
     }
     #[derive(
         Debug,
@@ -42,13 +49,14 @@ pub mod schemas {
         #[serde(rename = "user", default)]
         pub user: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ErrorContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ErrorContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -77,13 +85,14 @@ pub mod schemas {
         #[serde(rename = "serviceContext", default)]
         pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
-    impl ::field_selector::FieldSelector for ErrorEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ErrorEvent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorEvent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -109,13 +118,14 @@ pub mod schemas {
         #[serde(rename = "trackingIssues", default)]
         pub tracking_issues: ::std::option::Option<Vec<crate::schemas::TrackingIssue>>,
     }
-    impl ::field_selector::FieldSelector for ErrorGroup {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ErrorGroup {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorGroup {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -161,13 +171,14 @@ pub mod schemas {
         #[serde(rename = "timedCounts", default)]
         pub timed_counts: ::std::option::Option<Vec<crate::schemas::TimedCount>>,
     }
-    impl ::field_selector::FieldSelector for ErrorGroupStats {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ErrorGroupStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorGroupStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -202,13 +213,14 @@ pub mod schemas {
         #[serde(rename = "userAgent", default)]
         pub user_agent: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for HttpRequestContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for HttpRequestContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for HttpRequestContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -234,13 +246,14 @@ pub mod schemas {
         #[serde(rename = "timeRangeBegin", default)]
         pub time_range_begin: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ListEventsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ListEventsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListEventsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -266,13 +279,14 @@ pub mod schemas {
         #[serde(rename = "timeRangeBegin", default)]
         pub time_range_begin: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ListGroupStatsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ListGroupStatsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListGroupStatsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -289,8 +303,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportErrorEventResponse;
-    impl ::field_selector::FieldSelector for ReportErrorEventResponse {
-        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    impl ::google_field_selector::FieldSelector for ReportErrorEventResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReportErrorEventResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
     }
     #[derive(
         Debug,
@@ -318,13 +339,14 @@ pub mod schemas {
         #[serde(rename = "serviceContext", default)]
         pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
-    impl ::field_selector::FieldSelector for ReportedErrorEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ReportedErrorEvent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReportedErrorEvent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -350,13 +372,14 @@ pub mod schemas {
         #[serde(rename = "version", default)]
         pub version: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for ServiceContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for ServiceContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ServiceContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -382,13 +405,14 @@ pub mod schemas {
         #[serde(rename = "lineNumber", default)]
         pub line_number: ::std::option::Option<i32>,
     }
-    impl ::field_selector::FieldSelector for SourceLocation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for SourceLocation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SourceLocation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -411,13 +435,14 @@ pub mod schemas {
         #[serde(rename = "revisionId", default)]
         pub revision_id: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for SourceReference {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for SourceReference {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SourceReference {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -444,13 +469,14 @@ pub mod schemas {
         #[serde(rename = "startTime", default)]
         pub start_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for TimedCount {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for TimedCount {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TimedCount {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -470,13 +496,14 @@ pub mod schemas {
         #[serde(rename = "url", default)]
         pub url: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for TrackingIssue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for TrackingIssue {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TrackingIssue {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -531,13 +558,14 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -586,25 +614,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Xgafv {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
@@ -620,9 +652,9 @@ pub mod resources {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> ProjectsActions<'a, A> {
             #[doc = "Deletes all error events of a given project."]
             pub fn delete_events(
                 &self,
@@ -672,7 +704,7 @@ pub mod resources {
         #[derive(Debug, Clone)]
         pub struct DeleteEventsRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
             project_name: String,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -686,7 +718,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: yup_oauth2::GetToken> DeleteEventsRequestBuilder<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> DeleteEventsRequestBuilder<'a, A> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -741,41 +773,41 @@ pub mod resources {
             #[doc = r" fields."]
             pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
-                let fields = T::field_selector();
+                let fields = ::google_field_selector::to_string::<T>();
                 let fields: Option<String> = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::DeleteEventsResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::DeleteEventsResponse, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -790,7 +822,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path());
+                let req = self._request(&self._path())?;
                 Ok(req.send()?.error_for_status()?.json()?)
             }
             fn _path(&self) -> String {
@@ -806,7 +838,10 @@ pub mod resources {
                 output.push_str("/events");
                 output
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -819,12 +854,8 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                let token = runtime.block_on(fut).unwrap().access_token;
-                let req = req.bearer_auth(&token);
-                req
+                let req = req.bearer_auth(self.auth.access_token()?);
+                Ok(req)
             }
         }
         pub mod events {
@@ -885,21 +916,22 @@ pub mod resources {
                         })
                     }
                 }
-                impl ::field_selector::FieldSelector for ListTimeRangePeriod {
-                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
-                        match selector.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => selector.push_str(","),
-                        }
-                        selector.push_str(ident);
+                impl ::google_field_selector::FieldSelector for ListTimeRangePeriod {
+                    fn fields() -> Vec<::google_field_selector::Field> {
+                        Vec::new()
+                    }
+                }
+                impl ::google_field_selector::ToFieldType for ListTimeRangePeriod {
+                    fn field_type() -> ::google_field_selector::FieldType {
+                        ::google_field_selector::FieldType::Leaf
                     }
                 }
             }
             pub struct EventsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> EventsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> EventsActions<'a, A> {
                 #[doc = "Lists the specified events."]
                 pub fn list(&self, project_name: impl Into<String>) -> ListRequestBuilder<A> {
                     ListRequestBuilder {
@@ -954,7 +986,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 project_name: String,
                 group_id: Option<String>,
                 page_size: Option<i32>,
@@ -976,7 +1008,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
                 #[doc = "[Required] The group for which events shall be returned."]
                 pub fn group_id(mut self, value: impl Into<String>) -> Self {
                     self.group_id = Some(value.into());
@@ -1065,29 +1097,26 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_error_events<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_error_events<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "errorEvents").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "errorEvents")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_error_events_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_error_events_standard(
-                    mut self,
+                pub fn iter_error_events_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorEvent> {
-                    self.fields = Some(concat!("nextPageToken,", "errorEvents").to_owned());
-                    crate::iter::PageItemIter::new(self, "errorEvents")
+                    self.iter_error_events_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1095,17 +1124,64 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_error_events_debug(
-                    mut self,
+                pub fn iter_error_events_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorEvent> {
-                    self.fields = Some(concat!("nextPageToken,", "errorEvents", "(*)").to_owned());
+                    self.iter_error_events_with_fields(Some("*"))
+                }
+                pub fn iter_error_events_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "errorEvents").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "errorEvents")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
+                {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
+                {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -1114,19 +1190,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
-                {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
-                {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -1138,41 +1201,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ListEventsResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ListEventsResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1187,7 +1250,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -1203,7 +1266,11 @@ pub mod resources {
                     output.push_str("/events");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("groupId", &self.group_id)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -1226,15 +1293,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for ListRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -1248,7 +1313,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct ReportRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 request: crate::schemas::ReportedErrorEvent,
                 project_name: String,
                 access_token: Option<String>,
@@ -1263,7 +1328,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> ReportRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ReportRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -1318,41 +1383,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ReportErrorEventResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ReportErrorEventResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1367,7 +1432,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
@@ -1384,7 +1449,11 @@ pub mod resources {
                     output.push_str("/events:report");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1397,12 +1466,8 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
         }
@@ -1459,13 +1524,14 @@ pub mod resources {
                         })
                     }
                 }
-                impl ::field_selector::FieldSelector for ListAlignment {
-                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
-                        match selector.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => selector.push_str(","),
-                        }
-                        selector.push_str(ident);
+                impl ::google_field_selector::FieldSelector for ListAlignment {
+                    fn fields() -> Vec<::google_field_selector::Field> {
+                        Vec::new()
+                    }
+                }
+                impl ::google_field_selector::ToFieldType for ListAlignment {
+                    fn field_type() -> ::google_field_selector::FieldType {
+                        ::google_field_selector::FieldType::Leaf
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1521,13 +1587,14 @@ pub mod resources {
                         })
                     }
                 }
-                impl ::field_selector::FieldSelector for ListOrder {
-                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
-                        match selector.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => selector.push_str(","),
-                        }
-                        selector.push_str(ident);
+                impl ::google_field_selector::FieldSelector for ListOrder {
+                    fn fields() -> Vec<::google_field_selector::Field> {
+                        Vec::new()
+                    }
+                }
+                impl ::google_field_selector::ToFieldType for ListOrder {
+                    fn field_type() -> ::google_field_selector::FieldType {
+                        ::google_field_selector::FieldType::Leaf
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1586,21 +1653,22 @@ pub mod resources {
                         })
                     }
                 }
-                impl ::field_selector::FieldSelector for ListTimeRangePeriod {
-                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
-                        match selector.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => selector.push_str(","),
-                        }
-                        selector.push_str(ident);
+                impl ::google_field_selector::FieldSelector for ListTimeRangePeriod {
+                    fn fields() -> Vec<::google_field_selector::Field> {
+                        Vec::new()
+                    }
+                }
+                impl ::google_field_selector::ToFieldType for ListTimeRangePeriod {
+                    fn field_type() -> ::google_field_selector::FieldType {
+                        ::google_field_selector::FieldType::Leaf
                     }
                 }
             }
             pub struct GroupStatsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> GroupStatsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> GroupStatsActions<'a, A> {
                 #[doc = "Lists the specified groups."]
                 pub fn list(&self, project_name: impl Into<String>) -> ListRequestBuilder<A> {
                     ListRequestBuilder {
@@ -1635,7 +1703,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 project_name: String,
                 alignment: Option<crate::resources::projects::group_stats::params::ListAlignment>,
                 alignment_time: Option<String>,
@@ -1661,7 +1729,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
                 #[doc = "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`."]
                 pub fn alignment(
                     mut self,
@@ -1776,30 +1844,27 @@ pub mod resources {
                 #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                 #[doc = r" populated fields in the yielded items will be determined by the"]
                 #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_error_group_stats<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                pub fn iter_error_group_stats<T>(self) -> crate::iter::PageItemIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = concat!("nextPageToken,", "errorGroupStats").to_owned();
-                    let items_fields = T::field_selector();
-                    if !items_fields.is_empty() {
-                        fields.push_str("(");
-                        fields.push_str(&items_fields);
-                        fields.push_str(")");
-                    }
-                    self.fields = Some(fields);
-                    crate::iter::PageItemIter::new(self, "errorGroupStats")
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_error_group_stats_with_fields(fields)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                 #[doc = r" fields in `#items_type` will be the default fields populated by"]
                 #[doc = r" the server."]
-                pub fn iter_error_group_stats_standard(
-                    mut self,
+                pub fn iter_error_group_stats_with_default_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorGroupStats>
                 {
-                    self.fields = Some(concat!("nextPageToken,", "errorGroupStats").to_owned());
-                    crate::iter::PageItemIter::new(self, "errorGroupStats")
+                    self.iter_error_group_stats_with_fields(None::<String>)
                 }
                 #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                 #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -1807,19 +1872,65 @@ pub mod resources {
                 #[doc = r" primarily be used during developement and debugging as fetching"]
                 #[doc = r" all fields can be expensive both in bandwidth and server"]
                 #[doc = r" resources."]
-                pub fn iter_error_group_stats_debug(
-                    mut self,
+                pub fn iter_error_group_stats_with_all_fields(
+                    self,
                 ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorGroupStats>
                 {
-                    self.fields =
-                        Some(concat!("nextPageToken,", "errorGroupStats", "(*)").to_owned());
+                    self.iter_error_group_stats_with_fields(Some("*"))
+                }
+                pub fn iter_error_group_stats_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector = concat!("nextPageToken,", "errorGroupStats").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
                     crate::iter::PageItemIter::new(self, "errorGroupStats")
                 }
-                pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let mut fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
+                {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
+                {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                     if !fields.is_empty() {
                         match fields.chars().rev().nth(0) {
                             Some(',') | None => {}
@@ -1828,19 +1939,6 @@ pub mod resources {
                         fields.push_str("nextPageToken");
                         self.fields = Some(fields);
                     }
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_standard(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
-                {
-                    crate::iter::PageIter::new(self)
-                }
-                pub fn iter_debug(
-                    mut self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
-                {
-                    self.fields = Some("*".to_owned());
                     crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -1852,41 +1950,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ListGroupStatsResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ListGroupStatsResponse, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1901,7 +1999,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -1917,7 +2015,11 @@ pub mod resources {
                     output.push_str("/groupStats");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("alignment", &self.alignment)]);
                     let req = req.query(&[("alignmentTime", &self.alignment_time)]);
@@ -1944,15 +2046,13 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
-            impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                for ListRequestBuilder<'a, A>
+            {
                 fn set_page_token(&mut self, value: String) {
                     self.page_token = value.into();
                 }
@@ -1968,9 +2068,9 @@ pub mod resources {
             pub mod params {}
             pub struct GroupsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> GroupsActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> GroupsActions<'a, A> {
                 #[doc = "Get the specified group."]
                 pub fn get(&self, group_name: impl Into<String>) -> GetRequestBuilder<A> {
                     GetRequestBuilder {
@@ -2018,7 +2118,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 group_name: String,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
@@ -2032,7 +2132,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -2087,41 +2187,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ErrorGroup, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ErrorGroup, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2136,7 +2236,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
@@ -2151,7 +2251,11 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2164,18 +2268,14 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 request: crate::schemas::ErrorGroup,
                 name: String,
                 access_token: Option<String>,
@@ -2190,7 +2290,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> UpdateRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> UpdateRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -2245,41 +2345,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ErrorGroup, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ErrorGroup, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2294,7 +2394,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
@@ -2310,7 +2410,11 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2323,12 +2427,8 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
         }

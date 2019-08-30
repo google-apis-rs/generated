@@ -18,13 +18,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1VideoAnnotationProgress>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1AnnotateVideoProgress {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1AnnotateVideoProgress
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1AnnotateVideoProgress {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -35,13 +38,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1VideoAnnotationResults>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1AnnotateVideoResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1AnnotateVideoResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1AnnotateVideoResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -63,13 +69,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2AnnotateVideoProgress {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2AnnotateVideoProgress
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2AnnotateVideoProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -80,13 +91,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoAnnotationResults>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2AnnotateVideoResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2AnnotateVideoResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2AnnotateVideoResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -112,13 +128,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -140,15 +157,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2ExplicitContentAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -164,13 +184,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -221,15 +246,18 @@ pub mod schemas {
             Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2ExplicitContentFramePornographyLikelihood
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -255,13 +283,14 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelSegment>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2LabelAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -275,13 +304,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2LabelFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -296,13 +326,14 @@ pub mod schemas {
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -322,13 +353,18 @@ pub mod schemas {
         #[serde(rename = "top", default)]
         pub top: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingBox {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingBox
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingBox
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -341,13 +377,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2NormalizedVertex>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingPoly {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingPoly
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2NormalizedBoundingPoly
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -361,13 +402,16 @@ pub mod schemas {
         #[serde(rename = "y", default)]
         pub y: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2NormalizedVertex {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2NormalizedVertex
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2NormalizedVertex {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -395,15 +439,18 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ObjectTrackingAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2ObjectTrackingAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -419,13 +466,18 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2ObjectTrackingFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2ObjectTrackingFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2ObjectTrackingFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -443,15 +495,18 @@ pub mod schemas {
         pub words:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2WordInfo>>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2SpeechRecognitionAlternative
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2SpeechRecognitionAlternative
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -467,13 +522,18 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2SpeechTranscription {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2SpeechTranscription
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2SpeechTranscription
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -489,13 +549,14 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2TextAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -511,13 +572,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2TextFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -537,13 +599,14 @@ pub mod schemas {
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2TextSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -581,15 +644,18 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -638,15 +704,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -702,13 +771,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2TextAnnotation>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2VideoAnnotationResults {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationResults
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2VideoAnnotationResults
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -731,13 +805,14 @@ pub mod schemas {
         #[serde(rename = "startTimeOffset", default)]
         pub start_time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2VideoSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2VideoSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2VideoSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -760,13 +835,14 @@ pub mod schemas {
         #[serde(rename = "word", default)]
         pub word: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2WordInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2WordInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2WordInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -792,13 +868,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -820,13 +897,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1ExplicitContentFrame>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1ExplicitContentAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1ExplicitContentAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -851,13 +933,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1ExplicitContentFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1ExplicitContentFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -908,15 +991,18 @@ pub mod schemas {
             Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1ExplicitContentFramePornographyLikelihood
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -939,13 +1025,14 @@ pub mod schemas {
         pub segments:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelSegment>>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1LabelAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -959,13 +1046,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1LabelFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -980,13 +1068,14 @@ pub mod schemas {
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1006,13 +1095,16 @@ pub mod schemas {
         #[serde(rename = "top", default)]
         pub top: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1NormalizedBoundingBox {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1NormalizedBoundingBox
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1NormalizedBoundingBox {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1025,13 +1117,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1NormalizedVertex>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1NormalizedBoundingPoly
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1045,13 +1140,14 @@ pub mod schemas {
         #[serde(rename = "y", default)]
         pub y: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1NormalizedVertex {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1NormalizedVertex {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1NormalizedVertex {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1078,13 +1174,18 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1100,13 +1201,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1ObjectTrackingFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1ObjectTrackingFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1ObjectTrackingFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1128,15 +1230,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -1147,15 +1252,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationResults>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoResponse
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1AnnotateVideoResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1181,13 +1289,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1209,15 +1318,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1233,13 +1345,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1290,15 +1407,18 @@ pub mod schemas {
             Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFramePornographyLikelihood
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1324,13 +1444,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelSegment>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1344,13 +1467,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1LabelFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1LabelFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1LabelFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1366,13 +1490,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1LabelSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1LabelSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1392,15 +1517,18 @@ pub mod schemas {
         #[serde(rename = "top", default)]
         pub top: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1NormalizedBoundingBox
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1NormalizedBoundingBox
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1413,15 +1541,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1NormalizedVertex>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1NormalizedBoundingPoly
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1NormalizedBoundingPoly
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1435,13 +1566,18 @@ pub mod schemas {
         #[serde(rename = "y", default)]
         pub y: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1NormalizedVertex {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1NormalizedVertex
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1NormalizedVertex
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1470,15 +1606,18 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1494,13 +1633,18 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1519,15 +1663,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1WordInfo>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1SpeechRecognitionAlternative
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1SpeechRecognitionAlternative
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1543,13 +1690,18 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1SpeechTranscription {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1SpeechTranscription
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1SpeechTranscription
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1565,13 +1717,16 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1TextAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1TextAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1TextAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1587,13 +1742,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1TextFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1TextFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1TextFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1614,13 +1770,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1TextSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1TextSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1TextSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1659,15 +1816,18 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1716,15 +1876,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -1781,15 +1944,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1TextAnnotation>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationResults
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationResults
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1812,13 +1978,14 @@ pub mod schemas {
         #[serde(rename = "startTimeOffset", default)]
         pub start_time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1VideoSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1VideoSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1VideoSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1841,13 +2008,14 @@ pub mod schemas {
         #[serde(rename = "word", default)]
         pub word: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1WordInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1WordInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1WordInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1869,15 +2037,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -1888,15 +2059,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationResults>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoResponse
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1AnnotateVideoResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1922,13 +2096,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1950,15 +2125,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1974,13 +2152,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2031,15 +2214,18 @@ pub mod schemas {
             Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFramePornographyLikelihood
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2065,13 +2251,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelSegment>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2085,13 +2274,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1LabelFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2107,13 +2297,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1LabelSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2133,15 +2324,18 @@ pub mod schemas {
         #[serde(rename = "top", default)]
         pub top: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1NormalizedBoundingBox
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1NormalizedBoundingBox
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2154,15 +2348,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1NormalizedVertex>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1NormalizedBoundingPoly
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1NormalizedBoundingPoly
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2176,13 +2373,18 @@ pub mod schemas {
         #[serde(rename = "y", default)]
         pub y: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1NormalizedVertex {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1NormalizedVertex
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1NormalizedVertex
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2211,15 +2413,18 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2235,13 +2440,18 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2260,15 +2470,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1WordInfo>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1SpeechRecognitionAlternative
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1SpeechRecognitionAlternative
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2284,13 +2497,18 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1SpeechTranscription {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1SpeechTranscription
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1SpeechTranscription
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2306,13 +2524,16 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1TextAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1TextAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1TextAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2328,13 +2549,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1TextFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1TextFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1TextFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2355,13 +2577,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1TextSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1TextSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1TextSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2400,15 +2623,18 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2457,15 +2683,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -2522,15 +2751,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1TextAnnotation>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationResults
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationResults
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2553,13 +2785,14 @@ pub mod schemas {
         #[serde(rename = "startTimeOffset", default)]
         pub start_time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1VideoSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1VideoSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1VideoSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2582,13 +2815,14 @@ pub mod schemas {
         #[serde(rename = "word", default)]
         pub word: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1WordInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1WordInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1WordInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2610,28 +2844,36 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequest { # [ doc = "Requested video annotation features." ] # [ serde ( rename = "features" , default ) ] pub features : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems > > , # [ doc = "The video data bytes.\nIf unset, the input video(s) should be specified via `input_uri`.\nIf set, `input_uri` should be unset." ] # [ serde ( rename = "inputContent" , default ) ] pub input_content : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset." ] # [ serde ( rename = "inputUri" , default ) ] pub input_uri : :: std :: option :: Option < String > , # [ doc = "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location." ] # [ serde ( rename = "locationId" , default ) ] pub location_id : :: std :: option :: Option < String > , # [ doc = "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris)." ] # [ serde ( rename = "outputUri" , default ) ] pub output_uri : :: std :: option :: Option < String > , # [ doc = "Additional video context and/or feature-specific parameters." ] # [ serde ( rename = "videoContext" , default ) ] pub video_context : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1VideoContext > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequest
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequest
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2676,15 +2918,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequestFeaturesItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -2695,15 +2940,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationResults>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoResponse
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2720,13 +2968,18 @@ pub mod schemas {
         #[serde(rename = "value", default)]
         pub value: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1DetectedAttribute {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1DetectedAttribute
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1DetectedAttribute
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2752,13 +3005,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2780,15 +3034,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2808,15 +3065,18 @@ pub mod schemas {
         #[serde(rename = "model", default)]
         pub model: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentDetectionConfig
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentDetectionConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2832,13 +3092,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame { # [ doc = "Likelihood of the pornography content.." ] # [ serde ( rename = "pornographyLikelihood" , default ) ] pub pornography_likelihood : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood > , # [ doc = "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location." ] # [ serde ( rename = "timeOffset" , default ) ] pub time_offset : :: std :: option :: Option < String > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2889,15 +3154,18 @@ pub mod schemas {
             Ok ( match value { "LIKELIHOOD_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: LikelihoodUnspecified , "LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Likely , "POSSIBLE" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Possible , "UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: Unlikely , "VERY_LIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryLikely , "VERY_UNLIKELY" => GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood :: VeryUnlikely , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFramePornographyLikelihood
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -2923,26 +3191,34 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelSegment>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfig { # [ doc = "The confidence threshold we perform filtering on the labels from\nframe-level detection. If not set, it is set to 0.4 by default. The valid\nrange for this threshold is [0.1, 0.9]. Any value set outside of this\nrange will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "frameConfidenceThreshold" , default ) ] pub frame_confidence_threshold : :: std :: option :: Option < f32 > , # [ doc = "What labels should be detected with LABEL_DETECTION, in addition to\nvideo-level labels or segment-level labels.\nIf unspecified, defaults to `SHOT_MODE`." ] # [ serde ( rename = "labelDetectionMode" , default ) ] pub label_detection_mode : :: std :: option :: Option < crate :: schemas :: GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode > , # [ doc = "Model to use for label detection.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"." ] # [ serde ( rename = "model" , default ) ] pub model : :: std :: option :: Option < String > , # [ doc = "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects.\nShould be used with `SHOT_AND_FRAME_MODE` enabled." ] # [ serde ( rename = "stationaryCamera" , default ) ] pub stationary_camera : :: std :: option :: Option < bool > , # [ doc = "The confidence threshold we perform filtering on the labels from\nvideo-level and shot-level detections. If not set, it is set to 0.3 by\ndefault. The valid range for this threshold is [0.1, 0.9]. Any value set\noutside of this range will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model." ] # [ serde ( rename = "videoConfidenceThreshold" , default ) ] pub video_confidence_threshold : :: std :: option :: Option < f32 > , }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfig
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2989,15 +3265,18 @@ pub mod schemas {
             Ok ( match value { "FRAME_MODE" => GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode :: FrameMode , "LABEL_DETECTION_MODE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode :: LabelDetectionModeUnspecified , "SHOT_AND_FRAME_MODE" => GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode :: ShotAndFrameMode , "SHOT_MODE" => GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode :: ShotMode , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1LabelDetectionConfigLabelDetectionMode
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3011,13 +3290,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1LabelFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3033,13 +3313,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1LabelSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3060,15 +3341,18 @@ pub mod schemas {
         pub tracks:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1Track>>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1LogoRecognitionAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1LogoRecognitionAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3088,15 +3372,18 @@ pub mod schemas {
         #[serde(rename = "top", default)]
         pub top: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1NormalizedBoundingBox
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1NormalizedBoundingBox
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3109,15 +3396,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1NormalizedVertex>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1NormalizedBoundingPoly
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1NormalizedBoundingPoly
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3131,13 +3421,18 @@ pub mod schemas {
         #[serde(rename = "y", default)]
         pub y: ::std::option::Option<f32>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1NormalizedVertex {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1NormalizedVertex
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1NormalizedVertex
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3166,15 +3461,18 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingAnnotation
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3194,13 +3492,18 @@ pub mod schemas {
         #[serde(rename = "model", default)]
         pub model: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingConfig
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3216,13 +3519,18 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingFrame
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingFrame
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3242,15 +3550,18 @@ pub mod schemas {
         #[serde(rename = "model", default)]
         pub model: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ShotChangeDetectionConfig
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1ShotChangeDetectionConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3270,13 +3581,14 @@ pub mod schemas {
         #[serde(rename = "phrases", default)]
         pub phrases: ::std::option::Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1SpeechContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1SpeechContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1SpeechContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3295,15 +3607,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1WordInfo>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1SpeechRecognitionAlternative
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1SpeechRecognitionAlternative
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3319,13 +3634,18 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1SpeechTranscription {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1SpeechTranscription
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1SpeechTranscription
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3371,15 +3691,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1SpeechContext>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1SpeechTranscriptionConfig
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1SpeechTranscriptionConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -3396,15 +3719,18 @@ pub mod schemas {
         #[serde(rename = "error", default)]
         pub error: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1StreamingAnnotateVideoResponse
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1StreamingAnnotateVideoResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3432,15 +3758,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1StreamingVideoAnnotationResults
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1StreamingVideoAnnotationResults
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3456,13 +3785,16 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1TextAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1TextAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3485,13 +3817,18 @@ pub mod schemas {
         #[serde(rename = "model", default)]
         pub model: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextDetectionConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1TextDetectionConfig
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1TextDetectionConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3507,13 +3844,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1TextFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3534,13 +3872,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TextSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1TextSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3561,13 +3900,18 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1TimestampedObject {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1TimestampedObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1TimestampedObject
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3593,13 +3937,14 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1TimestampedObject>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1Track {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1Track {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1Track {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3638,15 +3983,18 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3697,15 +4045,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -3767,15 +4118,18 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1TextAnnotation>,
         >,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationResults
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationResults
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3818,13 +4172,14 @@ pub mod schemas {
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1TextDetectionConfig,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1VideoContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1VideoContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1VideoContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3847,13 +4202,14 @@ pub mod schemas {
         #[serde(rename = "startTimeOffset", default)]
         pub start_time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1VideoSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1VideoSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1VideoSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3876,13 +4232,14 @@ pub mod schemas {
         #[serde(rename = "word", default)]
         pub word: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1WordInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1WordInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1WordInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3900,15 +4257,18 @@ pub mod schemas {
         pub words:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1WordInfo>>,
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3924,13 +4284,14 @@ pub mod schemas {
         #[serde(rename = "languageCode", default)]
         pub language_code: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1SpeechTranscription {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1SpeechTranscription {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1SpeechTranscription {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3945,13 +4306,14 @@ pub mod schemas {
         #[serde(rename = "text", default)]
         pub text: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextAnnotation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1TextAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3967,13 +4329,14 @@ pub mod schemas {
         #[serde(rename = "timeOffset", default)]
         pub time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextFrame {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1TextFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -3992,13 +4355,14 @@ pub mod schemas {
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1TextSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -4036,13 +4400,18 @@ pub mod schemas {
         #[serde(rename = "updateTime", default)]
         pub update_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoAnnotationProgress {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1VideoAnnotationProgress
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1VideoAnnotationProgress
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4091,15 +4460,18 @@ pub mod schemas {
             Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -4154,13 +4526,16 @@ pub mod schemas {
             Vec<crate::schemas::GoogleCloudVideointelligenceV1TextAnnotation>,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoAnnotationResults {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1VideoAnnotationResults
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1VideoAnnotationResults {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -4183,13 +4558,14 @@ pub mod schemas {
         #[serde(rename = "startTimeOffset", default)]
         pub start_time_offset: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoSegment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1VideoSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1VideoSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -4212,13 +4588,14 @@ pub mod schemas {
         #[serde(rename = "word", default)]
         pub word: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleCloudVideointelligenceV1WordInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1WordInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1WordInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -4241,13 +4618,14 @@ pub mod schemas {
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
-    impl ::field_selector::FieldSelector for GoogleLongrunningOperation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleLongrunningOperation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleLongrunningOperation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -4263,13 +4641,14 @@ pub mod schemas {
         #[serde(rename = "message", default)]
         pub message: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleRpcStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleRpcStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleRpcStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -4324,13 +4703,14 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4379,25 +4759,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Xgafv {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the videos resource"]
@@ -4413,9 +4797,9 @@ pub mod resources {
         pub mod params {}
         pub struct VideosActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> VideosActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> VideosActions<'a, A> {
             #[doc = "Performs asynchronous video annotation. Progress and results can be\nretrieved through the `google.longrunning.Operations` interface.\n`Operation.metadata` contains `AnnotateVideoProgress` (progress).\n`Operation.response` contains `AnnotateVideoResponse` (results)."]
             pub fn annotate(
                 &self,
@@ -4442,7 +4826,7 @@ pub mod resources {
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
             request: crate::schemas::GoogleCloudVideointelligenceV1P3Beta1AnnotateVideoRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -4456,7 +4840,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: yup_oauth2::GetToken> AnnotateRequestBuilder<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -4511,41 +4895,41 @@ pub mod resources {
             #[doc = r" fields."]
             pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
-                let fields = T::field_selector();
+                let fields = ::google_field_selector::to_string::<T>();
                 let fields: Option<String> = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                self.execute_fields(fields)
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_standard(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields::<_, &str>(None)
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_debug(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
             {
-                self.execute_fields(Some("*"))
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_fields<T, F>(
+            pub fn execute_with_fields<T, F>(
                 mut self,
                 fields: Option<F>,
             ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -4560,7 +4944,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path());
+                let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
                 Ok(req.send()?.error_for_status()?.json()?)
             }
@@ -4569,7 +4953,10 @@ pub mod resources {
                 output.push_str("v1p3beta1/videos:annotate");
                 output
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4582,12 +4969,8 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                let token = runtime.block_on(fut).unwrap().access_token;
-                let req = req.bearer_auth(&token);
-                req
+                let req = req.bearer_auth(self.auth.access_token()?);
+                Ok(req)
             }
         }
     }

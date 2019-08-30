@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20190807",
+  "revision": "20190825",
   "title": "BigQuery API",
   "description": "A data platform for customers to create, manage, share and query data.",
   "ownerDomain": "google.com",
@@ -18,9 +18,9 @@
   },
   "documentationLink": "https://cloud.google.com/bigquery/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/bigquery/v2/",
+  "baseUrl": "https://bigquery.googleapis.com/bigquery/v2/",
   "basePath": "/bigquery/v2/",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://bigquery.googleapis.com/",
   "servicePath": "bigquery/v2/",
   "batchPath": "batch/bigquery/v2",
   "version_module": null,
@@ -2435,7 +2435,7 @@
       "enumDescriptions": [],
       "properties": {
         "range": {
-          "description": "[Beta] [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20",
+          "description": "[Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2821,9 +2821,23 @@
           "additionalProperties": null,
           "items": null
         },
+        "sourceModel": {
+          "description": "A reference to the model being exported.",
+          "$ref": "ModelReference"
+        },
         "sourceTable": {
-          "description": "[Required] A reference to the table being exported.",
+          "description": "A reference to the table being exported.",
           "$ref": "TableReference"
+        },
+        "useAvroLogicalTypes": {
+          "description": "[Optional] If destinationFormat is set to \"AVRO\", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long).",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -4270,6 +4284,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "encryptionConfiguration": {
+          "description": "Custom encryption configuration (e.g., Cloud KMS keys). This shows the\nencryption configuration of the model data while stored in BigQuery\nstorage.",
+          "$ref": "EncryptionConfiguration"
+        },
         "etag": {
           "description": "Output only. A hash of this resource.",
           "type": "string",
@@ -4480,7 +4498,7 @@
     },
     "ModelReference": {
       "id": "ModelReference",
-      "description": "Id path of a model.",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -4497,7 +4515,7 @@
           "items": null
         },
         "modelId": {
-          "description": "[Required] The ID of the model. The ID must contain only\nletters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum\nlength is 1,024 characters.",
+          "description": "[Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.",
           "type": "string",
           "format": null,
           "enum": [],

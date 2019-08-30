@@ -13,8 +13,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Empty;
-    impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
+    impl ::google_field_selector::FieldSelector for Empty {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Empty {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
     }
     #[derive(
         Debug,
@@ -55,13 +62,14 @@ pub mod schemas {
         #[serde(rename = "startTime", default)]
         pub start_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -112,15 +120,18 @@ pub mod schemas {
             Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -143,13 +154,14 @@ pub mod schemas {
         #[serde(rename = "outputUriPrefix", default)]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ExportDocumentsRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -169,13 +181,14 @@ pub mod schemas {
         #[serde(rename = "outputUriPrefix", default)]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ExportDocumentsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -199,13 +212,14 @@ pub mod schemas {
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Field {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Field {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2Field {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -248,13 +262,14 @@ pub mod schemas {
             crate::schemas::GoogleFirestoreAdminV1Beta2FieldOperationMetadataState,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2FieldOperationMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2FieldOperationMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2FieldOperationMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -303,13 +318,18 @@ pub mod schemas {
             Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -351,13 +371,14 @@ pub mod schemas {
         #[serde(rename = "startTime", default)]
         pub start_time: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -408,15 +429,18 @@ pub mod schemas {
             Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector
+    impl ::google_field_selector::FieldSelector
         for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState
     {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -439,13 +463,14 @@ pub mod schemas {
         #[serde(rename = "inputUriPrefix", default)]
         pub input_uri_prefix: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ImportDocumentsRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -465,30 +490,33 @@ pub mod schemas {
         #[serde(rename = "fields", default)]
         pub fields:
             ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2IndexField>>,
-        #[doc = "Output only.\nA server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
+        #[doc = "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index."]
         #[serde(rename = "queryScope", default)]
         pub query_scope:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexQueryScope>,
-        #[doc = "Output only.\nThe serving state of the index."]
+        #[doc = "Output only. The serving state of the index."]
         #[serde(rename = "state", default)]
         pub state: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexState>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Index {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Index {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2Index {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleFirestoreAdminV1Beta2IndexQueryScope {
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified\nat query time, and that has the collection id specified by the index."]
         Collection,
+        #[doc = "Indexes with a collection group query scope specified allow queries\nagainst all collections that has the collection id specified by the\nindex."]
+        CollectionGroup,
         #[doc = "The query scope is unspecified. Not a valid option."]
         QueryScopeUnspecified,
     }
@@ -496,6 +524,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection => "COLLECTION",
+                GoogleFirestoreAdminV1Beta2IndexQueryScope::CollectionGroup => "COLLECTION_GROUP",
                 GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified => {
                     "QUERY_SCOPE_UNSPECIFIED"
                 }
@@ -523,6 +552,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "COLLECTION" => GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection,
+                "COLLECTION_GROUP" => GoogleFirestoreAdminV1Beta2IndexQueryScope::CollectionGroup,
                 "QUERY_SCOPE_UNSPECIFIED" => {
                     GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified
                 }
@@ -535,13 +565,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexQueryScope {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexQueryScope {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexQueryScope {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -598,13 +629,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -620,7 +652,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexConfig {
-        #[doc = "Output only.\nSpecifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
+        #[doc = "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
         #[serde(rename = "ancestorField", default)]
         pub ancestor_field: ::std::option::Option<String>,
         #[doc = "The indexes supported for this field."]
@@ -629,17 +661,18 @@ pub mod schemas {
         #[doc = "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`."]
         #[serde(rename = "reverting", default)]
         pub reverting: ::std::option::Option<bool>,
-        #[doc = "Output only.\nWhen true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
+        #[doc = "Output only. When true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
         #[serde(rename = "usesAncestorConfig", default)]
         pub uses_ancestor_config: ::std::option::Option<bool>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -664,13 +697,14 @@ pub mod schemas {
         #[serde(rename = "index", default)]
         pub index: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Index>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfigDelta {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfigDelta {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexConfigDelta {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -727,13 +761,18 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -761,13 +800,14 @@ pub mod schemas {
         pub order:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexFieldOrder>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexField {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexField {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexField {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -820,13 +860,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -879,13 +920,14 @@ pub mod schemas {
             })
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -924,13 +966,14 @@ pub mod schemas {
             crate::schemas::GoogleFirestoreAdminV1Beta2IndexOperationMetadataState,
         >,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexOperationMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexOperationMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2IndexOperationMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -979,13 +1022,18 @@ pub mod schemas {
             Ok ( match value { "CANCELLED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector
+        for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1008,13 +1056,14 @@ pub mod schemas {
         #[serde(rename = "nextPageToken", default)]
         pub next_page_token: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListFieldsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListFieldsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ListFieldsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1037,13 +1086,14 @@ pub mod schemas {
         #[serde(rename = "nextPageToken", default)]
         pub next_page_token: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListIndexesResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListIndexesResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2ListIndexesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(
@@ -1068,13 +1118,14 @@ pub mod schemas {
         #[serde(with = "crate::parsed_string")]
         pub estimated_work: ::std::option::Option<i64>,
     }
-    impl ::field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Progress {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Progress {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleFirestoreAdminV1Beta2Progress {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -1089,7 +1140,7 @@ pub mod schemas {
         #[serde(rename = "metadata", default)]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`."]
+        #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
@@ -1097,13 +1148,14 @@ pub mod schemas {
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
-    impl ::field_selector::FieldSelector for GoogleLongrunningOperation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for GoogleLongrunningOperation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleLongrunningOperation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
@@ -1119,13 +1171,14 @@ pub mod schemas {
         #[serde(rename = "message", default)]
         pub message: ::std::option::Option<String>,
     }
-    impl ::field_selector::FieldSelector for Status {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Status {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Status {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
@@ -1180,13 +1233,14 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Alt {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Alt {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Alt {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1235,25 +1289,29 @@ pub mod params {
             })
         }
     }
-    impl ::field_selector::FieldSelector for Xgafv {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
         }
     }
 }
 pub struct Client<A> {
     reqwest: ::reqwest::Client,
-    auth: ::std::sync::Mutex<A>,
+    auth: A,
 }
-impl<A: yup_oauth2::GetToken> Client<A> {
+impl<A> Client<A>
+where
+    A: ::google_api_auth::GetAccessToken,
+{
     pub fn new(auth: A) -> Self {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth: ::std::sync::Mutex::new(auth),
+            auth,
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
@@ -1269,9 +1327,9 @@ pub mod resources {
         pub mod params {}
         pub struct ProjectsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a std::sync::Mutex<A>,
+            pub(crate) auth: &'a A,
         }
-        impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
+        impl<'a, A: ::google_api_auth::GetAccessToken> ProjectsActions<'a, A> {
             #[doc = "Actions that can be performed on the databases resource"]
             pub fn databases(&self) -> crate::resources::projects::databases::DatabasesActions<A> {
                 crate::resources::projects::databases::DatabasesActions {
@@ -1284,9 +1342,9 @@ pub mod resources {
             pub mod params {}
             pub struct DatabasesActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
             }
-            impl<'a, A: yup_oauth2::GetToken> DatabasesActions<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> DatabasesActions<'a, A> {
                 #[doc = "Exports a copy of all or a subset of documents from Google Cloud Firestore\nto another storage system, such as Google Cloud Storage. Recent updates to\ndocuments may not be reflected in the export. The export occurs in the\nbackground and its progress can be monitored and managed via the\nOperation resource that is created. The output of an export may only be\nused once the associated operation is done. If an export operation is\ncancelled before completion it may leave partial data behind in Google\nCloud Storage."]
                 pub fn export_documents(
                     &self,
@@ -1342,7 +1400,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct ExportDocumentsRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 request: crate::schemas::GoogleFirestoreAdminV1Beta2ExportDocumentsRequest,
                 name: String,
                 access_token: Option<String>,
@@ -1357,7 +1415,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> ExportDocumentsRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ExportDocumentsRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -1412,41 +1470,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1461,7 +1519,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
@@ -1478,7 +1536,11 @@ pub mod resources {
                     output.push_str(":exportDocuments");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1491,18 +1553,14 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
             #[derive(Debug, Clone)]
             pub struct ImportDocumentsRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                pub(crate) auth: &'a A,
                 request: crate::schemas::GoogleFirestoreAdminV1Beta2ImportDocumentsRequest,
                 name: String,
                 access_token: Option<String>,
@@ -1517,7 +1575,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> ImportDocumentsRequestBuilder<'a, A> {
+            impl<'a, A: ::google_api_auth::GetAccessToken> ImportDocumentsRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -1572,41 +1630,41 @@ pub mod resources {
                 #[doc = r" fields."]
                 pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
-                    let fields = T::field_selector();
+                    let fields = ::google_field_selector::to_string::<T>();
                     let fields: Option<String> = if fields.is_empty() {
                         None
                     } else {
                         Some(fields)
                     };
-                    self.execute_fields(fields)
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub fn execute_standard(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields::<_, &str>(None)
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub fn execute_debug(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, Box<dyn ::std::error::Error>>
                 {
-                    self.execute_fields(Some("*"))
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub fn execute_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1621,7 +1679,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path());
+                    let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
@@ -1638,7 +1696,11 @@ pub mod resources {
                     output.push_str(":importDocuments");
                     output
                 }
-                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1651,21 +1713,17 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let mut auth = self.auth.lock().unwrap();
-                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                    let token = runtime.block_on(fut).unwrap().access_token;
-                    let req = req.bearer_auth(&token);
-                    req
+                    let req = req.bearer_auth(self.auth.access_token()?);
+                    Ok(req)
                 }
             }
             pub mod collection_groups {
                 pub mod params {}
                 pub struct CollectionGroupsActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
-                    pub(crate) auth: &'a std::sync::Mutex<A>,
+                    pub(crate) auth: &'a A,
                 }
-                impl<'a, A: yup_oauth2::GetToken> CollectionGroupsActions<'a, A> {
+                impl<'a, A: ::google_api_auth::GetAccessToken> CollectionGroupsActions<'a, A> {
                     #[doc = "Actions that can be performed on the fields resource"]pub fn fields ( & self ) -> crate :: resources :: projects :: databases :: collection_groups :: fields :: FieldsActions < A >{
                         crate :: resources :: projects :: databases :: collection_groups :: fields :: FieldsActions { reqwest : & self . reqwest , auth : & self . auth }
                     }
@@ -1677,9 +1735,9 @@ pub mod resources {
                     pub mod params {}
                     pub struct FieldsActions<'a, A> {
                         pub(crate) reqwest: &'a reqwest::Client,
-                        pub(crate) auth: &'a std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> FieldsActions<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> FieldsActions<'a, A> {
                         #[doc = "Gets the metadata and configuration for a Field."]
                         pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
                             GetRequestBuilder {
@@ -1750,7 +1808,7 @@ pub mod resources {
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         name: String,
                         access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
@@ -1764,7 +1822,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
@@ -1819,45 +1877,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2Field,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2Field,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -1872,7 +1931,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
@@ -1887,7 +1946,11 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
@@ -1900,19 +1963,14 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         parent: String,
                         filter: Option<String>,
                         page_size: Option<i32>,
@@ -1929,7 +1987,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
                         #[doc = "The filter to apply to list results. Currently,\nFirestoreAdmin.ListFields only supports listing fields\nthat have been explicitly overridden. To issue this query, call\nFirestoreAdmin.ListFields with the filter set to\n`indexConfig.usesAncestorConfig:false`."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
@@ -1995,32 +2053,30 @@ pub mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_fields<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                        pub fn iter_fields<T>(self) -> crate::iter::PageItemIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let mut fields = concat!("nextPageToken,", "fields").to_owned();
-                            let items_fields = T::field_selector();
-                            if !items_fields.is_empty() {
-                                fields.push_str("(");
-                                fields.push_str(&items_fields);
-                                fields.push_str(")");
-                            }
-                            self.fields = Some(fields);
-                            crate::iter::PageItemIter::new(self, "fields")
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_fields_with_fields(fields)
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                         #[doc = r" fields in `#items_type` will be the default fields populated by"]
                         #[doc = r" the server."]
-                        pub fn iter_fields_standard(
-                            mut self,
+                        pub fn iter_fields_with_default_fields(
+                            self,
                         ) -> crate::iter::PageItemIter<
                             Self,
                             crate::schemas::GoogleFirestoreAdminV1Beta2Field,
                         > {
-                            self.fields = Some(concat!("nextPageToken,", "fields").to_owned());
-                            crate::iter::PageItemIter::new(self, "fields")
+                            self.iter_fields_with_fields(None::<String>)
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -2028,21 +2084,74 @@ pub mod resources {
                         #[doc = r" primarily be used during developement and debugging as fetching"]
                         #[doc = r" all fields can be expensive both in bandwidth and server"]
                         #[doc = r" resources."]
-                        pub fn iter_fields_debug(
-                            mut self,
+                        pub fn iter_fields_with_all_fields(
+                            self,
                         ) -> crate::iter::PageItemIter<
                             Self,
                             crate::schemas::GoogleFirestoreAdminV1Beta2Field,
                         > {
-                            self.fields =
-                                Some(concat!("nextPageToken,", "fields", "(*)").to_owned());
+                            self.iter_fields_with_fields(Some("*"))
+                        }
+                        pub fn iter_fields_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            self.fields = Some({
+                                let mut selector = concat!("nextPageToken,", "fields").to_owned();
+                                let items_fields =
+                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                                if !items_fields.is_empty() {
+                                    selector.push_str("(");
+                                    selector.push_str(items_fields);
+                                    selector.push_str(")");
+                                }
+                                selector
+                            });
                             crate::iter::PageItemIter::new(self, "fields")
                         }
-                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let mut fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_with_fields(fields)
+                        }
+                        pub fn iter_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
+                        > {
+                            self.iter_with_fields(None::<&str>)
+                        }
+                        pub fn iter_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
+                        > {
+                            self.iter_with_fields(Some("*"))
+                        }
+                        pub fn iter_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            let mut fields =
+                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                             if !fields.is_empty() {
                                 match fields.chars().rev().nth(0) {
                                     Some(',') | None => {}
@@ -2051,23 +2160,6 @@ pub mod resources {
                                 fields.push_str("nextPageToken");
                                 self.fields = Some(fields);
                             }
-                            crate::iter::PageIter::new(self)
-                        }
-                        pub fn iter_standard(
-                            self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
-                        > {
-                            crate::iter::PageIter::new(self)
-                        }
-                        pub fn iter_debug(
-                            mut self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
-                        > {
-                            self.fields = Some("*".to_owned());
                             crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
@@ -2079,45 +2171,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2ListFieldsResponse,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2132,7 +2225,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
@@ -2148,7 +2241,11 @@ pub mod resources {
                             output.push_str("/fields");
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2164,16 +2261,13 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
-                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                        for ListRequestBuilder<'a, A>
+                    {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }
@@ -2187,7 +2281,7 @@ pub mod resources {
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         request: crate::schemas::GoogleFirestoreAdminV1Beta2Field,
                         name: String,
                         update_mask: Option<String>,
@@ -2203,7 +2297,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> PatchRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> PatchRequestBuilder<'a, A> {
                         #[doc = "A mask, relative to the field. If specified, only configuration specified\nby this field_mask will be updated in the field."]
                         pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                             self.update_mask = Some(value.into());
@@ -2263,45 +2357,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleLongrunningOperation,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleLongrunningOperation,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2316,7 +2411,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             let req = req.json(&self.request);
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
@@ -2332,7 +2427,11 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -2346,13 +2445,8 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
                 }
@@ -2360,9 +2454,9 @@ pub mod resources {
                     pub mod params {}
                     pub struct IndexesActions<'a, A> {
                         pub(crate) reqwest: &'a reqwest::Client,
-                        pub(crate) auth: &'a std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> IndexesActions<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> IndexesActions<'a, A> {
                         #[doc = "Creates a composite index. This returns a google.longrunning.Operation\nwhich may be used to track the status of the creation. The metadata for\nthe operation will be the type IndexOperationMetadata."]
                         pub fn create(
                             &self,
@@ -2451,7 +2545,7 @@ pub mod resources {
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         request: crate::schemas::GoogleFirestoreAdminV1Beta2Index,
                         parent: String,
                         access_token: Option<String>,
@@ -2466,7 +2560,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> CreateRequestBuilder<'a, A> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
@@ -2521,45 +2615,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleLongrunningOperation,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleLongrunningOperation,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2574,7 +2669,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             let req = req.json(&self.request);
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
@@ -2591,7 +2686,11 @@ pub mod resources {
                             output.push_str("/indexes");
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
@@ -2604,19 +2703,14 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         name: String,
                         access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
@@ -2630,7 +2724,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> DeleteRequestBuilder<'a, A> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
@@ -2685,41 +2779,42 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<crate::schemas::Empty, Box<dyn ::std::error::Error>>
                         {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<crate::schemas::Empty, Box<dyn ::std::error::Error>>
                         {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2734,7 +2829,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
@@ -2749,7 +2844,11 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
@@ -2762,19 +2861,14 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         name: String,
                         access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
@@ -2788,7 +2882,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
@@ -2843,45 +2937,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2Index,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2Index,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -2896,7 +2991,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
@@ -2911,7 +3006,11 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
@@ -2924,19 +3023,14 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
-                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        pub(crate) auth: &'a A,
                         parent: String,
                         filter: Option<String>,
                         page_size: Option<i32>,
@@ -2953,7 +3047,7 @@ pub mod resources {
                         upload_type: Option<String>,
                         xgafv: Option<crate::params::Xgafv>,
                     }
-                    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
                         #[doc = "The filter to apply to list results."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
@@ -3019,32 +3113,30 @@ pub mod resources {
                         #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                         #[doc = r" populated fields in the yielded items will be determined by the"]
                         #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_indexes<T>(mut self) -> crate::iter::PageItemIter<Self, T>
+                        pub fn iter_indexes<T>(self) -> crate::iter::PageItemIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let mut fields = concat!("nextPageToken,", "indexes").to_owned();
-                            let items_fields = T::field_selector();
-                            if !items_fields.is_empty() {
-                                fields.push_str("(");
-                                fields.push_str(&items_fields);
-                                fields.push_str(")");
-                            }
-                            self.fields = Some(fields);
-                            crate::iter::PageItemIter::new(self, "indexes")
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_indexes_with_fields(fields)
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                         #[doc = r" fields in `#items_type` will be the default fields populated by"]
                         #[doc = r" the server."]
-                        pub fn iter_indexes_standard(
-                            mut self,
+                        pub fn iter_indexes_with_default_fields(
+                            self,
                         ) -> crate::iter::PageItemIter<
                             Self,
                             crate::schemas::GoogleFirestoreAdminV1Beta2Index,
                         > {
-                            self.fields = Some(concat!("nextPageToken,", "indexes").to_owned());
-                            crate::iter::PageItemIter::new(self, "indexes")
+                            self.iter_indexes_with_fields(None::<String>)
                         }
                         #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                         #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -3052,21 +3144,74 @@ pub mod resources {
                         #[doc = r" primarily be used during developement and debugging as fetching"]
                         #[doc = r" all fields can be expensive both in bandwidth and server"]
                         #[doc = r" resources."]
-                        pub fn iter_indexes_debug(
-                            mut self,
+                        pub fn iter_indexes_with_all_fields(
+                            self,
                         ) -> crate::iter::PageItemIter<
                             Self,
                             crate::schemas::GoogleFirestoreAdminV1Beta2Index,
                         > {
-                            self.fields =
-                                Some(concat!("nextPageToken,", "indexes", "(*)").to_owned());
+                            self.iter_indexes_with_fields(Some("*"))
+                        }
+                        pub fn iter_indexes_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            self.fields = Some({
+                                let mut selector = concat!("nextPageToken,", "indexes").to_owned();
+                                let items_fields =
+                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                                if !items_fields.is_empty() {
+                                    selector.push_str("(");
+                                    selector.push_str(items_fields);
+                                    selector.push_str(")");
+                                }
+                                selector
+                            });
                             crate::iter::PageItemIter::new(self, "indexes")
                         }
-                        pub fn iter<T>(mut self) -> crate::iter::PageIter<Self, T>
+                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let mut fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_with_fields(fields)
+                        }
+                        pub fn iter_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
+                        > {
+                            self.iter_with_fields(None::<&str>)
+                        }
+                        pub fn iter_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
+                        > {
+                            self.iter_with_fields(Some("*"))
+                        }
+                        pub fn iter_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            let mut fields =
+                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
                             if !fields.is_empty() {
                                 match fields.chars().rev().nth(0) {
                                     Some(',') | None => {}
@@ -3075,23 +3220,6 @@ pub mod resources {
                                 fields.push_str("nextPageToken");
                                 self.fields = Some(fields);
                             }
-                            crate::iter::PageIter::new(self)
-                        }
-                        pub fn iter_standard(
-                            self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
-                        > {
-                            crate::iter::PageIter::new(self)
-                        }
-                        pub fn iter_debug(
-                            mut self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
-                        > {
-                            self.fields = Some("*".to_owned());
                             crate::iter::PageIter::new(self)
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
@@ -3103,45 +3231,46 @@ pub mod resources {
                         #[doc = r" fields."]
                         pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
                         {
-                            let fields = T::field_selector();
+                            let fields = ::google_field_selector::to_string::<T>();
                             let fields: Option<String> = if fields.is_empty() {
                                 None
                             } else {
                                 Some(fields)
                             };
-                            self.execute_fields(fields)
+                            self.execute_with_fields(fields)
                         }
                         #[doc = r" Execute the given operation. This will not provide any"]
                         #[doc = r" `fields` selector indicating that the server will determine"]
                         #[doc = r" the fields returned. This typically includes the most common"]
                         #[doc = r" fields, but it will not include every possible attribute of"]
                         #[doc = r" the response resource."]
-                        pub fn execute_standard(
+                        pub fn execute_with_default_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields::<_, &str>(None)
+                            self.execute_with_fields(None::<&str>)
                         }
                         #[doc = r" Execute the given operation. This will provide a `fields`"]
                         #[doc = r" selector of `*`. This will include every attribute of the"]
                         #[doc = r" response resource and should be limited to use during"]
                         #[doc = r" development or debugging."]
-                        pub fn execute_debug(
+                        pub fn execute_with_all_fields(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleFirestoreAdminV1Beta2ListIndexesResponse,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute_fields(Some("*"))
+                            self.execute_with_fields(Some("*"))
                         }
                         #[doc = r" Execute the given operation. This will use the `fields`"]
                         #[doc = r" selector provided and will deserialize the response into"]
                         #[doc = r" whatever return value is provided."]
-                        pub fn execute_fields<T, F>(
+                        pub fn execute_with_fields<T, F>(
                             mut self,
                             fields: Option<F>,
                         ) -> Result<T, Box<dyn ::std::error::Error>>
@@ -3156,7 +3285,7 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path());
+                            let req = self._request(&self._path())?;
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
@@ -3172,7 +3301,11 @@ pub mod resources {
                             output.push_str("/indexes");
                             output
                         }
-                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
+                        {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3188,16 +3321,13 @@ pub mod resources {
                             let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let mut auth = self.auth.lock().unwrap();
-                            let fut =
-                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
-                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
-                            let token = runtime.block_on(fut).unwrap().access_token;
-                            let req = req.bearer_auth(&token);
-                            req
+                            let req = req.bearer_auth(self.auth.access_token()?);
+                            Ok(req)
                         }
                     }
-                    impl<'a, A: yup_oauth2::GetToken> crate::iter::IterableMethod for ListRequestBuilder<'a, A> {
+                    impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
+                        for ListRequestBuilder<'a, A>
+                    {
                         fn set_page_token(&mut self, value: String) {
                             self.page_token = value.into();
                         }

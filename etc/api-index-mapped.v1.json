@@ -1327,6 +1327,18 @@
       "rest_url": "https://docs.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "domainsrdap",
+      "id": "domainsrdap:v1",
+      "lib_cargo_file": "domainsrdap/v1/lib/Cargo.toml",
+      "gen_error_file": "domainsrdap/v1/generator-errors.log",
+      "cargo_error_file": "domainsrdap/v1/cargo-errors.log",
+      "gen_dir": "domainsrdap/v1",
+      "spec_file": "domainsrdap/v1/spec.json",
+      "crate_name": "google-domainsrdap1",
+      "make_target": "domainsrdap1",
+      "rest_url": "https://domainsrdap.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "doubleclickbidmanager",
       "id": "doubleclickbidmanager:v1",
       "lib_cargo_file": "doubleclickbidmanager/v1/lib/Cargo.toml",
@@ -1685,6 +1697,18 @@
       "crate_name": "google-healthcare1_beta1",
       "make_target": "healthcare1_beta1",
       "rest_url": "https://healthcare.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "homegraph",
+      "id": "homegraph:v1",
+      "lib_cargo_file": "homegraph/v1/lib/Cargo.toml",
+      "gen_error_file": "homegraph/v1/generator-errors.log",
+      "cargo_error_file": "homegraph/v1/cargo-errors.log",
+      "gen_dir": "homegraph/v1",
+      "spec_file": "homegraph/v1/spec.json",
+      "crate_name": "google-homegraph1",
+      "make_target": "homegraph1",
+      "rest_url": "https://homegraph.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "iam",

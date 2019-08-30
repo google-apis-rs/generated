@@ -7,7 +7,7 @@
   "canonicalName": "Abusive Experience Report",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190819",
+  "revision": "20190826",
   "title": "Abusive Experience Report API",
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "ownerDomain": "google.com",
@@ -234,7 +234,7 @@
           "items": null
         },
         "enforcementTime": {
-          "description": "The date on which enforcement begins.",
+          "description": "The time at which enforcement begins.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -345,7 +345,7 @@
           "description": "Gets a summary of the abusive experience rating of a site.",
           "parameters": {
             "name": {
-              "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
+              "description": "Required. The site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
               "default": null,
               "location": "path",
               "required": true,
@@ -384,7 +384,7 @@
           "id": "abusiveexperiencereport.violatingSites.list",
           "path": "v1/violatingSites",
           "httpMethod": "GET",
-          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+          "description": "Lists sites with failing Abusive Experience Report statuses.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,

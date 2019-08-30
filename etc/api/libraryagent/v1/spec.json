@@ -7,7 +7,7 @@
   "canonicalName": "Libraryagent",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190821",
+  "revision": "20190828",
   "title": "Library Agent API",
   "description": "A simple Google Example Library API.",
   "ownerDomain": "google.com",
@@ -373,7 +373,7 @@
               "description": "Borrow a book from the library. Returns the book if it is borrowed\nsuccessfully. Returns NOT_FOUND if the book does not exist in the library.\nReturns quota exceeded error if the amount of books borrowed exceeds\nallocation quota in any dimensions.",
               "parameters": {
                 "name": {
-                  "description": "The name of the book to borrow.",
+                  "description": "Required. The name of the book to borrow.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -410,7 +410,7 @@
               "description": "Gets a book. Returns NOT_FOUND if the book does not exist.",
               "parameters": {
                 "name": {
-                  "description": "The name of the book to retrieve.",
+                  "description": "Required. The name of the book to retrieve.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -475,7 +475,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the shelf whose books we'd like to list.",
+                  "description": "Required. The name of the shelf whose books we'd like to list.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -512,7 +512,7 @@
               "description": "Return a book to the library. Returns the book if it is returned to the\nlibrary successfully.\nReturns error if the book does not belong to the library\nor the users didn't borrow before.",
               "parameters": {
                 "name": {
-                  "description": "The name of the book to return.",
+                  "description": "Required. The name of the book to return.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -553,7 +553,7 @@
           "description": "Gets a shelf. Returns NOT_FOUND if the shelf does not exist.",
           "parameters": {
             "name": {
-              "description": "The name of the shelf to retrieve.",
+              "description": "Required. The name of the shelf to retrieve.",
               "default": null,
               "location": "path",
               "required": true,

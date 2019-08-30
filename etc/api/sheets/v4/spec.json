@@ -7,7 +7,7 @@
   "canonicalName": "Sheets",
   "fullyEncodeReservedExpansion": true,
   "version": "v4",
-  "revision": "20190814",
+  "revision": "20190822",
   "title": "Google Sheets API",
   "description": "Reads and writes Google Sheets.",
   "ownerDomain": "google.com",

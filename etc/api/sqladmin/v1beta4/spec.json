@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/LRkkAS7hoxkBOrIOmm_GjUTQ6v8\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/N55ZXwjx5gVcFVd9x7svcXqGxFA\"",
   "discoveryVersion": "v1",
   "id": "sqladmin:v1beta4",
   "name": "sqladmin",
   "canonicalName": "SQL Admin",
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta4",
-  "revision": "20190607",
+  "revision": "20190815",
   "title": "Cloud SQL Admin API",
   "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
   "ownerDomain": "google.com",
@@ -317,6 +317,14 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "diskEncryptionConfiguration": {
+          "description": "Disk encryption configuration specific to a backup. Applies only to Second Generation instances.",
+          "$ref": "DiskEncryptionConfiguration"
+        },
+        "diskEncryptionStatus": {
+          "description": "Disk encryption status specific to a backup. Applies only to Second Generation instances.",
+          "$ref": "DiskEncryptionStatus"
         },
         "endTime": {
           "description": "The time the backup operation completed in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
@@ -5866,7 +5874,7 @@
           "description": "Updates an existing user in a Cloud SQL instance.",
           "parameters": {
             "host": {
-              "description": "Host of the user in the instance.",
+              "description": "Host of the user in the instance. For a MySQL instance, it's required; For a PostgreSQL instance, it's optional.",
               "default": null,
               "location": "query",
               "required": false,

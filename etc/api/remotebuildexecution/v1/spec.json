@@ -7,7 +7,7 @@
   "canonicalName": "Remote Build Execution",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190820",
+  "revision": "20190826",
   "title": "Remote Build Execution API",
   "description": "Supplies a Remote Execution API service for tools such as bazel.",
   "ownerDomain": "google.com",

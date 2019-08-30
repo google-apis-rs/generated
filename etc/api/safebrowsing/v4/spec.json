@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v4",
-  "revision": "20190704",
+  "revision": "20190826",
   "title": "Safe Browsing API",
   "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
   "ownerDomain": "google.com",
