@@ -5,6 +5,9 @@ set -eux
 curl -LSfs https://japaric.github.io/trust/install.sh | \
   sh -s -- --git casey/just --target x86_64-unknown-linux-musl --force
 
+(
+  cd urlshortener1-cli && cargo check
+)
 just refresh-pruned-specs
 
 # gen + cargo check + cargo doc
