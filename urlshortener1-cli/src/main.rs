@@ -5,6 +5,7 @@
 
 #[macro_use]
 extern crate clap;
+extern crate google_api_auth;
 extern crate google_urlshortener1 as api;
 extern crate hyper;
 extern crate hyper_rustls;
@@ -127,7 +128,7 @@ impl<'n> Engine<'n, ClientInner> {
                     return Err(DoitError::IoError(
                         opt.value_of("out").unwrap_or("-").to_string(),
                         io_err,
-                    ))
+                    ));
                 }
             };
             match match protocol {
@@ -363,7 +364,7 @@ impl<'n> Engine<'n, ClientInner> {
                     return Err(DoitError::IoError(
                         opt.value_of("out").unwrap_or("-").to_string(),
                         io_err,
-                    ))
+                    ));
                 }
             };
             match match protocol {
@@ -439,7 +440,7 @@ impl<'n> Engine<'n, ClientInner> {
                     return Err(DoitError::IoError(
                         opt.value_of("out").unwrap_or("-").to_string(),
                         io_err,
-                    ))
+                    ));
                 }
             };
             match match protocol {
@@ -540,6 +541,13 @@ impl<'n> Engine<'n, ClientInner> {
         )
         .expect("create a new statically known client");
 
+        // TODO: fetch actual provided scopes
+        let auth = google_api_auth::yup_oauth2::from_authenticator(
+            auth,
+            opt.values_of("url")
+                .map(|i| i.collect())
+                .unwrap_or(Vec::new()),
+        );
         // TODO: how to provide a client with debugging support? Is it required to see the full HTTP requrest anyway?
         // let _client =
         //     if opt.is_present("debug") {
@@ -589,94 +597,88 @@ fn main() {
     let arg_data = [
         ("url", "methods: 'get', 'insert' and 'list'", vec![
             ("get",
-                    Some(r##"Expands a short URL or gets creation time and analytics."##),
-                    "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_get",
-                  vec![
-                    (Some(r##"short-url"##),
-                     None,
-                     Some(r##"The short URL, including the protocol."##),
-                     Some(true),
-                     Some(false)),
-        
-                    (Some(r##"v"##),
-                     Some(r##"p"##),
-                     Some(r##"Set various optional parameters, matching the key=value form"##),
-                     Some(false),
-                     Some(true)),
-        
-                    (Some(r##"out"##),
-                     Some(r##"o"##),
-                     Some(r##"Specify the file into which to write the program's output"##),
-                     Some(false),
-                     Some(false)),
-                  ]),
+             Some(r##"Expands a short URL or gets creation time and analytics."##),
+             "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_get",
+             vec![
+                 (Some(r##"short-url"##),
+                  None,
+                  Some(r##"The short URL, including the protocol."##),
+                  Some(true),
+                  Some(false)),
+                 (Some(r##"v"##),
+                  Some(r##"p"##),
+                  Some(r##"Set various optional parameters, matching the key=value form"##),
+                  Some(false),
+                  Some(true)),
+                 (Some(r##"out"##),
+                  Some(r##"o"##),
+                  Some(r##"Specify the file into which to write the program's output"##),
+                  Some(false),
+                  Some(false)),
+             ]),
             ("insert",
-                    Some(r##"Creates a new short URL."##),
-                    "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_insert",
-                  vec![
-                    (Some(r##"kv"##),
-                     Some(r##"r"##),
-                     Some(r##"Set various fields of the request structure, matching the key=value form"##),
-                     Some(true),
-                     Some(true)),
-        
-                    (Some(r##"v"##),
-                     Some(r##"p"##),
-                     Some(r##"Set various optional parameters, matching the key=value form"##),
-                     Some(false),
-                     Some(true)),
-        
-                    (Some(r##"out"##),
-                     Some(r##"o"##),
-                     Some(r##"Specify the file into which to write the program's output"##),
-                     Some(false),
-                     Some(false)),
-                  ]),
+             Some(r##"Creates a new short URL."##),
+             "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_insert",
+             vec![
+                 (Some(r##"kv"##),
+                  Some(r##"r"##),
+                  Some(r##"Set various fields of the request structure, matching the key=value form"##),
+                  Some(true),
+                  Some(true)),
+                 (Some(r##"v"##),
+                  Some(r##"p"##),
+                  Some(r##"Set various optional parameters, matching the key=value form"##),
+                  Some(false),
+                  Some(true)),
+                 (Some(r##"out"##),
+                  Some(r##"o"##),
+                  Some(r##"Specify the file into which to write the program's output"##),
+                  Some(false),
+                  Some(false)),
+             ]),
             ("list",
-                    Some(r##"Retrieves a list of URLs shortened by a user."##),
-                    "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_list",
-                  vec![
-                    (Some(r##"v"##),
-                     Some(r##"p"##),
-                     Some(r##"Set various optional parameters, matching the key=value form"##),
-                     Some(false),
-                     Some(true)),
-        
-                    (Some(r##"out"##),
-                     Some(r##"o"##),
-                     Some(r##"Specify the file into which to write the program's output"##),
-                     Some(false),
-                     Some(false)),
-                  ]),
-            ]),
-        
+             Some(r##"Retrieves a list of URLs shortened by a user."##),
+             "Details at http://byron.github.io/google-apis-rs/google_urlshortener1_cli/url_list",
+             vec![
+                 (Some(r##"v"##),
+                  Some(r##"p"##),
+                  Some(r##"Set various optional parameters, matching the key=value form"##),
+                  Some(false),
+                  Some(true)),
+                 (Some(r##"out"##),
+                  Some(r##"o"##),
+                  Some(r##"Specify the file into which to write the program's output"##),
+                  Some(false),
+                  Some(false)),
+             ]),
+        ]),
     ];
 
     let mut app = App::new("urlshortener1")
-           .author("Sebastian Thiel <byronimo@gmail.com>")
-           .version("1.0.10+20150519")
-           .about("Lets you create, inspect, and manage goo.gl short URLs")
-           .after_help("All documentation details can be found at http://byron.github.io/google-apis-rs/google_urlshortener1_cli")
-           .arg(Arg::with_name("url")
-                   .long("scope")
-                   .help("Specify the authentication a method should be executed in. Each scope requires the user to grant this application permission to use it.If unset, it defaults to the shortest scope url for a particular method.")
-                   .multiple(true)
-                   .takes_value(true))
-           .arg(Arg::with_name("folder")
-                   .long("config-dir")
-                   .help("A directory into which we will store our persistent data. Defaults to a user-writable directory that we will create during the first invocation.[default: ~/.google-service-cli")
-                   .multiple(false)
-                   .takes_value(true))
-           .arg(Arg::with_name("debug")
-                   .long("debug")
-                   .help("Output all server communication to standard error. `tx` and `rx` are placed into the same stream.")
-                   .multiple(false)
-                   .takes_value(false))
-           .arg(Arg::with_name("debug-auth")
-                   .long("debug-auth")
-                   .help("Output all communication related to authentication to standard error. `tx` and `rx` are placed into the same stream.")
-                   .multiple(false)
-                   .takes_value(false));
+        .author("Sebastian Thiel <byronimo@gmail.com>")
+        .version("1.0.10+20150519")
+        .about("Lets you create, inspect, and manage goo.gl short URLs")
+        .after_help("All documentation details can be found at http://byron.github.io/google-apis-rs/google_urlshortener1_cli")
+        .arg(Arg::with_name("url")
+            .long("scope")
+            .help("Specify the authentication a method should be executed in. Each scope requires the user to grant this application permission to use it.If unset, it defaults to the shortest scope url for a particular method.")
+            .multiple(true)
+            .takes_value(true))
+        .arg(Arg::with_name("folder")
+            .long("config-dir")
+            .help("A directory into which we will store our persistent data. Defaults to a user-writable directory that we will create during the first invocation.[default: ~/.google-service-cli")
+            .multiple(false)
+            .takes_value(true))
+        .arg(Arg::with_name("debug")
+            .long("debug")
+            .help("Output all server communication to standard error. `tx` and `rx` are placed into the same stream.")
+            .multiple(false)
+            .takes_value(false))
+        .arg(Arg::with_name("debug-auth")
+            .long("debug-auth")
+            .help("Output all communication related to authentication to standard error. `tx` and `rx` are placed into the same stream.")
+            .multiple(false)
+            .takes_value(false));
 
     for &(main_command_name, about, ref subcommands) in arg_data.iter() {
         let mut mcmd = SubCommand::with_name(main_command_name).about(about);
