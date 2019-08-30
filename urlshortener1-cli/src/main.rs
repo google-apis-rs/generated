@@ -193,7 +193,7 @@ fn main() {
             writeln!(io::stderr(), "{}", err).ok();
         }
         Ok((opt, client)) => {
-            if let Err(doit_err) = _doit(&client, &opt, false).expect("no failure should be possible"){
+            if let Err(doit_err) = doit(&client, &opt, false).expect("no failure should be possible"){
                 exit_status = 1;
                 match doit_err {
                     DoitError::IoError(path, err) => {
@@ -299,14 +299,14 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth:
     //         hyper::Client::with_connector(HttpsConnector::new(1))
     //     };
     let client = api::Client::new(auth);
-    match _doit(&client, &opt, true) {
+    match doit(&client, &opt, true) {
         Err(Some(err)) => Err(err),
         Err(None) => Ok((opt, client)),
         Ok(_) => unreachable!("dry runs are never successful, right now. TODO: can this be different?")
     }
 }
 
-fn _url_get<T>(
+fn url_get<T>(
     hub: &api::Client<T>,
     opt: &ArgMatches,
     dry_run: bool,
@@ -381,7 +381,7 @@ fn _url_get<T>(
     }
 }
 
-fn _doit<T>(
+fn doit<T>(
     hub: &api::Client<T>,
     opt: &ArgMatches, dry_run: bool) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>>
     where
@@ -393,13 +393,13 @@ fn _doit<T>(
     match opt.subcommand() {
         ("url", Some(opt)) => match opt.subcommand() {
             ("get", Some(opt)) => {
-                call_result = _url_get(hub, opt, dry_run, &mut err);
+                call_result = url_get(hub, opt, dry_run, &mut err);
             }
             ("insert", Some(opt)) => {
-                call_result = _url_insert(hub, opt, dry_run, &mut err);
+                call_result = url_insert(hub, opt, dry_run, &mut err);
             }
             ("list", Some(opt)) => {
-                call_result = _url_list(hub, opt, dry_run, &mut err);
+                call_result = url_list(hub, opt, dry_run, &mut err);
             }
             _ => {
                 err.issues
@@ -424,7 +424,7 @@ fn _doit<T>(
     }
 }
 
-fn _url_insert<T>(
+fn url_insert<T>(
     hub: &api::Client<T>,
     opt: &ArgMatches,
     dry_run: bool,
@@ -660,7 +660,7 @@ fn _url_insert<T>(
     }
 }
 
-fn _url_list<T>(
+fn url_list<T>(
     hub: &api::Client<T>,
     opt: &ArgMatches,
     dry_run: bool,
