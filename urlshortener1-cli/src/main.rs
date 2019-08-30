@@ -41,15 +41,6 @@ use serde_json as json;
 
 //TODO: this probably should be a typedef coming from the api crate
 type Error = Box<dyn std::error::Error>;
-type ClientInner = oauth2::Authenticator<
-    oauth2::InstalledFlow<
-        oauth2::DefaultFlowDelegate,
-        hyper_rustls::HttpsConnector<hyper::client::HttpConnector>,
-    >,
-    oauth2::DiskTokenStorage,
-    oauth2::DefaultAuthenticatorDelegate,
-    hyper_rustls::HttpsConnector<hyper::client::HttpConnector>,
->;
 
 enum DoitError {
     IoError(String, io::Error),
@@ -65,532 +56,6 @@ where
     }
 }
 
-struct Engine<'n, T> {
-    opt: ArgMatches<'n>,
-    hub: api::Client<T>,
-    gp: Vec<&'static str>,
-    gpm: Vec<(&'static str, &'static str)>,
-}
-
-impl<'n> Engine<'n, ClientInner> {
-    fn _url_get(
-        &self,
-        opt: &ArgMatches<'n>,
-        dry_run: bool,
-        err: &mut InvalidOptionsError,
-    ) -> Result<(), DoitError> {
-        let mut keep = self.hub.url();
-        let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
-        for parg in opt
-            .values_of("v")
-            .map(|i| i.collect())
-            .unwrap_or(Vec::new())
-            .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                "projection" => {
-                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
-                }
-                _ => {
-                    let mut found = false;
-                    // TODO: params work differently
-                    // for param in &self.gp {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(self.gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(self.gp.iter().map(|v| *v));
-                                v.extend(["projection"].iter().map(|v| *v));
-                                v
-                            }));
-                    }
-                }
-            }
-        }
-        let protocol = CallType::Standard;
-        if dry_run {
-            Ok(())
-        } else {
-            assert!(err.issues.len() == 0);
-            // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-            //     call = call.add_scope(scope);
-            // }
-            let mut ostream = match writer_from_opts(opt.value_of("out")) {
-                Ok(mut f) => f,
-                Err(io_err) => {
-                    return Err(DoitError::IoError(
-                        opt.value_of("out").unwrap_or("-").to_string(),
-                        io_err,
-                    ));
-                }
-            };
-            match match protocol {
-                CallType::Standard => call.execute_with_all_fields(),
-                _ => unreachable!(),
-            } {
-                Err(api_err) => Err(DoitError::ApiError(api_err)),
-                Ok(response) => {
-                    json::to_writer_pretty(&mut ostream, &response).unwrap();
-                    ostream.flush().unwrap();
-                    Ok(())
-                }
-            }
-        }
-    }
-
-    fn _url_insert(
-        &self,
-        opt: &ArgMatches<'n>,
-        dry_run: bool,
-        err: &mut InvalidOptionsError,
-    ) -> Result<(), DoitError> {
-        let mut field_cursor = FieldCursor::default();
-        let mut object = json::value::Value::Object(Default::default());
-
-        for kvarg in opt
-            .values_of("kv")
-            .map(|i| i.collect())
-            .unwrap_or(Vec::new())
-            .iter()
-        {
-            let last_errc = err.issues.len();
-            let (key, value) = parse_kv_arg(&*kvarg, err, false);
-            let mut temp_cursor = field_cursor.clone();
-            if let Err(field_err) = temp_cursor.set(&*key) {
-                err.issues.push(field_err);
-            }
-            if value.is_none() {
-                field_cursor = temp_cursor.clone();
-                if err.issues.len() > last_errc {
-                    err.issues.remove(last_errc);
-                }
-                continue;
-            }
-
-            let type_info: Option<(&'static str, JsonTypeInfo)> = match &temp_cursor.to_string()[..]
-            {
-                "status" => Some((
-                    "status",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "kind" => Some((
-                    "kind",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "created" => Some((
-                    "created",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.week.short-url-clicks" => Some((
-                    "analytics.week.shortUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.week.long-url-clicks" => Some((
-                    "analytics.week.longUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.all-time.short-url-clicks" => Some((
-                    "analytics.allTime.shortUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.all-time.long-url-clicks" => Some((
-                    "analytics.allTime.longUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.two-hours.short-url-clicks" => Some((
-                    "analytics.twoHours.shortUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.two-hours.long-url-clicks" => Some((
-                    "analytics.twoHours.longUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.day.short-url-clicks" => Some((
-                    "analytics.day.shortUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.day.long-url-clicks" => Some((
-                    "analytics.day.longUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.month.short-url-clicks" => Some((
-                    "analytics.month.shortUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "analytics.month.long-url-clicks" => Some((
-                    "analytics.month.longUrlClicks",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "long-url" => Some((
-                    "longUrl",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                "id" => Some((
-                    "id",
-                    JsonTypeInfo {
-                        jtype: JsonType::String,
-                        ctype: ComplexType::Pod,
-                    },
-                )),
-                _ => {
-                    let suggestion = FieldCursor::did_you_mean(
-                        key,
-                        &vec![
-                            "all-time",
-                            "analytics",
-                            "created",
-                            "day",
-                            "id",
-                            "kind",
-                            "long-url",
-                            "long-url-clicks",
-                            "month",
-                            "short-url-clicks",
-                            "status",
-                            "two-hours",
-                            "week",
-                        ],
-                    );
-                    err.issues.push(CLIError::Field(FieldError::Unknown(
-                        temp_cursor.to_string(),
-                        suggestion,
-                        value.map(|v| v.to_string()),
-                    )));
-                    None
-                }
-            };
-            if let Some((field_cursor_str, type_info)) = type_info {
-                FieldCursor::from(field_cursor_str).set_json_value(
-                    &mut object,
-                    value.unwrap(),
-                    type_info,
-                    err,
-                    &temp_cursor,
-                );
-            }
-        }
-        let mut request: api::schemas::Url = json::value::from_value(object).unwrap();
-        let keep = self.hub.url();
-        let mut call = keep.insert(request);
-        for parg in opt
-            .values_of("v")
-            .map(|i| i.collect())
-            .unwrap_or(Vec::new())
-            .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                _ => {
-                    let mut found = false;
-                    // TODO: params
-                    // for param in &self.gp {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(self.gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(self.gp.iter().map(|v| *v));
-                                v
-                            }));
-                    }
-                }
-            }
-        }
-        let protocol = CallType::Standard;
-        if dry_run {
-            Ok(())
-        } else {
-            assert!(err.issues.len() == 0);
-            // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-            //     call = call.add_scope(scope);
-            // }
-            let mut ostream = match writer_from_opts(opt.value_of("out")) {
-                Ok(mut f) => f,
-                Err(io_err) => {
-                    return Err(DoitError::IoError(
-                        opt.value_of("out").unwrap_or("-").to_string(),
-                        io_err,
-                    ));
-                }
-            };
-            match match protocol {
-                CallType::Standard => call.execute_with_all_fields(),
-                _ => unreachable!(),
-            } {
-                Err(api_err) => Err(DoitError::ApiError(api_err)),
-                Ok(response) => {
-                    json::to_writer_pretty(&mut ostream, &response).unwrap();
-                    ostream.flush().unwrap();
-                    Ok(())
-                }
-            }
-        }
-    }
-
-    fn _url_list(
-        &self,
-        opt: &ArgMatches<'n>,
-        dry_run: bool,
-        err: &mut InvalidOptionsError,
-    ) -> Result<(), DoitError> {
-        let keep = self.hub.url();
-        let mut call = keep.list();
-        for parg in opt
-            .values_of("v")
-            .map(|i| i.collect())
-            .unwrap_or(Vec::new())
-            .iter()
-        {
-            let (key, value) = parse_kv_arg(&*parg, err, false);
-            match key {
-                "start-token" => {
-                    call = call.start_token(value.unwrap_or(""));
-                }
-                "projection" => {
-                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
-                }
-                _ => {
-                    let mut found = false;
-                    // TODO: figure out changed handling of parameters
-                    // for param in &self.gp {
-                    //     if key == *param {
-                    //         found = true;
-                    //         call = call.param(self.gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                    //         break;
-                    //     }
-                    // }
-                    if !found {
-                        err.issues
-                            .push(CLIError::UnknownParameter(key.to_string(), {
-                                let mut v = Vec::new();
-                                v.extend(self.gp.iter().map(|v| *v));
-                                v.extend(["start-token", "projection"].iter().map(|v| *v));
-                                v
-                            }));
-                    }
-                }
-            }
-        }
-        let protocol = CallType::Standard;
-        if dry_run {
-            Ok(())
-        } else {
-            assert!(err.issues.len() == 0);
-            // TODO: Scope handling moves to the client, and is configured once
-            // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-            //     call = call.add_scope(scope);
-            // }
-            let mut ostream = match writer_from_opts(opt.value_of("out")) {
-                Ok(mut f) => f,
-                Err(io_err) => {
-                    return Err(DoitError::IoError(
-                        opt.value_of("out").unwrap_or("-").to_string(),
-                        io_err,
-                    ));
-                }
-            };
-            match match protocol {
-                CallType::Standard => call.execute_with_all_fields(),
-                _ => unreachable!(),
-            } {
-                Err(api_err) => Err(DoitError::ApiError(api_err)),
-                Ok(response) => {
-                    json::to_writer_pretty(&mut ostream, &response).unwrap();
-                    ostream.flush().unwrap();
-                    Ok(())
-                }
-            }
-        }
-    }
-
-    fn _doit(&self, dry_run: bool) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>> {
-        let mut err = InvalidOptionsError::new();
-        let mut call_result: Result<(), DoitError> = Ok(());
-        let mut err_opt: Option<InvalidOptionsError> = None;
-        match self.opt.subcommand() {
-            ("url", Some(opt)) => match opt.subcommand() {
-                ("get", Some(opt)) => {
-                    call_result = self._url_get(opt, dry_run, &mut err);
-                }
-                ("insert", Some(opt)) => {
-                    call_result = self._url_insert(opt, dry_run, &mut err);
-                }
-                ("list", Some(opt)) => {
-                    call_result = self._url_list(opt, dry_run, &mut err);
-                }
-                _ => {
-                    err.issues
-                        .push(CLIError::MissingMethodError("url".to_string()));
-                    writeln!(io::stderr(), "{}\n", opt.usage()).ok();
-                }
-            },
-            _ => {
-                err.issues.push(CLIError::MissingCommandError);
-                writeln!(io::stderr(), "{}\n", self.opt.usage()).ok();
-            }
-        }
-
-        if dry_run {
-            if err.issues.len() > 0 {
-                err_opt = Some(err);
-            }
-            Err(err_opt)
-        } else {
-            Ok(call_result)
-        }
-    }
-
-    // Please note that this call will fail if any part of the opt can't be handled
-    fn new(opt: ArgMatches<'n>) -> Result<Engine<'n, ClientInner>, InvalidOptionsError> {
-        let (config_dir, secret) = {
-            let config_dir = match cmn::assure_config_dir_exists(
-                opt.value_of("folder").unwrap_or("~/.google-service-cli"),
-            ) {
-                Err(e) => return Err(InvalidOptionsError::single(e, 3)),
-                Ok(p) => p,
-            };
-
-            match cmn::application_secret_from_directory(&config_dir, "urlshortener1-secret.json",
-                                                         "{\"installed\":{\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"client_secret\":\"hCsslbCUyfehWMmbkG8vTYxG\",\"token_uri\":\"https://accounts.google.com/o/oauth2/token\",\"client_email\":\"\",\"redirect_uris\":[\"urn:ietf:wg:oauth:2.0:oob\",\"oob\"],\"client_x509_cert_url\":\"\",\"client_id\":\"620010449518-9ngf7o4dhs0dka470npqvor6dc5lqb9b.apps.googleusercontent.com\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\"}}") {
-                Ok(secret) => (config_dir, secret),
-                Err(e) => return Err(InvalidOptionsError::single(e, 4))
-            }
-        };
-        // Boilerplate: Set up hyper HTTP client and TLS.
-        let https = HttpsConnector::new(1);
-        let client = hyper::Client::builder()
-            .keep_alive(false)
-            .build::<_, hyper::Body>(https);
-
-        // InstalledFlow handles OAuth flows of that type. They are usually the ones where a user
-        // grants access to their personal account (think Google Drive, Github API, etc.).
-        let inf = oauth2::InstalledFlow::new(
-            client.clone(),
-            yup_oauth2::DefaultFlowDelegate,
-            secret,
-            yup_oauth2::InstalledFlowReturnMethod::HTTPRedirect(8081),
-        );
-
-        let _json_storage = JsonTokenStorage {
-            program_name: "urlshortener1",
-            db_dir: config_dir.clone(),
-        };
-
-        // TODO: try to use the JsonTokenStorage - there is no constructor for that though.
-        let auth = Authenticator::new_disk(
-            client,
-            inf,
-            oauth2::DefaultAuthenticatorDelegate,
-            PathBuf::from(config_dir)
-                .join("token.json")
-                .to_string_lossy(),
-        )
-        .expect("create a new statically known client");
-
-        // TODO: fetch actual provided scopes
-        let auth = google_api_auth::yup_oauth2::from_authenticator(
-            auth,
-            opt.values_of("url")
-                .map(|i| i.collect())
-                .unwrap_or(Vec::new()),
-        );
-        // TODO: how to provide a client with debugging support? Is it required to see the full HTTP requrest anyway?
-        // let _client =
-        //     if opt.is_present("debug") {
-        //         hyper::Client::with_connector(mock::TeeConnector {
-        //                 connector: HttpsConnector::new(1)
-        //             })
-        //     } else {
-        //         hyper::Client::with_connector(HttpsConnector::new(1))
-        //     };
-        let engine = Engine {
-            opt: opt,
-            hub: api::Client::new(auth),
-            gp: vec![
-                "alt",
-                "fields",
-                "key",
-                "oauth-token",
-                "pretty-print",
-                "quota-user",
-                "user-ip",
-            ],
-            gpm: vec![
-                ("oauth-token", "oauth_token"),
-                ("pretty-print", "prettyPrint"),
-                ("quota-user", "quotaUser"),
-                ("user-ip", "userIp"),
-            ],
-        };
-
-        match engine._doit(true) {
-            Err(Some(err)) => Err(err),
-            Err(None) => Ok(engine),
-            Ok(_) => unreachable!(),
-        }
-    }
-
-    fn doit(&self) -> Result<(), DoitError> {
-        match self._doit(false) {
-            Ok(res) => res,
-            Err(_) => unreachable!(),
-        }
-    }
-}
 
 fn main() {
     let mut exit_status = 0i32;
@@ -722,13 +187,13 @@ fn main() {
     let matches = app.get_matches();
 
     let debug = matches.is_present("debug");
-    match Engine::new(matches) {
+    match new(matches) {
         Err(err) => {
             exit_status = err.exit_code;
             writeln!(io::stderr(), "{}", err).ok();
         }
-        Ok(engine) => {
-            if let Err(doit_err) = engine.doit() {
+        Ok((opt, client)) => {
+            if let Err(doit_err) = _doit(&client, &opt, false).expect("no failure should be possible"){
                 exit_status = 1;
                 match doit_err {
                     DoitError::IoError(path, err) => {
@@ -753,4 +218,520 @@ fn main() {
     }
 
     std::process::exit(exit_status);
+}
+
+const GP: [&'static str;7 ] = [
+            "alt",
+            "fields",
+            "key",
+            "oauth-token",
+            "pretty-print",
+            "quota-user",
+            "user-ip",
+        ];
+
+const GPM: [(&'static str, &'static str); 4] = [
+            ("oauth-token", "oauth_token"),
+            ("pretty-print", "prettyPrint"),
+            ("quota-user", "quotaUser"),
+            ("user-ip", "userIp")];
+
+fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client<impl google_api_auth::GetAccessToken + Send + Sync>), InvalidOptionsError> {
+    let (config_dir, secret) = {
+        let config_dir = match cmn::assure_config_dir_exists(
+            opt.value_of("folder").unwrap_or("~/.google-service-cli"),
+        ) {
+            Err(e) => return Err(InvalidOptionsError::single(e, 3)),
+            Ok(p) => p,
+        };
+
+        match cmn::application_secret_from_directory(&config_dir, "urlshortener1-secret.json",
+                                                     "{\"installed\":{\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"client_secret\":\"hCsslbCUyfehWMmbkG8vTYxG\",\"token_uri\":\"https://accounts.google.com/o/oauth2/token\",\"client_email\":\"\",\"redirect_uris\":[\"urn:ietf:wg:oauth:2.0:oob\",\"oob\"],\"client_x509_cert_url\":\"\",\"client_id\":\"620010449518-9ngf7o4dhs0dka470npqvor6dc5lqb9b.apps.googleusercontent.com\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\"}}") {
+            Ok(secret) => (config_dir, secret),
+            Err(e) => return Err(InvalidOptionsError::single(e, 4))
+        }
+    };
+    // Boilerplate: Set up hyper HTTP client and TLS.
+    let https = HttpsConnector::new(1);
+    let client = hyper::Client::builder()
+        .keep_alive(false)
+        .build::<_, hyper::Body>(https);
+
+    // InstalledFlow handles OAuth flows of that type. They are usually the ones where a user
+    // grants access to their personal account (think Google Drive, Github API, etc.).
+    let inf = oauth2::InstalledFlow::new(
+        client.clone(),
+        yup_oauth2::DefaultFlowDelegate,
+        secret,
+        yup_oauth2::InstalledFlowReturnMethod::HTTPRedirect(8081),
+    );
+
+    let _json_storage = JsonTokenStorage {
+        program_name: "urlshortener1",
+        db_dir: config_dir.clone(),
+    };
+
+    // TODO: try to use the JsonTokenStorage - there is no constructor for that though.
+    let auth = Authenticator::new_disk(
+        client,
+        inf,
+        oauth2::DefaultAuthenticatorDelegate,
+        PathBuf::from(config_dir)
+            .join("token.json")
+            .to_string_lossy(),
+    )
+        .expect("create a new statically known client");
+
+    // TODO: fetch actual provided scopes
+    let auth = google_api_auth::yup_oauth2::from_authenticator(
+        auth,
+        opt.values_of("url")
+            .map(|i| i.map(String::from).collect::<Vec<_>>())
+            .unwrap_or(Vec::new()),
+    );
+    // TODO: how to provide a client with debugging support? Is it required to see the full HTTP requrest anyway?
+    // let _client =
+    //     if opt.is_present("debug") {
+    //         hyper::Client::with_connector(mock::TeeConnector {
+    //                 connector: HttpsConnector::new(1)
+    //             })
+    //     } else {
+    //         hyper::Client::with_connector(HttpsConnector::new(1))
+    //     };
+    let client = api::Client::new(auth);
+    match _doit(&client, &opt, true) {
+        Err(Some(err)) => Err(err),
+        Err(None) => Ok((opt, client)),
+        Ok(_) => unreachable!("dry runs are never successful, right now. TODO: can this be different?")
+    }
+}
+
+fn _url_get<T>(
+    hub: &api::Client<T>,
+    opt: &ArgMatches,
+    dry_run: bool,
+    err: &mut InvalidOptionsError,
+) -> Result<(), DoitError>
+    where
+        T: google_api_auth::GetAccessToken
+{
+    let mut keep = hub.url();
+    let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
+    for parg in opt
+        .values_of("v")
+        .map(|i| i.collect())
+        .unwrap_or(Vec::new())
+        .iter()
+        {
+            let (key, value) = parse_kv_arg(&*parg, err, false);
+            match key {
+                "projection" => {
+                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+                }
+                _ => {
+                    let mut found = false;
+                    // TODO: params work differently
+                    // for param in &gp {
+                    //     if key == *param {
+                    //         found = true;
+                    //         call = call.param(gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                    //         break;
+                    //     }
+                    // }
+                    if !found {
+                        err.issues
+                            .push(CLIError::UnknownParameter(key.to_string(), {
+                                let mut v = Vec::new();
+                                v.extend(GP.iter().map(|v| *v));
+                                v.extend(["projection"].iter().map(|v| *v));
+                                v
+                            }));
+                    }
+                }
+            }
+        }
+    let protocol = CallType::Standard;
+    if dry_run {
+        Ok(())
+    } else {
+        assert!(err.issues.len() == 0);
+        // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
+        //     call = call.add_scope(scope);
+        // }
+        let mut ostream = match writer_from_opts(opt.value_of("out")) {
+            Ok(mut f) => f,
+            Err(io_err) => {
+                return Err(DoitError::IoError(
+                    opt.value_of("out").unwrap_or("-").to_string(),
+                    io_err,
+                ));
+            }
+        };
+        match match protocol {
+            CallType::Standard => call.execute_with_all_fields(),
+            _ => unreachable!(),
+        } {
+            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Ok(response) => {
+                json::to_writer_pretty(&mut ostream, &response).unwrap();
+                ostream.flush().unwrap();
+                Ok(())
+            }
+        }
+    }
+}
+
+fn _doit<T>(
+    hub: &api::Client<T>,
+    opt: &ArgMatches, dry_run: bool) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>>
+    where
+        T: google_api_auth::GetAccessToken
+{
+    let mut err = InvalidOptionsError::new();
+    let mut call_result: Result<(), DoitError> = Ok(());
+    let mut err_opt: Option<InvalidOptionsError> = None;
+    match opt.subcommand() {
+        ("url", Some(opt)) => match opt.subcommand() {
+            ("get", Some(opt)) => {
+                call_result = _url_get(hub, opt, dry_run, &mut err);
+            }
+            ("insert", Some(opt)) => {
+                call_result = _url_insert(hub, opt, dry_run, &mut err);
+            }
+            ("list", Some(opt)) => {
+                call_result = _url_list(hub, opt, dry_run, &mut err);
+            }
+            _ => {
+                err.issues
+                    .push(CLIError::MissingMethodError("url".to_string()));
+                writeln!(io::stderr(), "{}\n", opt.usage()).ok();
+            }
+        },
+        _ => {
+            err.issues.push(CLIError::MissingCommandError);
+            writeln!(io::stderr(), "{}\n", opt.usage()).ok();
+        }
+    }
+
+    if dry_run {
+        if err.issues.len() > 0 {
+            err_opt = Some(err);
+        }
+        Err(err_opt)
+    } else {
+        assert!(err.issues.is_empty());
+        Ok(call_result)
+    }
+}
+
+fn _url_insert<T>(
+    hub: &api::Client<T>,
+    opt: &ArgMatches,
+    dry_run: bool,
+    err: &mut InvalidOptionsError,
+) -> Result<(), DoitError> where T: google_api_auth::GetAccessToken {
+    let mut field_cursor = FieldCursor::default();
+    let mut object = json::value::Value::Object(Default::default());
+
+    for kvarg in opt
+        .values_of("kv")
+        .map(|i| i.collect())
+        .unwrap_or(Vec::new())
+        .iter()
+        {
+            let last_errc = err.issues.len();
+            let (key, value) = parse_kv_arg(&*kvarg, err, false);
+            let mut temp_cursor = field_cursor.clone();
+            if let Err(field_err) = temp_cursor.set(&*key) {
+                err.issues.push(field_err);
+            }
+            if value.is_none() {
+                field_cursor = temp_cursor.clone();
+                if err.issues.len() > last_errc {
+                    err.issues.remove(last_errc);
+                }
+                continue;
+            }
+
+            let type_info: Option<(&'static str, JsonTypeInfo)> = match &temp_cursor.to_string()[..]
+                {
+                    "status" => Some((
+                        "status",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "kind" => Some((
+                        "kind",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "created" => Some((
+                        "created",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.week.short-url-clicks" => Some((
+                        "analytics.week.shortUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.week.long-url-clicks" => Some((
+                        "analytics.week.longUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.all-time.short-url-clicks" => Some((
+                        "analytics.allTime.shortUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.all-time.long-url-clicks" => Some((
+                        "analytics.allTime.longUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.two-hours.short-url-clicks" => Some((
+                        "analytics.twoHours.shortUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.two-hours.long-url-clicks" => Some((
+                        "analytics.twoHours.longUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.day.short-url-clicks" => Some((
+                        "analytics.day.shortUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.day.long-url-clicks" => Some((
+                        "analytics.day.longUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.month.short-url-clicks" => Some((
+                        "analytics.month.shortUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "analytics.month.long-url-clicks" => Some((
+                        "analytics.month.longUrlClicks",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "long-url" => Some((
+                        "longUrl",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    "id" => Some((
+                        "id",
+                        JsonTypeInfo {
+                            jtype: JsonType::String,
+                            ctype: ComplexType::Pod,
+                        },
+                    )),
+                    _ => {
+                        let suggestion = FieldCursor::did_you_mean(
+                            key,
+                            &vec![
+                                "all-time",
+                                "analytics",
+                                "created",
+                                "day",
+                                "id",
+                                "kind",
+                                "long-url",
+                                "long-url-clicks",
+                                "month",
+                                "short-url-clicks",
+                                "status",
+                                "two-hours",
+                                "week",
+                            ],
+                        );
+                        err.issues.push(CLIError::Field(FieldError::Unknown(
+                            temp_cursor.to_string(),
+                            suggestion,
+                            value.map(|v| v.to_string()),
+                        )));
+                        None
+                    }
+                };
+            if let Some((field_cursor_str, type_info)) = type_info {
+                FieldCursor::from(field_cursor_str).set_json_value(
+                    &mut object,
+                    value.unwrap(),
+                    type_info,
+                    err,
+                    &temp_cursor,
+                );
+            }
+        }
+    let mut request: api::schemas::Url = json::value::from_value(object).unwrap();
+    let keep = hub.url();
+    let mut call = keep.insert(request);
+    for parg in opt
+        .values_of("v")
+        .map(|i| i.collect())
+        .unwrap_or(Vec::new())
+        .iter()
+        {
+            let (key, value) = parse_kv_arg(&*parg, err, false);
+            match key {
+                _ => {
+                    let mut found = false;
+                    // TODO: params
+                    // for param in &GP {
+                    //     if key == *param {
+                    //         found = true;
+                    //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                    //         break;
+                    //     }
+                    // }
+                    if !found {
+                        err.issues
+                            .push(CLIError::UnknownParameter(key.to_string(), {
+                                let mut v = Vec::new();
+                                v.extend(GP.iter().map(|v| *v));
+                                v
+                            }));
+                    }
+                }
+            }
+        }
+    let protocol = CallType::Standard;
+    if dry_run {
+        Ok(())
+    } else {
+        assert!(err.issues.len() == 0);
+        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
+        //     call = call.add_scope(scope);
+        // }
+        let mut ostream = match writer_from_opts(opt.value_of("out")) {
+            Ok(mut f) => f,
+            Err(io_err) => {
+                return Err(DoitError::IoError(
+                    opt.value_of("out").unwrap_or("-").to_string(),
+                    io_err,
+                ));
+            }
+        };
+        match match protocol {
+            CallType::Standard => call.execute_with_all_fields(),
+            _ => unreachable!(),
+        } {
+            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Ok(response) => {
+                json::to_writer_pretty(&mut ostream, &response).unwrap();
+                ostream.flush().unwrap();
+                Ok(())
+            }
+        }
+    }
+}
+
+fn _url_list<T>(
+    hub: &api::Client<T>,
+    opt: &ArgMatches,
+    dry_run: bool,
+    err: &mut InvalidOptionsError,
+) -> Result<(), DoitError> where T: google_api_auth::GetAccessToken {
+    let keep = hub.url();
+    let mut call = keep.list();
+    for parg in opt
+        .values_of("v")
+        .map(|i| i.collect())
+        .unwrap_or(Vec::new())
+        .iter()
+        {
+            let (key, value) = parse_kv_arg(&*parg, err, false);
+            match key {
+                "start-token" => {
+                    call = call.start_token(value.unwrap_or(""));
+                }
+                "projection" => {
+                    call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+                }
+                _ => {
+                    let mut found = false;
+                    // TODO: figure out changed handling of parameters
+                    // for param in &GP {
+                    //     if key == *param {
+                    //         found = true;
+                    //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                    //         break;
+                    //     }
+                    // }
+                    if !found {
+                        err.issues
+                            .push(CLIError::UnknownParameter(key.to_string(), {
+                                let mut v = Vec::new();
+                                v.extend(GP.iter().map(|v| *v));
+                                v.extend(["start-token", "projection"].iter().map(|v| *v));
+                                v
+                            }));
+                    }
+                }
+            }
+        }
+    let protocol = CallType::Standard;
+    if dry_run {
+        Ok(())
+    } else {
+        assert!(err.issues.len() == 0);
+        // TODO: Scope handling moves to the client, and is configured once
+        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
+        //     call = call.add_scope(scope);
+        // }
+        let mut ostream = match writer_from_opts(opt.value_of("out")) {
+            Ok(mut f) => f,
+            Err(io_err) => {
+                return Err(DoitError::IoError(
+                    opt.value_of("out").unwrap_or("-").to_string(),
+                    io_err,
+                ));
+            }
+        };
+        match match protocol {
+            CallType::Standard => call.execute_with_all_fields(),
+            _ => unreachable!(),
+        } {
+            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Ok(response) => {
+                json::to_writer_pretty(&mut ostream, &response).unwrap();
+                ostream.flush().unwrap();
+                Ok(())
+            }
+        }
+    }
 }
