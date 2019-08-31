@@ -1,6 +1,4 @@
-// COPY OF 'src/rust/cli/cmn.rs'
-// DO NOT EDIT
-use clap::{arg_enum, App, SubCommand};
+use clap::arg_enum;
 use mime::Mime;
 use serde_json::{self as json, value::Value};
 use strsim;
@@ -11,7 +9,7 @@ use std::{
     env,
     error::Error as StdError,
     fmt, fs, io,
-    io::{stdout, Read, Write},
+    io::{stdout, Write},
     path::{Path, PathBuf},
     str::FromStr,
     string::ToString,
@@ -19,6 +17,7 @@ use std::{
 
 const FIELD_SEP: char = '.';
 
+#[allow(dead_code)]
 pub enum ComplexType {
     Pod,
     Vec,
@@ -32,6 +31,7 @@ pub enum ComplexType {
 // F64(f64),
 // String(String),
 
+#[allow(dead_code)]
 pub enum JsonType {
     Boolean,
     Int,
@@ -47,6 +47,7 @@ pub struct JsonTypeInfo {
 
 // Based on @erickt user comment. Thanks for the idea !
 // Remove all keys whose values are null from given value (changed in place)
+#[allow(dead_code)]
 pub fn remove_json_null_values(value: &mut Value) {
     match *value {
         Value::Object(ref mut map) => {
@@ -94,6 +95,7 @@ fn did_you_mean<'a>(v: &str, possible_values: &[&'a str]) -> Option<&'a str> {
     }
 }
 
+#[allow(dead_code)]
 pub enum CallType {
     Upload(UploadProtocol),
     Standard,
@@ -141,6 +143,7 @@ impl From<&'static str> for FieldCursor {
     }
 }
 
+// TODO: use the 'entry()' method instead
 fn assure_entry<'a, 'b>(m: &'a mut json::Map<String, Value>, k: &'b String) -> &'a mut Value {
     if m.contains_key(k) {
         return m.get_mut(k).expect("value to exist");
@@ -233,7 +236,7 @@ impl FieldCursor {
             }
         };
 
-        for (cid, c) in value.chars().enumerate() {
+        for c in value.chars() {
             if c == FIELD_SEP {
                 if last_c != FIELD_SEP {
                     push_field(&mut output, &mut field);
@@ -336,6 +339,7 @@ impl FieldCursor {
         }
     }
 
+    #[allow(dead_code)]
     pub fn num_fields(&self) -> usize {
         self.0.len()
     }
@@ -366,6 +370,7 @@ pub fn parse_kv_arg<'a>(
     }
 }
 
+#[allow(dead_code)]
 pub fn calltype_from_str(
     name: &str,
     valid_protocols: Vec<String>,
@@ -373,7 +378,7 @@ pub fn calltype_from_str(
 ) -> CallType {
     CallType::Upload(match UploadProtocol::from_str(name) {
         Ok(up) => up,
-        Err(msg) => {
+        Err(_msg) => {
             err.issues.push(CLIError::InvalidUploadProtocol(
                 name.to_string(),
                 valid_protocols,
@@ -383,6 +388,7 @@ pub fn calltype_from_str(
     })
 }
 
+#[allow(dead_code)]
 pub fn input_file_from_opts(file_path: &str, err: &mut InvalidOptionsError) -> Option<fs::File> {
     match fs::File::open(file_path) {
         Ok(f) => Some(f),
@@ -396,6 +402,7 @@ pub fn input_file_from_opts(file_path: &str, err: &mut InvalidOptionsError) -> O
     }
 }
 
+#[allow(dead_code)]
 pub fn input_mime_from_opts(mime: &str, err: &mut InvalidOptionsError) -> Option<Mime> {
     match mime.parse() {
         Ok(m) => Some(m),
@@ -579,6 +586,7 @@ impl fmt::Display for ConfigurationError {
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub enum InputError {
     Io((String, io::Error)),
     Mime(String),

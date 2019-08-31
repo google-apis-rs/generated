@@ -1,26 +1,18 @@
-// DO NOT EDIT !
-// This file was generated automatically from 'src/mako/cli/main.rs.mako'
-// DO NOT EDIT !
-#![allow(unused_variables, unused_imports, dead_code, unused_mut)]
-use clap::{arg_enum, App, Arg, SubCommand};
+use clap::{App, Arg, SubCommand};
 use std::{
     default::Default,
-    env,
     io::{self, Write},
     path::PathBuf,
-    str::FromStr,
 };
 
 use google_urlshortener1 as api;
-use hyper::client::HttpConnector;
 use hyper_rustls::HttpsConnector;
 
 mod cmn;
 
 use cmn::{
-    arg_from_str, calltype_from_str, input_file_from_opts, input_mime_from_opts, parse_kv_arg,
-    remove_json_null_values, writer_from_opts, CLIError, CallType, ComplexType, FieldCursor,
-    FieldError, InvalidOptionsError, JsonTokenStorage, JsonType, JsonTypeInfo, UploadProtocol,
+    parse_kv_arg, writer_from_opts, CLIError, CallType, ComplexType, FieldCursor, FieldError,
+    InvalidOptionsError, JsonTokenStorage, JsonType, JsonTypeInfo,
 };
 
 use clap::ArgMatches;
@@ -219,7 +211,7 @@ const GP: [&'static str; 7] = [
     "user-ip",
 ];
 
-const GPM: [(&'static str, &'static str); 4] = [
+const _GPM: [(&'static str, &'static str); 4] = [
     ("oauth-token", "oauth_token"),
     ("pretty-print", "prettyPrint"),
     ("quota-user", "quotaUser"),
@@ -231,7 +223,7 @@ fn new(
 ) -> Result<
     (
         ArgMatches,
-        api::Client<impl google_api_auth::GetAccessToken + Send + Sync>,
+        api::Client<impl google_api_auth::GetAccessToken>,
     ),
     InvalidOptionsError,
 > {
@@ -315,7 +307,7 @@ fn url_get<T>(
 where
     T: google_api_auth::GetAccessToken,
 {
-    let mut keep = hub.url();
+    let keep = hub.url();
     let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
     for parg in opt
         .values_of("v")
@@ -329,7 +321,7 @@ where
                 call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
             }
             _ => {
-                let mut found = false;
+                let found = false;
                 // TODO: params work differently
                 // for param in &gp {
                 //     if key == *param {
@@ -359,7 +351,7 @@ where
         //     call = call.add_scope(scope);
         // }
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
-            Ok(mut f) => f,
+            Ok(f) => f,
             Err(io_err) => {
                 return Err(DoitError::IoError(
                     opt.value_of("out").unwrap_or("-").to_string(),
@@ -435,15 +427,85 @@ fn url_insert<T>(
 where
     T: google_api_auth::GetAccessToken,
 {
-    let mut field_cursor = FieldCursor::default();
-    let mut object = json::value::Value::Object(Default::default());
+    let object = object_from_kvargs(
+        opt.values_of("kv")
+            .map(|i| i.collect())
+            .unwrap_or(Vec::new())
+            .iter(),
+        err,
+    );
 
-    for kvarg in opt
-        .values_of("kv")
+    let request: api::schemas::Url = json::value::from_value(object).unwrap();
+    let keep = hub.url();
+    let call = keep.insert(request);
+    for parg in opt
+        .values_of("v")
         .map(|i| i.collect())
         .unwrap_or(Vec::new())
         .iter()
     {
+        let (key, _value) = parse_kv_arg(&*parg, err, false);
+        match key {
+            _ => {
+                let found = false;
+                // TODO: params
+                // for param in &GP {
+                //     if key == *param {
+                //         found = true;
+                //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
+                //         break;
+                //     }
+                // }
+                if !found {
+                    err.issues
+                        .push(CLIError::UnknownParameter(key.to_string(), {
+                            let mut v = Vec::new();
+                            v.extend(GP.iter().map(|v| *v));
+                            v
+                        }));
+                }
+            }
+        }
+    }
+    let protocol = CallType::Standard;
+    if dry_run {
+        Ok(())
+    } else {
+        assert!(err.issues.len() == 0);
+        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
+        //     call = call.add_scope(scope);
+        // }
+        let mut ostream = match writer_from_opts(opt.value_of("out")) {
+            Ok(f) => f,
+            Err(io_err) => {
+                return Err(DoitError::IoError(
+                    opt.value_of("out").unwrap_or("-").to_string(),
+                    io_err,
+                ));
+            }
+        };
+        match match protocol {
+            CallType::Standard => call.execute_with_all_fields(),
+            _ => unreachable!(),
+        } {
+            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Ok(response) => {
+                json::to_writer_pretty(&mut ostream, &response).unwrap();
+                ostream.flush().unwrap();
+                Ok(())
+            }
+        }
+    }
+}
+
+fn object_from_kvargs(
+    opts: impl IntoIterator<Item = impl AsRef<str>>,
+    err: &mut InvalidOptionsError,
+) -> json::value::Value {
+    let mut field_cursor = FieldCursor::default();
+    let mut object = json::value::Value::Object(Default::default());
+    for kvarg in opts.into_iter() {
+        let kvarg = kvarg.as_ref();
         let last_errc = err.issues.len();
         let (key, value) = parse_kv_arg(&*kvarg, err, false);
         let mut temp_cursor = field_cursor.clone();
@@ -601,67 +663,7 @@ where
             );
         }
     }
-    let mut request: api::schemas::Url = json::value::from_value(object).unwrap();
-    let keep = hub.url();
-    let mut call = keep.insert(request);
-    for parg in opt
-        .values_of("v")
-        .map(|i| i.collect())
-        .unwrap_or(Vec::new())
-        .iter()
-    {
-        let (key, value) = parse_kv_arg(&*parg, err, false);
-        match key {
-            _ => {
-                let mut found = false;
-                // TODO: params
-                // for param in &GP {
-                //     if key == *param {
-                //         found = true;
-                //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                //         break;
-                //     }
-                // }
-                if !found {
-                    err.issues
-                        .push(CLIError::UnknownParameter(key.to_string(), {
-                            let mut v = Vec::new();
-                            v.extend(GP.iter().map(|v| *v));
-                            v
-                        }));
-                }
-            }
-        }
-    }
-    let protocol = CallType::Standard;
-    if dry_run {
-        Ok(())
-    } else {
-        assert!(err.issues.len() == 0);
-        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-        //     call = call.add_scope(scope);
-        // }
-        let mut ostream = match writer_from_opts(opt.value_of("out")) {
-            Ok(mut f) => f,
-            Err(io_err) => {
-                return Err(DoitError::IoError(
-                    opt.value_of("out").unwrap_or("-").to_string(),
-                    io_err,
-                ));
-            }
-        };
-        match match protocol {
-            CallType::Standard => call.execute_with_all_fields(),
-            _ => unreachable!(),
-        } {
-            Err(api_err) => Err(DoitError::ApiError(api_err)),
-            Ok(response) => {
-                json::to_writer_pretty(&mut ostream, &response).unwrap();
-                ostream.flush().unwrap();
-                Ok(())
-            }
-        }
-    }
+    object
 }
 
 fn url_list<T>(
@@ -690,7 +692,7 @@ where
                 call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
             }
             _ => {
-                let mut found = false;
+                let found = false;
                 // TODO: figure out changed handling of parameters
                 // for param in &GP {
                 //     if key == *param {
@@ -721,7 +723,7 @@ where
         //     call = call.add_scope(scope);
         // }
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
-            Ok(mut f) => f,
+            Ok(f) => f,
             Err(io_err) => {
                 return Err(DoitError::IoError(
                     opt.value_of("out").unwrap_or("-").to_string(),
