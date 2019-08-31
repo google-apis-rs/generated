@@ -129,7 +129,7 @@ fn main() {
 
         for &(sub_command_name, ref desc, url_info, ref args) in subcommands {
             let mut scmd = SubCommand::with_name(sub_command_name);
-            if let &Some(desc) = desc {
+            if let Some(desc) = *desc {
                 scmd = scmd.about(desc);
             }
             scmd = scmd.after_help(url_info);
@@ -141,19 +141,19 @@ fn main() {
                     _ => unreachable!(),
                 };
                 let mut arg = Arg::with_name(arg_name_str).empty_values(false);
-                if let &Some(short_flag) = flag {
+                if let Some(short_flag) = flag {
                     arg = arg.short(short_flag);
                 }
-                if let &Some(desc) = desc {
+                if let Some(desc) = desc {
                     arg = arg.help(desc);
                 }
                 if arg_name.is_some() && flag.is_some() {
                     arg = arg.takes_value(true);
                 }
-                if let &Some(required) = required {
+                if let Some(required) = *required {
                     arg = arg.required(required);
                 }
-                if let &Some(multi) = multi {
+                if let Some(multi) = *multi {
                     arg = arg.multiple(multi);
                 }
                 scmd = scmd.arg(arg);
@@ -201,7 +201,7 @@ fn main() {
     std::process::exit(exit_status);
 }
 
-const GP: [&'static str; 7] = [
+const GP: [&str; 7] = [
     "alt",
     "fields",
     "key",
@@ -211,7 +211,7 @@ const GP: [&'static str; 7] = [
     "user-ip",
 ];
 
-const _GPM: [(&'static str, &'static str); 4] = [
+const _GPM: [(&str, &str); 4] = [
     ("oauth-token", "oauth_token"),
     ("pretty-print", "prettyPrint"),
     ("quota-user", "quotaUser"),
@@ -277,7 +277,7 @@ fn new(
         auth,
         opt.values_of("url")
             .map(|i| i.map(String::from).collect::<Vec<_>>())
-            .unwrap_or(Vec::new()),
+            .unwrap_or_else(Vec::new),
     );
     // TODO: how to provide a client with debugging support? Is it required to see the full HTTP requrest anyway?
     // let _client =
@@ -312,7 +312,7 @@ where
     for parg in opt
         .values_of("v")
         .map(|i| i.collect())
-        .unwrap_or(Vec::new())
+        .unwrap_or_else(Vec::new)
         .iter()
     {
         let (key, value) = parse_kv_arg(&*parg, err, false);
@@ -334,8 +334,8 @@ where
                     err.issues
                         .push(CLIError::UnknownParameter(key.to_string(), {
                             let mut v = Vec::new();
-                            v.extend(GP.iter().map(|v| *v));
-                            v.extend(["projection"].iter().map(|v| *v));
+                            v.extend(GP.iter().copied());
+                            v.extend(["projection"].iter().copied());
                             v
                         }));
                 }
@@ -346,7 +346,7 @@ where
     if dry_run {
         Ok(())
     } else {
-        assert!(err.issues.len() == 0);
+        assert!(err.issues.is_empty());
         // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
         //     call = call.add_scope(scope);
         // }
@@ -408,7 +408,7 @@ where
     }
 
     if dry_run {
-        if err.issues.len() > 0 {
+        if !err.issues.is_empty() {
             err_opt = Some(err);
         }
         Err(err_opt)
@@ -430,7 +430,7 @@ where
     let object = object_from_kvargs(
         opt.values_of("kv")
             .map(|i| i.collect())
-            .unwrap_or(Vec::new())
+            .unwrap_or_else(Vec::new)
             .iter(),
         err,
     );
@@ -441,7 +441,7 @@ where
     for parg in opt
         .values_of("v")
         .map(|i| i.collect())
-        .unwrap_or(Vec::new())
+        .unwrap_or_else(Vec::new)
         .iter()
     {
         let (key, _value) = parse_kv_arg(&*parg, err, false);
@@ -460,7 +460,7 @@ where
                     err.issues
                         .push(CLIError::UnknownParameter(key.to_string(), {
                             let mut v = Vec::new();
-                            v.extend(GP.iter().map(|v| *v));
+                            v.extend(GP.iter().copied());
                             v
                         }));
                 }
@@ -471,7 +471,7 @@ where
     if dry_run {
         Ok(())
     } else {
-        assert!(err.issues.len() == 0);
+        assert!(err.issues.is_empty());
         // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
         //     call = call.add_scope(scope);
         // }
@@ -629,7 +629,7 @@ fn object_from_kvargs(
             _ => {
                 let suggestion = FieldCursor::did_you_mean(
                     key,
-                    &vec![
+                    &[
                         "all-time",
                         "analytics",
                         "created",
@@ -680,7 +680,7 @@ where
     for parg in opt
         .values_of("v")
         .map(|i| i.collect())
-        .unwrap_or(Vec::new())
+        .unwrap_or_else(Vec::new)
         .iter()
     {
         let (key, value) = parse_kv_arg(&*parg, err, false);
@@ -705,8 +705,8 @@ where
                     err.issues
                         .push(CLIError::UnknownParameter(key.to_string(), {
                             let mut v = Vec::new();
-                            v.extend(GP.iter().map(|v| *v));
-                            v.extend(["start-token", "projection"].iter().map(|v| *v));
+                            v.extend(GP.iter().copied());
+                            v.extend(["start-token", "projection"].iter().copied());
                             v
                         }));
                 }
@@ -717,7 +717,7 @@ where
     if dry_run {
         Ok(())
     } else {
-        assert!(err.issues.len() == 0);
+        assert!(err.issues.is_empty());
         // TODO: Scope handling moves to the client, and is configured once
         // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
         //     call = call.add_scope(scope);
