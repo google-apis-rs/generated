@@ -1392,64 +1392,67 @@ pub mod params {
         }
     }
 }
-pub struct Client<A> {
+pub struct Client {
     reqwest: ::reqwest::Client,
-    auth: A,
+    auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
-impl<A> Client<A>
-where
-    A: ::google_api_auth::GetAccessToken,
-{
-    pub fn new(auth: A) -> Self {
+impl Client {
+    pub fn new<A>(auth: A) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth,
+            auth: auth.into(),
         }
     }
+    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+        self.auth.as_ref()
+    }
     #[doc = "Actions that can be performed on the changes resource"]
-    pub fn changes(&self) -> crate::resources::changes::ChangesActions<A> {
+    pub fn changes(&self) -> crate::resources::changes::ChangesActions {
         crate::resources::changes::ChangesActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the dns_keys resource"]
-    pub fn dns_keys(&self) -> crate::resources::dns_keys::DnsKeysActions<A> {
+    pub fn dns_keys(&self) -> crate::resources::dns_keys::DnsKeysActions {
         crate::resources::dns_keys::DnsKeysActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the managed_zone_operations resource"]
     pub fn managed_zone_operations(
         &self,
-    ) -> crate::resources::managed_zone_operations::ManagedZoneOperationsActions<A> {
+    ) -> crate::resources::managed_zone_operations::ManagedZoneOperationsActions {
         crate::resources::managed_zone_operations::ManagedZoneOperationsActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the managed_zones resource"]
-    pub fn managed_zones(&self) -> crate::resources::managed_zones::ManagedZonesActions<A> {
+    pub fn managed_zones(&self) -> crate::resources::managed_zones::ManagedZonesActions {
         crate::resources::managed_zones::ManagedZonesActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
-    pub fn projects(&self) -> crate::resources::projects::ProjectsActions<A> {
+    pub fn projects(&self) -> crate::resources::projects::ProjectsActions {
         crate::resources::projects::ProjectsActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the resource_record_sets resource"]
     pub fn resource_record_sets(
         &self,
-    ) -> crate::resources::resource_record_sets::ResourceRecordSetsActions<A> {
+    ) -> crate::resources::resource_record_sets::ResourceRecordSetsActions {
         crate::resources::resource_record_sets::ResourceRecordSetsActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
 }
@@ -1508,21 +1511,24 @@ pub mod resources {
                 }
             }
         }
-        pub struct ChangesActions<'a, A> {
+        pub struct ChangesActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ChangesActions<'a, A> {
+        impl<'a> ChangesActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Atomically update the ResourceRecordSet collection."]
             pub fn create(
                 &self,
                 request: crate::schemas::Change,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> CreateRequestBuilder<A> {
+            ) -> CreateRequestBuilder {
                 CreateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     alt: None,
                     fields: None,
@@ -1542,10 +1548,10 @@ pub mod resources {
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
                 change_id: impl Into<String>,
-            ) -> GetRequestBuilder<A> {
+            ) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -1564,10 +1570,10 @@ pub mod resources {
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
+            ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -1585,9 +1591,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct CreateRequestBuilder<'a, A> {
+        pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Change,
             project: String,
             managed_zone: String,
@@ -1600,7 +1606,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> CreateRequestBuilder<'a, A> {
+        impl<'a> CreateRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -1638,7 +1644,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1657,25 +1663,20 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Change, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Change, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Change, Box<dyn ::std::error::Error>> {
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Change, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -1683,7 +1684,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -1711,10 +1712,7 @@ pub mod resources {
                 output.push_str("/changes");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1724,14 +1722,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             change_id: String,
@@ -1744,7 +1746,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -1782,7 +1784,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1801,25 +1803,20 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Change, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Change, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Change, Box<dyn ::std::error::Error>> {
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Change, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -1827,7 +1824,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -1861,10 +1858,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1874,14 +1868,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             max_results: Option<i32>,
@@ -1896,7 +1894,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+        impl<'a> ListRequestBuilder<'a> {
             #[doc = "Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
@@ -2047,7 +2045,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2066,8 +2064,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ChangesListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ChangesListResponse, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -2076,17 +2073,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ChangesListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ChangesListResponse, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -2094,7 +2087,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2121,10 +2114,7 @@ pub mod resources {
                 output.push_str("/changes");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2137,17 +2127,19 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
-            for ListRequestBuilder<'a, A>
-        {
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2157,21 +2149,24 @@ pub mod resources {
     }
     pub mod dns_keys {
         pub mod params {}
-        pub struct DnsKeysActions<'a, A> {
+        pub struct DnsKeysActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> DnsKeysActions<'a, A> {
+        impl<'a> DnsKeysActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Fetch the representation of an existing DnsKey."]
             pub fn get(
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
                 dns_key_id: impl Into<String>,
-            ) -> GetRequestBuilder<A> {
+            ) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -2191,10 +2186,10 @@ pub mod resources {
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
+            ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -2211,9 +2206,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             dns_key_id: String,
@@ -2227,7 +2222,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -2270,7 +2265,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2289,25 +2284,20 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::DnsKey, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::DnsKey, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::DnsKey, Box<dyn ::std::error::Error>> {
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::DnsKey, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -2315,7 +2305,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2349,10 +2339,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("digestType", &self.digest_type)]);
@@ -2363,14 +2350,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             digest_type: Option<String>,
@@ -2384,7 +2375,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+        impl<'a> ListRequestBuilder<'a> {
             #[doc = "An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type will be computed and displayed."]
             pub fn digest_type(mut self, value: impl Into<String>) -> Self {
                 self.digest_type = Some(value.into());
@@ -2530,7 +2521,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2549,8 +2540,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::DnsKeysListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::DnsKeysListResponse, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -2559,17 +2549,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::DnsKeysListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::DnsKeysListResponse, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -2577,7 +2563,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2604,10 +2590,7 @@ pub mod resources {
                 output.push_str("/dnsKeys");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("digestType", &self.digest_type)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -2619,17 +2602,19 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
-            for ListRequestBuilder<'a, A>
-        {
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2694,21 +2679,24 @@ pub mod resources {
                 }
             }
         }
-        pub struct ManagedZoneOperationsActions<'a, A> {
+        pub struct ManagedZoneOperationsActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ManagedZoneOperationsActions<'a, A> {
+        impl<'a> ManagedZoneOperationsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Fetch the representation of an existing Operation."]
             pub fn get(
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
                 operation: impl Into<String>,
-            ) -> GetRequestBuilder<A> {
+            ) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -2727,10 +2715,10 @@ pub mod resources {
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
+            ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -2747,9 +2735,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             operation: String,
@@ -2762,7 +2750,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -2800,7 +2788,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2819,7 +2807,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -2828,16 +2816,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -2845,7 +2830,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -2879,10 +2864,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2892,14 +2874,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             max_results: Option<i32>,
@@ -2913,7 +2899,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+        impl<'a> ListRequestBuilder<'a> {
             #[doc = "Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
@@ -3064,7 +3050,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3083,10 +3069,8 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<
-                crate::schemas::ManagedZoneOperationsListResponse,
-                Box<dyn ::std::error::Error>,
-            > {
+            ) -> Result<crate::schemas::ManagedZoneOperationsListResponse, crate::Error>
+            {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -3095,19 +3079,14 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<
-                crate::schemas::ManagedZoneOperationsListResponse,
-                Box<dyn ::std::error::Error>,
-            > {
+            ) -> Result<crate::schemas::ManagedZoneOperationsListResponse, crate::Error>
+            {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -3115,7 +3094,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3142,10 +3121,7 @@ pub mod resources {
                 output.push_str("/operations");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3157,17 +3133,19 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
-            for ListRequestBuilder<'a, A>
-        {
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3177,20 +3155,23 @@ pub mod resources {
     }
     pub mod managed_zones {
         pub mod params {}
-        pub struct ManagedZonesActions<'a, A> {
+        pub struct ManagedZonesActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ManagedZonesActions<'a, A> {
+        impl<'a> ManagedZonesActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Create a new ManagedZone."]
             pub fn create(
                 &self,
                 request: crate::schemas::ManagedZone,
                 project: impl Into<String>,
-            ) -> CreateRequestBuilder<A> {
+            ) -> CreateRequestBuilder {
                 CreateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     alt: None,
                     fields: None,
@@ -3208,10 +3189,10 @@ pub mod resources {
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> DeleteRequestBuilder<A> {
+            ) -> DeleteRequestBuilder {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -3229,10 +3210,10 @@ pub mod resources {
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> GetRequestBuilder<A> {
+            ) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -3246,10 +3227,10 @@ pub mod resources {
                 }
             }
             #[doc = "Enumerate ManagedZones that have been created but not yet deleted."]
-            pub fn list(&self, project: impl Into<String>) -> ListRequestBuilder<A> {
+            pub fn list(&self, project: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -3269,10 +3250,10 @@ pub mod resources {
                 request: crate::schemas::ManagedZone,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> PatchRequestBuilder<A> {
+            ) -> PatchRequestBuilder {
                 PatchRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     alt: None,
                     fields: None,
@@ -3292,10 +3273,10 @@ pub mod resources {
                 request: crate::schemas::ManagedZone,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> UpdateRequestBuilder<A> {
+            ) -> UpdateRequestBuilder {
                 UpdateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     alt: None,
                     fields: None,
@@ -3311,9 +3292,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct CreateRequestBuilder<'a, A> {
+        pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
             client_operation_id: Option<String>,
@@ -3325,7 +3306,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> CreateRequestBuilder<'a, A> {
+        impl<'a> CreateRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -3363,7 +3344,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3382,7 +3363,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZone, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::ManagedZone, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -3391,16 +3372,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZone, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::ManagedZone, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -3408,7 +3386,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3428,10 +3406,7 @@ pub mod resources {
                 output.push_str("/managedZones");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3441,14 +3416,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct DeleteRequestBuilder<'a, A> {
+        pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             client_operation_id: Option<String>,
@@ -3460,7 +3439,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> DeleteRequestBuilder<'a, A> {
+        impl<'a> DeleteRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -3491,7 +3470,7 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+            pub fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 req.send()?.error_for_status()?;
                 Ok(())
@@ -3515,10 +3494,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3528,14 +3504,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             client_operation_id: Option<String>,
@@ -3547,7 +3527,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -3585,7 +3565,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3604,7 +3584,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZone, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::ManagedZone, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -3613,16 +3593,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZone, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::ManagedZone, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -3630,7 +3607,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3656,10 +3633,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3669,14 +3643,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             dns_name: Option<String>,
             max_results: Option<i32>,
@@ -3689,7 +3667,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+        impl<'a> ListRequestBuilder<'a> {
             #[doc = "Restricts the list to return only zones with this domain name."]
             pub fn dns_name(mut self, value: impl Into<String>) -> Self {
                 self.dns_name = Some(value.into());
@@ -3835,7 +3813,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3854,8 +3832,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZonesListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ManagedZonesListResponse, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -3864,17 +3841,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ManagedZonesListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ManagedZonesListResponse, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -3882,7 +3855,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3901,10 +3874,7 @@ pub mod resources {
                 output.push_str("/managedZones");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("dnsName", &self.dns_name)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -3916,17 +3886,19 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
-            for ListRequestBuilder<'a, A>
-        {
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -3934,9 +3906,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct PatchRequestBuilder<'a, A> {
+        pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
             managed_zone: String,
@@ -3949,7 +3921,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> PatchRequestBuilder<'a, A> {
+        impl<'a> PatchRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -3987,7 +3959,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -4006,7 +3978,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4015,16 +3987,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -4032,7 +4001,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -4059,10 +4028,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4072,14 +4038,18 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct UpdateRequestBuilder<'a, A> {
+        pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
             managed_zone: String,
@@ -4092,7 +4062,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> UpdateRequestBuilder<'a, A> {
+        impl<'a> UpdateRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -4130,7 +4100,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -4149,7 +4119,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4158,16 +4128,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -4175,7 +4142,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -4202,10 +4169,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4215,23 +4179,30 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
     }
     pub mod projects {
         pub mod params {}
-        pub struct ProjectsActions<'a, A> {
+        pub struct ProjectsActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ProjectsActions<'a, A> {
+        impl<'a> ProjectsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Fetch the representation of an existing Project."]
-            pub fn get(&self, project: impl Into<String>) -> GetRequestBuilder<A> {
+            pub fn get(&self, project: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -4245,9 +4216,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             client_operation_id: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -4258,7 +4229,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection."]
             pub fn client_operation_id(mut self, value: impl Into<String>) -> Self {
                 self.client_operation_id = Some(value.into());
@@ -4296,7 +4267,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -4315,25 +4286,20 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Project, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Project, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Project, Box<dyn ::std::error::Error>> {
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Project, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -4341,7 +4307,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -4359,10 +4325,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4372,27 +4335,34 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
     }
     pub mod resource_record_sets {
         pub mod params {}
-        pub struct ResourceRecordSetsActions<'a, A> {
+        pub struct ResourceRecordSetsActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ResourceRecordSetsActions<'a, A> {
+        impl<'a> ResourceRecordSetsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Enumerate ResourceRecordSets that have been created but not yet deleted."]
             pub fn list(
                 &self,
                 project: impl Into<String>,
                 managed_zone: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
+            ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -4410,9 +4380,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
             max_results: Option<i32>,
@@ -4427,7 +4397,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+        impl<'a> ListRequestBuilder<'a> {
             #[doc = "Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
@@ -4580,7 +4550,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -4599,8 +4569,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ResourceRecordSetsListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ResourceRecordSetsListResponse, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4609,17 +4578,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ResourceRecordSetsListResponse, Box<dyn ::std::error::Error>>
-            {
+            ) -> Result<crate::schemas::ResourceRecordSetsListResponse, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -4627,7 +4592,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -4654,10 +4619,7 @@ pub mod resources {
                 output.push_str("/rrsets");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("name", &self.name)]);
@@ -4670,23 +4632,56 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> crate::iter::IterableMethod
-            for ListRequestBuilder<'a, A>
-        {
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
             fn set_page_token(&mut self, value: String) {
                 self.page_token = value.into();
             }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 self._execute()
             }
         }
+    }
+}
+pub enum Error {
+    OAuth2(Box<dyn ::std::error::Error>),
+    JSON(::serde_json::Error),
+    Reqwest(::reqwest::Error),
+    Other(Box<dyn ::std::error::Error>),
+}
+
+impl Error {
+    pub fn json_error(&self) -> Option<&::serde_json::Error> {
+        match self {
+            Error::OAuth2(_) => None,
+            Error::JSON(err) => Some(err),
+            Error::Reqwest(err) => err
+                .get_ref()
+                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Other(_) => None,
+        }
+    }
+}
+
+impl From<::serde_json::Error> for Error {
+    fn from(err: ::serde_json::Error) -> Error {
+        Error::JSON(err)
+    }
+}
+
+impl From<::reqwest::Error> for Error {
+    fn from(err: ::reqwest::Error) -> Error {
+        Error::Reqwest(err)
     }
 }
 #[allow(dead_code)]
@@ -4897,7 +4892,7 @@ mod parsed_string {
 pub mod iter {
     pub trait IterableMethod {
         fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+        fn execute<T>(&mut self) -> Result<T, crate::Error>
         where
             T: ::serde::de::DeserializeOwned;
     }
@@ -4927,9 +4922,9 @@ pub mod iter {
         M: IterableMethod,
         T: ::serde::de::DeserializeOwned,
     {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
+        type Item = Result<T, crate::Error>;
 
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+        fn next(&mut self) -> Option<Result<T, crate::Error>> {
             if self.finished {
                 return None;
             }
@@ -4981,9 +4976,9 @@ pub mod iter {
         M: IterableMethod,
         T: ::serde::de::DeserializeOwned,
     {
-        type Item = Result<T, Box<dyn ::std::error::Error>>;
+        type Item = Result<T, crate::Error>;
 
-        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+        fn next(&mut self) -> Option<Result<T, crate::Error>> {
             loop {
                 if let Some(v) = self.items.next() {
                     return Some(Ok(v));
@@ -4999,11 +4994,10 @@ pub mod iter {
                         let items_array = match next_page.remove(self.items_field) {
                             Some(items) => items,
                             None => {
-                                return Some(Err(format!(
-                                    "no {} field found in iter response",
-                                    self.items_field
-                                )
-                                .into()))
+                                return Some(Err(crate::Error::Other(
+                                    format!("no {} field found in iter response", self.items_field)
+                                        .into(),
+                                )))
                             }
                         };
                         let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);

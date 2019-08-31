@@ -7,7 +7,7 @@
   "canonicalName": "Service Consumer Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190827",
+  "revision": "20190829",
   "title": "Service Consumer Management API",
   "description": "Manages the service consumers of a Service Infrastructure service.",
   "ownerDomain": "google.com",

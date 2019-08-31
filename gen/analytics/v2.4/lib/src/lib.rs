@@ -53,43 +53,49 @@ pub mod params {
         }
     }
 }
-pub struct Client<A> {
+pub struct Client {
     reqwest: ::reqwest::Client,
-    auth: A,
+    auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
-impl<A> Client<A>
-where
-    A: ::google_api_auth::GetAccessToken,
-{
-    pub fn new(auth: A) -> Self {
+impl Client {
+    pub fn new<A>(auth: A) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth,
+            auth: auth.into(),
         }
     }
+    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+        self.auth.as_ref()
+    }
     #[doc = "Actions that can be performed on the data resource"]
-    pub fn data(&self) -> crate::resources::data::DataActions<A> {
+    pub fn data(&self) -> crate::resources::data::DataActions {
         crate::resources::data::DataActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the management resource"]
-    pub fn management(&self) -> crate::resources::management::ManagementActions<A> {
+    pub fn management(&self) -> crate::resources::management::ManagementActions {
         crate::resources::management::ManagementActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
 }
 pub mod resources {
     pub mod data {
         pub mod params {}
-        pub struct DataActions<'a, A> {
+        pub struct DataActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> DataActions<'a, A> {
+        impl<'a> DataActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Returns Analytics report data for a view (profile)."]
             pub fn get(
                 &self,
@@ -97,10 +103,10 @@ pub mod resources {
                 start_date: impl Into<String>,
                 end_date: impl Into<String>,
                 metrics: impl Into<String>,
-            ) -> GetRequestBuilder<A> {
+            ) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     alt: None,
                     fields: None,
                     key: None,
@@ -122,9 +128,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             ids: String,
             start_date: String,
             end_date: String,
@@ -143,7 +149,7 @@ pub mod resources {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> GetRequestBuilder<'a, A> {
+        impl<'a> GetRequestBuilder<'a> {
             #[doc = "A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'."]
             pub fn dimensions(mut self, value: impl Into<String>) -> Self {
                 self.dimensions = Some(value.into());
@@ -199,7 +205,7 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+            pub fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 req.send()?.error_for_status()?;
                 Ok(())
@@ -209,10 +215,7 @@ pub mod resources {
                 output.push_str("data");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("ids", &self.ids)]);
                 let req = req.query(&[("start-date", &self.start_date)]);
@@ -231,68 +234,78 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
     }
     pub mod management {
         pub mod params {}
-        pub struct ManagementActions<'a, A> {
+        pub struct ManagementActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ManagementActions<'a, A> {
+        impl<'a> ManagementActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Actions that can be performed on the accounts resource"]
-            pub fn accounts(&self) -> crate::resources::management::accounts::AccountsActions<A> {
+            pub fn accounts(&self) -> crate::resources::management::accounts::AccountsActions {
                 crate::resources::management::accounts::AccountsActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the goals resource"]
-            pub fn goals(&self) -> crate::resources::management::goals::GoalsActions<A> {
+            pub fn goals(&self) -> crate::resources::management::goals::GoalsActions {
                 crate::resources::management::goals::GoalsActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the profiles resource"]
-            pub fn profiles(&self) -> crate::resources::management::profiles::ProfilesActions<A> {
+            pub fn profiles(&self) -> crate::resources::management::profiles::ProfilesActions {
                 crate::resources::management::profiles::ProfilesActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the segments resource"]
-            pub fn segments(&self) -> crate::resources::management::segments::SegmentsActions<A> {
+            pub fn segments(&self) -> crate::resources::management::segments::SegmentsActions {
                 crate::resources::management::segments::SegmentsActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the webproperties resource"]
             pub fn webproperties(
                 &self,
-            ) -> crate::resources::management::webproperties::WebpropertiesActions<A> {
+            ) -> crate::resources::management::webproperties::WebpropertiesActions {
                 crate::resources::management::webproperties::WebpropertiesActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
         }
         pub mod accounts {
             pub mod params {}
-            pub struct AccountsActions<'a, A> {
+            pub struct AccountsActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> AccountsActions<'a, A> {
+            impl<'a> AccountsActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Lists all accounts to which the user has access."]
-                pub fn list(&self) -> ListRequestBuilder<A> {
+                pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         alt: None,
                         fields: None,
                         key: None,
@@ -306,9 +319,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct ListRequestBuilder<'a, A> {
+            pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 max_results: Option<i32>,
                 start_index: Option<i32>,
                 alt: Option<crate::params::Alt>,
@@ -319,7 +332,7 @@ pub mod resources {
                 quota_user: Option<String>,
                 user_ip: Option<String>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+            impl<'a> ListRequestBuilder<'a> {
                 #[doc = "The maximum number of accounts to include in this response."]
                 pub fn max_results(mut self, value: i32) -> Self {
                     self.max_results = Some(value);
@@ -355,7 +368,7 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                pub fn execute(self) -> Result<(), crate::Error> {
                     let req = self._request(&self._path())?;
                     req.send()?.error_for_status()?;
                     Ok(())
@@ -365,11 +378,7 @@ pub mod resources {
                     output.push_str("management/accounts");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("max-results", &self.max_results)]);
                     let req = req.query(&[("start-index", &self.start_index)]);
@@ -380,28 +389,35 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod goals {
             pub mod params {}
-            pub struct GoalsActions<'a, A> {
+            pub struct GoalsActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> GoalsActions<'a, A> {
+            impl<'a> GoalsActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Lists goals to which the user has access."]
                 pub fn list(
                     &self,
                     account_id: impl Into<String>,
                     web_property_id: impl Into<String>,
                     profile_id: impl Into<String>,
-                ) -> ListRequestBuilder<A> {
+                ) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         alt: None,
                         fields: None,
                         key: None,
@@ -418,9 +434,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct ListRequestBuilder<'a, A> {
+            pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 web_property_id: String,
                 profile_id: String,
@@ -434,7 +450,7 @@ pub mod resources {
                 quota_user: Option<String>,
                 user_ip: Option<String>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+            impl<'a> ListRequestBuilder<'a> {
                 #[doc = "The maximum number of goals to include in this response."]
                 pub fn max_results(mut self, value: i32) -> Self {
                     self.max_results = Some(value);
@@ -470,7 +486,7 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                pub fn execute(self) -> Result<(), crate::Error> {
                     let req = self._request(&self._path())?;
                     req.send()?.error_for_status()?;
                     Ok(())
@@ -504,11 +520,7 @@ pub mod resources {
                     output.push_str("/goals");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("max-results", &self.max_results)]);
                     let req = req.query(&[("start-index", &self.start_index)]);
@@ -519,27 +531,34 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod profiles {
             pub mod params {}
-            pub struct ProfilesActions<'a, A> {
+            pub struct ProfilesActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ProfilesActions<'a, A> {
+            impl<'a> ProfilesActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Lists views (profiles) to which the user has access."]
                 pub fn list(
                     &self,
                     account_id: impl Into<String>,
                     web_property_id: impl Into<String>,
-                ) -> ListRequestBuilder<A> {
+                ) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         alt: None,
                         fields: None,
                         key: None,
@@ -555,9 +574,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct ListRequestBuilder<'a, A> {
+            pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 web_property_id: String,
                 max_results: Option<i32>,
@@ -570,7 +589,7 @@ pub mod resources {
                 quota_user: Option<String>,
                 user_ip: Option<String>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+            impl<'a> ListRequestBuilder<'a> {
                 #[doc = "The maximum number of views (profiles) to include in this response."]
                 pub fn max_results(mut self, value: i32) -> Self {
                     self.max_results = Some(value);
@@ -606,7 +625,7 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                pub fn execute(self) -> Result<(), crate::Error> {
                     let req = self._request(&self._path())?;
                     req.send()?.error_for_status()?;
                     Ok(())
@@ -632,11 +651,7 @@ pub mod resources {
                     output.push_str("/profiles");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("max-results", &self.max_results)]);
                     let req = req.query(&[("start-index", &self.start_index)]);
@@ -647,23 +662,30 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod segments {
             pub mod params {}
-            pub struct SegmentsActions<'a, A> {
+            pub struct SegmentsActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> SegmentsActions<'a, A> {
+            impl<'a> SegmentsActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Lists advanced segments to which the user has access."]
-                pub fn list(&self) -> ListRequestBuilder<A> {
+                pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         alt: None,
                         fields: None,
                         key: None,
@@ -677,9 +699,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct ListRequestBuilder<'a, A> {
+            pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 max_results: Option<i32>,
                 start_index: Option<i32>,
                 alt: Option<crate::params::Alt>,
@@ -690,7 +712,7 @@ pub mod resources {
                 quota_user: Option<String>,
                 user_ip: Option<String>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+            impl<'a> ListRequestBuilder<'a> {
                 #[doc = "The maximum number of advanced segments to include in this response."]
                 pub fn max_results(mut self, value: i32) -> Self {
                     self.max_results = Some(value);
@@ -726,7 +748,7 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                pub fn execute(self) -> Result<(), crate::Error> {
                     let req = self._request(&self._path())?;
                     req.send()?.error_for_status()?;
                     Ok(())
@@ -736,11 +758,7 @@ pub mod resources {
                     output.push_str("management/segments");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("max-results", &self.max_results)]);
                     let req = req.query(&[("start-index", &self.start_index)]);
@@ -751,23 +769,30 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod webproperties {
             pub mod params {}
-            pub struct WebpropertiesActions<'a, A> {
+            pub struct WebpropertiesActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> WebpropertiesActions<'a, A> {
+            impl<'a> WebpropertiesActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Lists web properties to which the user has access."]
-                pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder<A> {
+                pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         alt: None,
                         fields: None,
                         key: None,
@@ -782,9 +807,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct ListRequestBuilder<'a, A> {
+            pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 max_results: Option<i32>,
                 start_index: Option<i32>,
@@ -796,7 +821,7 @@ pub mod resources {
                 quota_user: Option<String>,
                 user_ip: Option<String>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ListRequestBuilder<'a, A> {
+            impl<'a> ListRequestBuilder<'a> {
                 #[doc = "The maximum number of web properties to include in this response."]
                 pub fn max_results(mut self, value: i32) -> Self {
                     self.max_results = Some(value);
@@ -832,7 +857,7 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                pub fn execute(self) -> Result<(), crate::Error> {
                     let req = self._request(&self._path())?;
                     req.send()?.error_for_status()?;
                     Ok(())
@@ -850,11 +875,7 @@ pub mod resources {
                     output.push_str("/webproperties");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("max-results", &self.max_results)]);
                     let req = req.query(&[("start-index", &self.start_index)]);
@@ -865,11 +886,46 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
+    }
+}
+pub enum Error {
+    OAuth2(Box<dyn ::std::error::Error>),
+    JSON(::serde_json::Error),
+    Reqwest(::reqwest::Error),
+    Other(Box<dyn ::std::error::Error>),
+}
+
+impl Error {
+    pub fn json_error(&self) -> Option<&::serde_json::Error> {
+        match self {
+            Error::OAuth2(_) => None,
+            Error::JSON(err) => Some(err),
+            Error::Reqwest(err) => err
+                .get_ref()
+                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Other(_) => None,
+        }
+    }
+}
+
+impl From<::serde_json::Error> for Error {
+    fn from(err: ::serde_json::Error) -> Error {
+        Error::JSON(err)
+    }
+}
+
+impl From<::reqwest::Error> for Error {
+    fn from(err: ::reqwest::Error) -> Error {
+        Error::Reqwest(err)
     }
 }
 #[allow(dead_code)]

@@ -1,6 +1,9 @@
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config: ::std::option::Option<crate::schemas::InputConfig>,
@@ -1299,6 +1302,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P1Beta1AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config:
@@ -3249,6 +3255,11 @@ pub mod schemas {
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation>,
+        >,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<
@@ -3264,6 +3275,37 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudVisionV1P1Beta1ProductSearchResultsGroupedResult
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -4238,6 +4280,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P2Beta1AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config:
@@ -6695,6 +6740,11 @@ pub mod schemas {
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation>,
+        >,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<
@@ -6710,6 +6760,37 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudVisionV1P2Beta1ProductSearchResultsGroupedResult
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -7682,6 +7763,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P3Beta1AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config:
@@ -9765,6 +9849,11 @@ pub mod schemas {
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation>,
+        >,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<
@@ -9780,6 +9869,37 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudVisionV1P3Beta1ProductSearchResultsGroupedResult
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -10750,6 +10870,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P4Beta1AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config:
@@ -12912,6 +13035,11 @@ pub mod schemas {
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation>,
+        >,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<
@@ -12927,6 +13055,37 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudVisionV1P4Beta1ProductSearchResultsGroupedResult
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -13989,6 +14148,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P5Beta1AnnotateFileResponse {
+        #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
         #[serde(rename = "inputConfig", default)]
         pub input_config:
@@ -16175,6 +16337,11 @@ pub mod schemas {
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation>,
+        >,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<
@@ -16190,6 +16357,37 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudVisionV1P5Beta1ProductSearchResultsGroupedResult
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -17246,6 +17444,9 @@ pub mod schemas {
         #[doc = "The bounding polygon around the product detected in the query image."]
         #[serde(rename = "boundingPoly", default)]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
+        #[doc = "List of generic predictions for the object in the bounding box."]
+        #[serde(rename = "objectAnnotations", default)]
+        pub object_annotations: ::std::option::Option<Vec<crate::schemas::ObjectAnnotation>>,
         #[doc = "List of results, one for each product match."]
         #[serde(rename = "results", default)]
         pub results: ::std::option::Option<Vec<crate::schemas::Result>>,
@@ -17685,6 +17886,33 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for NormalizedVertex {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ObjectAnnotation {
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Object ID that should align with EntityAnnotation mid."]
+        #[serde(rename = "mid", default)]
+        pub mid: ::std::option::Option<String>,
+        #[doc = "Object name, expressed in its `language_code` language."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Score of the result. Range [0, 1]."]
+        #[serde(rename = "score", default)]
+        pub score: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector for ObjectAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ObjectAnnotation {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -18890,58 +19118,64 @@ pub mod params {
         }
     }
 }
-pub struct Client<A> {
+pub struct Client {
     reqwest: ::reqwest::Client,
-    auth: A,
+    auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
-impl<A> Client<A>
-where
-    A: ::google_api_auth::GetAccessToken,
-{
-    pub fn new(auth: A) -> Self {
+impl Client {
+    pub fn new<A>(auth: A) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
             reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
-            auth,
+            auth: auth.into(),
         }
     }
+    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+        self.auth.as_ref()
+    }
     #[doc = "Actions that can be performed on the files resource"]
-    pub fn files(&self) -> crate::resources::files::FilesActions<A> {
+    pub fn files(&self) -> crate::resources::files::FilesActions {
         crate::resources::files::FilesActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the images resource"]
-    pub fn images(&self) -> crate::resources::images::ImagesActions<A> {
+    pub fn images(&self) -> crate::resources::images::ImagesActions {
         crate::resources::images::ImagesActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
-    pub fn projects(&self) -> crate::resources::projects::ProjectsActions<A> {
+    pub fn projects(&self) -> crate::resources::projects::ProjectsActions {
         crate::resources::projects::ProjectsActions {
             reqwest: &self.reqwest,
-            auth: &self.auth,
+            auth: self.auth_ref(),
         }
     }
 }
 pub mod resources {
     pub mod files {
         pub mod params {}
-        pub struct FilesActions<'a, A> {
+        pub struct FilesActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> FilesActions<'a, A> {
+        impl<'a> FilesActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Service that performs image detection and annotation for a batch of files.\nNow only \"application/pdf\", \"image/tiff\" and \"image/gif\" are supported.\n\nThis service will extract at most 5 (customers can specify which 5 in\nAnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each\nfile provided and perform detection and annotation for each image\nextracted."]
             pub fn annotate(
                 &self,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
-            ) -> AnnotateRequestBuilder<A> {
+            ) -> AnnotateRequestBuilder {
                 AnnotateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     access_token: None,
                     alt: None,
@@ -18960,10 +19194,10 @@ pub mod resources {
             pub fn async_batch_annotate(
                 &self,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
-            ) -> AsyncBatchAnnotateRequestBuilder<A> {
+            ) -> AsyncBatchAnnotateRequestBuilder {
                 AsyncBatchAnnotateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     access_token: None,
                     alt: None,
@@ -18980,9 +19214,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct AnnotateRequestBuilder<'a, A> {
+        pub struct AnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -18996,7 +19230,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+        impl<'a> AnnotateRequestBuilder<'a> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -19049,7 +19283,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -19070,7 +19304,7 @@ pub mod resources {
                 self,
             ) -> Result<
                 crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                Box<dyn ::std::error::Error>,
+                crate::Error,
             > {
                 self.execute_with_fields(None::<&str>)
             }
@@ -19082,17 +19316,14 @@ pub mod resources {
                 self,
             ) -> Result<
                 crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                Box<dyn ::std::error::Error>,
+                crate::Error,
             > {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -19100,7 +19331,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -19113,10 +19344,7 @@ pub mod resources {
                 output.push_str("v1p2beta1/files:annotate");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -19129,14 +19357,18 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+        pub struct AsyncBatchAnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -19150,7 +19382,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+        impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -19203,7 +19435,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -19222,7 +19454,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -19231,16 +19463,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -19248,7 +19477,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -19261,10 +19490,7 @@ pub mod resources {
                 output.push_str("v1p2beta1/files:asyncBatchAnnotate");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -19277,26 +19503,33 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
     }
     pub mod images {
         pub mod params {}
-        pub struct ImagesActions<'a, A> {
+        pub struct ImagesActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ImagesActions<'a, A> {
+        impl<'a> ImagesActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Run image detection and annotation for a batch of images."]
             pub fn annotate(
                 &self,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
-            ) -> AnnotateRequestBuilder<A> {
+            ) -> AnnotateRequestBuilder {
                 AnnotateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     access_token: None,
                     alt: None,
@@ -19315,10 +19548,10 @@ pub mod resources {
             pub fn async_batch_annotate(
                 &self,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
-            ) -> AsyncBatchAnnotateRequestBuilder<A> {
+            ) -> AsyncBatchAnnotateRequestBuilder {
                 AsyncBatchAnnotateRequestBuilder {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                     request,
                     access_token: None,
                     alt: None,
@@ -19335,9 +19568,9 @@ pub mod resources {
             }
         }
         #[derive(Debug, Clone)]
-        pub struct AnnotateRequestBuilder<'a, A> {
+        pub struct AnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -19351,7 +19584,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+        impl<'a> AnnotateRequestBuilder<'a> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -19404,7 +19637,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -19425,7 +19658,7 @@ pub mod resources {
                 self,
             ) -> Result<
                 crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                Box<dyn ::std::error::Error>,
+                crate::Error,
             > {
                 self.execute_with_fields(None::<&str>)
             }
@@ -19437,17 +19670,14 @@ pub mod resources {
                 self,
             ) -> Result<
                 crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                Box<dyn ::std::error::Error>,
+                crate::Error,
             > {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -19455,7 +19685,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -19468,10 +19698,7 @@ pub mod resources {
                 output.push_str("v1p2beta1/images:annotate");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -19484,14 +19711,18 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
         #[derive(Debug, Clone)]
-        pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+        pub struct AsyncBatchAnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -19505,7 +19736,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+        impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -19558,7 +19789,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -19577,7 +19808,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -19586,16 +19817,13 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>> {
+            ) -> Result<crate::schemas::Operation, crate::Error> {
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, Box<dyn ::std::error::Error>>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
@@ -19603,7 +19831,7 @@ pub mod resources {
                 self.fields = fields.map(Into::into);
                 self._execute()
             }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
@@ -19616,10 +19844,7 @@ pub mod resources {
                 output.push_str("v1p2beta1/images:asyncBatchAnnotate");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -19632,56 +19857,66 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(self.auth.access_token()?);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
                 Ok(req)
             }
         }
     }
     pub mod projects {
         pub mod params {}
-        pub struct ProjectsActions<'a, A> {
+        pub struct ProjectsActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a A,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a, A: ::google_api_auth::GetAccessToken> ProjectsActions<'a, A> {
+        impl<'a> ProjectsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
             #[doc = "Actions that can be performed on the files resource"]
-            pub fn files(&self) -> crate::resources::projects::files::FilesActions<A> {
+            pub fn files(&self) -> crate::resources::projects::files::FilesActions {
                 crate::resources::projects::files::FilesActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the images resource"]
-            pub fn images(&self) -> crate::resources::projects::images::ImagesActions<A> {
+            pub fn images(&self) -> crate::resources::projects::images::ImagesActions {
                 crate::resources::projects::images::ImagesActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
             #[doc = "Actions that can be performed on the locations resource"]
-            pub fn locations(&self) -> crate::resources::projects::locations::LocationsActions<A> {
+            pub fn locations(&self) -> crate::resources::projects::locations::LocationsActions {
                 crate::resources::projects::locations::LocationsActions {
                     reqwest: &self.reqwest,
-                    auth: &self.auth,
+                    auth: self.auth_ref(),
                 }
             }
         }
         pub mod files {
             pub mod params {}
-            pub struct FilesActions<'a, A> {
+            pub struct FilesActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> FilesActions<'a, A> {
+            impl<'a> FilesActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Service that performs image detection and annotation for a batch of files.\nNow only \"application/pdf\", \"image/tiff\" and \"image/gif\" are supported.\n\nThis service will extract at most 5 (customers can specify which 5 in\nAnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each\nfile provided and perform detection and annotation for each image\nextracted."]
                 pub fn annotate(
                     &self,
                     request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
                     parent: impl Into<String>,
-                ) -> AnnotateRequestBuilder<A> {
+                ) -> AnnotateRequestBuilder {
                     AnnotateRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         request,
                         access_token: None,
                         alt: None,
@@ -19702,10 +19937,10 @@ pub mod resources {
                     &self,
                     request : crate :: schemas :: GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
                     parent: impl Into<String>,
-                ) -> AsyncBatchAnnotateRequestBuilder<A> {
+                ) -> AsyncBatchAnnotateRequestBuilder {
                     AsyncBatchAnnotateRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         request,
                         access_token: None,
                         alt: None,
@@ -19723,9 +19958,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct AnnotateRequestBuilder<'a, A> {
+            pub struct AnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
                 parent: String,
                 access_token: Option<String>,
@@ -19740,7 +19975,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+            impl<'a> AnnotateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -19793,7 +20028,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -19814,7 +20049,7 @@ pub mod resources {
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                    Box<dyn ::std::error::Error>,
+                    crate::Error,
                 > {
                     self.execute_with_fields(None::<&str>)
                 }
@@ -19826,7 +20061,7 @@ pub mod resources {
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                    Box<dyn ::std::error::Error>,
+                    crate::Error,
                 > {
                     self.execute_with_fields(Some("*"))
                 }
@@ -19836,7 +20071,7 @@ pub mod resources {
                 pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
-                ) -> Result<T, Box<dyn ::std::error::Error>>
+                ) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                     F: Into<String>,
@@ -19844,7 +20079,7 @@ pub mod resources {
                     self.fields = fields.map(Into::into);
                     self._execute()
                 }
-                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
@@ -19865,11 +20100,7 @@ pub mod resources {
                     output.push_str("/files:annotate");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -19882,14 +20113,18 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+            pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
                 parent: String,
                 access_token: Option<String>,
@@ -19904,7 +20139,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+            impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -19957,7 +20192,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -19976,8 +20211,7 @@ pub mod resources {
                 #[doc = r" the response resource."]
                 pub fn execute_with_default_fields(
                     self,
-                ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                {
+                ) -> Result<crate::schemas::Operation, crate::Error> {
                     self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -19986,8 +20220,7 @@ pub mod resources {
                 #[doc = r" development or debugging."]
                 pub fn execute_with_all_fields(
                     self,
-                ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                {
+                ) -> Result<crate::schemas::Operation, crate::Error> {
                     self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -19996,7 +20229,7 @@ pub mod resources {
                 pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
-                ) -> Result<T, Box<dyn ::std::error::Error>>
+                ) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                     F: Into<String>,
@@ -20004,7 +20237,7 @@ pub mod resources {
                     self.fields = fields.map(Into::into);
                     self._execute()
                 }
-                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
@@ -20025,11 +20258,7 @@ pub mod resources {
                     output.push_str("/files:asyncBatchAnnotate");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -20042,27 +20271,34 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod images {
             pub mod params {}
-            pub struct ImagesActions<'a, A> {
+            pub struct ImagesActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> ImagesActions<'a, A> {
+            impl<'a> ImagesActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Run image detection and annotation for a batch of images."]
                 pub fn annotate(
                     &self,
                     request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
                     parent: impl Into<String>,
-                ) -> AnnotateRequestBuilder<A> {
+                ) -> AnnotateRequestBuilder {
                     AnnotateRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         request,
                         access_token: None,
                         alt: None,
@@ -20083,10 +20319,10 @@ pub mod resources {
                     &self,
                     request : crate :: schemas :: GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
                     parent: impl Into<String>,
-                ) -> AsyncBatchAnnotateRequestBuilder<A> {
+                ) -> AsyncBatchAnnotateRequestBuilder {
                     AsyncBatchAnnotateRequestBuilder {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                         request,
                         access_token: None,
                         alt: None,
@@ -20104,9 +20340,9 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct AnnotateRequestBuilder<'a, A> {
+            pub struct AnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
                 parent: String,
                 access_token: Option<String>,
@@ -20121,7 +20357,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+            impl<'a> AnnotateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -20174,7 +20410,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -20195,7 +20431,7 @@ pub mod resources {
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                    Box<dyn ::std::error::Error>,
+                    crate::Error,
                 > {
                     self.execute_with_fields(None::<&str>)
                 }
@@ -20207,7 +20443,7 @@ pub mod resources {
                     self,
                 ) -> Result<
                     crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                    Box<dyn ::std::error::Error>,
+                    crate::Error,
                 > {
                     self.execute_with_fields(Some("*"))
                 }
@@ -20217,7 +20453,7 @@ pub mod resources {
                 pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
-                ) -> Result<T, Box<dyn ::std::error::Error>>
+                ) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                     F: Into<String>,
@@ -20225,7 +20461,7 @@ pub mod resources {
                     self.fields = fields.map(Into::into);
                     self._execute()
                 }
-                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
@@ -20246,11 +20482,7 @@ pub mod resources {
                     output.push_str("/images:annotate");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -20263,14 +20495,18 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+            pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
                 parent: String,
                 access_token: Option<String>,
@@ -20285,7 +20521,7 @@ pub mod resources {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+            impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -20338,7 +20574,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -20357,8 +20593,7 @@ pub mod resources {
                 #[doc = r" the response resource."]
                 pub fn execute_with_default_fields(
                     self,
-                ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                {
+                ) -> Result<crate::schemas::Operation, crate::Error> {
                     self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -20367,8 +20602,7 @@ pub mod resources {
                 #[doc = r" development or debugging."]
                 pub fn execute_with_all_fields(
                     self,
-                ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                {
+                ) -> Result<crate::schemas::Operation, crate::Error> {
                     self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -20377,7 +20611,7 @@ pub mod resources {
                 pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
-                ) -> Result<T, Box<dyn ::std::error::Error>>
+                ) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                     F: Into<String>,
@@ -20385,7 +20619,7 @@ pub mod resources {
                     self.fields = fields.map(Into::into);
                     self._execute()
                 }
-                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
@@ -20406,11 +20640,7 @@ pub mod resources {
                     output.push_str("/images:asyncBatchAnnotate");
                     output
                 }
-                fn _request(
-                    &self,
-                    path: &str,
-                ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                {
+                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -20423,54 +20653,61 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(self.auth.access_token()?);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
                     Ok(req)
                 }
             }
         }
         pub mod locations {
             pub mod params {}
-            pub struct LocationsActions<'a, A> {
+            pub struct LocationsActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
-                pub(crate) auth: &'a A,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
-            impl<'a, A: ::google_api_auth::GetAccessToken> LocationsActions<'a, A> {
+            impl<'a> LocationsActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
                 #[doc = "Actions that can be performed on the files resource"]
-                pub fn files(
-                    &self,
-                ) -> crate::resources::projects::locations::files::FilesActions<A> {
+                pub fn files(&self) -> crate::resources::projects::locations::files::FilesActions {
                     crate::resources::projects::locations::files::FilesActions {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                     }
                 }
                 #[doc = "Actions that can be performed on the images resource"]
                 pub fn images(
                     &self,
-                ) -> crate::resources::projects::locations::images::ImagesActions<A>
-                {
+                ) -> crate::resources::projects::locations::images::ImagesActions {
                     crate::resources::projects::locations::images::ImagesActions {
                         reqwest: &self.reqwest,
-                        auth: &self.auth,
+                        auth: self.auth_ref(),
                     }
                 }
             }
             pub mod files {
                 pub mod params {}
-                pub struct FilesActions<'a, A> {
+                pub struct FilesActions<'a> {
                     pub(crate) reqwest: &'a reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> FilesActions<'a, A> {
+                impl<'a> FilesActions<'a> {
+                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                        self.auth
+                    }
                     #[doc = "Service that performs image detection and annotation for a batch of files.\nNow only \"application/pdf\", \"image/tiff\" and \"image/gif\" are supported.\n\nThis service will extract at most 5 (customers can specify which 5 in\nAnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each\nfile provided and perform detection and annotation for each image\nextracted."]
                     pub fn annotate(
                         &self,
                         request : crate :: schemas :: GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
                         parent: impl Into<String>,
-                    ) -> AnnotateRequestBuilder<A> {
+                    ) -> AnnotateRequestBuilder {
                         AnnotateRequestBuilder {
                             reqwest: &self.reqwest,
-                            auth: &self.auth,
+                            auth: self.auth_ref(),
                             request,
                             access_token: None,
                             alt: None,
@@ -20491,10 +20728,10 @@ pub mod resources {
                         &self,
                         request : crate :: schemas :: GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
                         parent: impl Into<String>,
-                    ) -> AsyncBatchAnnotateRequestBuilder<A> {
+                    ) -> AsyncBatchAnnotateRequestBuilder {
                         AsyncBatchAnnotateRequestBuilder {
                             reqwest: &self.reqwest,
-                            auth: &self.auth,
+                            auth: self.auth_ref(),
                             request,
                             access_token: None,
                             alt: None,
@@ -20512,9 +20749,9 @@ pub mod resources {
                     }
                 }
                 #[derive(Debug, Clone)]
-                pub struct AnnotateRequestBuilder<'a, A> {
+                pub struct AnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest,
                     parent: String,
                     access_token: Option<String>,
@@ -20529,7 +20766,7 @@ pub mod resources {
                     upload_type: Option<String>,
                     xgafv: Option<crate::params::Xgafv>,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+                impl<'a> AnnotateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
@@ -20582,7 +20819,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -20603,7 +20840,7 @@ pub mod resources {
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                        Box<dyn ::std::error::Error>,
+                        crate::Error,
                     > {
                         self.execute_with_fields(None::<&str>)
                     }
@@ -20615,7 +20852,7 @@ pub mod resources {
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse,
-                        Box<dyn ::std::error::Error>,
+                        crate::Error,
                     > {
                         self.execute_with_fields(Some("*"))
                     }
@@ -20625,7 +20862,7 @@ pub mod resources {
                     pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
-                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    ) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                         F: Into<String>,
@@ -20633,7 +20870,7 @@ pub mod resources {
                         self.fields = fields.map(Into::into);
                         self._execute()
                     }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
@@ -20657,8 +20894,7 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -20671,14 +20907,18 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(self.auth.access_token()?);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
                         Ok(req)
                     }
                 }
                 #[derive(Debug, Clone)]
-                pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+                pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request:
                         crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest,
                     parent: String,
@@ -20694,7 +20934,7 @@ pub mod resources {
                     upload_type: Option<String>,
                     xgafv: Option<crate::params::Xgafv>,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+                impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
@@ -20747,7 +20987,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -20766,8 +21006,7 @@ pub mod resources {
                     #[doc = r" the response resource."]
                     pub fn execute_with_default_fields(
                         self,
-                    ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
                         self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -20776,8 +21015,7 @@ pub mod resources {
                     #[doc = r" development or debugging."]
                     pub fn execute_with_all_fields(
                         self,
-                    ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
                         self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -20786,7 +21024,7 @@ pub mod resources {
                     pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
-                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    ) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                         F: Into<String>,
@@ -20794,7 +21032,7 @@ pub mod resources {
                         self.fields = fields.map(Into::into);
                         self._execute()
                     }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
@@ -20818,8 +21056,7 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -20832,27 +21069,34 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(self.auth.access_token()?);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
                         Ok(req)
                     }
                 }
             }
             pub mod images {
                 pub mod params {}
-                pub struct ImagesActions<'a, A> {
+                pub struct ImagesActions<'a> {
                     pub(crate) reqwest: &'a reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> ImagesActions<'a, A> {
+                impl<'a> ImagesActions<'a> {
+                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                        self.auth
+                    }
                     #[doc = "Run image detection and annotation for a batch of images."]
                     pub fn annotate(
                         &self,
                         request : crate :: schemas :: GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
                         parent: impl Into<String>,
-                    ) -> AnnotateRequestBuilder<A> {
+                    ) -> AnnotateRequestBuilder {
                         AnnotateRequestBuilder {
                             reqwest: &self.reqwest,
-                            auth: &self.auth,
+                            auth: self.auth_ref(),
                             request,
                             access_token: None,
                             alt: None,
@@ -20873,10 +21117,10 @@ pub mod resources {
                         &self,
                         request : crate :: schemas :: GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
                         parent: impl Into<String>,
-                    ) -> AsyncBatchAnnotateRequestBuilder<A> {
+                    ) -> AsyncBatchAnnotateRequestBuilder {
                         AsyncBatchAnnotateRequestBuilder {
                             reqwest: &self.reqwest,
-                            auth: &self.auth,
+                            auth: self.auth_ref(),
                             request,
                             access_token: None,
                             alt: None,
@@ -20894,9 +21138,9 @@ pub mod resources {
                     }
                 }
                 #[derive(Debug, Clone)]
-                pub struct AnnotateRequestBuilder<'a, A> {
+                pub struct AnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest,
                     parent: String,
                     access_token: Option<String>,
@@ -20911,7 +21155,7 @@ pub mod resources {
                     upload_type: Option<String>,
                     xgafv: Option<crate::params::Xgafv>,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> AnnotateRequestBuilder<'a, A> {
+                impl<'a> AnnotateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
@@ -20964,7 +21208,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -20985,7 +21229,7 @@ pub mod resources {
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                        Box<dyn ::std::error::Error>,
+                        crate::Error,
                     > {
                         self.execute_with_fields(None::<&str>)
                     }
@@ -20997,7 +21241,7 @@ pub mod resources {
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse,
-                        Box<dyn ::std::error::Error>,
+                        crate::Error,
                     > {
                         self.execute_with_fields(Some("*"))
                     }
@@ -21007,7 +21251,7 @@ pub mod resources {
                     pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
-                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    ) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                         F: Into<String>,
@@ -21015,7 +21259,7 @@ pub mod resources {
                         self.fields = fields.map(Into::into);
                         self._execute()
                     }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
@@ -21039,8 +21283,7 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -21053,14 +21296,18 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(self.auth.access_token()?);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
                         Ok(req)
                     }
                 }
                 #[derive(Debug, Clone)]
-                pub struct AsyncBatchAnnotateRequestBuilder<'a, A> {
+                pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a A,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request:
                         crate::schemas::GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest,
                     parent: String,
@@ -21076,7 +21323,7 @@ pub mod resources {
                     upload_type: Option<String>,
                     xgafv: Option<crate::params::Xgafv>,
                 }
-                impl<'a, A: ::google_api_auth::GetAccessToken> AsyncBatchAnnotateRequestBuilder<'a, A> {
+                impl<'a> AsyncBatchAnnotateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
@@ -21129,7 +21376,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -21148,8 +21395,7 @@ pub mod resources {
                     #[doc = r" the response resource."]
                     pub fn execute_with_default_fields(
                         self,
-                    ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
                         self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -21158,8 +21404,7 @@ pub mod resources {
                     #[doc = r" development or debugging."]
                     pub fn execute_with_all_fields(
                         self,
-                    ) -> Result<crate::schemas::Operation, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
                         self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -21168,7 +21413,7 @@ pub mod resources {
                     pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
-                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    ) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                         F: Into<String>,
@@ -21176,7 +21421,7 @@ pub mod resources {
                         self.fields = fields.map(Into::into);
                         self._execute()
                     }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
@@ -21200,8 +21445,7 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, Box<dyn ::std::error::Error>>
-                    {
+                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -21214,12 +21458,47 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(self.auth.access_token()?);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
                         Ok(req)
                     }
                 }
             }
         }
+    }
+}
+pub enum Error {
+    OAuth2(Box<dyn ::std::error::Error>),
+    JSON(::serde_json::Error),
+    Reqwest(::reqwest::Error),
+    Other(Box<dyn ::std::error::Error>),
+}
+
+impl Error {
+    pub fn json_error(&self) -> Option<&::serde_json::Error> {
+        match self {
+            Error::OAuth2(_) => None,
+            Error::JSON(err) => Some(err),
+            Error::Reqwest(err) => err
+                .get_ref()
+                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Other(_) => None,
+        }
+    }
+}
+
+impl From<::serde_json::Error> for Error {
+    fn from(err: ::serde_json::Error) -> Error {
+        Error::JSON(err)
+    }
+}
+
+impl From<::reqwest::Error> for Error {
+    fn from(err: ::reqwest::Error) -> Error {
+        Error::Reqwest(err)
     }
 }
 #[allow(dead_code)]

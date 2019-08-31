@@ -7,7 +7,7 @@
   "canonicalName": "Service Usage",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190827",
+  "revision": "20190829",
   "title": "Service Usage API",
   "description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
   "ownerDomain": "google.com",
@@ -3306,6 +3306,38 @@
           "description": "The overriding quota limit value.\nCan be any nonnegative integer, or -1 (unlimited quota).",
           "type": "string",
           "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ServiceIdentity": {
+      "id": "ServiceIdentity",
+      "description": "Service identity for a service. This is the identity that service producer\nshould use to access consumer resources.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "email": {
+          "description": "The email address of the service account that a service producer would use\nto access consumer resources.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "uniqueId": {
+          "description": "The unique and stable id of the service account.\nhttps://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#ServiceAccount",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},

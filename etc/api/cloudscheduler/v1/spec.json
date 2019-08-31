@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Scheduler",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190823",
+  "revision": "20190815",
   "title": "Cloud Scheduler API",
   "description": "Creates and manages jobs run on a regular recurring schedule.",
   "ownerDomain": "google.com",

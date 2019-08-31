@@ -7,7 +7,7 @@
   "canonicalName": "DLP",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190816",
+  "revision": "20190824",
   "title": "Cloud Data Loss Prevention (DLP) API",
   "description": "Provides methods for detection, risk analysis, and de-identification of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.",
   "ownerDomain": "google.com",
@@ -3032,6 +3032,16 @@
         "item": {
           "description": "The item to inspect.",
           "$ref": "GooglePrivacyDlpV2ContentItem"
+        },
+        "location": {
+          "description": "The geographic location to process content inspection. Reserved for future\nextensions.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -4122,6 +4132,38 @@
         },
         "nextPageToken": {
           "description": "The standard List next-page token.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GooglePrivacyDlpV2ListInfoTypesRequest": {
+      "id": "GooglePrivacyDlpV2ListInfoTypesRequest",
+      "description": "Request for the list of infoTypes.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "filter": {
+          "description": "Optional filter to only return infoTypes supported by certain parts of the\nAPI. Defaults to supported_by=INSPECT.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "languageCode": {
+          "description": "Optional BCP-47 language code for localized infoType friendly\nnames. If omitted, or if localized strings are not available,\nen-US strings will be returned.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6385,10 +6427,68 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
+            },
+            "location": {
+              "description": "The geographic location to list info types. Reserved for future\nextensions.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
             }
           },
           "parameterOrder": [],
           "request": null,
+          "response": {
+            "$ref": "GooglePrivacyDlpV2ListInfoTypesResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "locations": {
+      "resources": {},
+      "methods": {
+        "infoTypes": {
+          "id": "dlp.locations.infoTypes",
+          "path": "v2/locations/{location}/infoTypes",
+          "httpMethod": "POST",
+          "description": "Returns a list of the sensitive information types that the DLP API\nsupports. See https://cloud.google.com/dlp/docs/infotypes-reference to\nlearn more.",
+          "parameters": {
+            "location": {
+              "description": "The geographic location to list info types. Reserved for future\nextensions.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "location"
+          ],
+          "request": {
+            "$ref": "GooglePrivacyDlpV2ListInfoTypesRequest"
+          },
           "response": {
             "$ref": "GooglePrivacyDlpV2ListInfoTypesResponse"
           },
@@ -8362,6 +8462,60 @@
                   },
                   "response": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyContentResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "inspect": {
+                  "id": "dlp.projects.locations.content.inspect",
+                  "path": "v2/{+parent}/locations/{location}/content:inspect",
+                  "httpMethod": "POST",
+                  "description": "Finds potentially sensitive info in content.\nThis method has limits on input size, processing time, and output size.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.\n\nFor how to guides, see https://cloud.google.com/dlp/docs/inspecting-images\nand https://cloud.google.com/dlp/docs/inspecting-text,",
+                  "parameters": {
+                    "location": {
+                      "description": "The geographic location to process content inspection. Reserved for future\nextensions.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name, for example projects/my-project-id.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent",
+                    "location"
+                  ],
+                  "request": {
+                    "$ref": "GooglePrivacyDlpV2InspectContentRequest"
+                  },
+                  "response": {
+                    "$ref": "GooglePrivacyDlpV2InspectContentResponse"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"

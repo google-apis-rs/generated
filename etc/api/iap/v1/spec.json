@@ -7,7 +7,7 @@
   "canonicalName": "Cloud IAP",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190816",
+  "revision": "20190826",
   "title": "Cloud Identity-Aware Proxy API",
   "description": "Controls access to cloud applications running on Google Cloud Platform.",
   "ownerDomain": "google.com",

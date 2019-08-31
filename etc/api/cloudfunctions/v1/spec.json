@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Functions",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190814",
+  "revision": "20190807",
   "title": "Cloud Functions API",
   "description": "Manages lightweight user-provided functions executed in response to events.",
   "ownerDomain": "google.com",

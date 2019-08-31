@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Iot",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190805",
+  "revision": "20190820",
   "title": "Cloud IoT API",
   "description": "Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform.\n",
   "ownerDomain": "google.com",

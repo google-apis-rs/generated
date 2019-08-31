@@ -7,7 +7,7 @@
   "canonicalName": "Service Control",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190816",
+  "revision": "20190823",
   "title": "Service Control API",
   "description": "Provides control plane functionality to managed services, such as logging, monitoring, and status checks.",
   "ownerDomain": "google.com",
