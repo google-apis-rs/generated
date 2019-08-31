@@ -322,7 +322,7 @@ where
             _ => {
                 let found = false;
                 // TODO: params work differently
-                // for param in &gp {
+                // for param in &GP {
                 //     if key == *param {
                 //         found = true;
                 //         call = call.param(gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
