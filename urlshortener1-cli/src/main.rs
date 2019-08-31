@@ -433,6 +433,113 @@ where
             .unwrap_or_else(Vec::new)
             .iter(),
         err,
+        &[
+            (
+                "status",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "kind",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "created",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.week.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.week.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.allTime.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.allTime.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.twoHours.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.twoHours.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.day.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.day.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.month.shortUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "analytics.month.longUrlClicks",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "longUrl",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+            (
+                "id",
+                JsonTypeInfo {
+                    jtype: JsonType::String,
+                    ctype: ComplexType::Pod,
+                },
+            ),
+        ],
     );
 
     let request: api::schemas::Url = json::value::from_value(object).unwrap();
@@ -501,6 +608,7 @@ where
 fn object_from_kvargs(
     opts: impl IntoIterator<Item = impl AsRef<str>>,
     err: &mut InvalidOptionsError,
+    fields: &[(&'static str, JsonTypeInfo)],
 ) -> json::value::Value {
     let mut field_cursor = FieldCursor::default();
     let mut object = json::value::Value::Object(Default::default());
@@ -627,24 +735,7 @@ fn object_from_kvargs(
                 },
             )),
             _ => {
-                let suggestion = FieldCursor::did_you_mean(
-                    key,
-                    &[
-                        "all-time",
-                        "analytics",
-                        "created",
-                        "day",
-                        "id",
-                        "kind",
-                        "long-url",
-                        "long-url-clicks",
-                        "month",
-                        "short-url-clicks",
-                        "status",
-                        "two-hours",
-                        "week",
-                    ],
-                );
+                let suggestion = FieldCursor::did_you_mean(key, fields.iter().map(|s| s.0));
                 err.issues.push(CLIError::Field(FieldError::Unknown(
                     temp_cursor.to_string(),
                     suggestion,

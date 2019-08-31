@@ -80,13 +80,17 @@ pub fn remove_json_null_values(value: &mut Value) {
     }
 }
 
-fn did_you_mean<'a>(v: &str, possible_values: &[&'a str]) -> Option<&'a str> {
-    let mut candidate: Option<(f64, &str)> = None;
-    for pv in possible_values {
+fn did_you_mean(
+    v: &str,
+    possible_values: impl IntoIterator<Item = impl AsRef<str>>,
+) -> Option<String> {
+    let mut candidate: Option<(f64, String)> = None;
+    for pv in possible_values.into_iter() {
+        let pv = pv.as_ref();
         let confidence = strsim::jaro_winkler(v, pv);
         if confidence > 0.8 && (candidate.is_none() || (candidate.as_ref().unwrap().0 < confidence))
         {
-            candidate = Some((confidence, pv));
+            candidate = Some((confidence, pv.to_owned()));
         }
     }
     match candidate {
@@ -214,7 +218,10 @@ impl FieldCursor {
         Ok(())
     }
 
-    pub fn did_you_mean(value: &str, possible_values: &[&str]) -> Option<String> {
+    pub fn did_you_mean(
+        value: &str,
+        possible_values: impl IntoIterator<Item = &'static str>,
+    ) -> Option<String> {
         if value.is_empty() {
             return None;
         }
@@ -224,12 +231,13 @@ impl FieldCursor {
         let mut field = String::new();
         let mut output = String::new();
 
+        let possible_values: Vec<_> = possible_values.into_iter().collect();
         let push_field = |fs: &mut String, f: &mut String| {
             if !f.is_empty() {
-                fs.push_str(match did_you_mean(&f, possible_values) {
-                    Some(candidate) => candidate,
-                    None => &f,
-                });
+                match did_you_mean(&f, &possible_values) {
+                    Some(candidate) => fs.push_str(&candidate),
+                    None => fs.push_str(f),
+                };
                 f.truncate(0);
             }
         };
@@ -675,7 +683,7 @@ impl fmt::Display for CLIError {
                 arg_name, value, type_name, err_desc
             ),
             CLIError::UnknownParameter(ref param_name, ref possible_values) => {
-                let suffix = match did_you_mean(param_name, &possible_values) {
+                let suffix = match did_you_mean(param_name, possible_values) {
                     Some(v) => format!(" Did you mean '{}' ?", v),
                     None => String::new(),
                 };
