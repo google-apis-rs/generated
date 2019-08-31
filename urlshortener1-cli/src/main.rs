@@ -434,12 +434,14 @@ where
         &[
             (
                 "status",
+                "status",
                 JsonTypeInfo {
                     jtype: JsonType::String,
                     ctype: ComplexType::Pod,
                 },
             ),
             (
+                "kind",
                 "kind",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -448,12 +450,14 @@ where
             ),
             (
                 "created",
+                "created",
                 JsonTypeInfo {
                     jtype: JsonType::String,
                     ctype: ComplexType::Pod,
                 },
             ),
             (
+                "analytics.week.short-url-clicks",
                 "analytics.week.shortUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -461,6 +465,7 @@ where
                 },
             ),
             (
+                "analytics.week.long-url-clicks",
                 "analytics.week.longUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -468,6 +473,7 @@ where
                 },
             ),
             (
+                "analytics.all-time.short-url-clicks",
                 "analytics.allTime.shortUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -475,6 +481,7 @@ where
                 },
             ),
             (
+                "analytics.all-time.long-url-clicks",
                 "analytics.allTime.longUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -482,6 +489,7 @@ where
                 },
             ),
             (
+                "analytics.two-hours.short-url-clicks",
                 "analytics.twoHours.shortUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -489,6 +497,7 @@ where
                 },
             ),
             (
+                "analytics.two-hours.long-url-clicks",
                 "analytics.twoHours.longUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -496,6 +505,7 @@ where
                 },
             ),
             (
+                "analytics.day.short-url-clicks",
                 "analytics.day.shortUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -503,6 +513,7 @@ where
                 },
             ),
             (
+                "analytics.day.long-url-clicks",
                 "analytics.day.longUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -510,6 +521,7 @@ where
                 },
             ),
             (
+                "analytics.month.short-url-clicks",
                 "analytics.month.shortUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -517,6 +529,7 @@ where
                 },
             ),
             (
+                "analytics.month.long-url-clicks",
                 "analytics.month.longUrlClicks",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -524,6 +537,7 @@ where
                 },
             ),
             (
+                "long-url",
                 "longUrl",
                 JsonTypeInfo {
                     jtype: JsonType::String,
@@ -531,6 +545,7 @@ where
                 },
             ),
             (
+                "id",
                 "id",
                 JsonTypeInfo {
                     jtype: JsonType::String,

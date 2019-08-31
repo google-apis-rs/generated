@@ -83,10 +83,14 @@ pub fn remove_json_null_values(value: &mut Value) {
     }
 }
 
+fn last_field(input: &str) -> &str {
+    input.rsplit('.').next().unwrap_or(input)
+}
+
 pub fn object_from_kvargs(
     opts: impl IntoIterator<Item = impl AsRef<str>>,
     err: &mut InvalidOptionsError,
-    fields: &[(&'static str, JsonTypeInfo)],
+    fields: &[(&'static str, &'static str, JsonTypeInfo)],
 ) -> json::value::Value {
     let mut field_cursor = FieldCursor::default();
     let mut object = json::value::Value::Object(Default::default());
@@ -109,17 +113,22 @@ pub fn object_from_kvargs(
         let cursor_string = temp_cursor.to_string();
         let type_info = fields
             .iter()
-            .find(|(field, _)| *field == cursor_string)
-            .cloned()
+            .find(|(field_dashed, _, _)| *field_dashed == cursor_string)
             .or_else(|| {
-                let suggestion = FieldCursor::did_you_mean(key, fields.iter().map(|s| s.0));
+                let suggestion = FieldCursor::did_you_mean(
+                    key,
+                    fields
+                        .iter()
+                        .map(|(field_dashed, _, _)| last_field(*field_dashed)),
+                );
                 err.issues.push(CLIError::Field(FieldError::Unknown(
                     temp_cursor.to_string(),
                     suggestion,
                     value.map(|v| v.to_string()),
                 )));
                 None
-            });
+            })
+            .map(|(_, field, kind)| (*field, kind.clone()));
         if let Some((field_cursor_str, type_info)) = type_info {
             FieldCursor::from(field_cursor_str).set_json_value(
                 &mut object,
