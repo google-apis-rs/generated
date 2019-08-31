@@ -18,6 +18,7 @@ use std::{
 const FIELD_SEP: char = '.';
 
 #[allow(dead_code)]
+#[derive(Clone)]
 pub enum ComplexType {
     Pod,
     Vec,
@@ -32,6 +33,7 @@ pub enum ComplexType {
 // String(String),
 
 #[allow(dead_code)]
+#[derive(Clone)]
 pub enum JsonType {
     Boolean,
     Int,
@@ -40,6 +42,7 @@ pub enum JsonType {
     String,
 }
 
+#[derive(Clone)]
 pub struct JsonTypeInfo {
     pub jtype: JsonType,
     pub ctype: ComplexType,
@@ -78,6 +81,56 @@ pub fn remove_json_null_values(value: &mut Value) {
         }
         _ => {}
     }
+}
+
+pub fn object_from_kvargs(
+    opts: impl IntoIterator<Item = impl AsRef<str>>,
+    err: &mut InvalidOptionsError,
+    fields: &[(&'static str, JsonTypeInfo)],
+) -> json::value::Value {
+    let mut field_cursor = FieldCursor::default();
+    let mut object = json::value::Value::Object(Default::default());
+    for kvarg in opts.into_iter() {
+        let kvarg = kvarg.as_ref();
+        let last_errc = err.issues.len();
+        let (key, value) = parse_kv_arg(&*kvarg, err, false);
+        let mut temp_cursor = field_cursor.clone();
+        if let Err(field_err) = temp_cursor.set(&*key) {
+            err.issues.push(field_err);
+        }
+        if value.is_none() {
+            field_cursor = temp_cursor.clone();
+            if err.issues.len() > last_errc {
+                err.issues.remove(last_errc);
+            }
+            continue;
+        }
+
+        let cursor_string = temp_cursor.to_string();
+        let type_info = fields
+            .iter()
+            .find(|(field, _)| *field == cursor_string)
+            .cloned()
+            .or_else(|| {
+                let suggestion = FieldCursor::did_you_mean(key, fields.iter().map(|s| s.0));
+                err.issues.push(CLIError::Field(FieldError::Unknown(
+                    temp_cursor.to_string(),
+                    suggestion,
+                    value.map(|v| v.to_string()),
+                )));
+                None
+            });
+        if let Some((field_cursor_str, type_info)) = type_info {
+            FieldCursor::from(field_cursor_str).set_json_value(
+                &mut object,
+                value.unwrap(),
+                type_info,
+                err,
+                &temp_cursor,
+            );
+        }
+    }
+    object
 }
 
 fn did_you_mean(

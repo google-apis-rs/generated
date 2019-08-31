@@ -1,6 +1,5 @@
 use clap::{App, Arg, SubCommand};
 use std::{
-    default::Default,
     io::{self, Write},
     path::PathBuf,
 };
@@ -11,7 +10,7 @@ use hyper_rustls::HttpsConnector;
 mod cmn;
 
 use cmn::{
-    parse_kv_arg, writer_from_opts, CLIError, CallType, ComplexType, FieldCursor, FieldError,
+    object_from_kvargs, parse_kv_arg, writer_from_opts, CLIError, CallType, ComplexType,
     InvalidOptionsError, JsonTokenStorage, JsonType, JsonTypeInfo,
 };
 
@@ -430,8 +429,7 @@ where
     let object = object_from_kvargs(
         opt.values_of("kv")
             .map(|i| i.collect())
-            .unwrap_or_else(Vec::new)
-            .iter(),
+            .unwrap_or_else(Vec::new),
         err,
         &[
             (
@@ -603,158 +601,6 @@ where
             }
         }
     }
-}
-
-fn object_from_kvargs(
-    opts: impl IntoIterator<Item = impl AsRef<str>>,
-    err: &mut InvalidOptionsError,
-    fields: &[(&'static str, JsonTypeInfo)],
-) -> json::value::Value {
-    let mut field_cursor = FieldCursor::default();
-    let mut object = json::value::Value::Object(Default::default());
-    for kvarg in opts.into_iter() {
-        let kvarg = kvarg.as_ref();
-        let last_errc = err.issues.len();
-        let (key, value) = parse_kv_arg(&*kvarg, err, false);
-        let mut temp_cursor = field_cursor.clone();
-        if let Err(field_err) = temp_cursor.set(&*key) {
-            err.issues.push(field_err);
-        }
-        if value.is_none() {
-            field_cursor = temp_cursor.clone();
-            if err.issues.len() > last_errc {
-                err.issues.remove(last_errc);
-            }
-            continue;
-        }
-
-        let type_info: Option<(&'static str, JsonTypeInfo)> = match &temp_cursor.to_string()[..] {
-            "status" => Some((
-                "status",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "kind" => Some((
-                "kind",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "created" => Some((
-                "created",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.week.short-url-clicks" => Some((
-                "analytics.week.shortUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.week.long-url-clicks" => Some((
-                "analytics.week.longUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.all-time.short-url-clicks" => Some((
-                "analytics.allTime.shortUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.all-time.long-url-clicks" => Some((
-                "analytics.allTime.longUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.two-hours.short-url-clicks" => Some((
-                "analytics.twoHours.shortUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.two-hours.long-url-clicks" => Some((
-                "analytics.twoHours.longUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.day.short-url-clicks" => Some((
-                "analytics.day.shortUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.day.long-url-clicks" => Some((
-                "analytics.day.longUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.month.short-url-clicks" => Some((
-                "analytics.month.shortUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "analytics.month.long-url-clicks" => Some((
-                "analytics.month.longUrlClicks",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "long-url" => Some((
-                "longUrl",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            "id" => Some((
-                "id",
-                JsonTypeInfo {
-                    jtype: JsonType::String,
-                    ctype: ComplexType::Pod,
-                },
-            )),
-            _ => {
-                let suggestion = FieldCursor::did_you_mean(key, fields.iter().map(|s| s.0));
-                err.issues.push(CLIError::Field(FieldError::Unknown(
-                    temp_cursor.to_string(),
-                    suggestion,
-                    value.map(|v| v.to_string()),
-                )));
-                None
-            }
-        };
-        if let Some((field_cursor_str, type_info)) = type_info {
-            FieldCursor::from(field_cursor_str).set_json_value(
-                &mut object,
-                value.unwrap(),
-                type_info,
-                err,
-                &temp_cursor,
-            );
-        }
-    }
-    object
 }
 
 fn url_list<T>(
