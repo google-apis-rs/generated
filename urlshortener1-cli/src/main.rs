@@ -19,11 +19,11 @@ use serde_json as json;
 use yup_oauth2::Authenticator;
 
 //TODO: this probably should be a typedef coming from the api crate
-type Error = Box<dyn std::error::Error>;
+type Error = api::Error;
 
 enum DoitError {
     IoError(String, io::Error),
-    ApiError(Error),
+    ApiError(Box<dyn std::error::Error>),
 }
 
 impl<E> From<E> for DoitError
@@ -217,15 +217,7 @@ const _GPM: [(&str, &str); 4] = [
     ("user-ip", "userIp"),
 ];
 
-fn new(
-    opt: ArgMatches,
-) -> Result<
-    (
-        ArgMatches,
-        api::Client<impl google_api_auth::GetAccessToken>,
-    ),
-    InvalidOptionsError,
-> {
+fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError> {
     let (config_dir, secret) = {
         let config_dir = match cmn::assure_config_dir_exists(
             opt.value_of("folder").unwrap_or("~/.google-service-cli"),
@@ -297,15 +289,12 @@ fn new(
     }
 }
 
-fn url_get<T>(
-    hub: &api::Client<T>,
+fn url_get(
+    hub: &api::Client,
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError>
-where
-    T: google_api_auth::GetAccessToken,
-{
+) -> Result<(), DoitError> {
     let keep = hub.url();
     let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
     for parg in opt
@@ -362,7 +351,7 @@ where
             CallType::Standard => call.execute_with_all_fields(),
             _ => unreachable!(),
         } {
-            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Err(api_err) => Err(api_err.into()),
             Ok(response) => {
                 json::to_writer_pretty(&mut ostream, &response).unwrap();
                 ostream.flush().unwrap();
@@ -372,14 +361,11 @@ where
     }
 }
 
-fn doit<T>(
-    hub: &api::Client<T>,
+fn doit(
+    hub: &api::Client,
     opt: &ArgMatches,
     dry_run: bool,
-) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>>
-where
-    T: google_api_auth::GetAccessToken,
-{
+) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>> {
     let mut err = InvalidOptionsError::new();
     let mut call_result: Result<(), DoitError> = Ok(());
     let mut err_opt: Option<InvalidOptionsError> = None;
@@ -417,15 +403,12 @@ where
     }
 }
 
-fn url_insert<T>(
-    hub: &api::Client<T>,
+fn url_insert(
+    hub: &api::Client,
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError>
-where
-    T: google_api_auth::GetAccessToken,
-{
+) -> Result<(), DoitError> {
     let object = object_from_kvargs(
         opt.values_of("kv")
             .map(|i| i.collect())
@@ -608,7 +591,7 @@ where
             CallType::Standard => call.execute_with_all_fields(),
             _ => unreachable!(),
         } {
-            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Err(api_err) => Err(api_err.into()),
             Ok(response) => {
                 json::to_writer_pretty(&mut ostream, &response).unwrap();
                 ostream.flush().unwrap();
@@ -618,15 +601,12 @@ where
     }
 }
 
-fn url_list<T>(
-    hub: &api::Client<T>,
+fn url_list(
+    hub: &api::Client,
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError>
-where
-    T: google_api_auth::GetAccessToken,
-{
+) -> Result<(), DoitError> {
     let keep = hub.url();
     let mut call = keep.list();
     for parg in opt
@@ -687,7 +667,7 @@ where
             CallType::Standard => call.execute_with_all_fields(),
             _ => unreachable!(),
         } {
-            Err(api_err) => Err(DoitError::ApiError(api_err)),
+            Err(api_err) => Err(api_err.into()),
             Ok(response) => {
                 json::to_writer_pretty(&mut ostream, &response).unwrap();
                 ostream.flush().unwrap();
