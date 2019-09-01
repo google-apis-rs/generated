@@ -1,4 +1,3 @@
-use clap::arg_enum;
 use mime::Mime;
 use serde_json::{self as json, value::Value};
 use strsim;
@@ -160,10 +159,20 @@ pub enum CallType {
     Standard,
 }
 
-arg_enum! {
-    pub enum UploadProtocol {
-        Simple,
-        Resumable
+pub enum UploadProtocol {
+    Simple,
+    Resumable,
+}
+
+impl FromStr for UploadProtocol {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(match s {
+            _ if "simple".eq_ignore_ascii_case(s) => UploadProtocol::Simple,
+            _ if "resumable".eq_ignore_ascii_case(s) => UploadProtocol::Resumable,
+            _ => return Err(format!("Invalid upload protocol: '{}'", s)),
+        })
     }
 }
 
