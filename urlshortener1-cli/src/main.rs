@@ -15,20 +15,6 @@ use clap::ArgMatches;
 use serde_json as json;
 use yup_oauth2::Authenticator;
 
-enum ExecuteError {
-    IoError(String, io::Error),
-    ApiError(Box<dyn std::error::Error>),
-}
-
-impl<E> From<E> for ExecuteError
-where
-    E: std::error::Error + 'static,
-{
-    fn from(e: E) -> Self {
-        ExecuteError::ApiError(Box::new(e))
-    }
-}
-
 fn main() {
     let mut exit_status = 0i32;
     let arg_data = [
@@ -244,9 +230,9 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
         .build()
         .expect("create a new statically known client");
 
-    // TODO: fetch actual provided scopes
     let auth = google_api_auth::yup_oauth2::from_authenticator(
         auth,
+        // TODO: validate scope handling - right now we would ask for all scopes?
         opt.values_of("url")
             .map(|i| i.map(String::from).collect::<Vec<_>>())
             .unwrap_or_else(Vec::new),

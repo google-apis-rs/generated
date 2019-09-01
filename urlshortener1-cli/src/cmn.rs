@@ -593,6 +593,20 @@ impl fmt::Display for InputError {
     }
 }
 
+pub enum ExecuteError {
+    IoError(String, io::Error),
+    ApiError(Box<dyn std::error::Error>),
+}
+
+impl<E> From<E> for ExecuteError
+where
+    E: std::error::Error + 'static,
+{
+    fn from(e: E) -> Self {
+        ExecuteError::ApiError(Box::new(e))
+    }
+}
+
 #[derive(Debug)]
 pub enum FieldError {
     PopOnEmpty(String),
