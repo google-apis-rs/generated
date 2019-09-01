@@ -92,12 +92,7 @@ fn main() {
             .takes_value(true))
         .arg(Arg::with_name("debug")
             .long("debug")
-            .help("Output all server communication to standard error. `tx` and `rx` are placed into the same stream.")
-            .multiple(false)
-            .takes_value(false))
-        .arg(Arg::with_name("debug-auth")
-            .long("debug-auth")
-            .help("Output all communication related to authentication to standard error. `tx` and `rx` are placed into the same stream.")
+            .help("Provide more output to aid with debugging")
             .multiple(false)
             .takes_value(false));
 
@@ -208,7 +203,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
             Err(e) => return Err(InvalidOptionsError::single(e, 4))
         }
     };
-    // Boilerplate: Set up hyper HTTP client and TLS.
+
     let https = HttpsConnector::new(1);
     let client = hyper::Client::builder()
         .keep_alive(false)
@@ -233,15 +228,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
             .map(|i| i.map(String::from).collect::<Vec<_>>())
             .unwrap_or_else(Vec::new),
     );
-    // TODO: how to provide a client with debugging support? Is it required to see the full HTTP requrest anyway?
-    // let _client =
-    //     if opt.is_present("debug") {
-    //         hyper::Client::with_connector(mock::TeeConnector {
-    //                 connector: HttpsConnector::new(1)
-    //             })
-    //     } else {
-    //         hyper::Client::with_connector(HttpsConnector::new(1))
-    //     };
+
     let client = api::Client::new(auth);
     match execute(&client, &opt, true) {
         Err(Some(err)) => Err(err),
