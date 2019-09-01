@@ -15,17 +15,17 @@ use clap::ArgMatches;
 use serde_json as json;
 use yup_oauth2::Authenticator;
 
-enum DoitError {
+enum ExecuteError {
     IoError(String, io::Error),
     ApiError(Box<dyn std::error::Error>),
 }
 
-impl<E> From<E> for DoitError
+impl<E> From<E> for ExecuteError
 where
     E: std::error::Error + 'static,
 {
     fn from(e: E) -> Self {
-        DoitError::ApiError(Box::new(e))
+        ExecuteError::ApiError(Box::new(e))
     }
 }
 
@@ -165,12 +165,11 @@ fn main() {
             writeln!(io::stderr(), "{}", err).ok();
         }
         Ok((opt, client)) => {
-            if let Err(doit_err) =
-                doit(&client, &opt, false).expect("no failure should be possible")
+            if let Err(err) = execute(&client, &opt, false).expect("no failure should be possible")
             {
                 exit_status = 1;
-                match doit_err {
-                    DoitError::IoError(path, err) => {
+                match err {
+                    ExecuteError::IoError(path, err) => {
                         writeln!(
                             io::stderr(),
                             "Failed to open output file '{}': {}",
@@ -179,7 +178,7 @@ fn main() {
                         )
                         .ok();
                     }
-                    DoitError::ApiError(err) => {
+                    ExecuteError::ApiError(err) => {
                         if debug {
                             writeln!(io::stderr(), "{:#?}", err).ok();
                         } else {
@@ -262,7 +261,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
     //         hyper::Client::with_connector(HttpsConnector::new(1))
     //     };
     let client = api::Client::new(auth);
-    match doit(&client, &opt, true) {
+    match execute(&client, &opt, true) {
         Err(Some(err)) => Err(err),
         Err(None) => Ok((opt, client)),
         Ok(_) => {
@@ -276,7 +275,7 @@ fn url_get(
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError> {
+) -> Result<(), ExecuteError> {
     let keep = hub.url();
     let mut call = keep.get(opt.value_of("short-url").unwrap_or(""));
     for parg in opt
@@ -323,7 +322,7 @@ fn url_get(
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
-                return Err(DoitError::IoError(
+                return Err(ExecuteError::IoError(
                     opt.value_of("out").unwrap_or("-").to_string(),
                     io_err,
                 ));
@@ -343,13 +342,13 @@ fn url_get(
     }
 }
 
-fn doit(
+fn execute(
     hub: &api::Client,
     opt: &ArgMatches,
     dry_run: bool,
-) -> Result<Result<(), DoitError>, Option<InvalidOptionsError>> {
+) -> Result<Result<(), ExecuteError>, Option<InvalidOptionsError>> {
     let mut err = InvalidOptionsError::new();
-    let mut call_result: Result<(), DoitError> = Ok(());
+    let mut call_result: Result<(), ExecuteError> = Ok(());
     let mut err_opt: Option<InvalidOptionsError> = None;
     match opt.subcommand() {
         ("url", Some(opt)) => match opt.subcommand() {
@@ -390,7 +389,7 @@ fn url_insert(
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError> {
+) -> Result<(), ExecuteError> {
     let object = object_from_kvargs(
         opt.values_of("kv")
             .map(|i| i.collect())
@@ -563,7 +562,7 @@ fn url_insert(
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
-                return Err(DoitError::IoError(
+                return Err(ExecuteError::IoError(
                     opt.value_of("out").unwrap_or("-").to_string(),
                     io_err,
                 ));
@@ -588,7 +587,7 @@ fn url_list(
     opt: &ArgMatches,
     dry_run: bool,
     err: &mut InvalidOptionsError,
-) -> Result<(), DoitError> {
+) -> Result<(), ExecuteError> {
     let keep = hub.url();
     let mut call = keep.list();
     for parg in opt
@@ -639,7 +638,7 @@ fn url_list(
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
-                return Err(DoitError::IoError(
+                return Err(ExecuteError::IoError(
                     opt.value_of("out").unwrap_or("-").to_string(),
                     io_err,
                 ));
