@@ -82,9 +82,9 @@ fn main() {
         .version("1.0.10+20150519")
         .about("Lets you create, inspect, and manage goo.gl short URLs")
         .after_help("All documentation details can be found at http://byron.github.io/google-apis-rs/google_urlshortener1_cli")
-        .arg(Arg::with_name("url")
+        .arg(Arg::with_name("scope")
             .long("scope")
-            .help("Specify the authentication a method should be executed in. Each scope requires the user to grant this application permission to use it.If unset, it defaults to the shortest scope url for a particular method.")
+            .help("Specify the authentication method should be executed in. Each scope requires the user to grant this application permission to use it.If unset, it defaults to the shortest scope url for a particular method.")
             .multiple(true)
             .takes_value(true))
         .arg(Arg::with_name("folder")
@@ -232,8 +232,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
 
     let auth = google_api_auth::yup_oauth2::from_authenticator(
         auth,
-        // TODO: validate scope handling - right now we would ask for all scopes?
-        opt.values_of("url")
+        opt.values_of("scope")
             .map(|i| i.map(String::from).collect::<Vec<_>>())
             .unwrap_or_else(Vec::new),
     );
@@ -302,9 +301,6 @@ fn url_get(
         Ok(())
     } else {
         assert!(err.issues.is_empty());
-        // for scope in self.opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-        //     call = call.add_scope(scope);
-        // }
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
@@ -542,9 +538,6 @@ fn url_insert(
         Ok(())
     } else {
         assert!(err.issues.is_empty());
-        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-        //     call = call.add_scope(scope);
-        // }
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
@@ -617,10 +610,6 @@ fn url_list(
         Ok(())
     } else {
         assert!(err.issues.is_empty());
-        // TODO: Scope handling moves to the client, and is configured once
-        // for scope in opt.values_of("url").map(|i|i.collect()).unwrap_or(Vec::new()).iter() {
-        //     call = call.add_scope(scope);
-        // }
         let mut ostream = match writer_from_opts(opt.value_of("out")) {
             Ok(f) => f,
             Err(io_err) => {
