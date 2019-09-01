@@ -1,15 +1,13 @@
 use mime::Mime;
 use serde_json::{self as json, value::Value};
 use strsim;
-use yup_oauth2::{ApplicationSecret, ConsoleApplicationSecret, Token, TokenStorage};
+use yup_oauth2::{ApplicationSecret, ConsoleApplicationSecret};
 
 use std::{
     default::Default,
-    env,
-    error::Error as StdError,
-    fmt, fs, io,
+    env, fmt, fs, io,
     io::{stdout, Write},
-    path::{Path, PathBuf},
+    path::Path,
     str::FromStr,
     string::ToString,
 };
@@ -516,86 +514,6 @@ where
             Default::default()
         }
         Ok(v) => v,
-    }
-}
-
-pub struct JsonTokenStorage {
-    pub program_name: &'static str,
-    pub db_dir: String,
-}
-
-impl JsonTokenStorage {
-    fn path(&self, scope_hash: u64) -> PathBuf {
-        Path::new(&self.db_dir).join(&format!("{}-token-{}.json", self.program_name, scope_hash))
-    }
-}
-
-#[derive(Debug)]
-pub enum TokenStorageError {
-    Json(json::Error),
-    Io(io::Error),
-}
-
-impl fmt::Display for TokenStorageError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
-        match *self {
-            TokenStorageError::Json(ref err) => writeln!(f, "Could not serialize secrets: {}", err),
-            TokenStorageError::Io(ref err) => writeln!(f, "Failed to write secret token: {}", err),
-        }
-    }
-}
-
-impl StdError for TokenStorageError {
-    fn description(&self) -> &str {
-        "Failure when getting or setting the token storage"
-    }
-}
-
-impl TokenStorage for JsonTokenStorage {
-    type Error = TokenStorageError;
-
-    // NOTE: logging might be interesting, currently we swallow all errors
-    fn set(
-        &mut self,
-        scope_hash: u64,
-        _: &Vec<&str>,
-        token: Option<Token>,
-    ) -> Result<(), TokenStorageError> {
-        match token {
-            None => match fs::remove_file(self.path(scope_hash)) {
-                Err(err) => match err.kind() {
-                    io::ErrorKind::NotFound => Ok(()),
-                    _ => Err(TokenStorageError::Io(err)),
-                },
-                Ok(_) => Ok(()),
-            },
-            Some(token) => {
-                match fs::OpenOptions::new()
-                    .create(true)
-                    .write(true)
-                    .open(&self.path(scope_hash))
-                {
-                    Ok(mut f) => match json::to_writer_pretty(&mut f, &token) {
-                        Ok(_) => Ok(()),
-                        Err(serde_err) => Err(TokenStorageError::Json(serde_err)),
-                    },
-                    Err(io_err) => Err(TokenStorageError::Io(io_err)),
-                }
-            }
-        }
-    }
-
-    fn get(&self, scope_hash: u64, _: &Vec<&str>) -> Result<Option<Token>, TokenStorageError> {
-        match fs::File::open(&self.path(scope_hash)) {
-            Ok(f) => match json::de::from_reader(f) {
-                Ok(token) => Ok(Some(token)),
-                Err(err) => Err(TokenStorageError::Json(err)),
-            },
-            Err(io_err) => match io_err.kind() {
-                io::ErrorKind::NotFound => Ok(None),
-                _ => Err(TokenStorageError::Io(io_err)),
-            },
-        }
     }
 }
 

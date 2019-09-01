@@ -9,10 +9,7 @@ use hyper_rustls::HttpsConnector;
 
 mod cmn;
 
-use cmn::{
-    object_from_kvargs, parse_kv_arg, writer_from_opts, CLIError, CallType, ComplexType,
-    InvalidOptionsError, JsonTokenStorage, JsonType, JsonTypeInfo,
-};
+use cmn::*;
 
 use clap::ArgMatches;
 use serde_json as json;
@@ -242,12 +239,6 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
         yup_oauth2::InstalledFlowReturnMethod::HTTPRedirect(8081),
     );
 
-    let _json_storage = JsonTokenStorage {
-        program_name: "urlshortener1",
-        db_dir: config_dir.clone(),
-    };
-
-    // TODO: try to use the JsonTokenStorage - there is no constructor for that though.
     let auth = Authenticator::new(inf)
         .persist_tokens_to_disk(PathBuf::from(config_dir).join("tokens.json"))
         .hyper_client(client)
