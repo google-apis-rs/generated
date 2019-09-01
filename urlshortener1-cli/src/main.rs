@@ -18,9 +18,6 @@ use clap::ArgMatches;
 use serde_json as json;
 use yup_oauth2::Authenticator;
 
-//TODO: this probably should be a typedef coming from the api crate
-type Error = api::Error;
-
 enum DoitError {
     IoError(String, io::Error),
     ApiError(Box<dyn std::error::Error>),
@@ -241,8 +238,6 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
     // InstalledFlow handles OAuth flows of that type. They are usually the ones where a user
     // grants access to their personal account (think Google Drive, Github API, etc.).
     let inf = yup_oauth2::InstalledFlow::new(
-        client.clone(),
-        yup_oauth2::DefaultFlowDelegate,
         secret,
         yup_oauth2::InstalledFlowReturnMethod::HTTPRedirect(8081),
     );
@@ -253,15 +248,11 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
     };
 
     // TODO: try to use the JsonTokenStorage - there is no constructor for that though.
-    let auth = Authenticator::new_disk(
-        client,
-        inf,
-        yup_oauth2::DefaultAuthenticatorDelegate,
-        PathBuf::from(config_dir)
-            .join("token.json")
-            .to_string_lossy(),
-    )
-    .expect("create a new statically known client");
+    let auth = Authenticator::new(inf)
+        .persist_tokens_to_disk(PathBuf::from(config_dir).join("tokens.json"))
+        .hyper_client(client)
+        .build()
+        .expect("create a new statically known client");
 
     // TODO: fetch actual provided scopes
     let auth = google_api_auth::yup_oauth2::from_authenticator(
