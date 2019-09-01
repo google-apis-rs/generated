@@ -4,7 +4,7 @@ use serde_json::{self as json, value::Value as JsonValue};
 use strsim;
 use yup_oauth2::{ApplicationSecret, ConsoleApplicationSecret};
 
-mod dep {
+pub mod dep {
     pub use mime;
     pub use serde_json;
     pub use strsim;

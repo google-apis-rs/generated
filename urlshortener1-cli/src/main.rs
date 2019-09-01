@@ -7,9 +7,7 @@ use std::{
 use google_urlshortener1 as api;
 use hyper_rustls::HttpsConnector;
 
-mod cmn;
-
-use cmn::*;
+use google_cli_shared::*;
 
 use clap::ArgMatches;
 use serde_json as json;
@@ -143,7 +141,6 @@ fn main() {
     }
 
     let matches = app.get_matches();
-
     let debug = matches.is_present("debug");
     match new(matches) {
         Err(err) => {
@@ -198,14 +195,14 @@ const _GPM: [(&str, &str); 4] = [
 
 fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError> {
     let (config_dir, secret) = {
-        let config_dir = match cmn::assure_config_dir_exists(
+        let config_dir = match assure_config_dir_exists(
             opt.value_of("folder").unwrap_or("~/.google-service-cli"),
         ) {
             Err(e) => return Err(InvalidOptionsError::single(e, 3)),
             Ok(p) => p,
         };
 
-        match cmn::application_secret_from_directory(&config_dir, "urlshortener1-secret.json",
+        match application_secret_from_directory(&config_dir, "urlshortener1-secret.json",
                                                      "{\"installed\":{\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"client_secret\":\"hCsslbCUyfehWMmbkG8vTYxG\",\"token_uri\":\"https://accounts.google.com/o/oauth2/token\",\"client_email\":\"\",\"redirect_uris\":[\"urn:ietf:wg:oauth:2.0:oob\",\"oob\"],\"client_x509_cert_url\":\"\",\"client_id\":\"620010449518-9ngf7o4dhs0dka470npqvor6dc5lqb9b.apps.googleusercontent.com\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\"}}") {
             Ok(secret) => (config_dir, secret),
             Err(e) => return Err(InvalidOptionsError::single(e, 4))
@@ -272,7 +269,7 @@ fn url_get(
         let (key, value) = parse_kv_arg(&*parg, err, false);
         match key {
             "projection" => {
-                call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+                call = call.projection(json::from_str(value.unwrap_or(""))?);
             }
             _ => {
                 let found = false;
@@ -581,7 +578,7 @@ fn url_list(
                 call = call.start_token(value.unwrap_or(""));
             }
             "projection" => {
-                call = call.projection(serde_json::from_str(value.unwrap_or(""))?);
+                call = call.projection(json::from_str(value.unwrap_or(""))?);
             }
             _ => {
                 let found = false;
