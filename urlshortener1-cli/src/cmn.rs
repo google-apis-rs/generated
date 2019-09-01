@@ -25,13 +25,6 @@ pub enum ComplexType {
     Map,
 }
 
-// Null,
-// Bool(bool),
-// I64(i64),
-// U64(u64),
-// F64(f64),
-// String(String),
-
 #[allow(dead_code)]
 #[derive(Clone)]
 pub enum JsonType {
