@@ -490,14 +490,14 @@ pub mod schemas {
         #[serde(rename = "fields", default)]
         pub fields:
             ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2IndexField>>,
-        #[doc = "Output only.\nA server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
+        #[doc = "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index."]
         #[serde(rename = "queryScope", default)]
         pub query_scope:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexQueryScope>,
-        #[doc = "Output only.\nThe serving state of the index."]
+        #[doc = "Output only. The serving state of the index."]
         #[serde(rename = "state", default)]
         pub state: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexState>,
     }
@@ -515,6 +515,8 @@ pub mod schemas {
     pub enum GoogleFirestoreAdminV1Beta2IndexQueryScope {
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified\nat query time, and that has the collection id specified by the index."]
         Collection,
+        #[doc = "Indexes with a collection group query scope specified allow queries\nagainst all collections that has the collection id specified by the\nindex."]
+        CollectionGroup,
         #[doc = "The query scope is unspecified. Not a valid option."]
         QueryScopeUnspecified,
     }
@@ -522,6 +524,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection => "COLLECTION",
+                GoogleFirestoreAdminV1Beta2IndexQueryScope::CollectionGroup => "COLLECTION_GROUP",
                 GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified => {
                     "QUERY_SCOPE_UNSPECIFIED"
                 }
@@ -549,6 +552,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "COLLECTION" => GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection,
+                "COLLECTION_GROUP" => GoogleFirestoreAdminV1Beta2IndexQueryScope::CollectionGroup,
                 "QUERY_SCOPE_UNSPECIFIED" => {
                     GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified
                 }
@@ -648,7 +652,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexConfig {
-        #[doc = "Output only.\nSpecifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
+        #[doc = "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
         #[serde(rename = "ancestorField", default)]
         pub ancestor_field: ::std::option::Option<String>,
         #[doc = "The indexes supported for this field."]
@@ -657,7 +661,7 @@ pub mod schemas {
         #[doc = "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`."]
         #[serde(rename = "reverting", default)]
         pub reverting: ::std::option::Option<bool>,
-        #[doc = "Output only.\nWhen true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
+        #[doc = "Output only. When true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
         #[serde(rename = "usesAncestorConfig", default)]
         pub uses_ancestor_config: ::std::option::Option<bool>,
     }
@@ -1136,7 +1140,7 @@ pub mod schemas {
         #[serde(rename = "metadata", default)]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`."]
+        #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
@@ -3367,6 +3371,7 @@ pub mod resources {
         }
     }
 }
+#[derive(Debug)]
 pub enum Error {
     OAuth2(Box<dyn ::std::error::Error>),
     JSON(::serde_json::Error),
@@ -3386,6 +3391,19 @@ impl Error {
         }
     }
 }
+
+impl ::std::fmt::Display for Error {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        match self {
+            Error::OAuth2(err) => write!(f, "OAuth2 Error: {}", err),
+            Error::JSON(err) => write!(f, "JSON Error: {}", err),
+            Error::Reqwest(err) => write!(f, "Reqwest Error: {}", err),
+            Error::Other(err) => write!(f, "Uknown Error: {}", err),
+        }
+    }
+}
+
+impl ::std::error::Error for Error {}
 
 impl From<::serde_json::Error> for Error {
     fn from(err: ::serde_json::Error) -> Error {

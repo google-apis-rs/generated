@@ -13851,6 +13851,7 @@ pub mod resources {
         }
     }
 }
+#[derive(Debug)]
 pub enum Error {
     OAuth2(Box<dyn ::std::error::Error>),
     JSON(::serde_json::Error),
@@ -13870,6 +13871,19 @@ impl Error {
         }
     }
 }
+
+impl ::std::fmt::Display for Error {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        match self {
+            Error::OAuth2(err) => write!(f, "OAuth2 Error: {}", err),
+            Error::JSON(err) => write!(f, "JSON Error: {}", err),
+            Error::Reqwest(err) => write!(f, "Reqwest Error: {}", err),
+            Error::Other(err) => write!(f, "Uknown Error: {}", err),
+        }
+    }
+}
+
+impl ::std::error::Error for Error {}
 
 impl From<::serde_json::Error> for Error {
     fn from(err: ::serde_json::Error) -> Error {
@@ -14293,7 +14307,7 @@ pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
+    pub struct Bytes(pub Vec<u8>);
 
     impl ::std::convert::From<Vec<u8>> for Bytes {
         fn from(x: Vec<u8>) -> Bytes {

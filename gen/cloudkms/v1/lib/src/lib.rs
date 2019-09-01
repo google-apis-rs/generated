@@ -93,6 +93,9 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AsymmetricSignResponse {
+        #[doc = "The resource name of the CryptoKeyVersion used for signing. Check\nthis field to verify that the intended resource was used for signing."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
         #[doc = "The created signature."]
         #[serde(rename = "signature", default)]
         pub signature: ::std::option::Option<crate::bytes::Bytes>,
@@ -2021,6 +2024,9 @@ pub mod schemas {
         #[doc = "The Algorithm associated\nwith this key."]
         #[serde(rename = "algorithm", default)]
         pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
+        #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification."]
+        #[serde(rename = "name", default)]
+        pub name: ::std::option::Option<String>,
         #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
         #[serde(rename = "pem", default)]
         pub pem: ::std::option::Option<String>,
@@ -3481,7 +3487,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
-                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                     pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                         self.options_requested_policy_version = Some(value);
                         self
@@ -5266,7 +5272,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -8988,7 +8994,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -9782,6 +9788,7 @@ pub mod resources {
         }
     }
 }
+#[derive(Debug)]
 pub enum Error {
     OAuth2(Box<dyn ::std::error::Error>),
     JSON(::serde_json::Error),
@@ -9801,6 +9808,19 @@ impl Error {
         }
     }
 }
+
+impl ::std::fmt::Display for Error {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        match self {
+            Error::OAuth2(err) => write!(f, "OAuth2 Error: {}", err),
+            Error::JSON(err) => write!(f, "JSON Error: {}", err),
+            Error::Reqwest(err) => write!(f, "Reqwest Error: {}", err),
+            Error::Other(err) => write!(f, "Uknown Error: {}", err),
+        }
+    }
+}
+
+impl ::std::error::Error for Error {}
 
 impl From<::serde_json::Error> for Error {
     fn from(err: ::serde_json::Error) -> Error {
@@ -10146,7 +10166,7 @@ pub mod bytes {
     use radix64::URL_SAFE as BASE64_CFG;
 
     #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(Vec<u8>);
+    pub struct Bytes(pub Vec<u8>);
 
     impl ::std::convert::From<Vec<u8>> for Bytes {
         fn from(x: Vec<u8>) -> Bytes {
