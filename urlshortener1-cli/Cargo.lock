@@ -412,7 +412,7 @@ dependencies = [
 [[package]]
 name = "google_api_auth"
 version = "0.1.0"
-source = "git+https://github.com/google-apis-rs/generator#f26d62d9507e1b6067d7c0d21b362a112d6b6462"
+source = "git+https://github.com/google-apis-rs/generator#b775bb112375466e5635caccd0e3b886e707723b"
 dependencies = [
  "tokio 0.1.22 (registry+https://github.com/rust-lang/crates.io-index)",
  "yup-oauth2 3.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -421,7 +421,7 @@ dependencies = [
 [[package]]
 name = "google_field_selector"
 version = "0.1.0"
-source = "git+https://github.com/google-apis-rs/generator#f26d62d9507e1b6067d7c0d21b362a112d6b6462"
+source = "git+https://github.com/google-apis-rs/generator#b775bb112375466e5635caccd0e3b886e707723b"
 dependencies = [
  "google_field_selector_derive 0.1.0 (git+https://github.com/google-apis-rs/generator)",
 ]
@@ -429,7 +429,7 @@ dependencies = [
 [[package]]
 name = "google_field_selector_derive"
 version = "0.1.0"
-source = "git+https://github.com/google-apis-rs/generator#f26d62d9507e1b6067d7c0d21b362a112d6b6462"
+source = "git+https://github.com/google-apis-rs/generator#b775bb112375466e5635caccd0e3b886e707723b"
 dependencies = [
  "proc-macro2 0.4.30 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 0.6.13 (registry+https://github.com/rust-lang/crates.io-index)",

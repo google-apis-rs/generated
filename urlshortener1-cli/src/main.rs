@@ -197,10 +197,9 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
             Ok(p) => p,
         };
 
-        match application_secret_from_directory(&config_dir, "urlshortener1-secret.json",
-                                                     "{\"installed\":{\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"client_secret\":\"hCsslbCUyfehWMmbkG8vTYxG\",\"token_uri\":\"https://accounts.google.com/o/oauth2/token\",\"client_email\":\"\",\"redirect_uris\":[\"urn:ietf:wg:oauth:2.0:oob\",\"oob\"],\"client_x509_cert_url\":\"\",\"client_id\":\"620010449518-9ngf7o4dhs0dka470npqvor6dc5lqb9b.apps.googleusercontent.com\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\"}}") {
+        match application_secret_from_directory(&config_dir, "urlshortener1-secret.json") {
             Ok(secret) => (config_dir, secret),
-            Err(e) => return Err(InvalidOptionsError::single(e, 4))
+            Err(e) => return Err(InvalidOptionsError::single(e, 4)),
         }
     };
 
@@ -226,7 +225,7 @@ fn new(opt: ArgMatches) -> Result<(ArgMatches, api::Client), InvalidOptionsError
         auth,
         opt.values_of("scope")
             .map(|i| i.map(String::from).collect::<Vec<_>>())
-            .unwrap_or_else(Vec::new),
+            .unwrap_or_else(|| vec!["https://www.googleapis.com/auth/urlshortener".into()]),
     );
 
     let client = api::Client::new(auth);

@@ -774,61 +774,25 @@ pub fn assure_config_dir_exists(dir: &str) -> Result<String, CLIError> {
 pub fn application_secret_from_directory(
     dir: &str,
     secret_basename: &str,
-    json_console_secret: &str,
 ) -> Result<ApplicationSecret, CLIError> {
     let secret_path = Path::new(dir).join(secret_basename);
     let secret_str = || secret_path.as_path().to_str().unwrap().to_string();
-    let secret_io_error = |io_err: io::Error| {
-        Err(CLIError::Configuration(ConfigurationError::Io((
+
+    match fs::File::open(&secret_path) {
+        Err(err) => Err(CLIError::Configuration(ConfigurationError::Io((
             secret_str(),
-            io_err,
-        ))))
-    };
-
-    for _ in 0..2 {
-        match fs::File::open(&secret_path) {
-            Err(mut err) => {
-                if err.kind() == io::ErrorKind::NotFound {
-                    // Write our built-in one - user may adjust the written file at will
-
-                    err = match fs::OpenOptions::new()
-                        .create(true)
-                        .write(true)
-                        .open(&secret_path)
-                    {
-                        Err(cfe) => cfe,
-                        Ok(mut f) => {
-                            // Assure we convert 'ugly' json string into pretty one
-                            let console_secret: ConsoleApplicationSecret =
-                                json::from_str(json_console_secret).unwrap();
-                            match json::to_writer_pretty(&mut f, &console_secret) {
-                                Err(serde_err) => {
-                                    panic!("Unexpected serde error: {:#?}", serde_err)
-                                }
-                                Ok(_) => continue,
-                            }
-                        }
-                    };
-                    // fall through to IO error handling
-                }
-                return secret_io_error(err);
-            }
-            Ok(f) => match json::de::from_reader::<_, ConsoleApplicationSecret>(f) {
-                Err(json_err) => {
-                    return Err(CLIError::Configuration(ConfigurationError::Secret(
-                        ApplicationSecretError::DecoderError((secret_str(), json_err)),
-                    )))
-                }
-                Ok(console_secret) => match console_secret.installed {
-                    Some(secret) => return Ok(secret),
-                    None => {
-                        return Err(CLIError::Configuration(ConfigurationError::Secret(
-                            ApplicationSecretError::FormatError(secret_str()),
-                        )))
-                    }
-                },
+            err,
+        )))),
+        Ok(f) => match json::de::from_reader::<_, ConsoleApplicationSecret>(f) {
+            Err(json_err) => Err(CLIError::Configuration(ConfigurationError::Secret(
+                ApplicationSecretError::DecoderError((secret_str(), json_err)),
+            ))),
+            Ok(console_secret) => match console_secret.installed {
+                Some(secret) => return Ok(secret),
+                None => Err(CLIError::Configuration(ConfigurationError::Secret(
+                    ApplicationSecretError::FormatError(secret_str()),
+                ))),
             },
-        }
+        },
     }
-    unreachable!();
 }
