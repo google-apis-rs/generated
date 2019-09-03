@@ -257,25 +257,15 @@ fn url_get(
             "projection" => {
                 call = call.projection(json::from_str(value.unwrap_or(""))?);
             }
+            "key" => call = call.key(value.unwrap_or("")),
             _ => {
-                let found = false;
-                // TODO: params work differently
-                // for param in &GP {
-                //     if key == *param {
-                //         found = true;
-                //         call = call.param(gpm.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                //         break;
-                //     }
-                // }
-                if !found {
-                    err.issues
-                        .push(CLIError::UnknownParameter(key.to_string(), {
-                            let mut v = Vec::new();
-                            v.extend(GP.iter().copied());
-                            v.extend(["projection"].iter().copied());
-                            v
-                        }));
-                }
+                err.issues
+                    .push(CLIError::UnknownParameter(key.to_string(), {
+                        let mut v = Vec::new();
+                        v.extend(GP.iter().copied());
+                        v.extend(["projection"].iter().copied());
+                        v
+                    }));
             }
         }
     }
@@ -560,31 +550,17 @@ fn url_list(
     {
         let (key, value) = parse_kv_arg(&*parg, err, false);
         match key {
-            "start-token" => {
-                call = call.start_token(value.unwrap_or(""));
-            }
-            "projection" => {
-                call = call.projection(json::from_str(value.unwrap_or(""))?);
-            }
+            "start-token" => call = call.start_token(value.unwrap_or("")),
+            "projection" => call = call.projection(json::from_str(value.unwrap_or(""))?),
+            "key" => call = call.key(value.unwrap_or("")),
             _ => {
-                let found = false;
-                // TODO: figure out changed handling of parameters
-                // for param in &GP {
-                //     if key == *param {
-                //         found = true;
-                //         call = call.param(GPM.iter().find(|t| t.0 == key).unwrap_or(&("", key)).1, value.unwrap_or("unset"));
-                //         break;
-                //     }
-                // }
-                if !found {
-                    err.issues
-                        .push(CLIError::UnknownParameter(key.to_string(), {
-                            let mut v = Vec::new();
-                            v.extend(GP.iter().copied());
-                            v.extend(["start-token", "projection"].iter().copied());
-                            v
-                        }));
-                }
+                err.issues
+                    .push(CLIError::UnknownParameter(key.to_string(), {
+                        let mut v = Vec::new();
+                        v.extend(GP.iter().copied());
+                        v.extend(["start-token", "projection"].iter().copied());
+                        v
+                    }));
             }
         }
     }
